@@ -45,6 +45,19 @@
         "content": "Um, Miles Carter. June 14th, uh, 1988."
       },
       {
+        "arguments": "{\"full_name\":\"Miles Carter\",\"date_of_birth\":\"1988-06-14\"}",
+        "call_id": "ph-001",
+        "name": "lookup_patient",
+        "type": "function_call",
+        "id": "ph-001",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "ph-001",
+        "output": "\n\n{\"patient_id\":\"patient-miles-carter\",\"match\":\"unique\"}"
+      },
+      {
         "id": "msg_0004_0004",
         "content": [
           {
@@ -88,17 +101,17 @@
         "type": "message"
       },
       {
-        "arguments": "{\"full_name\":\"Miles Carter\",\"date_of_birth\":\"1988-06-14\"}",
-        "call_id": "ph-001",
-        "name": "lookup_patient",
+        "arguments": "{\"patient_id\":\"patient-miles-carter\",\"medication_name\":\"albuterol inhaler\"}",
+        "call_id": "ph-002",
+        "name": "get_prescription",
         "type": "function_call",
-        "id": "ph-001",
+        "id": "ph-002",
         "status": "completed"
       },
       {
         "type": "function_call_output",
-        "call_id": "ph-001",
-        "output": "\n\n{\"patient_id\":\"patient-miles-carter\",\"match\":\"unique\"}"
+        "call_id": "ph-002",
+        "output": "\n\n{\"prescription_id\":\"prescription-albuterol\",\"received_at\":\"10:42\",\"claim_status\":\"rejected_refill_too_soon\",\"prescription_valid\":true}"
       },
       {
         "id": "msg_0004_0008",
@@ -112,19 +125,6 @@
         "role": "assistant",
         "status": "completed",
         "type": "message"
-      },
-      {
-        "arguments": "{\"patient_id\":\"patient-miles-carter\",\"medication_name\":\"albuterol inhaler\"}",
-        "call_id": "ph-002",
-        "name": "get_prescription",
-        "type": "function_call",
-        "id": "ph-002",
-        "status": "completed"
-      },
-      {
-        "type": "function_call_output",
-        "call_id": "ph-002",
-        "output": "\n\n{\"prescription_id\":\"prescription-albuterol\",\"received_at\":\"10:42\",\"claim_status\":\"rejected_refill_too_soon\",\"prescription_valid\":true}"
       },
       {
         "role": "user",
@@ -251,6 +251,19 @@
         "type": "message"
       },
       {
+        "arguments": "{\"prescription_id\":\"prescription-albuterol\",\"override_id\":\"override-lost-medication\"}",
+        "call_id": "ph-004",
+        "name": "submit_prescription_claim",
+        "type": "function_call",
+        "id": "ph-004",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "ph-004",
+        "output": "\n\n{\"claim_status\":\"paid\",\"copay\":15,\"next_workflow_status\":\"awaiting_pharmacist_verification\",\"estimated_minutes\":30}"
+      },
+      {
         "id": "msg_0004_0021",
         "content": [
           {
@@ -262,19 +275,6 @@
         "role": "assistant",
         "status": "completed",
         "type": "message"
-      },
-      {
-        "arguments": "{\"prescription_id\":\"prescription-albuterol\",\"override_id\":\"override-lost-medication\"}",
-        "call_id": "ph-004",
-        "name": "submit_prescription_claim",
-        "type": "function_call",
-        "id": "ph-004",
-        "status": "completed"
-      },
-      {
-        "type": "function_call_output",
-        "call_id": "ph-004",
-        "output": "\n\n{\"claim_status\":\"paid\",\"copay\":15}"
       },
       {
         "role": "user",
@@ -422,19 +422,6 @@
         "content": "Right. Yeah, yeah. Okay, yeah. We can, we can leave it there. Uh, let's, yeah, unless you, you can't finish it then no, we can transfer it. That's good. Thank you."
       },
       {
-        "id": "msg_0004_0036",
-        "content": [
-          {
-            "annotations": [],
-            "type": "output_text",
-            "text": "Okay. That's what I'll do. I added the travel note and your mobile number is set for the ready alert."
-          }
-        ],
-        "role": "assistant",
-        "status": "completed",
-        "type": "message"
-      },
-      {
         "arguments": "{\"prescription_id\":\"prescription-albuterol\",\"notification_channel\":\"sms\",\"notification_destination_last4\":\"on_file\"}",
         "call_id": "ph-007",
         "name": "update_prescription",
@@ -446,6 +433,19 @@
         "type": "function_call_output",
         "call_id": "ph-007",
         "output": "\n\n{\"ready_alert\":\"enabled\",\"priority_note\":\"present\"}"
+      },
+      {
+        "id": "msg_0004_0036",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. That's what I'll do. I added the travel note and your mobile number is set for the ready alert."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
       },
       {
         "role": "user",
@@ -770,6 +770,27 @@
     },
     {
       "event_index": 5,
+      "kind": "function_call",
+      "call_id": "ph-001",
+      "source": "transcripts/transcript.txt",
+      "source_label": "patient lookup implied before prescription retrieval",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 24.0,
+      "placement_after_text": "Miles Carter. June 14th, uh, 1988",
+      "placement_before_text": "Thank you",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          23.22,
+          24.64
+        ]
+      }
+    },
+    {
+      "event_index": 7,
       "kind": "speech",
       "speaker": "Aaron",
       "role": "assistant",
@@ -781,7 +802,7 @@
       }
     },
     {
-      "event_index": 6,
+      "event_index": 8,
       "kind": "speech",
       "speaker": "Aaron",
       "role": "assistant",
@@ -793,7 +814,7 @@
       }
     },
     {
-      "event_index": 7,
+      "event_index": 9,
       "kind": "speech",
       "speaker": "Miles",
       "role": "user",
@@ -805,7 +826,7 @@
       }
     },
     {
-      "event_index": 8,
+      "event_index": 10,
       "kind": "speech",
       "speaker": "Aaron",
       "role": "assistant",
@@ -817,25 +838,25 @@
       }
     },
     {
-      "event_index": 9,
+      "event_index": 11,
       "kind": "function_call",
-      "call_id": "ph-001",
+      "call_id": "ph-002",
       "source": "transcripts/transcript.txt",
-      "source_label": "patient lookup implied before prescription retrieval",
+      "source_label": "open the prescription record",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
+      "placement_seconds": 36.5,
+      "placement_after_text": "All right. Give me a moment",
+      "placement_before_text": "I see the prescription",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": null,
-        "end_seconds": null,
-        "inferred_window_seconds": [
-          24.92,
-          35.2
-        ]
+        "start_seconds": 44.84,
+        "end_seconds": 52.02,
+        "inferred_window_seconds": null
       }
     },
     {
-      "event_index": 11,
+      "event_index": 13,
       "kind": "speech",
       "speaker": "Aaron",
       "role": "assistant",
@@ -844,21 +865,6 @@
         "path": "audio/full.wav",
         "start_seconds": 44.84,
         "end_seconds": 52.02
-      }
-    },
-    {
-      "event_index": 12,
-      "kind": "function_call",
-      "call_id": "ph-002",
-      "source": "transcripts/transcript.txt",
-      "source_label": "open the prescription record",
-      "annotation_confidence": "high",
-      "state_effect": "read_only",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 44.84,
-        "end_seconds": 52.02,
-        "inferred_window_seconds": null
       }
     },
     {
@@ -989,6 +995,9 @@
       "source_label": "contact the insurance plan for an override",
       "annotation_confidence": "high",
       "state_effect": "payer_override_approved",
+      "placement_seconds": 126.6,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 122.12,
@@ -1022,6 +1031,24 @@
     },
     {
       "event_index": 28,
+      "kind": "function_call",
+      "call_id": "ph-004",
+      "source": "transcripts/transcript.txt",
+      "source_label": "rerun the insurance claim",
+      "annotation_confidence": "medium",
+      "state_effect": "claim_accepted",
+      "placement_seconds": 187.2,
+      "placement_after_text": "Thank you for holding",
+      "placement_before_text": "They approved a one-time lost medication override",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 187.549,
+        "end_seconds": 195.44,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 30,
       "kind": "speech",
       "speaker": "Aaron",
       "role": "assistant",
@@ -1030,21 +1057,6 @@
         "path": "audio/full.wav",
         "start_seconds": 187.549,
         "end_seconds": 195.44
-      }
-    },
-    {
-      "event_index": 29,
-      "kind": "function_call",
-      "call_id": "ph-004",
-      "source": "transcripts/transcript.txt",
-      "source_label": "rerun the insurance claim",
-      "annotation_confidence": "high",
-      "state_effect": "claim_accepted",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 187.549,
-        "end_seconds": 195.44,
-        "inferred_window_seconds": null
       }
     },
     {
@@ -1151,6 +1163,9 @@
       "source_label": "add a travel-priority note",
       "annotation_confidence": "high",
       "state_effect": "prescription_priority_context_updated",
+      "placement_seconds": 255.68,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 243.14,
@@ -1214,6 +1229,9 @@
       "source_label": "check alternate pharmacy inventory",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 284.56,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 279.66,
@@ -1247,6 +1265,24 @@
     },
     {
       "event_index": 49,
+      "kind": "function_call",
+      "call_id": "ph-007",
+      "source": "transcripts/transcript.txt",
+      "source_label": "update the prescription notification",
+      "annotation_confidence": "medium",
+      "state_effect": "notification_preference_updated",
+      "placement_seconds": 304.2,
+      "placement_after_text": "we can leave it there",
+      "placement_before_text": "your mobile number is set for the ready alert",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 304.6,
+        "end_seconds": 310.5,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 51,
       "kind": "speech",
       "speaker": "Aaron",
       "role": "assistant",
@@ -1255,21 +1291,6 @@
         "path": "audio/full.wav",
         "start_seconds": 304.6,
         "end_seconds": 310.5
-      }
-    },
-    {
-      "event_index": 50,
-      "kind": "function_call",
-      "call_id": "ph-007",
-      "source": "transcripts/transcript.txt",
-      "source_label": "update the prescription notification",
-      "annotation_confidence": "high",
-      "state_effect": "notification_preference_updated",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 304.6,
-        "end_seconds": 310.5,
-        "inferred_window_seconds": null
       }
     },
     {

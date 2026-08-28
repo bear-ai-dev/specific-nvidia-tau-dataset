@@ -92,19 +92,6 @@
         "type": "message"
       },
       {
-        "id": "msg_0006_0009",
-        "content": [
-          {
-            "annotations": [],
-            "type": "output_text",
-            "text": "Okay. So I found a 12-cup coffee maker, matte black."
-          }
-        ],
-        "role": "assistant",
-        "status": "completed",
-        "type": "message"
-      },
-      {
         "arguments": "{\"order_reference\":\"ending-4086\",\"customer_email\":\"ethan.patel@northmail.com\",\"include\":[\"items\",\"eligible_resolutions\",\"cases\"]}",
         "call_id": "rd-001",
         "name": "get_order",
@@ -116,6 +103,19 @@
         "type": "function_call_output",
         "call_id": "rd-001",
         "output": "\n\n{\"item_reference\":\"coffee-maker-matte-black-12-cup\",\"damage\":\"cracked water tank; damp base\",\"separate_from_prior_case\":true}"
+      },
+      {
+        "id": "msg_0006_0009",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. So I found a 12-cup coffee maker, matte black."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
       },
       {
         "id": "msg_0006_0010",
@@ -295,7 +295,7 @@
       {
         "type": "function_call_output",
         "call_id": "rd-004",
-        "output": "\n\n{\"replacement_order_reference\":\"ending-8821\",\"balance_due\":0,\"estimated_delivery\":\"Thursday end of day\",\"return_required\":false,\"disposition\":\"discard_or_recycle; do_not_power_on\",\"email_confirmation\":\"sent\",\"optional_photo_link\":true}"
+        "output": "\n\n{\"replacement_order_reference\":\"ending-8821\",\"balance_due\":0,\"estimated_delivery\":\"Thursday end of day\",\"fulfillment_location\":\"home_address_on_order\",\"distribution_center\":\"Edison\",\"return_required\":false,\"disposition\":\"discard_or_recycle; do_not_power_on\",\"email_confirmation\":\"sent\",\"optional_photo_link\":true}"
       },
       {
         "id": "msg_0006_0025",
@@ -460,6 +460,19 @@
         "type": "message"
       },
       {
+        "arguments": "{\"order_reference\":\"ending-8821\",\"customer_email\":\"ethan.patel@northmail.com\",\"include\":[\"notifications\"]}",
+        "call_id": "rd-005",
+        "name": "get_order",
+        "type": "function_call",
+        "id": "rd-005",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "rd-005",
+        "output": "\n\n{\"replacement_notification\":{\"status\":\"sent\",\"subject_prefix\":\"Your Westline replacement\",\"optional_photo_link\":true}}"
+      },
+      {
         "id": "msg_0006_0043",
         "content": [
           {
@@ -494,6 +507,19 @@
         "content": "Okay. Okay, yeah. I'll, I'll definitely upload something. Um, no, this is great. Thank you. While I have you on the call, is there any updates on the, the headphones, um, the other order that we had issues with?"
       },
       {
+        "arguments": "{\"order_reference\":\"ending-7319\",\"customer_email\":\"ethan.patel@northmail.com\",\"include\":[\"cases\"]}",
+        "call_id": "rd-006",
+        "name": "get_order",
+        "type": "function_call",
+        "id": "rd-006",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "rd-006",
+        "output": "\n\n{\"delivery_trace\":{\"status\":\"open\",\"carrier_response\":null,\"deadline\":\"18:00 today\"}}"
+      },
+      {
         "id": "msg_0006_0047",
         "content": [
           {
@@ -505,19 +531,6 @@
         "role": "assistant",
         "status": "completed",
         "type": "message"
-      },
-      {
-        "arguments": "{\"order_reference\":\"ending-7319\",\"customer_email\":\"ethan.patel@northmail.com\",\"include\":[\"cases\"]}",
-        "call_id": "rd-005",
-        "name": "get_order",
-        "type": "function_call",
-        "id": "rd-005",
-        "status": "completed"
-      },
-      {
-        "type": "function_call_output",
-        "call_id": "rd-005",
-        "output": "\n\n{\"delivery_trace\":{\"status\":\"open\",\"carrier_response\":null,\"deadline\":\"18:00 today\"}}"
       },
       {
         "role": "user",
@@ -629,7 +642,8 @@
                   "payments",
                   "refunds",
                   "cases",
-                  "eligible_resolutions"
+                  "eligible_resolutions",
+                  "notifications"
                 ]
               },
               "minItems": 0
@@ -987,6 +1001,24 @@
     },
     {
       "event_index": 10,
+      "kind": "function_call",
+      "call_id": "rd-001",
+      "source": "transcripts/transcript.txt",
+      "source_label": "open the order record",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 68.0,
+      "placement_after_text": "Give me one sec to check that out",
+      "placement_before_text": "I found a 12-cup coffee maker",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 72.64,
+        "end_seconds": 77.56,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 12,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -995,21 +1027,6 @@
         "path": "audio/full.wav",
         "start_seconds": 72.64,
         "end_seconds": 77.56
-      }
-    },
-    {
-      "event_index": 11,
-      "kind": "function_call",
-      "call_id": "rd-001",
-      "source": "transcripts/transcript.txt",
-      "source_label": "open the order record",
-      "annotation_confidence": "high",
-      "state_effect": "read_only",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 72.64,
-        "end_seconds": 77.56,
-        "inferred_window_seconds": null
       }
     },
     {
@@ -1080,6 +1097,9 @@
       "source_label": "review return and replacement options",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 117.12,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 107.58,
@@ -1119,6 +1139,9 @@
       "source_label": "check replacement inventory",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 136.3,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 125.32,
@@ -1230,6 +1253,9 @@
       "source_label": "create the replacement order",
       "annotation_confidence": "high",
       "state_effect": "replacement_order_created",
+      "placement_seconds": 209.0,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 198.04,
@@ -1455,6 +1481,27 @@
     },
     {
       "event_index": 52,
+      "kind": "function_call",
+      "call_id": "rd-005",
+      "source": "transcripts/transcript.txt",
+      "source_label": "refresh replacement-email delivery status",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 370.0,
+      "placement_after_text": "One second",
+      "placement_before_text": "it says it was just sent",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          369.36,
+          372.3
+        ]
+      }
+    },
+    {
+      "event_index": 54,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1466,7 +1513,7 @@
       }
     },
     {
-      "event_index": 53,
+      "event_index": 55,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1478,7 +1525,7 @@
       }
     },
     {
-      "event_index": 54,
+      "event_index": 56,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1490,7 +1537,7 @@
       }
     },
     {
-      "event_index": 55,
+      "event_index": 57,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1502,7 +1549,25 @@
       }
     },
     {
-      "event_index": 56,
+      "event_index": 58,
+      "kind": "function_call",
+      "call_id": "rd-006",
+      "source": "transcripts/transcript.txt",
+      "source_label": "review the existing missing-package trace",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 411.0,
+      "placement_after_text": "the other order that we had issues with",
+      "placement_before_text": "The trace on the last order you did is still open",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 411.78,
+        "end_seconds": 425.88,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 60,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1514,22 +1579,7 @@
       }
     },
     {
-      "event_index": 57,
-      "kind": "function_call",
-      "call_id": "rd-005",
-      "source": "transcripts/transcript.txt",
-      "source_label": "review the existing missing-package trace",
-      "annotation_confidence": "high",
-      "state_effect": "read_only",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 411.78,
-        "end_seconds": 425.88,
-        "inferred_window_seconds": null
-      }
-    },
-    {
-      "event_index": 59,
+      "event_index": 61,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1541,7 +1591,7 @@
       }
     },
     {
-      "event_index": 60,
+      "event_index": 62,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1553,7 +1603,7 @@
       }
     },
     {
-      "event_index": 61,
+      "event_index": 63,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1565,7 +1615,7 @@
       }
     },
     {
-      "event_index": 62,
+      "event_index": 64,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1577,7 +1627,7 @@
       }
     },
     {
-      "event_index": 63,
+      "event_index": 65,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1589,7 +1639,7 @@
       }
     },
     {
-      "event_index": 64,
+      "event_index": 66,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1601,7 +1651,7 @@
       }
     },
     {
-      "event_index": 65,
+      "event_index": 67,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",

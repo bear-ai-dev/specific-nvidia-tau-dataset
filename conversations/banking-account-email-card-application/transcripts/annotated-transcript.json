@@ -1249,6 +1249,9 @@
       "source_label": "find the customer by account ID",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 69.7,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 69.1,
@@ -1300,6 +1303,9 @@
       "source_label": "retrieve the current time for verification records",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 91.02,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 90.42,
@@ -1315,6 +1321,9 @@
       "source_label": "record completed identity verification",
       "annotation_confidence": "high",
       "state_effect": "audit_record_created",
+      "placement_seconds": 91.62,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 91.02,
@@ -1438,6 +1447,9 @@
       "source_label": "change the customer email address",
       "annotation_confidence": "high",
       "state_effect": "customer_email_updated",
+      "placement_seconds": 220.08,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 219.48,
@@ -1513,6 +1525,9 @@
       "source_label": "search current card products by keyword",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 258.38,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 257.78,
@@ -1564,6 +1579,9 @@
       "source_label": "search card benefits using semantic similarity",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 324.48,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 323.88,
@@ -1615,6 +1633,9 @@
       "source_label": "search welcome-bonus terms using semantic similarity",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 347.46,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 346.86,
@@ -1690,6 +1711,9 @@
       "source_label": "provide the secure card-application tool",
       "annotation_confidence": "high",
       "state_effect": "self_service_session_issued",
+      "placement_seconds": 400.39,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 399.79,

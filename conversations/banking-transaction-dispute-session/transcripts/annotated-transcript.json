@@ -238,6 +238,19 @@
         "type": "message"
       },
       {
+        "arguments": "{\"query\":\"unauthorized transaction procedure for unfamiliar marketplace descriptor and possible household use\",\"search_mode\":\"keyword\"}",
+        "call_id": "bd-004",
+        "name": "search_policy_knowledge",
+        "type": "function_call",
+        "id": "bd-004",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bd-004",
+        "output": "\n\n{\"steps\":[\"review household use\",\"review saved wallets\",\"submit only if unauthorized\"],\"provisional_credit_guaranteed\":false}"
+      },
+      {
         "id": "msg_0002_0020",
         "content": [
           {
@@ -262,19 +275,6 @@
         "role": "assistant",
         "status": "completed",
         "type": "message"
-      },
-      {
-        "arguments": "{\"query\":\"unauthorized transaction procedure for unfamiliar marketplace descriptor and possible household use\",\"search_mode\":\"keyword\"}",
-        "call_id": "bd-004",
-        "name": "search_policy_knowledge",
-        "type": "function_call",
-        "id": "bd-004",
-        "status": "completed"
-      },
-      {
-        "type": "function_call_output",
-        "call_id": "bd-004",
-        "output": "\n\n{\"steps\":[\"review household use\",\"review saved wallets\",\"submit only if unauthorized\"],\"provisional_credit_guaranteed\":false}"
       },
       {
         "role": "user",
@@ -388,19 +388,6 @@
         "type": "message"
       },
       {
-        "id": "msg_0002_0033",
-        "content": [
-          {
-            "annotations": [],
-            "type": "output_text",
-            "text": "Additionally, I can confirm the dispute session was issued, but no claim is recorded until you press Submit."
-          }
-        ],
-        "role": "assistant",
-        "status": "completed",
-        "type": "message"
-      },
-      {
         "arguments": "{\"customer_id\":\"customer-justin-porter\",\"session_id\":\"session-dispute-8472\"}",
         "call_id": "bd-006",
         "name": "get_secure_self_service_session",
@@ -412,6 +399,19 @@
         "type": "function_call_output",
         "call_id": "bd-006",
         "output": "\n\n{\"status\":\"open_not_submitted\",\"claim_id\":null}"
+      },
+      {
+        "id": "msg_0002_0033",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Additionally, I can confirm the dispute session was issued, but no claim is recorded until you press Submit."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
       },
       {
         "role": "user",
@@ -1208,6 +1208,9 @@
       "source_label": "find the customer by name and email",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 38.42,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 37.92,
@@ -1259,6 +1262,9 @@
       "source_label": "record completed identity verification",
       "annotation_confidence": "high",
       "state_effect": "audit_record_created",
+      "placement_seconds": 59.06,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 58.46,
@@ -1322,6 +1328,9 @@
       "source_label": "retrieve the customer's credit-card transactions",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 104.76,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 104.16,
@@ -1427,6 +1436,24 @@
     },
     {
       "event_index": 27,
+      "kind": "function_call",
+      "call_id": "bd-004",
+      "source": "transcripts/transcript.txt",
+      "source_label": "review the unauthorized-transaction procedure",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 185.0,
+      "placement_after_text": "While she checks, I'll review the bank's current unauthorized transaction procedure",
+      "placement_before_text": "The policy says to review household and digital wallet activity",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 205.16,
+        "end_seconds": 205.76,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 29,
       "kind": "speech",
       "speaker": "Darren",
       "role": "assistant",
@@ -1438,7 +1465,7 @@
       }
     },
     {
-      "event_index": 28,
+      "event_index": 30,
       "kind": "speech",
       "speaker": "Darren",
       "role": "assistant",
@@ -1447,21 +1474,6 @@
         "path": "audio/full.wav",
         "start_seconds": 202.38,
         "end_seconds": 205.16
-      }
-    },
-    {
-      "event_index": 29,
-      "kind": "function_call",
-      "call_id": "bd-004",
-      "source": "transcripts/transcript.txt",
-      "source_label": "review the unauthorized-transaction procedure",
-      "annotation_confidence": "high",
-      "state_effect": "read_only",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 205.16,
-        "end_seconds": 205.76,
-        "inferred_window_seconds": null
       }
     },
     {
@@ -1520,6 +1532,9 @@
       "source_label": "open a secure dispute session for transaction ending 8472",
       "annotation_confidence": "high",
       "state_effect": "self_service_session_issued",
+      "placement_seconds": 226.9,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 226.3,
@@ -1613,6 +1628,24 @@
     },
     {
       "event_index": 44,
+      "kind": "function_call",
+      "call_id": "bd-006",
+      "source": "transcripts/transcript.txt",
+      "source_label": "review the issued dispute session; no claim has been submitted",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 293.8,
+      "placement_after_text": "Keep any receipts or com- communications for yourself",
+      "placement_before_text": "I can confirm the dispute session was issued",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 293.56,
+        "end_seconds": 294.16,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 46,
       "kind": "speech",
       "speaker": "Darren",
       "role": "assistant",
@@ -1621,21 +1654,6 @@
         "path": "audio/full.wav",
         "start_seconds": 294.15999999999997,
         "end_seconds": 300.66
-      }
-    },
-    {
-      "event_index": 45,
-      "kind": "function_call",
-      "call_id": "bd-006",
-      "source": "transcripts/transcript.txt",
-      "source_label": "review the issued dispute session; no claim has been submitted",
-      "annotation_confidence": "high",
-      "state_effect": "read_only",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 293.56,
-        "end_seconds": 294.16,
-        "inferred_window_seconds": null
       }
     },
     {

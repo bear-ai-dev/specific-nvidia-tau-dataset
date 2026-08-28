@@ -474,19 +474,6 @@
         "content": "Okay, do that."
       },
       {
-        "id": "msg_0001_0039",
-        "content": [
-          {
-            "annotations": [],
-            "type": "output_text",
-            "text": "Done. All right. To recap, the referral is attached to the 100 dollars offer. Approval is recorded. Purchase qualification is still pending, and the reward may take up to 2 billing cycles after a qualifying purchase posts."
-          }
-        ],
-        "role": "assistant",
-        "status": "completed",
-        "type": "message"
-      },
-      {
         "arguments": "{\"customer_id\":\"customer-daniel-brooks\",\"related_resource_id\":\"session-referral-RF8241\",\"channel\":\"email\",\"template\":\"secure_message_waiting\"}",
         "call_id": "br-008",
         "name": "send_secure_notification",
@@ -498,6 +485,19 @@
         "type": "function_call_output",
         "call_id": "br-008",
         "output": "\n\n{\"status\":\"sent\",\"contains_working_secure_link\":false}"
+      },
+      {
+        "id": "msg_0001_0039",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Done. All right. To recap, the referral is attached to the 100 dollars offer. Approval is recorded. Purchase qualification is still pending, and the reward may take up to 2 billing cycles after a qualifying purchase posts."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
       },
       {
         "role": "user",
@@ -1280,6 +1280,9 @@
       "source_label": "find the customer by email",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 47.16,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 46.56,
@@ -1295,6 +1298,9 @@
       "source_label": "retrieve the current time for verification records",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 57.0,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 56.5,
@@ -1406,6 +1412,9 @@
       "source_label": "record completed identity verification",
       "annotation_confidence": "high",
       "state_effect": "audit_record_created",
+      "placement_seconds": 130.8,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 130.3,
@@ -1457,6 +1466,9 @@
       "source_label": "retrieve referrals created by the customer",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 145.0,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 144.44,
@@ -1532,6 +1544,9 @@
       "source_label": "review referral qualification and reward-posting terms",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 180.44,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 179.94,
@@ -1607,6 +1622,9 @@
       "source_label": "confirm the referral offer and deadline",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 231.0,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 230.5,
@@ -1670,6 +1688,9 @@
       "source_label": "send the referral-status self-service tracker",
       "annotation_confidence": "high",
       "state_effect": "self_service_session_issued",
+      "placement_seconds": 268.74,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 268.24,
@@ -1763,24 +1784,15 @@
     },
     {
       "event_index": 54,
-      "kind": "speech",
-      "speaker": "Darren",
-      "role": "assistant",
-      "source": "transcripts/transcript.txt",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 320.88,
-        "end_seconds": 332.56
-      }
-    },
-    {
-      "event_index": 55,
       "kind": "function_call",
       "call_id": "br-008",
       "source": "transcripts/transcript.txt",
       "source_label": "customer asks for email notification; agent says Done",
       "annotation_confidence": "medium",
       "state_effect": "notification_sent",
+      "placement_seconds": 318.0,
+      "placement_after_text": "Okay, do that",
+      "placement_before_text": "Done. All right. To recap",
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": null,
@@ -1789,6 +1801,18 @@
           316.68,
           320.88
         ]
+      }
+    },
+    {
+      "event_index": 56,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 320.88,
+        "end_seconds": 332.56
       }
     },
     {

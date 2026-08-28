@@ -75,19 +75,6 @@
         "type": "message"
       },
       {
-        "id": "msg_0007_0007",
-        "content": [
-          {
-            "annotations": [],
-            "type": "output_text",
-            "text": "Okay, I found it. The carrier scan says delivered yesterday at three eighteen and left at the front entrance. Is this an apartment building?"
-          }
-        ],
-        "role": "assistant",
-        "status": "completed",
-        "type": "message"
-      },
-      {
         "arguments": "{\"order_reference\":\"7319\",\"customer_email\":\"ethan.patel@northmail.com\",\"include\":[\"items\",\"fulfillment\",\"carrier_scans\"]}",
         "call_id": "rm-001",
         "name": "get_order",
@@ -99,6 +86,19 @@
         "type": "function_call_output",
         "call_id": "rm-001",
         "output": "\n\n{\"item_reference\":\"blue-noise-canceling-headphones\",\"scan\":{\"status\":\"delivered\",\"time\":\"15:18 yesterday\",\"location\":\"front entrance\",\"photo\":null}}"
+      },
+      {
+        "id": "msg_0007_0007",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, I found it. The carrier scan says delivered yesterday at three eighteen and left at the front entrance. Is this an apartment building?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
       },
       {
         "role": "user",
@@ -362,19 +362,6 @@
         "type": "message"
       },
       {
-        "id": "msg_0007_0032",
-        "content": [
-          {
-            "annotations": [],
-            "type": "output_text",
-            "text": "Okay. I have now added that as a preference for you. I don't want to promise you it before the replacement actually exists, but the next- person will see it and kind of check that location first."
-          }
-        ],
-        "role": "assistant",
-        "status": "completed",
-        "type": "message"
-      },
-      {
         "arguments": "{\"case_id\":\"WST481662\",\"requested_resolution\":\"replacement\",\"preferred_pickup_location\":\"West 23rd Street pickup counter\",\"note\":\"Preserve exact blue variant and original price if replacement becomes eligible.\"}",
         "call_id": "rm-005",
         "name": "update_case",
@@ -386,6 +373,19 @@
         "type": "function_call_output",
         "call_id": "rm-005",
         "output": "\n\n{\"status\":\"preference_added\",\"pickup_guaranteed\":false}"
+      },
+      {
+        "id": "msg_0007_0032",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. I have now added that as a preference for you. I don't want to promise you it before the replacement actually exists, but the next- person will see it and kind of check that location first."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
       },
       {
         "role": "user",
@@ -481,19 +481,6 @@
         "content": "Is that c- is that the one?"
       },
       {
-        "id": "msg_0007_0045",
-        "content": [
-          {
-            "annotations": [],
-            "type": "output_text",
-            "text": "That's perfect. Um, that's the right package. Um, in the case that they find the package, the carrier may contact you directly. Otherwise, go ahead and just kind of use that trace after it closes."
-          }
-        ],
-        "role": "assistant",
-        "status": "completed",
-        "type": "message"
-      },
-      {
         "arguments": "{\"order_reference\":\"7319\",\"customer_email\":\"ethan.patel@northmail.com\",\"include\":[\"cases\"]}",
         "call_id": "rm-006",
         "name": "get_order",
@@ -505,6 +492,19 @@
         "type": "function_call_output",
         "call_id": "rm-006",
         "output": "\n\n{\"delivery_trace\":{\"case_id\":\"WST481662\",\"status\":\"open\",\"deadline\":\"18:00 tomorrow\"}}"
+      },
+      {
+        "id": "msg_0007_0045",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "That's perfect. Um, that's the right package. Um, in the case that they find the package, the carrier may contact you directly. Otherwise, go ahead and just kind of use that trace after it closes."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
       },
       {
         "role": "user",
@@ -616,7 +616,8 @@
                   "payments",
                   "refunds",
                   "cases",
-                  "eligible_resolutions"
+                  "eligible_resolutions",
+                  "notifications"
                 ]
               },
               "minItems": 0
@@ -950,6 +951,24 @@
     },
     {
       "event_index": 8,
+      "kind": "function_call",
+      "call_id": "rm-001",
+      "source": "transcripts/transcript.txt",
+      "source_label": "open the order record",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 55.0,
+      "placement_after_text": "I'm going to kind of take a look",
+      "placement_before_text": "The carrier scan says delivered yesterday",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 72.94,
+        "end_seconds": 81.94,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 10,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -958,21 +977,6 @@
         "path": "audio/full.wav",
         "start_seconds": 72.94,
         "end_seconds": 81.94
-      }
-    },
-    {
-      "event_index": 9,
-      "kind": "function_call",
-      "call_id": "rm-001",
-      "source": "transcripts/transcript.txt",
-      "source_label": "open the order record",
-      "annotation_confidence": "high",
-      "state_effect": "read_only",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 72.94,
-        "end_seconds": 81.94,
-        "inferred_window_seconds": null
       }
     },
     {
@@ -1043,6 +1047,9 @@
       "source_label": "review carrier scan details",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 129.46,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 121.32,
@@ -1142,6 +1149,9 @@
       "source_label": "check replacement inventory",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 211.65,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 206.3,
@@ -1181,6 +1191,9 @@
       "source_label": "open a missing-package trace",
       "annotation_confidence": "high",
       "state_effect": "delivery_trace_opened",
+      "placement_seconds": 238.14,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 230.88,
@@ -1310,6 +1323,27 @@
     },
     {
       "event_index": 41,
+      "kind": "function_call",
+      "call_id": "rm-005",
+      "source": "transcripts/transcript.txt",
+      "source_label": "agent records pickup preference",
+      "annotation_confidence": "medium",
+      "state_effect": "case_preference_added",
+      "placement_seconds": 346.0,
+      "placement_after_text": "add that as one of your preferences",
+      "placement_before_text": "I have now added that as a preference",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          344.24,
+          349.44
+        ]
+      }
+    },
+    {
+      "event_index": 43,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1318,24 +1352,6 @@
         "path": "audio/full.wav",
         "start_seconds": 349.44,
         "end_seconds": 360.6
-      }
-    },
-    {
-      "event_index": 42,
-      "kind": "function_call",
-      "call_id": "rm-005",
-      "source": "transcripts/transcript.txt",
-      "source_label": "agent records pickup preference",
-      "annotation_confidence": "medium",
-      "state_effect": "case_preference_added",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": null,
-        "end_seconds": null,
-        "inferred_window_seconds": [
-          339.14,
-          349.44
-        ]
       }
     },
     {
@@ -1484,6 +1500,24 @@
     },
     {
       "event_index": 56,
+      "kind": "function_call",
+      "call_id": "rm-006",
+      "source": "transcripts/transcript.txt",
+      "source_label": "review the open carrier trace",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 463.283,
+      "placement_after_text": "Is that c- is that the one",
+      "placement_before_text": "That's perfect. Um, that's the right package",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 463.284,
+        "end_seconds": 475.224,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 58,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1492,21 +1526,6 @@
         "path": "audio/full.wav",
         "start_seconds": 463.284,
         "end_seconds": 475.224
-      }
-    },
-    {
-      "event_index": 57,
-      "kind": "function_call",
-      "call_id": "rm-006",
-      "source": "transcripts/transcript.txt",
-      "source_label": "review the open carrier trace",
-      "annotation_confidence": "high",
-      "state_effect": "read_only",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 463.284,
-        "end_seconds": 475.224,
-        "inferred_window_seconds": null
       }
     },
     {

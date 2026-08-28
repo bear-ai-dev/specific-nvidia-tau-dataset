@@ -6,8 +6,8 @@ described as **Tau-style custom-domain data**, not as an exact export of Tau's
 public registries.
 
 The snapshot contains 8 conversations, 24 synchronized audio tracks, 3 domain
-registries, 49 structured agent tool calls, 8 annotated conversation
-transcripts, and 49 NVIDIA-schema next-action rows. Every conversation includes
+registries, 52 structured agent tool calls, 8 annotated conversation
+transcripts, and 52 NVIDIA-schema next-action rows. Every conversation includes
 full-call audio and isolated speaker tracks as 48 kHz, 24-bit, mono PCM WAV
 files.
 

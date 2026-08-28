@@ -62,19 +62,6 @@
         "content": "Right. Uh, the ZIP code is two zero zero zero five, and the last four digits are six one four eight."
       },
       {
-        "id": "msg_0003_0006",
-        "content": [
-          {
-            "annotations": [],
-            "type": "output_text",
-            "text": "Okay. Awesome. Thanks. I have the account, and I see two attempts from Harbor View Hotel for eight hundred and forty dollars. Are those both yours?"
-          }
-        ],
-        "role": "assistant",
-        "status": "completed",
-        "type": "message"
-      },
-      {
         "arguments": "{\"full_name\":\"Colin Reeves\",\"account_match\":\"caller_phone\",\"billing_zip\":\"20005\",\"card_last4\":\"6148\"}",
         "call_id": "bt-001",
         "name": "lookup_customer",
@@ -86,6 +73,32 @@
         "type": "function_call_output",
         "call_id": "bt-001",
         "output": "\n\n{\"customer_id\":\"customer-colin-reeves\",\"match\":\"unique\"}"
+      },
+      {
+        "arguments": "{\"customer_id\":\"customer-colin-reeves\",\"card_last4\":\"6148\",\"include\":[\"declines\"]}",
+        "call_id": "bt-002",
+        "name": "get_card_account",
+        "type": "function_call",
+        "id": "bt-002",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-002",
+        "output": "\n\n{\"declines\":[{\"merchant\":\"Harbor View Hotel\",\"amount\":840,\"attempt_count\":2}]}"
+      },
+      {
+        "id": "msg_0003_0006",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Awesome. Thanks. I have the account, and I see two attempts from Harbor View Hotel for eight hundred and forty dollars. Are those both yours?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
       },
       {
         "role": "user",
@@ -136,15 +149,15 @@
       },
       {
         "arguments": "{\"customer_id\":\"customer-colin-reeves\",\"card_last4\":\"6148\",\"include\":[\"status\",\"available_credit\",\"authorizations\",\"declines\",\"restrictions\"]}",
-        "call_id": "bt-002",
+        "call_id": "bt-003",
         "name": "get_card_account",
         "type": "function_call",
-        "id": "bt-002",
+        "id": "bt-003",
         "status": "completed"
       },
       {
         "type": "function_call_output",
-        "call_id": "bt-002",
+        "call_id": "bt-003",
         "output": "\n\n{\"available_credit\":912,\"declines\":[{\"merchant\":\"Harbor View Hotel\",\"amount\":840,\"reason\":\"travel_review\"},{\"merchant\":\"Harbor View Hotel\",\"amount\":840,\"reason\":\"prior_review_open\"}],\"restriction_id\":\"temporary-travel-review\"}"
       },
       {
@@ -199,6 +212,19 @@
         "content": "Um, ye-yes. Um, that was, that was my breakfast this morning, uh."
       },
       {
+        "arguments": "{\"customer_id\":\"customer-colin-reeves\",\"card_last4\":\"6148\",\"restriction_id\":\"temporary-travel-review\",\"confirmed_transaction_ids\":[\"hotel-840-attempts\",\"logan-breakfast-32\"]}",
+        "call_id": "bt-004",
+        "name": "resolve_card_restriction",
+        "type": "function_call",
+        "id": "bt-004",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-004",
+        "output": "\n\n{\"status\":\"removed\",\"card_status\":\"active\"}"
+      },
+      {
         "id": "msg_0003_0018",
         "content": [
           {
@@ -210,19 +236,6 @@
         "role": "assistant",
         "status": "completed",
         "type": "message"
-      },
-      {
-        "arguments": "{\"customer_id\":\"customer-colin-reeves\",\"card_last4\":\"6148\",\"restriction_id\":\"temporary-travel-review\",\"confirmed_transaction_ids\":[\"hotel-840-attempts\",\"logan-breakfast-32\"]}",
-        "call_id": "bt-003",
-        "name": "resolve_card_restriction",
-        "type": "function_call",
-        "id": "bt-003",
-        "status": "completed"
-      },
-      {
-        "type": "function_call_output",
-        "call_id": "bt-003",
-        "output": "\n\n{\"status\":\"removed\",\"card_status\":\"active\"}"
       },
       {
         "role": "user",
@@ -335,6 +348,19 @@
         "content": "Yeah. Uh, is it working? Did it go through? Okay, great. Perfect. Uh, yeah. Um, sorry. Uh, it went through. Yeah. Uh, I got the receipt. It's, it's all good now. (relieved)"
       },
       {
+        "arguments": "{\"customer_id\":\"customer-colin-reeves\",\"card_last4\":\"6148\",\"include\":[\"authorizations\"]}",
+        "call_id": "bt-005",
+        "name": "get_card_account",
+        "type": "function_call",
+        "id": "bt-005",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-005",
+        "output": "\n\n{\"authorizations\":[{\"merchant\":\"Harbor View Hotel\",\"amount\":840,\"status\":\"approved\"}],\"pending_activity\":[\"airport parking\",\"$32 breakfast\",\"$840 hotel\"]}"
+      },
+      {
         "id": "msg_0003_0033",
         "content": [
           {
@@ -395,19 +421,6 @@
         "type": "message"
       },
       {
-        "arguments": "{\"customer_id\":\"customer-colin-reeves\",\"card_last4\":\"6148\",\"include\":[\"authorizations\"]}",
-        "call_id": "bt-004",
-        "name": "get_card_account",
-        "type": "function_call",
-        "id": "bt-004",
-        "status": "completed"
-      },
-      {
-        "type": "function_call_output",
-        "call_id": "bt-004",
-        "output": "\n\n{\"pending_activity\":[\"airport parking\",\"$32 breakfast\",\"$840 hotel\"],\"all_confirmed\":true}"
-      },
-      {
         "role": "user",
         "content": "Right. Uh, let, let me take a look real quick."
       },
@@ -433,6 +446,19 @@
         "content": "Yeah. Yeah, of course. No, uh, I get it. That's fine. I just needed to get into the room, and my card wasn't going through, so."
       },
       {
+        "arguments": "{\"customer_id\":\"customer-colin-reeves\",\"card_last4\":\"6148\",\"destinations\":[\"Portland, Maine\"],\"return_date\":\"Sunday night\"}",
+        "call_id": "bt-006",
+        "name": "create_travel_notice",
+        "type": "function_call",
+        "id": "bt-006",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-006",
+        "output": "\n\n{\"status\":\"created\",\"authorization_guaranteed\":false}"
+      },
+      {
         "id": "msg_0003_0043",
         "content": [
           {
@@ -444,19 +470,6 @@
         "role": "assistant",
         "status": "completed",
         "type": "message"
-      },
-      {
-        "arguments": "{\"customer_id\":\"customer-colin-reeves\",\"card_last4\":\"6148\",\"destinations\":[\"Portland, Maine\"],\"return_date\":\"Sunday night\"}",
-        "call_id": "bt-005",
-        "name": "create_travel_notice",
-        "type": "function_call",
-        "id": "bt-005",
-        "status": "completed"
-      },
-      {
-        "type": "function_call_output",
-        "call_id": "bt-005",
-        "output": "\n\n{\"status\":\"created\",\"authorization_guaranteed\":false}"
       },
       {
         "role": "user",
@@ -1059,6 +1072,45 @@
     },
     {
       "event_index": 7,
+      "kind": "function_call",
+      "call_id": "bt-001",
+      "source": "transcripts/transcript.txt",
+      "source_label": "open the customer account",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 38.9,
+      "placement_after_text": "the last four digits are six one four eight",
+      "placement_before_text": "I have the account",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 24.46,
+        "end_seconds": 29.68,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 9,
+      "kind": "function_call",
+      "call_id": "bt-002",
+      "source": "transcripts/transcript.txt",
+      "source_label": "retrieve the two Harbor View Hotel attempts before reading them back",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 39.0,
+      "placement_after_text": "the last four digits are six one four eight",
+      "placement_before_text": "I have the account",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          38.74,
+          39.38
+        ]
+      }
+    },
+    {
+      "event_index": 11,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1070,22 +1122,7 @@
       }
     },
     {
-      "event_index": 8,
-      "kind": "function_call",
-      "call_id": "bt-001",
-      "source": "transcripts/transcript.txt",
-      "source_label": "open the customer account",
-      "annotation_confidence": "medium",
-      "state_effect": "read_only",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 38.74,
-        "end_seconds": 39.38,
-        "inferred_window_seconds": null
-      }
-    },
-    {
-      "event_index": 10,
+      "event_index": 12,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1097,7 +1134,7 @@
       }
     },
     {
-      "event_index": 11,
+      "event_index": 13,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1109,7 +1146,7 @@
       }
     },
     {
-      "event_index": 12,
+      "event_index": 14,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1121,7 +1158,7 @@
       }
     },
     {
-      "event_index": 13,
+      "event_index": 15,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1133,7 +1170,7 @@
       }
     },
     {
-      "event_index": 14,
+      "event_index": 16,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1145,13 +1182,16 @@
       }
     },
     {
-      "event_index": 15,
+      "event_index": 17,
       "kind": "function_call",
-      "call_id": "bt-002",
+      "call_id": "bt-003",
       "source": "transcripts/transcript.txt",
       "source_label": "review the card decline",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 75.14,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 73.76,
@@ -1160,7 +1200,7 @@
       }
     },
     {
-      "event_index": 17,
+      "event_index": 19,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1172,7 +1212,7 @@
       }
     },
     {
-      "event_index": 18,
+      "event_index": 20,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1184,7 +1224,7 @@
       }
     },
     {
-      "event_index": 19,
+      "event_index": 21,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1196,7 +1236,7 @@
       }
     },
     {
-      "event_index": 20,
+      "event_index": 22,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1208,7 +1248,7 @@
       }
     },
     {
-      "event_index": 21,
+      "event_index": 23,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1220,7 +1260,7 @@
       }
     },
     {
-      "event_index": 22,
+      "event_index": 24,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1232,7 +1272,25 @@
       }
     },
     {
-      "event_index": 23,
+      "event_index": 25,
+      "kind": "function_call",
+      "call_id": "bt-004",
+      "source": "transcripts/transcript.txt",
+      "source_label": "remove the temporary card block",
+      "annotation_confidence": "medium",
+      "state_effect": "card_restriction_removed",
+      "placement_seconds": 128.91,
+      "placement_after_text": "that was my breakfast this morning",
+      "placement_before_text": "the restriction is off now",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 128.92,
+        "end_seconds": 136.82,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 27,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1244,22 +1302,7 @@
       }
     },
     {
-      "event_index": 24,
-      "kind": "function_call",
-      "call_id": "bt-003",
-      "source": "transcripts/transcript.txt",
-      "source_label": "remove the temporary card block",
-      "annotation_confidence": "high",
-      "state_effect": "card_restriction_removed",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 128.92,
-        "end_seconds": 136.82,
-        "inferred_window_seconds": null
-      }
-    },
-    {
-      "event_index": 26,
+      "event_index": 28,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1271,7 +1314,7 @@
       }
     },
     {
-      "event_index": 27,
+      "event_index": 29,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1283,7 +1326,7 @@
       }
     },
     {
-      "event_index": 28,
+      "event_index": 30,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1295,7 +1338,7 @@
       }
     },
     {
-      "event_index": 29,
+      "event_index": 31,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1307,7 +1350,7 @@
       }
     },
     {
-      "event_index": 30,
+      "event_index": 32,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1319,7 +1362,7 @@
       }
     },
     {
-      "event_index": 31,
+      "event_index": 33,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1331,7 +1374,7 @@
       }
     },
     {
-      "event_index": 32,
+      "event_index": 34,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1343,7 +1386,7 @@
       }
     },
     {
-      "event_index": 33,
+      "event_index": 35,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1355,7 +1398,7 @@
       }
     },
     {
-      "event_index": 34,
+      "event_index": 36,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1367,7 +1410,7 @@
       }
     },
     {
-      "event_index": 35,
+      "event_index": 37,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1379,7 +1422,7 @@
       }
     },
     {
-      "event_index": 36,
+      "event_index": 38,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1391,7 +1434,7 @@
       }
     },
     {
-      "event_index": 37,
+      "event_index": 39,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1403,7 +1446,7 @@
       }
     },
     {
-      "event_index": 38,
+      "event_index": 40,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1415,7 +1458,7 @@
       }
     },
     {
-      "event_index": 39,
+      "event_index": 41,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1427,7 +1470,25 @@
       }
     },
     {
-      "event_index": 40,
+      "event_index": 42,
+      "kind": "function_call",
+      "call_id": "bt-005",
+      "source": "transcripts/transcript.txt",
+      "source_label": "review recent card activity",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 242.2,
+      "placement_after_text": "I got the receipt. It's, it's all good now",
+      "placement_before_text": "I also see the authorization approved",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 278.94,
+        "end_seconds": 284.54,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 44,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1439,7 +1500,7 @@
       }
     },
     {
-      "event_index": 41,
+      "event_index": 45,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1451,7 +1512,7 @@
       }
     },
     {
-      "event_index": 42,
+      "event_index": 46,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1463,7 +1524,7 @@
       }
     },
     {
-      "event_index": 43,
+      "event_index": 47,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1475,7 +1536,7 @@
       }
     },
     {
-      "event_index": 44,
+      "event_index": 48,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1487,7 +1548,7 @@
       }
     },
     {
-      "event_index": 45,
+      "event_index": 49,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1499,22 +1560,7 @@
       }
     },
     {
-      "event_index": 46,
-      "kind": "function_call",
-      "call_id": "bt-004",
-      "source": "transcripts/transcript.txt",
-      "source_label": "review recent card activity",
-      "annotation_confidence": "high",
-      "state_effect": "read_only",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 278.94,
-        "end_seconds": 284.54,
-        "inferred_window_seconds": null
-      }
-    },
-    {
-      "event_index": 48,
+      "event_index": 50,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1526,7 +1572,7 @@
       }
     },
     {
-      "event_index": 49,
+      "event_index": 51,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1538,7 +1584,7 @@
       }
     },
     {
-      "event_index": 50,
+      "event_index": 52,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1550,7 +1596,7 @@
       }
     },
     {
-      "event_index": 51,
+      "event_index": 53,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1562,7 +1608,25 @@
       }
     },
     {
-      "event_index": 52,
+      "event_index": 54,
+      "kind": "function_call",
+      "call_id": "bt-006",
+      "source": "transcripts/transcript.txt",
+      "source_label": "add a travel notice",
+      "annotation_confidence": "medium",
+      "state_effect": "travel_notice_created",
+      "placement_seconds": 315.7,
+      "placement_after_text": "I just needed to get into the room",
+      "placement_before_text": "the travel notice on the account",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 315.78,
+        "end_seconds": 322.52,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 56,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1574,22 +1638,7 @@
       }
     },
     {
-      "event_index": 53,
-      "kind": "function_call",
-      "call_id": "bt-005",
-      "source": "transcripts/transcript.txt",
-      "source_label": "add a travel notice",
-      "annotation_confidence": "high",
-      "state_effect": "travel_notice_created",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 315.78,
-        "end_seconds": 322.52,
-        "inferred_window_seconds": null
-      }
-    },
-    {
-      "event_index": 55,
+      "event_index": 57,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1601,7 +1650,7 @@
       }
     },
     {
-      "event_index": 56,
+      "event_index": 58,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",
@@ -1613,7 +1662,7 @@
       }
     },
     {
-      "event_index": 57,
+      "event_index": 59,
       "kind": "speech",
       "speaker": "Colin",
       "role": "user",
@@ -1625,7 +1674,7 @@
       }
     },
     {
-      "event_index": 58,
+      "event_index": 60,
       "kind": "speech",
       "speaker": "Adrian",
       "role": "assistant",

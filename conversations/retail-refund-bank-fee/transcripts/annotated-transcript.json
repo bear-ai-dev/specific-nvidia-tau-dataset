@@ -369,6 +369,19 @@
         "type": "message"
       },
       {
+        "arguments": "{\"order_reference\":\"ending-5624\",\"customer_email\":\"teddy.torrez@harbormail.com\",\"include\":[\"payments\",\"refunds\"]}",
+        "call_id": "rr-003",
+        "name": "get_order",
+        "type": "function_call",
+        "id": "rr-003",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "rr-003",
+        "output": "\n\n{\"gift_card_refund\":{\"amount\":40,\"available_balance\":40,\"status\":\"active\",\"used\":false}}"
+      },
+      {
         "id": "msg_0005_0038",
         "content": [
           {
@@ -399,6 +412,19 @@
         "content": "Okay."
       },
       {
+        "arguments": "{\"order_reference\":\"ending-5624\",\"return_reference\":\"ending-9182\",\"payment_reference\":\"card-ending-2047\",\"amount\":146.42}",
+        "call_id": "rr-004",
+        "name": "open_refund_trace",
+        "type": "function_call",
+        "id": "rr-004",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "rr-004",
+        "output": "\n\n{\"case_id\":\"WST735204\",\"status\":\"open\",\"review_window_business_days\":[3,5],\"duplicate_refund_blocked\":true,\"email_confirmation\":\"sent\"}"
+      },
+      {
         "id": "msg_0005_0041",
         "content": [
           {
@@ -410,19 +436,6 @@
         "role": "assistant",
         "status": "completed",
         "type": "message"
-      },
-      {
-        "arguments": "{\"order_reference\":\"ending-5624\",\"return_reference\":\"ending-9182\",\"payment_reference\":\"card-ending-2047\",\"amount\":146.42}",
-        "call_id": "rr-003",
-        "name": "open_refund_trace",
-        "type": "function_call",
-        "id": "rr-003",
-        "status": "completed"
-      },
-      {
-        "type": "function_call_output",
-        "call_id": "rr-003",
-        "output": "\n\n{\"case_id\":\"WST735204\",\"status\":\"open\",\"review_window_business_days\":[3,5],\"duplicate_refund_blocked\":true,\"email_confirmation\":\"sent\"}"
       },
       {
         "role": "user",
@@ -477,15 +490,15 @@
       },
       {
         "arguments": "{\"case_id\":\"WST735204\",\"note\":\"Customer reports an overdraft fee while expecting the refund; supporting statement may be reviewed after trace outcome.\"}",
-        "call_id": "rr-004",
+        "call_id": "rr-005",
         "name": "update_case",
         "type": "function_call",
-        "id": "rr-004",
+        "id": "rr-005",
         "status": "completed"
       },
       {
         "type": "function_call_output",
-        "call_id": "rr-004",
+        "call_id": "rr-005",
         "output": "\n\n{\"status\":\"note_added\",\"fee_reimbursement_approved\":false}"
       },
       {
@@ -628,7 +641,8 @@
                   "payments",
                   "refunds",
                   "cases",
-                  "eligible_resolutions"
+                  "eligible_resolutions",
+                  "notifications"
                 ]
               },
               "minItems": 0
@@ -992,6 +1006,9 @@
       "source_label": "open the order record",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 55.66,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 52.36,
@@ -1103,6 +1120,9 @@
       "source_label": "review the refund payment details",
       "annotation_confidence": "high",
       "state_effect": "read_only",
+      "placement_seconds": 150.6,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 139.42,
@@ -1364,6 +1384,27 @@
     },
     {
       "event_index": 43,
+      "kind": "function_call",
+      "call_id": "rr-003",
+      "source": "transcripts/transcript.txt",
+      "source_label": "check the refunded gift-card balance",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 406.0,
+      "placement_after_text": "Let me just check that balance for you",
+      "placement_before_text": "the digital gift card have forty dollars available",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          404.6,
+          409.1
+        ]
+      }
+    },
+    {
+      "event_index": 45,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1375,7 +1416,7 @@
       }
     },
     {
-      "event_index": 44,
+      "event_index": 46,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1387,7 +1428,7 @@
       }
     },
     {
-      "event_index": 45,
+      "event_index": 47,
       "kind": "speech",
       "speaker": "Teddy",
       "role": "user",
@@ -1399,7 +1440,25 @@
       }
     },
     {
-      "event_index": 46,
+      "event_index": 48,
+      "kind": "function_call",
+      "call_id": "rr-004",
+      "source": "transcripts/transcript.txt",
+      "source_label": "open a refund payment trace",
+      "annotation_confidence": "medium",
+      "state_effect": "refund_trace_opened",
+      "placement_seconds": 426.0,
+      "placement_after_text": "It has not been used",
+      "placement_before_text": "I've kind of opened up the payment trace",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 427.7,
+        "end_seconds": 450.96,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 50,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1411,22 +1470,7 @@
       }
     },
     {
-      "event_index": 47,
-      "kind": "function_call",
-      "call_id": "rr-003",
-      "source": "transcripts/transcript.txt",
-      "source_label": "open a refund payment trace",
-      "annotation_confidence": "high",
-      "state_effect": "refund_trace_opened",
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 427.7,
-        "end_seconds": 450.96,
-        "inferred_window_seconds": null
-      }
-    },
-    {
-      "event_index": 49,
+      "event_index": 51,
       "kind": "speech",
       "speaker": "Teddy",
       "role": "user",
@@ -1438,7 +1482,7 @@
       }
     },
     {
-      "event_index": 50,
+      "event_index": 52,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1450,7 +1494,7 @@
       }
     },
     {
-      "event_index": 51,
+      "event_index": 53,
       "kind": "speech",
       "speaker": "Teddy",
       "role": "user",
@@ -1462,7 +1506,7 @@
       }
     },
     {
-      "event_index": 52,
+      "event_index": 54,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1474,7 +1518,7 @@
       }
     },
     {
-      "event_index": 53,
+      "event_index": 55,
       "kind": "speech",
       "speaker": "Teddy",
       "role": "user",
@@ -1486,7 +1530,7 @@
       }
     },
     {
-      "event_index": 54,
+      "event_index": 56,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1498,13 +1542,16 @@
       }
     },
     {
-      "event_index": 55,
+      "event_index": 57,
       "kind": "function_call",
-      "call_id": "rr-004",
+      "call_id": "rr-005",
       "source": "transcripts/transcript.txt",
       "source_label": "add the bank-fee note to the case",
       "annotation_confidence": "high",
       "state_effect": "case_note_added",
+      "placement_seconds": 526.72,
+      "placement_after_text": null,
+      "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 506.58,
@@ -1513,7 +1560,7 @@
       }
     },
     {
-      "event_index": 57,
+      "event_index": 59,
       "kind": "speech",
       "speaker": "Teddy",
       "role": "user",
@@ -1525,7 +1572,7 @@
       }
     },
     {
-      "event_index": 58,
+      "event_index": 60,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1537,7 +1584,7 @@
       }
     },
     {
-      "event_index": 59,
+      "event_index": 61,
       "kind": "speech",
       "speaker": "Teddy",
       "role": "user",
@@ -1549,7 +1596,7 @@
       }
     },
     {
-      "event_index": 60,
+      "event_index": 62,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1561,7 +1608,7 @@
       }
     },
     {
-      "event_index": 61,
+      "event_index": 63,
       "kind": "speech",
       "speaker": "Teddy",
       "role": "user",
@@ -1573,7 +1620,7 @@
       }
     },
     {
-      "event_index": 62,
+      "event_index": 64,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1585,7 +1632,7 @@
       }
     },
     {
-      "event_index": 63,
+      "event_index": 65,
       "kind": "speech",
       "speaker": "Teddy",
       "role": "user",
@@ -1597,7 +1644,7 @@
       }
     },
     {
-      "event_index": 64,
+      "event_index": 66,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1609,7 +1656,7 @@
       }
     },
     {
-      "event_index": 65,
+      "event_index": 67,
       "kind": "speech",
       "speaker": "Teddy",
       "role": "user",
@@ -1621,7 +1668,7 @@
       }
     },
     {
-      "event_index": 66,
+      "event_index": 68,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",

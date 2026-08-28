@@ -55,7 +55,8 @@
                 "payments",
                 "refunds",
                 "cases",
-                "eligible_resolutions"
+                "eligible_resolutions",
+                "notifications"
               ]
             },
             "minItems": 0
