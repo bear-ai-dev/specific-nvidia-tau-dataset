@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1.0",
+  "conversations": [
+    {
+      "conversation_id": "banking-account-email-card-application",
+      "domain": "banking_card",
+      "goal": "Restore access by changing the customer's email, compare travel-card terms, and issue a customer-controlled application session without submitting an application.",
+      "outcome": {
+        "label": "resolved",
+        "summary": "Email updated and card-application session issued; no application was submitted and no credit pull was authorized."
+      },
+      "annotation": "../conversations/banking-account-email-card-application/conversation.json"
+    },
+    {
+      "conversation_id": "banking-referral-missing-reward",
+      "domain": "banking_card",
+      "goal": "Explain a missing $100 referral reward without exposing the referred person's transactions and give the customer a secure status tracker.",
+      "outcome": {
+        "label": "pending_external_qualification",
+        "summary": "Referral is approved but purchase qualification remains pending; tracker and reference RF8241 were provided."
+      },
+      "annotation": "../conversations/banking-referral-missing-reward/conversation.json"
+    },
+    {
+      "conversation_id": "banking-transaction-dispute-session",
+      "domain": "banking_card",
+      "goal": "Identify an unfamiliar $243.18 transaction and prepare a customer-controlled dispute path without filing a false claim.",
+      "outcome": {
+        "label": "resolved_without_dispute",
+        "summary": "Transaction identified as an authorized household purchase; the dispute session was not submitted and no account change occurred."
+      },
+      "annotation": "../conversations/banking-transaction-dispute-session/conversation.json"
+    },
+    {
+      "conversation_id": "banking-declined-card-travel",
+      "domain": "banking_card",
+      "goal": "Clear a legitimate travel-related card restriction, explain available-credit constraints, and add a travel notice after confirming activity.",
+      "outcome": {
+        "label": "resolved",
+        "summary": "Temporary restriction removed, the $840 hotel authorization succeeded, pending activity was confirmed, and a travel notice was added."
+      },
+      "annotation": "../conversations/banking-declined-card-travel/conversation.json"
+    },
+    {
+      "conversation_id": "pharmacy-travel-refill",
+      "domain": "pharmacy",
+      "goal": "Resolve a refill-too-soon rejection for a lost albuterol inhaler and keep the patient informed about pharmacist review and pickup timing.",
+      "outcome": {
+        "label": "pending_pharmacist_check",
+        "summary": "One-time lost-medication override approved and claim accepted at a $15 copay; prescription remains in pharmacist verification with SMS alert enabled."
+      },
+      "annotation": "../conversations/pharmacy-travel-refill/conversation.json"
+    },
+    {
+      "conversation_id": "retail-refund-bank-fee",
+      "domain": "retail",
+      "goal": "Trace the unsettled debit-card portion of a completed split-tender return without issuing a duplicate refund and record the customer's bank-fee concern.",
+      "outcome": {
+        "label": "pending_payment_trace",
+        "summary": "$40 gift-card refund is available; a $146.42 debit refund trace WST735204 is open for three to five business days; bank-fee reimbursement is not promised."
+      },
+      "annotation": "../conversations/retail-refund-bank-fee/conversation.json"
+    },
+    {
+      "conversation_id": "retail-damaged-item-replacement",
+      "domain": "retail",
+      "goal": "Replace a water-damaged coffee maker at the original price, keep it separate from an earlier missing-headphones case, and explain the no-return disposition.",
+      "outcome": {
+        "label": "resolved",
+        "summary": "Replacement order ending 8821 created at zero balance for Thursday delivery; return waived; earlier headphones trace remained unchanged."
+      },
+      "annotation": "../conversations/retail-damaged-item-replacement/conversation.json"
+    },
+    {
+      "conversation_id": "retail-missing-package",
+      "domain": "retail",
+      "goal": "Investigate an order scanned delivered but not received, open a carrier trace, and record the customer's replacement and pickup preferences without prematurely creating a replacement.",
+      "outcome": {
+        "label": "pending_carrier_trace",
+        "summary": "Trace WST481662 opened until 6 PM tomorrow; same blue item is in stock; replacement preference recorded but no replacement created."
+      },
+      "annotation": "../conversations/retail-missing-package/conversation.json"
+    }
+  ]
+}

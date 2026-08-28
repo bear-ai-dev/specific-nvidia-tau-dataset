@@ -1,0 +1,58 @@
+[0.980 - 4.380] agent: Thanks   for   calling   Westline   Customer   Care.   This   is   Daniel.   How   can   I   help   you?  
+[6.060 - 12.440] customer: Hey,   Daniel.   This   is   Ethan   Patel.   Um,   I   think   I   actually   spoke   with   you   yesterday   about   some   missing   headphones.  
+[14.300 - 19.470] agent: Oh,   okay.   That's   awesome,   yeah.   Um,   I   remember   that   case.   Uh,   did   the   package   turn   up?  
+[20.620 - 30.540] customer: Uh,   no,   not   yet.   Uh,   but   I'm   actually   calling   about   a   different   order   today.   Um,   yeah,   I   ordered,   like,   a   coffee   maker   and   it   came   in   damaged,   so   just   wanted   to   give   you   a   heads-up.  
+[31.660 - 37.880] agent: Okay,   got   it.   Yeah,   we'll,   we'll   keep   that   separate.   Uh,   do   you   have   the   order   number   for   the   coffee   maker?  
+[39.000 - 43.080] customer: Yeah.   Uh,   this   one   ends   in   4086.  
+[45.460 - 47.020] agent: All   right.   Um,   what's   your   email?  
+[48.260 - 61.080] customer: Yeah,   it's   ethan.patel@northmail.com,   N-O-R-T-H-M-A-I-L.com.   And   Patel,   that's   P-A-T-E-L.  
+[62.280 - 64.280] agent: Okay,   perfect.   Give   me   one   sec   to   check   that   out.  
+[72.640 - 77.560] agent: Okay.   So   I   found   a   12-cup   coffee   maker,   matte   black.  
+[79.120 - 81.660] agent: What   was   wrong   with   it   when   you   opened   the   box?  
+[82.820 - 93.780] customer: Uh,   the   water   tank   is   cracked   at   the   bottom,   and   the   base   was   damp   inside   the   plastic.   Um,   the   outside   wasn't   beat   up   or   anything,   so   yeah.  
+[93.780 - 99.180] agent: Okay,   got   it.   Have   you   tried   turning   it   on   or   have   you   not?  
+[100.320 - 106.060] customer: Uh,   no,   I   haven't.   Um,   I   stopped   'cause   I   saw   the   water   and   I   thought   I   probably   should,   uh,   call   first.  
+[107.580 - 116.060] agent: Yes,   that's   good.   Um,   let   me   check   the   return   options   on   that   item.   So   sorry   again   for   your   trouble.   Would   you   rather   replace   it   or   get   your   money   back?  
+[117.240 - 123.300] customer: Uh,   replace   it,   for   sure,   as   long   as   I   don't   have   to   pay   the   current   price.   I   saw   it   went   up   since   I   ordered   it.  
+[125.320 - 136.380] agent: Okay.   A   replacement   would   stay   at   the   price   you   already   paid.   Um,   just   give   me   a   minute   to   see   whether   it's   in   stock   and   whether   the   system   wants   it,   uh,   returned.  
+[136.380 - 136.840] customer: Okay,   yeah.  
+[139.140 - 140.710] agent: Should   just   be   about   20,   30   seconds   now.  
+[141.940 - 142.160] customer: Okay.  
+[153.740 - 161.800] agent: Okay.   So   I   just   got   back.   The   same   model   is   available,   and   the   estimated   delivery   is   gonna   be   Thursday   for   this   one.  
+[163.580 - 169.040] agent: The   system   is   also   waiving   the   return,   so   there's   no   label   or   any   sort   of   drop-off.  
+[170.900 - 176.300] customer: Oh,   okay.   Nice.   Uh,   yeah,   that   sounds   good.   Do   you   need   pictures   before   you   can   send   the   replacement?  
+[178.160 - 188.440] agent: No,   um,   not   to   process   it.   I   could   send   you   an   optional   photo   link   on   the   confirmation   if   you   wanna   document   the   condition,   but   it   won't   hold   up   your   order   in   any   way.  
+[190.060 - 196.500] customer: Okay.   Okay,   yeah,   I   took,   uh,   some   photos   already   just   so,   uh,   just   in   case   we   needed   it,   so   I'll   probably   just   add   them.  
+[198.020 - 200.880] agent: That's   fine.   Um,   let   me   submit   that   replacement   for   you,  
+[203.140 - 209.020] agent: and   I   will   let   you   know   in   about   15   seconds   as   it's   going   through.  
+[211.200 - 212.940] agent: Okay.   It   looks   like   it   just   went   through.  
+[214.340 - 225.180] customer: Okay.   Okay.   Oh,   can   you   check   where   it's   shipping   to?   Just   because   I   don't   want   this   to   be   tied   to   the   pickup   request   from   the   headphone   case,   um,   just   'cause   there   were   some   issues   with   that,   too.  
+[226.380 - 235.040] agent: Yes,   that's   a   great   question.   So   this   one   is   going   to   your   home   address.   Um,   the   pickup   preference   is   only   noted   on   yesterday's   missing   package   case.  
+[236.780 - 243.160] customer: Okay.   Okay,   yeah,   th-   that's   perfect.   I   was   worried   the   two   orders   would   get   m-   mixed   up   together.   Um,   yeah.  
+[244.780 - 256.579] agent: Yeah,   no,   um,   in   this   case,   they're   completely   separate.   So   I   can   see   yesterday's   case   on   the   account,   but   I'm   working   only   on   the   order   which   is   4086   right   now.  
+[259.300 - 264.780] customer: Okay,   okay.   And   Thursday   is   the   estimate.   It's   not,   like,   a   guaranteed   time   window.   Is   that   correct?  
+[265.940 - 274.220] agent: Yes,   that's   correct.   Um,   it   says   right   now   Thursday   by   end   of   day.   Um,   once   the   carrier   has   it,   you'll   get   the   regular   tracking   updates.  
+[275.680 - 281.720] customer: I   see.   Okay.   Um,   is   it   coming   from   the   same   warehouse   as   the   damaged   one?  
+[283.340 - 295.320] agent: Unfortunately,   I   can't   see   where   the   first   one   was   packaged.   The   replacement   is   signed   to   the   Edison   Distribution   Center,   but   that   can   still   change   before   it   actually   ships.  
+[297.260 - 303.440] customer: Oh,   okay.   Okay.   Yeah,   no,   I   just   mainly   wanted   to   check   you   weren't,   you   know,   resending   the   same   kind   of   issue   somehow.  
+[305.960 - 314.060] agent: No,   um,   it'll   be   a   brand-new   shipment   with   a   new   order   number.   Um,   this   one   will   end   in   8821.  
+[315.940 - 322.170] customer: Okay.   Okay,   nice.   Um,   yeah,   and   what   do   I   do   with   the   damaged   one   since   I   don't   need   to,   like,   return   it,   I   guess?  
+[323.640 - 335.460] agent: Yeah,   so   for   the   damaged   one,   uh,   you   can   go   ahead   and   discard   that.   Since   there's   moisture   on   the   base,   I   definitely   wouldn't   plug   it   in.   Other   than   that,   um,   Westline   doesn't   need   it   back.  
+[337.180 - 346.099] customer: Oh,   okay.   Okay,   and,   uh,   I   can   put   it   in,   like,   the   electronics   section?   I'll   check   if   my   building   has   a   electronic   bin.  
+[347.180 - 357.440] agent: Yeah,   that   works.   Um,   I   think   that   the   city   you're   in   may   also   have   small   appliance   recycling,   but   the   confirmation   will   simply   show   that   the   return   was   just   waived.  
+[359.180 - 365.220] customer: Oh,   okay.   Nice.   Uh,   okay,   yeah,   has   the   confirmation   email   gone   out?   I   don't   see   it   yet.  
+[365.220 - 369.340] agent: Um,   let   me   refresh   that,   actually.   One   second.  
+[372.300 - 379.940] agent: Okay,   yeah,   um,   it   says   it   was   just   sent,   and   the   subject   line   for   this   will   start   with,   "Your   Westline   replacement."  
+[379.940 - 384.920] customer: Oh,   okay.   Yeah.   No,   I   see   it.   "Your   order   8821   delivery.  
+[386.400 - 389.359] customer: Zero   balance."   Okay.   Yeah,   no,   I   see   that.  
+[389.420 - 395.500] agent: Perfect.   Yeah,   that's   the   one,   and,   uh,   you'll   see   the   optional   photo   link,   uh,   farther   down   in   the   email.  
+[397.140 - 410.260] customer: Okay.   Okay,   yeah,   I'll,   I'll   definitely   upload   something.   Um,   no,   this   is   great.   Thank   you.   While   I   have   you   on   the   call,   is   there   any   updates   on   the,   the   headphones,   uh,   the   other   order   that   we   had   issues   with?  
+[411.820 - 427.680] agent: The   trace   on   the   last   order   you   did   is   still   open.   There   is   no   carrier   response   as   of   yet,   and   the   deadline   is   still   6:00   this   evening.   I   don't   wanna   change   anything   before   that   window   kind   of   closes,   though.  
+[427.680 - 432.340] customer: Okay,   okay.   Uh,   th-   yeah,   that's   fine.   I'll   use   the   link   tonight   if   nothing   changes.   That   works.  
+[433.740 - 441.040] agent: Okay,   sounds   good.   So   the   coffee   maker   replacement   is   done,   and   the   headphones   case   stays   as   is   for   now.  
+[442.880 - 449.590] customer: Okay.   Okay,   yeah,   no,   that,   that   sounds   good   for,   for   both.   Uh,   yeah,   no,   thank   you   so   much   again.   I   know,  
+[450.900 - 455.360] customer: two   different   issues,   [laughs]   uh,   but   I   appreciate   the   support.  
+[455.360 - 465.740] agent: You're   so   welcome,   Ethan.   Um,   once   again,   so   sorry   for   the   trouble   with   the   coffee   maker   as   well   as   the   order   yesterday.   Um,   I   hope   that   the   next   delivery   that   we   have   for   you   goes   a   little   bit   more   smoothly.  
+[467.340 - 472.400] customer: Yeah,   me   too.   I   hope   it   goes   better.   [laughs]   All   right,   no,   thank   you   so   much   for   your   time.  
+[472.400 - 474.640] agent: Absolutely.   You   too.   Have   a   good   day.   Bye.  
+[474.640 - 474.990] customer: Yep,   bye.

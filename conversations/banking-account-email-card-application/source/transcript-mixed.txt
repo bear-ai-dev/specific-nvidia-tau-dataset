@@ -1,0 +1,142 @@
+[00:00:00.160 - 00:00:06.060] Maya: Hi. Thanks for calling Harbor Stone Bank. My name is Maya. What can I take care of for you?
+
+[00:00:07.740 - 00:00:25.060] Johnny: Hey, um, I'm calling because I'm locked out of my old email and I want to apply for a travel card before a trip. The bank is connected to this old email. I've already tried, um, changing this online twice and it keeps sending codes to an email I can't access, so would appreciate any help here. (frustrated)
+
+[00:00:26.280 - 00:00:40.120] Maya: I see. Okay. I'm so sorry to hear that. Um, let's see what we can do today. I'll first handle the email address change, and then we can take our time with the card options. Can I start with your full name?
+
+[00:00:41.200 - 00:00:52.360] Johnny: Yeah, sure. Um, so my name is Johnny Monroe. That is J-O-H-N-N-Y Monroe, M-O-N-R-O-E.
+
+[00:00:53.900 - 00:00:56.360] Maya: Okay, great. Account ID, if you have it?
+
+[00:00:58.100 - 00:01:03.840] Johnny: Yeah. It is SF204771.
+
+[00:01:05.860 - 00:01:09.100] Maya: Okay. Give me a minute while I pull that up.
+
+[00:01:09.100 - 00:01:09.700] [calling tool to find the customer by account ID]
+
+[00:01:10.200 - 00:01:18.120] Maya: Um, can you please verify your billing ZIP and the last four digits of the mobile number?
+
+[00:01:17.760 - 00:01:26.560] Johnny: Yep. My ZIP code is 19447 and the last four digits of my number are 1251.
+
+[00:01:28.220 - 00:01:31.620] Maya: All right. I'm checking that now. This may take a few seconds.
+
+[00:01:30.420 - 00:01:31.020] [calling tool to retrieve the current time for verification records]
+
+[00:01:31.020 - 00:01:31.620] [calling tool to record completed identity verification]
+
+[00:01:32.080 - 00:01:33.000] Johnny: Sure.
+
+[00:01:59.120 - 00:02:02.880] Maya: Okay, great. You're verified. What's the new email you'd like to change to?
+
+[00:02:04.680 - 00:02:12.440] Johnny: The new email is johnny.monroe.travel@outlook.com.
+
+[00:02:13.420 - 00:02:26.540] Maya: Okay. Let me spell it back. It's J-O-H-N-N-Y dot M-O-N-R-O-E dot T-R-A-V-E-L at outlook dot com.
+
+[00:02:27.480 - 00:02:28.080] Johnny: That's correct.
+
+[00:02:29.080 - 00:02:32.560] Maya: Sounds good. I'm working on adding this as an additional email.
+
+[00:03:25.720 - 00:03:31.320] Maya: I just sent you a verification code to the number we have on file. Can you read the number back to me?
+
+[00:03:32.940 - 00:03:34.300] Johnny: Yep, give me one second.
+
+[00:03:36.270 - 00:03:39.480] Johnny: The number is 337464.
+
+[00:03:39.480 - 00:03:40.080] [calling tool to change the customer email address]
+
+[00:03:40.220 - 00:03:48.360] Maya: Thanks. Got it. The email is now updated. You may receive security notices at both addresses during the transition.
+
+[00:03:49.580 - 00:03:51.800] Johnny: Okay, nice. Thank you. I'll check on that.
+
+[00:03:53.080 - 00:03:58.740] Maya: And as for the credit card you mentioned, do you know which of the cards you wanted to get?
+
+[00:04:01.080 - 00:04:14.180] Johnny: I don't actually have a specific one in mind yet. I want no foreign transaction fee and airport lounge access, but I'm not paying 700 dollars a year.
+
+[00:04:15.500 - 00:04:17.780] Maya: I'll search our current product terms.
+
+[00:04:17.780 - 00:04:18.380] [calling tool to search current card products by keyword]
+
+[00:04:52.360 - 00:05:13.480] Maya: Okay. So I see that two products fit part of that. We have Summit Journey, which has no foreign transaction fee and a 95 dollar annual fee, but has no general lounge membership. And then Summit Reserve includes lounge access and costs 395 dollars annually.
+
+[00:05:15.750 - 00:05:18.100] Johnny: Does Reserve give free checked bags?
+
+[00:05:19.620 - 00:05:23.880] Maya: Okay. Just give me a moment while I pull that up.
+
+[00:05:23.880 - 00:05:24.480] [calling tool to search card benefits using semantic similarity]
+
+[00:05:26.780 - 00:05:37.500] Maya: It offers an annual airline incidental credit, but it does not automatically provide a free checked bag on every airline. Airline-specific rules still apply.
+
+[00:05:38.980 - 00:05:42.750] Johnny: Yeah. I mean, that makes sense. Um, what about the welcome bonus?
+
+[00:05:43.760 - 00:05:46.860] Maya: All right. I'm checking that now. This may take a few seconds.
+
+[00:05:46.860 - 00:05:47.460] [calling tool to search welcome-bonus terms using semantic similarity]
+
+[00:05:50.720 - 00:06:10.650] Maya: Okay. So Journey currently offers 40,000 points after 3,000 dollars in eligible purchases within 90 days. Reserve offers 70,000 after 5,000 dollars within 90 days. Offers can change, and approval is not guaranteed.
+
+[00:06:12.130 - 00:06:17.350] Johnny: Got it. I think Journey sounds more reasonable. Can you apply for me?
+
+[00:06:16.950 - 00:06:25.710] Maya: Yeah. So the application is completed by you and not by me. I can provide the secure card application tool associated with your verified profile.
+
+[00:06:27.370 - 00:06:33.230] Johnny: Okay, I see. Um, yeah. Can you send me the link for the application, or guide me to where I can find it?
+
+[00:06:34.030 - 00:06:39.790] Maya: Of course. Let me look at the system and send it to your message center and your email.
+
+[00:06:39.790 - 00:06:40.390] [calling tool to provide the secure card-application tool]
+
+[00:06:44.100 - 00:06:46.010] Johnny: Is it going to my new email that we just set up?
+
+[00:06:46.970 - 00:06:53.750] Maya: Yeah. So the profile now shows johnny.monroe.travel@outlook.com.
+
+[00:06:55.290 - 00:06:57.900] Maya: Um, please review every field before submitting.
+
+[00:06:59.280 - 00:07:01.380] Johnny: Got it. If I get denied, will you know why?
+
+[00:07:02.290 - 00:07:16.050] Maya: So the decision notice usually explains the factors and any reconsideration contact, and phone agents cannot promise approval or override the underwriting.
+
+[00:07:18.110 - 00:07:21.610] Johnny: Fair. Can you confirm the fees for the two cards one more time?
+
+[00:07:22.170 - 00:07:43.810] Maya: Yeah, sure. Journey is a 95 dollar annual fee, no foreign transaction fee, and no general lounge membership. For Reserve, it's a 395 dollar annual fee, no foreign transaction fee, and lounge access subject to its program terms.
+
+[00:07:45.880 - 00:07:48.370] Johnny: Thanks. Yeah, I think I'm gonna go with Journey.
+
+[00:07:49.690 - 00:07:57.130] Maya: Sounds great. Um, just complete the secure application when you're ready, and your email update is already complete.
+
+[00:07:57.130 - 00:07:57.730] [calling tool to review the received self-service tools]
+
+[00:07:57.730 - 00:07:58.330] [calling tool to use the secure card-application tool]
+
+[00:07:58.910 - 00:08:07.730] Johnny: Okay, yeah, I see the application page on my end. Looks like it wants my housing payment. Is that monthly rent or the amount I split with my roommate?
+
+[00:08:09.110 - 00:08:21.350] Maya: So you enter the amount you personally are responsible for each month and follow the field's instruction. I cannot choose or alter the financial information for you.
+
+[00:08:22.490 - 00:08:28.310] Johnny: Got it. It also asks annual income. I have a salary and freelance work.
+
+[00:08:29.550 - 00:08:50.670] Maya: So you can report income you can reasonably access and verify, consistent with the application disclosure. If you're unsure how a category applies, use the explanation beside the field rather than guessing.
+
+[00:08:49.980 - 00:08:53.950] Johnny: Got it. I don't want to submit while we're talking. Can I save it?
+
+[00:08:55.190 - 00:08:58.620] Maya: So the secure tool offers save and continue later,
+
+[00:08:59.730 - 00:09:03.650] Maya: um, before the final certification. Can you confirm that you see that option?
+
+[00:09:06.030 - 00:09:11.170] Johnny: Um, yeah, I do actually. There's also a consent about pulling credit.
+
+[00:09:13.130 - 00:09:25.270] Maya: Um, so read it fully. Submitting the application authorizes the review described there. Opening or saving the tool does not itself submit an application.
+
+[00:09:20.590 - 00:09:32.770] Johnny: Good. I was worried you had already run my credit. (worried)
+
+[00:09:33.110 - 00:09:40.610] Maya: Oh, no, I have not. I only updated your email, searched published product information, and delivered the application tool.
+
+[00:09:42.850 - 00:09:47.170] Johnny: Got it. Does the old email still work for login too? I'm just curious.
+
+[00:09:48.410 - 00:10:05.470] Maya: Yeah. So your username may remain the same, but future notices go to the new email. If the security system prompts you to confirm the change, use the secure banking site rather than a link from an unexpected message.
+
+[00:10:07.370 - 00:10:12.420] Johnny: Okay. Well, thank you for taking my questions. I'll save this link and finish after dinner.
+
+[00:10:13.510 - 00:10:22.090] Maya: Yeah, that's fine. The secure tool remains associated with your verified profile. Thank you, and please let me know if you have any questions.
+
+[00:10:22.810 - 00:10:24.630] Johnny: All good. Thank you. Bye-bye.
+
+[00:10:25.190 - 00:10:26.390] Maya: Bye.
+

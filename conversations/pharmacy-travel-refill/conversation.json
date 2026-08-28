@@ -1,0 +1,274 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "pharmacy-travel-refill",
+  "domain": "pharmacy",
+  "registry": {
+    "name": "pharmacy",
+    "version": "0.1.0",
+    "path": "../../domains/pharmacy/tool_registry.json",
+    "compatibility": "custom_tau_style_not_literal_tau_registry"
+  },
+  "policy_path": "../../domains/pharmacy/policy.md",
+  "participants": {
+    "agent": "Aaron",
+    "customer": "Miles",
+    "raw_track_role_map": {
+      "speaker-1": "customer",
+      "speaker-2": "agent"
+    }
+  },
+  "audio": {
+    "mixed": "audio/mixed.wav",
+    "speaker_1": "audio/speaker-1.wav",
+    "speaker_2": "audio/speaker-2.wav"
+  },
+  "goal": "Resolve a refill-too-soon rejection for a lost albuterol inhaler and keep the patient informed about pharmacist review and pickup timing.",
+  "outcome": {
+    "label": "pending_pharmacist_check",
+    "summary": "One-time lost-medication override approved and claim accepted at a $15 copay; prescription remains in pharmacist verification with SMS alert enabled."
+  },
+  "required_information": [
+    {
+      "fact_id": "collect-patient",
+      "kind": "collect",
+      "text": "Miles Carter; June 14, 1988",
+      "start_seconds": 19.1,
+      "end_seconds": 23.22,
+      "speaker": "customer",
+      "source": "source/transcript-mixed.txt"
+    },
+    {
+      "fact_id": "collect-medication",
+      "kind": "collect",
+      "text": "Albuterol inhaler",
+      "start_seconds": 28.88,
+      "end_seconds": 34.019,
+      "speaker": "customer",
+      "source": "source/transcript-mixed.txt"
+    },
+    {
+      "fact_id": "collect-lost",
+      "kind": "collect",
+      "text": "Previous inhaler was left in a hotel; patient leaves town tomorrow",
+      "start_seconds": 73.36,
+      "end_seconds": 105.98,
+      "speaker": "customer",
+      "source": "source/transcript-mixed.txt"
+    },
+    {
+      "fact_id": "speak-override",
+      "kind": "communicate",
+      "text": "One-time lost-medication override approved; claim rerun; $15 copay",
+      "start_seconds": 187.549,
+      "end_seconds": 195.44,
+      "speaker": "agent",
+      "source": "source/transcript-mixed.txt"
+    },
+    {
+      "fact_id": "speak-not-ready",
+      "kind": "communicate",
+      "text": "Prescription is not ready until pharmacist review; estimated about 30 minutes",
+      "start_seconds": 199.72,
+      "end_seconds": 208.14,
+      "speaker": "agent",
+      "source": "source/transcript-mixed.txt"
+    },
+    {
+      "fact_id": "speak-fallback",
+      "kind": "communicate",
+      "text": "Call by 6:45 if no ready text; Park Avenue has stock but no transfer was made",
+      "start_seconds": 262.12,
+      "end_seconds": 296.08,
+      "speaker": "agent",
+      "source": "source/transcript-mixed.txt"
+    }
+  ],
+  "tool_calls": [
+    {
+      "call_id": "ph-001",
+      "name": "lookup_patient",
+      "arguments": {
+        "full_name": "Miles Carter",
+        "date_of_birth": "1988-06-14"
+      },
+      "result": {
+        "patient_id": "patient-miles-carter",
+        "match": "unique"
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "patient lookup implied before prescription retrieval",
+        "start_seconds": null,
+        "end_seconds": null,
+        "confidence": "medium",
+        "note": "The script collects identity but has no explicit lookup marker.",
+        "inferred_window_seconds": [
+          24.92,
+          35.2
+        ]
+      },
+      "state_effect": "read_only"
+    },
+    {
+      "call_id": "ph-002",
+      "name": "get_prescription",
+      "arguments": {
+        "patient_id": "patient-miles-carter",
+        "medication_name": "albuterol inhaler"
+      },
+      "result": {
+        "prescription_id": "prescription-albuterol",
+        "received_at": "10:42",
+        "claim_status": "rejected_refill_too_soon",
+        "prescription_valid": true
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "open the prescription record",
+        "start_seconds": 44.84,
+        "end_seconds": 52.02,
+        "confidence": "high"
+      },
+      "state_effect": "read_only"
+    },
+    {
+      "call_id": "ph-003",
+      "name": "request_claim_override",
+      "arguments": {
+        "prescription_id": "prescription-albuterol",
+        "reason": "lost_medication",
+        "urgency_context": "Patient leaves town tomorrow morning and needs the inhaler tonight"
+      },
+      "result": {
+        "override_id": "override-lost-medication",
+        "status": "approved_one_time"
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "contact the insurance plan for an override",
+        "start_seconds": 122.12,
+        "end_seconds": 126.6,
+        "confidence": "high"
+      },
+      "state_effect": "payer_override_approved"
+    },
+    {
+      "call_id": "ph-004",
+      "name": "submit_prescription_claim",
+      "arguments": {
+        "prescription_id": "prescription-albuterol",
+        "override_id": "override-lost-medication"
+      },
+      "result": {
+        "claim_status": "paid",
+        "copay": 15
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "rerun the insurance claim",
+        "start_seconds": 187.549,
+        "end_seconds": 195.44,
+        "confidence": "high"
+      },
+      "state_effect": "claim_accepted"
+    },
+    {
+      "call_id": "ph-005",
+      "name": "update_prescription",
+      "arguments": {
+        "prescription_id": "prescription-albuterol",
+        "priority_reason": "traveling; waiting for pickup tonight"
+      },
+      "result": {
+        "status": "active_queue",
+        "pharmacist_verification_required": true,
+        "estimated_minutes": 30
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "add a travel-priority note",
+        "start_seconds": 243.14,
+        "end_seconds": 255.68,
+        "confidence": "high"
+      },
+      "state_effect": "prescription_priority_context_updated"
+    },
+    {
+      "call_id": "ph-006",
+      "name": "get_store_inventory",
+      "arguments": {
+        "store_id": "park-avenue",
+        "medication_id": "albuterol-inhaler"
+      },
+      "result": {
+        "in_stock": true,
+        "counter_closes_at": "21:00",
+        "reserved": false
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "check alternate pharmacy inventory",
+        "start_seconds": 279.66,
+        "end_seconds": 284.56,
+        "confidence": "high"
+      },
+      "state_effect": "read_only"
+    },
+    {
+      "call_id": "ph-007",
+      "name": "update_prescription",
+      "arguments": {
+        "prescription_id": "prescription-albuterol",
+        "notification_channel": "sms",
+        "notification_destination_last4": "on_file"
+      },
+      "result": {
+        "ready_alert": "enabled",
+        "priority_note": "present"
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "update the prescription notification",
+        "start_seconds": 304.6,
+        "end_seconds": 310.5,
+        "confidence": "high"
+      },
+      "state_effect": "notification_preference_updated"
+    }
+  ],
+  "customer_actions": [],
+  "grounded_state": {
+    "grounding_level": "scenario_reconstruction_not_observed_backend",
+    "warning": "Derived from the script and spoken call; not captured from an instrumented CRM or executable backend.",
+    "before": {
+      "prescription": {
+        "medication": "albuterol inhaler",
+        "claim_status": "rejected_refill_too_soon",
+        "queue_status": "blocked"
+      }
+    },
+    "after": {
+      "prescription": {
+        "medication": "albuterol inhaler",
+        "override": "approved_one_time",
+        "claim_status": "paid",
+        "copay": 15,
+        "queue_status": "awaiting_pharmacist_verification",
+        "priority_note": true,
+        "ready_alert": "sms"
+      },
+      "alternate_inventory": {
+        "park_avenue": "in_stock_not_reserved"
+      }
+    }
+  },
+  "quality_notes": [
+    "Patient lookup is a likely missing tool-call annotation and is marked inferred rather than fabricated as an exact timestamp."
+  ],
+  "source_transcripts": {
+    "mixed": "source/transcript-mixed.txt",
+    "speaker_1": "source/transcript-speaker-1.txt",
+    "speaker_2": "source/transcript-speaker-2.txt",
+    "scribe_v2": "scribe/mixed.json"
+  }
+}

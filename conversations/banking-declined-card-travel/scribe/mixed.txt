@@ -1,0 +1,59 @@
+[0.760 - 4.760] agent: Thank   you   for   calling   Pioneer   Bank's   Card   Services.   This   is   Adrian.   How   can   I   help   you?  
+[6.200 - 13.620] customer: Hey,   this   is   Colin   Reeves.   My   card   was   declined   twice   at   a   hotel   and   I'm   traveling,   so,   uh,   I   need   to   figure   out   what's   going   on   there.  
+[15.540 - 20.500] agent: Okay.   Um,   I   can   look   at   that   with   you.   Um,   are   you   calling   from   the   number   on   the   account?  
+[22.340 - 23.440] customer: Uh,   yes.   Yes,   I   am.  
+[24.460 - 30.140] agent: All   right.   And,   um,   before   I   pull   up   the   card,   can   I   confirm   your   billing   ZIP   code   and   the   last   four   digits?  
+[30.800 - 39.400] customer: Right.   Uh,   the   ZIP   code   is   two   zero   zero   zero   five,   and   the   last   four   digits   are   six   one   four   eight.  
+[39.400 - 50.340] agent: Okay.   Awesome.   Thanks.   I   have   the   account,   and   I   see   two   attempts   from   Harbor   View   Hotel   for   eight   hundred   and   forty   dollars.   Are   those   both   yours?  
+[51.560 - 57.940] customer: Uh,   yeah.   The,   the   desk   ran,   ran   it.   Uh,   it   declined   and   then,   uh,   I   had   them,   um,   try   it   again.  
+[57.940 - 63.540] agent: Got   it.   Are   you   checking   in   today   or   was   it   just   a   reservation   charge?  
+[63.540 - 70.320] customer: Uh,   checking   in   today.   I'm   actually   standing   in   the   lobby   right   now.   Um,   they're   holding   the   room,   but   they   need   a   card   before   I   can,   you   know.  
+[70.320 - 71.720] agent: Okay.   Give   me   a   second.  
+[73.760 - 75.220] agent: Let   me   check   the   decline   reason.  
+[87.700 - 101.720] agent: Thanks   for   waiting.   Um,   so   the   first   attempt   got   triggered,   um,   by   a   travel   review,   and   the   second   one   was   declined   because   the   first   review   was   still   open.   And   I   don't   see   the   card   reported   lost   or   any   past   due   dates.   Do   you--   Can   you   confirm   that?  
+[102.920 - 108.120] customer: Uh,   yeah.   Uh,   can   you,   can   you   clear   it   so,   um,   they   can   run,   they   can   run   the   card   again?  
+[108.120 - 115.460] agent: Sure,   yeah.   I   can   verify   the   activity   and   remove   the   temporary   block.   And,   um,   first   though,   are   you   currently   in   Portland,   Maine?  
+[115.460 - 116.720] customer: Uh,   yeah.   Uh,   I'm   in   Portland.  
+[118.080 - 124.100] agent: And   did   they   use   the   card   earlier   today   at   Logan   Airport   for   thirty-two   dollar   in   change?  
+[124.100 - 128.940] customer: Um,   ye-yes.   Um,   that   was,   that   was   my   breakfast   this   morning,   uh.  
+[128.940 - 137.720] agent: All   right.   Sounds   good.   So   those   transactions   lined   up   and   the   restriction   is   off   now,   but   let   me   explain   one   thing   before   they   try   it   again.  
+[137.720 - 139.120] customer: Yeah.   Yeah,   sure.   Go   ahead.  
+[139.120 - 153.400] agent: So,   um,   hotels   often   don't   authorize   more   than   the   total   room   charge   for   incidentals.   The--   Your   available   credit   is   nine   hundred   and   twelve   dollars.   So   eight   hundred   and   forty   dollars   charged   should   fit,   but   a   larger   hold   may   not.  
+[155.360 - 156.800] customer: Right.   Uh,  
+[158.180 - 161.980] customer: wait,   could   you,   could   you   say   it   again,   please?   Uh.  
+[161.980 - 167.800] agent: Yeah.   Yeah.   So,   um,   hotels   often   authorize   more   than   the   room   total   for   incidentals.  
+[167.800 - 167.880] customer: Right.  
+[167.880 - 176.080] agent: But   your   available   credit   is   nine   hundred   and   twelve   dollars   only.   So   eight   hundred   and   forty   dollar   charge   should   fit,   but   a   larger   hold   might   not.  
+[177.480 - 185.060] customer: Right.   Um,   the   clerk,   uh,   the   clerk   said   that   the   room   is   six   ninety   and   the   rest   of   it   is   a   deposit,   so-  
+[185.060 - 185.070] agent: Nice  
+[185.070 - 187.880] customer: ...   I   think   eight   hundred   and   forty   should   be   the   whole   hold,   yeah.  
+[187.880 - 200.200] agent: Yeah.   That   works.   Then   it   should   enter   and   it   be   fine.   So,   um,   I'd   have   them   try   once   more.   Not   several   times,   just   once,   and   if   they   change   the   amount,   just   ask   them   to   tell   you   first,   'cause   you   don't   want-  
+[200.200 - 200.360] customer: Okay  
+[200.360 - 202.200] agent: ...   you   want   it   to   fit.  
+[202.200 - 205.660] customer: Okay.   Right.   Uh,   can   I,   can   I   stay   on   the   line   with   you   while   they   do   it?  
+[205.660 - 206.359] agent: Yeah,   that's   fine.  
+[207.520 - 213.800] customer: Yeah.   Uh,   can   you,   can   you   run   it   again?   Um,   they   just,   uh,   cleared   it.   Uh,   just   give   me   a   second,   please.  
+[213.800 - 214.500] agent: Sure.   No   worries.  
+[227.020 - 230.280] customer: Yeah.   Uh,   okay.   They're,   they're   running   it   now.   Uh,   no.  
+[231.780 - 236.320] customer: Yeah,   uh,   is   it   working?   Did   it   go   through?   Okay,   great.   Perfect.   Uh,  
+[237.900 - 242.480] customer: yeah.   Um,   sorry.   Uh,   it   went   through.   Yeah.   Uh,   I   got   the   receipt.   It's,   it's   all   good   now.  
+[242.480 - 248.980] agent: Good.   And   I   also   see   the   authorization   approved   for   eight   hundred   and   forty   dollars.   Can   you   confirm?  
+[248.980 - 260.220] customer: Uh,   yes.   Yes.   That   was   the   amount.   Um,   also,   um,   I   wanted   to   ask   while   I   have   you   here,   is   the,   is   the   card   going   to   get   blocked   again   if   I   use   it   somewhere   else   here,   like   while   I'm   on   my   trip,   or   should   it   be   good?  
+[260.220 - 270.560] agent: No,   no,   no.   It   should   be   okay,   since   you   just   confirmed   the   activity.   And,   um,   I   can   also   add   your   return   date   as   a   note   so   that,   though   it   doesn't   really   guarantee   every   purchase   will   be   approved,   but   just   a   note   should   be   good.  
+[271.980 - 277.920] customer: Right.   Yeah.   Yeah.   Um,   thank   you.   That's   all   right.   I'll,   I'll,   I'll   be   back   home   by   Sunday   night.  
+[277.920 - 278.870] agent: Awesome.  
+[278.870 - 278.960] customer: Yeah.  
+[278.960 - 284.520] agent: And,   uh,   do   you   recognize   everything   else   currently   pending   on   the   card?   'Cause   I   wanna   make   sure   there's   no   suspicious   activities.  
+[285.560 - 287.540] customer: Right.   Uh,   let,   let   me   take   a   look   real   quick.  
+[289.440 - 297.480] customer: Yeah.   Um,   so   there's   the   airport   parking   and   then   the   breakfast   and   then,   um,   the   hotel.  
+[297.480 - 298.200] agent: Yep.  
+[298.200 - 299.060] customer: Yeah.   That-  
+[299.060 - 299.070] agent: Awesome  
+[299.070 - 300.080] customer: ...   that's   all   me.  
+[300.080 - 309.380] agent: Awesome.   All   right.   And   just   one   more   heads   up.   The   hotel   may   stay   pending   for   a   few   days   after   checkout,   depending   on   when   it   finalizes,   so   just   for   you   to   be   aware   of   that.  
+[310.480 - 315.780] customer: Yeah,   yeah,   of   course.   No,   uh,   I   get   it.   That's   fine.   I   just   needed   to   get   into   the   room   and   my   card   wasn't   going   through,   so.  
+[315.780 - 322.480] agent: Understood.   Understood.   And   the   card   is   active   and   the   hotel   charge   is   approved   and   the   travel   notice   on   the   account,   so   you   should   be   ready   to   go.  
+[323.740 - 329.190] customer: Okay,   perfect.   That,   that's   great.   Uh,   thank   you   for   staying   on   the   line   and   then,   and   helping   me   out.   Appreciate   it.  
+[329.190 - 331.100] agent: No   problem.   No   problem,   Colin.   Safe   travels.  
+[332.200 - 334.950] customer: Yeah.   Thank   you.   It   was,   it   was   great   talking   to   you.   Have   a   good   day.   Bye.  
+[334.950 - 335.880] agent: Bye.   You   as   well.

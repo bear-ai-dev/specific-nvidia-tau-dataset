@@ -1,0 +1,61 @@
+[0.080 - 0.540] agent: Can   I   help   you   with?  
+[1.700 - 13.680] customer: Hi,   I   referred   my   sister   for   one   of   your   cards.   She   was   approved,   and   the   hundred   dollar   bonus   never   showed   up.   Honestly,   a   little   annoyed.   I've   checked   the   app   three   times,   and   it   just   keeps   saying   pending.  
+[15.460 - 21.960] agent: I   see.   I   can   completely   get   why   that's   frustrating.   Let's   pull   up   the   referral   and   see   exactly   where   it's   getting   held   up.   May   I   have   your   full   name?  
+[23.100 - 30.020] customer: Daniel   Brooks.   Brooks,   B   as   in   Boston,   R-O-O-K-S.  
+[32.160 - 34.580] agent: Awesome.   Thank   you.   What   email   address   is   on   your   profile?  
+[36.620 - 41.020] customer: Daniel.Brooks17@gmail.com.  
+[43.040 - 46.560] agent: Okay.   Uh,   just   give   me   a   moment   while   I   pull   that   up.  
+[57.160 - 68.760] agent: All   right.   I'm   recording   the   verification   time,   uh,   at   nine   zero   nine   AM,   uh,   the   twenty-eighth   of   August,   twenty   twenty-six.   I'll   ask   two   questions   from   your   profile.   Please   don't   provide   a   full   card   number,   okay?  
+[70.280 - 71.020] customer: Yeah,   go   ahead.  
+[76.620 - 83.020] agent: What   is   your   billing   zip   and   the   month   and   day   of   birth?  
+[84.940 - 89.860] customer: Two   seven   six   zero   nine,   October   twelfth.  
+[94.920 - 95.180] agent: Hello?  
+[98.080 - 102.060] customer: Two   seven   six   zero   nine,   October   twelfth.  
+[106.680 - 109.800] agent: All   right,   I'm   checking   that   now.   This   may   take   a   few   seconds,   okay?  
+[131.000 - 133.740] agent: All   right,   thanks.   You're   verified.   About   when   did   your   sister   apply?  
+[135.040 - 141.160] customer: August   third.   Her   name   is   Elisa   Brooks.   She   got   the   card   maybe   ten   days   ago.  
+[142.840 - 145.580] agent: Okay,   let   me   look   at   what   the   system   has   on   that.  
+[147.500 - 150.920] agent: I   see   an   invitation   sent   August   second   to   an   email   beginning  
+[152.360 - 157.120] agent: a   Brooks.   The   referral   status   says   approved.   Purchase   requirement   pending.  
+[158.440 - 160.680] customer: She   told   me   she   used   it   for   groceries.  
+[165.140 - 173.100] agent: The   referral   record   does   not   show   her   private   transactions.   Uh,   I'm   going   to   check   the   published   terms   for   what   qualifies   and   when   the   reward   posts.  
+[177.640 - 179.940] agent: Okay,   hang   on   one   second   while   I   update   it   for   you.   Okay.  
+[198.420 - 205.769] agent: The   current   terms   require   the   referred   customer   to   make   a   qualifying   purchase   within   ninety   days.   The   bonus   can   take   up   to   two   billing   cycles   after   that   purchase   posts.  
+[207.740 - 214.160] customer: Two   billing   cycles?   The   banner   made   it   sound   immediate.   I   thought   I   would   have   gotten   it   by   now.  
+[214.160 - 220.540] agent: I   understand   why   that   feels   slow,   but   approval   alone   does   not   trigger   the   reward,   and   I   cannot   see   or   disclose   your   sister's   purchase   history   from   your   account.  
+[223.620 - 226.700] customer: Can   you   at   least   tell   me   if   the   hundred   dollars   is   still   the   offer?  
+[228.480 - 230.500] agent: Okay,   yeah.   Give   me   just   a   moment   while   I   pull   that   up,   okay?  
+[241.280 - 249.920] agent: Yes.   Your   invitation   was   created   under   the   one   hundred   dollar   statement   credit   offer.   If   her   qualifying   purchase   posted,   the   deadline   has   not   passed.  
+[249.920 - 252.520] customer: How   am   I   supposed   to   track   it   without   calling   every   week?  
+[253.700 - 262.680] agent: I   can   send   you   a   refers,   uh,   referral   status   tool.   It   shows   invite   approval,   qualification,   and   reward   posting   stages   without   exposing   your   sister's   account   details.  
+[265.700 - 268.240] agent: All   right,   I'm   gonna   check   that   now.   This   may   take   a   few   seconds,   okay?  
+[277.740 - 280.140] agent: Okay.   I   just   sent   the   tracker   to   your   secure   message   center.  
+[281.980 - 283.340] customer: Okay,   I'm   opening   it.  
+[285.880 - 292.500] customer: It   says   purchase   qualification   pending.   So   that's   the   same   thing   you   see?  
+[292.500 - 302.500] agent: Correct.   If   it   remains   pending   after   two   billing   cycles   from   her   purchase,   contact   us   again   and   reference   referral   RF8241.  
+[304.000 - 305.260] customer: Can   you   email   the   link   too?  
+[306.800 - 314.020] agent: For   security,   the   working   tool   stays   inside   online   banking.   Uh,   I   can   send   an   email   notification   telling   you   a   secure   message   is   waiting.  
+[315.840 - 316.680] customer: Okay,   do   that.  
+[320.880 - 332.520] agent: Done.   All   right.   To   recap,   the   referral   is   attached   to   the   one   hundred   dollar   offer.   Approval   is   recorded,   purchase   qualification   is   still   pending,   and   the   reward   may   take   up   to   two   billing   cycles   after   a   qualifying   purchase   posts.  
+[334.680 - 337.260] customer: All   right.   At   least   I   know   it   didn't   disappear.  
+[338.460 - 342.360] agent: Exactly.   I   hope   that's   the   case.   Uh,   keep   the   tracker   and   reference   number.   Is   there   anything   else?  
+[344.240 - 354.360] customer: Um,   no,   that's   pretty   much   it.   I'm   looking   at   the   tracker   now.   Does   pending   mean   Elisa   did   something   wrong   or   that   she   hasn't   paid   her   balance   this   cycle   yet?  
+[355.620 - 369.020] agent: Not   necessarily.   Uh,   it   can   mean   the   qualifying   purchase   has   not   posted,   the   referral   match   is   still   processing,   or   the   reward   window   has   not   reached   its   posting   stage.   The   tracker   deliberately   does   not   reveal   which   purchases   she   made.
+[370.510 - 377.790] customer: She   used   a   different   email   on   the   application   than   the   one   I   invite-   invited.   Could   that   break   the   match?  
+[379.990 - 395.490] agent: It   could   delay   automated   matching.   The   referral   record   already   shows   approved,   uh,   so   the   application   was   associated   successfully.   I   would   not   ask   her   to   reapply,   uh,   but   she   should   duplicate   applications   to   create   a   different   problem.  
+[397.510 - 400.010] customer: Okay.   Yeah.   Because   she   was   about   to   try   it   again.  
+[401.440 - 409.060] agent: Yeah.   Please   tell   her   not   to.   She   should   use   her   own   secure   account   for   questions   about   her   card.   I   can   discuss   her   reward,   but   not   her   balance,   purchases,   or   approved   details.  
+[410.830 - 415.290] customer: Understood.   The   tracker   has   a   little   question   mark   next   to   qualifying   purchase.  
+[416.670 - 418.570] agent: Open   that   description   and   read   the   first   sentence   to   me.  
+[419.890 - 427.310] customer: It   says,   "Purchases   must   be   eligible   and   fully   posted,   not   returned   or   cash-like."  
+[427.310 - 432.750] agent: Correct.   Cash   advances,   balance   transfers,   fees,   and   return   purchases   do   not   qualify   under   the   terms   I   found.  
+[434.210 - 438.010] customer: She   bought   gro-   groceries,   so   that   sounds   eligible.  
+[440.090 - 447.950] agent: It   generally   would,   uh,   assuming   it   posted   to   the   referred   account   within   the   offer   window.   I   still   cannot   certify   her   private   transaction   from   your   profile.  
+[449.030 - 451.170] customer: Fair.   Can   you   give   me   the   dates   again?  
+[452.770 - 465.210] agent: Invitation   August   second.   Application   approval   is   recorded.   The   qualifying   purchase   stage   remains   pending   after   an   eligible   purchase   post.   Allow   up   to   two   billing   cycles   for   the   one   hundred   dollar   statement   credit.  
+[466.670 - 469.190] customer: And   December   isn't   the   deadline?  
+[469.190 - 474.870] agent: The   tracker   will   show   that   the   actual   deadline   tied   to   the   invitation.   Use   that   date   rather   than   estimating   from   today,   please.  
+[475.990 - 481.750] customer: All   right.   Sorry.   Someone   just   walked   into   my   office.   I'm   writing   to   her.   Don't   reapply.  
+[483.090 - 488.770] agent: That   is   correct.   Okay.   Please   keep   referral   RF   eight   two  
+[489.970 - 493.030] agent: four   one   and   check   the   secure   tracker   for   more   updates.  
+[494.730 - 495.090] agent: Thank   you.

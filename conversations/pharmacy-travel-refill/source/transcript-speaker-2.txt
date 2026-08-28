@@ -1,0 +1,27 @@
+[00:00:00.540 - 00:00:03.180] Aaron: Oak Street Pharmacy. This is Aaron. How can I help you?
+[00:00:14.720 - 00:00:18.440] Aaron: Okay. I can check the status. What's your name and date of birth?
+[00:00:24.640 - 00:00:24.920] Aaron: Thank you.
+[00:00:26.420 - 00:00:28.030] Aaron: And which medication are you expecting?
+[00:00:35.200 - 00:00:36.300] Aaron: All right. Give me a moment.
+[00:00:44.840 - 00:00:52.020] Aaron: I see the prescription. It's with me. It came in at 10:42, but it stopped at the insurance step. [calling tool to open the prescription record]
+[00:01:00.440 - 00:01:11.980] Aaron: Um, yeah, so the app message is pretty general. The claim rejected because the plan thinks that the refill is too soon. Did you by any chance have or fill another inhaler recently?
+[00:01:24.620 - 00:01:25.780] Aaron: Okay. Give me one moment.
+[00:01:29.500 - 00:01:39.300] Aaron: The new prescription is valid. I'm seeing that the issue here is the payment. We can ask the insurance for a lost medication override, but they may need to speak with you.
+[00:01:46.020 - 00:01:52.759] Aaron: Okay. I can start it. One second. Before I do, do you need the inhaler tonight or do you have another one available with you?
+[00:02:00.220 - 00:02:00.680] Aaron: Understood.
+[00:02:02.120 - 00:02:06.600] Aaron: Let me call the plan while you're on the line. It may take a couple minutes. Okay? [calling tool to contact the insurance plan for an override]
+[00:03:05.700 - 00:03:06.950] Aaron: Thank you for holding.
+[00:03:07.549 - 00:03:15.440] Aaron: They approved a one-time lost medication override. I reran the claim and I'm seeing that your co-pay is $15. [calling tool to rerun the insurance claim]
+[00:03:19.720 - 00:03:28.140] Aaron: Um, not quite yet. The pharmacist on our side still has to check it. You're next in the queue and we're looking at about 30 minutes.
+[00:03:34.320 - 00:03:39.180] Aaron: Our counter closes at 7:00 but the front store usually stays a lot open, uh, open a lot later.
+[00:03:49.680 - 00:03:57.080] Aaron: Okay. Well, I think if you leave after you get the ready text you should make it. I don't wanna tell you to come before the pharmacist finishes the check though.
+[00:04:03.140 - 00:04:15.680] Aaron: I can flag- Yeah. All good. I can flag it on my end that you're traveling and waiting for it tonight. I can't skip the pharmacist's verification, but it is already in the active queue. [calling tool to add a travel-priority note]
+[00:04:22.120 - 00:04:32.540] Aaron: Okay. Um, I would just call us back before you drive over. If there is a delay we can tell you whether another Oak Street location has it in-stock, but we'd have to transfer the prescription.
+[00:04:39.660 - 00:04:44.560] Aaron: The Park Avenue store closes at 9:00 I believe. Let me check their stock so we know the backup. [calling tool to check alternate pharmacy inventory]
+[00:04:49.220 - 00:04:56.080] Aaron: They show the same inhaler in-stock. I wouldn't transfer it yet because ours should be ready first.
+[00:05:04.600 - 00:05:10.500] Aaron: Okay. That's what I'll do. I added the travel note and your mobile number is set for the ready alert. [calling tool to update the prescription notification]
+[00:05:16.060 - 00:05:22.240] Aaron: Uh, yeah. Once it moves to ready the app may offer pre-pay. If it doesn't you can just pay the $15 co-pay at pickup.
+[00:05:28.680 - 00:05:34.400] Aaron: All good. No, no, we have it. Uh, the insurance issue is cleared. We're just waiting on the final pharmacy check.
+[00:05:40.300 - 00:05:43.820] Aaron: Uh, you're welcome Miles. Call us by 6:45 if you haven't heard from us, okay?
+[00:05:48.060 - 00:05:49.000] Aaron: You too. Bye bye.
+

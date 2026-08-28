@@ -1,0 +1,317 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "banking-referral-missing-reward",
+  "domain": "banking_card",
+  "registry": {
+    "name": "banking_card",
+    "version": "0.1.0",
+    "path": "../../domains/banking_card/tool_registry.json",
+    "compatibility": "custom_tau_style_not_literal_tau_registry"
+  },
+  "policy_path": "../../domains/banking_card/policy.md",
+  "participants": {
+    "agent": "Darren",
+    "customer": "Daniel",
+    "raw_track_role_map": {
+      "speaker-1": "agent",
+      "speaker-2": "customer"
+    }
+  },
+  "audio": {
+    "mixed": "audio/mixed.wav",
+    "speaker_1": "audio/speaker-1.wav",
+    "speaker_2": "audio/speaker-2.wav"
+  },
+  "goal": "Explain a missing $100 referral reward without exposing the referred person's transactions and give the customer a secure status tracker.",
+  "outcome": {
+    "label": "pending_external_qualification",
+    "summary": "Referral is approved but purchase qualification remains pending; tracker and reference RF8241 were provided."
+  },
+  "required_information": [
+    {
+      "fact_id": "collect-profile",
+      "kind": "collect",
+      "text": "Daniel Brooks; daniel.brooks17@gmail.com",
+      "start_seconds": 23.1,
+      "end_seconds": 41.06,
+      "speaker": "customer",
+      "source": "source/transcript-mixed.txt"
+    },
+    {
+      "fact_id": "collect-verification",
+      "kind": "collect",
+      "text": "Billing ZIP 27609 and October 12",
+      "start_seconds": 85.24,
+      "end_seconds": 89.86,
+      "speaker": "customer",
+      "source": "source/transcript-mixed.txt"
+    },
+    {
+      "fact_id": "collect-referral",
+      "kind": "collect",
+      "text": "Alicia Brooks applied August 3 and later received the card",
+      "start_seconds": 135.12,
+      "end_seconds": 141.22,
+      "speaker": "customer",
+      "source": "source/transcript-mixed.txt"
+    },
+    {
+      "fact_id": "speak-status",
+      "kind": "communicate",
+      "text": "Invitation August 2; approval recorded; purchase qualification pending; $100 statement-credit offer",
+      "start_seconds": 147.5,
+      "end_seconds": 248.52,
+      "speaker": "agent",
+      "source": "source/transcript-mixed.txt"
+    },
+    {
+      "fact_id": "speak-timing",
+      "kind": "communicate",
+      "text": "Allow up to two billing cycles after an eligible purchase posts",
+      "start_seconds": 198.44,
+      "end_seconds": 205.76,
+      "speaker": "agent",
+      "source": "source/transcript-mixed.txt"
+    },
+    {
+      "fact_id": "speak-privacy",
+      "kind": "communicate",
+      "text": "The caller cannot see or receive the referred person's private transactions",
+      "start_seconds": 154.14,
+      "end_seconds": 160.54,
+      "speaker": "agent",
+      "source": "source/transcript-mixed.txt"
+    }
+  ],
+  "tool_calls": [
+    {
+      "call_id": "br-001",
+      "name": "lookup_customer",
+      "arguments": {
+        "email": "daniel.brooks17@gmail.com"
+      },
+      "result": {
+        "customer_id": "customer-daniel-brooks",
+        "match": "unique"
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "find the customer by email",
+        "start_seconds": 46.56,
+        "end_seconds": 47.16,
+        "confidence": "high"
+      },
+      "state_effect": "read_only"
+    },
+    {
+      "call_id": "br-002",
+      "name": "get_current_time",
+      "arguments": {},
+      "result": {
+        "timestamp": "2026-08-28T09:09:00",
+        "timezone": "not_spoken"
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "retrieve the current time for verification records",
+        "start_seconds": 56.5,
+        "end_seconds": 57.0,
+        "confidence": "high"
+      },
+      "state_effect": "read_only"
+    },
+    {
+      "call_id": "br-003",
+      "name": "log_identity_verification",
+      "arguments": {
+        "customer_id": "customer-daniel-brooks",
+        "methods": [
+          "billing_zip",
+          "date_of_birth"
+        ],
+        "verified_at": "2026-08-28T09:09:00"
+      },
+      "result": {
+        "verification_status": "passed"
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "record completed identity verification",
+        "start_seconds": 130.3,
+        "end_seconds": 130.8,
+        "confidence": "high"
+      },
+      "state_effect": "audit_record_created"
+    },
+    {
+      "call_id": "br-004",
+      "name": "get_referrals",
+      "arguments": {
+        "customer_id": "customer-daniel-brooks"
+      },
+      "result": {
+        "referrals": [
+          {
+            "referral_id": "RF8241",
+            "invited_at": "August 2",
+            "application_status": "approved",
+            "qualification_status": "purchase_pending",
+            "offer": "$100 statement credit"
+          }
+        ]
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "retrieve referrals created by the customer",
+        "start_seconds": 144.44,
+        "end_seconds": 145.0,
+        "confidence": "high"
+      },
+      "state_effect": "read_only"
+    },
+    {
+      "call_id": "br-005",
+      "name": "search_policy_knowledge",
+      "arguments": {
+        "query": "referral qualifying purchase rules and reward posting time",
+        "search_mode": "keyword"
+      },
+      "result": {
+        "qualifying_purchase_window_days": 90,
+        "posting_window": "up to two billing cycles after qualifying purchase posts",
+        "excluded": [
+          "cash advances",
+          "balance transfers",
+          "fees",
+          "returned purchases"
+        ]
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "review referral qualification and reward-posting terms",
+        "start_seconds": 179.94,
+        "end_seconds": 180.44,
+        "confidence": "high"
+      },
+      "state_effect": "read_only"
+    },
+    {
+      "call_id": "br-006",
+      "name": "search_policy_knowledge",
+      "arguments": {
+        "query": "offer amount and deadline for referral RF8241",
+        "search_mode": "semantic"
+      },
+      "result": {
+        "offer": "$100 statement credit",
+        "deadline_status": "not_passed",
+        "exact_deadline": "available_in_tracker"
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "confirm the referral offer and deadline",
+        "start_seconds": 230.5,
+        "end_seconds": 231.0,
+        "confidence": "high"
+      },
+      "state_effect": "read_only"
+    },
+    {
+      "call_id": "br-007",
+      "name": "create_secure_self_service_session",
+      "arguments": {
+        "customer_id": "customer-daniel-brooks",
+        "workflow": "referral_status",
+        "resource_id": "RF8241",
+        "delivery_channels": [
+          "secure_message"
+        ]
+      },
+      "result": {
+        "session_id": "session-referral-RF8241",
+        "status": "issued",
+        "visible_stages": [
+          "invite",
+          "approval",
+          "qualification",
+          "reward_posting"
+        ]
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "send the referral-status self-service tracker",
+        "start_seconds": 268.24,
+        "end_seconds": 268.74,
+        "confidence": "high"
+      },
+      "state_effect": "self_service_session_issued"
+    },
+    {
+      "call_id": "br-008",
+      "name": "send_secure_notification",
+      "arguments": {
+        "customer_id": "customer-daniel-brooks",
+        "related_resource_id": "session-referral-RF8241",
+        "channel": "email",
+        "template": "secure_message_waiting"
+      },
+      "result": {
+        "status": "sent",
+        "contains_working_secure_link": false
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "customer asks for email notification; agent says Done",
+        "start_seconds": null,
+        "end_seconds": null,
+        "confidence": "medium",
+        "note": "Spoken completion implies a backend action but the source transcript has no explicit tool marker.",
+        "inferred_window_seconds": [
+          316.68,
+          320.88
+        ]
+      },
+      "state_effect": "notification_sent"
+    }
+  ],
+  "customer_actions": [
+    {
+      "action": "open_self_service_session",
+      "workflow": "referral_status",
+      "start_seconds": 283.48,
+      "end_seconds": 284.08
+    }
+  ],
+  "grounded_state": {
+    "grounding_level": "scenario_reconstruction_not_observed_backend",
+    "warning": "Derived from the script and spoken call; not captured from an instrumented CRM or executable backend.",
+    "before": {
+      "referral": {
+        "referral_id": "RF8241",
+        "status": "approved_purchase_qualification_pending",
+        "reward_posted": false
+      }
+    },
+    "after": {
+      "referral": {
+        "referral_id": "RF8241",
+        "status": "approved_purchase_qualification_pending",
+        "reward_posted": false
+      },
+      "tracker": {
+        "status": "issued"
+      },
+      "email_notification": "sent"
+    }
+  },
+  "quality_notes": [
+    "The two knowledge-search calls are present in the mixed transcript but absent from the earlier extracted label list; they are retained here.",
+    "The email notification is a likely missing tool-call annotation and is explicitly marked inferred."
+  ],
+  "source_transcripts": {
+    "mixed": "source/transcript-mixed.txt",
+    "speaker_1": "source/transcript-speaker-1.txt",
+    "speaker_2": "source/transcript-speaker-2.txt",
+    "scribe_v2": "scribe/mixed.json"
+  }
+}

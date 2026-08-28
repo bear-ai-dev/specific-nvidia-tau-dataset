@@ -1,0 +1,59 @@
+[0.100 - 6.040] agent: Hi,   thanks   for   calling   Harbor   Stone   Bank.   My   name   is   Maya.   What   can   I   take   care   of   for   you?  
+[7.740 - 25.080] customer: Hey,   um,   I'm   calling   because   I'm   locked   out   of   my   old   email   and   I   want   to   apply   for   a   travel   card   before   a   trip.   The   bank   is   connected   to   this   old   email.   I've   already   tried,   um,   changing   this   online   twice,   and   it   keeps   sending   codes   to   an   email   I   can't   access,   so   would   appreciate   any   help   here.  
+[26.280 - 40.120] agent: I   see.   Okay,   I'm   so   sorry   to   hear   that.   Um,   let's   see   what   we   can   do   today.   I'll   first   handle   the   email   address   change,   and   then   we   can   take   our   time   with   the   card   options.   Can   I   start   with   your   full   name?  
+[41.220 - 52.480] customer: Yeah,   sure.   Um,   so   my   name   is   Johnny   Monroe.   That   is   J-O-H-N-N-Y   M-O-N-R-O-E.  
+[53.900 - 56.360] agent: Okay,   great.   Account   ID,   if   you   have   it.  
+[58.100 - 63.900] customer: Yeah.   It   is   S-F-two   oh   four-seven   seven   one.  
+[65.880 - 76.420] agent: Okay.   Give   me   a   minute   while   I   pull   that   up.   Um,   can   you   please   verify   your   billing   zip   and   the   last   four   digits   of   the   mobile   number?  
+[77.760 - 86.540] customer: Yep.   My   zip   code   is   one   nine   four   four   seven,   and   the   last   four   digits   of   my   number   are   one   two   five   one.  
+[88.240 - 91.600] agent: All   right.   I'm   checking   that   now.   This   may   take   a   few   seconds.  
+[92.820 - 93.060] customer: Sure.  
+[119.140 - 122.860] agent: Okay,   great.   You're   verified.   What's   the   new   email   you'd   like   to   change   to?  
+[124.700 - 132.360] customer: The   new   email   is   Johnny.Monroe.travel@outlook.com.  
+[133.440 - 147.500] agent: Okay.   Let   me   spell   it   back.   It's   J-O-H-N-N-Y   dot   M-O-N-R-O-E   dot   T-R-A-V-E-L   @outlook.com.  
+[147.500 - 148.000] customer: That's   correct.  
+[149.100 - 152.560] agent: Sounds   good.   I'm   working   on   adding   this   as   an   additional   email.  
+[205.720 - 212.940] agent: I   just   sent   you   a   verification   code   to   the   number   we   have   on   file.   Can   you   read   the   number   back   to   me?  
+[212.940 - 214.600] customer: Yep.   Give   me   one   second.  
+[216.280 - 220.220] customer: The   number   is   three   three   seven   four   six   four.  
+[220.220 - 228.940] agent: Thanks.   Got   it.   The   email   is   now   updated.   You   may   receive   security   notices   at   both   addresses   during   the   transition.  
+[228.940 - 231.880] customer: Okay.   Nice.   Thank   you.   I'll,   I'll   check   on   that.  
+[233.100 - 238.720] agent: And   as   for   the   credit   card   you   mentioned,   do   you   know   which   of   the   cards   you   wanted   to   get?  
+[241.080 - 252.940] customer: I,   I,   I   don't   actually   have   a   specific   one   in   mind   yet.   Now,   I,   I   want   no   foreign   transaction   fee   and   airport   lounge   access,   but   I'm   not   paying   seven   hundred   dollars   a   year.  
+[255.500 - 257.780] agent: Uh,   I'll   search   our   current   product   terms.  
+[292.360 - 313.620] agent: Okay,   so   I   see   that   two   products   fit   the,   fit   part   of   that.   So   we   have   Summit   Journey   that   has   no   foreign   transaction   fee   and   a   ninety-five   dollar   annual   fee,   but   has   no   general   lounge   membership.   And   then   Summit   Reserve   includes   lounge   access   and   costs   three   hundred   and   ninety-five   annual.  
+[315.730 - 318.100] customer: Does   Reserve   give   free   checked   bags?  
+[319.620 - 323.760] agent: Okay,   just   give,   um,   give   me   a   moment   while   I   pull   that   up.  
+[326.760 - 337.300] agent: It   offers   an   annual   airline   incidental   credit,   but   it   does   not   automatically   provide   a   free   checked   bag   on   every   airline.   Airline   specific   rules   still   apply.  
+[338.980 - 342.680] customer: Yeah,   I   mean,   that,   that   makes   sense.   Um,   what   about   the   welcome   bonus?  
+[343.740 - 346.860] agent: All   right.   I'm   checking   that   now.   This   may   take   a   few   seconds.  
+[350.740 - 370.652] agent: Okay.   So   Journey   currently   offers   forty   thousand   points   after   three   thousand   dollars   in   eligible   purchases   within   ninety   days.   Reserve   offers-   $70,000   after   $5,000   within   90   days.   Offers   can   change,   and   approval   is   not   guaranteed.  
+[372.132 - 376.952] customer: Got   it.   I,   I,   I   think   Journey   sounds   more   reasonable.   Can,   can   you   apply   for   me?  
+[376.952 - 385.712] agent: Yeah.   So   the   application   is   completed   by   you   and   not   by   me.   I   can   provide   the   secure   card   application   tool   associated   with   your   verified   profile.  
+[387.372 - 394.051] customer: Okay,   I   see.   Um,   yeah.   Can,   can   you   send   me   the   link   for   the   application,   um,   or   guide   me   to   where   I   can   find   it?  
+[394.051 - 399.492] agent: Of   course.   Let   me   look   at   the   system   and   send   it   to   your   message   center   and   your   email.  
+[403.952 - 406.952] customer: I-   is   it   going   to   my   new   email   that   we   just   set   up?  
+[406.952 - 413.752] agent: Yeah.   So   the   profile   now   shows   johnnymunrotravel@outlook.com.  
+[415.272 - 417.912] agent: Um,   please   review   every   field   before   submitting.  
+[419.312 - 421.672] customer: Got   it.   If,   if   I   get   denied,   will   you   know   why?  
+[423.032 - 436.032] agent: So   the   deci-   the   decision   notice   usually   explains   the   factors   and   any   reconsideration   contact,   and   phone   agents   cannot   promise   approval   or   override   the   underwriting.  
+[438.132 - 442.172] customer: Fair.   Can,   can   you   confirm   the   fees   for   the   two   cards   one   more   time?  
+[442.172 - 463.792] agent: Yeah,   sure.   So   the   Journey   is   $95   annual   fee,   no   foreign   transaction   fee,   and   no   general   lounge   membership.   And   for   the   Reserve   is   $395   annual   fee,   no   foreign   tr-   foreign   transaction   fee,   and   lounge   access   subject   to   its   program   terms.  
+[465.912 - 468.312] customer: Thanks.   Yeah,   I,   I   think   I'm   gonna   go   with   Journey.  
+[469.732 - 477.132] agent: Sounds   great.   Um,   just   complete   the   secure   application   when   you're   ready,   and   your   email   update   is   already   complete.  
+[478.932 - 487.732] customer: Okay.   Yeah.   I   see   the   application   page   on   my   end.   Looks   like   it   wants   my   housing   payment.   Is   that   monthly   rent   or   the   amount   I   split   with   my   roommate?  
+[489.112 - 500.632] agent: So   you   enter   the   amount   you   personally   are   responsible   for   each   month   and   follow   the   field's   instruction.   I   cannot   choose   or   alter   the   financial   information   for   you.  
+[503.432 - 509.532] customer: It,   it   also   asks   annual   income.   I   have   a   salary   and   freelance   work.  
+[509.532 - 528.532] agent: So   you   can   report   income   you   can   reasonably   access   and   verify,   um,   consistent   with   the   application   disclosure.   If   you're   un-   if   you're   unsure   how   a   category   applies,   use   the   explanation   beside   the   field   gathering,   um,   rather   than   guessing.  
+[530.012 - 533.932] customer: Got   it.   I,   I,   I   don't   want   to   submit   while   we're   talking.   Can   I   save   it?  
+[535.212 - 543.732] agent: So   the   secure   tool   offers   save   and   continue   later,   um,   before   the   final   certification.   Can   you   confirm   that   you   see   that   option?  
+[546.032 - 551.152] customer: Um,   yeah,   I   do   actually.   There's   also   a   consent   about   pulling   credit.  
+[553.132 - 565.291] agent: Um,   so   read   it   fully.   Submitting   the   application   authorizes   the   review   described   there.   Opening   or   saving   the   tool   does   not   itself   submit   an   application.  
+[568.912 - 573.132] customer: Good.   I,   I   was   worried   you   had   already   run   my   credit.  
+[573.132 - 580.552] agent: Oh,   no,   I   have   not.   I   only   updated   your   email,   searched   published   product   information,   and   delivered   the   application   tool.  
+[582.812 - 587.152] customer: Got   it.   Does   the   old   email   still   work   for   login   too?   I'm   just,   just   curious.  
+[588.412 - 605.492] agent: Yeah.   So   y-   your   username   may   remain   the   same,   but   future   notices   go   to   the   new   email.   If   the   security   system   prompts   you   to   confirm   the   change,   use   the   secure   banking   site   rather   than   a   link   from   an   unexpected   message.  
+[607.372 - 613.512] customer: Okay.   Well,   thank   you   for   taking   my   questions.   I'll   save   this   link   and   finish   after   dinner.  
+[613.512 - 621.712] agent: Yeah,   that's   fine.   The   secure   tool   remains   associated   with   your   verified   profile.   Thank   you,   and   please   let   me   know   if   you   have   any   questions.  
+[622.812 - 625.192] customer: All   good.   Thank   you.   Bye-bye.  
+[625.192 - 625.612] agent: Bye.

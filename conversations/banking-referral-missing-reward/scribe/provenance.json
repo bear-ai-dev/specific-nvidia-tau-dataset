@@ -1,0 +1,17 @@
+{
+  "provider": "ElevenLabs",
+  "endpoint": "/v1/speech-to-text",
+  "model_id": "scribe_v2",
+  "language_code_requested": "en",
+  "timestamps_granularity": "word",
+  "tag_audio_events": true,
+  "diarize": true,
+  "num_speakers": 2,
+  "detect_speaker_roles": true,
+  "no_verbatim": false,
+  "seed": 42,
+  "input_audio": "audio/mixed.wav",
+  "input_audio_conversion": "lossless_pcm_equivalent_from_source_flac",
+  "generated_at": "2026-08-28T19:01:54.836Z",
+  "docs": "https://elevenlabs.io/docs/api-reference/speech-to-text/convert"
+}

@@ -1,0 +1,190 @@
+{
+  "schema_version": "0.1.0",
+  "registry_name": "pharmacy",
+  "registry_version": "0.1.0",
+  "compatibility": "custom_tau_style_not_literal_tau_registry",
+  "design_note": "Stable entity reads and consequential business mutations; source narration labels are normalized rather than copied one-for-one.",
+  "tools": [
+    {
+      "name": "lookup_patient",
+      "description": "Resolve one pharmacy patient after collecting the required identity attributes.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "full_name": {
+            "type": "string",
+            "description": "Patient full name."
+          },
+          "date_of_birth": {
+            "type": "string",
+            "description": "Patient date of birth."
+          }
+        },
+        "required": [
+          "full_name",
+          "date_of_birth"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_prescription",
+      "description": "Retrieve a patient's prescription, claim, queue, and notification status.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "patient_id": {
+            "type": "string",
+            "description": "Resolved patient identifier."
+          },
+          "medication_name": {
+            "type": "string",
+            "description": "Medication name or description."
+          }
+        },
+        "required": [
+          "patient_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "request_claim_override",
+      "description": "Request a payer decision for an eligible prescription-claim exception; the payer may require the patient to participate.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "prescription_id": {
+            "type": "string",
+            "description": "Prescription identifier."
+          },
+          "reason": {
+            "type": "string",
+            "description": "Override reason.",
+            "enum": [
+              "lost_medication",
+              "vacation_supply",
+              "dose_change",
+              "other"
+            ]
+          },
+          "urgency_context": {
+            "type": "string",
+            "description": "Relevant timing supplied by the patient."
+          }
+        },
+        "required": [
+          "prescription_id",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "submit_prescription_claim",
+      "description": "Submit or rerun a prescription claim after any required override is approved.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "prescription_id": {
+            "type": "string",
+            "description": "Prescription identifier."
+          },
+          "override_id": {
+            "type": "string",
+            "description": "Approved override identifier, when applicable."
+          }
+        },
+        "required": [
+          "prescription_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_store_inventory",
+      "description": "Check medication inventory at a specific pharmacy without reserving or transferring it.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "store_id": {
+            "type": "string",
+            "description": "Pharmacy location identifier."
+          },
+          "medication_id": {
+            "type": "string",
+            "description": "Medication/product identifier."
+          }
+        },
+        "required": [
+          "store_id",
+          "medication_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "update_prescription",
+      "description": "Update operational prescription fields such as priority context or notification channel; this cannot bypass pharmacist verification.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "prescription_id": {
+            "type": "string",
+            "description": "Prescription identifier."
+          },
+          "priority_reason": {
+            "type": "string",
+            "description": "Optional operational priority context."
+          },
+          "notification_channel": {
+            "type": "string",
+            "description": "Optional ready-alert channel.",
+            "enum": [
+              "sms",
+              "phone",
+              "email"
+            ]
+          },
+          "notification_destination_last4": {
+            "type": "string",
+            "description": "Optional masked destination digits."
+          }
+        },
+        "required": [
+          "prescription_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "transfer_to_specialist",
+      "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "description": "Why the transfer is required."
+          },
+          "summary": {
+            "type": "string",
+            "description": "Context already collected so the customer does not repeat it."
+          }
+        },
+        "required": [
+          "reason",
+          "summary"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

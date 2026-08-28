@@ -1,0 +1,271 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "retail-missing-package",
+  "domain": "retail",
+  "registry": {
+    "name": "retail",
+    "version": "0.1.0",
+    "path": "../../domains/retail/tool_registry.json",
+    "compatibility": "custom_tau_style_not_literal_tau_registry"
+  },
+  "policy_path": "../../domains/retail/policy.md",
+  "participants": {
+    "agent": "Daniel",
+    "customer": "Ethan",
+    "raw_track_role_map": {
+      "speaker-1": "customer",
+      "speaker-2": "agent"
+    }
+  },
+  "audio": {
+    "mixed": "audio/mixed.wav",
+    "speaker_1": "audio/speaker-1.wav",
+    "speaker_2": "audio/speaker-2.wav"
+  },
+  "goal": "Investigate an order scanned delivered but not received, open a carrier trace, and record the customer's replacement and pickup preferences without prematurely creating a replacement.",
+  "outcome": {
+    "label": "pending_carrier_trace",
+    "summary": "Trace WST481662 opened until 6 PM tomorrow; same blue item is in stock; replacement preference recorded but no replacement created."
+  },
+  "required_information": [
+    {
+      "fact_id": "collect-order",
+      "kind": "collect",
+      "text": "Order 7319; blue noise-canceling headphones; ethan.patel@northmail.com",
+      "start_seconds": 18.14,
+      "end_seconds": 47.04,
+      "speaker": "customer",
+      "source": "source/transcript-mixed.txt"
+    },
+    {
+      "fact_id": "collect-building",
+      "kind": "collect",
+      "text": "Front desk and package room checked; no delivery log/signature or photo",
+      "start_seconds": 85.4,
+      "end_seconds": 114.92,
+      "speaker": "customer",
+      "source": "source/transcript-mixed.txt"
+    },
+    {
+      "fact_id": "collect-timing",
+      "kind": "collect",
+      "text": "Needed Thursday before travel Friday at noon",
+      "start_seconds": 170.34,
+      "end_seconds": 204.98,
+      "speaker": "customer",
+      "source": "source/transcript-mixed.txt"
+    },
+    {
+      "fact_id": "speak-trace",
+      "kind": "communicate",
+      "text": "Carrier has until 6 PM tomorrow; replacement is not automatic; case WST481662",
+      "start_seconds": 247.44,
+      "end_seconds": 430.504,
+      "speaker": "agent",
+      "source": "source/transcript-mixed.txt"
+    },
+    {
+      "fact_id": "speak-duplicate",
+      "kind": "communicate",
+      "text": "If original arrives after replacement ships, call before opening; no second charge without notice",
+      "start_seconds": 372.604,
+      "end_seconds": 400.864,
+      "speaker": "agent",
+      "source": "source/transcript-mixed.txt"
+    }
+  ],
+  "tool_calls": [
+    {
+      "call_id": "rm-001",
+      "name": "get_order",
+      "arguments": {
+        "order_reference": "7319",
+        "customer_email": "ethan.patel@northmail.com",
+        "include": [
+          "items",
+          "fulfillment",
+          "carrier_scans"
+        ]
+      },
+      "result": {
+        "item_reference": "blue-noise-canceling-headphones",
+        "scan": {
+          "status": "delivered",
+          "time": "15:18 yesterday",
+          "location": "front entrance",
+          "photo": null
+        }
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "open the order record",
+        "start_seconds": 72.94,
+        "end_seconds": 81.94,
+        "confidence": "high"
+      },
+      "state_effect": "read_only"
+    },
+    {
+      "call_id": "rm-002",
+      "name": "get_order",
+      "arguments": {
+        "order_reference": "7319",
+        "customer_email": "ethan.patel@northmail.com",
+        "include": [
+          "carrier_scans"
+        ]
+      },
+      "result": {
+        "scan_location": "near building",
+        "unit_number": null,
+        "locker": null,
+        "photo": null,
+        "possible_misscan": true
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "review carrier scan details",
+        "start_seconds": 121.32,
+        "end_seconds": 129.46,
+        "confidence": "high"
+      },
+      "state_effect": "read_only"
+    },
+    {
+      "call_id": "rm-003",
+      "name": "get_product",
+      "arguments": {
+        "product_reference": "blue-noise-canceling-headphones",
+        "include_inventory": true
+      },
+      "result": {
+        "same_variant_in_stock": true,
+        "color": "blue"
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "check replacement inventory",
+        "start_seconds": 206.3,
+        "end_seconds": 211.65,
+        "confidence": "high"
+      },
+      "state_effect": "read_only"
+    },
+    {
+      "call_id": "rm-004",
+      "name": "open_delivery_trace",
+      "arguments": {
+        "order_reference": "7319",
+        "item_references": [
+          "blue-noise-canceling-headphones"
+        ],
+        "reason": "delivered_not_received",
+        "requested_resolution": "replacement",
+        "needed_by": "Thursday before Friday noon travel"
+      },
+      "result": {
+        "case_id": "WST481662",
+        "status": "open",
+        "carrier_response_deadline": "18:00 tomorrow",
+        "replacement_created": false,
+        "trace_email": "sent"
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "open a missing-package trace",
+        "start_seconds": 230.88,
+        "end_seconds": 238.14,
+        "confidence": "high"
+      },
+      "state_effect": "delivery_trace_opened"
+    },
+    {
+      "call_id": "rm-005",
+      "name": "update_case",
+      "arguments": {
+        "case_id": "WST481662",
+        "requested_resolution": "replacement",
+        "preferred_pickup_location": "West 23rd Street pickup counter",
+        "note": "Preserve exact blue variant and original price if replacement becomes eligible."
+      },
+      "result": {
+        "status": "preference_added",
+        "pickup_guaranteed": false
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "agent records pickup preference",
+        "start_seconds": null,
+        "end_seconds": null,
+        "confidence": "medium",
+        "note": "Spoken action has no explicit tool marker in the source transcript.",
+        "inferred_window_seconds": [
+          339.14,
+          349.44
+        ]
+      },
+      "state_effect": "case_preference_added"
+    },
+    {
+      "call_id": "rm-006",
+      "name": "get_order",
+      "arguments": {
+        "order_reference": "7319",
+        "customer_email": "ethan.patel@northmail.com",
+        "include": [
+          "cases"
+        ]
+      },
+      "result": {
+        "delivery_trace": {
+          "case_id": "WST481662",
+          "status": "open",
+          "deadline": "18:00 tomorrow"
+        }
+      },
+      "evidence": {
+        "source": "source/transcript-mixed.txt",
+        "source_label": "review the open carrier trace",
+        "start_seconds": 463.284,
+        "end_seconds": 475.224,
+        "confidence": "high"
+      },
+      "state_effect": "read_only"
+    }
+  ],
+  "customer_actions": [],
+  "grounded_state": {
+    "grounding_level": "scenario_reconstruction_not_observed_backend",
+    "warning": "Derived from the script and spoken call; not captured from an instrumented CRM or executable backend.",
+    "before": {
+      "order_7319": {
+        "carrier_status": "delivered",
+        "customer_received": false
+      },
+      "delivery_trace": null,
+      "replacement": null
+    },
+    "after": {
+      "order_7319": {
+        "customer_received": false
+      },
+      "delivery_trace": {
+        "case_id": "WST481662",
+        "status": "open",
+        "deadline": "18:00 tomorrow",
+        "preferred_pickup": "West 23rd Street"
+      },
+      "replacement": null
+    }
+  },
+  "quality_notes": [
+    "The spoken pickup-preference update is a likely missing tool annotation and is marked inferred.",
+    "No replacement order exists at call end; describing one as created would be an outcome error."
+  ],
+  "source_transcripts": {
+    "mixed": "source/transcript-mixed.txt",
+    "speaker_1": "source/transcript-speaker-1.txt",
+    "speaker_2": "source/transcript-speaker-2.txt",
+    "scribe_v2": "scribe/mixed.json"
+  }
+}

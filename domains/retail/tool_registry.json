@@ -1,0 +1,290 @@
+{
+  "schema_version": "0.1.0",
+  "registry_name": "retail",
+  "registry_version": "0.1.0",
+  "compatibility": "custom_tau_style_not_literal_tau_registry",
+  "design_note": "Stable entity reads and consequential business mutations; source narration labels are normalized rather than copied one-for-one.",
+  "tools": [
+    {
+      "name": "lookup_customer",
+      "description": "Find a retail customer and recent orders using a verified email or customer identifier.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Email on the order.",
+            "format": "email"
+          },
+          "customer_id": {
+            "type": "string",
+            "description": "Optional customer identifier."
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_order",
+      "description": "Retrieve an order with items, fulfillment, carrier scans, payments, refunds, cases, and eligible resolutions.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "order_reference": {
+            "type": "string",
+            "description": "Full or partial order reference accepted by the source system."
+          },
+          "customer_email": {
+            "type": "string",
+            "description": "Email on the order.",
+            "format": "email"
+          },
+          "include": {
+            "type": "array",
+            "description": "Order sections to retrieve.",
+            "items": {
+              "type": "string",
+              "description": "Order section.",
+              "enum": [
+                "items",
+                "fulfillment",
+                "carrier_scans",
+                "payments",
+                "refunds",
+                "cases",
+                "eligible_resolutions"
+              ]
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "order_reference",
+          "customer_email"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_product",
+      "description": "Retrieve product variant, price, and inventory for replacement or fulfillment decisions.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "product_reference": {
+            "type": "string",
+            "description": "Product or order-item identifier."
+          },
+          "location_id": {
+            "type": "string",
+            "description": "Optional store, pickup, or distribution location."
+          },
+          "include_inventory": {
+            "type": "boolean",
+            "description": "Whether inventory is required."
+          }
+        },
+        "required": [
+          "product_reference",
+          "include_inventory"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "open_delivery_trace",
+      "description": "Open a missing-package or carrier investigation with the customer's requested resolution and timing constraints.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "order_reference": {
+            "type": "string",
+            "description": "Order reference."
+          },
+          "item_references": {
+            "type": "array",
+            "description": "Affected order items.",
+            "items": {
+              "type": "string",
+              "description": "Order-item reference."
+            },
+            "minItems": 1
+          },
+          "reason": {
+            "type": "string",
+            "description": "Trace reason.",
+            "enum": [
+              "delivered_not_received",
+              "stalled_tracking",
+              "wrong_location"
+            ]
+          },
+          "requested_resolution": {
+            "type": "string",
+            "description": "Customer preference.",
+            "enum": [
+              "replacement",
+              "refund",
+              "locate_only"
+            ]
+          },
+          "needed_by": {
+            "type": "string",
+            "description": "Optional customer timing requirement."
+          }
+        },
+        "required": [
+          "order_reference",
+          "item_references",
+          "reason",
+          "requested_resolution"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "open_refund_trace",
+      "description": "Open a payment investigation for a refund that lacks settlement confirmation; do not issue a duplicate refund while it is open.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "order_reference": {
+            "type": "string",
+            "description": "Order reference."
+          },
+          "return_reference": {
+            "type": "string",
+            "description": "Return reference."
+          },
+          "payment_reference": {
+            "type": "string",
+            "description": "Original payment reference or masked card token."
+          },
+          "amount": {
+            "type": "number",
+            "description": "Amount under review.",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "order_reference",
+          "return_reference",
+          "payment_reference",
+          "amount"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "create_replacement_order",
+      "description": "Create a replacement at the eligible original price and return the new order, delivery estimate, return disposition, and notification state.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "order_reference": {
+            "type": "string",
+            "description": "Original order reference."
+          },
+          "item_references": {
+            "type": "array",
+            "description": "Items to replace.",
+            "items": {
+              "type": "string",
+              "description": "Order-item reference."
+            },
+            "minItems": 1
+          },
+          "reason": {
+            "type": "string",
+            "description": "Replacement reason.",
+            "enum": [
+              "damaged",
+              "defective",
+              "missing",
+              "wrong_item"
+            ]
+          },
+          "fulfillment_method": {
+            "type": "string",
+            "description": "Requested fulfillment method.",
+            "enum": [
+              "ship_to_address",
+              "store_pickup"
+            ]
+          },
+          "fulfillment_location": {
+            "type": "string",
+            "description": "Address label or pickup location when known."
+          }
+        },
+        "required": [
+          "order_reference",
+          "item_references",
+          "reason",
+          "fulfillment_method"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "update_case",
+      "description": "Add a note, customer preference, or supporting-information marker to an existing support case without changing its primary outcome.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "description": "Support case identifier."
+          },
+          "note": {
+            "type": "string",
+            "description": "Case note."
+          },
+          "requested_resolution": {
+            "type": "string",
+            "description": "Optional requested resolution."
+          },
+          "preferred_pickup_location": {
+            "type": "string",
+            "description": "Optional pickup preference."
+          }
+        },
+        "required": [
+          "case_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "transfer_to_specialist",
+      "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "description": "Why the transfer is required."
+          },
+          "summary": {
+            "type": "string",
+            "description": "Context already collected so the customer does not repeat it."
+          }
+        },
+        "required": [
+          "reason",
+          "summary"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

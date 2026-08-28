@@ -1,0 +1,55 @@
+[00:00:00.000 - 00:00:04.040] Daniel: Thank you for calling Westline Customer Care. This is Daniel. How can I help you?
+[00:00:05.020 - 00:00:12.100] Ethan: Hey, I'm calling about an order that says it's delivered, but I don't have it yet. So just wanted to check in on that.
+[00:00:13.640 - 00:00:16.980] Daniel: Okay, yeah. Let me take a look. Do you have the order number with you?
+[00:00:18.140 - 00:00:27.160] Ethan: I do, yeah. The order number is seven three one nine. The order is, like, a pair of n- blue noise-canceling headphones.
+[00:00:28.400 - 00:00:33.440] Daniel: Got it. And just to make sure I pull up the right account, what's the email address on the order?
+[00:00:35.030 - 00:00:47.040] Ethan: The email address is ethan.patel, that's P-A-T-E-L, @northmail.com. N-O-R-T-H-M-A-I-L.com.
+[00:00:49.040 - 00:00:53.500] Daniel: All right, one second. I'm going to kind of take a look.
+[00:01:12.940 - 00:01:21.940] Daniel: Okay, I found it. The carrier scan says delivered yesterday at three eighteen and left at the front entrance. Is this an apartment building? [calling tool to open the order record]
+[00:01:25.400 - 00:01:39.740] Ethan: Uh, yes, it is an apartment building. Um, there's a front desk and then also a package room behind it. Um, I checked both last night and this morning, and yeah, the desk just doesn't have anything for me. So wanted to know what's going on.
+[00:01:41.180 - 00:01:46.040] Daniel: Did they happen to check their delivery l- de- delivery log or check the shelves?
+[00:01:47.120 - 00:01:54.920] Ethan: Yeah, they checked both. The attendant said there wasn't a driver signature, like, around that time too. Um, there's also no delivery photo in the email.
+[00:01:58.580 - 00:01:59.040] Daniel: Got it.
+[00:02:01.320 - 00:02:09.460] Daniel: Yeah. On my end, I'm not seeing a photo here either. Let me check the scan details. Could I put you on hold just for a minute? [calling tool to review the carrier scan details]
+[00:02:10.340 - 00:02:11.140] Ethan: Yeah, for sure.
+[00:02:32.840 - 00:02:40.500] Daniel: Okay. Thank you so much for holding. So the scan is- near the building, but it doesn't show a unit number or a locker.
+[00:02:41.700 - 00:02:48.900] Daniel: It could be a bad, bad scan, or it may have gone to a neighboring entrance. I can't tell which one from this screen.
+[00:02:50.340 - 00:03:06.300] Ethan: I see. Yeah, that's what I've-- that's kind of what I figured, that it could have gone somewhere else. Um, the problem is these are a gift, so it's time sensitive, and I'm flying out Friday around noon. Is there anything you could do just to get it in time or...?
+[00:03:09.580 - 00:03:15.120] Daniel: Yeah. So when do you kind of need them in hand? Is Thursday ideal?
+[00:03:16.620 - 00:03:24.980] Ethan: Yeah, definitely Thursday would be ideal. Friday, you know, noon, afternoon doesn't really help me, 'cause I would have left already at that time.
+[00:03:26.300 - 00:03:31.650] Daniel: Right. That makes a ton of sense. Let me see what the replacement inventory looks like before I tell you anything. [calling tool to check replacement inventory]
+[00:03:33.280 - 00:03:34.420] Daniel: Give me about 20 seconds.
+[00:03:50.880 - 00:03:58.140] Daniel: All right. So the same blue model that you ordered is still in stock. The catch is I have to open a carrier trace first. [calling tool to open a missing-package trace]
+[00:03:59.920 - 00:04:05.940] Ethan: Hmm. Does that mean I have to wait another two days before you send it? Like, what does that actually mean?
+[00:04:07.440 - 00:04:25.629] Daniel: So in this case, not necessarily two full days. The station gets until six tomorrow evening to kind of answer this trace, and if they mark it missing sooner, we can move sooner than that. If there's no answer by six, you can go ahead and contact us, and we'll review the replacement then.
+[00:04:27.640 - 00:04:33.860] Ethan: I see. So it doesn't go out automatically? Is there any way you could just because of how time sensitive it is?
+[00:04:35.120 - 00:04:44.500] Daniel: Unfortunately, no. You'll need to approve it. Usually, there's a link in the trace email, and if that email doesn't come through, go ahead and kind of call us with that case number.
+[00:04:46.360 - 00:04:55.480] Ethan: Okay. Okay, yeah. Can you just make sure it's the exact same model and the color is the same, the blue one? I know the black one has a different price now.
+[00:04:57.780 - 00:05:06.490] Daniel: Yeah. I can note down the exact item number and that you want a replacement, not a refund. So in this case, your original price would just carry over to the replacement.
+[00:05:08.180 - 00:05:14.200] Ethan: Okay. And could I have it sent somewhere besides my building, just so, you know, it doesn't happen again?
+[00:05:15.920 - 00:05:25.800] Daniel: Um, maybe. Once that re- replacement is kind of released, the system will show whether a pickup is available for that item. Did you have a specific location in mind?
+[00:05:27.280 - 00:05:36.400] Ethan: Yeah, the location, um, the branch on the West Twenty-third Street, the pickup counter. I've used, I've used that one before, so I would prefer that.
+[00:05:39.140 - 00:05:44.240] Daniel: Okay. I can go ahead and add that as one of your preferences. Just give me about 10 seconds.
+[00:05:49.440 - 00:06:00.600] Daniel: Okay. I have now added that as a preference for you. I don't want to promise you it before the replacement actually exists, but the next- person will see it and kind of check that location first.
+[00:06:02.600 - 00:06:09.980] Ethan: Okay. No, yeah, that's fine. I mostly don't want the second one. I just want, you know, the first one, wherever it is. Uh, so yeah, that's fine.
+[00:06:12.604 - 00:06:21.024] Daniel: Perfect. Yeah, I totally understand that. And also, if the package kind of turns up before anything else ships, you can just kind of keep it, and that trace will close.
+[00:06:22.404 - 00:06:26.684] Ethan: Okay. Nice. Um, and what if it turns up after the replacement ships?
+[00:06:27.864 - 00:06:40.864] Daniel: Then in that case, um, go ahead and kind of just give us a call before opening the replacement, and we can look at the trace result and tell you which one needs to go back. And in this case, you would not get charged again without any sort of notice.
+[00:06:42.544 - 00:06:50.264] Ethan: Okay. Okay, yeah. Just so, um, I can keep track and just so I don't get, like, double-charged, um, what's the case number for this?
+[00:06:51.624 - 00:07:10.504] Daniel: The case number is WST four eight one- six six two. And I can go ahead and send that, um, to your email for that order. Um, it will probably come in the next 30 seconds to two minutes.
+[00:07:11.884 - 00:07:13.264] Ethan: Okay, yeah. That sounds good.
+[00:07:19.704 - 00:07:20.284] Daniel: Okay. Well-
+[00:07:20.284 - 00:07:20.904] Ethan: I checked it.
+[00:07:20.904 - 00:07:24.224] Daniel: that's it for me. Oh, okay. Perfect. Let me know if you get that.
+[00:07:30.024 - 00:07:39.284] Ethan: Okay. Yeah, I, I got the email just now. Um, yeah, it says here the trace is open until 6:00 tomorrow.
+[00:07:41.544 - 00:07:43.284] Ethan: Is that c- is that the one?
+[00:07:43.284 - 00:07:55.224] Daniel: That's perfect. Um, that's the right package. Um, in the case that they find the package, the carrier may contact you directly. Otherwise, go ahead and just kind of use that trace after it closes. [calling tool to review the open carrier trace]
+[00:07:57.064 - 00:08:08.724] Ethan: Okay. Okay. No, yeah, um, thanks for, thanks for this. I know it's not ideal, but at least I know, like, where it's gonna be and that there's gonna be a replacement coming if not. Um, yeah.
+[00:08:09.844 - 00:08:18.444] Daniel: Yeah. Once again, so sorry about that. I, I totally get it. Is there anything else I can do on this order that you wanted me to kind of check while I have it open? (apologetic)
+[00:08:19.804 - 00:08:23.183] Ethan: Um, no, that's it for this one. We're just... Hopefully we just find it.
+[00:08:25.124 - 00:08:29.724] Daniel: Well, all right, Ethan. Um, keep that case number handy, and we'll go from there tomorrow.
+[00:08:31.304 - 00:08:34.044] Ethan: Okay. Okay, will do. Um, yeah, thank you so much. (relieved)
+[00:08:34.924 - 00:08:36.984] Daniel: You're welcome. Take care.
+[00:08:37.064 - 00:08:38.484] Ethan: Okay. Thank you. Bye-bye.
+
+

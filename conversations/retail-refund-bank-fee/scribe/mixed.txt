@@ -1,0 +1,62 @@
+[0.069 - 2.580] agent: line   customer   care.   This   is   Daniel.   How   can   I   help   you   today?  
+[3.680 - 12.780] customer: Hi,   Daniel.   I'm   trying   to   figure   out   what   happened   to   a   refund   I   asked   for.   I   returned   something   at   one   of   the   stores   over   a   week   ago,   and   the   money   hasn't   come   back   yet.  
+[14.140 - 20.720] agent: Okay.   I'll   take   a   look.   Was   the   item   originally   ordered   online   or   purchased   in   store?  
+[20.720 - 26.480] customer: Online,   and   I   returned   it   to   the   store.   It   was   a   black   standing   desk   converter.   It   was   just   too   wide   for   my   desk.  
+[27.500 - 33.320] agent: Okay.   Got   it.   Do   you   have   the   order   number   or   the   return   receipt   nearby?  
+[33.320 - 38.900] customer: Yeah,   I   have   both.   Um,   order   ends   in   5624,   and   the   return   receipt   ends   in   9182.  
+[40.100 - 46.520] agent: Okay.   Got   it.   Um,   just   one   second.   And   also,   what   was   the   email   address   on   the   order?  
+[47.820 - 50.860] customer: Teddy.torrez@harbormail.com.  
+[52.340 - 55.660] agent: Okay.   Just   give   me   one   moment,   and   I'm   gonna   look   that   order   up.  
+[57.340 - 58.040] customer: Okay.  
+[67.540 - 81.120] agent: Okay.   Um,   I   just   found   that   order.   I   see   one   standing   desk   converter   for   $186.42   after   tax.   Does   that   sound   about   right?  
+[81.120 - 86.720] customer: Yep.   I   paid   $40   with   a   Westline   gift   card,   and   then   the   rest   should   be   on   my   debit.  
+[88.040 - 101.100] agent: Okay.   Perfect.   Yeah.   That,   that   definitely   helps.   I   can   see   that   the   return   was   accepted   at   the   Eastwood   store   about   nine   days   ago,   and   the   system   shows   that   the   item   is   back   in   inventory.   So   the   return   itself   is   actually   complete.  
+[103.360 - 118.400] customer: O-   oh,   okay.   I   think   that's   what   the   person   at   the   store   told   me,   but   the   email   I   got   is   only   about   $42,   so   I'm   still   missing   the   $146   and   the   42   cents.   I   don't   know   where   that   is.   It   isn't   in   my   account.  
+[119.540 - 130.979] agent: Okay.   Understood.   Um,   the,   the   $40   portion   should   have   gone   back   to   the   gift   card.   Did   you   receive   a   new   digital   gift   card   number   in   that   email   by   any   chance?  
+[132.440 - 137.580] customer: Uh,   yeah,   I   did,   but   I   haven't   tried   it   yet.   I   was   just   more   worried   about   the   debit   card.  
+[139.400 - 151.680] agent: Okay.   Yeah.   That's,   um,   that's   totally   fair.   Let   me   go   ahead   and   check   the   payment   history   and   the   card   reference.   I   may   need   to   place   you   on   hold   for   a   few   moments   while   I   kind   of   open   the   return   details.  
+[151.680 - 152.950] customer: Yeah,   sure.  
+[152.950 - 154.200] agent: Perfect.   One   second.  
+[171.160 - 179.040] agent: Okay.   Thank   you   so   much   for   waiting.   Sorry   about   the   delay.   It   looks   like   the   gift   card   refund   was   issued   successfully-  
+[179.040 - 179.160] customer: Mm-hmm  
+[179.160 - 190.580] agent: ...   and   the   debit   card   refund   is   showing   submitted,   um,   but   it   was   never   received   in,   like,   a   settlement   confirmation   from   the   payment   processor.  
+[193.380 - 201.040] customer: Okay.   What   does   that   mean?   Did   Westline   send   it   or   not?   'Cause   right   now   my   bank   is   saying   that   they   don't   see   a   refund   or   even   something   pending.  
+[202.820 - 217.060] agent: Yeah.   So   what   that   kinda   means   is   that   the   store   register   created   the   refund   request,   but   on   our   side,   our   system   can't   confirm   that   the   bank   accepted   it.   I   don't   wanna   tell   you   it's   on   the   way   when   the   status   kinda   says   it's   incomplete.  
+[218.960 - 221.160] customer: Okay.   Um,  
+[222.620 - 232.520] customer: I   mean,   like,   I   used   a   different   physical   card   when   I   bought   it   because   my   card   was   replaced   last   month.   It   should   be   wired   or   linked   to   the   same   checking   account,   though.   Is   that   potentially   an   issue?  
+[234.420 - 253.750] agent: I   will   say   it   definitely   could   explain   the   missing   confirmation.   Refunds   normally   route   to   the   underlying   account   even   if   a   card   was   replaced,   but   sometimes   the   bank   has   to   match   the   old   card   token   manually.   Do   you   remember   what   the   last   four   digits   of   the   original   card   were?  
+[255.280 - 262.440] customer: Yeah.   Um,   2047.   The   new   one   ends   in   8163.  
+[262.440 - 265.420] agent: Okay.   Let   me   take   a   look   to   see   if   that's   on   the   purchase.  
+[269.120 - 289.440] agent: Yeah.   So   from   what   I'm   seeing,   that   does   match   what   I   see   on   the   purchase.   I'm   going   to   open   a   payment   trace   using   the   original   card   reference,   and   what   I'm   gonna   do   then   is   attach   the   store   return   receipt.   That   will   let   our   payments   team   confirm   whether   the   bank   rejected   it   or   whether   it's   waiting   on   it   to   kinda   get   settled.  
+[291.080 - 292.820] customer: Um,   can   you   just   send   it   to   the   new   card?  
+[294.420 - 311.219] agent: Unfortunately,   not   while   the   first   refund   request   is   still   open.   If   I   created   another   refund   right   now,   you   could   receive   both,   and   then   the   system   kind   of   blocks   that.   The   payment   team   has   to   close   or   cancel   the   original   request   first.  
+[313.140 - 322.220] customer: Okay.   How   long   does   that   usually   take?   'Cause   I   returned   it   because   I   needed   the   money   back,   and   nine   days   already   kind   of   feels   like   a   long   time.  
+[323.400 - 340.820] agent: I   agree,   um,   that   this   definitely   should've   been   cleared   by   now.   Um,   the   review   window   is   usually   three   to   five   business   days   from   today.   Many   are   resolved   sooner,   but   unfortunately,   I   just   can't   promise   you   a   specific   day   until   the   processor   kind   of   responds.  
+[340.820 - 343.100] customer: Okay.   So   you're   saying   I   might   be   waiting   another   week?  
+[345.100 - 363.960] agent: Uh,   potentially.   Although   five   business   days   is   outside   the   review   window,   if   the   bank   confirms   the   accepted   refund,   we'll   go   ahead   and   send   you   the   settlement   reference   that   the   bank   can   locate   it.   If   the   bank   rejected   it,   Westline   can   reissue   the   amount   using   an   approved   alternative   method.
+[366.040 - 370.900] customer: Would   that   be   a   check?   I   don't   want   store   credit   for   the   whole   amount,   though  
+[372.780 - 391.220] agent: It   would   not   automatically   become   store   credit.   Depending   on   the   processor   results,   the   option   may   include   the   replacement   card   or   mailed   check,   and   the   payments   team   will   kind   of   confirm   with   you   the   available   option   before   reiss-reissuing   anything.  
+[393.100 - 399.140] customer: Okay.   Um,   can   you   also   confirm   the   $40   gift   card   actually   works?   Like,   I   don't   want   another   problem.  
+[400.940 - 404.340] agent: Yes.   Um,   give   me   one   second.   Let   me   just   check   that   balance   for   you.  
+[409.100 - 411.020] agent: Yeah,   so   it   looks   like   on   my   end  
+[412.720 - 416.880] agent: that   the   balance   and   the   digital   gift   card   have   $40   available.  
+[418.160 - 422.840] agent: It   has   not   been   used,   and   the   number   in   the   email,   uh,   still   looks   to   be   active.  
+[424.080 - 425.220] customer: Okay.  
+[427.700 - 431.660] agent: Okay,   perfect.   Um,   so   I've   kind   of   opened   up  
+[432.920 - 450.960] agent: the   payment   trace   for   the   remaining   $146.42,   and   the   case   number   is   WST735204.   And   I'm   also   noting   that   your   original   card   was   actually   replaced,   but   the   checking   account   remains   open.  
+[452.780 - 454.680] customer: Can   you   email   that   to   me?  
+[454.680 - 468.400] agent: Yes.   Um,   I   can   go   ahead   and   just   send   you   a   confirmation   to   your   email   on   the   order.   Um,   what   it'll   do   is   it   should   list   out   the   amount   under   review,   the   last   four   digits   of   the   original   card,   and   then   a   potential   expected   response   window.  
+[470.340 - 477.020] customer: Okay.   Okay,   I   see   it.   It   says   not   to   contact   the   store.   Does   that   mean   that   the   store   can't   do   anything   right   now?  
+[479.300 - 495.780] agent: Yes.   So   the   store   kind   of   completed,   um,   their   part   of   the   whole   return   process.   From   here,   the   payments   team   and   the   card   processor   have   to   kind   of   handle   this,   so   calling   the   store   would   not   kind   of,   uh,   speed   up   the   trace   in   this   case.  
+[497.080 - 504.620] customer: Okay.   Um,   I   also   had   a   small   overdraft   fee   because   I   was   expecting   this   money   back.   Is   that   something   Westline   covers?  
+[506.580 - 526.720] agent: I   can't   approve   a   bank   fee   while   the   trace   is   open.   Um,   for   right   now,   I   can   document   it,   um,   and   once   the   refund   outcome   is   confirmed,   customer   service   relations   can   kind   of   review   any   supporting   statement   you   choose   to   provide.   I   will   say   I   don't   want   to   promise   any   sort   of   reimbursement,   but   the   note   will   be   attached   to   this   case.  
+[528.340 - 530.660] customer: Okay,   bet.   Um,   I   just   wanted   it   on   record.  
+[531.860 - 548.040] agent: Okay,   perfect.   Yeah.   Um,   I   just   put   it   in   on   record.   If   you   don't   want   to   receive   an   update   by   the   end   of   the   fifth   business   day   or   if   you   don't,   um,   reply   to   the   case   email   or   call   us   at   the   number,   um,   you   won't   need   to   explain   the   return   again.  
+[549.220 - 552.040] customer: Okay.   And   if   the   return   appears   before   then,   do   I   need   to   call?  
+[553.400 - 561.160] agent: No.   So   the   processor   should   update   the   case   automatically,   and   you   should   receive   a   closure   email   once   the   settlement   is   confirmed.  
+[562.840 - 567.440] customer: Okay.   All   right.   Well,   I   still   wish   we   were   back   today,   but   this   makes   more   sense   to   me   now.  
+[569.760 - 582.240] agent: Yeah,   I   totally   understand   you.   So   sorry   again   for   the   trouble.   The   gift   card   portion   is   available   now,   and   the   card   portion   is   kind   of   just   actively   under   review.   If   there's   anything   else   from   the   order   that   you   want   me   to   check,   just   let   me   know.  
+[582.240 - 583.560] customer: Okay,   I'm   good   now.   That's   everything.  
+[584.680 - 591.180] agent: Okay.   All   right,   Teddy.   Um,   keep   the   case   email   for   reference,   and   we'll   contact   you   as   soon   as   the   payment   team   responds.  
+[592.320 - 593.960] customer: All   right.   Thanks,   Daniel.  
+[593.960 - 595.400] agent: You're   welcome.   Take   care.   Have   a   good   day

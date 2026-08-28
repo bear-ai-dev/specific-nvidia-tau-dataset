@@ -1,0 +1,50 @@
+[0.540 - 4.180] agent: Oak   Street   Pharmacy.   This   is   Aaron.   How   can   I   help   you?  
+[4.180 - 13.690] customer: Hey,   um,   uh,   I'm   calling   about   a   prescription   that   was   supposed   to   be   ready   this   afternoon.   Um,   the   app   still,   still   says   it's,   um,   being   processed.   I   was   wondering   if   you   knew   anything   about   that.  
+[14.720 - 19.100] agent: Okay.   I   can   check   the   status.   What's   your   name   and   date   of   birth?  
+[19.100 - 23.220] customer: Um,   Miles   Carter.   June   14th,   uh,   1988.  
+[24.600 - 24.960] agent: Thank   you.  
+[26.420 - 28.900] agent: And   which   medication   are   you   expecting?  
+[28.900 - 34.019] customer: Um,   the   inhaler,   uh,   Albuterol.   I   think,   um,   my   doctor   should   have   sent   it   this   morning.  
+[35.200 - 36.300] agent: All   right.   Give   me   a   moment.  
+[44.820 - 50.600] agent: I   see   the   prescription.   It's   with   me.   It   came   in   at   ten   forty-two   but   it   stopped   at   the   insurance   step.  
+[52.180 - 60.320] customer: Um,   what   did--   what   do   you   mean,   uh,   insurance?   The   app   didn't   say   anything   about   insurance   or   anything.   It   just   said,   um,   that   it   was   processing.   Did   I   miss   something?  
+[60.380 - 71.980] agent: Um,   yeah,   so   the   app   message   is   pretty   general.   The   claim   rejected   because   the   plan   thinks   that   the   refill   is   too   soon.   Did   you   by   any   chance   have   or   fill   another   inhaler   recently?  
+[73.360 - 83.540] customer: Um,   I,   I   think,   I   think   I   did   it,   uh,   last   month,   but   I   left   that   one   in   a   h-   hotel   room   and   I   told   the   doctor's   office   that,   um,   when   I   was   asking   for,   uh,   for   a   refill.  
+[84.600 - 85.780] agent: Okay.   Give   me   one   moment.  
+[89.560 - 99.780] agent: The   new   prescription   is   valid.   I'm   seeing   that   the   issue   here   is   the   payment.   We   can   ask   the   insurance   for   a   lost   medication   override,   but   they   may   need   to   speak   with   you.  
+[99.840 - 104.900] customer: Uh,   is   there   any   way   you   can   call   them   right   now?   I'm   leaving   town   again   tomorrow   morning   a-   and   I   kinda   need   it.  
+[106.020 - 113.540] agent: Okay.   I   can   start   it.   One   second.   Before   I   do,   do   you   need   the   inhaler   tonight   or   do   you   have   another   one   available   with   you?  
+[113.540 - 119.060] customer: Uh,   I   got,   I   got   one   at   home   with,   um,   maybe   a   f-   a   couple   doses   left,   but   I   need   the   new   one   before   I   go   on   the   trip.  
+[120.220 - 120.680] agent: Understood.  
+[122.120 - 126.660] agent: Let   me   call   the   plan   while   you're   on   the   line.   It   may   take   a   couple   minutes.   Okay?  
+[126.660 - 127.120] customer: Yeah.   Thank   you.  
+[141.040 - 187.400] agent: Thank   you   for   holding.  
+[187.400 - 187.530] customer: Okay.  
+[187.530 - 196.400] agent: They   approved   a   one-time   lost   medication   override.   I   reran   the   claim   and   I'm   seeing   that   your   co-pay   is   fifteen   dollars.  
+[196.400 - 199.720] customer: Okay.   Um,   great.   So   is   it,   is   it   ready   now?  
+[199.720 - 208.260] agent: Um,   not   quite   yet.   The   pharmacist   on   our   side   still   has   to   check   it.   You're   next   in   the   queue,   and   we're   looking   at   about   thirty   minutes.  
+[208.260 - 214.320] customer: Um,   when   do   you   guys   close?   It   closes   at,   on   the   pharmacy,   it's   at,   um,   seven,   right?   Like   it   closes   at   seven?  
+[214.320 - 219.190] agent: Our   counter   closes   at   seven   but   the   front   store   usually   stays   a   lot   open.   Uh,   open   a   lot   later.  
+[220.380 - 225.870] customer: Right.   So   it's,   it's   like,   um,   six   fifteen   now   and   I'm   about   twenty-five   minutes   away.   Is   that,  
+[227.140 - 228.640] customer: is   that,   is   that   good?   Is   that   fine?  
+[229.680 - 238.040] agent: Okay.   Well,   I   think   if   you   leave   after   you   get   the   ready   text   you   should   make   it.   I   don't   wanna   tell   you   to   come   before   the   pharmacist   finishes   the   check   though.  
+[238.040 - 244.180] customer: Yeah.   No,   no,   yeah.   I,   I   get   it.   Uh,   can   you,   can   you   make   sure   it   doesn't   get   pushed   to   tomorrow   though?   Is   that   possible?  
+[244.180 - 245.430] agent: Yeah,   I   can   flag-  
+[245.430 - 245.430] customer: Sorry.  
+[245.430 - 254.540] agent: Yeah.   All   good.   I   can   flag   it   on   my   end   that   you're   traveling   and   waiting   for   it   tonight.   I   can't   skip   the   pharmacist's   verification,   but   it   is   already   in   the   active   queue.  
+[255.720 - 262.120] customer: Oh,   okay.   That,   that's   great.   Uh,   what   happens   if   I   don't   get   the   text   by   say   like   six   forty-five   or   something   like   that?  
+[262.120 - 273.340] agent: Okay.   Um,   I   would   just   call   us   back   before   you   drive   over.   If   there   is   a   delay   we   can   tell   you   whether   another   Oak   Street   location   has   it   in   stock,   but   we'd   have   to   transfer   the   prescription.  
+[273.340 - 277.700] customer: And   does   that   one   also   close   at,   on   the   counter   at   seven   or   is   it,   is   it   later?  
+[279.700 - 284.560] agent: The   Park   Avenue   store   closes   at   nine   I   believe.   Let   me   check   their   stock   so   we   know   the   backup.  
+[289.220 - 296.830] agent: They   show   the   same   inhaler   in   stock.   I   wouldn't   transfer   it   yet   because   ours   should   be   ready   first.  
+[296.830 - 304.600] customer: Right.   Yeah,   yeah.   Okay,   yeah.   We   can,   we   can   leave   it   there.   Uh,   let's...   Yeah,   unless   you   c-   can't   finish   it   then   no,   we   can   transfer   it.   That's   good.   Thank   you.  
+[304.600 - 311.520] agent: Okay.   That's   what   I'll   do.   I   added   the   travel   note   and   your   mobile   number   is   set   for   the   ready   alert.  
+[311.520 - 314.410] customer: Um,   also,   uh,   can   I,   can   I   pay   in   the   app   before   I   get   there?  
+[316.060 - 322.840] agent: Uh,   yeah.   Once   it   moves   to   ready   the   app   may   offer   pre-pay.   If   it   doesn't   you   can   just   pay   the   fifteen   dollar   co-pay   at   pickup.  
+[322.840 - 328.680] customer: Okay.   Thank   you,   thank   you,   thank   you   so   much.   I   was   worried   the   doctor   never   sent   it   so   I   was   kinda   freaking   out.  
+[328.680 - 335.280] agent: All   good.   No,   no,   we   have   it.   Uh,   the   insurance   issue   is   cleared.   We're   just   waiting   on   the   final   pharmacy   check.  
+[335.280 - 338.560] customer: All   right.   Okay.   Uh,   I'll   watch   for   the   text   and   thanks   for   calling   the   insurance   too.  
+[340.300 - 344.440] agent: Uh,   you're   welcome,   Miles.   Call   us   by   six   forty-five   if   you   haven't   heard   from   us,   okay?  
+[344.440 - 348.060] customer: Okay,   I   will.   Thank   you.   Have   a,   have   a   great   rest   of   your   shift.  
+[348.060 - 349.010] agent: You   too.   Bye-bye.  
+[349.010 - 349.010] customer: Bye-bye.

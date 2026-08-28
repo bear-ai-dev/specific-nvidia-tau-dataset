@@ -1,0 +1,48 @@
+[00:00:00.760 - 00:00:04.760] Adrian: Thank you for calling Pioneer Bank's Card Services. This is Adrian. How can I help you?
+[00:00:06.200 - 00:00:13.620] Colin: Hey, this is Colin Reeves. My card was declined twice at a hotel, and I'm traveling, so, uh, I need to figure out what's going on there. (concerned)
+[00:00:15.540 - 00:00:20.500] Adrian: Okay. Um, I can look at that with you. Um, are you calling from the number on the account?
+[00:00:22.340 - 00:00:23.440] Colin: Uh, yes. Yes, I am.
+[00:00:24.460 - 00:00:29.680] Adrian: All right. And, um, before I pull up the card, can I confirm your billing ZIP code and the last four digits? [calling tool to open the customer account]
+[00:00:30.800 - 00:00:38.740] Colin: Right. Uh, the ZIP code is two zero zero zero five, and the last four digits are six one four eight.
+[00:00:39.380 - 00:00:50.310] Adrian: Okay. Awesome. Thanks. I have the account, and I see two attempts from Harbor View Hotel for eight hundred and forty dollars. Are those both yours?
+[00:00:51.580 - 00:00:57.060] Colin: Uh, yeah. The, the desk ran, ran it. Uh, it declined, and then, uh, I had them, um, try it again.
+[00:00:57.940 - 00:01:02.540] Adrian: Got it. Are you checking in today, or was it just a reservation charge?
+[00:01:03.540 - 00:01:10.220] Colin: Uh, checking in today. I'm actually standing in the lobby right now. Um, they're holding the room, but they need a card before I can... you know.
+[00:01:10.300 - 00:01:11.720] Adrian: Okay. Give me a second.
+[00:01:13.760 - 00:01:15.140] Adrian: Let me check the decline reason. [calling tool to review the card decline]
+[00:01:27.700 - 00:01:41.720] Adrian: Thanks for waiting. Um, so the first attempt got triggered, um, by a travel review, and the second one was declined because the first review was still open. And I don't see the card reported lost or any past due dates. Do you-- Can you confirm that?
+[00:01:42.920 - 00:01:47.100] Colin: Uh, yeah. Uh, can you, can you clear it so, um, they can run, they can run the card again?
+[00:01:48.120 - 00:01:54.640] Adrian: Sure, yeah. I can verify the activity and remove the temporary block. And, um, first though, are you currently in Portland, Maine?
+[00:01:55.480 - 00:01:56.760] Colin: Uh, yeah. Uh, I'm in Portland.
+[00:01:58.080 - 00:02:02.710] Adrian: And did they use the card earlier today at Logan Airport for thirty-two dollar in change?
+[00:02:04.200 - 00:02:08.900] Colin: Um, ye-yes. Um, that was, that was my breakfast this morning, uh.
+[00:02:08.920 - 00:02:16.820] Adrian: All right. Sounds good. So those transactions lined up and the restriction is off now, but let me explain one thing before they try it again. [calling tool to remove the temporary card block]
+[00:02:17.720 - 00:02:18.640] Colin: Yeah. Yeah, sure. Go ahead.
+[00:02:19.120 - 00:02:33.400] Adrian: So, um, hotels often don't authorize more than the total room charge for incidentals. The-- Your available credit is nine hundred and twelve dollars. So eight hundred and forty dollars charged should fit, but a larger hold may not.
+[00:02:35.360 - 00:02:36.820] Colin: Right. Uh.
+[00:02:38.180 - 00:02:42.230] Colin: Wait, could you, could you say it again, please? Uh. Yeah.
+[00:02:42.260 - 00:02:47.140] Adrian: So, um, hotels often authorize more than the room total for incidentals.
+[00:02:47.860 - 00:02:56.100] Adrian: But your available credit is nine hundred and twelve dollars only. So eight hundred and forty dollar charge should fit, but a larger hold might not.
+[00:02:57.480 - 00:03:07.520] Colin: Right. Um, the clerk, uh, the clerk said that the room is six ninety, and the rest of it is a deposit, so- I think eight hundred and forty should be the whole hold, yeah.
+[00:03:07.880 - 00:03:21.280] Adrian: Yeah. That works. Then it should enter and it be fine. So, um, I'd have them try once more. Not several times, just once. And if they change the amount, just ask them to tell you first, 'cause you don't want- you want it to fit.
+[00:03:22.200 - 00:03:25.420] Colin: Okay. Right. Uh, can I, can I stay on the line with you while they do it?
+[00:03:25.660 - 00:03:26.359] Adrian: Yeah, that's fine.
+[00:03:27.520 - 00:03:33.360] Colin: Yeah. Uh, can you, can you run it again? Um, they just, uh, cleared it. Uh, just give me a second, please.
+[00:03:33.800 - 00:03:34.500] Adrian: Sure. No worries.
+[00:03:47.020 - 00:03:50.160] Colin: Yeah. Uh, okay. They're, they're running it now. Uh, no.
+[00:03:51.800 - 00:04:01.940] Colin: Yeah. Uh, is it working? Did it go through? Okay, great. Perfect. Uh, yeah. Um, sorry. Uh, it went through. Yeah. Uh, I got the receipt. It's, it's all good now. (relieved)
+[00:04:02.480 - 00:04:08.060] Adrian: Good. And I also see the authorization approved for eight hundred and forty dollars. Can you confirm?
+[00:04:08.980 - 00:04:20.190] Colin: Uh, yes. Yes. That was the amount. Um, also, um, I wanted to ask while I have you here. Is the, is the card going to get blocked again if I use it somewhere else here, like while I'm on my trip, or should it be good?
+[00:04:20.220 - 00:04:31.060] Adrian: No, no, no. It should be okay since you just confirmed the activity. And, um, I can also add your return date as a note so that, though it doesn't really guarantee every purchase will be approved, but just a note should be good.
+[00:04:31.980 - 00:04:37.400] Colin: Right. Yeah. Yeah. Um, thank you. That's all right. I'll, I'll, I'll be back home by Sunday night.
+[00:04:37.880 - 00:04:38.220] Adrian: Awesome.
+[00:04:38.940 - 00:04:44.540] Adrian: And, uh, do you recognize everything else currently pending on the card? 'Cause I wanna make sure there's no suspicious activities. [calling tool to review recent card activity]
+[00:04:45.560 - 00:04:47.540] Colin: Right. Uh, let, let me take a look real quick.
+[00:04:49.420 - 00:04:59.550] Colin: Yeah. Um, so there's the airport parking and then the breakfast and then, um, the hotel. Yep. Yeah. That- that's all me.
+[00:05:00.080 - 00:05:09.360] Adrian: Awesome. All right. And just one more heads up. The hotel may stay pending for a few days after checkout, depending on when it finalizes, so just for you to be aware of that.
+[00:05:10.480 - 00:05:15.500] Colin: Yeah. Yeah, of course. No, uh, I get it. That's fine. I just needed to get into the room, and my card wasn't going through, so.
+[00:05:15.780 - 00:05:22.520] Adrian: Understood. Understood. And the card is active, and the hotel charge is approved, and the travel notice on the account, so you should be ready to go. [calling tool to add a travel notice]
+[00:05:23.720 - 00:05:29.070] Colin: Okay, perfect. That, that's great. Uh, thank you for staying on the line and then, and helping me out. Appreciate it.
+[00:05:29.080 - 00:05:31.050] Adrian: No problem. No problem, Colin. Safe travels.
+[00:05:32.200 - 00:05:34.940] Colin: Yeah. Thank you. It was, it was great talking to you. Have a good day. Bye.
+[00:05:35.020 - 00:05:35.880] Adrian: Bye. You as well.
