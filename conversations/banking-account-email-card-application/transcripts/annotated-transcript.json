@@ -1,0 +1,2013 @@
+{
+  "schema_version": "0.1.0",
+  "format": "nvidia_responses_api_full_trajectory",
+  "trajectory_id": 0,
+  "conversation_id": "banking-account-email-card-application",
+  "domain": "banking",
+  "responses_create_params": {
+    "input": [
+      {
+        "role": "system",
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\n<policy>\n# Banking policy\n\nResolve one customer and complete the scenario's required identity checks before exposing account details or making profile/card changes. Never request or store a full card number, password, or one-time code in tool arguments.\n\nEmail changes require a verified profile and successful confirmation to a trusted channel. Explain transition notices and direct customers to the secure banking site for unexpected prompts.\n\nFor card declines, confirm the triggering activity before resolving a temporary restriction. Explain available-credit and merchant-hold constraints; removing a restriction does not guarantee approval. A travel notice is informational and also does not guarantee approval.\n\nReferral support may expose the referring customer's reward state, but not the referred person's purchases, balance, or private account data. State qualification and posting windows precisely.\n\nFor unfamiliar transactions, review household and saved-wallet activity before a fraud submission. An issued dispute session is not a filed claim; only the customer's Submit action creates a claim. Never promise provisional credit.\n\nCard product comparisons must come from current published terms. The customer completes and certifies any application. Opening or saving a card-application session does not submit it or authorize a credit pull. Agents cannot promise approval or override underwriting.\n</policy>\n\nTry to be helpful and always follow the policy."
+      },
+      {
+        "id": "msg_0000_0000",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Hi. Thanks for calling Harbor Stone Bank. My name is Maya. What can I take care of for you?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Hey, um, I'm calling because I'm locked out of my old email and I want to apply for a travel card before a trip. The bank is connected to this old email. I've already tried, um, changing this online twice and it keeps sending codes to an email I can't access, so would appreciate any help here. (frustrated)"
+      },
+      {
+        "id": "msg_0000_0002",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "I see. Okay. I'm so sorry to hear that. Um, let's see what we can do today. I'll first handle the email address change, and then we can take our time with the card options. Can I start with your full name?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah, sure. Um, so my name is Johnny Monroe. That is J-O-H-N-N-Y Monroe, M-O-N-R-O-E."
+      },
+      {
+        "id": "msg_0000_0004",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, great. Account ID, if you have it?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. It is SF204771."
+      },
+      {
+        "id": "msg_0000_0006",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Give me a minute while I pull that up."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"account_id\":\"SF204771\"}",
+        "call_id": "bc-001",
+        "name": "lookup_customer",
+        "type": "function_call",
+        "id": "bc-001",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bc-001",
+        "output": "\n\n{\"customer_id\":\"SF204771\",\"full_name\":\"Johnny Monroe\",\"match\":\"unique\"}"
+      },
+      {
+        "id": "msg_0000_0007",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Um, can you please verify your billing ZIP and the last four digits of the mobile number?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yep. My ZIP code is 19447 and the last four digits of my number are 1251."
+      },
+      {
+        "id": "msg_0000_0009",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right. I'm checking that now. This may take a few seconds."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{}",
+        "call_id": "bc-002",
+        "name": "get_current_time",
+        "type": "function_call",
+        "id": "bc-002",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bc-002",
+        "output": "\n\n{\"timestamp\":null,\"status\":\"not_spoken_in_call\"}"
+      },
+      {
+        "arguments": "{\"customer_id\":\"SF204771\",\"methods\":[\"billing_zip\",\"mobile_last4\"],\"verified_at\":\"not_spoken\"}",
+        "call_id": "bc-003",
+        "name": "log_identity_verification",
+        "type": "function_call",
+        "id": "bc-003",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bc-003",
+        "output": "\n\n{\"verification_status\":\"passed\"}"
+      },
+      {
+        "role": "user",
+        "content": "Sure."
+      },
+      {
+        "id": "msg_0000_0011",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, great. You're verified. What's the new email you'd like to change to?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "The new email is johnny.monroe.travel@outlook.com."
+      },
+      {
+        "id": "msg_0000_0013",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Let me spell it back. It's J-O-H-N-N-Y dot M-O-N-R-O-E dot T-R-A-V-E-L at outlook dot com."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "That's correct."
+      },
+      {
+        "id": "msg_0000_0015",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Sounds good. I'm working on adding this as an additional email."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0000_0016",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "I just sent you a verification code to the number we have on file. Can you read the number back to me?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yep, give me one second."
+      },
+      {
+        "role": "user",
+        "content": "The number is 337464."
+      },
+      {
+        "arguments": "{\"customer_id\":\"SF204771\",\"new_email\":\"johnny.monroe.travel@outlook.com\",\"confirmation_method\":\"one_time_code\"}",
+        "call_id": "bc-004",
+        "name": "update_customer_email",
+        "type": "function_call",
+        "id": "bc-004",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bc-004",
+        "output": "\n\n{\"status\":\"updated\",\"transition_security_notices\":[\"old_email\",\"new_email\"]}"
+      },
+      {
+        "id": "msg_0000_0019",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Thanks. Got it. The email is now updated. You may receive security notices at both addresses during the transition."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, nice. Thank you. I'll check on that."
+      },
+      {
+        "id": "msg_0000_0021",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "And as for the credit card you mentioned, do you know which of the cards you wanted to get?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "I don't actually have a specific one in mind yet. I want no foreign transaction fee and airport lounge access, but I'm not paying 700 dollars a year."
+      },
+      {
+        "id": "msg_0000_0023",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "I'll search our current product terms."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"query\":\"travel cards with no foreign transaction fee, lounge access, and annual fee below $700\",\"search_mode\":\"keyword\"}",
+        "call_id": "bc-005",
+        "name": "search_policy_knowledge",
+        "type": "function_call",
+        "id": "bc-005",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bc-005",
+        "output": "\n\n{\"matches\":[{\"product\":\"Summit Journey\",\"annual_fee\":95,\"foreign_transaction_fee\":false,\"lounge_membership\":false},{\"product\":\"Summit Reserve\",\"annual_fee\":395,\"foreign_transaction_fee\":false,\"lounge_membership\":true}]}"
+      },
+      {
+        "id": "msg_0000_0024",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. So I see that two products fit part of that. We have Summit Journey, which has no foreign transaction fee and a 95 dollar annual fee, but has no general lounge membership. And then Summit Reserve includes lounge access and costs 395 dollars annually."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Does Reserve give free checked bags?"
+      },
+      {
+        "id": "msg_0000_0026",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Just give me a moment while I pull that up."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"query\":\"Does Summit Reserve include a free checked bag?\",\"search_mode\":\"semantic\"}",
+        "call_id": "bc-006",
+        "name": "search_policy_knowledge",
+        "type": "function_call",
+        "id": "bc-006",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bc-006",
+        "output": "\n\n{\"airline_incidental_credit\":true,\"automatic_free_checked_bag\":false,\"airline_specific_rules_apply\":true}"
+      },
+      {
+        "id": "msg_0000_0027",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "It offers an annual airline incidental credit, but it does not automatically provide a free checked bag on every airline. Airline-specific rules still apply."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. I mean, that makes sense. Um, what about the welcome bonus?"
+      },
+      {
+        "id": "msg_0000_0029",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right. I'm checking that now. This may take a few seconds."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"query\":\"Current welcome offers for Summit Journey and Summit Reserve\",\"search_mode\":\"semantic\"}",
+        "call_id": "bc-007",
+        "name": "search_policy_knowledge",
+        "type": "function_call",
+        "id": "bc-007",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bc-007",
+        "output": "\n\n{\"offers\":[{\"product\":\"Summit Journey\",\"points\":40000,\"spend\":3000,\"days\":90},{\"product\":\"Summit Reserve\",\"points\":70000,\"spend\":5000,\"days\":90}],\"offers_can_change\":true,\"approval_guaranteed\":false}"
+      },
+      {
+        "id": "msg_0000_0030",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. So Journey currently offers 40,000 points after 3,000 dollars in eligible purchases within 90 days. Reserve offers 70,000 after 5,000 dollars within 90 days. Offers can change, and approval is not guaranteed."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Got it. I think Journey sounds more reasonable. Can you apply for me?"
+      },
+      {
+        "id": "msg_0000_0032",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah. So the application is completed by you and not by me. I can provide the secure card application tool associated with your verified profile."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, I see. Um, yeah. Can you send me the link for the application, or guide me to where I can find it?"
+      },
+      {
+        "id": "msg_0000_0034",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Of course. Let me look at the system and send it to your message center and your email."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"SF204771\",\"workflow\":\"card_application\",\"resource_id\":\"summit-journey\",\"delivery_channels\":[\"secure_message\",\"email_notification\"]}",
+        "call_id": "bc-008",
+        "name": "create_secure_self_service_session",
+        "type": "function_call",
+        "id": "bc-008",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bc-008",
+        "output": "\n\n{\"session_id\":\"session-card-application\",\"status\":\"issued\",\"submitted\":false,\"credit_pull_authorized\":false,\"save_and_continue\":true}"
+      },
+      {
+        "role": "user",
+        "content": "Is it going to my new email that we just set up?"
+      },
+      {
+        "id": "msg_0000_0036",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah. So the profile now shows johnny.monroe.travel@outlook.com."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0000_0037",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Um, please review every field before submitting."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Got it. If I get denied, will you know why?"
+      },
+      {
+        "id": "msg_0000_0039",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "So the decision notice usually explains the factors and any reconsideration contact, and phone agents cannot promise approval or override the underwriting."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Fair. Can you confirm the fees for the two cards one more time?"
+      },
+      {
+        "id": "msg_0000_0041",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah, sure. Journey is a 95 dollar annual fee, no foreign transaction fee, and no general lounge membership. For Reserve, it's a 395 dollar annual fee, no foreign transaction fee, and lounge access subject to its program terms."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Thanks. Yeah, I think I'm gonna go with Journey."
+      },
+      {
+        "id": "msg_0000_0043",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Sounds great. Um, just complete the secure application when you're ready, and your email update is already complete."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, yeah, I see the application page on my end. Looks like it wants my housing payment. Is that monthly rent or the amount I split with my roommate?"
+      },
+      {
+        "id": "msg_0000_0045",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "So you enter the amount you personally are responsible for each month and follow the field's instruction. I cannot choose or alter the financial information for you."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Got it. It also asks annual income. I have a salary and freelance work."
+      },
+      {
+        "id": "msg_0000_0047",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "So you can report income you can reasonably access and verify, consistent with the application disclosure. If you're unsure how a category applies, use the explanation beside the field rather than guessing."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Got it. I don't want to submit while we're talking. Can I save it?"
+      },
+      {
+        "id": "msg_0000_0049",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "So the secure tool offers save and continue later,"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0000_0050",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "um, before the final certification. Can you confirm that you see that option?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Um, yeah, I do actually. There's also a consent about pulling credit."
+      },
+      {
+        "id": "msg_0000_0052",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Um, so read it fully. Submitting the application authorizes the review described there. Opening or saving the tool does not itself submit an application."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Good. I was worried you had already run my credit. (worried)"
+      },
+      {
+        "id": "msg_0000_0054",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Oh, no, I have not. I only updated your email, searched published product information, and delivered the application tool."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Got it. Does the old email still work for login too? I'm just curious."
+      },
+      {
+        "id": "msg_0000_0056",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah. So your username may remain the same, but future notices go to the new email. If the security system prompts you to confirm the change, use the secure banking site rather than a link from an unexpected message."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay. Well, thank you for taking my questions. I'll save this link and finish after dinner."
+      },
+      {
+        "id": "msg_0000_0058",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah, that's fine. The secure tool remains associated with your verified profile. Thank you, and please let me know if you have any questions."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "All good. Thank you. Bye-bye."
+      },
+      {
+        "id": "msg_0000_0060",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Bye."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "name": "lookup_customer",
+        "description": "Find one banking customer using a stable customer identifier or verified profile attribute.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "account_id": {
+              "type": "string",
+              "description": "Customer account identifier."
+            },
+            "full_name": {
+              "type": "string",
+              "description": "Customer full name."
+            },
+            "email": {
+              "type": "string",
+              "description": "Email on the profile.",
+              "format": "email"
+            },
+            "account_match": {
+              "type": "string",
+              "description": "Trusted calling-channel match when available.",
+              "enum": [
+                "caller_phone"
+              ]
+            },
+            "billing_zip": {
+              "type": "string",
+              "description": "Billing ZIP collected for the lookup or verification."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits collected for the lookup or verification.",
+              "pattern": "^[0-9]{4}$"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_current_time",
+        "description": "Return the authoritative current timestamp for an audit or verification record.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "log_identity_verification",
+        "description": "Record that the required identity checks succeeded; never store full card or one-time-code values in the call.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "methods": {
+              "type": "array",
+              "description": "Verification checks completed.",
+              "items": {
+                "type": "string",
+                "description": "A verification method.",
+                "enum": [
+                  "billing_zip",
+                  "mobile_last4",
+                  "date_of_birth",
+                  "one_time_code"
+                ]
+              },
+              "minItems": 1
+            },
+            "verified_at": {
+              "type": "string",
+              "description": "Authoritative verification timestamp, if available."
+            }
+          },
+          "required": [
+            "customer_id",
+            "methods"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "update_customer_email",
+        "description": "Change the email on a verified customer profile after the required confirmation flow succeeds.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "new_email": {
+              "type": "string",
+              "description": "New customer email.",
+              "format": "email"
+            },
+            "confirmation_method": {
+              "type": "string",
+              "description": "How the change was confirmed.",
+              "enum": [
+                "one_time_code",
+                "secure_message",
+                "in_person"
+              ]
+            }
+          },
+          "required": [
+            "customer_id",
+            "new_email",
+            "confirmation_method"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "search_policy_knowledge",
+        "description": "Search current product or policy knowledge. Search mode is an argument, not a separate business function.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Plain-language policy or product question."
+            },
+            "search_mode": {
+              "type": "string",
+              "description": "Retrieval strategy.",
+              "enum": [
+                "keyword",
+                "semantic"
+              ]
+            },
+            "as_of": {
+              "type": "string",
+              "description": "Optional date or timestamp for time-sensitive terms."
+            }
+          },
+          "required": [
+            "query",
+            "search_mode"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_card_account",
+        "description": "Retrieve card status, available credit, recent authorizations, declines, restrictions, and travel notices in one account read.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "include": {
+              "type": "array",
+              "description": "Requested account sections.",
+              "items": {
+                "type": "string",
+                "description": "Account section.",
+                "enum": [
+                  "status",
+                  "available_credit",
+                  "authorizations",
+                  "declines",
+                  "restrictions",
+                  "travel_notices"
+                ]
+              },
+              "minItems": 0
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "resolve_card_restriction",
+        "description": "Remove a temporary card restriction after the customer confirms the triggering activity.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "restriction_id": {
+              "type": "string",
+              "description": "Restriction to resolve."
+            },
+            "confirmed_transaction_ids": {
+              "type": "array",
+              "description": "Transactions the customer confirmed.",
+              "items": {
+                "type": "string",
+                "description": "Transaction identifier."
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "customer_id",
+            "restriction_id",
+            "confirmed_transaction_ids"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "create_travel_notice",
+        "description": "Add a travel notice without promising that every future authorization will be approved.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "destinations": {
+              "type": "array",
+              "description": "Travel destinations.",
+              "items": {
+                "type": "string",
+                "description": "City, region, or country."
+              },
+              "minItems": 1
+            },
+            "return_date": {
+              "type": "string",
+              "description": "Customer-stated return date."
+            }
+          },
+          "required": [
+            "customer_id",
+            "destinations",
+            "return_date"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_referrals",
+        "description": "Retrieve referral invitations, offer terms, qualification state, and posting state without exposing the referred person's private transactions.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Referring customer identifier."
+            },
+            "referral_id": {
+              "type": "string",
+              "description": "Optional referral identifier."
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_credit_card_transactions",
+        "description": "Retrieve candidate credit-card transactions for a verified customer using amount, descriptor, date, or card filters.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Optional last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "amount": {
+              "type": "number",
+              "description": "Optional exact transaction amount.",
+              "minimum": 0
+            },
+            "descriptor_contains": {
+              "type": "string",
+              "description": "Optional descriptor text."
+            },
+            "posted_date": {
+              "type": "string",
+              "description": "Optional posted date or customer-relative date."
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "create_secure_self_service_session",
+        "description": "Issue a secure customer-controlled workflow session. Issuing a session does not submit an application or claim.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "workflow": {
+              "type": "string",
+              "description": "Self-service workflow.",
+              "enum": [
+                "card_application",
+                "referral_status",
+                "transaction_dispute"
+              ]
+            },
+            "resource_id": {
+              "type": "string",
+              "description": "Related product, referral, or transaction identifier."
+            },
+            "delivery_channels": {
+              "type": "array",
+              "description": "Authorized delivery channels.",
+              "items": {
+                "type": "string",
+                "description": "Delivery channel.",
+                "enum": [
+                  "secure_message",
+                  "email_notification"
+                ]
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "customer_id",
+            "workflow",
+            "resource_id",
+            "delivery_channels"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_secure_self_service_session",
+        "description": "Read whether an issued self-service session is open, saved, submitted, expired, or closed.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "session_id": {
+              "type": "string",
+              "description": "Self-service session identifier."
+            }
+          },
+          "required": [
+            "customer_id",
+            "session_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "send_secure_notification",
+        "description": "Send a notification that points the customer to a secure in-account resource without placing a working secure link in ordinary email.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "related_resource_id": {
+              "type": "string",
+              "description": "Secure resource identifier."
+            },
+            "channel": {
+              "type": "string",
+              "description": "Notification channel.",
+              "enum": [
+                "email",
+                "sms"
+              ]
+            },
+            "template": {
+              "type": "string",
+              "description": "Approved notification template identifier."
+            }
+          },
+          "required": [
+            "customer_id",
+            "related_resource_id",
+            "channel",
+            "template"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "transfer_to_specialist",
+        "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "reason": {
+              "type": "string",
+              "description": "Why the transfer is required."
+            },
+            "summary": {
+              "type": "string",
+              "description": "Context already collected so the customer does not repeat it."
+            }
+          },
+          "required": [
+            "reason",
+            "summary"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    ],
+    "parallel_tool_calls": false
+  },
+  "event_metadata": [
+    {
+      "event_index": 1,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 0.16,
+        "end_seconds": 6.06
+      }
+    },
+    {
+      "event_index": 2,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 7.74,
+        "end_seconds": 25.06
+      }
+    },
+    {
+      "event_index": 3,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 26.28,
+        "end_seconds": 40.12
+      }
+    },
+    {
+      "event_index": 4,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 41.2,
+        "end_seconds": 52.36
+      }
+    },
+    {
+      "event_index": 5,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 53.9,
+        "end_seconds": 56.36
+      }
+    },
+    {
+      "event_index": 6,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 58.1,
+        "end_seconds": 63.84
+      }
+    },
+    {
+      "event_index": 7,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 65.86,
+        "end_seconds": 69.1
+      }
+    },
+    {
+      "event_index": 8,
+      "kind": "function_call",
+      "call_id": "bc-001",
+      "source": "transcripts/transcript.txt",
+      "source_label": "find the customer by account ID",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 69.1,
+        "end_seconds": 69.7,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 10,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 70.2,
+        "end_seconds": 78.12
+      }
+    },
+    {
+      "event_index": 11,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 77.76,
+        "end_seconds": 86.56
+      }
+    },
+    {
+      "event_index": 12,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 88.22,
+        "end_seconds": 91.62
+      }
+    },
+    {
+      "event_index": 13,
+      "kind": "function_call",
+      "call_id": "bc-002",
+      "source": "transcripts/transcript.txt",
+      "source_label": "retrieve the current time for verification records",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 90.42,
+        "end_seconds": 91.02,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 15,
+      "kind": "function_call",
+      "call_id": "bc-003",
+      "source": "transcripts/transcript.txt",
+      "source_label": "record completed identity verification",
+      "annotation_confidence": "high",
+      "state_effect": "audit_record_created",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 91.02,
+        "end_seconds": 91.62,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 17,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 92.08,
+        "end_seconds": 93.0
+      }
+    },
+    {
+      "event_index": 18,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 119.12,
+        "end_seconds": 122.88
+      }
+    },
+    {
+      "event_index": 19,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 124.68,
+        "end_seconds": 132.44
+      }
+    },
+    {
+      "event_index": 20,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 133.42,
+        "end_seconds": 146.54
+      }
+    },
+    {
+      "event_index": 21,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 147.48,
+        "end_seconds": 148.07999999999998
+      }
+    },
+    {
+      "event_index": 22,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 149.07999999999998,
+        "end_seconds": 152.56
+      }
+    },
+    {
+      "event_index": 23,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 205.72,
+        "end_seconds": 211.32
+      }
+    },
+    {
+      "event_index": 24,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 212.94,
+        "end_seconds": 214.3
+      }
+    },
+    {
+      "event_index": 25,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 216.27,
+        "end_seconds": 219.48
+      }
+    },
+    {
+      "event_index": 26,
+      "kind": "function_call",
+      "call_id": "bc-004",
+      "source": "transcripts/transcript.txt",
+      "source_label": "change the customer email address",
+      "annotation_confidence": "high",
+      "state_effect": "customer_email_updated",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 219.48,
+        "end_seconds": 220.08,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 28,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 220.22,
+        "end_seconds": 228.36
+      }
+    },
+    {
+      "event_index": 29,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 229.57999999999998,
+        "end_seconds": 231.8
+      }
+    },
+    {
+      "event_index": 30,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 233.07999999999998,
+        "end_seconds": 238.74
+      }
+    },
+    {
+      "event_index": 31,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 241.08,
+        "end_seconds": 254.18
+      }
+    },
+    {
+      "event_index": 32,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 255.5,
+        "end_seconds": 257.78
+      }
+    },
+    {
+      "event_index": 33,
+      "kind": "function_call",
+      "call_id": "bc-005",
+      "source": "transcripts/transcript.txt",
+      "source_label": "search current card products by keyword",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 257.78,
+        "end_seconds": 258.38,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 35,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 292.36,
+        "end_seconds": 313.48
+      }
+    },
+    {
+      "event_index": 36,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 315.75,
+        "end_seconds": 318.1
+      }
+    },
+    {
+      "event_index": 37,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 319.62,
+        "end_seconds": 323.88
+      }
+    },
+    {
+      "event_index": 38,
+      "kind": "function_call",
+      "call_id": "bc-006",
+      "source": "transcripts/transcript.txt",
+      "source_label": "search card benefits using semantic similarity",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 323.88,
+        "end_seconds": 324.48,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 40,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 326.78,
+        "end_seconds": 337.5
+      }
+    },
+    {
+      "event_index": 41,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 338.98,
+        "end_seconds": 342.75
+      }
+    },
+    {
+      "event_index": 42,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 343.76,
+        "end_seconds": 346.86
+      }
+    },
+    {
+      "event_index": 43,
+      "kind": "function_call",
+      "call_id": "bc-007",
+      "source": "transcripts/transcript.txt",
+      "source_label": "search welcome-bonus terms using semantic similarity",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 346.86,
+        "end_seconds": 347.46,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 45,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 350.72,
+        "end_seconds": 370.65
+      }
+    },
+    {
+      "event_index": 46,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 372.13,
+        "end_seconds": 377.35
+      }
+    },
+    {
+      "event_index": 47,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 376.95,
+        "end_seconds": 385.71
+      }
+    },
+    {
+      "event_index": 48,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 387.37,
+        "end_seconds": 393.23
+      }
+    },
+    {
+      "event_index": 49,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 394.03,
+        "end_seconds": 399.79
+      }
+    },
+    {
+      "event_index": 50,
+      "kind": "function_call",
+      "call_id": "bc-008",
+      "source": "transcripts/transcript.txt",
+      "source_label": "provide the secure card-application tool",
+      "annotation_confidence": "high",
+      "state_effect": "self_service_session_issued",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 399.79,
+        "end_seconds": 400.39,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 52,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 404.1,
+        "end_seconds": 406.01
+      }
+    },
+    {
+      "event_index": 53,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 406.97,
+        "end_seconds": 413.75
+      }
+    },
+    {
+      "event_index": 54,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 415.29,
+        "end_seconds": 417.9
+      }
+    },
+    {
+      "event_index": 55,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 419.28,
+        "end_seconds": 421.38
+      }
+    },
+    {
+      "event_index": 56,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 422.29,
+        "end_seconds": 436.05
+      }
+    },
+    {
+      "event_index": 57,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 438.11,
+        "end_seconds": 441.61
+      }
+    },
+    {
+      "event_index": 58,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 442.17,
+        "end_seconds": 463.81
+      }
+    },
+    {
+      "event_index": 59,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 465.88,
+        "end_seconds": 468.37
+      }
+    },
+    {
+      "event_index": 60,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 469.69,
+        "end_seconds": 477.13
+      }
+    },
+    {
+      "event_index": 61,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 478.90999999999997,
+        "end_seconds": 487.73
+      }
+    },
+    {
+      "event_index": 62,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 489.11,
+        "end_seconds": 501.35
+      }
+    },
+    {
+      "event_index": 63,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 502.49,
+        "end_seconds": 508.31
+      }
+    },
+    {
+      "event_index": 64,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 509.55,
+        "end_seconds": 530.67
+      }
+    },
+    {
+      "event_index": 65,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 529.98,
+        "end_seconds": 533.95
+      }
+    },
+    {
+      "event_index": 66,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 535.19,
+        "end_seconds": 538.62
+      }
+    },
+    {
+      "event_index": 67,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 539.73,
+        "end_seconds": 543.65
+      }
+    },
+    {
+      "event_index": 68,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 546.03,
+        "end_seconds": 551.17
+      }
+    },
+    {
+      "event_index": 69,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 553.13,
+        "end_seconds": 565.27
+      }
+    },
+    {
+      "event_index": 70,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 560.59,
+        "end_seconds": 572.77
+      }
+    },
+    {
+      "event_index": 71,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 573.11,
+        "end_seconds": 580.61
+      }
+    },
+    {
+      "event_index": 72,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 582.85,
+        "end_seconds": 587.17
+      }
+    },
+    {
+      "event_index": 73,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 588.41,
+        "end_seconds": 605.47
+      }
+    },
+    {
+      "event_index": 74,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 607.37,
+        "end_seconds": 612.42
+      }
+    },
+    {
+      "event_index": 75,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 613.51,
+        "end_seconds": 622.09
+      }
+    },
+    {
+      "event_index": 76,
+      "kind": "speech",
+      "speaker": "Johnny",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 622.81,
+        "end_seconds": 624.63
+      }
+    },
+    {
+      "event_index": 77,
+      "kind": "speech",
+      "speaker": "Maya",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 625.19,
+        "end_seconds": 626.39
+      }
+    }
+  ]
+}

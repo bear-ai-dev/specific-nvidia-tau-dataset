@@ -1,0 +1,2059 @@
+{
+  "schema_version": "0.1.0",
+  "format": "nvidia_responses_api_full_trajectory",
+  "trajectory_id": 1,
+  "conversation_id": "banking-referral-missing-reward",
+  "domain": "banking",
+  "responses_create_params": {
+    "input": [
+      {
+        "role": "system",
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\n<policy>\n# Banking policy\n\nResolve one customer and complete the scenario's required identity checks before exposing account details or making profile/card changes. Never request or store a full card number, password, or one-time code in tool arguments.\n\nEmail changes require a verified profile and successful confirmation to a trusted channel. Explain transition notices and direct customers to the secure banking site for unexpected prompts.\n\nFor card declines, confirm the triggering activity before resolving a temporary restriction. Explain available-credit and merchant-hold constraints; removing a restriction does not guarantee approval. A travel notice is informational and also does not guarantee approval.\n\nReferral support may expose the referring customer's reward state, but not the referred person's purchases, balance, or private account data. State qualification and posting windows precisely.\n\nFor unfamiliar transactions, review household and saved-wallet activity before a fraud submission. An issued dispute session is not a filed claim; only the customer's Submit action creates a claim. Never promise provisional credit.\n\nCard product comparisons must come from current published terms. The customer completes and certifies any application. Opening or saving a card-application session does not submit it or authorize a credit pull. Agents cannot promise approval or override underwriting.\n</policy>\n\nTry to be helpful and always follow the policy."
+      },
+      {
+        "id": "msg_0001_0000",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "What can I help you with?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Hi. I referred my sister for one of your cards. She was approved, and the 100 dollars bonus never showed up. Honestly, a little annoyed. I've checked the app 3 times, and it just keeps saying pending."
+      },
+      {
+        "id": "msg_0001_0002",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "I see. I can completely get why that's frustrating. Let's pull up the referral and see exactly where it's getting held up. May I have your full name?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Daniel Brooks. Brooks, B as in Boston, R-O-O-K-S."
+      },
+      {
+        "id": "msg_0001_0004",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Awesome. Thank you. What email address is on your profile?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "daniel.brooks17@gmail.com."
+      },
+      {
+        "id": "msg_0001_0006",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Uh, just give me a moment while I pull that up."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"email\":\"daniel.brooks17@gmail.com\"}",
+        "call_id": "br-001",
+        "name": "lookup_customer",
+        "type": "function_call",
+        "id": "br-001",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "br-001",
+        "output": "\n\n{\"customer_id\":\"customer-daniel-brooks\",\"match\":\"unique\"}"
+      },
+      {
+        "arguments": "{}",
+        "call_id": "br-002",
+        "name": "get_current_time",
+        "type": "function_call",
+        "id": "br-002",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "br-002",
+        "output": "\n\n{\"timestamp\":\"2026-08-28T09:09:00\",\"timezone\":\"not_spoken\"}"
+      },
+      {
+        "id": "msg_0001_0007",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right. I'm recording the verification time at 9:09 AM,"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0001_0008",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "uh, the 28th of August 2026. I'll ask 2 questions for your profile. Please don't provide a full card number, okay?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah, go ahead."
+      },
+      {
+        "id": "msg_0001_0010",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "What is your billing zip and the month and day of birth?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "2, 7, 6, 0, 9, October 12th."
+      },
+      {
+        "id": "msg_0001_0012",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Hello?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "2, 7, 6, 0, 9, October 12th."
+      },
+      {
+        "id": "msg_0001_0014",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right. I'm checking that now. This may take a few seconds, okay?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"customer-daniel-brooks\",\"methods\":[\"billing_zip\",\"date_of_birth\"],\"verified_at\":\"2026-08-28T09:09:00\"}",
+        "call_id": "br-003",
+        "name": "log_identity_verification",
+        "type": "function_call",
+        "id": "br-003",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "br-003",
+        "output": "\n\n{\"verification_status\":\"passed\"}"
+      },
+      {
+        "id": "msg_0001_0015",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right, thanks. You're verified. About when did your sister apply?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "August 3rd. Her name is Alicia Brooks. She got the card maybe 10 days ago."
+      },
+      {
+        "id": "msg_0001_0017",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, let me look at what the system has on that."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"customer-daniel-brooks\"}",
+        "call_id": "br-004",
+        "name": "get_referrals",
+        "type": "function_call",
+        "id": "br-004",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "br-004",
+        "output": "\n\n{\"referrals\":[{\"referral_id\":\"RF8241\",\"invited_at\":\"August 2\",\"application_status\":\"approved\",\"qualification_status\":\"purchase_pending\",\"offer\":\"$100 statement credit\"}]}"
+      },
+      {
+        "id": "msg_0001_0018",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "I see an invitation sent August 2nd to an email beginning"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0001_0019",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "a-brooks. The referral status says approved. Purchase requirement pending."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "She told me she used it for groceries."
+      },
+      {
+        "id": "msg_0001_0021",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "The referral record does not show her private transactions. Uh, I'm going to check the published terms for what qualifies and when the reward posts."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0001_0022",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, hang on one second while I update it for you. Okay."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"query\":\"referral qualifying purchase rules and reward posting time\",\"search_mode\":\"keyword\"}",
+        "call_id": "br-005",
+        "name": "search_policy_knowledge",
+        "type": "function_call",
+        "id": "br-005",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "br-005",
+        "output": "\n\n{\"qualifying_purchase_window_days\":90,\"posting_window\":\"up to two billing cycles after qualifying purchase posts\",\"excluded\":[\"cash advances\",\"balance transfers\",\"fees\",\"returned purchases\"]}"
+      },
+      {
+        "id": "msg_0001_0023",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "The current terms require the referred customer to make a qualifying purchase within 90 days. The bonus can take up to 2 billing cycles after that purchase posts."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "2 billing cycles? The banner made it sound immediate. I thought I would have gotten it by now."
+      },
+      {
+        "id": "msg_0001_0025",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "I understand why that feels slow, but approval alone does not trigger the reward, and I cannot see or disclose your sister's purchase history from your account."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Can you at least tell me if the 100 dollars is still the offer?"
+      },
+      {
+        "id": "msg_0001_0027",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, yeah. Give me just a moment while I pull that up, okay?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"query\":\"offer amount and deadline for referral RF8241\",\"search_mode\":\"semantic\"}",
+        "call_id": "br-006",
+        "name": "search_policy_knowledge",
+        "type": "function_call",
+        "id": "br-006",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "br-006",
+        "output": "\n\n{\"offer\":\"$100 statement credit\",\"deadline_status\":\"not_passed\",\"exact_deadline\":\"available_in_tracker\"}"
+      },
+      {
+        "id": "msg_0001_0028",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yes. Your invitation was created under the 100 dollars statement credit offer. If her qualifying purchase posted, the deadline has not passed."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "How am I supposed to track it without calling every week?"
+      },
+      {
+        "id": "msg_0001_0030",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "I can send you a reference, uh, referral status tool. It shows invite approval, qualification, and reward posting stages without exposing your sister's account details."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0001_0031",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right, I'm gonna check that now. This may take a few seconds, okay?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"customer-daniel-brooks\",\"workflow\":\"referral_status\",\"resource_id\":\"RF8241\",\"delivery_channels\":[\"secure_message\"]}",
+        "call_id": "br-007",
+        "name": "create_secure_self_service_session",
+        "type": "function_call",
+        "id": "br-007",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "br-007",
+        "output": "\n\n{\"session_id\":\"session-referral-RF8241\",\"status\":\"issued\",\"visible_stages\":[\"invite\",\"approval\",\"qualification\",\"reward_posting\"]}"
+      },
+      {
+        "id": "msg_0001_0032",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. I just sent the tracker to your secure message center."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, I'm opening it."
+      },
+      {
+        "role": "user",
+        "content": "It says purchase qualification pending. So that's the same thing you see?"
+      },
+      {
+        "id": "msg_0001_0035",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Correct. If it remains pending after 2 billing cycles from her purchase, contact us again and reference referral RF8241."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Can you email the link, too?"
+      },
+      {
+        "id": "msg_0001_0037",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "For security, the working tool stays inside online banking. Uh, I can send an email notification telling you a secure message is waiting."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, do that."
+      },
+      {
+        "id": "msg_0001_0039",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Done. All right. To recap, the referral is attached to the 100 dollars offer. Approval is recorded. Purchase qualification is still pending, and the reward may take up to 2 billing cycles after a qualifying purchase posts."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"customer-daniel-brooks\",\"related_resource_id\":\"session-referral-RF8241\",\"channel\":\"email\",\"template\":\"secure_message_waiting\"}",
+        "call_id": "br-008",
+        "name": "send_secure_notification",
+        "type": "function_call",
+        "id": "br-008",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "br-008",
+        "output": "\n\n{\"status\":\"sent\",\"contains_working_secure_link\":false}"
+      },
+      {
+        "role": "user",
+        "content": "All right. At least I know it didn't disappear."
+      },
+      {
+        "id": "msg_0001_0041",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Exactly. I hope that's the case. Uh, keep the tracker and reference number. Is there anything else?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Um, [lip smack] no, that's pretty much it. I'm looking at the tracker now. Does pending mean Alisa did something wrong or that she hasn't paid her balance this cycle yet?"
+      },
+      {
+        "id": "msg_0001_0043",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Not necessarily. Uh, it could mean the qualifying purchase has not posted, the referral match is still processing, or the reward window has not reached its posting stage. The tracker deliberately does not reveal which purchases she made."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "She used a different email on the application than the one I invite- invited. Could that break the match?"
+      },
+      {
+        "id": "msg_0001_0045",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "It could delay automated matching. The referral record already shows approved, so the application was associated successfully. I would not ask her to reapply; duplicate applications can create"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0001_0046",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "a different problem."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, yeah, because she was about to try it again."
+      },
+      {
+        "id": "msg_0001_0048",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah, please tell her not to. She should use her own secure account for questions about her card. I can discuss your reward, but not her balance, purchases, or approval details."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Understood. The tracker has a little question mark next to qualifying purchase."
+      },
+      {
+        "id": "msg_0001_0050",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Open that description and read the 1st sentence to me."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "It says, \"Purchases must be eligible and fully posted, not returned or cash-like.\""
+      },
+      {
+        "id": "msg_0001_0052",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Correct. Cash advances, balance transfers, fees, and returned purchases do not qualify under the terms I found."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "She bought cro- groceries, so that sounds eligible."
+      },
+      {
+        "id": "msg_0001_0054",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "It generally would, uh, assuming it posted to the referred account within the offer window. I still cannot certify her private transaction from your profile."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Fair. Can you give me the dates again?"
+      },
+      {
+        "id": "msg_0001_0056",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Invitation, August 2nd. Application approval is recorded. The qualifying purchase stage remains pending after an eligible purchase post. Allow up to 2 billing cycles for the 100 dollars statement credit."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "And December isn't the deadline?"
+      },
+      {
+        "id": "msg_0001_0058",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "The tracker will show that the actual deadline tied to the invitation. Use that date rather than estimating from today, please."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "All right, sorry. Someone just walked into my office. I'm writing to her, \"Don't reapply.\""
+      },
+      {
+        "id": "msg_0001_0060",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "That is correct. Okay. Please keep referral RF8241 and check the secure tracker for more updates."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0001_0061",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Thank you."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "name": "lookup_customer",
+        "description": "Find one banking customer using a stable customer identifier or verified profile attribute.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "account_id": {
+              "type": "string",
+              "description": "Customer account identifier."
+            },
+            "full_name": {
+              "type": "string",
+              "description": "Customer full name."
+            },
+            "email": {
+              "type": "string",
+              "description": "Email on the profile.",
+              "format": "email"
+            },
+            "account_match": {
+              "type": "string",
+              "description": "Trusted calling-channel match when available.",
+              "enum": [
+                "caller_phone"
+              ]
+            },
+            "billing_zip": {
+              "type": "string",
+              "description": "Billing ZIP collected for the lookup or verification."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits collected for the lookup or verification.",
+              "pattern": "^[0-9]{4}$"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_current_time",
+        "description": "Return the authoritative current timestamp for an audit or verification record.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "log_identity_verification",
+        "description": "Record that the required identity checks succeeded; never store full card or one-time-code values in the call.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "methods": {
+              "type": "array",
+              "description": "Verification checks completed.",
+              "items": {
+                "type": "string",
+                "description": "A verification method.",
+                "enum": [
+                  "billing_zip",
+                  "mobile_last4",
+                  "date_of_birth",
+                  "one_time_code"
+                ]
+              },
+              "minItems": 1
+            },
+            "verified_at": {
+              "type": "string",
+              "description": "Authoritative verification timestamp, if available."
+            }
+          },
+          "required": [
+            "customer_id",
+            "methods"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "update_customer_email",
+        "description": "Change the email on a verified customer profile after the required confirmation flow succeeds.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "new_email": {
+              "type": "string",
+              "description": "New customer email.",
+              "format": "email"
+            },
+            "confirmation_method": {
+              "type": "string",
+              "description": "How the change was confirmed.",
+              "enum": [
+                "one_time_code",
+                "secure_message",
+                "in_person"
+              ]
+            }
+          },
+          "required": [
+            "customer_id",
+            "new_email",
+            "confirmation_method"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "search_policy_knowledge",
+        "description": "Search current product or policy knowledge. Search mode is an argument, not a separate business function.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Plain-language policy or product question."
+            },
+            "search_mode": {
+              "type": "string",
+              "description": "Retrieval strategy.",
+              "enum": [
+                "keyword",
+                "semantic"
+              ]
+            },
+            "as_of": {
+              "type": "string",
+              "description": "Optional date or timestamp for time-sensitive terms."
+            }
+          },
+          "required": [
+            "query",
+            "search_mode"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_card_account",
+        "description": "Retrieve card status, available credit, recent authorizations, declines, restrictions, and travel notices in one account read.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "include": {
+              "type": "array",
+              "description": "Requested account sections.",
+              "items": {
+                "type": "string",
+                "description": "Account section.",
+                "enum": [
+                  "status",
+                  "available_credit",
+                  "authorizations",
+                  "declines",
+                  "restrictions",
+                  "travel_notices"
+                ]
+              },
+              "minItems": 0
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "resolve_card_restriction",
+        "description": "Remove a temporary card restriction after the customer confirms the triggering activity.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "restriction_id": {
+              "type": "string",
+              "description": "Restriction to resolve."
+            },
+            "confirmed_transaction_ids": {
+              "type": "array",
+              "description": "Transactions the customer confirmed.",
+              "items": {
+                "type": "string",
+                "description": "Transaction identifier."
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "customer_id",
+            "restriction_id",
+            "confirmed_transaction_ids"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "create_travel_notice",
+        "description": "Add a travel notice without promising that every future authorization will be approved.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "destinations": {
+              "type": "array",
+              "description": "Travel destinations.",
+              "items": {
+                "type": "string",
+                "description": "City, region, or country."
+              },
+              "minItems": 1
+            },
+            "return_date": {
+              "type": "string",
+              "description": "Customer-stated return date."
+            }
+          },
+          "required": [
+            "customer_id",
+            "destinations",
+            "return_date"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_referrals",
+        "description": "Retrieve referral invitations, offer terms, qualification state, and posting state without exposing the referred person's private transactions.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Referring customer identifier."
+            },
+            "referral_id": {
+              "type": "string",
+              "description": "Optional referral identifier."
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_credit_card_transactions",
+        "description": "Retrieve candidate credit-card transactions for a verified customer using amount, descriptor, date, or card filters.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Optional last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "amount": {
+              "type": "number",
+              "description": "Optional exact transaction amount.",
+              "minimum": 0
+            },
+            "descriptor_contains": {
+              "type": "string",
+              "description": "Optional descriptor text."
+            },
+            "posted_date": {
+              "type": "string",
+              "description": "Optional posted date or customer-relative date."
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "create_secure_self_service_session",
+        "description": "Issue a secure customer-controlled workflow session. Issuing a session does not submit an application or claim.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "workflow": {
+              "type": "string",
+              "description": "Self-service workflow.",
+              "enum": [
+                "card_application",
+                "referral_status",
+                "transaction_dispute"
+              ]
+            },
+            "resource_id": {
+              "type": "string",
+              "description": "Related product, referral, or transaction identifier."
+            },
+            "delivery_channels": {
+              "type": "array",
+              "description": "Authorized delivery channels.",
+              "items": {
+                "type": "string",
+                "description": "Delivery channel.",
+                "enum": [
+                  "secure_message",
+                  "email_notification"
+                ]
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "customer_id",
+            "workflow",
+            "resource_id",
+            "delivery_channels"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_secure_self_service_session",
+        "description": "Read whether an issued self-service session is open, saved, submitted, expired, or closed.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "session_id": {
+              "type": "string",
+              "description": "Self-service session identifier."
+            }
+          },
+          "required": [
+            "customer_id",
+            "session_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "send_secure_notification",
+        "description": "Send a notification that points the customer to a secure in-account resource without placing a working secure link in ordinary email.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "related_resource_id": {
+              "type": "string",
+              "description": "Secure resource identifier."
+            },
+            "channel": {
+              "type": "string",
+              "description": "Notification channel.",
+              "enum": [
+                "email",
+                "sms"
+              ]
+            },
+            "template": {
+              "type": "string",
+              "description": "Approved notification template identifier."
+            }
+          },
+          "required": [
+            "customer_id",
+            "related_resource_id",
+            "channel",
+            "template"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "transfer_to_specialist",
+        "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "reason": {
+              "type": "string",
+              "description": "Why the transfer is required."
+            },
+            "summary": {
+              "type": "string",
+              "description": "Context already collected so the customer does not repeat it."
+            }
+          },
+          "required": [
+            "reason",
+            "summary"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    ],
+    "parallel_tool_calls": false
+  },
+  "event_metadata": [
+    {
+      "event_index": 1,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 0.08,
+        "end_seconds": 1.52
+      }
+    },
+    {
+      "event_index": 2,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 1.72,
+        "end_seconds": 13.7
+      }
+    },
+    {
+      "event_index": 3,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 15.46,
+        "end_seconds": 21.96
+      }
+    },
+    {
+      "event_index": 4,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 23.1,
+        "end_seconds": 30.02
+      }
+    },
+    {
+      "event_index": 5,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 32.2,
+        "end_seconds": 34.58
+      }
+    },
+    {
+      "event_index": 6,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 36.64,
+        "end_seconds": 41.06
+      }
+    },
+    {
+      "event_index": 7,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 43.04,
+        "end_seconds": 46.56
+      }
+    },
+    {
+      "event_index": 8,
+      "kind": "function_call",
+      "call_id": "br-001",
+      "source": "transcripts/transcript.txt",
+      "source_label": "find the customer by email",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 46.56,
+        "end_seconds": 47.16,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 10,
+      "kind": "function_call",
+      "call_id": "br-002",
+      "source": "transcripts/transcript.txt",
+      "source_label": "retrieve the current time for verification records",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 56.5,
+        "end_seconds": 57.0,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 12,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 57.14,
+        "end_seconds": 60.64
+      }
+    },
+    {
+      "event_index": 13,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 62.12,
+        "end_seconds": 68.72
+      }
+    },
+    {
+      "event_index": 14,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 70.3,
+        "end_seconds": 71.02
+      }
+    },
+    {
+      "event_index": 15,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 78.84,
+        "end_seconds": 83.02
+      }
+    },
+    {
+      "event_index": 16,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 85.24,
+        "end_seconds": 89.86
+      }
+    },
+    {
+      "event_index": 17,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 94.92,
+        "end_seconds": 95.18
+      }
+    },
+    {
+      "event_index": 18,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 98.38,
+        "end_seconds": 102.03
+      }
+    },
+    {
+      "event_index": 19,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 106.74000000000001,
+        "end_seconds": 109.8
+      }
+    },
+    {
+      "event_index": 20,
+      "kind": "function_call",
+      "call_id": "br-003",
+      "source": "transcripts/transcript.txt",
+      "source_label": "record completed identity verification",
+      "annotation_confidence": "high",
+      "state_effect": "audit_record_created",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 130.3,
+        "end_seconds": 130.8,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 22,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 130.98,
+        "end_seconds": 133.76
+      }
+    },
+    {
+      "event_index": 23,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 135.12,
+        "end_seconds": 141.22
+      }
+    },
+    {
+      "event_index": 24,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 142.84,
+        "end_seconds": 144.44
+      }
+    },
+    {
+      "event_index": 25,
+      "kind": "function_call",
+      "call_id": "br-004",
+      "source": "transcripts/transcript.txt",
+      "source_label": "retrieve referrals created by the customer",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 144.44,
+        "end_seconds": 145.0,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 27,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 147.5,
+        "end_seconds": 150.91
+      }
+    },
+    {
+      "event_index": 28,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 152.38,
+        "end_seconds": 157.12
+      }
+    },
+    {
+      "event_index": 29,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 158.44,
+        "end_seconds": 160.68
+      }
+    },
+    {
+      "event_index": 30,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 165.14,
+        "end_seconds": 172.88
+      }
+    },
+    {
+      "event_index": 31,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 177.64,
+        "end_seconds": 179.94
+      }
+    },
+    {
+      "event_index": 32,
+      "kind": "function_call",
+      "call_id": "br-005",
+      "source": "transcripts/transcript.txt",
+      "source_label": "review referral qualification and reward-posting terms",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 179.94,
+        "end_seconds": 180.44,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 34,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 198.44,
+        "end_seconds": 205.76
+      }
+    },
+    {
+      "event_index": 35,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 207.82,
+        "end_seconds": 214.12
+      }
+    },
+    {
+      "event_index": 36,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 214.12,
+        "end_seconds": 220.54
+      }
+    },
+    {
+      "event_index": 37,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 223.62,
+        "end_seconds": 226.7
+      }
+    },
+    {
+      "event_index": 38,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 228.48,
+        "end_seconds": 230.5
+      }
+    },
+    {
+      "event_index": 39,
+      "kind": "function_call",
+      "call_id": "br-006",
+      "source": "transcripts/transcript.txt",
+      "source_label": "confirm the referral offer and deadline",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 230.5,
+        "end_seconds": 231.0,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 41,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 241.3,
+        "end_seconds": 248.52
+      }
+    },
+    {
+      "event_index": 42,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 249.9,
+        "end_seconds": 252.54
+      }
+    },
+    {
+      "event_index": 43,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 253.7,
+        "end_seconds": 262.64
+      }
+    },
+    {
+      "event_index": 44,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 265.72,
+        "end_seconds": 268.24
+      }
+    },
+    {
+      "event_index": 45,
+      "kind": "function_call",
+      "call_id": "br-007",
+      "source": "transcripts/transcript.txt",
+      "source_label": "send the referral-status self-service tracker",
+      "annotation_confidence": "high",
+      "state_effect": "self_service_session_issued",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 268.24,
+        "end_seconds": 268.74,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 47,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 277.74,
+        "end_seconds": 280.14
+      }
+    },
+    {
+      "event_index": 48,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 281.98,
+        "end_seconds": 283.48
+      }
+    },
+    {
+      "event_index": 49,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 285.9,
+        "end_seconds": 292.5
+      }
+    },
+    {
+      "event_index": 50,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 292.5,
+        "end_seconds": 302.27
+      }
+    },
+    {
+      "event_index": 51,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 303.98,
+        "end_seconds": 305.26
+      }
+    },
+    {
+      "event_index": 52,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 306.8,
+        "end_seconds": 314.02
+      }
+    },
+    {
+      "event_index": 53,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 315.84,
+        "end_seconds": 316.68
+      }
+    },
+    {
+      "event_index": 54,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 320.88,
+        "end_seconds": 332.56
+      }
+    },
+    {
+      "event_index": 55,
+      "kind": "function_call",
+      "call_id": "br-008",
+      "source": "transcripts/transcript.txt",
+      "source_label": "customer asks for email notification; agent says Done",
+      "annotation_confidence": "medium",
+      "state_effect": "notification_sent",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          316.68,
+          320.88
+        ]
+      }
+    },
+    {
+      "event_index": 57,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 334.65999999999997,
+        "end_seconds": 337.26
+      }
+    },
+    {
+      "event_index": 58,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 338.44,
+        "end_seconds": 342.36
+      }
+    },
+    {
+      "event_index": 59,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 344.24,
+        "end_seconds": 354.36
+      }
+    },
+    {
+      "event_index": 60,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 355.62,
+        "end_seconds": 368.98
+      }
+    },
+    {
+      "event_index": 61,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 370.53,
+        "end_seconds": 377.79
+      }
+    },
+    {
+      "event_index": 62,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 379.99,
+        "end_seconds": 393.79
+      }
+    },
+    {
+      "event_index": 63,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 394.87,
+        "end_seconds": 395.49
+      }
+    },
+    {
+      "event_index": 64,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 397.47,
+        "end_seconds": 400.01
+      }
+    },
+    {
+      "event_index": 65,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 401.47,
+        "end_seconds": 409.07
+      }
+    },
+    {
+      "event_index": 66,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 410.83,
+        "end_seconds": 415.29
+      }
+    },
+    {
+      "event_index": 67,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 416.67,
+        "end_seconds": 418.57
+      }
+    },
+    {
+      "event_index": 68,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 419.88,
+        "end_seconds": 427.31
+      }
+    },
+    {
+      "event_index": 69,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 427.31,
+        "end_seconds": 432.83
+      }
+    },
+    {
+      "event_index": 70,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 434.21,
+        "end_seconds": 438.99
+      }
+    },
+    {
+      "event_index": 71,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 438.99,
+        "end_seconds": 449.01
+      }
+    },
+    {
+      "event_index": 72,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 449.01,
+        "end_seconds": 451.17
+      }
+    },
+    {
+      "event_index": 73,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 452.77,
+        "end_seconds": 465.21
+      }
+    },
+    {
+      "event_index": 74,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 466.67,
+        "end_seconds": 469.17
+      }
+    },
+    {
+      "event_index": 75,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 469.17,
+        "end_seconds": 474.89
+      }
+    },
+    {
+      "event_index": 76,
+      "kind": "speech",
+      "speaker": "Daniel",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 475.97,
+        "end_seconds": 481.75
+      }
+    },
+    {
+      "event_index": 77,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 483.07,
+        "end_seconds": 493.03
+      }
+    },
+    {
+      "event_index": 78,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 494.73,
+        "end_seconds": 495.09
+      }
+    }
+  ]
+}

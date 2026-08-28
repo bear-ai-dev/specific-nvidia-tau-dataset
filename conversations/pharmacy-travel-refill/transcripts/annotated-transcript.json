@@ -1,0 +1,1384 @@
+{
+  "schema_version": "0.1.0",
+  "format": "nvidia_responses_api_full_trajectory",
+  "trajectory_id": 4,
+  "conversation_id": "pharmacy-travel-refill",
+  "domain": "pharmacy",
+  "responses_create_params": {
+    "input": [
+      {
+        "role": "system",
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\n<policy>\n# Pharmacy support policy\n\nResolve the patient using name and date of birth before discussing a prescription. Confirm the requested medication.\n\nA valid prescription may still have a rejected payer claim. Request only the applicable override and make clear that the insurer can require the patient to participate. Rerun the claim only after an approval.\n\nDo not say a prescription is ready until the pharmacist's required verification is complete. Operational priority notes cannot bypass clinical review. Give realistic queue and store-closing information without guaranteeing completion.\n\nInventory checks do not reserve medication or transfer a prescription. Keep the current fill in place unless the patient authorizes a transfer. Use a verified notification destination for ready alerts.\n</policy>\n\nTry to be helpful and always follow the policy."
+      },
+      {
+        "id": "msg_0004_0000",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Oak Street Pharmacy. This is Aaron. How can I help you?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Hey, um, I- I'm calling about a prescription that was supposed to be ready this afternoon. Um, the app still, still says it's, um, being processed. I was wondering if you knew anything about that."
+      },
+      {
+        "id": "msg_0004_0002",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. I can check the status. What's your name and date of birth?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Um, Miles Carter. June 14th, uh, 1988."
+      },
+      {
+        "id": "msg_0004_0004",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Thank you."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0004_0005",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "And which medication are you expecting?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Um, the inhaler, uh, Albuterol. I think, uh, my doctor should have sent it this morning."
+      },
+      {
+        "id": "msg_0004_0007",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right. Give me a moment."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"full_name\":\"Miles Carter\",\"date_of_birth\":\"1988-06-14\"}",
+        "call_id": "ph-001",
+        "name": "lookup_patient",
+        "type": "function_call",
+        "id": "ph-001",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "ph-001",
+        "output": "\n\n{\"patient_id\":\"patient-miles-carter\",\"match\":\"unique\"}"
+      },
+      {
+        "id": "msg_0004_0008",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "I see the prescription. It's with me. It came in at 10:42, but it stopped at the insurance step."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"patient_id\":\"patient-miles-carter\",\"medication_name\":\"albuterol inhaler\"}",
+        "call_id": "ph-002",
+        "name": "get_prescription",
+        "type": "function_call",
+        "id": "ph-002",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "ph-002",
+        "output": "\n\n{\"prescription_id\":\"prescription-albuterol\",\"received_at\":\"10:42\",\"claim_status\":\"rejected_refill_too_soon\",\"prescription_valid\":true}"
+      },
+      {
+        "role": "user",
+        "content": "Um, what did- what do you mean, uh, insurance? The app didn't say anything about insurance or anything. It just said, um, that it was processing. Did I miss something?"
+      },
+      {
+        "id": "msg_0004_0010",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Um, yeah, so the app message is pretty general. The claim rejected because the plan thinks that the refill is too soon. Did you by any chance have or fill another inhaler recently?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Um, I- I think, I think I did it, uh, last month, but I left that one in a h- hotel room and I told the doctor's office that, um, when I was asking for a, uh, for a refill."
+      },
+      {
+        "id": "msg_0004_0012",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Give me one moment."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0004_0013",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "The new prescription is valid. I'm seeing that the issue here is the payment. We can ask the insurance for a lost medication override, but they may need to speak with you."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Uh, is there any way you can call them right now? I'm leaving town again tomorrow morning a- and I kinda need it. (concerned)"
+      },
+      {
+        "id": "msg_0004_0015",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. I can start it. One second. Before I do, do you need the inhaler tonight or do you have another one available with you?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Uh, I got, I got one at home with, um, maybe a f- a couple doses left, but I need the new one before I go on the trip."
+      },
+      {
+        "id": "msg_0004_0017",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Understood."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0004_0018",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Let me call the plan while you're on the line. It may take a couple minutes. Okay?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"prescription_id\":\"prescription-albuterol\",\"reason\":\"lost_medication\",\"urgency_context\":\"Patient leaves town tomorrow morning and needs the inhaler tonight\"}",
+        "call_id": "ph-003",
+        "name": "request_claim_override",
+        "type": "function_call",
+        "id": "ph-003",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "ph-003",
+        "output": "\n\n{\"override_id\":\"override-lost-medication\",\"status\":\"approved_one_time\"}"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Thank you."
+      },
+      {
+        "id": "msg_0004_0020",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Thank you for holding."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0004_0021",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "They approved a one-time lost medication override. I reran the claim and I'm seeing that your co-pay is $15."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"prescription_id\":\"prescription-albuterol\",\"override_id\":\"override-lost-medication\"}",
+        "call_id": "ph-004",
+        "name": "submit_prescription_claim",
+        "type": "function_call",
+        "id": "ph-004",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "ph-004",
+        "output": "\n\n{\"claim_status\":\"paid\",\"copay\":15}"
+      },
+      {
+        "role": "user",
+        "content": "Okay. Um, great. So is it, is it ready now?"
+      },
+      {
+        "id": "msg_0004_0023",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Um, not quite yet. The pharmacist on our side still has to check it. You're next in the queue and we're looking at about 30 minutes."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Um, when do you guys close? It closes at, on the pharmacy it's at, um, 7:00, right? Like it closes at 7:00?"
+      },
+      {
+        "id": "msg_0004_0025",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Our counter closes at 7:00 but the front store usually stays a lot open, uh, open a lot later."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Right. So it's, it's like, um, 6:15 now and I'm about 25 minutes away. Is that, is that, is that good? Is that fine?"
+      },
+      {
+        "id": "msg_0004_0027",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Well, I think if you leave after you get the ready text you should make it. I don't wanna tell you to come before the pharmacist finishes the check though."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. No, no, yeah. I, I get it. Uh, can you, can you make sure it doesn't get pushed to tomorrow though? Is that possible?"
+      },
+      {
+        "id": "msg_0004_0029",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "I can flag- Yeah. All good. I can flag it on my end that you're traveling and waiting for it tonight. I can't skip the pharmacist's verification, but it is already in the active queue."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"prescription_id\":\"prescription-albuterol\",\"priority_reason\":\"traveling; waiting for pickup tonight\"}",
+        "call_id": "ph-005",
+        "name": "update_prescription",
+        "type": "function_call",
+        "id": "ph-005",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "ph-005",
+        "output": "\n\n{\"status\":\"active_queue\",\"pharmacist_verification_required\":true,\"estimated_minutes\":30}"
+      },
+      {
+        "role": "user",
+        "content": "Oh, okay. That, that's great. Uh, what happens if I don't get the text by say like 6:45 or something like that? (relieved)"
+      },
+      {
+        "id": "msg_0004_0031",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Um, I would just call us back before you drive over. If there is a delay we can tell you whether another Oak Street location has it in-stock, but we'd have to transfer the prescription."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "And does that one also close at, on the counter at 7:00 or is it, is it later?"
+      },
+      {
+        "id": "msg_0004_0033",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "The Park Avenue store closes at 9:00 I believe. Let me check their stock so we know the backup."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"store_id\":\"park-avenue\",\"medication_id\":\"albuterol-inhaler\"}",
+        "call_id": "ph-006",
+        "name": "get_store_inventory",
+        "type": "function_call",
+        "id": "ph-006",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "ph-006",
+        "output": "\n\n{\"in_stock\":true,\"counter_closes_at\":\"21:00\",\"reserved\":false}"
+      },
+      {
+        "id": "msg_0004_0034",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "They show the same inhaler in-stock. I wouldn't transfer it yet because ours should be ready first."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Right. Yeah, yeah. Okay, yeah. We can, we can leave it there. Uh, let's, yeah, unless you, you can't finish it then no, we can transfer it. That's good. Thank you."
+      },
+      {
+        "id": "msg_0004_0036",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. That's what I'll do. I added the travel note and your mobile number is set for the ready alert."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"prescription_id\":\"prescription-albuterol\",\"notification_channel\":\"sms\",\"notification_destination_last4\":\"on_file\"}",
+        "call_id": "ph-007",
+        "name": "update_prescription",
+        "type": "function_call",
+        "id": "ph-007",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "ph-007",
+        "output": "\n\n{\"ready_alert\":\"enabled\",\"priority_note\":\"present\"}"
+      },
+      {
+        "role": "user",
+        "content": "Um, also, uh, can I, can I pay in the app before I get there?"
+      },
+      {
+        "id": "msg_0004_0038",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Uh, yeah. Once it moves to ready the app may offer pre-pay. If it doesn't you can just pay the $15 co-pay at pickup."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay. Thank you. Thank you. Thank you so much. I was worried the doctor never sent it, so I was kinda freaking out."
+      },
+      {
+        "id": "msg_0004_0040",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All good. No, no, we have it. Uh, the insurance issue is cleared. We're just waiting on the final pharmacy check."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "All right. Okay. Uh, I'll watch for the text and thanks for calling the insurance too."
+      },
+      {
+        "id": "msg_0004_0042",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Uh, you're welcome Miles. Call us by 6:45 if you haven't heard from us, okay?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, I will. Thank you. Have a, have a great rest of your shift."
+      },
+      {
+        "id": "msg_0004_0044",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "You too. Bye bye."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Bye bye."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "name": "lookup_patient",
+        "description": "Resolve one pharmacy patient after collecting the required identity attributes.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "full_name": {
+              "type": "string",
+              "description": "Patient full name."
+            },
+            "date_of_birth": {
+              "type": "string",
+              "description": "Patient date of birth."
+            }
+          },
+          "required": [
+            "full_name",
+            "date_of_birth"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_prescription",
+        "description": "Retrieve a patient's prescription, claim, queue, and notification status.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "patient_id": {
+              "type": "string",
+              "description": "Resolved patient identifier."
+            },
+            "medication_name": {
+              "type": "string",
+              "description": "Medication name or description."
+            }
+          },
+          "required": [
+            "patient_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "request_claim_override",
+        "description": "Request a payer decision for an eligible prescription-claim exception; the payer may require the patient to participate.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "prescription_id": {
+              "type": "string",
+              "description": "Prescription identifier."
+            },
+            "reason": {
+              "type": "string",
+              "description": "Override reason.",
+              "enum": [
+                "lost_medication",
+                "vacation_supply",
+                "dose_change",
+                "other"
+              ]
+            },
+            "urgency_context": {
+              "type": "string",
+              "description": "Relevant timing supplied by the patient."
+            }
+          },
+          "required": [
+            "prescription_id",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "submit_prescription_claim",
+        "description": "Submit or rerun a prescription claim after any required override is approved.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "prescription_id": {
+              "type": "string",
+              "description": "Prescription identifier."
+            },
+            "override_id": {
+              "type": "string",
+              "description": "Approved override identifier, when applicable."
+            }
+          },
+          "required": [
+            "prescription_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_store_inventory",
+        "description": "Check medication inventory at a specific pharmacy without reserving or transferring it.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "store_id": {
+              "type": "string",
+              "description": "Pharmacy location identifier."
+            },
+            "medication_id": {
+              "type": "string",
+              "description": "Medication/product identifier."
+            }
+          },
+          "required": [
+            "store_id",
+            "medication_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "update_prescription",
+        "description": "Update operational prescription fields such as priority context or notification channel; this cannot bypass pharmacist verification.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "prescription_id": {
+              "type": "string",
+              "description": "Prescription identifier."
+            },
+            "priority_reason": {
+              "type": "string",
+              "description": "Optional operational priority context."
+            },
+            "notification_channel": {
+              "type": "string",
+              "description": "Optional ready-alert channel.",
+              "enum": [
+                "sms",
+                "phone",
+                "email"
+              ]
+            },
+            "notification_destination_last4": {
+              "type": "string",
+              "description": "Optional masked destination digits."
+            }
+          },
+          "required": [
+            "prescription_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "transfer_to_specialist",
+        "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "reason": {
+              "type": "string",
+              "description": "Why the transfer is required."
+            },
+            "summary": {
+              "type": "string",
+              "description": "Context already collected so the customer does not repeat it."
+            }
+          },
+          "required": [
+            "reason",
+            "summary"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    ],
+    "parallel_tool_calls": false
+  },
+  "event_metadata": [
+    {
+      "event_index": 1,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 0.54,
+        "end_seconds": 3.18
+      }
+    },
+    {
+      "event_index": 2,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 4.18,
+        "end_seconds": 13.69
+      }
+    },
+    {
+      "event_index": 3,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 14.72,
+        "end_seconds": 18.44
+      }
+    },
+    {
+      "event_index": 4,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 19.1,
+        "end_seconds": 23.22
+      }
+    },
+    {
+      "event_index": 5,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 24.64,
+        "end_seconds": 24.92
+      }
+    },
+    {
+      "event_index": 6,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 26.42,
+        "end_seconds": 28.03
+      }
+    },
+    {
+      "event_index": 7,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 28.88,
+        "end_seconds": 34.019
+      }
+    },
+    {
+      "event_index": 8,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 35.2,
+        "end_seconds": 36.3
+      }
+    },
+    {
+      "event_index": 9,
+      "kind": "function_call",
+      "call_id": "ph-001",
+      "source": "transcripts/transcript.txt",
+      "source_label": "patient lookup implied before prescription retrieval",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          24.92,
+          35.2
+        ]
+      }
+    },
+    {
+      "event_index": 11,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 44.84,
+        "end_seconds": 52.02
+      }
+    },
+    {
+      "event_index": 12,
+      "kind": "function_call",
+      "call_id": "ph-002",
+      "source": "transcripts/transcript.txt",
+      "source_label": "open the prescription record",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 44.84,
+        "end_seconds": 52.02,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 14,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 52.18,
+        "end_seconds": 59.56
+      }
+    },
+    {
+      "event_index": 15,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 60.44,
+        "end_seconds": 71.98
+      }
+    },
+    {
+      "event_index": 16,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 73.36,
+        "end_seconds": 83.52
+      }
+    },
+    {
+      "event_index": 17,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 84.62,
+        "end_seconds": 85.78
+      }
+    },
+    {
+      "event_index": 18,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 89.5,
+        "end_seconds": 99.3
+      }
+    },
+    {
+      "event_index": 19,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 99.78999999999999,
+        "end_seconds": 105.97999999999999
+      }
+    },
+    {
+      "event_index": 20,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 106.02000000000001,
+        "end_seconds": 112.759
+      }
+    },
+    {
+      "event_index": 21,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 113.53999999999999,
+        "end_seconds": 119.1
+      }
+    },
+    {
+      "event_index": 22,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 120.22,
+        "end_seconds": 120.68
+      }
+    },
+    {
+      "event_index": 23,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 122.12,
+        "end_seconds": 126.6
+      }
+    },
+    {
+      "event_index": 24,
+      "kind": "function_call",
+      "call_id": "ph-003",
+      "source": "transcripts/transcript.txt",
+      "source_label": "contact the insurance plan for an override",
+      "annotation_confidence": "high",
+      "state_effect": "payer_override_approved",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 122.12,
+        "end_seconds": 126.6,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 26,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 126.66,
+        "end_seconds": 127.18
+      }
+    },
+    {
+      "event_index": 27,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 185.7,
+        "end_seconds": 186.95
+      }
+    },
+    {
+      "event_index": 28,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 187.549,
+        "end_seconds": 195.44
+      }
+    },
+    {
+      "event_index": 29,
+      "kind": "function_call",
+      "call_id": "ph-004",
+      "source": "transcripts/transcript.txt",
+      "source_label": "rerun the insurance claim",
+      "annotation_confidence": "high",
+      "state_effect": "claim_accepted",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 187.549,
+        "end_seconds": 195.44,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 31,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 196.42000000000002,
+        "end_seconds": 199.64
+      }
+    },
+    {
+      "event_index": 32,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 199.72,
+        "end_seconds": 208.14
+      }
+    },
+    {
+      "event_index": 33,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 208.26,
+        "end_seconds": 214.28
+      }
+    },
+    {
+      "event_index": 34,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 214.32,
+        "end_seconds": 219.18
+      }
+    },
+    {
+      "event_index": 35,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 220.38,
+        "end_seconds": 228.6
+      }
+    },
+    {
+      "event_index": 36,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 229.68,
+        "end_seconds": 237.07999999999998
+      }
+    },
+    {
+      "event_index": 37,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 238.07999999999998,
+        "end_seconds": 243.1
+      }
+    },
+    {
+      "event_index": 38,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 243.14,
+        "end_seconds": 255.68
+      }
+    },
+    {
+      "event_index": 39,
+      "kind": "function_call",
+      "call_id": "ph-005",
+      "source": "transcripts/transcript.txt",
+      "source_label": "add a travel-priority note",
+      "annotation_confidence": "high",
+      "state_effect": "prescription_priority_context_updated",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 243.14,
+        "end_seconds": 255.68,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 41,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 255.74,
+        "end_seconds": 262.079
+      }
+    },
+    {
+      "event_index": 42,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 262.12,
+        "end_seconds": 272.54
+      }
+    },
+    {
+      "event_index": 43,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 273.34000000000003,
+        "end_seconds": 277.69
+      }
+    },
+    {
+      "event_index": 44,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 279.65999999999997,
+        "end_seconds": 284.56
+      }
+    },
+    {
+      "event_index": 45,
+      "kind": "function_call",
+      "call_id": "ph-006",
+      "source": "transcripts/transcript.txt",
+      "source_label": "check alternate pharmacy inventory",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 279.66,
+        "end_seconds": 284.56,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 47,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 289.22,
+        "end_seconds": 296.08
+      }
+    },
+    {
+      "event_index": 48,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 296.84000000000003,
+        "end_seconds": 303.82
+      }
+    },
+    {
+      "event_index": 49,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 304.6,
+        "end_seconds": 310.5
+      }
+    },
+    {
+      "event_index": 50,
+      "kind": "function_call",
+      "call_id": "ph-007",
+      "source": "transcripts/transcript.txt",
+      "source_label": "update the prescription notification",
+      "annotation_confidence": "high",
+      "state_effect": "notification_preference_updated",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 304.6,
+        "end_seconds": 310.5,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 52,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 311.52,
+        "end_seconds": 314.4
+      }
+    },
+    {
+      "event_index": 53,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 316.06,
+        "end_seconds": 322.24
+      }
+    },
+    {
+      "event_index": 54,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 322.84,
+        "end_seconds": 328.12
+      }
+    },
+    {
+      "event_index": 55,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 328.68,
+        "end_seconds": 334.4
+      }
+    },
+    {
+      "event_index": 56,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 335.28,
+        "end_seconds": 338.64
+      }
+    },
+    {
+      "event_index": 57,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 340.3,
+        "end_seconds": 343.82
+      }
+    },
+    {
+      "event_index": 58,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 344.44,
+        "end_seconds": 347.44
+      }
+    },
+    {
+      "event_index": 59,
+      "kind": "speech",
+      "speaker": "Aaron",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 348.06,
+        "end_seconds": 349.0
+      }
+    },
+    {
+      "event_index": 60,
+      "kind": "speech",
+      "speaker": "Miles",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 349.0,
+        "end_seconds": 349.32
+      }
+    }
+  ]
+}

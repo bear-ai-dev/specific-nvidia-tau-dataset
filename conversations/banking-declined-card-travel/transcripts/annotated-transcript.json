@@ -1,0 +1,1640 @@
+{
+  "schema_version": "0.1.0",
+  "format": "nvidia_responses_api_full_trajectory",
+  "trajectory_id": 3,
+  "conversation_id": "banking-declined-card-travel",
+  "domain": "banking",
+  "responses_create_params": {
+    "input": [
+      {
+        "role": "system",
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\n<policy>\n# Banking policy\n\nResolve one customer and complete the scenario's required identity checks before exposing account details or making profile/card changes. Never request or store a full card number, password, or one-time code in tool arguments.\n\nEmail changes require a verified profile and successful confirmation to a trusted channel. Explain transition notices and direct customers to the secure banking site for unexpected prompts.\n\nFor card declines, confirm the triggering activity before resolving a temporary restriction. Explain available-credit and merchant-hold constraints; removing a restriction does not guarantee approval. A travel notice is informational and also does not guarantee approval.\n\nReferral support may expose the referring customer's reward state, but not the referred person's purchases, balance, or private account data. State qualification and posting windows precisely.\n\nFor unfamiliar transactions, review household and saved-wallet activity before a fraud submission. An issued dispute session is not a filed claim; only the customer's Submit action creates a claim. Never promise provisional credit.\n\nCard product comparisons must come from current published terms. The customer completes and certifies any application. Opening or saving a card-application session does not submit it or authorize a credit pull. Agents cannot promise approval or override underwriting.\n</policy>\n\nTry to be helpful and always follow the policy."
+      },
+      {
+        "id": "msg_0003_0000",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Thank you for calling Pioneer Bank's Card Services. This is Adrian. How can I help you?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Hey, this is Colin Reeves. My card was declined twice at a hotel, and I'm traveling, so, uh, I need to figure out what's going on there. (concerned)"
+      },
+      {
+        "id": "msg_0003_0002",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Um, I can look at that with you. Um, are you calling from the number on the account?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Uh, yes. Yes, I am."
+      },
+      {
+        "id": "msg_0003_0004",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right. And, um, before I pull up the card, can I confirm your billing ZIP code and the last four digits?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Right. Uh, the ZIP code is two zero zero zero five, and the last four digits are six one four eight."
+      },
+      {
+        "id": "msg_0003_0006",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Awesome. Thanks. I have the account, and I see two attempts from Harbor View Hotel for eight hundred and forty dollars. Are those both yours?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"full_name\":\"Colin Reeves\",\"account_match\":\"caller_phone\",\"billing_zip\":\"20005\",\"card_last4\":\"6148\"}",
+        "call_id": "bt-001",
+        "name": "lookup_customer",
+        "type": "function_call",
+        "id": "bt-001",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-001",
+        "output": "\n\n{\"customer_id\":\"customer-colin-reeves\",\"match\":\"unique\"}"
+      },
+      {
+        "role": "user",
+        "content": "Uh, yeah. The, the desk ran, ran it. Uh, it declined, and then, uh, I had them, um, try it again."
+      },
+      {
+        "id": "msg_0003_0008",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Got it. Are you checking in today, or was it just a reservation charge?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Uh, checking in today. I'm actually standing in the lobby right now. Um, they're holding the room, but they need a card before I can... you know."
+      },
+      {
+        "id": "msg_0003_0010",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Give me a second."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0003_0011",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Let me check the decline reason."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"customer-colin-reeves\",\"card_last4\":\"6148\",\"include\":[\"status\",\"available_credit\",\"authorizations\",\"declines\",\"restrictions\"]}",
+        "call_id": "bt-002",
+        "name": "get_card_account",
+        "type": "function_call",
+        "id": "bt-002",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-002",
+        "output": "\n\n{\"available_credit\":912,\"declines\":[{\"merchant\":\"Harbor View Hotel\",\"amount\":840,\"reason\":\"travel_review\"},{\"merchant\":\"Harbor View Hotel\",\"amount\":840,\"reason\":\"prior_review_open\"}],\"restriction_id\":\"temporary-travel-review\"}"
+      },
+      {
+        "id": "msg_0003_0012",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Thanks for waiting. Um, so the first attempt got triggered, um, by a travel review, and the second one was declined because the first review was still open. And I don't see the card reported lost or any past due dates. Do you-- Can you confirm that?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Uh, yeah. Uh, can you, can you clear it so, um, they can run, they can run the card again?"
+      },
+      {
+        "id": "msg_0003_0014",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Sure, yeah. I can verify the activity and remove the temporary block. And, um, first though, are you currently in Portland, Maine?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Uh, yeah. Uh, I'm in Portland."
+      },
+      {
+        "id": "msg_0003_0016",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "And did they use the card earlier today at Logan Airport for thirty-two dollar in change?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Um, ye-yes. Um, that was, that was my breakfast this morning, uh."
+      },
+      {
+        "id": "msg_0003_0018",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right. Sounds good. So those transactions lined up and the restriction is off now, but let me explain one thing before they try it again."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"customer-colin-reeves\",\"card_last4\":\"6148\",\"restriction_id\":\"temporary-travel-review\",\"confirmed_transaction_ids\":[\"hotel-840-attempts\",\"logan-breakfast-32\"]}",
+        "call_id": "bt-003",
+        "name": "resolve_card_restriction",
+        "type": "function_call",
+        "id": "bt-003",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-003",
+        "output": "\n\n{\"status\":\"removed\",\"card_status\":\"active\"}"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Yeah, sure. Go ahead."
+      },
+      {
+        "id": "msg_0003_0020",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "So, um, hotels often don't authorize more than the total room charge for incidentals. The-- Your available credit is nine hundred and twelve dollars. So eight hundred and forty dollars charged should fit, but a larger hold may not."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Right. Uh."
+      },
+      {
+        "role": "user",
+        "content": "Wait, could you, could you say it again, please? Uh. Yeah."
+      },
+      {
+        "id": "msg_0003_0023",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "So, um, hotels often authorize more than the room total for incidentals."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0003_0024",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "But your available credit is nine hundred and twelve dollars only. So eight hundred and forty dollar charge should fit, but a larger hold might not."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Right. Um, the clerk, uh, the clerk said that the room is six ninety, and the rest of it is a deposit, so- I think eight hundred and forty should be the whole hold, yeah."
+      },
+      {
+        "id": "msg_0003_0026",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah. That works. Then it should enter and it be fine. So, um, I'd have them try once more. Not several times, just once. And if they change the amount, just ask them to tell you first, 'cause you don't want- you want it to fit."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay. Right. Uh, can I, can I stay on the line with you while they do it?"
+      },
+      {
+        "id": "msg_0003_0028",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah, that's fine."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Uh, can you, can you run it again? Um, they just, uh, cleared it. Uh, just give me a second, please."
+      },
+      {
+        "id": "msg_0003_0030",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Sure. No worries."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Uh, okay. They're, they're running it now. Uh, no."
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Uh, is it working? Did it go through? Okay, great. Perfect. Uh, yeah. Um, sorry. Uh, it went through. Yeah. Uh, I got the receipt. It's, it's all good now. (relieved)"
+      },
+      {
+        "id": "msg_0003_0033",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Good. And I also see the authorization approved for eight hundred and forty dollars. Can you confirm?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Uh, yes. Yes. That was the amount. Um, also, um, I wanted to ask while I have you here. Is the, is the card going to get blocked again if I use it somewhere else here, like while I'm on my trip, or should it be good?"
+      },
+      {
+        "id": "msg_0003_0035",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "No, no, no. It should be okay since you just confirmed the activity. And, um, I can also add your return date as a note so that, though it doesn't really guarantee every purchase will be approved, but just a note should be good."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Right. Yeah. Yeah. Um, thank you. That's all right. I'll, I'll, I'll be back home by Sunday night."
+      },
+      {
+        "id": "msg_0003_0037",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Awesome."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0003_0038",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "And, uh, do you recognize everything else currently pending on the card? 'Cause I wanna make sure there's no suspicious activities."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"customer-colin-reeves\",\"card_last4\":\"6148\",\"include\":[\"authorizations\"]}",
+        "call_id": "bt-004",
+        "name": "get_card_account",
+        "type": "function_call",
+        "id": "bt-004",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-004",
+        "output": "\n\n{\"pending_activity\":[\"airport parking\",\"$32 breakfast\",\"$840 hotel\"],\"all_confirmed\":true}"
+      },
+      {
+        "role": "user",
+        "content": "Right. Uh, let, let me take a look real quick."
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Um, so there's the airport parking and then the breakfast and then, um, the hotel. Yep. Yeah. That- that's all me."
+      },
+      {
+        "id": "msg_0003_0041",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Awesome. All right. And just one more heads up. The hotel may stay pending for a few days after checkout, depending on when it finalizes, so just for you to be aware of that."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Yeah, of course. No, uh, I get it. That's fine. I just needed to get into the room, and my card wasn't going through, so."
+      },
+      {
+        "id": "msg_0003_0043",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Understood. Understood. And the card is active, and the hotel charge is approved, and the travel notice on the account, so you should be ready to go."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"customer-colin-reeves\",\"card_last4\":\"6148\",\"destinations\":[\"Portland, Maine\"],\"return_date\":\"Sunday night\"}",
+        "call_id": "bt-005",
+        "name": "create_travel_notice",
+        "type": "function_call",
+        "id": "bt-005",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-005",
+        "output": "\n\n{\"status\":\"created\",\"authorization_guaranteed\":false}"
+      },
+      {
+        "role": "user",
+        "content": "Okay, perfect. That, that's great. Uh, thank you for staying on the line and then, and helping me out. Appreciate it."
+      },
+      {
+        "id": "msg_0003_0045",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "No problem. No problem, Colin. Safe travels."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Thank you. It was, it was great talking to you. Have a good day. Bye."
+      },
+      {
+        "id": "msg_0003_0047",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Bye. You as well."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "name": "lookup_customer",
+        "description": "Find one banking customer using a stable customer identifier or verified profile attribute.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "account_id": {
+              "type": "string",
+              "description": "Customer account identifier."
+            },
+            "full_name": {
+              "type": "string",
+              "description": "Customer full name."
+            },
+            "email": {
+              "type": "string",
+              "description": "Email on the profile.",
+              "format": "email"
+            },
+            "account_match": {
+              "type": "string",
+              "description": "Trusted calling-channel match when available.",
+              "enum": [
+                "caller_phone"
+              ]
+            },
+            "billing_zip": {
+              "type": "string",
+              "description": "Billing ZIP collected for the lookup or verification."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits collected for the lookup or verification.",
+              "pattern": "^[0-9]{4}$"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_current_time",
+        "description": "Return the authoritative current timestamp for an audit or verification record.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "log_identity_verification",
+        "description": "Record that the required identity checks succeeded; never store full card or one-time-code values in the call.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "methods": {
+              "type": "array",
+              "description": "Verification checks completed.",
+              "items": {
+                "type": "string",
+                "description": "A verification method.",
+                "enum": [
+                  "billing_zip",
+                  "mobile_last4",
+                  "date_of_birth",
+                  "one_time_code"
+                ]
+              },
+              "minItems": 1
+            },
+            "verified_at": {
+              "type": "string",
+              "description": "Authoritative verification timestamp, if available."
+            }
+          },
+          "required": [
+            "customer_id",
+            "methods"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "update_customer_email",
+        "description": "Change the email on a verified customer profile after the required confirmation flow succeeds.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "new_email": {
+              "type": "string",
+              "description": "New customer email.",
+              "format": "email"
+            },
+            "confirmation_method": {
+              "type": "string",
+              "description": "How the change was confirmed.",
+              "enum": [
+                "one_time_code",
+                "secure_message",
+                "in_person"
+              ]
+            }
+          },
+          "required": [
+            "customer_id",
+            "new_email",
+            "confirmation_method"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "search_policy_knowledge",
+        "description": "Search current product or policy knowledge. Search mode is an argument, not a separate business function.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Plain-language policy or product question."
+            },
+            "search_mode": {
+              "type": "string",
+              "description": "Retrieval strategy.",
+              "enum": [
+                "keyword",
+                "semantic"
+              ]
+            },
+            "as_of": {
+              "type": "string",
+              "description": "Optional date or timestamp for time-sensitive terms."
+            }
+          },
+          "required": [
+            "query",
+            "search_mode"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_card_account",
+        "description": "Retrieve card status, available credit, recent authorizations, declines, restrictions, and travel notices in one account read.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "include": {
+              "type": "array",
+              "description": "Requested account sections.",
+              "items": {
+                "type": "string",
+                "description": "Account section.",
+                "enum": [
+                  "status",
+                  "available_credit",
+                  "authorizations",
+                  "declines",
+                  "restrictions",
+                  "travel_notices"
+                ]
+              },
+              "minItems": 0
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "resolve_card_restriction",
+        "description": "Remove a temporary card restriction after the customer confirms the triggering activity.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "restriction_id": {
+              "type": "string",
+              "description": "Restriction to resolve."
+            },
+            "confirmed_transaction_ids": {
+              "type": "array",
+              "description": "Transactions the customer confirmed.",
+              "items": {
+                "type": "string",
+                "description": "Transaction identifier."
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "customer_id",
+            "restriction_id",
+            "confirmed_transaction_ids"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "create_travel_notice",
+        "description": "Add a travel notice without promising that every future authorization will be approved.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "destinations": {
+              "type": "array",
+              "description": "Travel destinations.",
+              "items": {
+                "type": "string",
+                "description": "City, region, or country."
+              },
+              "minItems": 1
+            },
+            "return_date": {
+              "type": "string",
+              "description": "Customer-stated return date."
+            }
+          },
+          "required": [
+            "customer_id",
+            "destinations",
+            "return_date"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_referrals",
+        "description": "Retrieve referral invitations, offer terms, qualification state, and posting state without exposing the referred person's private transactions.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Referring customer identifier."
+            },
+            "referral_id": {
+              "type": "string",
+              "description": "Optional referral identifier."
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_credit_card_transactions",
+        "description": "Retrieve candidate credit-card transactions for a verified customer using amount, descriptor, date, or card filters.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Optional last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "amount": {
+              "type": "number",
+              "description": "Optional exact transaction amount.",
+              "minimum": 0
+            },
+            "descriptor_contains": {
+              "type": "string",
+              "description": "Optional descriptor text."
+            },
+            "posted_date": {
+              "type": "string",
+              "description": "Optional posted date or customer-relative date."
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "create_secure_self_service_session",
+        "description": "Issue a secure customer-controlled workflow session. Issuing a session does not submit an application or claim.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "workflow": {
+              "type": "string",
+              "description": "Self-service workflow.",
+              "enum": [
+                "card_application",
+                "referral_status",
+                "transaction_dispute"
+              ]
+            },
+            "resource_id": {
+              "type": "string",
+              "description": "Related product, referral, or transaction identifier."
+            },
+            "delivery_channels": {
+              "type": "array",
+              "description": "Authorized delivery channels.",
+              "items": {
+                "type": "string",
+                "description": "Delivery channel.",
+                "enum": [
+                  "secure_message",
+                  "email_notification"
+                ]
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "customer_id",
+            "workflow",
+            "resource_id",
+            "delivery_channels"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_secure_self_service_session",
+        "description": "Read whether an issued self-service session is open, saved, submitted, expired, or closed.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "session_id": {
+              "type": "string",
+              "description": "Self-service session identifier."
+            }
+          },
+          "required": [
+            "customer_id",
+            "session_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "send_secure_notification",
+        "description": "Send a notification that points the customer to a secure in-account resource without placing a working secure link in ordinary email.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "related_resource_id": {
+              "type": "string",
+              "description": "Secure resource identifier."
+            },
+            "channel": {
+              "type": "string",
+              "description": "Notification channel.",
+              "enum": [
+                "email",
+                "sms"
+              ]
+            },
+            "template": {
+              "type": "string",
+              "description": "Approved notification template identifier."
+            }
+          },
+          "required": [
+            "customer_id",
+            "related_resource_id",
+            "channel",
+            "template"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "transfer_to_specialist",
+        "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "reason": {
+              "type": "string",
+              "description": "Why the transfer is required."
+            },
+            "summary": {
+              "type": "string",
+              "description": "Context already collected so the customer does not repeat it."
+            }
+          },
+          "required": [
+            "reason",
+            "summary"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    ],
+    "parallel_tool_calls": false
+  },
+  "event_metadata": [
+    {
+      "event_index": 1,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 0.76,
+        "end_seconds": 4.76
+      }
+    },
+    {
+      "event_index": 2,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 6.2,
+        "end_seconds": 13.62
+      }
+    },
+    {
+      "event_index": 3,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 15.54,
+        "end_seconds": 20.5
+      }
+    },
+    {
+      "event_index": 4,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 22.34,
+        "end_seconds": 23.44
+      }
+    },
+    {
+      "event_index": 5,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 24.46,
+        "end_seconds": 29.68
+      }
+    },
+    {
+      "event_index": 6,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 30.8,
+        "end_seconds": 38.74
+      }
+    },
+    {
+      "event_index": 7,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 39.38,
+        "end_seconds": 50.31
+      }
+    },
+    {
+      "event_index": 8,
+      "kind": "function_call",
+      "call_id": "bt-001",
+      "source": "transcripts/transcript.txt",
+      "source_label": "open the customer account",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 38.74,
+        "end_seconds": 39.38,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 10,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 51.58,
+        "end_seconds": 57.06
+      }
+    },
+    {
+      "event_index": 11,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 57.94,
+        "end_seconds": 62.54
+      }
+    },
+    {
+      "event_index": 12,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 63.54,
+        "end_seconds": 70.22
+      }
+    },
+    {
+      "event_index": 13,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 70.3,
+        "end_seconds": 71.72
+      }
+    },
+    {
+      "event_index": 14,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 73.76,
+        "end_seconds": 75.14
+      }
+    },
+    {
+      "event_index": 15,
+      "kind": "function_call",
+      "call_id": "bt-002",
+      "source": "transcripts/transcript.txt",
+      "source_label": "review the card decline",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 73.76,
+        "end_seconds": 75.14,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 17,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 87.7,
+        "end_seconds": 101.72
+      }
+    },
+    {
+      "event_index": 18,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 102.92,
+        "end_seconds": 107.1
+      }
+    },
+    {
+      "event_index": 19,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 108.12,
+        "end_seconds": 114.64
+      }
+    },
+    {
+      "event_index": 20,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 115.47999999999999,
+        "end_seconds": 116.75999999999999
+      }
+    },
+    {
+      "event_index": 21,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 118.08,
+        "end_seconds": 122.71
+      }
+    },
+    {
+      "event_index": 22,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 124.2,
+        "end_seconds": 128.9
+      }
+    },
+    {
+      "event_index": 23,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 128.92,
+        "end_seconds": 136.82
+      }
+    },
+    {
+      "event_index": 24,
+      "kind": "function_call",
+      "call_id": "bt-003",
+      "source": "transcripts/transcript.txt",
+      "source_label": "remove the temporary card block",
+      "annotation_confidence": "high",
+      "state_effect": "card_restriction_removed",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 128.92,
+        "end_seconds": 136.82,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 26,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 137.72,
+        "end_seconds": 138.64
+      }
+    },
+    {
+      "event_index": 27,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 139.12,
+        "end_seconds": 153.4
+      }
+    },
+    {
+      "event_index": 28,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 155.36,
+        "end_seconds": 156.82
+      }
+    },
+    {
+      "event_index": 29,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 158.18,
+        "end_seconds": 162.23
+      }
+    },
+    {
+      "event_index": 30,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 162.26,
+        "end_seconds": 167.14
+      }
+    },
+    {
+      "event_index": 31,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 167.86,
+        "end_seconds": 176.1
+      }
+    },
+    {
+      "event_index": 32,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 177.48,
+        "end_seconds": 187.52
+      }
+    },
+    {
+      "event_index": 33,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 187.88,
+        "end_seconds": 201.28
+      }
+    },
+    {
+      "event_index": 34,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 202.2,
+        "end_seconds": 205.42000000000002
+      }
+    },
+    {
+      "event_index": 35,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 205.66,
+        "end_seconds": 206.359
+      }
+    },
+    {
+      "event_index": 36,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 207.52,
+        "end_seconds": 213.36
+      }
+    },
+    {
+      "event_index": 37,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 213.8,
+        "end_seconds": 214.5
+      }
+    },
+    {
+      "event_index": 38,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 227.02,
+        "end_seconds": 230.16
+      }
+    },
+    {
+      "event_index": 39,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 231.8,
+        "end_seconds": 241.94
+      }
+    },
+    {
+      "event_index": 40,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 242.48,
+        "end_seconds": 248.06
+      }
+    },
+    {
+      "event_index": 41,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 248.98,
+        "end_seconds": 260.19
+      }
+    },
+    {
+      "event_index": 42,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 260.22,
+        "end_seconds": 271.06
+      }
+    },
+    {
+      "event_index": 43,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 271.98,
+        "end_seconds": 277.4
+      }
+    },
+    {
+      "event_index": 44,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 277.88,
+        "end_seconds": 278.22
+      }
+    },
+    {
+      "event_index": 45,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 278.94,
+        "end_seconds": 284.54
+      }
+    },
+    {
+      "event_index": 46,
+      "kind": "function_call",
+      "call_id": "bt-004",
+      "source": "transcripts/transcript.txt",
+      "source_label": "review recent card activity",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 278.94,
+        "end_seconds": 284.54,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 48,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 285.56,
+        "end_seconds": 287.54
+      }
+    },
+    {
+      "event_index": 49,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 289.42,
+        "end_seconds": 299.55
+      }
+    },
+    {
+      "event_index": 50,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 300.08,
+        "end_seconds": 309.36
+      }
+    },
+    {
+      "event_index": 51,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 310.48,
+        "end_seconds": 315.5
+      }
+    },
+    {
+      "event_index": 52,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 315.78,
+        "end_seconds": 322.52
+      }
+    },
+    {
+      "event_index": 53,
+      "kind": "function_call",
+      "call_id": "bt-005",
+      "source": "transcripts/transcript.txt",
+      "source_label": "add a travel notice",
+      "annotation_confidence": "high",
+      "state_effect": "travel_notice_created",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 315.78,
+        "end_seconds": 322.52,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 55,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 323.72,
+        "end_seconds": 329.07
+      }
+    },
+    {
+      "event_index": 56,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 329.08,
+        "end_seconds": 331.05
+      }
+    },
+    {
+      "event_index": 57,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 332.2,
+        "end_seconds": 334.94
+      }
+    },
+    {
+      "event_index": 58,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 335.02,
+        "end_seconds": 335.88
+      }
+    }
+  ]
+}
