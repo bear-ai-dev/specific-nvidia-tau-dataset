@@ -96,6 +96,30 @@
       },
       "annotation": "../conversations/retail-missing-package/conversation.json",
       "structured_transcript": "../conversations/retail-missing-package/transcripts/annotated-transcript.json"
+    },
+    {
+      "trajectory_id": 8,
+      "conversation_id": "airline-family-reservation",
+      "domain": "airline",
+      "goal": "Book a nonstop Phoenix-to-Washington family reservation in standard economy with two checked bags, a folding walker, optional insurance, and split certificate/card payment after comparing airports and alternatives.",
+      "outcome": {
+        "label": "resolved",
+        "summary": "Reservation B9RT6M was booked PHX-DCA round trip for Linda and Evan with two checked bags, a folding walker, and insurance; $200 was applied from certificate CT-449108 and $1,081.00 to Visa ending 1182."
+      },
+      "annotation": "../conversations/airline-family-reservation/conversation.json",
+      "structured_transcript": "../conversations/airline-family-reservation/transcripts/annotated-transcript.json"
+    },
+    {
+      "trajectory_id": 9,
+      "conversation_id": "telecom-data-usage-cleanup",
+      "domain": "telecom",
+      "goal": "Identify overnight mobile-data usage, guide the customer through app-permission and Data Saver cleanup, add an explicitly authorized high-speed data add-on, and verify service.",
+      "outcome": {
+        "label": "resolved",
+        "summary": "StreamBox background downloads explained 10.9 of 11.8 GB; the customer set it to Wi-Fi only and enabled Data Saver, then authorized 5 GB for $40, leaving 7.2 GB high-speed data and a successful 62/8 speed test."
+      },
+      "annotation": "../conversations/telecom-data-usage-cleanup/conversation.json",
+      "structured_transcript": "../conversations/telecom-data-usage-cleanup/transcripts/annotated-transcript.json"
     }
   ]
 }

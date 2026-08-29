@@ -1,0 +1,133 @@
+{
+  "schema_version": "0.1.0",
+  "registry_name": "airline",
+  "registry_version": "0.1.0",
+  "compatibility": "custom_tau_style_not_literal_tau_registry",
+  "design_note": "Stable itinerary reads and one consequential reservation mutation; customer-side seat selection and changing government guidance are not agent tools.",
+  "tools": [
+    {
+      "name": "list_supported_airports",
+      "description": "List airports supported for a destination area before recommending one.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "destination_area": {
+            "type": "string",
+            "description": "City, metro area, or landmark area the traveler needs to reach."
+          }
+        },
+        "required": ["destination_area"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "search_flights",
+      "description": "Search round-trip flight options for a fixed route, dates, traveler count, and stop limit.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "origin_airport": {"type": "string", "description": "Origin airport code."},
+          "destination_airport": {"type": "string", "description": "Destination airport code."},
+          "departure_date": {"type": "string", "description": "Customer-stated outbound date."},
+          "return_date": {"type": "string", "description": "Customer-stated return date."},
+          "traveler_count": {"type": "integer", "description": "Number of travelers.", "minimum": 1},
+          "max_stops": {"type": "integer", "description": "Maximum stops per direction.", "minimum": 0, "maximum": 2}
+        },
+        "required": ["origin_airport", "destination_airport", "departure_date", "return_date", "traveler_count", "max_stops"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "calculate_itinerary_price",
+      "description": "Calculate fare, taxes, baggage, mobility-device treatment, and an optional insurance quote for an itinerary.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "outbound_flight_id": {"type": "string", "description": "Selected outbound flight identifier."},
+          "return_flight_id": {"type": "string", "description": "Selected return flight identifier."},
+          "traveler_count": {"type": "integer", "description": "Number of travelers.", "minimum": 1},
+          "fare_class": {"type": "string", "description": "Fare family to quote.", "enum": ["basic_economy", "standard_economy"]},
+          "checked_bag_count": {"type": "integer", "description": "Paid checked bags.", "minimum": 0},
+          "mobility_device_count": {"type": "integer", "description": "Mobility devices recorded separately from paid baggage.", "minimum": 0},
+          "include_insurance_quote": {"type": "boolean", "description": "Whether to return the optional insurance price."}
+        },
+        "required": ["outbound_flight_id", "return_flight_id", "traveler_count", "fare_class", "checked_bag_count", "mobility_device_count", "include_insurance_quote"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_customer_profile",
+      "description": "Retrieve a customer profile with selected reservation and masked payment sections.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "email": {"type": "string", "description": "Contact email on the customer profile.", "format": "email"},
+          "include": {
+            "type": "array",
+            "description": "Profile sections to retrieve.",
+            "items": {"type": "string", "enum": ["reservations", "payment_methods", "travel_certificates"]},
+            "minItems": 1
+          }
+        },
+        "required": ["email", "include"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "book_reservation",
+      "description": "Create an authorized reservation and return its confirmation, itinerary, ancillary products, and tender allocation.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "customer_id": {"type": "string", "description": "Resolved customer identifier."},
+          "outbound_flight_id": {"type": "string", "description": "Selected outbound flight identifier."},
+          "return_flight_id": {"type": "string", "description": "Selected return flight identifier."},
+          "travelers": {
+            "type": "array",
+            "description": "Travelers exactly as supplied by the customer.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "full_name": {"type": "string", "description": "Traveler full name."},
+                "date_of_birth": {"type": "string", "description": "Traveler date of birth."}
+              },
+              "required": ["full_name", "date_of_birth"],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "contact_email": {"type": "string", "description": "Reservation contact email.", "format": "email"},
+          "fare_class": {"type": "string", "enum": ["basic_economy", "standard_economy"]},
+          "checked_bag_count": {"type": "integer", "minimum": 0},
+          "mobility_devices": {"type": "array", "items": {"type": "string"}, "minItems": 0},
+          "include_trip_insurance": {"type": "boolean"},
+          "travel_certificate_code": {"type": "string", "description": "Customer-provided certificate code."},
+          "payment_method_token": {"type": "string", "description": "Masked or tokenized remainder-payment method."},
+          "confirmed_total": {"type": "number", "description": "Total authorized by the customer.", "minimum": 0},
+          "customer_authorized": {"type": "boolean", "description": "Whether the customer authorized the itinerary, optional products, and stated total."}
+        },
+        "required": ["customer_id", "outbound_flight_id", "return_flight_id", "travelers", "contact_email", "fare_class", "checked_bag_count", "mobility_devices", "include_trip_insurance", "travel_certificate_code", "payment_method_token", "confirmed_total", "customer_authorized"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "transfer_to_specialist",
+      "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "reason": {"type": "string", "description": "Why the transfer is required."},
+          "summary": {"type": "string", "description": "Context already collected so the customer does not repeat it."}
+        },
+        "required": ["reason", "summary"],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

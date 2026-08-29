@@ -1,0 +1,2221 @@
+{
+  "schema_version": "0.1.0",
+  "format": "nvidia_responses_api_full_trajectory",
+  "trajectory_id": 8,
+  "conversation_id": "airline-family-reservation",
+  "domain": "airline",
+  "responses_create_params": {
+    "input": [
+      {
+        "role": "system",
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\n<policy>\n# Airline reservation policy\n\nUse supported-airport and live flight-search results before recommending an itinerary. Compare nonstop and connecting options using the same route, dates, and traveler count. Do not imply that a quoted fare, schedule, or seat remains available until the reservation is confirmed.\n\nBefore booking, state the fare, taxes, baggage charges, and optional insurance price. Explain that insurance has exclusions and requires review. Obtain the customer's approval for optional products and the full quoted total before creating a reservation.\n\nCollect each traveler's full name and date of birth plus a verified contact email. Use only masked or tokenized payment references. Apply travel certificates exactly as provided, read ambiguous characters back, and report the split between certificate value and the remaining payment method.\n\nMobility devices are recorded separately from paid checked baggage. Seat selection is a customer-side action unless an agent tool explicitly assigns seats; never claim a seat is confirmed from a screen the customer has not confirmed.\n\nReturn the reservation confirmation, itinerary, baggage, accessibility, insurance, and tender allocation from the booking result. For changing identification, custody-document, or security-screening requirements, direct the customer to current official guidance instead of inventing or paraphrasing a rule.\n</policy>\n\nTry to be helpful and always follow the policy."
+      },
+      {
+        "id": "msg_0008_0000",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Hi. Thanks for calling BlueMesa Airlines. This is Jordan. How are you doing today?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Good. Um, I'm trying to— [laughs] I'm trying to book—"
+      },
+      {
+        "id": "msg_0008_0002",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Where are we trying to get you today, ma'am?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Pardon me?"
+      },
+      {
+        "id": "msg_0008_0004",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Where are we trying to get you today?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "I'm trying to book from Phoenix to Washington, and it's for me and my grandson. But the website shows three different airports, and I have no idea which one we actually need."
+      },
+      {
+        "id": "msg_0008_0006",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Right. Yeah, that can definitely be a little confusing. I'm sorry about that. Um, so what we'll do, we're gonna go ahead and figure out the airport 1st. And I won't book anything until we've gone over the full price. Okay?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay."
+      },
+      {
+        "id": "msg_0008_0008",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "And where are you staying, ma'am?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Um, it's near the National Mall."
+      },
+      {
+        "id": "msg_0008_0010",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Um, we wanna leave October 14th and then come back home on October 19th."
+      },
+      {
+        "arguments": "{\"destination_area\":\"Washington, DC National Mall\"}",
+        "call_id": "af-001",
+        "name": "list_supported_airports",
+        "type": "function_call",
+        "id": "af-001",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "af-001",
+        "output": "\n\n{\"airports\":[{\"code\":\"DCA\",\"name\":\"Washington Reagan National\"},{\"code\":\"IAD\",\"name\":\"Washington Dulles International\"},{\"code\":\"BWI\",\"name\":\"Baltimore/Washington International\"}],\"closest_for_destination\":\"DCA\"}"
+      },
+      {
+        "id": "msg_0008_0012",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. So you've got Reagan, Dulles, and Baltimore. But for the National Mall, Reagan is usually the closest and easiest. It's kind of right there in town."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay. Well, Reagan then. And I also need it to be non-stop, please. Um, I'm gonna be traveling with my 12-year-old and a, uh, my grandson [laughs], and a folding walker."
+      },
+      {
+        "arguments": "{\"origin_airport\":\"PHX\",\"destination_airport\":\"DCA\",\"departure_date\":\"October 14\",\"return_date\":\"October 19\",\"traveler_count\":2,\"max_stops\":0}",
+        "call_id": "af-002",
+        "name": "search_flights",
+        "type": "function_call",
+        "id": "af-002",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "af-002",
+        "output": "\n\n{\"outbound\":{\"flight_id\":\"BM-PHX-DCA-0910\",\"departure_time\":\"09:10\",\"stops\":0},\"return\":{\"flight_id\":\"BM-DCA-PHX-1540\",\"departure_time\":\"15:40\",\"stops\":0},\"fare_families\":[\"basic_economy\",\"standard_economy\"]}"
+      },
+      {
+        "id": "msg_0008_0014",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Well, I did find a 9:10 in the morning going out and a 3:40 in the afternoon coming back. Both are nonstop. Basic is cheaper, but standard lets you pick seats ahead of time. Is that a priority for you?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Um, we definitely need standard then because we have to sit together."
+      },
+      {
+        "id": "msg_0008_0016",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Mm-hmm. Okay. Well, standard economy is the safer choice for advance seats. Would you like me to compare a one-stop itinerary on price?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Uh, sure. As long as it's not one of those 5-hour layovers. [laughs]"
+      },
+      {
+        "id": "msg_0008_0018",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Right. Right. I understand. Let me see. Um,"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"origin_airport\":\"PHX\",\"destination_airport\":\"DCA\",\"departure_date\":\"October 14\",\"return_date\":\"October 19\",\"traveler_count\":2,\"max_stops\":1}",
+        "call_id": "af-003",
+        "name": "search_flights",
+        "type": "function_call",
+        "id": "af-003",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "af-003",
+        "output": "\n\n{\"best_connection\":{\"total_savings\":62.0,\"additional_duration_each_way\":\"almost three hours\"}}"
+      },
+      {
+        "id": "msg_0008_0019",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Well, ma'am, it does look like the best connection only saves $62 total, and it adds almost three hours each way."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Oh, no. That is not worth it. Let's go ahead and do nonstop. And we'll each check one suitcase, and I have the folding walker I mentioned."
+      },
+      {
+        "id": "msg_0008_0021",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Well, the walker doesn't count as paid baggage, so that's good."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Oh. Mm-hmm. Yeah."
+      },
+      {
+        "id": "msg_0008_0023",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah. And I'm pricing two standard tickets, two checked bags, and optional trip insurance. Just give me a moment. I'm going to crunch these numbers and get the best possible itinerary."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"outbound_flight_id\":\"BM-PHX-DCA-0910\",\"return_flight_id\":\"BM-DCA-PHX-1540\",\"traveler_count\":2,\"fare_class\":\"standard_economy\",\"checked_bag_count\":2,\"mobility_device_count\":1,\"include_insurance_quote\":true}",
+        "call_id": "af-004",
+        "name": "calculate_itinerary_price",
+        "type": "function_call",
+        "id": "af-004",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "af-004",
+        "output": "\n\n{\"fare_taxes_and_checked_bags\":1186.4,\"mobility_device_charge\":0.0,\"trip_insurance\":94.6,\"total_with_insurance\":1281.0,\"currency\":\"USD\"}"
+      },
+      {
+        "id": "msg_0008_0024",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Just bear with me, ma'am, one moment."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0008_0025",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. So the total without insurance is $1,186.40, and that does include the two checked bags. Insurance adds $94.60, and the coverage does have exclusions, so review the plan document before purchase. Okay? Do you want me to add that insurance?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Go ahead. Add the insurance."
+      },
+      {
+        "id": "msg_0008_0027",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Got it. Okay. And can you please give your name and date of birth? I'll need that for both travelers."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay. I'm Linda Marie Carver."
+      },
+      {
+        "id": "msg_0008_0029",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "C-A-R-V-E-R."
+      },
+      {
+        "id": "msg_0008_0031",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yes, ma'am."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Birthday: March 8th, 1954."
+      },
+      {
+        "id": "msg_0008_0033",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. And your grandson, please?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "And then my grandson—yes, Evan James Carver, born July 21st of 2014."
+      },
+      {
+        "id": "msg_0008_0035",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. And ma'am, can you please confirm the contact email?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yes. It's linda.carver9@outlook.com."
+      },
+      {
+        "id": "msg_0008_0037",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Dot com, got that. And how would you like to pay, ma'am?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "I should have a card attached to our account already. It's the Visa ending in 1182. I also have a travel certificate for $200."
+      },
+      {
+        "id": "msg_0008_0039",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"email\":\"linda.carver9@outlook.com\",\"include\":[\"reservations\",\"payment_methods\",\"travel_certificates\"]}",
+        "call_id": "af-005",
+        "name": "get_customer_profile",
+        "type": "function_call",
+        "id": "af-005",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "af-005",
+        "output": "\n\n{\"customer_id\":\"customer-linda-carver\",\"duplicate_reservation\":false,\"payment_methods\":[{\"token\":\"visa-on-file-1182\",\"brand\":\"Visa\",\"last4\":\"1182\"}],\"travel_certificate_input_required\":true}"
+      },
+      {
+        "id": "msg_0008_0040",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Um, okay. I found your profile, and [sighs] no duplicate reservation. All good."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0008_0041",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "And what is the travel certificate code?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "The code number is C-T-449108."
+      },
+      {
+        "id": "msg_0008_0043",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. I'm just going to read that back: C-T-449108."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay."
+      },
+      {
+        "id": "msg_0008_0045",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "C-T-449108. Okay. Thanks, got it."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"customer-linda-carver\",\"outbound_flight_id\":\"BM-PHX-DCA-0910\",\"return_flight_id\":\"BM-DCA-PHX-1540\",\"travelers\":[{\"full_name\":\"Linda Marie Carver\",\"date_of_birth\":\"March 8, 1954\"},{\"full_name\":\"Evan James Carver\",\"date_of_birth\":\"July 21, 2014\"}],\"contact_email\":\"linda.carver9@outlook.com\",\"fare_class\":\"standard_economy\",\"checked_bag_count\":2,\"mobility_devices\":[\"folding walker\"],\"include_trip_insurance\":true,\"travel_certificate_code\":\"CT-449108\",\"payment_method_token\":\"visa-on-file-1182\",\"confirmed_total\":1281.0,\"customer_authorized\":true}",
+        "call_id": "af-006",
+        "name": "book_reservation",
+        "type": "function_call",
+        "id": "af-006",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "af-006",
+        "output": "\n\n{\"confirmation_code\":\"B9RT6M\",\"status\":\"confirmed\",\"itinerary\":{\"origin\":\"PHX\",\"destination\":\"DCA\",\"departure_date\":\"October 14\",\"return_date\":\"October 19\"},\"checked_bag_count\":2,\"mobility_devices\":[\"folding walker\"],\"trip_insurance\":{\"included\":true,\"price\":94.6},\"payment_allocation\":[{\"tender\":\"travel_certificate_CT-449108\",\"amount\":200.0},{\"tender\":\"visa_ending_1182\",\"amount\":1081.0}],\"currency\":\"USD\"}"
+      },
+      {
+        "id": "msg_0008_0046",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Um, all right. Well, the booking is confirmed. Let me give you your confirmation code. The code is B as in Bravo, 9, R as in Romeo, T as in Tango, 6, M as in Mike."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay. Is it B9RT6M?"
+      },
+      {
+        "id": "msg_0008_0048",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yes."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "And did the certificate apply?"
+      },
+      {
+        "id": "msg_0008_0050",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yes, ma'am. $200 came from the certificate. The remaining authorized amount went to the Visa we had on file ending in 1182."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "And 2 checked bags, right?"
+      },
+      {
+        "id": "msg_0008_0052",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yep, that's right. Two paid checked bags total, plus the folding walker as a mobility device. Again, no charge for that. And insurance is included for both travelers."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay. And can you please repeat the airports?"
+      },
+      {
+        "id": "msg_0008_0054",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yes. Phoenix Sky Harbor to Washington Reagan National. That is round trip, October 14th through October 19th."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Great. Oh—wait, I do have one more question. My grandson's last name matches mine, but his mother isn't traveling. Do I need a letter from her?"
+      },
+      {
+        "id": "msg_0008_0056",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Oh, no. Um, airline booking does not require me to collect a consent letter for this domestic itinerary, but identification and custody document expectations can vary. Um, I would just review current government guidance and carry any documents his parent considers appropriate."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay. He doesn't have a driver's license."
+      },
+      {
+        "id": "msg_0008_0058",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "For domestic security screening, minors traveling with an adult are treated under the applicable government rules. I don't wanna paraphrase a changing rule incorrectly, um, so I would use the official guidance before departure."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, fine. Um, what did you enter for his birth date?"
+      },
+      {
+        "id": "msg_0008_0060",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "July 21st, 2014."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Correct. Okay. And mine is March 8th, 1954."
+      },
+      {
+        "id": "msg_0008_0062",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yep, that's right. I have that right there, ma'am."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "The certificate number had a zero or the letter O?"
+      },
+      {
+        "id": "msg_0008_0064",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "It was recorded as C-T-449108, with the digit zero between one and eight."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Good. I always mix those 2 up over the phone."
+      },
+      {
+        "id": "msg_0008_0066",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yes, I understand. The certificate applied successfully, so the identifier was accepted."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Can we choose the seats now?"
+      },
+      {
+        "id": "msg_0008_0068",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "The reservation is confirmed in standard economy. Seat selection can be completed from the reservation screen, so just choose two adjacent available seats and verify both directions, okay?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay."
+      },
+      {
+        "role": "user",
+        "content": "So I see 16A and 16B outbound, and then 14D and 14E to return."
+      },
+      {
+        "id": "msg_0008_0071",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yes, those are adjacent pairs. Just review the aircraft map before confirming because layouts can differ."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, confirmed. Does the walker need a serial number?"
+      },
+      {
+        "id": "msg_0008_0073",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "No, ma'am, not for this reservation entry. I would label it with contact information and identify it as a mobility device at the airport, just so they're aware."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay. Uh, please, uh, give me the total one more time."
+      },
+      {
+        "id": "msg_0008_0075",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "No problem. That was $1,186.40 for fare, taxes, and two checked bags, plus $94.60 for that insurance. And a $200 credit was applied; the remainder was charged to the Visa on file ending in 1182."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, that matches my screen."
+      },
+      {
+        "id": "msg_0008_0077",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Great. Okay, ma'am, and I do suggest you save the confirmation B9RT6M and review the insurance document for exclusions."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "I will. I, okay, I've written down the confirmation and the total."
+      },
+      {
+        "id": "msg_0008_0079",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Good. Perfect. Is there anything else I can help you with today, ma'am?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "No, that covers it. Thank you for being patient with me."
+      },
+      {
+        "id": "msg_0008_0081",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Oh, you're very welcome, ma'am. It's my pleasure. Thank you for choosing BlueMesa Airlines, and have a wonderful trip with your grandson."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Thank you."
+      }
+    ],
+    "tools": [
+      {
+        "name": "list_supported_airports",
+        "description": "List airports supported for a destination area before recommending one.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "destination_area": {
+              "type": "string",
+              "description": "City, metro area, or landmark area the traveler needs to reach."
+            }
+          },
+          "required": [
+            "destination_area"
+          ],
+          "additionalProperties": false
+        },
+        "type": "function",
+        "strict": true
+      },
+      {
+        "name": "search_flights",
+        "description": "Search round-trip flight options for a fixed route, dates, traveler count, and stop limit.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "origin_airport": {
+              "type": "string",
+              "description": "Origin airport code."
+            },
+            "destination_airport": {
+              "type": "string",
+              "description": "Destination airport code."
+            },
+            "departure_date": {
+              "type": "string",
+              "description": "Customer-stated outbound date."
+            },
+            "return_date": {
+              "type": "string",
+              "description": "Customer-stated return date."
+            },
+            "traveler_count": {
+              "type": "integer",
+              "description": "Number of travelers.",
+              "minimum": 1
+            },
+            "max_stops": {
+              "type": "integer",
+              "description": "Maximum stops per direction.",
+              "minimum": 0,
+              "maximum": 2
+            }
+          },
+          "required": [
+            "origin_airport",
+            "destination_airport",
+            "departure_date",
+            "return_date",
+            "traveler_count",
+            "max_stops"
+          ],
+          "additionalProperties": false
+        },
+        "type": "function",
+        "strict": true
+      },
+      {
+        "name": "calculate_itinerary_price",
+        "description": "Calculate fare, taxes, baggage, mobility-device treatment, and an optional insurance quote for an itinerary.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "outbound_flight_id": {
+              "type": "string",
+              "description": "Selected outbound flight identifier."
+            },
+            "return_flight_id": {
+              "type": "string",
+              "description": "Selected return flight identifier."
+            },
+            "traveler_count": {
+              "type": "integer",
+              "description": "Number of travelers.",
+              "minimum": 1
+            },
+            "fare_class": {
+              "type": "string",
+              "description": "Fare family to quote.",
+              "enum": [
+                "basic_economy",
+                "standard_economy"
+              ]
+            },
+            "checked_bag_count": {
+              "type": "integer",
+              "description": "Paid checked bags.",
+              "minimum": 0
+            },
+            "mobility_device_count": {
+              "type": "integer",
+              "description": "Mobility devices recorded separately from paid baggage.",
+              "minimum": 0
+            },
+            "include_insurance_quote": {
+              "type": "boolean",
+              "description": "Whether to return the optional insurance price."
+            }
+          },
+          "required": [
+            "outbound_flight_id",
+            "return_flight_id",
+            "traveler_count",
+            "fare_class",
+            "checked_bag_count",
+            "mobility_device_count",
+            "include_insurance_quote"
+          ],
+          "additionalProperties": false
+        },
+        "type": "function",
+        "strict": true
+      },
+      {
+        "name": "get_customer_profile",
+        "description": "Retrieve a customer profile with selected reservation and masked payment sections.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "description": "Contact email on the customer profile.",
+              "format": "email"
+            },
+            "include": {
+              "type": "array",
+              "description": "Profile sections to retrieve.",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "reservations",
+                  "payment_methods",
+                  "travel_certificates"
+                ]
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "email",
+            "include"
+          ],
+          "additionalProperties": false
+        },
+        "type": "function",
+        "strict": true
+      },
+      {
+        "name": "book_reservation",
+        "description": "Create an authorized reservation and return its confirmation, itinerary, ancillary products, and tender allocation.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "outbound_flight_id": {
+              "type": "string",
+              "description": "Selected outbound flight identifier."
+            },
+            "return_flight_id": {
+              "type": "string",
+              "description": "Selected return flight identifier."
+            },
+            "travelers": {
+              "type": "array",
+              "description": "Travelers exactly as supplied by the customer.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "full_name": {
+                    "type": "string",
+                    "description": "Traveler full name."
+                  },
+                  "date_of_birth": {
+                    "type": "string",
+                    "description": "Traveler date of birth."
+                  }
+                },
+                "required": [
+                  "full_name",
+                  "date_of_birth"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1
+            },
+            "contact_email": {
+              "type": "string",
+              "description": "Reservation contact email.",
+              "format": "email"
+            },
+            "fare_class": {
+              "type": "string",
+              "enum": [
+                "basic_economy",
+                "standard_economy"
+              ]
+            },
+            "checked_bag_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "mobility_devices": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 0
+            },
+            "include_trip_insurance": {
+              "type": "boolean"
+            },
+            "travel_certificate_code": {
+              "type": "string",
+              "description": "Customer-provided certificate code."
+            },
+            "payment_method_token": {
+              "type": "string",
+              "description": "Masked or tokenized remainder-payment method."
+            },
+            "confirmed_total": {
+              "type": "number",
+              "description": "Total authorized by the customer.",
+              "minimum": 0
+            },
+            "customer_authorized": {
+              "type": "boolean",
+              "description": "Whether the customer authorized the itinerary, optional products, and stated total."
+            }
+          },
+          "required": [
+            "customer_id",
+            "outbound_flight_id",
+            "return_flight_id",
+            "travelers",
+            "contact_email",
+            "fare_class",
+            "checked_bag_count",
+            "mobility_devices",
+            "include_trip_insurance",
+            "travel_certificate_code",
+            "payment_method_token",
+            "confirmed_total",
+            "customer_authorized"
+          ],
+          "additionalProperties": false
+        },
+        "type": "function",
+        "strict": true
+      },
+      {
+        "name": "transfer_to_specialist",
+        "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "reason": {
+              "type": "string",
+              "description": "Why the transfer is required."
+            },
+            "summary": {
+              "type": "string",
+              "description": "Context already collected so the customer does not repeat it."
+            }
+          },
+          "required": [
+            "reason",
+            "summary"
+          ],
+          "additionalProperties": false
+        },
+        "type": "function",
+        "strict": true
+      }
+    ],
+    "parallel_tool_calls": false
+  },
+  "event_metadata": [
+    {
+      "event_index": 1,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 1.64,
+        "end_seconds": 7.06
+      }
+    },
+    {
+      "event_index": 2,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 8.38,
+        "end_seconds": 14.07
+      }
+    },
+    {
+      "event_index": 3,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 14.07,
+        "end_seconds": 14.94
+      }
+    },
+    {
+      "event_index": 4,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 16.56,
+        "end_seconds": 17.34
+      }
+    },
+    {
+      "event_index": 5,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 17.34,
+        "end_seconds": 19.66
+      }
+    },
+    {
+      "event_index": 6,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 19.66,
+        "end_seconds": 34.28
+      }
+    },
+    {
+      "event_index": 7,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 34.28,
+        "end_seconds": 46.76
+      }
+    },
+    {
+      "event_index": 8,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 46.84,
+        "end_seconds": 47.5
+      }
+    },
+    {
+      "event_index": 9,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 47.5,
+        "end_seconds": 48.7
+      }
+    },
+    {
+      "event_index": 10,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 50.16,
+        "end_seconds": 53.339
+      }
+    },
+    {
+      "event_index": 11,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 53.34,
+        "end_seconds": 54.48
+      }
+    },
+    {
+      "event_index": 12,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 54.48,
+        "end_seconds": 60.2
+      }
+    },
+    {
+      "event_index": 13,
+      "kind": "function_call",
+      "call_id": "af-001",
+      "source": "transcripts/transcript.txt",
+      "source_label": "calling tool to list supported airports",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "placement_seconds": 60.4,
+      "placement_after_text": "come back home on October 19th",
+      "placement_before_text": "you've got Reagan, Dulles, and Baltimore",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 60.4,
+        "end_seconds": 60.9,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 15,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 61.28,
+        "end_seconds": 74.11
+      }
+    },
+    {
+      "event_index": 16,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 75.99,
+        "end_seconds": 93.5
+      }
+    },
+    {
+      "event_index": 17,
+      "kind": "function_call",
+      "call_id": "af-002",
+      "source": "transcripts/transcript.txt",
+      "source_label": "calling tool to search for direct flights",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "placement_seconds": 93.5,
+      "placement_after_text": "traveling with my 12-year-old",
+      "placement_before_text": "I did find a 9:10 in the morning",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 93.5,
+        "end_seconds": 94.0,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 19,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 93.5,
+        "end_seconds": 109.53999999999999
+      }
+    },
+    {
+      "event_index": 20,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 111.56,
+        "end_seconds": 117.08
+      }
+    },
+    {
+      "event_index": 21,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 117.08,
+        "end_seconds": 125.5
+      }
+    },
+    {
+      "event_index": 22,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 127.46,
+        "end_seconds": 132.1
+      }
+    },
+    {
+      "event_index": 23,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 132.1,
+        "end_seconds": 137.26
+      }
+    },
+    {
+      "event_index": 24,
+      "kind": "function_call",
+      "call_id": "af-003",
+      "source": "transcripts/transcript.txt",
+      "source_label": "calling tool to search for one-stop flights",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "placement_seconds": 137.8,
+      "placement_after_text": "not one of those 5-hour layovers",
+      "placement_before_text": "the best connection only saves $62 total",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 137.8,
+        "end_seconds": 138.3,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 26,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 139.38,
+        "end_seconds": 146.98
+      }
+    },
+    {
+      "event_index": 27,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 148.82,
+        "end_seconds": 161.42000000000002
+      }
+    },
+    {
+      "event_index": 28,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 161.42000000000002,
+        "end_seconds": 166.64
+      }
+    },
+    {
+      "event_index": 29,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 166.64,
+        "end_seconds": 168.42000000000002
+      }
+    },
+    {
+      "event_index": 30,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 168.42000000000002,
+        "end_seconds": 181.7
+      }
+    },
+    {
+      "event_index": 31,
+      "kind": "function_call",
+      "call_id": "af-004",
+      "source": "transcripts/transcript.txt",
+      "source_label": "calling tool to calculate prices and fees",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "placement_seconds": 181.7,
+      "placement_after_text": "crunch these numbers",
+      "placement_before_text": "Just bear with me, ma'am, one moment",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 181.7,
+        "end_seconds": 182.2,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 33,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 193.58,
+        "end_seconds": 195.5
+      }
+    },
+    {
+      "event_index": 34,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 204.32,
+        "end_seconds": 228.84
+      }
+    },
+    {
+      "event_index": 35,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 229.86,
+        "end_seconds": 233.24
+      }
+    },
+    {
+      "event_index": 36,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 233.24,
+        "end_seconds": 239.94
+      }
+    },
+    {
+      "event_index": 37,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 240.98,
+        "end_seconds": 244.62
+      }
+    },
+    {
+      "event_index": 38,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 245.64,
+        "end_seconds": 245.859
+      }
+    },
+    {
+      "event_index": 39,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 245.86,
+        "end_seconds": 247.4
+      }
+    },
+    {
+      "event_index": 40,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 247.4,
+        "end_seconds": 248.1
+      }
+    },
+    {
+      "event_index": 41,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 249.9,
+        "end_seconds": 253.82
+      }
+    },
+    {
+      "event_index": 42,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 255.34,
+        "end_seconds": 257.19
+      }
+    },
+    {
+      "event_index": 43,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 258.31,
+        "end_seconds": 267.98
+      }
+    },
+    {
+      "event_index": 44,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 270.32,
+        "end_seconds": 274.06
+      }
+    },
+    {
+      "event_index": 45,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 275.76,
+        "end_seconds": 284.42
+      }
+    },
+    {
+      "event_index": 46,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 284.42,
+        "end_seconds": 290.0
+      }
+    },
+    {
+      "event_index": 47,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 292.02,
+        "end_seconds": 305.38
+      }
+    },
+    {
+      "event_index": 48,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 305.38,
+        "end_seconds": 305.94
+      }
+    },
+    {
+      "event_index": 49,
+      "kind": "function_call",
+      "call_id": "af-005",
+      "source": "transcripts/transcript.txt",
+      "source_label": "calling tool to retrieve the customer profile and reservations",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "placement_seconds": 306.0,
+      "placement_after_text": "travel certificate for $200",
+      "placement_before_text": "I found your profile",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 306.0,
+        "end_seconds": 306.5,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 51,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 307.72,
+        "end_seconds": 314.82
+      }
+    },
+    {
+      "event_index": 52,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 316.18,
+        "end_seconds": 318.14
+      }
+    },
+    {
+      "event_index": 53,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 319.98,
+        "end_seconds": 331.06
+      }
+    },
+    {
+      "event_index": 54,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 332.12,
+        "end_seconds": 335.81
+      }
+    },
+    {
+      "event_index": 55,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 335.81,
+        "end_seconds": 336.15
+      }
+    },
+    {
+      "event_index": 56,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 337.76,
+        "end_seconds": 345.38
+      }
+    },
+    {
+      "event_index": 57,
+      "kind": "function_call",
+      "call_id": "af-006",
+      "source": "transcripts/transcript.txt",
+      "source_label": "calling tool to book the new reservation",
+      "annotation_confidence": "high",
+      "state_effect": "reservation_created",
+      "placement_seconds": 345.6,
+      "placement_after_text": "C-T-449108. Okay. Thanks, got it",
+      "placement_before_text": "the booking is confirmed",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 345.6,
+        "end_seconds": 346.1,
+        "inferred_window_seconds": null
+      }
+    },
+    {
+      "event_index": 59,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 346.7,
+        "end_seconds": 367.36
+      }
+    },
+    {
+      "event_index": 60,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 370.21,
+        "end_seconds": 376.11
+      }
+    },
+    {
+      "event_index": 61,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 377.39,
+        "end_seconds": 378.63
+      }
+    },
+    {
+      "event_index": 62,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 378.63,
+        "end_seconds": 381.43
+      }
+    },
+    {
+      "event_index": 63,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 381.43,
+        "end_seconds": 390.13
+      }
+    },
+    {
+      "event_index": 64,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 391.43,
+        "end_seconds": 393.43
+      }
+    },
+    {
+      "event_index": 65,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 393.43,
+        "end_seconds": 405.11
+      }
+    },
+    {
+      "event_index": 66,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 406.77,
+        "end_seconds": 412.51
+      }
+    },
+    {
+      "event_index": 67,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 413.61,
+        "end_seconds": 424.29
+      }
+    },
+    {
+      "event_index": 68,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 425.71,
+        "end_seconds": 439.73
+      }
+    },
+    {
+      "event_index": 69,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 439.73,
+        "end_seconds": 457.90999999999997
+      }
+    },
+    {
+      "event_index": 70,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 459.97,
+        "end_seconds": 463.17
+      }
+    },
+    {
+      "event_index": 71,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 463.17,
+        "end_seconds": 476.53
+      }
+    },
+    {
+      "event_index": 72,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 479.35,
+        "end_seconds": 484.33
+      }
+    },
+    {
+      "event_index": 73,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 484.33,
+        "end_seconds": 487.05
+      }
+    },
+    {
+      "event_index": 74,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 488.49,
+        "end_seconds": 494.83
+      }
+    },
+    {
+      "event_index": 75,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 494.83,
+        "end_seconds": 497.09
+      }
+    },
+    {
+      "event_index": 76,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 498.829,
+        "end_seconds": 502.25
+      }
+    },
+    {
+      "event_index": 77,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 503.57,
+        "end_seconds": 515.75
+      }
+    },
+    {
+      "event_index": 78,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 517.15,
+        "end_seconds": 520.97
+      }
+    },
+    {
+      "event_index": 79,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 520.97,
+        "end_seconds": 527.85
+      }
+    },
+    {
+      "event_index": 80,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 529.87,
+        "end_seconds": 531.71
+      }
+    },
+    {
+      "event_index": 81,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 533.47,
+        "end_seconds": 546.35
+      }
+    },
+    {
+      "event_index": 82,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 548.73,
+        "end_seconds": 549.35
+      }
+    },
+    {
+      "event_index": 83,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 551.01,
+        "end_seconds": 563.85
+      }
+    },
+    {
+      "event_index": 84,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 563.85,
+        "end_seconds": 570.07
+      }
+    },
+    {
+      "event_index": 85,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 572.35,
+        "end_seconds": 577.41
+      }
+    },
+    {
+      "event_index": 86,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 577.41,
+        "end_seconds": 586.25
+      }
+    },
+    {
+      "event_index": 87,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 587.87,
+        "end_seconds": 592.49
+      }
+    },
+    {
+      "event_index": 88,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 592.49,
+        "end_seconds": 615.77
+      }
+    },
+    {
+      "event_index": 89,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 617.85,
+        "end_seconds": 620.75
+      }
+    },
+    {
+      "event_index": 90,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 620.75,
+        "end_seconds": 634.99
+      }
+    },
+    {
+      "event_index": 91,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 636.55,
+        "end_seconds": 641.59
+      }
+    },
+    {
+      "event_index": 92,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 641.59,
+        "end_seconds": 644.69
+      }
+    },
+    {
+      "event_index": 93,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 645.84,
+        "end_seconds": 650.01
+      }
+    },
+    {
+      "event_index": 94,
+      "kind": "speech",
+      "speaker": "Jordan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 650.01,
+        "end_seconds": 658.71
+      }
+    },
+    {
+      "event_index": 95,
+      "kind": "speech",
+      "speaker": "Linda",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 658.71,
+        "end_seconds": 659.19
+      }
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": "0.1.0",
+  "registry_name": "telecom",
+  "registry_version": "0.1.0",
+  "compatibility": "custom_tau_style_not_literal_tau_registry",
+  "design_note": "Carrier account reads and the paid data-add-on mutation are agent tools; customer-side phone settings and tests remain spoken actions.",
+  "tools": [
+    {
+      "name": "lookup_customer",
+      "description": "Resolve one telecom customer using the mobile number and identity attributes collected on the call.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "mobile_number": {"type": "string", "description": "Mobile number on the account."},
+          "full_name": {"type": "string", "description": "Customer full name."},
+          "date_of_birth": {"type": "string", "description": "Customer date of birth."}
+        },
+        "required": ["mobile_number", "full_name", "date_of_birth"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_customer_account",
+      "description": "Retrieve selected line, device, and plan sections for a resolved telecom customer.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "customer_id": {"type": "string", "description": "Resolved customer identifier."},
+          "include": {
+            "type": "array",
+            "description": "Account sections to retrieve.",
+            "items": {"type": "string", "enum": ["lines", "devices", "plans"]},
+            "minItems": 1
+          }
+        },
+        "required": ["customer_id", "include"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_line_data_usage",
+      "description": "Read carrier-recorded usage and remaining high-speed data for one line and billing-cycle window.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "line_id": {"type": "string", "description": "Resolved phone-line identifier."},
+          "window": {"type": "string", "description": "Usage window to inspect.", "enum": ["current_billing_cycle", "last_24_hours", "custom"]}
+        },
+        "required": ["line_id", "window"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_customer_bills",
+      "description": "Retrieve current billing-cycle dates, overage charges, and post-allowance plan behavior.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "customer_id": {"type": "string", "description": "Resolved customer identifier."},
+          "status": {"type": "string", "enum": ["current", "historical"]},
+          "include": {
+            "type": "array",
+            "items": {"type": "string", "enum": ["cycle", "charges", "overages", "plan_behavior"]},
+            "minItems": 1
+          }
+        },
+        "required": ["customer_id", "status", "include"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "add_data_addon",
+      "description": "Add explicitly authorized high-speed data to one line and charge the stated price to the stated bill.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "line_id": {"type": "string", "description": "Resolved phone-line identifier."},
+          "data_gigabytes": {"type": "number", "minimum": 0},
+          "price": {"type": "number", "minimum": 0},
+          "billing_timing": {"type": "string", "enum": ["current_bill", "next_bill"]},
+          "customer_authorized": {"type": "boolean", "description": "Whether the customer explicitly authorized the stated add-on and price."}
+        },
+        "required": ["line_id", "data_gigabytes", "price", "billing_timing", "customer_authorized"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "transfer_to_specialist",
+      "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "reason": {"type": "string", "description": "Why the transfer is required."},
+          "summary": {"type": "string", "description": "Context already collected so the customer does not repeat it."}
+        },
+        "required": ["reason", "summary"],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

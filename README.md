@@ -1,13 +1,13 @@
 # NVIDIA voice-agent pilot
 
 This public, data-only sample contains structured voice-agent conversations for
-custom banking, pharmacy, and retail workflows. It is intentionally
-described as **Tau-style custom-domain data**, not as an exact export of Tau's
-public registries.
+custom airline, banking, pharmacy, retail, and telecom workflows. It is
+intentionally described as **Tau-style custom-domain data**, not as an exact
+export of Tau's public registries.
 
-The snapshot contains 8 conversations, 24 synchronized audio tracks, 3 domain
-registries, 52 structured agent tool calls, 8 annotated conversation
-transcripts, and 52 NVIDIA-schema next-action rows. Every conversation includes
+The snapshot contains 10 conversations, 30 synchronized audio tracks, 5 domain
+registries, 63 structured agent tool calls, 10 annotated conversation
+transcripts, and 63 NVIDIA-schema next-action rows. Every conversation includes
 full-call audio and isolated speaker tracks as 48 kHz, 24-bit, mono PCM WAV
 files.
 
@@ -22,8 +22,8 @@ files.
 - `conversations/<id>/transcripts/annotated-transcript.json`: the full
   chronological transcript with speech, function calls, function outputs,
   policy, tool definitions, timestamps, and audio references.
-- `conversations/<id>/transcripts/transcript.txt`: the unchanged baseline
-  transcript supplied in the source Google Drive folder.
+- `conversations/<id>/transcripts/transcript.txt`: the timestamped mixed-call
+  transcript aligned to the full-call audio.
 - `exports/nemotron_tool_calls.jsonl`: the derived NVIDIA training view, with
   one prefix/expected-action row per agent tool call.
 - `exports/conversation_manifest.json`: compact index of the public structured
@@ -40,5 +40,5 @@ included.
 
 This package follows the useful structural ideas from Tau (domain policy and
 typed tools) and NVIDIA Nemotron (policy + tools + conversation context ->
-expected next function call). It does not claim that custom banking, pharmacy,
-delivery-trace, or refund-trace functions are literal Tau tools.
+expected next function call). It does not claim that these custom-domain
+functions are literal Tau tools.
