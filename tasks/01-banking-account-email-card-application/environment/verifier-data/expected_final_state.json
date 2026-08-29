@@ -1,0 +1,91 @@
+{
+  "_comment": [
+    "State the recorded conversation must leave behind. Asserted as a subset:",
+    "every field here must be present with this value, and the database may know",
+    "more. Only fields the recorded tool results revealed are asserted.",
+    "",
+    "_key_columns declares how each table is addressed, so a row is identified by",
+    "a stable business key rather than by position in the snapshot.",
+    "",
+    "The four mutations this conversation makes are a verification record scoped",
+    "to the open email-change case, a trusted-channel confirmation that reached",
+    "'verified', the profile's new address on both the primary and the",
+    "notification field, and a card-application session that was issued and then",
+    "read as opened. Nothing else about the estate may have moved.",
+    "",
+    "self_service_sessions.status is asserted as either value on purpose. Opening",
+    "the session happens in online banking, which no tool can observe, so the",
+    "handler writes 'issued' -> 'open_not_submitted' the first time the session is",
+    "read. Nothing requires that read: an agent that confirms the tracker it just",
+    "issued and one that does not have both handled the call correctly, and pinning",
+    "either value would make this assertion depend on the route after all."
+  ],
+  "_key_columns": {
+    "customers": "customer_id",
+    "identity_verifications": "verification_id",
+    "channel_confirmations": "confirmation_id",
+    "self_service_sessions": "session_id"
+  },
+  "_forced_read_fields": {
+    "channel_confirmations.status": "update_customer_email refuses unless the confirmation is already verified, and only get_trusted_channel_confirmation moves it there, so every route that successfully changes the address has necessarily polled. The fixed value is a precondition of the email change rather than a record of an optional look, which is why it is asserted exactly while the same column is read-volatile for the damage check: a stranger's confirmation may be read freely, but this customer's must be verified.",
+    "channel_confirmations.verified_at": "Stamped by the same forced read, from the channel's own recorded completion time or the frozen scenario clock, so it is deterministic for every route that gets far enough to change the address."
+  },
+  "customers": {
+    "SF204771": {
+      "full_name": "Johnny Monroe",
+      "primary_email": "johnny.monroe.travel@outlook.com",
+      "notification_email": "johnny.monroe.travel@outlook.com",
+      "login_identifier_kind": "username",
+      "required_verification_methods": [
+        "billing_zip",
+        "mobile_last4"
+      ]
+    }
+  },
+  "identity_verifications": {
+    "verification-SF204771-email-change": {
+      "customer_id": "SF204771",
+      "status": "verified",
+      "required_methods": [
+        "billing_zip",
+        "mobile_last4"
+      ],
+      "matched_methods": [
+        "billing_zip",
+        "mobile_last4"
+      ],
+      "verified_at": "2026-08-27T10:46:31-04:00",
+      "time_asserted": false
+    }
+  },
+  "channel_confirmations": {
+    "confirmation-email-change-SF204771": {
+      "customer_id": "SF204771",
+      "channel_id": "trusted-mobile-1251",
+      "purpose": "email_change",
+      "masked_destination": "***-***-1251",
+      "status": "verified",
+      "verified_at": "2026-08-27T10:48:39-04:00",
+      "verification_id": "verification-SF204771-email-change"
+    }
+  },
+  "self_service_sessions": {
+    "session-card-application": {
+      "customer_id": "SF204771",
+      "workflow": "card_application",
+      "resource_id": "summit-journey",
+      "status": {
+        "_any_of": [
+          "issued",
+          "open_not_submitted"
+        ]
+      },
+      "submitted": false,
+      "resume_supported": true,
+      "save_and_continue": true,
+      "credit_pull_authorized": false,
+      "claim_tracked": false,
+      "claim_id": null
+    }
+  }
+}

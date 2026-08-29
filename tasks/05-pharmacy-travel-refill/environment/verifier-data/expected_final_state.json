@@ -1,0 +1,66 @@
+{
+  "_comment": [
+    "State the recorded conversation must leave behind. Asserted as a subset:",
+    "every field here must be present with this value, and the database may know",
+    "more. Only fields the recorded tool results revealed are asserted.",
+    "",
+    "_key_columns declares how each table is addressed, so a row is identified by",
+    "a stable business key rather than by position in the snapshot."
+  ],
+  "_key_columns": {
+    "prescriptions": "prescription_id",
+    "latest_claims": "prescription_id",
+    "claim_overrides": "override_id",
+    "fill_queue": "prescription_id",
+    "stores": "store_id"
+  },
+  "prescriptions": {
+    "prescription-albuterol": {
+      "patient_id": "patient-miles-carter",
+      "medication_id": "albuterol-inhaler",
+      "fill_store_id": "oak-street-current",
+      "prescription_valid": true,
+      "received_at": "2026-08-27T10:42:00-05:00",
+      "workflow_status": "awaiting_pharmacist_verification",
+      "customer_facing_status": "processing",
+      "priority_reason": "traveling on 2026-08-28; waiting for pickup on the evening of 2026-08-27",
+      "payment_options": ["app_prepay_if_offered_when_ready", "pay_15_at_pickup"],
+      "ready_alert_destination_id": "patient-miles-mobile",
+      "notification_channel": "sms",
+      "ready_alert": "enabled"
+    }
+  },
+  "latest_claims": {
+    "prescription-albuterol": {
+      "status": "paid",
+      "reason": null,
+      "copay": 15.0,
+      "currency": "USD",
+      "override_id": "override-lost-medication",
+      "submitted_at": "2026-08-27T18:12:00-05:00"
+    }
+  },
+  "claim_overrides": {
+    "override-lost-medication": {
+      "prescription_id": "prescription-albuterol",
+      "reason": "lost_medication",
+      "status": "approved_one_time",
+      "urgency_context": "Patient leaves town on the morning of 2026-08-28 and needs the inhaler on the evening of 2026-08-27",
+      "consumed_at": "2026-08-27T18:12:00-05:00"
+    }
+  },
+  "fill_queue": {
+    "prescription-albuterol": {
+      "status": "active",
+      "position": 1,
+      "estimated_minutes": 30,
+      "pharmacist_verification_required": true,
+      "priority_note": "present"
+    }
+  },
+  "stores": {
+    "oak-street-current": {
+      "queue_next_position": 2
+    }
+  }
+}

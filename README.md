@@ -69,6 +69,33 @@ is the point.
   per-conversation row counts, and pointers to state/turn-taking files.
 - `exports/audio_manifest.json`: per-file sample rate, bit depth, duration,
   and measured spectral energy above 10/16/20 kHz.
+- `tasks/NN-<id>/`: a runnable RL environment per conversation — PostgreSQL seeded
+  to that call's opening state, with the domain's tools served as real queries
+  against it. See `tasks/README.md` and `docs/SQL_ENVS.md`.
+
+## Runnable environments
+
+The material described above is a recording: tool results are hand-authored JSON
+and the state snapshots are derived backwards from them. Nothing executes, which
+is sufficient for next-action prediction along the recorded path and insufficient
+the moment an agent departs from it.
+
+`tasks/` inverts that derivation. Each of the ten conversations has an environment
+where backend state is primary and tool results are computed from it, so an
+unrecorded action gets an answer that follows from the same data the recorded
+actions read.
+
+Two things are checked separately there, because they are different questions.
+*Fidelity* is proven by replaying each conversation's recorded calls against the
+running backend: all 85 reproduce byte-exactly, and every task's final state
+matches what the recording implies. *A run* is graded on outcomes only — the state
+it left behind and what it told the caller — so an agent that reaches the right
+result by a different route through the tools scores full marks, in the spirit of
+how τ-bench scores its own domains.
+
+These are additive. Nothing under `conversations/`, `domains/`, or `exports/`
+changes, and each environment's policy file is byte-identical to the domain policy
+it came from.
 
 ## Export-format notes (Nemotron compatibility)
 
