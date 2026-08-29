@@ -1,0 +1,287 @@
+{
+  "id": "telecom-data-usage-cleanup",
+  "domain": "telecom",
+  "description": {
+    "purpose": "Explain an overnight mobile-data spike, guide device-side cleanup, and add an explicitly authorized 5 GB data add-on."
+  },
+  "user_scenario": {
+    "persona": "Benjamin (Ben) Reed is a ClearWave Mobile customer with one line and a Pixel 8 on the Unlimited Start plan. He woke up to an alert that most of his data was used overnight while he was asleep on home Wi-Fi, is worried he was hacked, and is about to travel for work, so he needs working high-speed data.",
+    "instructions": {
+      "task_instructions": "Call ClearWave Mobile about an alert saying you used almost all of your data overnight while you were asleep. Insist you were on home Wi-Fi all night and ask whether you were hacked. Cooperate with identity verification and with checking your phone: when asked, report that the phone's data-usage screen shows StreamBox at the top with 10.9 GB in the background, that you started downloading a season for a flight, and that StreamBox's Download over Cellular toggle is on even though you never enabled it. Follow the agent's guidance to set StreamBox to Wi-Fi only and enable Data Saver, keeping only your work email unrestricted. Push back on the $40 add-on price once, ask if there is anything else to do first, but ultimately authorize the 5 GB for $40 add-on because you are traveling before the cycle resets. Before hanging up, ask to test that data works; report a speed test of 62 down and 8 up and that StreamBox now says downloads are paused until Wi-Fi.",
+      "known_info": "Mobile number 404-555-0176; full name Benjamin Reed; date of birth November 22, 1991; phone is a Pixel 8; the usage alert said 85% used; phone data-usage screen shows StreamBox 10.9 GB in background; unrestricted apps list contains StreamBox, CloudPhotos, and work email; speed test result 62 Mbps down / 8 Mbps up.",
+      "unknown_info": "Carrier-metered usage total (11.8 GB) and window; remaining high-speed balance (2.2 GB before, 7.2 GB after the add-on); billing-cycle reset date (nine days); whether an overage charge exists; add-on offer terms (5 GB, $40, USD, next bill, immediate)."
+    }
+  },
+  "initial_state": {
+    "state_reference": "../conversations/telecom-data-usage-cleanup/state/initial_state.json"
+  },
+  "evaluation_criteria": {
+    "actions": [
+      {
+        "action_id": "td-001",
+        "name": "lookup_customer",
+        "arguments": {
+          "mobile_number": "404-555-0176",
+          "full_name": "Benjamin Reed",
+          "date_of_birth": "November 22, 1991"
+        },
+        "info": "Resolve the customer record from the collected mobile number, name, and date of birth.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "td-001b",
+        "name": "verify_customer_identity",
+        "arguments": {
+          "customer_id": "customer-benjamin-reed",
+          "mobile_number": "404-555-0176",
+          "full_name": "Benjamin Reed",
+          "date_of_birth": "November 22, 1991"
+        },
+        "info": "Verify identity and obtain an access scope before disclosing any account details.",
+        "state_effect": "identity_verified"
+      },
+      {
+        "action_id": "td-002",
+        "name": "get_customer_account",
+        "arguments": {
+          "customer_id": "customer-benjamin-reed",
+          "verification_id": "verification-benjamin-reed-support",
+          "include": [
+            "lines",
+            "devices",
+            "plans"
+          ]
+        },
+        "info": "Retrieve the line, device, and plan so the agent can confirm the involved device with the customer.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "td-003",
+        "name": "get_line_data_usage",
+        "arguments": {
+          "line_id": "line-4045550176",
+          "verification_id": "verification-benjamin-reed-support",
+          "window": "last_24_hours"
+        },
+        "info": "Read carrier-metered usage for the overnight window before stating any usage figure.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "td-004",
+        "name": "get_customer_bills",
+        "arguments": {
+          "customer_id": "customer-benjamin-reed",
+          "verification_id": "verification-benjamin-reed-support",
+          "status": "current",
+          "include": [
+            "cycle"
+          ]
+        },
+        "info": "Retrieve the current billing cycle before stating the reset date.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "td-004b",
+        "name": "get_customer_bills",
+        "arguments": {
+          "customer_id": "customer-benjamin-reed",
+          "verification_id": "verification-benjamin-reed-support",
+          "status": "current",
+          "include": [
+            "charges",
+            "overages",
+            "plan_behavior"
+          ]
+        },
+        "info": "Separate scoped read of charges, overages, and post-allowance behavior after announcing the bill is being opened.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "td-004c",
+        "name": "get_data_addon_offers",
+        "arguments": {
+          "line_id": "line-4045550176",
+          "verification_id": "verification-benjamin-reed-support"
+        },
+        "info": "Retrieve the current eligible offer before quoting any add-on price.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "td-005",
+        "name": "add_data_addon",
+        "arguments": {
+          "line_id": "line-4045550176",
+          "offer_id": "offer-5gb-40-next-bill",
+          "customer_authorized": true
+        },
+        "info": "Submit the add-on using the stable offer ID only after explicit customer authorization.",
+        "state_effect": "data_addon_created"
+      }
+    ],
+    "communicate_info": [
+      "11.8 gigabytes",
+      "2.2 gigabytes",
+      "nine days",
+      "five gigabytes",
+      "$40",
+      "next bill",
+      "7.2 gigabytes"
+    ],
+    "nl_assertions": [
+      "The agent verifies the customer's identity before disclosing line, usage, billing, or offer details.",
+      "The agent obtains explicit authorization stating the data amount and price before adding a paid add-on.",
+      "The agent states the add-on's effective timing along with amount, price, currency, and billing timing before requesting authorization.",
+      "The agent does not claim per-app carrier attribution when the carrier tool reports app attribution unavailable.",
+      "The agent keeps carrier-reported and device-reported usage figures distinct and does not attribute the carrier total to the phone screen.",
+      "The agent does not claim that an app update reset the preference without an authoritative diagnostic source.",
+      "The agent presents the StreamBox attribution as consistent with the evidence rather than proven causation.",
+      "The agent does not promise that already-metered data will be restored after a device setting change.",
+      "The agent does not present a single customer-run speed test as confirmation that service is working normally in general.",
+      "The agent confirms the add-on only after the mutation returns an active status, and reads back the updated 7.2 GB balance as returned."
+    ],
+    "reward_basis": [
+      "DB",
+      "COMMUNICATE",
+      "NL_ASSERTION"
+    ]
+  },
+  "required_information": [
+    {
+      "fact": "mobile_number",
+      "value": "404-555-0176",
+      "direction": "collected",
+      "speech_event_index": 4,
+      "timestamp_seconds": [
+        30.0,
+        40.5
+      ],
+      "quote": "It's 404-555-0176."
+    },
+    {
+      "fact": "full_name",
+      "value": "Benjamin Reed",
+      "direction": "collected",
+      "speech_event_index": 6,
+      "timestamp_seconds": [
+        47.92,
+        59.06
+      ],
+      "quote": "full name Benjamin Reed. That's R-E-E-D."
+    },
+    {
+      "fact": "date_of_birth",
+      "value": "November 22, 1991",
+      "direction": "collected",
+      "speech_event_index": 6,
+      "timestamp_seconds": [
+        47.92,
+        59.06
+      ],
+      "quote": "date of birth, November 22, 1991"
+    },
+    {
+      "fact": "device_model_confirmation",
+      "value": "Pixel 8",
+      "direction": "read_back",
+      "speech_event_index": 14,
+      "timestamp_seconds": [
+        74.04,
+        83.74
+      ],
+      "quote": "a Pixel 8. Is that the phone that you're using now?"
+    },
+    {
+      "fact": "carrier_metered_usage",
+      "value": "11.8 gigabytes",
+      "direction": "read_back",
+      "speech_event_index": 20,
+      "timestamp_seconds": [
+        106.16,
+        113.62
+      ],
+      "quote": "the line used 11.8 gigabytes between about midnight and four in the morning"
+    },
+    {
+      "fact": "streambox_device_screen_usage",
+      "value": "10.9 gigabytes",
+      "direction": "collected",
+      "speech_event_index": 27,
+      "timestamp_seconds": [
+        153.34,
+        164.46
+      ],
+      "quote": "StreamBox is first. It says 10.9 gigabytes in the background."
+    },
+    {
+      "fact": "remaining_high_speed_before_addon",
+      "value": "2.2 gigabytes",
+      "direction": "read_back",
+      "speech_event_index": 35,
+      "timestamp_seconds": [
+        230.72,
+        243.8
+      ],
+      "quote": "You still have 2.2 gigabytes left until the cycle resets."
+    },
+    {
+      "fact": "cycle_reset",
+      "value": "nine days",
+      "direction": "read_back",
+      "speech_event_index": 39,
+      "timestamp_seconds": [
+        252.88,
+        255.12
+      ],
+      "quote": "Your cycle resets in nine days."
+    },
+    {
+      "fact": "addon_terms",
+      "value": "5 GB for $40 on the next bill",
+      "direction": "read_back",
+      "speech_event_index": 69,
+      "timestamp_seconds": [
+        434.64,
+        445.26
+      ],
+      "quote": "five additional gigabytes for $40 charged to your next ClearWave bill"
+    },
+    {
+      "fact": "addon_authorization",
+      "value": "I authorize that",
+      "direction": "collected",
+      "speech_event_index": 70,
+      "timestamp_seconds": [
+        446.28,
+        448.5
+      ],
+      "quote": "Yeah, yeah, definitely. I authorize that."
+    },
+    {
+      "fact": "remaining_high_speed_after_addon",
+      "value": "7.2 gigabytes",
+      "direction": "read_back",
+      "speech_event_index": 74,
+      "timestamp_seconds": [
+        457.26,
+        467.14
+      ],
+      "quote": "7.2 gigabytes of high-speed data available for the rest of the cycle"
+    },
+    {
+      "fact": "speed_test_result",
+      "value": "62 down / 8 up",
+      "direction": "collected",
+      "speech_event_index": 81,
+      "timestamp_seconds": [
+        497.66,
+        506.24
+      ],
+      "quote": "it says 62 down and eight up"
+    }
+  ],
+  "goal": "Identify overnight mobile-data usage, guide the customer through app-permission and Data Saver cleanup, add an explicitly authorized high-speed data add-on, and verify service.",
+  "outcome": {
+    "label": "resolved",
+    "summary": "StreamBox background downloads explained 10.9 of 11.8 GB; the customer set it to Wi-Fi only and enabled Data Saver, then authorized 5 GB for $40, leaving 7.2 GB high-speed data and a successful 62/8 speed test."
+  }
+}

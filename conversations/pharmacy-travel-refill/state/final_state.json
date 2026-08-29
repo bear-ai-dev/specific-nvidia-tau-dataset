@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "pharmacy-travel-refill",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-08-27T18:17:49-05:00",
+  "entities": {
+    "patient-miles-carter": {
+      "entity_type": "patient",
+      "patient_id": "patient-miles-carter",
+      "full_name": "Miles Carter",
+      "date_of_birth": "1988-06-14",
+      "identity_resolution": "unique",
+      "verified_notification_destinations": [
+        {
+          "destination_id": "patient-miles-mobile",
+          "channel": "sms",
+          "masked_destination": "***-***-on-file",
+          "verified": true
+        }
+      ]
+    },
+    "prescription-albuterol": {
+      "entity_type": "prescription",
+      "prescription_id": "prescription-albuterol",
+      "patient_id": "patient-miles-carter",
+      "medication_id": "albuterol-inhaler",
+      "medication_name": "albuterol inhaler",
+      "received_at": "2026-08-27T10:42:00-05:00",
+      "prescription_valid": true,
+      "fill_store_id": "oak-street-current",
+      "workflow_status": "awaiting_pharmacist_verification",
+      "claim": {
+        "status": "paid",
+        "copay": 15,
+        "override_id": "override-lost-medication"
+      },
+      "queue": {
+        "status": "active",
+        "position": 1,
+        "estimated_minutes": 30,
+        "pharmacist_verification_required": true,
+        "priority_note": "present"
+      },
+      "priority_reason": "traveling on 2026-08-28; waiting for pickup on the evening of 2026-08-27",
+      "notification": {
+        "ready_alert": "enabled",
+        "channel": "sms",
+        "destination_id": "patient-miles-mobile",
+        "masked_destination": "***-***-on-file",
+        "verified": true
+      },
+      "payment_options": [
+        "app_prepay_if_offered_when_ready",
+        "pay_15_at_pickup"
+      ]
+    },
+    "override-lost-medication": {
+      "entity_type": "payer_claim_override",
+      "override_id": "override-lost-medication",
+      "prescription_id": "prescription-albuterol",
+      "reason": "lost_medication",
+      "status": "approved_one_time"
+    },
+    "oak-street-current": {
+      "entity_type": "pharmacy_location",
+      "store_id": "oak-street-current",
+      "display_name": "Oak Street Pharmacy",
+      "counter_closes_at": "19:00",
+      "front_store_closes_later": true
+    },
+    "park-avenue": {
+      "entity_type": "pharmacy_location",
+      "store_id": "park-avenue",
+      "display_name": "Park Avenue",
+      "counter_closes_at": "21:00",
+      "timezone": "America/Chicago"
+    },
+    "park-avenue:albuterol-inhaler": {
+      "entity_type": "medication_inventory",
+      "store_id": "park-avenue",
+      "medication_id": "albuterol-inhaler",
+      "in_stock": true,
+      "reserved": false
+    }
+  }
+}

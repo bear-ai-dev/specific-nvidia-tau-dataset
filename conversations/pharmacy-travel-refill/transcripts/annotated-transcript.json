@@ -1,14 +1,15 @@
 {
-  "schema_version": "0.2.0",
+  "schema_version": "0.3.0",
   "format": "nvidia_responses_api_full_trajectory",
   "trajectory_id": 4,
   "conversation_id": "pharmacy-travel-refill",
   "domain": "pharmacy",
+  "scenario_time": "2026-08-27T18:12:00-05:00",
   "responses_create_params": {
     "input": [
       {
         "role": "system",
-        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\nService context: You represent Oak Street Pharmacy pharmacy support. Your agent display name is Aaron.\n\n<policy>\n# Pharmacy Support Agent Policy\n\n**Current Time:** Supplied by the environment in the current pharmacy's local timezone. Use that value for all time-sensitive decisions. Do not infer the current time, date, timezone, or business hours from conversational context alone.\n\n## Supported Workflows\n\nThe agent may assist with:\n\n- Patient and prescription lookup\n- Prescription and payer-claim status\n- Eligible payer override requests\n- Claim resubmission after an override approval\n- Operational queue and priority notes\n- Pharmacy location and medication-inventory checks\n- Ready-alert settings\n- Prescription-transfer requests when supported\n- Transfer to a pharmacist or other pharmacy specialist\n\nThe agent provides operational customer service only. It does not provide medical or clinical advice.\n\n## Domain Basics\n\n### Patient Profile\n\n- Patient ID\n- Full name and date of birth\n- Identity-resolution status\n- Verified, masked notification destinations\n- Privacy and authorization status\n\n### Prescription\n\n- Prescription ID\n- Canonical medication ID and display name\n- Fill-store ID\n- Prescription validity\n- Received time\n- Claim, queue, verification, and readiness status\n- Notification and payment eligibility\n\n### Prescription Lifecycle\n\n`received` -> `claim_pending` -> `claim_rejected` or `claim_paid` -> `awaiting_pharmacist_verification` -> `ready_for_pickup` -> `picked_up`, `transferred`, `cancelled`, or `expired`\n\nDo not imply that one status means another. A valid prescription may have a rejected payer claim. A paid claim does not mean that the prescription is ready.\n\n### Payer Claim\n\n- Claim status and rejection reason\n- Override reason, identifier, scope, and decision\n- Payer participation requirements\n- Copay and payment eligibility\n- Claim-resubmission result\n\n### Pharmacy Location\n\n- Stable store ID\n- Display name and address\n- Local timezone\n- Current pharmacy-counter and front-store hours\n- Available services\n\n### Medication Inventory\n\n- Store ID\n- Canonical medication ID\n- In-stock status\n- Reservation status\n\nAn inventory result does not reserve medication, transfer a prescription, or guarantee future availability.\n\n## Identity and Privacy Rules\n\n1. Collect the patient's full name and date of birth before accessing a prescription.\n2. Call `lookup_patient` and require a unique match before disclosing prescription or claim details.\n3. Confirm which medication the patient is asking about before retrieving its record.\n4. Use only patient, prescription, medication, store, and contact identifiers supplied by the patient, the system context, or an earlier tool result.\n5. Do not invent, infer, or expose phone numbers, email addresses, prescription IDs, medication IDs, or store IDs.\n6. Use only verified notification destinations returned by a tool. Keep destinations masked when speaking to the patient.\n\n## Prescription, Claim, and Override Rules\n\n- Describe a payer rejection as an insurance or claim issue. Do not describe it as an invalid prescription or generic payment failure unless a tool explicitly returns that status.\n- Request only an override that matches facts supplied by the patient and the available override reasons.\n- Explain that the payer may require the patient to participate.\n- Do not resubmit a claim until the override result explicitly says it is approved.\n- Do not say an override was approved, a claim was paid, or an insurance issue was cleared until a successful tool result confirms it.\n- State a copay only from the latest successful claim result.\n\n## Queue and Readiness Rules\n\n- Do not say a prescription is ready until a tool returns `ready_for_pickup`.\n- Pharmacist verification cannot be skipped or bypassed by an urgency or travel note.\n- An operational priority note may describe the patient's circumstances but does not change clinical requirements.\n- State an exact queue position only when a tool returns that position.\n- State an estimated completion time only when a tool returns it, and label it as an estimate.\n- Never guarantee completion, readiness, or pickup feasibility.\n- When discussing whether the patient can arrive before closing, use the environment time, the latest returned estimate, verified location hours, and the patient's stated travel time. If those values indicate that arrival may be late, say so plainly.\n\n## Store, Location, Inventory, and Transfer Rules\n\n- Do not name an alternate pharmacy, state its hours, or describe its services until `search_pharmacy_locations` or another location result returns those facts.\n- Check inventory only with store and medication IDs obtained from prior context or tool results.\n- An inventory check does not reserve medication or alter the current fill.\n- Keep the current fill in place unless the patient explicitly authorizes a transfer.\n- Use `request_prescription_transfer` for a transfer request. Do not claim that a transfer was accepted or completed unless its result explicitly confirms that state.\n- If a transfer requires pharmacist review, communicate that status and escalate when necessary.\n\n## Notification and Payment Rules\n\n- A notification update requires clear patient consent and a verified destination identifier returned by a tool.\n- Confirm an alert change only after the update result reports success, including the selected channel and masked destination.\n- Do not claim that app prepayment is available unless a tool result explicitly confirms eligibility.\n- Do not collect or modify payment credentials in conversation.\n\n## Tool Interaction and Provenance Rules\n\n1. In each turn, either send a message to the patient or make one tool call. Do not do both at the same time.\n2. Every tool argument must come from earlier patient speech, the system or policy context, or an earlier tool result.\n3. Never derive a backend identifier from an ordinary name or from the agent's own unsupported statement.\n4. Never state a backend fact before receiving the supporting tool result.\n5. The agent may state an intention before a call, but may state that an action succeeded only after a successful result.\n6. Do not use a later tool result to retroactively justify an earlier spoken fact.\n7. If a required fact or capability is unavailable, ask the patient for the missing information or transfer to a specialist. Do not guess.\n\n## Hard Limitations\n\nThe agent must not:\n\n- Provide diagnosis, treatment, dosing, substitution, or other clinical advice\n- Override pharmacist verification or other clinical review\n- Guarantee payer approval, inventory, readiness, completion time, or arrival before closing\n- Invent store names, store hours, queue positions, contact destinations, payment options, or action outcomes\n- Reserve medication unless a defined tool explicitly supports and confirms reservation\n- Transfer a prescription without explicit patient authorization\n- Change a notification route without a verified destination and patient consent\n- Suggest or claim completion of an action that no defined tool can perform\n\n## Escalation Protocol\n\nTransfer to a pharmacist or pharmacy specialist for:\n\n1. Clinical, dosing, substitution, interaction, or medication-safety questions\n2. A suspected allergic reaction or other urgent safety concern\n3. Controlled-substance, regulatory, or prescriber exceptions\n4. Failed identity verification or a privacy concern\n5. A payer case requiring patient or specialist participation that the available tools cannot complete\n6. A prescription transfer that requires pharmacist action or cannot be completed by `request_prescription_transfer`\n7. Conflicting prescription, claim, queue, or readiness records\n\nCall `transfer_to_specialist` with a concise reason and the context already collected. After a successful transfer request, say exactly:\n\n\"I'm transferring you to a pharmacy specialist who can help with this safely.\"\n</policy>\n\nTry to be helpful and always follow the policy."
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\nService context: You represent Oak Street Pharmacy pharmacy support. Your agent display name is Aaron. The current scenario time at the start of the call is 2026-08-27T18:12:00-05:00.\n\n<policy>\n# Pharmacy Support Agent Policy\n\n**Current Time:** Supplied by the environment in the current pharmacy's local timezone. Use that value for all time-sensitive decisions. Do not infer the current time, date, timezone, or business hours from conversational context alone.\n\n## Supported Workflows\n\nThe agent may assist with:\n\n- Patient and prescription lookup\n- Prescription and payer-claim status\n- Eligible payer override requests\n- Claim resubmission after an override approval\n- Operational queue and priority notes\n- Pharmacy location and medication-inventory checks\n- Ready-alert settings\n- Prescription-transfer requests when supported\n- Transfer to a pharmacist or other pharmacy specialist\n\nThe agent provides operational customer service only. It does not provide medical or clinical advice.\n\n## Domain Basics\n\n### Patient Profile\n\n- Patient ID\n- Full name and date of birth\n- Identity-resolution status\n- Verified, masked notification destinations\n- Privacy and authorization status\n\n### Prescription\n\n- Prescription ID\n- Canonical medication ID and display name\n- Fill-store ID\n- Prescription validity\n- Received time\n- Claim, queue, verification, and readiness status\n- Notification and payment eligibility\n\n### Prescription Lifecycle\n\n`received` -> `claim_pending` -> `claim_rejected` or `claim_paid` -> `awaiting_pharmacist_verification` -> `ready_for_pickup` -> `picked_up`, `transferred`, `cancelled`, or `expired`\n\nDo not imply that one status means another. A valid prescription may have a rejected payer claim. A paid claim does not mean that the prescription is ready.\n\n### Payer Claim\n\n- Claim status and rejection reason\n- Override reason, identifier, scope, and decision\n- Payer participation requirements\n- Copay and payment eligibility\n- Claim-resubmission result\n\n### Pharmacy Location\n\n- Stable store ID\n- Display name and address\n- Local timezone\n- Current pharmacy-counter and front-store hours\n- Available services\n\n### Medication Inventory\n\n- Store ID\n- Canonical medication ID\n- In-stock status\n- Reservation status\n\nAn inventory result does not reserve medication, transfer a prescription, or guarantee future availability.\n\n## Identity and Privacy Rules\n\n1. Collect the patient's full name and date of birth before accessing a prescription.\n2. Call `lookup_patient` and require a unique match before disclosing prescription or claim details.\n3. Confirm which medication the patient is asking about before retrieving its record.\n4. Use only patient, prescription, medication, store, and contact identifiers supplied by the patient, the system context, or an earlier tool result.\n5. Do not invent, infer, or expose phone numbers, email addresses, prescription IDs, medication IDs, or store IDs.\n6. Use only verified notification destinations returned by a tool. Keep destinations masked when speaking to the patient.\n\n## Prescription, Claim, and Override Rules\n\n- Describe a payer rejection as an insurance or claim issue. Do not describe it as an invalid prescription or generic payment failure unless a tool explicitly returns that status.\n- Request only an override that matches facts supplied by the patient and the available override reasons.\n- Explain that the payer may require the patient to participate.\n- Do not resubmit a claim until the override result explicitly says it is approved.\n- Do not say an override was approved, a claim was paid, or an insurance issue was cleared until a successful tool result confirms it.\n- State a copay only from the latest successful claim result.\n\n## Queue and Readiness Rules\n\n- Do not say a prescription is ready until a tool returns `ready_for_pickup`.\n- Pharmacist verification cannot be skipped or bypassed by an urgency or travel note.\n- An operational priority note may describe the patient's circumstances but does not change clinical requirements.\n- State an exact queue position only when a tool returns that position.\n- State an estimated completion time only when a tool returns it, and label it as an estimate.\n- Never guarantee completion, readiness, or pickup feasibility.\n- When discussing whether the patient can arrive before closing, use the environment time, the latest returned estimate, verified location hours, and the patient's stated travel time. If those values indicate that arrival may be late, say so plainly.\n\n## Store, Location, Inventory, and Transfer Rules\n\n- Do not name an alternate pharmacy, state its hours, or describe its services until `search_pharmacy_locations` or another location result returns those facts.\n- Check inventory only with store and medication IDs obtained from prior context or tool results.\n- An inventory check does not reserve medication or alter the current fill.\n- Keep the current fill in place unless the patient explicitly authorizes a transfer.\n- Use `request_prescription_transfer` for a transfer request. Do not claim that a transfer was accepted or completed unless its result explicitly confirms that state.\n- If a transfer requires pharmacist review, communicate that status and escalate when necessary.\n\n## Notification and Payment Rules\n\n- A notification update requires clear patient consent and a verified destination identifier returned by a tool.\n- Confirm an alert change only after the update result reports success, including the selected channel and masked destination.\n- Do not claim that app prepayment is available unless a tool result explicitly confirms eligibility.\n- Do not collect or modify payment credentials in conversation.\n\n## Tool Interaction and Provenance Rules\n\n1. In each turn, either send a message to the patient or make one tool call. Do not do both at the same time.\n2. Every tool argument must come from earlier patient speech, the system or policy context, or an earlier tool result.\n3. Never derive a backend identifier from an ordinary name or from the agent's own unsupported statement.\n4. Never state a backend fact before receiving the supporting tool result.\n5. The agent may state an intention before a call, but may state that an action succeeded only after a successful result.\n6. Do not use a later tool result to retroactively justify an earlier spoken fact.\n7. If a required fact or capability is unavailable, ask the patient for the missing information or transfer to a specialist. Do not guess.\n\n## Hard Limitations\n\nThe agent must not:\n\n- Provide diagnosis, treatment, dosing, substitution, or other clinical advice\n- Override pharmacist verification or other clinical review\n- Guarantee payer approval, inventory, readiness, completion time, or arrival before closing\n- Invent store names, store hours, queue positions, contact destinations, payment options, or action outcomes\n- Reserve medication unless a defined tool explicitly supports and confirms reservation\n- Transfer a prescription without explicit patient authorization\n- Change a notification route without a verified destination and patient consent\n- Suggest or claim completion of an action that no defined tool can perform\n\n## Escalation Protocol\n\nTransfer to a pharmacist or pharmacy specialist for:\n\n1. Clinical, dosing, substitution, interaction, or medication-safety questions\n2. A suspected allergic reaction or other urgent safety concern\n3. Controlled-substance, regulatory, or prescriber exceptions\n4. Failed identity verification or a privacy concern\n5. A payer case requiring patient or specialist participation that the available tools cannot complete\n6. A prescription transfer that requires pharmacist action or cannot be completed by `request_prescription_transfer`\n7. Conflicting prescription, claim, queue, or readiness records\n\nCall `transfer_to_specialist` with a concise reason and the context already collected. After a successful transfer request, say exactly:\n\n\"I'm transferring you to a pharmacy specialist who can help with this safely.\"\n</policy>\n\nTry to be helpful and always follow the policy."
       },
       {
         "id": "msg_0004_0000",
@@ -111,7 +112,7 @@
       {
         "type": "function_call_output",
         "call_id": "ph-002",
-        "output": "\n\n{\"prescription_id\":\"prescription-albuterol\",\"medication_id\":\"albuterol-inhaler\",\"medication_name\":\"albuterol inhaler\",\"received_at\":\"10:42\",\"prescription_valid\":true,\"fill_store\":{\"store_id\":\"oak-street-current\",\"display_name\":\"Oak Street Pharmacy\",\"counter_closes_at\":\"19:00\",\"front_store_closes_later\":true},\"claim\":{\"status\":\"rejected\",\"reason\":\"refill_too_soon\"},\"customer_facing_status\":\"processing\",\"queue\":{\"status\":\"blocked_by_claim\"},\"notification\":{\"ready_alert_destination_id\":\"patient-miles-mobile\"},\"payment_options\":[\"pay_at_pickup\"]}"
+        "output": "\n\n{\"prescription_id\":\"prescription-albuterol\",\"medication_id\":\"albuterol-inhaler\",\"medication_name\":\"albuterol inhaler\",\"received_at\":\"2026-08-27T10:42:00-05:00\",\"prescription_valid\":true,\"fill_store\":{\"store_id\":\"oak-street-current\",\"display_name\":\"Oak Street Pharmacy\",\"counter_closes_at\":\"19:00\",\"front_store_closes_later\":true},\"claim\":{\"status\":\"rejected\",\"reason\":\"refill_too_soon\"},\"customer_facing_status\":\"processing\",\"queue\":{\"status\":\"blocked_by_claim\"},\"notification\":{\"ready_alert_destination_id\":\"patient-miles-mobile\"},\"payment_options\":[\"pay_at_pickup\"]}"
       },
       {
         "id": "msg_0004_0008",
@@ -221,7 +222,11 @@
         "type": "message"
       },
       {
-        "arguments": "{\"prescription_id\":\"prescription-albuterol\",\"reason\":\"lost_medication\",\"urgency_context\":\"Patient leaves town tomorrow morning and needs the inhaler tonight\"}",
+        "role": "user",
+        "content": "Yeah. Thank you."
+      },
+      {
+        "arguments": "{\"prescription_id\":\"prescription-albuterol\",\"reason\":\"lost_medication\",\"urgency_context\":\"Patient leaves town on the morning of 2026-08-28 and needs the inhaler on the evening of 2026-08-27\"}",
         "call_id": "ph-003",
         "name": "request_claim_override",
         "type": "function_call",
@@ -232,10 +237,6 @@
         "type": "function_call_output",
         "call_id": "ph-003",
         "output": "\n\n{\"override_id\":\"override-lost-medication\",\"status\":\"approved_one_time\"}"
-      },
-      {
-        "role": "user",
-        "content": "Yeah. Thank you."
       },
       {
         "id": "msg_0004_0020",
@@ -345,7 +346,7 @@
         "type": "message"
       },
       {
-        "arguments": "{\"prescription_id\":\"prescription-albuterol\",\"priority_reason\":\"traveling; waiting for pickup tonight\"}",
+        "arguments": "{\"prescription_id\":\"prescription-albuterol\",\"priority_reason\":\"traveling on 2026-08-28; waiting for pickup on the evening of 2026-08-27\"}",
         "call_id": "ph-005",
         "name": "update_prescription",
         "type": "function_call",
@@ -379,7 +380,7 @@
         "content": "And does that one also close at, on the counter at 7:00 or is it, is it later?"
       },
       {
-        "arguments": "{\"origin_store_id\":\"oak-street-current\",\"open_after_local_time\":\"19:00\",\"query\":\"Park Avenue\"}",
+        "arguments": "{\"origin_store_id\":\"oak-street-current\",\"open_after_local_time\":\"19:00\"}",
         "call_id": "ph-006",
         "name": "search_pharmacy_locations",
         "type": "function_call",
@@ -389,7 +390,7 @@
       {
         "type": "function_call_output",
         "call_id": "ph-006",
-        "output": "\n\n{\"locations\":[{\"store_id\":\"park-avenue\",\"display_name\":\"Park Avenue\",\"counter_closes_at\":\"21:00\",\"timezone\":\"store_local\"}]}"
+        "output": "\n\n{\"locations\":[{\"store_id\":\"park-avenue\",\"display_name\":\"Park Avenue\",\"counter_closes_at\":\"21:00\",\"timezone\":\"America/Chicago\"}]}"
       },
       {
         "id": "msg_0004_0033",
@@ -857,7 +858,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          23.22,
+          24.0,
           24.64
         ]
       }
@@ -923,9 +924,12 @@
       "placement_before_text": "I see the prescription",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 44.84,
-        "end_seconds": 52.02,
-        "inferred_window_seconds": null
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          36.5,
+          44.5
+        ]
       }
     },
     {
@@ -1018,7 +1022,15 @@
         "path": "audio/full.wav",
         "start_seconds": 99.78999999999999,
         "end_seconds": 105.97999999999999
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "I'm leaving town again tomorrow morning",
+          "category": "relative_time_resolved_from_scenario_clock",
+          "reason": "With the scenario clock at 2026-08-27 18:12 local, 'tomorrow morning' resolves to the morning of 2026-08-28 and 'tonight' to the evening of 2026-08-27; the ph-003 urgency_context argument was made concrete accordingly.",
+          "remediation": "Carry patient-stated relative times into tool arguments as concrete dates resolved from the environment clock."
+        }
+      ]
     },
     {
       "event_index": 20,
@@ -1078,24 +1090,6 @@
     },
     {
       "event_index": 24,
-      "kind": "function_call",
-      "call_id": "ph-003",
-      "source": "transcripts/transcript.txt",
-      "source_label": "contact the insurance plan for an override",
-      "annotation_confidence": "high",
-      "state_effect": "payer_override_approved",
-      "placement_seconds": 126.6,
-      "placement_after_text": null,
-      "placement_before_text": null,
-      "audio_reference": {
-        "path": "audio/full.wav",
-        "start_seconds": 122.12,
-        "end_seconds": 126.6,
-        "inferred_window_seconds": null
-      }
-    },
-    {
-      "event_index": 26,
       "kind": "speech",
       "speaker": "Miles",
       "role": "user",
@@ -1104,6 +1098,27 @@
         "path": "audio/full.wav",
         "start_seconds": 126.66,
         "end_seconds": 127.18
+      }
+    },
+    {
+      "event_index": 25,
+      "kind": "function_call",
+      "call_id": "ph-003",
+      "source": "transcripts/transcript.txt",
+      "source_label": "contact the insurance plan for an override",
+      "annotation_confidence": "medium",
+      "state_effect": "payer_override_approved",
+      "placement_seconds": 127.5,
+      "placement_after_text": "Yeah. Thank you.",
+      "placement_before_text": "Thank you for holding",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          127.5,
+          135.5
+        ]
       }
     },
     {
@@ -1131,9 +1146,12 @@
       "placement_before_text": "They approved a one-time lost medication override",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 187.549,
-        "end_seconds": 195.44,
-        "inferred_window_seconds": null
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          187.2,
+          187.549
+        ]
       }
     },
     {
@@ -1238,7 +1256,15 @@
         "path": "audio/full.wav",
         "start_seconds": 238.07999999999998,
         "end_seconds": 243.1
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "make sure it doesn't get pushed to tomorrow",
+          "category": "relative_time_resolved_from_scenario_clock",
+          "reason": "With the scenario clock at 2026-08-27 18:12 local, 'tomorrow' resolves to 2026-08-28 and pickup 'tonight' to the evening of 2026-08-27; the ph-005 priority_reason argument was made concrete accordingly.",
+          "remediation": "Carry patient-stated relative times into tool arguments as concrete dates resolved from the environment clock."
+        }
+      ]
     },
     {
       "event_index": 38,
@@ -1265,9 +1291,12 @@
       "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 243.14,
-        "end_seconds": 255.68,
-        "inferred_window_seconds": null
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          255.68,
+          263.68
+        ]
       }
     },
     {
@@ -1311,10 +1340,10 @@
       "kind": "function_call",
       "call_id": "ph-006",
       "source": "transcripts/transcript.txt",
-      "source_label": "discover the Park Avenue location and verified hours before naming it",
+      "source_label": "search nearby Oak Street locations with counters open after 19:00",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 279.5,
+      "placement_seconds": 278.0,
       "placement_after_text": "is it later",
       "placement_before_text": "The Park Avenue store closes at 9:00",
       "audio_reference": {
@@ -1322,7 +1351,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          273.34,
+          278.0,
           279.66
         ]
       }
@@ -1352,9 +1381,12 @@
       "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 279.66,
-        "end_seconds": 284.56,
-        "inferred_window_seconds": null
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          284.56,
+          289.22
+        ]
       }
     },
     {
@@ -1402,9 +1434,12 @@
       "placement_before_text": "your mobile number is set for the ready alert",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 304.6,
-        "end_seconds": 310.5,
-        "inferred_window_seconds": null
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          304.2,
+          304.6
+        ]
       }
     },
     {
@@ -1417,7 +1452,15 @@
         "path": "audio/full.wav",
         "start_seconds": 304.6,
         "end_seconds": 310.5
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "your mobile number is set for the ready alert",
+          "category": "missing_notification_consent",
+          "reason": "The agent rewrote notification_channel and notification_destination via ph-008 without the patient asking for or consenting to an alert change, which policy requires alongside a verified destination.",
+          "remediation": "Ask the patient to confirm the SMS ready alert to the masked mobile on file before calling update_prescription."
+        }
+      ]
     },
     {
       "event_index": 54,

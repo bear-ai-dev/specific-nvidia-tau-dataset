@@ -1,0 +1,126 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "airline-family-reservation",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-08-26T12:30:00-07:00",
+  "entities": {
+    "customers": {
+      "customer-linda-carver": {
+        "customer_id": "customer-linda-carver",
+        "full_name": "Linda Marie Carver",
+        "date_of_birth": "March 8, 1954",
+        "email": "linda.carver9@outlook.com",
+        "payment_methods": [
+          {
+            "token": "visa-on-file-1182",
+            "brand": "Visa",
+            "last4": "1182"
+          }
+        ],
+        "reservations": [],
+        "duplicate_reservation": false,
+        "travel_certificate_input_required": true
+      }
+    },
+    "travel_certificates": {
+      "certificate-CT-449108": {
+        "certificate_id": "certificate-CT-449108",
+        "masked_code": "CT-***108",
+        "status": "valid",
+        "available_balance": 200.0,
+        "currency": "USD",
+        "expires_at": "2026-12-31"
+      }
+    },
+    "supported_airports": {
+      "DCA": {
+        "code": "DCA",
+        "name": "Washington Reagan National"
+      },
+      "IAD": {
+        "code": "IAD",
+        "name": "Washington Dulles International"
+      },
+      "BWI": {
+        "code": "BWI",
+        "name": "Baltimore/Washington International"
+      },
+      "PHX": {
+        "code": "PHX",
+        "name": "Phoenix Sky Harbor"
+      }
+    },
+    "flights": {
+      "BM-PHX-DCA-0910": {
+        "flight_id": "BM-PHX-DCA-0910",
+        "origin": {
+          "code": "PHX",
+          "name": "Phoenix Sky Harbor"
+        },
+        "destination": {
+          "code": "DCA",
+          "name": "Washington Reagan National"
+        },
+        "departure_date": "October 14",
+        "departure_time": "09:10",
+        "stops": 0,
+        "fare_options": [
+          {
+            "fare_class": "basic_economy",
+            "relative_price_rank": "lower",
+            "advance_seat_selection_allowed": false
+          },
+          {
+            "fare_class": "standard_economy",
+            "relative_price_rank": "higher",
+            "advance_seat_selection_allowed": true
+          }
+        ]
+      },
+      "BM-DCA-PHX-1540": {
+        "flight_id": "BM-DCA-PHX-1540",
+        "origin": {
+          "code": "DCA",
+          "name": "Washington Reagan National"
+        },
+        "destination": {
+          "code": "PHX",
+          "name": "Phoenix Sky Harbor"
+        },
+        "departure_date": "October 19",
+        "departure_time": "15:40",
+        "stops": 0,
+        "fare_options": [
+          {
+            "fare_class": "basic_economy",
+            "relative_price_rank": "lower",
+            "advance_seat_selection_allowed": false
+          },
+          {
+            "fare_class": "standard_economy",
+            "relative_price_rank": "higher",
+            "advance_seat_selection_allowed": true
+          }
+        ]
+      }
+    },
+    "itineraries": {
+      "itinerary-phx-dca-one-stop-best-current": {
+        "itinerary_id": "itinerary-phx-dca-one-stop-best-current",
+        "total_savings": 62.0,
+        "additional_duration_each_way": "almost three hours"
+      }
+    },
+    "accessibility_rules": {
+      "folding-walker": {
+        "device_type": "folding walker",
+        "counts_as_paid_bag": false,
+        "fee": 0.0,
+        "serial_number_required": false,
+        "labeling_guidance": "label with customer contact information and identify it as a mobility device at the airport",
+        "airport_notification_required": true,
+        "effective_at": "2026-07-01"
+      }
+    }
+  }
+}

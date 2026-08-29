@@ -1,0 +1,277 @@
+{
+  "id": "banking-account-email-card-application",
+  "domain": "banking",
+  "description": {
+    "purpose": "Restore account access by replacing the profile email after full verification, compare travel-card terms from published knowledge, and issue a customer-controlled card-application session without submitting it."
+  },
+  "user_scenario": {
+    "persona": "Johnny Monroe is a Harbor Stone Bank customer who is locked out of the old email on his profile and is planning a trip. He is budget-conscious, splits rent with a roommate, and has both salary and freelance income. He is initially frustrated after failed online attempts that kept sending codes to the inaccessible email.",
+    "instructions": {
+      "task_instructions": "Call the bank to change your profile email to a new address you control, because password-reset codes keep going to an old email you cannot access. Then ask for help choosing a travel credit card: you want no foreign transaction fee and airport lounge access, but you will not pay 700 dollars a year. Ask follow-up questions about checked bags, welcome bonuses, and application fields (housing payment, annual income). Ask the agent to send you the application link, but do not submit during the call; confirm you can save it and that no credit pull happens before you submit. Do not volunteer information before the agent asks for it.",
+      "known_info": "Full name Johnny Monroe. Account ID SF204771. Billing ZIP 19447. Mobile number ending 1251. New email johnny.monroe.travel@outlook.com. Preferences: no foreign transaction fee, lounge access, annual fee under 700 dollars. Salary plus freelance income; rent split with a roommate.",
+      "unknown_info": "Which travel-card products exist and their annual fees, foreign-transaction fees, lounge terms, checked-bag benefits, and current welcome offers. How the application's housing-payment and income fields should be filled. Whether the application can be saved and resumed. Whether the old email still works for login after the change."
+    }
+  },
+  "initial_state": {
+    "state_reference": "../conversations/banking-account-email-card-application/state/initial_state.json"
+  },
+  "evaluation_criteria": {
+    "actions": [
+      {
+        "action_id": "bc-001",
+        "name": "lookup_customer",
+        "arguments": {
+          "account_id": "SF204771"
+        },
+        "info": "Resolve exactly one customer from the caller-supplied account ID before any account-specific step.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "bc-002",
+        "name": "get_current_time",
+        "arguments": {},
+        "info": "Obtain the authoritative current time before time-dependent claims and verification records.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "bc-003",
+        "name": "verify_customer_identity",
+        "arguments": {
+          "customer_id": "SF204771",
+          "billing_zip": "19447",
+          "mobile_last4": "1251"
+        },
+        "info": "Complete the profile's required verification methods before exposing account data or mutating the profile.",
+        "state_effect": "identity_verified"
+      },
+      {
+        "action_id": "bc-004",
+        "name": "start_trusted_channel_confirmation",
+        "arguments": {
+          "customer_id": "SF204771",
+          "purpose": "email_change",
+          "channel": "sms",
+          "verification_id": "verification-SF204771-email-change"
+        },
+        "info": "Initiate the purpose-bound trusted-channel challenge required for an email change.",
+        "state_effect": "confirmation_challenge_sent"
+      },
+      {
+        "action_id": "bc-004b",
+        "name": "get_trusted_channel_confirmation",
+        "arguments": {
+          "customer_id": "SF204771",
+          "confirmation_id": "confirmation-email-change-SF204771"
+        },
+        "info": "Read the backend confirmation state, without ever passing the secret code, and require a successful unexpired status before the mutation.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "bc-005",
+        "name": "update_customer_email",
+        "arguments": {
+          "customer_id": "SF204771",
+          "new_email": "johnny.monroe.travel@outlook.com",
+          "verification_id": "verification-SF204771-email-change",
+          "confirmation_id": "confirmation-email-change-SF204771"
+        },
+        "info": "Replace the primary email, referencing the successful verification and confirmation records.",
+        "state_effect": "customer_email_updated"
+      },
+      {
+        "action_id": "bc-006",
+        "name": "search_knowledge_base",
+        "arguments": {
+          "query": "travel cards with no foreign transaction fee, lounge access, and annual fee below $700"
+        },
+        "info": "Ground the product comparison in current published terms rather than memory.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "bc-007",
+        "name": "search_knowledge_base",
+        "arguments": {
+          "query": "Does Summit Reserve include a free checked bag?"
+        },
+        "info": "Ground the checked-bag answer in current published benefit terms.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "bc-008",
+        "name": "search_knowledge_base",
+        "arguments": {
+          "query": "Current welcome offers for Summit Journey and Summit Reserve"
+        },
+        "info": "Ground welcome-offer amounts, spend thresholds, and windows in current published terms.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "bc-009",
+        "name": "create_secure_self_service_session",
+        "arguments": {
+          "customer_id": "SF204771",
+          "workflow": "card_application",
+          "resource_id": "summit-journey",
+          "delivery_channels": [
+            "secure_message",
+            "email_notification"
+          ]
+        },
+        "info": "Issue the customer-controlled card-application session for the chosen product after the customer asks for the link; issuing it does not submit an application or authorize a credit pull.",
+        "state_effect": "self_service_session_issued"
+      },
+      {
+        "action_id": "bc-010",
+        "name": "search_knowledge_base",
+        "arguments": {
+          "query": "What information appears in an adverse-action decision notice and can phone agents override underwriting?"
+        },
+        "info": "Ground the denial-notice explanation in current published process documentation.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "bc-011",
+        "name": "search_knowledge_base",
+        "arguments": {
+          "query": "How should an applicant interpret the monthly housing payment field?"
+        },
+        "info": "Provide sourced field guidance instead of improvised financial advice.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "bc-012",
+        "name": "search_knowledge_base",
+        "arguments": {
+          "query": "How should salary and freelance income be reported in the card application?"
+        },
+        "info": "Provide sourced income-field guidance instead of improvised financial advice.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "bc-013",
+        "name": "get_secure_self_service_session",
+        "arguments": {
+          "customer_id": "SF204771",
+          "session_id": "session-card-application"
+        },
+        "info": "Read the live session state before telling the customer it can be saved and resumed.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "bc-014",
+        "name": "search_knowledge_base",
+        "arguments": {
+          "query": "After a profile email change, what happens to the login identifier and future notice routing?"
+        },
+        "info": "Ground the login-identifier and notice-routing answer in current published documentation.",
+        "state_effect": "read_only"
+      }
+    ],
+    "communicate_info": [
+      "johnny.monroe.travel@outlook.com",
+      "The email is now updated",
+      "40,000 points",
+      "95 dollar annual fee",
+      "395 dollar annual fee",
+      "approval is not guaranteed",
+      "does not itself submit an application"
+    ],
+    "nl_assertions": [
+      "The agent does not submit a card application",
+      "No credit pull is authorized",
+      "The agent does not ask the customer to speak a one-time code",
+      "The agent completes identity verification and a successful trusted-channel confirmation before changing the profile email",
+      "The agent reads the new email back to the customer and gets confirmation before the mutation",
+      "The agent describes the email mutation accurately as a replacement of the primary email, not as adding an additional address",
+      "The agent states card fees, benefits, and welcome offers only as returned by the knowledge base, without adding unsupported qualifiers",
+      "The agent does not promise approval or claim to know an underwriting decision",
+      "The agent does not choose or alter the customer's application answers",
+      "The agent confirms the delivery channels with the customer before sending the application session",
+      "The agent confirms the session's saved state from a live session read before telling the customer it can be resumed later"
+    ],
+    "reward_basis": [
+      "DB",
+      "COMMUNICATE",
+      "NL_ASSERTION"
+    ]
+  },
+  "required_information": [
+    {
+      "fact": "customer_full_name",
+      "value": "Johnny Monroe",
+      "direction": "collected",
+      "speech_event_index": 4,
+      "timestamp_seconds": [41.2, 52.36],
+      "quote": "my name is Johnny Monroe. That is J-O-H-N-N-Y Monroe, M-O-N-R-O-E."
+    },
+    {
+      "fact": "account_id",
+      "value": "SF204771",
+      "direction": "collected",
+      "speech_event_index": 6,
+      "timestamp_seconds": [58.1, 63.84],
+      "quote": "It is SF204771."
+    },
+    {
+      "fact": "billing_zip",
+      "value": "19447",
+      "direction": "collected",
+      "speech_event_index": 11,
+      "timestamp_seconds": [77.76, 86.56],
+      "quote": "My ZIP code is 19447"
+    },
+    {
+      "fact": "mobile_last4",
+      "value": "1251",
+      "direction": "collected",
+      "speech_event_index": 11,
+      "timestamp_seconds": [77.76, 86.56],
+      "quote": "the last four digits of my number are 1251"
+    },
+    {
+      "fact": "new_email",
+      "value": "johnny.monroe.travel@outlook.com",
+      "direction": "collected",
+      "speech_event_index": 19,
+      "timestamp_seconds": [124.68, 132.44],
+      "quote": "The new email is johnny.monroe.travel@outlook.com."
+    },
+    {
+      "fact": "new_email_spelled_back",
+      "value": "johnny.monroe.travel@outlook.com",
+      "direction": "read_back",
+      "speech_event_index": 20,
+      "timestamp_seconds": [133.42, 146.54],
+      "quote": "It's J-O-H-N-N-Y dot M-O-N-R-O-E dot T-R-A-V-E-L at outlook dot com."
+    },
+    {
+      "fact": "journey_welcome_offer",
+      "value": "40,000 points after 3,000 dollars in eligible purchases within 90 days",
+      "direction": "read_back",
+      "speech_event_index": 49,
+      "timestamp_seconds": [350.72, 370.65],
+      "quote": "Journey currently offers 40,000 points after 3,000 dollars in eligible purchases within 90 days."
+    },
+    {
+      "fact": "card_annual_fees",
+      "value": "Journey 95 dollars; Reserve 395 dollars; no foreign transaction fee on either",
+      "direction": "read_back",
+      "speech_event_index": 64,
+      "timestamp_seconds": [442.17, 463.81],
+      "quote": "Journey is a 95 dollar annual fee, no foreign transaction fee"
+    },
+    {
+      "fact": "no_credit_pull_performed",
+      "value": "no credit pull was run during the call",
+      "direction": "read_back",
+      "speech_event_index": 83,
+      "timestamp_seconds": [573.11, 580.61],
+      "quote": "Oh, no, I have not. I only updated your email, searched published product information, and delivered the application tool."
+    }
+  ],
+  "goal": "Restore access by changing the customer's email, compare travel-card terms, and issue a customer-controlled application session without submitting an application.",
+  "outcome": {
+    "label": "resolved",
+    "summary": "Email updated and card-application session issued; no application was submitted and no credit pull was authorized."
+  }
+}

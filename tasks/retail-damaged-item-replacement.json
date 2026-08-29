@@ -1,0 +1,228 @@
+{
+  "id": "retail-damaged-item-replacement",
+  "domain": "retail",
+  "description": {
+    "purpose": "Replace a water-damaged coffee maker at the original price while keeping the request fully separate from the customer's open missing-headphones delivery trace."
+  },
+  "user_scenario": {
+    "persona": "Ethan Patel is a polite, slightly anxious repeat caller who spoke with Westline support the previous day about missing headphones. He is careful about details: he double-checks where things ship, whether cases stay separate, and whether estimates are guaranteed.",
+    "instructions": {
+      "task_instructions": "Call Westline support about a coffee maker that arrived damaged. Open by mentioning you called yesterday about missing headphones, then make clear today's call is about a different order. Describe the damage (cracked water tank, damp base) when asked, say you have not powered it on, and choose a replacement as long as you are not charged the current higher price. Ask whether photos are required, confirm the replacement ships to your home address and not to the pickup location from the headphones case, ask whether the Thursday delivery is guaranteed and whether it comes from the same warehouse, ask what to do with the damaged unit, ask about the confirmation email if you have not seen it, and finally ask for an update on the headphones case. Do not accept any change to the headphones case.",
+      "known_info": "Name Ethan Patel; email ethan.patel@northmail.com; damaged-order reference ends in 4086; damage is a cracked water tank and a damp base inside the plastic; the item's price went up since ordering; photos of the damage were already taken; there is an open missing-headphones case from yesterday with a pickup preference.",
+      "unknown_info": "The replacement order reference, balance due, delivery estimate, distribution center, return/disposal disposition, confirmation-email status and subject, and the current status or deadline of the headphones delivery trace."
+    }
+  },
+  "initial_state": {
+    "state_reference": "../conversations/retail-damaged-item-replacement/state/initial_state.json"
+  },
+  "evaluation_criteria": {
+    "actions": [
+      {
+        "action_id": "rd-001",
+        "name": "get_order",
+        "arguments": {
+          "order_reference": "ending-4086",
+          "customer_email": "ethan.patel@northmail.com",
+          "include": [
+            "items",
+            "eligible_resolutions",
+            "cases"
+          ]
+        },
+        "info": "Verify the damaged order against the order reference and email before disclosing details.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "rd-002",
+        "name": "get_order",
+        "arguments": {
+          "order_reference": "ending-4086",
+          "customer_email": "ethan.patel@northmail.com",
+          "include": [
+            "eligible_resolutions"
+          ]
+        },
+        "info": "Retrieve eligible resolutions before offering replacement or refund as available.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "rd-003",
+        "name": "get_product",
+        "arguments": {
+          "product_reference": "coffee-maker-matte-black-12-cup",
+          "include_inventory": true
+        },
+        "info": "Check replacement inventory before creating the replacement.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "rd-004",
+        "name": "create_replacement_order",
+        "arguments": {
+          "order_reference": "ending-4086",
+          "item_references": [
+            "coffee-maker-matte-black-12-cup"
+          ],
+          "reason": "damaged",
+          "fulfillment_method": "ship_to_address",
+          "fulfillment_location": "home_address_on_order"
+        },
+        "info": "Create the replacement at the preserved original price after the customer confirms replacement and the fulfillment method.",
+        "state_effect": "replacement_order_created"
+      },
+      {
+        "action_id": "rd-005",
+        "name": "get_order",
+        "arguments": {
+          "order_reference": "ending-8821",
+          "customer_email": "ethan.patel@northmail.com",
+          "include": [
+            "notifications"
+          ]
+        },
+        "info": "Re-read the replacement order's notification state instead of inferring inbox delivery from the earlier queued status.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "rd-006",
+        "name": "lookup_customer",
+        "arguments": {
+          "email": "ethan.patel@northmail.com"
+        },
+        "info": "Resolve the separate headphones order via the verified email instead of inventing its reference.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "rd-007",
+        "name": "get_order",
+        "arguments": {
+          "order_reference": "ending-7319",
+          "customer_email": "ethan.patel@northmail.com",
+          "include": [
+            "cases"
+          ]
+        },
+        "info": "Read the open delivery trace on the headphones order before reporting its status.",
+        "state_effect": "read_only"
+      }
+    ],
+    "communicate_info": [
+      "8821",
+      "zero balance",
+      "Thursday",
+      "waived",
+      "still open"
+    ],
+    "nl_assertions": [
+      "The agent keeps the coffee-maker order and the missing-headphones case separate and does not apply the pickup preference from case WST481662 to the replacement order.",
+      "The agent does not charge the customer; the replacement preserves the original price and the agent reports the returned zero balance rather than the current higher price.",
+      "The agent confirms the resolution and the fulfillment method and destination with the customer before calling create_replacement_order.",
+      "The agent presents pre-creation replacement terms such as the return waiver and delivery estimate as provisional until create_replacement_order returns them as final.",
+      "The agent tells the customer not to plug in or power on the water-damaged coffee maker.",
+      "The agent does not certify an unknown building electronics bin; it directs the customer to the facility's accepted-material rules or local e-waste guidance.",
+      "The agent does not claim notification delivery, subject lines, or message content beyond what a tool result returned.",
+      "The agent treats the Thursday delivery date and the Edison distribution-center assignment as non-guaranteed estimates.",
+      "The agent does not modify, resolve, or promise compensation on the open delivery trace for order ending-7319 before its returned deadline."
+    ],
+    "reward_basis": [
+      "DB",
+      "COMMUNICATE",
+      "NL_ASSERTION"
+    ]
+  },
+  "required_information": [
+    {
+      "fact": "damaged_order_reference",
+      "value": "ending-4086",
+      "direction": "collected",
+      "speech_event_index": 6,
+      "timestamp_seconds": [
+        39.0,
+        43.14
+      ],
+      "quote": "this one ends in 4086"
+    },
+    {
+      "fact": "customer_email",
+      "value": "ethan.patel@northmail.com",
+      "direction": "collected",
+      "speech_event_index": 8,
+      "timestamp_seconds": [
+        48.26,
+        61.08
+      ],
+      "quote": "It's ethan.patel@northmail.com"
+    },
+    {
+      "fact": "damage_description",
+      "value": "cracked water tank; base damp inside the plastic",
+      "direction": "collected",
+      "speech_event_index": 14,
+      "timestamp_seconds": [
+        82.82,
+        92.32
+      ],
+      "quote": "the water tank is cracked at the bottom, and the base was damp inside the plastic"
+    },
+    {
+      "fact": "requested_resolution",
+      "value": "replacement at original price",
+      "direction": "collected",
+      "speech_event_index": 18,
+      "timestamp_seconds": [
+        117.24,
+        123.3
+      ],
+      "quote": "replace it, for sure, as long as I don't have to pay the current price"
+    },
+    {
+      "fact": "replacement_order_reference",
+      "value": "ending-8821",
+      "direction": "read_back",
+      "speech_event_index": 44,
+      "timestamp_seconds": [
+        305.96,
+        314.06
+      ],
+      "quote": "this one will end in 8821"
+    },
+    {
+      "fact": "delivery_estimate",
+      "value": "Thursday end of day (not guaranteed)",
+      "direction": "read_back",
+      "speech_event_index": 40,
+      "timestamp_seconds": [
+        265.94,
+        274.22
+      ],
+      "quote": "it says right now Thursday by end of day"
+    },
+    {
+      "fact": "return_disposition",
+      "value": "return waived; discard, do not power on",
+      "direction": "read_back",
+      "speech_event_index": 46,
+      "timestamp_seconds": [
+        323.64,
+        335.5
+      ],
+      "quote": "Westline doesn't need it back"
+    },
+    {
+      "fact": "headphones_trace_status_and_deadline",
+      "value": "trace open, no carrier response, deadline 18:00 today",
+      "direction": "read_back",
+      "speech_event_index": 62,
+      "timestamp_seconds": [
+        411.78,
+        425.88
+      ],
+      "quote": "the deadline is still 6:00 this evening"
+    }
+  ],
+  "goal": "Replace a water-damaged coffee maker at the original price, keep it separate from an earlier missing-headphones case, and explain the no-return disposition.",
+  "outcome": {
+    "label": "resolved",
+    "summary": "Replacement order ending 8821 created at zero balance for Thursday delivery; return waived; earlier headphones trace remained unchanged."
+  }
+}

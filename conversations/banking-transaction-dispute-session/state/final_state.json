@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "banking-transaction-dispute-session",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-02-25T16:28:04-05:00",
+  "entities": {
+    "customers": {
+      "customer-justin-porter": {
+        "customer_id": "customer-justin-porter",
+        "lookup_match": "unique",
+        "required_verification_methods": [
+          "billing_zip",
+          "birth_month_day"
+        ]
+      }
+    },
+    "transactions": {
+      "transaction-ending-8472": {
+        "transaction_id": "transaction-ending-8472",
+        "card_last4": "9102",
+        "amount": 243.18,
+        "category": "online marketplace",
+        "preceded_by_authorization_amount": 1.0
+      }
+    },
+    "knowledge_records": {
+      "unauthorized-transaction-procedure": {
+        "record_id": "unauthorized-transaction-procedure",
+        "effective_at": "2026-01-15",
+        "steps": [
+          "review household use",
+          "review saved wallets",
+          "submit only if unauthorized"
+        ],
+        "posted_charge_can_be_erased": false,
+        "provisional_credit_guaranteed": false,
+        "investigation_timing_basis": "transaction_type",
+        "post_submit_outputs": [
+          "claim reference",
+          "written timing disclosures in secure messages"
+        ]
+      },
+      "unused-dispute-session-rights": {
+        "record_id": "unused-dispute-session-rights",
+        "effective_at": "2026-01-15",
+        "unused_unsubmitted_session_waives_future_rights": false,
+        "guidance": "Contact the bank promptly if a genuinely unauthorized transaction is later discovered."
+      }
+    },
+    "identity_verifications": {
+      "verification-justin-porter-dispute": {
+        "verification_id": "verification-justin-porter-dispute",
+        "status": "verified",
+        "matched_methods": [
+          "billing_zip",
+          "birth_month_day"
+        ]
+      }
+    },
+    "secure_self_service_sessions": {
+      "session-dispute-8472": {
+        "session_id": "session-dispute-8472",
+        "status": "open_not_submitted",
+        "submitted": false,
+        "claim_id": null,
+        "resume_supported": true,
+        "access_location": "online_banking",
+        "display_label": "Review transaction ending 8472",
+        "allowed_customer_actions": [
+          "review",
+          "submit",
+          "close_page"
+        ],
+        "deliveries": [
+          {
+            "channel": "secure_message",
+            "status": "delivered"
+          }
+        ]
+      }
+    }
+  }
+}

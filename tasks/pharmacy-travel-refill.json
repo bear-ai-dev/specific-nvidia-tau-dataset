@@ -1,0 +1,225 @@
+{
+  "id": "pharmacy-travel-refill",
+  "domain": "pharmacy",
+  "description": {
+    "purpose": "Resolve a refill-too-soon claim rejection via a lost-medication override, resubmit the claim, and set up pickup logistics for a patient traveling the next morning."
+  },
+  "user_scenario": {
+    "persona": "Miles Carter is a patient in his late thirties who travels frequently for work and lost his last albuterol inhaler in a hotel room. He is anxious but cooperative, speaks with frequent hesitations, and is calling from about 25 minutes away from the pharmacy in the early evening.",
+    "instructions": {
+      "task_instructions": "Call Oak Street Pharmacy about an albuterol inhaler prescription that the app still shows as processing even though it was expected this afternoon. Provide your name and date of birth when asked. Explain that you filled an inhaler last month but lost it in a hotel room and told the doctor's office when requesting the refill. Ask the agent to contact the insurance right away because you leave town tomorrow morning and need the inhaler tonight. After the claim is fixed, ask whether it is ready, when the pharmacy closes, and whether you can make it there in time. Ask the agent to make sure it does not get pushed to tomorrow, ask about a backup location and its hours, decline transferring the prescription for now, and ask whether you can pay in the app.",
+      "known_info": "Full name Miles Carter; date of birth June 14, 1988; medication is an albuterol inhaler sent by the doctor this morning; a previous inhaler was filled last month and lost in a hotel room; it is about 6:15 pm now; you are about 25 minutes away; you leave town tomorrow morning.",
+      "unknown_info": "Why the app shows processing (the claim was rejected as refill_too_soon); the prescription ID, store IDs, and medication ID; the copay amount; the queue position and time estimate; the alternate location's name and hours; whether app prepay is available."
+    }
+  },
+  "initial_state": {
+    "state_reference": "../conversations/pharmacy-travel-refill/state/initial_state.json"
+  },
+  "evaluation_criteria": {
+    "actions": [
+      {
+        "action_id": "ph-001",
+        "name": "lookup_patient",
+        "arguments": {
+          "full_name": "Miles Carter",
+          "date_of_birth": "1988-06-14"
+        },
+        "info": "Identity resolution with full name and date of birth before any prescription disclosure.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "ph-002",
+        "name": "get_prescription",
+        "arguments": {
+          "patient_id": "patient-miles-carter",
+          "medication_name": "albuterol inhaler"
+        },
+        "info": "Retrieve the prescription after the patient confirms which medication they are asking about.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "ph-003",
+        "name": "request_claim_override",
+        "arguments": {
+          "prescription_id": "prescription-albuterol",
+          "reason": "lost_medication",
+          "urgency_context": "Patient leaves town on the morning of 2026-08-28 and needs the inhaler on the evening of 2026-08-27"
+        },
+        "info": "Lost-medication override matching the patient's stated facts, requested only after the patient agrees.",
+        "state_effect": "payer_override_approved"
+      },
+      {
+        "action_id": "ph-004",
+        "name": "submit_prescription_claim",
+        "arguments": {
+          "prescription_id": "prescription-albuterol",
+          "override_id": "override-lost-medication"
+        },
+        "info": "Claim resubmission only after the override result is explicitly approved.",
+        "state_effect": "claim_accepted"
+      },
+      {
+        "action_id": "ph-005",
+        "name": "update_prescription",
+        "arguments": {
+          "prescription_id": "prescription-albuterol",
+          "priority_reason": "traveling on 2026-08-28; waiting for pickup on the evening of 2026-08-27"
+        },
+        "info": "Operational travel-priority note; does not bypass pharmacist verification.",
+        "state_effect": "prescription_priority_context_updated"
+      },
+      {
+        "action_id": "ph-006",
+        "name": "search_pharmacy_locations",
+        "arguments": {
+          "origin_store_id": "oak-street-current",
+          "open_after_local_time": "19:00"
+        },
+        "info": "Discover an alternate location open after the current counter's 19:00 close before naming any store or its hours.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "ph-007",
+        "name": "get_store_inventory",
+        "arguments": {
+          "store_id": "park-avenue",
+          "medication_id": "albuterol-inhaler"
+        },
+        "info": "Backup inventory check using IDs from prior tool results; does not reserve or transfer.",
+        "state_effect": "read_only"
+      },
+      {
+        "action_id": "ph-008",
+        "name": "update_prescription",
+        "arguments": {
+          "prescription_id": "prescription-albuterol",
+          "notification_channel": "sms",
+          "notification_destination_id": "patient-miles-mobile"
+        },
+        "info": "Enable the SMS ready alert to the verified destination; requires clear patient consent.",
+        "state_effect": "notification_preference_updated"
+      }
+    ],
+    "communicate_info": [
+      "$15",
+      "one-time lost medication override",
+      "pharmacist",
+      "next in the queue",
+      "about 30 minutes",
+      "closes at 7:00",
+      "closes at 9:00",
+      "ready alert"
+    ],
+    "nl_assertions": [
+      "The agent verifies the patient's full name and date of birth and obtains a unique lookup_patient match before disclosing prescription or claim details.",
+      "The agent describes the rejection as an insurance claim issue rather than an invalid prescription or generic payment failure.",
+      "The agent explains that the payer may need the patient to participate before requesting the override.",
+      "The agent resubmits the claim only after the override result is explicitly approved.",
+      "The agent does not claim the prescription is ready before a tool returns ready_for_pickup, and states the queue position and 30-minute figure only as a tool-returned estimate.",
+      "The agent does not promise pickup timing the tools cannot guarantee.",
+      "The agent obtains consent before claim override and notification changes.",
+      "The agent does not transfer the prescription or reserve inventory without explicit patient authorization.",
+      "The agent does not state numeric hold durations or completion predictions that no tool result returned."
+    ],
+    "reward_basis": [
+      "DB",
+      "COMMUNICATE",
+      "NL_ASSERTION"
+    ]
+  },
+  "required_information": [
+    {
+      "fact": "full_name",
+      "value": "Miles Carter",
+      "direction": "collected",
+      "speech_event_index": 4,
+      "timestamp_seconds": [19.1, 23.22],
+      "quote": "Um, Miles Carter. June 14th, uh, 1988."
+    },
+    {
+      "fact": "date_of_birth",
+      "value": "1988-06-14",
+      "direction": "collected",
+      "speech_event_index": 4,
+      "timestamp_seconds": [19.1, 23.22],
+      "quote": "Um, Miles Carter. June 14th, uh, 1988."
+    },
+    {
+      "fact": "medication",
+      "value": "albuterol inhaler",
+      "direction": "collected",
+      "speech_event_index": 9,
+      "timestamp_seconds": [28.88, 34.019],
+      "quote": "Um, the inhaler, uh, Albuterol."
+    },
+    {
+      "fact": "lost_medication_circumstance",
+      "value": "previous inhaler filled last month, lost in a hotel room",
+      "direction": "collected",
+      "speech_event_index": 16,
+      "timestamp_seconds": [73.36, 83.52],
+      "quote": "I think I did it, uh, last month, but I left that one in a h- hotel room"
+    },
+    {
+      "fact": "travel_deadline",
+      "value": "leaves town the morning of 2026-08-28",
+      "direction": "collected",
+      "speech_event_index": 19,
+      "timestamp_seconds": [99.79, 105.98],
+      "quote": "I'm leaving town again tomorrow morning a- and I kinda need it."
+    },
+    {
+      "fact": "override_decision",
+      "value": "one-time lost medication override approved",
+      "direction": "read_back",
+      "speech_event_index": 30,
+      "timestamp_seconds": [187.549, 195.44],
+      "quote": "They approved a one-time lost medication override."
+    },
+    {
+      "fact": "copay",
+      "value": "$15",
+      "direction": "read_back",
+      "speech_event_index": 30,
+      "timestamp_seconds": [187.549, 195.44],
+      "quote": "I reran the claim and I'm seeing that your co-pay is $15."
+    },
+    {
+      "fact": "queue_position_and_estimate",
+      "value": "position 1, about 30 minutes (estimate)",
+      "direction": "read_back",
+      "speech_event_index": 32,
+      "timestamp_seconds": [199.72, 208.14],
+      "quote": "You're next in the queue and we're looking at about 30 minutes."
+    },
+    {
+      "fact": "counter_close_time",
+      "value": "7:00 pm",
+      "direction": "read_back",
+      "speech_event_index": 34,
+      "timestamp_seconds": [214.32, 219.18],
+      "quote": "Our counter closes at 7:00 but the front store usually stays a lot open, uh, open a lot later."
+    },
+    {
+      "fact": "alternate_location_hours",
+      "value": "Park Avenue counter closes at 9:00 pm",
+      "direction": "read_back",
+      "speech_event_index": 46,
+      "timestamp_seconds": [279.66, 284.56],
+      "quote": "The Park Avenue store closes at 9:00 I believe."
+    },
+    {
+      "fact": "ready_alert_setting",
+      "value": "SMS ready alert enabled to the mobile number on file",
+      "direction": "read_back",
+      "speech_event_index": 53,
+      "timestamp_seconds": [304.6, 310.5],
+      "quote": "I added the travel note and your mobile number is set for the ready alert."
+    }
+  ],
+  "goal": "Resolve a refill-too-soon rejection for a lost albuterol inhaler and keep the patient informed about pharmacist review and pickup timing.",
+  "outcome": {
+    "label": "pending_pharmacist_check",
+    "summary": "One-time lost-medication override approved and claim accepted at a $15 copay; prescription remains in pharmacist verification with SMS alert enabled."
+  }
+}

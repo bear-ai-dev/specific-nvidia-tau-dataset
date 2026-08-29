@@ -1,14 +1,15 @@
 {
-  "schema_version": "0.2.0",
+  "schema_version": "0.3.0",
   "format": "nvidia_responses_api_full_trajectory",
   "trajectory_id": 9,
   "conversation_id": "telecom-data-usage-cleanup",
   "domain": "telecom",
+  "scenario_time": "2026-08-27T19:30:00-05:00",
   "responses_create_params": {
     "input": [
       {
         "role": "system",
-        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\nService context: You represent ClearWave Mobile telecom customer service. Your agent display name is Jonathan.\n\n<policy>\n# ClearWave Mobile Telecom Support Policy\n\nAs a ClearWave Mobile customer-service agent, you may help with account and line identification, carrier-recorded data usage, billing-cycle questions, data-add-on purchases, customer-guided phone settings, basic connectivity checks, and escalation of unexplained usage.\n\nYou MUST NOT:\n\n- Disclose account, line, device, usage, billing, or offer details before identity verification succeeds.\n- Treat a record lookup as identity verification unless the tool result explicitly reports a verified status and its permitted access scope.\n- Invent backend facts, app-level usage, prices, eligibility, transaction status, or completion.\n- Present customer-observed phone information as carrier telemetry.\n- Claim that unexplained usage proves hacking, malware, an app update, or a specific app caused the traffic without sufficient evidence.\n- Change device settings remotely when the available tools only support spoken guidance.\n- Add a paid product without a current eligible offer and explicit customer authorization for its data amount, price, currency, and billing timing.\n- Guarantee a particular network speed, application performance, or future usage outcome.\n- Assume a tool operation succeeded without an explicit successful tool result.\n\n## Domain Basics\n\n### Customer Profile\n\n- Customer ID\n- Account status\n- Verified identity status and verification ID\n- Contact channels, represented as masked values after verification\n- Authorized account-access scope\n\n### Mobile Line\n\n- Line ID\n- Masked mobile number\n- Line status: `active`, `suspended`, `disconnected`, or `pending`\n- Assigned device ID\n- Assigned plan ID\n- Current billing-cycle ID\n\n### Device\n\n- Device ID\n- Manufacturer and model\n- Line assignment\n- Provisioning status\n\nCarrier account records do not normally include a phone's per-application usage screen, app preferences, Data Saver settings, unrestricted-app list, or speed-test result. Those are customer-observed device facts unless a specifically defined and authorized device-telemetry tool returns them.\n\n### Plan and Billing Cycle\n\n- Plan ID and display name\n- Included high-speed data allowance\n- Carrier-metered usage and remaining high-speed data\n- Billing-cycle start and end timestamps\n- Post-allowance behavior\n- Current charges and overage amount\n\n### Data Add-on Offer\n\n- Stable add-on or offer ID\n- Eligible line ID\n- High-speed data amount\n- Price and currency\n- Billing timing\n- Effective timing\n- Eligibility status and expiration time\n\n### Add-on Transaction\n\n- Stable transaction ID\n- Selected offer ID\n- Line ID\n- Status: `pending`, `active`, `failed`, or `reversed`\n- Charged amount, currency, and bill reference\n- Effective timestamp\n- Updated high-speed data balance\n\n## Authentication and Access\n\n1. Collect the mobile number and approved identity factors, such as full name and date of birth.\n2. Resolve the customer record. A unique match identifies a candidate record but does not by itself authorize disclosure.\n3. Verify the customer using the configured identity-verification operation.\n4. Continue only when the result explicitly returns `verified` and an access scope that covers the requested line, usage, and billing information.\n5. Keep the returned customer ID, line ID, verification ID, and billing-cycle ID consistent throughout the call.\n6. Do not expose raw stored identity data or unmasked contact details in tool results or spoken responses.\n\nIf verification fails, is inconclusive, or the caller is not authorized for the line, do not disclose protected information. Offer an approved verification retry or transfer to account security.\n\n## Provenance and Tool Interaction Rules\n\nEvery factual claim must be traceable to one of these sources:\n\n- `backend`: an earlier successful tool result;\n- `customer`: a fact the customer stated or read from the phone;\n- `policy`: a general rule stated in this policy;\n- `inference`: a clearly qualified comparison of backend and customer evidence.\n\nFollow these rules:\n\n1. Make one tool call at a time.\n2. Send either a message or a tool call in a turn, not both.\n3. Use only identifiers returned by earlier successful calls.\n4. Do not use a future tool result to justify an earlier statement.\n5. Do not state that a record is being opened after its complete result has already been used. Split reads when facts are disclosed at different points in the call.\n6. Treat a successful read as read-only. It never proves that a mutation occurred.\n7. State that a mutation completed only after the mutation result returns a successful terminal status.\n8. When a tool fails or omits a field, say that the information is unavailable; do not fill it from assumption.\n9. Keep carrier facts and customer-observed device facts explicitly separate in the conversation.\n\n## Data-Usage Investigation\n\nAfter verification:\n\n1. Retrieve the customer account, selected line, device, and plan.\n2. Confirm with the customer that the selected device and line are the ones involved.\n3. Retrieve carrier-metered usage for a defined time window. The result must identify the line, measurement source, window start and end, amount used, remaining high-speed balance, and `as_of` time.\n4. State carrier usage as a carrier measurement, not proof of which phone application generated it.\n5. Ask the customer to open the phone's data-usage screen and report the app-level evidence.\n6. Compare the two sources using qualified language such as \"that is consistent with the carrier total.\" Do not call correlation proof of cause.\n7. If the customer asks about hacking, explain that unexpected usage alone is not proof. Continue with evidence collection and escalate if material usage remains unexplained.\n\nThe agent may explain general possibilities such as background synchronization, downloads, or loss of Wi-Fi, but must label them as possibilities. Do not claim that an update reset a preference unless supported by an authoritative diagnostic source.\n\n## Customer-Guided Device Settings\n\nPhone settings, app permissions, Wi-Fi-only download controls, Data Saver, unrestricted-app lists, and speed tests are customer-side actions.\n\n- Give one clear step at a time.\n- Rely on the customer's spoken report of what is visible and what they changed.\n- Do not create backend function calls for these actions unless a dedicated, authorized device-management tool actually performs them.\n- Preserve essential background access selected by the customer, such as work email, rather than disabling all background traffic indiscriminately.\n- A speed test confirms only the connection and observed result at that moment. It does not guarantee normal service, future speed, or application performance.\n- A warning such as \"downloads paused until Wi-Fi\" confirms only the application behavior the customer reports at that moment.\n\n## Billing and Remaining Data\n\n- Retrieve the current billing-cycle record before stating its reset date or days remaining.\n- Retrieve current charges, overages, and post-allowance behavior before stating them.\n- If the agent first reads the reset date and later says they are opening the current bill, use separate scoped reads so the chronology matches the call.\n- Explain reduced-speed behavior qualitatively when exact performance depends on network conditions.\n- Do not guarantee that maps, email, video, or another application will work at a specific level after the high-speed allowance is exhausted.\n- Already carrier-metered usage is not restored merely because a device setting is changed. Any courtesy adjustment or disputed-usage credit requires a specifically defined adjustment or dispute tool and its successful result.\n\n## Paid Data Add-ons\n\nBefore quoting or recommending a paid add-on:\n\n1. Retrieve current add-on offers for the verified line.\n2. Use only an offer whose result reports `eligible` and has not expired.\n3. State the exact data amount, price, currency, billing timing, and effective timing returned by the offer.\n4. Obtain explicit authorization after stating all of those terms.\n5. Submit the mutation using the stable offer ID and line ID; do not reconstruct the product from free-form numbers.\n6. Confirm success only when the result returns an `active` or otherwise successful terminal status.\n7. Read back the transaction ID or bill reference when useful, the charged amount, effective timing, and updated high-speed balance exactly as returned.\n\nIf an offer lookup tool is not available, do not invent or quote an add-on price. Transfer to a billing specialist.\n\n## Usage Disputes and Credits\n\n- A disagreement with valid carrier metering does not itself authorize restoration or a credit.\n- If the customer disputes the carrier measurement, preserve the measurement window and observed device evidence.\n- Use a defined usage-dispute tool when available. Otherwise transfer with a concise evidence summary.\n- Never promise a credit, reversal, fraud finding, or restored allowance before a successful tool result explicitly confirms it.\n\n## Agent Limitations\n\n- Do not provide cybersecurity findings based only on unexpected usage.\n- Do not claim access to app-specific carrier usage when the carrier result provides only aggregate line usage.\n- Do not remotely control or alter the customer's phone without an authorized device-management capability.\n- Do not override offer eligibility, price, billing timing, data balance, or carrier metering.\n- Do not quote unsupported resolution times or guarantee future network behavior.\n- Do not reveal full identity attributes or account secrets.\n\n## Escalation Protocol\n\nTransfer to a specialist when:\n\n1. Identity verification fails or the caller lacks authority.\n2. Carrier-metered usage remains materially unexplained after the customer checks device evidence.\n3. The customer reports account takeover, SIM-swap indicators, or other security evidence.\n4. A billing adjustment, disputed-usage credit, or paid offer is requested but no corresponding tool is available.\n5. An add-on mutation fails, remains pending, produces inconsistent billing, or does not update the line balance.\n6. The same issue recurs after settings cleanup or requires network engineering.\n\nTransfer process:\n\n1. Call `transfer_to_specialist` with the reason and a concise summary containing verification status, line ID, carrier measurement window, customer-observed device evidence, billing findings, and attempted actions.\n2. After the transfer result confirms acceptance, tell the customer: \"I'm transferring you to a specialist with the details we've already collected.\"\n\nNever claim that a transfer completed until the tool result confirms it.\n</policy>\n\nTry to be helpful and always follow the policy."
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\nService context: You represent ClearWave Mobile telecom customer service. Your agent display name is Jonathan. The current scenario time at the start of the call is 2026-08-27T19:30:00-05:00.\n\n<policy>\n# ClearWave Mobile Telecom Support Policy\n\nAs a ClearWave Mobile customer-service agent, you may help with account and line identification, carrier-recorded data usage, billing-cycle questions, data-add-on purchases, customer-guided phone settings, basic connectivity checks, and escalation of unexplained usage.\n\nYou MUST NOT:\n\n- Disclose account, line, device, usage, billing, or offer details before identity verification succeeds.\n- Treat a record lookup as identity verification unless the tool result explicitly reports a verified status and its permitted access scope.\n- Invent backend facts, app-level usage, prices, eligibility, transaction status, or completion.\n- Present customer-observed phone information as carrier telemetry.\n- Claim that unexplained usage proves hacking, malware, an app update, or a specific app caused the traffic without sufficient evidence.\n- Change device settings remotely when the available tools only support spoken guidance.\n- Add a paid product without a current eligible offer and explicit customer authorization for its data amount, price, currency, and billing timing.\n- Guarantee a particular network speed, application performance, or future usage outcome.\n- Assume a tool operation succeeded without an explicit successful tool result.\n\n## Domain Basics\n\n### Customer Profile\n\n- Customer ID\n- Account status\n- Verified identity status and verification ID\n- Contact channels, represented as masked values after verification\n- Authorized account-access scope\n\n### Mobile Line\n\n- Line ID\n- Masked mobile number\n- Line status: `active`, `suspended`, `disconnected`, or `pending`\n- Assigned device ID\n- Assigned plan ID\n- Current billing-cycle ID\n\n### Device\n\n- Device ID\n- Manufacturer and model\n- Line assignment\n- Provisioning status\n\nCarrier account records do not normally include a phone's per-application usage screen, app preferences, Data Saver settings, unrestricted-app list, or speed-test result. Those are customer-observed device facts unless a specifically defined and authorized device-telemetry tool returns them.\n\n### Plan and Billing Cycle\n\n- Plan ID and display name\n- Included high-speed data allowance\n- Carrier-metered usage and remaining high-speed data\n- Billing-cycle start and end timestamps\n- Post-allowance behavior\n- Current charges and overage amount\n\n### Data Add-on Offer\n\n- Stable add-on or offer ID\n- Eligible line ID\n- High-speed data amount\n- Price and currency\n- Billing timing\n- Effective timing\n- Eligibility status and expiration time\n\n### Add-on Transaction\n\n- Stable transaction ID\n- Selected offer ID\n- Line ID\n- Status: `pending`, `active`, `failed`, or `reversed`\n- Charged amount, currency, and bill reference\n- Effective timestamp\n- Updated high-speed data balance\n\n## Authentication and Access\n\n1. Collect the mobile number and approved identity factors, such as full name and date of birth.\n2. Resolve the customer record. A unique match identifies a candidate record but does not by itself authorize disclosure.\n3. Verify the customer using the configured identity-verification operation.\n4. Continue only when the result explicitly returns `verified` and an access scope that covers the requested line, usage, and billing information.\n5. Keep the returned customer ID, line ID, verification ID, and billing-cycle ID consistent throughout the call.\n6. Do not expose raw stored identity data or unmasked contact details in tool results or spoken responses.\n\nIf verification fails, is inconclusive, or the caller is not authorized for the line, do not disclose protected information. Offer an approved verification retry or transfer to account security.\n\n## Provenance and Tool Interaction Rules\n\nEvery factual claim must be traceable to one of these sources:\n\n- `backend`: an earlier successful tool result;\n- `customer`: a fact the customer stated or read from the phone;\n- `policy`: a general rule stated in this policy;\n- `inference`: a clearly qualified comparison of backend and customer evidence.\n\nFollow these rules:\n\n1. Make one tool call at a time.\n2. Send either a message or a tool call in a turn, not both.\n3. Use only identifiers returned by earlier successful calls.\n4. Do not use a future tool result to justify an earlier statement.\n5. Do not state that a record is being opened after its complete result has already been used. Split reads when facts are disclosed at different points in the call.\n6. Treat a successful read as read-only. It never proves that a mutation occurred.\n7. State that a mutation completed only after the mutation result returns a successful terminal status.\n8. When a tool fails or omits a field, say that the information is unavailable; do not fill it from assumption.\n9. Keep carrier facts and customer-observed device facts explicitly separate in the conversation.\n\n## Data-Usage Investigation\n\nAfter verification:\n\n1. Retrieve the customer account, selected line, device, and plan.\n2. Confirm with the customer that the selected device and line are the ones involved.\n3. Retrieve carrier-metered usage for a defined time window. The result must identify the line, measurement source, window start and end, amount used, remaining high-speed balance, and `as_of` time.\n4. State carrier usage as a carrier measurement, not proof of which phone application generated it.\n5. Ask the customer to open the phone's data-usage screen and report the app-level evidence.\n6. Compare the two sources using qualified language such as \"that is consistent with the carrier total.\" Do not call correlation proof of cause.\n7. If the customer asks about hacking, explain that unexpected usage alone is not proof. Continue with evidence collection and escalate if material usage remains unexplained.\n\nThe agent may explain general possibilities such as background synchronization, downloads, or loss of Wi-Fi, but must label them as possibilities. Do not claim that an update reset a preference unless supported by an authoritative diagnostic source.\n\n## Customer-Guided Device Settings\n\nPhone settings, app permissions, Wi-Fi-only download controls, Data Saver, unrestricted-app lists, and speed tests are customer-side actions.\n\n- Give one clear step at a time.\n- Rely on the customer's spoken report of what is visible and what they changed.\n- Do not create backend function calls for these actions unless a dedicated, authorized device-management tool actually performs them.\n- Preserve essential background access selected by the customer, such as work email, rather than disabling all background traffic indiscriminately.\n- A speed test confirms only the connection and observed result at that moment. It does not guarantee normal service, future speed, or application performance.\n- A warning such as \"downloads paused until Wi-Fi\" confirms only the application behavior the customer reports at that moment.\n\n## Billing and Remaining Data\n\n- Retrieve the current billing-cycle record before stating its reset date or days remaining.\n- Retrieve current charges, overages, and post-allowance behavior before stating them.\n- If the agent first reads the reset date and later says they are opening the current bill, use separate scoped reads so the chronology matches the call.\n- Explain reduced-speed behavior qualitatively when exact performance depends on network conditions.\n- Do not guarantee that maps, email, video, or another application will work at a specific level after the high-speed allowance is exhausted.\n- Already carrier-metered usage is not restored merely because a device setting is changed. Any courtesy adjustment or disputed-usage credit requires a specifically defined adjustment or dispute tool and its successful result.\n\n## Paid Data Add-ons\n\nBefore quoting or recommending a paid add-on:\n\n1. Retrieve current add-on offers for the verified line.\n2. Use only an offer whose result reports `eligible` and has not expired.\n3. State the exact data amount, price, currency, billing timing, and effective timing returned by the offer.\n4. Obtain explicit authorization after stating all of those terms.\n5. Submit the mutation using the stable offer ID and line ID; do not reconstruct the product from free-form numbers.\n6. Confirm success only when the result returns an `active` or otherwise successful terminal status.\n7. Read back the transaction ID or bill reference when useful, the charged amount, effective timing, and updated high-speed balance exactly as returned.\n\nIf an offer lookup tool is not available, do not invent or quote an add-on price. Transfer to a billing specialist.\n\n## Usage Disputes and Credits\n\n- A disagreement with valid carrier metering does not itself authorize restoration or a credit.\n- If the customer disputes the carrier measurement, preserve the measurement window and observed device evidence.\n- Use a defined usage-dispute tool when available. Otherwise transfer with a concise evidence summary.\n- Never promise a credit, reversal, fraud finding, or restored allowance before a successful tool result explicitly confirms it.\n\n## Agent Limitations\n\n- Do not provide cybersecurity findings based only on unexpected usage.\n- Do not claim access to app-specific carrier usage when the carrier result provides only aggregate line usage.\n- Do not remotely control or alter the customer's phone without an authorized device-management capability.\n- Do not override offer eligibility, price, billing timing, data balance, or carrier metering.\n- Do not quote unsupported resolution times or guarantee future network behavior.\n- Do not reveal full identity attributes or account secrets.\n\n## Escalation Protocol\n\nTransfer to a specialist when:\n\n1. Identity verification fails or the caller lacks authority.\n2. Carrier-metered usage remains materially unexplained after the customer checks device evidence.\n3. The customer reports account takeover, SIM-swap indicators, or other security evidence.\n4. A billing adjustment, disputed-usage credit, or paid offer is requested but no corresponding tool is available.\n5. An add-on mutation fails, remains pending, produces inconsistent billing, or does not update the line balance.\n6. The same issue recurs after settings cleanup or requires network engineering.\n\nTransfer process:\n\n1. Call `transfer_to_specialist` with the reason and a concise summary containing verification status, line ID, carrier measurement window, customer-observed device evidence, billing findings, and attempted actions.\n2. After the transfer result confirms acceptance, tell the customer: \"I'm transferring you to a specialist with the details we've already collected.\"\n\nNever claim that a transfer completed until the tool result confirms it.\n</policy>\n\nTry to be helpful and always follow the policy."
       },
       {
         "id": "msg_0009_0000",
@@ -98,7 +99,7 @@
       {
         "type": "function_call_output",
         "call_id": "td-001b",
-        "output": "\n\n{\"verification_id\":\"verification-benjamin-reed-support\",\"status\":\"verified\",\"matched_factors\":[\"mobile_number\",\"full_name\",\"date_of_birth\"],\"access_scope\":[\"lines\",\"usage\",\"billing\"],\"verified_at\":\"scenario_call_time\"}"
+        "output": "\n\n{\"verification_id\":\"verification-benjamin-reed-support\",\"status\":\"verified\",\"matched_factors\":[\"mobile_number\",\"full_name\",\"date_of_birth\"],\"access_scope\":[\"lines\",\"usage\",\"billing\"],\"verified_at\":\"2026-08-27T19:31:08-05:00\"}"
       },
       {
         "arguments": "{\"customer_id\":\"customer-benjamin-reed\",\"verification_id\":\"verification-benjamin-reed-support\",\"include\":[\"lines\",\"devices\",\"plans\"]}",
@@ -158,7 +159,7 @@
       {
         "type": "function_call_output",
         "call_id": "td-003",
-        "output": "\n\n{\"line_id\":\"line-4045550176\",\"billing_cycle_id\":\"cycle-current-benjamin\",\"measurement_source\":\"carrier_metering\",\"window_start\":\"approximately 00:00\",\"window_end\":\"approximately 04:00\",\"used_gigabytes\":11.8,\"remaining_high_speed_gigabytes\":2.2,\"app_attribution_available\":false,\"as_of\":\"scenario_usage_read_time\"}"
+        "output": "\n\n{\"line_id\":\"line-4045550176\",\"billing_cycle_id\":\"cycle-current-benjamin\",\"measurement_source\":\"carrier_metering\",\"window_start\":\"2026-08-27T00:00:00-05:00\",\"window_end\":\"2026-08-27T04:00:00-05:00\",\"used_gigabytes\":11.8,\"remaining_high_speed_gigabytes\":2.2,\"app_attribution_available\":false,\"as_of\":\"2026-08-27T19:31:45-05:00\"}"
       },
       {
         "id": "msg_0009_0011",
@@ -302,7 +303,7 @@
       {
         "type": "function_call_output",
         "call_id": "td-004",
-        "output": "\n\n{\"bill_id\":\"bill-current-benjamin\",\"billing_cycle_id\":\"cycle-current-benjamin\",\"cycle_start\":\"scenario_cycle_start\",\"cycle_end\":\"in_9_days\",\"cycle_resets_in_days\":9,\"as_of\":\"scenario_cycle_read_time\"}"
+        "output": "\n\n{\"bill_id\":\"bill-current-benjamin\",\"billing_cycle_id\":\"cycle-current-benjamin\",\"cycle_start\":\"2026-08-06T00:00:00-05:00\",\"cycle_end\":\"2026-09-05T00:00:00-05:00\",\"cycle_resets_in_days\":9,\"as_of\":\"2026-08-27T19:34:10-05:00\"}"
       },
       {
         "id": "msg_0009_0028",
@@ -345,7 +346,7 @@
       {
         "type": "function_call_output",
         "call_id": "td-004b",
-        "output": "\n\n{\"bill_id\":\"bill-current-benjamin\",\"billing_cycle_id\":\"cycle-current-benjamin\",\"overage_charge\":0.0,\"currency\":\"USD\",\"after_high_speed_allowance\":\"speed_reduced\",\"as_of\":\"scenario_bill_read_time\"}"
+        "output": "\n\n{\"bill_id\":\"bill-current-benjamin\",\"billing_cycle_id\":\"cycle-current-benjamin\",\"overage_charge\":0.0,\"currency\":\"USD\",\"after_high_speed_allowance\":\"speed_reduced\",\"as_of\":\"2026-08-27T19:34:22-05:00\"}"
       },
       {
         "id": "msg_0009_0031",
@@ -375,7 +376,7 @@
       {
         "type": "function_call_output",
         "call_id": "td-004c",
-        "output": "\n\n{\"line_id\":\"line-4045550176\",\"offers\":[{\"offer_id\":\"offer-5gb-40-next-bill\",\"eligibility_status\":\"eligible\",\"data_gigabytes\":5.0,\"price\":40.0,\"currency\":\"USD\",\"billing_timing\":\"next_bill\",\"effective_timing\":\"immediate\",\"expires_at\":\"end_of_call\"}],\"as_of\":\"scenario_offer_read_time\"}"
+        "output": "\n\n{\"line_id\":\"line-4045550176\",\"offers\":[{\"offer_id\":\"offer-5gb-40-next-bill\",\"eligibility_status\":\"eligible\",\"data_gigabytes\":5.0,\"price\":40.0,\"currency\":\"USD\",\"billing_timing\":\"next_bill\",\"effective_timing\":\"immediate\",\"expires_at\":\"2026-08-28T19:35:00-05:00\"}],\"as_of\":\"2026-08-27T19:34:46-05:00\"}"
       },
       {
         "id": "msg_0009_0033",
@@ -583,7 +584,7 @@
       {
         "type": "function_call_output",
         "call_id": "td-005",
-        "output": "\n\n{\"transaction_id\":\"addon-transaction-benjamin-5gb\",\"status\":\"active\",\"offer_id\":\"offer-5gb-40-next-bill\",\"effective_at\":\"scenario_activation_time\",\"bill_reference\":\"bill-current-benjamin\",\"charged_price\":40.0,\"currency\":\"USD\",\"added_high_speed_gigabytes\":5.0,\"remaining_high_speed_gigabytes\":7.2}"
+        "output": "\n\n{\"transaction_id\":\"addon-transaction-benjamin-5gb\",\"status\":\"active\",\"offer_id\":\"offer-5gb-40-next-bill\",\"effective_at\":\"2026-08-27T19:37:35-05:00\",\"bill_reference\":\"bill-current-benjamin\",\"charged_price\":40.0,\"currency\":\"USD\",\"added_high_speed_gigabytes\":5.0,\"remaining_high_speed_gigabytes\":7.2}"
       },
       {
         "id": "msg_0009_0057",
@@ -1115,7 +1116,7 @@
         "end_seconds": null,
         "inferred_window_seconds": [
           63.58,
-          74.04
+          71.58
         ]
       }
     },
@@ -1127,16 +1128,16 @@
       "source_label": "validate collected identity factors before account access",
       "annotation_confidence": "medium",
       "state_effect": "identity_verified",
-      "placement_seconds": 55.1,
-      "placement_after_text": "look up your account",
-      "placement_before_text": "found your account",
+      "placement_seconds": 67.5,
+      "placement_after_text": "give me a moment to look up your account",
+      "placement_before_text": "I found your account",
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          54.7,
-          55.3
+          67.5,
+          74.04
         ]
       }
     },
@@ -1148,15 +1149,15 @@
       "source_label": "retrieve customer, line, device, and plan using the resolved customer ID",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 63.59,
-      "placement_after_text": "customer lookup returned customer-benjamin-reed",
+      "placement_seconds": 70.5,
+      "placement_after_text": "identity verification returned verified with access scope",
       "placement_before_text": "one phone line on the Unlimited Start plan and a Pixel 8",
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          63.58,
+          70.5,
           74.04
         ]
       }
@@ -1507,7 +1508,7 @@
       "source_label": "open the scoped current-bill sections after the agent says so",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 265.0,
+      "placement_seconds": 260.0,
       "placement_after_text": "open the current bill now",
       "placement_before_text": "no overage charge just yet",
       "audio_reference": {
@@ -1515,8 +1516,8 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          264.5,
-          265.5
+          260.0,
+          265.48
         ]
       }
     },
@@ -1552,7 +1553,7 @@
       "source_label": "retrieve a current eligible offer before quoting it",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 285.0,
+      "placement_seconds": 285.5,
       "placement_after_text": "I need maps and email",
       "placement_before_text": "I can add five gigabytes",
       "audio_reference": {
@@ -1560,8 +1561,8 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          284.5,
-          285.5
+          285.5,
+          287.02
         ]
       }
     },
@@ -1575,7 +1576,15 @@
         "path": "audio/full.wav",
         "start_seconds": 287.02,
         "end_seconds": 305.3
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "I can add five gigabytes of high-speed data for $40 on the next bill",
+          "category": "missing_required_disclosure",
+          "reason": "The offer's effective timing (immediate) is never stated before authorization, although policy requires stating data amount, price, currency, billing timing, and effective timing.",
+          "remediation": "State that the add-on takes effect immediately, alongside the amount, price, currency, and billing timing, before asking the customer to authorize."
+        }
+      ]
     },
     {
       "event_index": 49,
@@ -1775,7 +1784,15 @@
         "path": "audio/full.wav",
         "start_seconds": 409.38,
         "end_seconds": 416.24
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "the phone does show that StreamBox used almost all of the 11.8 gigs",
+          "category": "source_conflation",
+          "reason": "The customer's phone screen showed 10.9 GB for StreamBox; 11.8 GB is the carrier-metered line total, and the agent attributes the carrier figure to the phone display.",
+          "remediation": "Keep the sources distinct, e.g. the phone showed 10.9 GB for StreamBox, which is consistent with the 11.8 GB the carrier metered."
+        }
+      ]
     },
     {
       "event_index": 65,

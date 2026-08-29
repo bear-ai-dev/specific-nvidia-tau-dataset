@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "retail-missing-package",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-08-25T15:40:00-04:00",
+  "entities": {
+    "customer-ethan-patel": {
+      "entity_type": "customer",
+      "customer_id": "customer-ethan-patel",
+      "display_name": "Ethan Patel",
+      "verified_email": "e***@northmail.com"
+    },
+    "order-7319": {
+      "entity_type": "order",
+      "order_reference": "7319",
+      "customer_id": "customer-ethan-patel",
+      "items": [
+        {
+          "item_reference": "blue-noise-canceling-headphones",
+          "product_reference": "blue-noise-canceling-headphones",
+          "color": "blue"
+        }
+      ],
+      "fulfillment": {
+        "status": "delivered",
+        "latest_scan": {
+          "time": "15:18 yesterday",
+          "location": "front entrance",
+          "photo": null
+        },
+        "carrier_evidence": {
+          "scan_location": "near building",
+          "unit_number": null,
+          "locker": null,
+          "photo": null,
+          "possible_misscan": true
+        }
+      },
+      "cases": [],
+      "notifications": []
+    },
+    "product-blue-noise-canceling-headphones": {
+      "entity_type": "product",
+      "product_reference": "blue-noise-canceling-headphones",
+      "variant": {
+        "color": "blue"
+      },
+      "inventory": {
+        "same_variant_in_stock": true
+      }
+    }
+  }
+}
