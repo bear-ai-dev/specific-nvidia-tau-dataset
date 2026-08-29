@@ -22,13 +22,13 @@
 
 [00:00:54.480 - 00:01:00.200] Linda: Um, we wanna leave October 14th and then come back home on October 19th.
 
-[00:01:00.400 - 00:01:00.900] [calling tool to list supported airports]
+[00:01:00.400] [tool] list_supported_airports: calling tool to list supported airports
 
 [00:01:01.280 - 00:01:14.110] Jordan: Okay. So you've got Reagan, Dulles, and Baltimore. But for the National Mall, Reagan is usually the closest and easiest. It's kind of right there in town.
 
 [00:01:15.990 - 00:01:33.500] Linda: Okay. Well, Reagan then. And I also need it to be non-stop, please. Um, I'm gonna be traveling with my 12-year-old and a, uh, my grandson [laughs], and a folding walker.
 
-[00:01:33.500 - 00:01:34.000] [calling tool to search for direct flights]
+[00:01:33.500] [tool] search_flights: calling tool to search for direct flights
 
 [00:01:33.500 - 00:01:49.540] Jordan: Okay. Well, I did find a 9:10 in the morning going out and a 3:40 in the afternoon coming back. Both are nonstop. Basic is cheaper, but standard lets you pick seats ahead of time. Is that a priority for you?
 
@@ -40,11 +40,13 @@
 
 [00:02:12.100 - 00:02:17.260] Jordan: Right. Right. I understand. Let me see. Um,
 
-[00:02:17.800 - 00:02:18.300] [calling tool to search for one-stop flights]
+[00:02:17.800] [tool] search_flights: calling tool to search for one-stop flights
 
 [00:02:19.380 - 00:02:26.980] Jordan: Well, ma'am, it does look like the best connection only saves $62 total, and it adds almost three hours each way.
 
 [00:02:28.820 - 00:02:41.420] Linda: Oh, no. That is not worth it. Let's go ahead and do nonstop. And we'll each check one suitcase, and I have the folding walker I mentioned.
+
+[00:02:41.420] [tool] check_mobility_device_requirements: check folding-walker requirements before quoting baggage treatment
 
 [00:02:41.420 - 00:02:46.640] Jordan: Okay. Well, the walker doesn't count as paid baggage, so that's good.
 
@@ -52,7 +54,7 @@
 
 [00:02:48.420 - 00:03:01.700] Jordan: Yeah. And I'm pricing two standard tickets, two checked bags, and optional trip insurance. Just give me a moment. I'm going to crunch these numbers and get the best possible itinerary.
 
-[00:03:01.700 - 00:03:02.200] [calling tool to calculate prices and fees]
+[00:03:01.700] [tool] calculate_itinerary_price: calculate the selected itinerary before stating mobility-device fee and final price
 
 [00:03:13.580 - 00:03:15.500] Jordan: Okay. Just bear with me, ma'am, one moment.
 
@@ -86,7 +88,9 @@
 
 [00:05:05.380 - 00:05:05.940] Jordan: Okay.
 
-[00:05:06.000 - 00:05:06.500] [calling tool to retrieve the customer profile and reservations]
+[00:05:05.800] [tool] verify_customer_identity: validate collected identity factors before stored profile and payment access
+
+[00:05:06.000] [tool] get_customer_profile: calling tool to retrieve the customer profile and reservations
 
 [00:05:07.720 - 00:05:14.820] Jordan: Um, okay. I found your profile, and [sighs] no duplicate reservation. All good.
 
@@ -100,7 +104,9 @@
 
 [00:05:37.760 - 00:05:45.380] Jordan: C-T-449108. Okay. Thanks, got it.
 
-[00:05:45.600 - 00:05:46.100] [calling tool to book the new reservation]
+[00:05:45.500] [tool] validate_travel_certificate: validate the supplied certificate before applying it
+
+[00:05:45.600] [tool] book_reservation: calling tool to book the new reservation
 
 [00:05:46.700 - 00:06:07.360] Jordan: Um, all right. Well, the booking is confirmed. Let me give you your confirmation code. The code is B as in Bravo, 9, R as in Romeo, T as in Tango, 6, M as in Mike.
 

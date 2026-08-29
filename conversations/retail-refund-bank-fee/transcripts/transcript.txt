@@ -6,7 +6,8 @@
 [00:00:33.320 - 00:00:40.040] Teddy: Yeah, I have both. Um, order ends in five six two four, and the return receipt ends in nine one eight two.
 [00:00:40.120 - 00:00:46.520] Daniel: Okay, got it. Um, just one second. And also, what was the email address on the order?
 [00:00:47.820 - 00:00:50.860] Teddy: Teddy.torrez@harbormail.com.
-[00:00:52.360 - 00:00:55.660] Daniel: Okay, just give me one moment and I'm gonna look that order up. [calling tool to open the order record]
+[00:00:52.360 - 00:00:55.660] Daniel: Okay, just give me one moment and I'm gonna look that order up.
+[00:00:55.660] [tool] get_order: open the order record
 [00:00:57.320 - 00:00:57.700] Teddy: Okay.
 [00:01:07.540 - 00:01:21.040] Daniel: Okay. Um, I just found that order. I see one standing desk converter for one hundred and eighty-six dollars and forty-two cents after tax. Does that sound about right?
 [00:01:21.140 - 00:01:26.800] Teddy: Yep. I paid forty dollars with a Westline gift card, and then the rest should be on my debit.
@@ -14,7 +15,8 @@
 [00:01:43.360 - 00:01:58.400] Teddy: Oh, oh, okay. I think that's what the person at the store told me, but the email I got is only about forty-two dollars, so I'm still missing the one hundred and forty-six dollars and the forty-two cents. I don't know where that is. It isn't in my account. (concerned)
 [00:01:59.540 - 00:02:10.960] Daniel: Okay, understood. Um, the, the forty dollar portion should have gone back to the gift card. Did you receive a new digital gift card number in that email by any chance?
 [00:02:12.480 - 00:02:18.560] Teddy: Uh, yeah, I did, but I haven't tried it yet. I was just more worried about the debit card.
-[00:02:19.420 - 00:02:30.600] Daniel: Okay. Yeah, that's, um, that's totally fair. Let me go ahead and check the payment history and the card reference. I may need to place you on hold for a few moments while I kind of open the return details. [calling tool to review the refund payment details]
+[00:02:19.420 - 00:02:30.600] Daniel: Okay. Yeah, that's, um, that's totally fair. Let me go ahead and check the payment history and the card reference. I may need to place you on hold for a few moments while I kind of open the return details.
+[00:02:30.600] [tool] get_order: review the refund payment details
 [00:02:31.680 - 00:02:32.760] Teddy: Yeah, sure.
 [00:02:32.970 - 00:02:34.199] Daniel: Perfect. One second.
 [00:02:51.160 - 00:03:10.460] Daniel: Okay. Thank you so much for waiting. Sorry about the delay. It looks like the gift card refund was issued successfully, and the debit card refund is showing submitted, um, but it was never received in like a settlement confirmation from the payment processor.
@@ -36,16 +38,21 @@
 [00:06:12.780 - 00:06:31.220] Daniel: It would not automatically become store credit. Depending on the processor results, the option may include the replacement card or mailed check, and the payments team will kind of confirm with you the available option before reiss-reissuing anything.
 [00:06:33.100 - 00:06:39.140] Teddy: Okay. Um, can you also confirm the forty dollar gift card actually works? Like, I don't want another problem.
 [00:06:40.940 - 00:06:44.600] Daniel: Yes. Um, give me one second. Let me just check that balance for you.
+[00:06:46.000] [tool] get_order: check the refunded gift-card balance
 [00:06:49.100 - 00:06:56.880] Daniel: Yeah. So it looks like on my end that the balance and the digital gift card have forty dollars available.
 [00:06:58.160 - 00:07:02.820] Daniel: It has not been used, and the number and the email, uh, still looks to be active.
 [00:07:04.080 - 00:07:04.440] Teddy: Okay.
-[00:07:07.700 - 00:07:30.960] Daniel: Okay. Perfect. Um, so I've kind of opened up the payment trace for the remaining a hundred and forty-six dollars and forty-two cents, and the case number is WST seven three five two oh four. And I'm also noting that your original card was actually replaced, but the checking account remains open. [calling tool to open a refund payment trace]
+[00:07:06.000] [tool] open_refund_trace: open a refund payment trace
+[00:07:06.200] [tool] update_case: record the customer's card-replacement report without asserting external bank state
+[00:07:07.700 - 00:07:30.960] Daniel: Okay. Perfect. Um, so I've kind of opened up the payment trace for the remaining a hundred and forty-six dollars and forty-two cents, and the case number is WST seven three five two oh four. And I'm also noting that your original card was actually replaced, but the checking account remains open.
 [00:07:32.800 - 00:07:34.580] Teddy: Can you email that to me?
 [00:07:34.720 - 00:07:48.420] Daniel: Yes. Um, I can go ahead and just send you a confirmation to your email on the order. Um, what it'll do is it should list out the amount under review, the last four digits of the original card, and then a potential expected response window.
+[00:07:49.000] [tool] send_case_notification: send the requested refund-trace confirmation email
 [00:07:50.340 - 00:07:57.020] Teddy: Okay. Okay, I see it. It says not to contact the store. Does that mean that the store can't do anything right now?
 [00:07:59.260 - 00:08:15.779] Daniel: Yes. So the store kind of completed, um, their part of the whole return process. From here, the payments team and the card processor have to kind of handle this. So calling the store would not kind of, uh, speed up the trace in this case.
 [00:08:17.060 - 00:08:24.620] Teddy: Okay. Um, I also had a small overdraft fee because I was expecting this money back. Is that something Westline covers?
-[00:08:26.580 - 00:08:46.720] Daniel: I can't approve a bank fee while the trace is open. Um, for right now, I can document it. Um, and once the refund outcome is confirmed, customer service relations can kind of review any supporting statement you choose to provide. I will say I don't want to promise any sort of reimbursement, but the note will be attached to this case. [calling tool to add the bank-fee note to the case]
+[00:08:26.580 - 00:08:46.720] Daniel: I can't approve a bank fee while the trace is open. Um, for right now, I can document it. Um, and once the refund outcome is confirmed, customer service relations can kind of review any supporting statement you choose to provide. I will say I don't want to promise any sort of reimbursement, but the note will be attached to this case.
+[00:08:46.720] [tool] update_case: add the bank-fee note to the case
 [00:08:48.340 - 00:08:50.660] Teddy: Okay, bet. Um, I just wanted it on record.
 [00:08:51.860 - 00:09:08.040] Daniel: Okay, perfect. Yeah. Um, I just put it in on record. If you don't want to receive an update by the end of the fifth business day, or if you don't, um, reply to the case email or call us at the number, um, you won't need to explain the return again.
 [00:09:09.220 - 00:09:12.080] Teddy: Okay. And if the return appears before then, do I need to call?

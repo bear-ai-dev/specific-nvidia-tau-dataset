@@ -1,9 +1,9 @@
 {
   "schema_version": "0.2.0",
   "registry_name": "retail",
-  "registry_version": "0.2.0",
+  "registry_version": "0.3.0",
   "compatibility": "custom_tau_style_not_literal_tau_registry",
-  "design_note": "Stable entity reads and consequential business mutations; source narration labels are normalized rather than copied one-for-one.",
+  "design_note": "Models a single-brand retail customer-care desk: verified customer/order reads, delivered-not-received and missing-refund traces, replacement creation, case notes, and case notifications over a small closed entity graph. Result schemas are fully typed and closed (additionalProperties: false at every level) so a deterministic tau2-bench-style mock environment can be implemented from this registry alone. Status and resolution vocabularies are enumerated as the union of the policy lifecycles and the recorded tool outputs.",
   "tools": [
     {
       "name": "lookup_customer",
@@ -35,7 +35,12 @@
           },
           "match": {
             "type": "string",
-            "description": "Lookup outcome."
+            "description": "Lookup outcome.",
+            "enum": [
+              "unique",
+              "multiple",
+              "none"
+            ]
           },
           "display_name": {
             "type": "string",
@@ -43,8 +48,27 @@
           },
           "recent_orders": {
             "type": "array",
+            "description": "Recent orders for the matched customer.",
             "items": {
-              "type": "object"
+              "type": "object",
+              "properties": {
+                "order_reference": {
+                  "type": "string",
+                  "description": "Order reference."
+                },
+                "item": {
+                  "type": "string",
+                  "description": "Representative item description."
+                },
+                "open_case_id": {
+                  "type": "string",
+                  "description": "Open support case attached to the order, when one exists."
+                }
+              },
+              "required": [
+                "order_reference"
+              ],
+              "additionalProperties": false
             }
           }
         },
@@ -52,7 +76,7 @@
           "customer_id",
           "match"
         ],
-        "additionalProperties": true
+        "additionalProperties": false
       }
     },
     {
@@ -64,7 +88,7 @@
         "properties": {
           "order_reference": {
             "type": "string",
-            "description": "Full or partial order reference accepted by the source system."
+            "description": "Full order reference or its last 4 digits; a partial value is resolved by longest-suffix match against the customer's orders."
           },
           "customer_email": {
             "type": "string",
@@ -103,55 +127,457 @@
         "properties": {
           "order_reference": {
             "type": "string",
-            "description": "Order reference."
+            "description": "Order reference as resolved by the source system."
           },
           "customer": {
-            "type": "object"
+            "type": "object",
+            "description": "Customer associated with the order.",
+            "properties": {
+              "customer_id": {
+                "type": "string",
+                "description": "Customer identifier."
+              },
+              "display_name": {
+                "type": "string",
+                "description": "Customer display name."
+              },
+              "verified_email": {
+                "type": "string",
+                "description": "Masked verified email on the order."
+              }
+            },
+            "required": [
+              "display_name",
+              "verified_email"
+            ],
+            "additionalProperties": false
           },
           "items": {
             "type": "array",
+            "description": "Order items.",
             "items": {
-              "type": "object"
+              "type": "object",
+              "properties": {
+                "item_reference": {
+                  "type": "string",
+                  "description": "Order-item reference."
+                },
+                "product_reference": {
+                  "type": "string",
+                  "description": "Product reference for the item."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Item name."
+                },
+                "variant": {
+                  "type": "string",
+                  "description": "Variant label."
+                },
+                "color": {
+                  "type": "string",
+                  "description": "Variant color."
+                },
+                "total_after_tax": {
+                  "type": "number",
+                  "description": "Item total after tax.",
+                  "minimum": 0
+                },
+                "currency": {
+                  "type": "string",
+                  "description": "Currency of monetary amounts on this item.",
+                  "enum": [
+                    "USD"
+                  ]
+                }
+              },
+              "required": [
+                "item_reference"
+              ],
+              "additionalProperties": false
             }
           },
           "fulfillment": {
-            "type": "object"
+            "type": "object",
+            "description": "Fulfillment state and carrier evidence.",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Fulfillment lifecycle state.",
+                "enum": [
+                  "placed",
+                  "processing",
+                  "fulfilled",
+                  "shipped",
+                  "out_for_delivery",
+                  "delivered"
+                ]
+              },
+              "latest_scan": {
+                "type": "object",
+                "description": "Most recent carrier scan.",
+                "properties": {
+                  "time": {
+                    "type": "string",
+                    "description": "Human-readable local scan time relative to the call (not ISO)."
+                  },
+                  "location": {
+                    "type": "string",
+                    "description": "Scan location description."
+                  },
+                  "photo": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "Delivery photo reference; null when no photo exists."
+                  }
+                },
+                "required": [
+                  "time",
+                  "location"
+                ],
+                "additionalProperties": false
+              },
+              "carrier_evidence": {
+                "type": "object",
+                "description": "Detailed carrier evidence for the delivery.",
+                "properties": {
+                  "scan_location": {
+                    "type": "string",
+                    "description": "Where the carrier recorded the scan."
+                  },
+                  "unit_number": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "Unit number in the scan; null when unavailable."
+                  },
+                  "locker": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "Locker reference; null when unavailable."
+                  },
+                  "photo": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "Delivery photo reference; null when no photo exists."
+                  },
+                  "possible_misscan": {
+                    "type": "boolean",
+                    "description": "Whether the evidence is consistent with a mis-scan."
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              }
+            },
+            "required": [],
+            "additionalProperties": false
           },
           "payments": {
             "type": "array",
+            "description": "Payment tenders on the order.",
             "items": {
-              "type": "object"
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "Tender type.",
+                  "enum": [
+                    "gift_card",
+                    "debit",
+                    "credit",
+                    "store_credit"
+                  ]
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "Tender amount.",
+                  "minimum": 0
+                },
+                "currency": {
+                  "type": "string",
+                  "description": "Currency of monetary amounts on this tender.",
+                  "enum": [
+                    "USD"
+                  ]
+                },
+                "original_card_last4": {
+                  "type": "string",
+                  "description": "Last 4 digits of the original card.",
+                  "pattern": "^[0-9]{4}$"
+                }
+              },
+              "required": [
+                "type",
+                "amount"
+              ],
+              "additionalProperties": false
             }
           },
           "refunds": {
             "type": "array",
+            "description": "Return and refund records; a record carries either return acceptance fields or per-tender refund fields.",
             "items": {
-              "type": "object"
+              "type": "object",
+              "properties": {
+                "return_reference": {
+                  "type": "string",
+                  "description": "Return reference."
+                },
+                "return_status": {
+                  "type": "string",
+                  "description": "Return processing state, e.g. complete."
+                },
+                "accepted_at": {
+                  "type": "string",
+                  "description": "Location where the return was accepted."
+                },
+                "accepted_age_days": {
+                  "type": "integer",
+                  "description": "Days since the return was accepted.",
+                  "minimum": 0
+                },
+                "inventory_disposition": {
+                  "type": "string",
+                  "description": "Inventory outcome for the returned item, e.g. restocked."
+                },
+                "tender_type": {
+                  "type": "string",
+                  "description": "Tender the refund applies to.",
+                  "enum": [
+                    "gift_card",
+                    "debit",
+                    "credit",
+                    "store_credit"
+                  ]
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "Refund amount for this tender.",
+                  "minimum": 0
+                },
+                "currency": {
+                  "type": "string",
+                  "description": "Currency of monetary amounts on this record.",
+                  "enum": [
+                    "USD"
+                  ]
+                },
+                "available_balance": {
+                  "type": "number",
+                  "description": "Currently available balance for a gift-card or store-credit refund.",
+                  "minimum": 0
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Westline-side refund tender state, e.g. issued_available, submitted_no_settlement_confirmation, active."
+                },
+                "used": {
+                  "type": "boolean",
+                  "description": "Whether the refunded balance has been spent."
+                },
+                "delivery": {
+                  "type": "string",
+                  "description": "How the refunded tender was delivered, e.g. digital_gift_card_number_in_email."
+                },
+                "original_card_last4": {
+                  "type": "string",
+                  "description": "Last 4 digits of the original card.",
+                  "pattern": "^[0-9]{4}$"
+                },
+                "initiation_source": {
+                  "type": "string",
+                  "description": "Where the refund was initiated, e.g. store_register."
+                }
+              },
+              "required": [],
+              "additionalProperties": false
             }
           },
           "cases": {
             "type": "array",
+            "description": "Support cases related to the order.",
             "items": {
-              "type": "object"
+              "type": "object",
+              "properties": {
+                "case_id": {
+                  "type": "string",
+                  "description": "Support case identifier."
+                },
+                "order_reference": {
+                  "type": "string",
+                  "description": "Order the case is scoped to."
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Case type.",
+                  "enum": [
+                    "delivery_trace",
+                    "refund_trace"
+                  ]
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Support-case lifecycle state.",
+                  "enum": [
+                    "open",
+                    "pending_customer_or_external_response",
+                    "resolution_eligible_or_ineligible",
+                    "resolved",
+                    "closed"
+                  ]
+                },
+                "item": {
+                  "type": "string",
+                  "description": "Affected item description."
+                },
+                "preferences": {
+                  "type": "object",
+                  "description": "Case-scoped customer preferences.",
+                  "properties": {
+                    "pickup": {
+                      "type": "string",
+                      "description": "Preferred pickup location."
+                    }
+                  },
+                  "required": [],
+                  "additionalProperties": false
+                },
+                "carrier_response": {
+                  "type": "string",
+                  "description": "Carrier response received so far, e.g. none."
+                },
+                "deadline": {
+                  "type": "string",
+                  "description": "Human-readable response deadline relative to the call (not ISO)."
+                },
+                "carrier_may_contact_customer": {
+                  "type": "boolean",
+                  "description": "Whether the carrier may contact the customer directly."
+                },
+                "replacement_created": {
+                  "type": "boolean",
+                  "description": "Whether a replacement order exists for this case."
+                }
+              },
+              "required": [
+                "case_id",
+                "status"
+              ],
+              "additionalProperties": false
             }
           },
           "eligible_resolutions": {
             "type": "array",
+            "description": "Resolutions the order or item is currently eligible for.",
             "items": {
-              "type": "object"
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "Eligible resolution type.",
+                  "enum": [
+                    "replacement",
+                    "refund",
+                    "locate_only"
+                  ]
+                },
+                "preserves_original_price": {
+                  "type": "boolean",
+                  "description": "Whether the resolution keeps the eligible original price."
+                },
+                "return_required": {
+                  "type": "boolean",
+                  "description": "Whether the damaged or original item must be returned."
+                },
+                "photo_required": {
+                  "type": "boolean",
+                  "description": "Whether a photo is required before fulfillment."
+                },
+                "optional_photo_upload_available": {
+                  "type": "boolean",
+                  "description": "Whether an optional photo upload is offered."
+                },
+                "photo_upload_blocks_fulfillment": {
+                  "type": "boolean",
+                  "description": "Whether fulfillment waits on the photo upload."
+                },
+                "estimated_delivery": {
+                  "type": "string",
+                  "description": "Human-readable delivery estimate relative to the call (not ISO)."
+                },
+                "default_fulfillment": {
+                  "type": "string",
+                  "description": "Default fulfillment destination label, e.g. home_address_on_order."
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "additionalProperties": false
             }
           },
           "notifications": {
             "type": "array",
+            "description": "Notifications related to the order or its cases.",
             "items": {
-              "type": "object"
+              "type": "object",
+              "properties": {
+                "notification_id": {
+                  "type": "string",
+                  "description": "Notification identifier."
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Notification message type.",
+                  "enum": [
+                    "replacement_confirmation",
+                    "delivery_trace_confirmation",
+                    "refund_trace_confirmation",
+                    "case_reference"
+                  ]
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Notification delivery state.",
+                  "enum": [
+                    "queued",
+                    "sent",
+                    "delivered",
+                    "failed"
+                  ]
+                },
+                "subject_prefix": {
+                  "type": "string",
+                  "description": "Subject-line prefix of the sent message."
+                },
+                "optional_photo_link": {
+                  "type": "boolean",
+                  "description": "Whether the message contains an optional photo-upload link."
+                },
+                "photo_link_section": {
+                  "type": "string",
+                  "description": "Where the photo link appears in the message, e.g. later_in_email."
+                }
+              },
+              "required": [
+                "status"
+              ],
+              "additionalProperties": false
             }
           }
         },
         "required": [
           "order_reference"
         ],
-        "additionalProperties": true
+        "additionalProperties": false
       }
     },
     {
@@ -189,16 +615,42 @@
             "description": "Product reference."
           },
           "variant": {
-            "type": "object"
+            "type": "object",
+            "description": "Variant details.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Product name."
+              },
+              "color": {
+                "type": "string",
+                "description": "Variant color."
+              }
+            },
+            "required": [],
+            "additionalProperties": false
           },
           "inventory": {
-            "type": "object"
+            "type": "object",
+            "description": "Inventory availability; present when include_inventory was true.",
+            "properties": {
+              "in_stock": {
+                "type": "boolean",
+                "description": "Whether the product is in stock."
+              },
+              "same_variant_in_stock": {
+                "type": "boolean",
+                "description": "Whether the exact requested variant is in stock."
+              }
+            },
+            "required": [],
+            "additionalProperties": false
           }
         },
         "required": [
           "product_reference"
         ],
-        "additionalProperties": true
+        "additionalProperties": false
       }
     },
     {
@@ -242,7 +694,8 @@
           },
           "needed_by": {
             "type": "string",
-            "description": "Optional customer timing requirement."
+            "description": "Optional customer timing requirement as an ISO calendar date.",
+            "format": "date"
           }
         },
         "required": [
@@ -262,25 +715,53 @@
           },
           "status": {
             "type": "string",
-            "description": "Trace state."
+            "description": "Delivery-trace lifecycle state.",
+            "enum": [
+              "open",
+              "awaiting_carrier_response",
+              "eligibility_determined",
+              "resolved",
+              "closed"
+            ]
           },
           "carrier_response_deadline": {
             "type": "string",
-            "description": "Carrier deadline."
+            "description": "Human-readable carrier deadline relative to the call (not ISO)."
           },
           "replacement_created": {
             "type": "boolean",
-            "description": "Whether replacement exists."
+            "description": "Whether a replacement order exists."
           },
           "eligibility_triggers": {
             "type": "array",
+            "description": "Events that would establish resolution eligibility.",
             "items": {
-              "type": "string"
+              "type": "string",
+              "description": "Eligibility trigger, e.g. carrier_confirms_missing."
             }
           },
           "next_action": {
             "type": "string",
             "description": "Next supported action."
+          },
+          "approval_required": {
+            "type": "boolean",
+            "description": "Whether customer approval is required before resolution."
+          },
+          "approval_channel": {
+            "type": "string",
+            "description": "Channel through which approval is collected, e.g. trace_notification."
+          },
+          "notification_status": {
+            "type": "string",
+            "description": "Trace-notification delivery state at open time.",
+            "enum": [
+              "not_sent",
+              "queued",
+              "sent",
+              "delivered",
+              "failed"
+            ]
           }
         },
         "required": [
@@ -288,7 +769,7 @@
           "status",
           "replacement_created"
         ],
-        "additionalProperties": true
+        "additionalProperties": false
       }
     },
     {
@@ -334,16 +815,24 @@
           },
           "status": {
             "type": "string",
-            "description": "Trace state."
+            "description": "Refund-trace lifecycle state.",
+            "enum": [
+              "open",
+              "reviewing_merchant_and_tender_records",
+              "awaiting_external_settlement",
+              "resolved",
+              "closed"
+            ]
           },
           "review_window_business_days": {
             "type": "array",
-            "description": "Review-window endpoints.",
+            "description": "[min,max] business days",
             "items": {
-              "type": "number",
-              "description": "Business-day count."
+              "type": "integer",
+              "minimum": 0
             },
-            "minItems": 0
+            "minItems": 2,
+            "maxItems": 2
           },
           "duplicate_refund_blocked": {
             "type": "boolean",
@@ -360,7 +849,7 @@
           "review_window_business_days",
           "duplicate_refund_blocked"
         ],
-        "additionalProperties": true
+        "additionalProperties": false
       }
     },
     {
@@ -404,13 +893,18 @@
           "fulfillment_location": {
             "type": "string",
             "description": "Address label or pickup location when known."
+          },
+          "customer_authorized": {
+            "type": "boolean",
+            "description": "Customer explicitly authorized creating this replacement order."
           }
         },
         "required": [
           "order_reference",
           "item_references",
           "reason",
-          "fulfillment_method"
+          "fulfillment_method",
+          "customer_authorized"
         ],
         "additionalProperties": false
       },
@@ -424,20 +918,115 @@
           },
           "status": {
             "type": "string",
-            "description": "Creation state."
+            "description": "Creation outcome.",
+            "enum": [
+              "created",
+              "failed"
+            ]
           },
           "balance_due": {
             "type": "number",
-            "description": "Replacement balance due."
+            "description": "Replacement balance due.",
+            "minimum": 0
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency of monetary amounts in this result.",
+            "enum": [
+              "USD"
+            ]
           },
           "fulfillment": {
-            "type": "object"
+            "type": "object",
+            "description": "Fulfillment plan for the replacement.",
+            "properties": {
+              "method": {
+                "type": "string",
+                "description": "Fulfillment method.",
+                "enum": [
+                  "ship_to_address",
+                  "store_pickup"
+                ]
+              },
+              "location": {
+                "type": "string",
+                "description": "Destination label, e.g. home_address_on_order."
+              },
+              "estimated_delivery": {
+                "type": "string",
+                "description": "Human-readable delivery estimate relative to the call (not ISO)."
+              },
+              "estimate_guaranteed": {
+                "type": "boolean",
+                "description": "Whether the delivery estimate is guaranteed."
+              },
+              "distribution_center": {
+                "type": "string",
+                "description": "Assigned distribution center."
+              },
+              "distribution_center_status": {
+                "type": "string",
+                "description": "Assignment firmness, e.g. provisional_until_shipped."
+              },
+              "tracking_notifications": {
+                "type": "boolean",
+                "description": "Whether tracking notifications will be sent."
+              }
+            },
+            "required": [
+              "method"
+            ],
+            "additionalProperties": false
           },
           "return_disposition": {
-            "type": "object"
+            "type": "object",
+            "description": "What the customer must do with the original item.",
+            "properties": {
+              "return_required": {
+                "type": "boolean",
+                "description": "Whether the original item must be returned."
+              },
+              "disposition": {
+                "type": "string",
+                "description": "Authorized handling of the original item, e.g. discard_or_recycle."
+              },
+              "safety": {
+                "type": "string",
+                "description": "Safety instruction for the original item, e.g. do_not_power_on."
+              }
+            },
+            "required": [
+              "return_required"
+            ],
+            "additionalProperties": false
           },
           "notification": {
-            "type": "object"
+            "type": "object",
+            "description": "Confirmation-notification state at creation time.",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Notification delivery state.",
+                "enum": [
+                  "queued",
+                  "sent",
+                  "delivered",
+                  "failed"
+                ]
+              },
+              "optional_photo_link": {
+                "type": "boolean",
+                "description": "Whether the message contains an optional photo-upload link."
+              },
+              "photo_link_section": {
+                "type": "string",
+                "description": "Where the photo link appears in the message, e.g. later_in_email."
+              }
+            },
+            "required": [
+              "status"
+            ],
+            "additionalProperties": false
           }
         },
         "required": [
@@ -447,7 +1036,7 @@
           "fulfillment",
           "return_disposition"
         ],
-        "additionalProperties": true
+        "additionalProperties": false
       }
     },
     {
@@ -467,7 +1056,13 @@
           },
           "requested_resolution": {
             "type": "string",
-            "description": "Optional requested resolution."
+            "description": "Optional requested resolution.",
+            "enum": [
+              "replacement",
+              "refund",
+              "locate_only",
+              "undecided"
+            ]
           },
           "preferred_pickup_location": {
             "type": "string",
@@ -485,11 +1080,19 @@
         "properties": {
           "status": {
             "type": "string",
-            "description": "Case-update state."
+            "description": "Case-update outcome.",
+            "enum": [
+              "note_added",
+              "preference_added"
+            ]
           },
           "visible_to_next_reviewer": {
             "type": "boolean",
             "description": "Whether later reviewers see the update."
+          },
+          "review_instruction": {
+            "type": "string",
+            "description": "Instruction recorded for the next reviewer."
           },
           "pickup_guaranteed": {
             "type": "boolean",
@@ -503,7 +1106,7 @@
         "required": [
           "status"
         ],
-        "additionalProperties": true
+        "additionalProperties": false
       }
     },
     {
@@ -561,7 +1164,13 @@
           },
           "status": {
             "type": "string",
-            "description": "Notification state."
+            "description": "Notification delivery state.",
+            "enum": [
+              "queued",
+              "sent",
+              "delivered",
+              "failed"
+            ]
           },
           "masked_destination": {
             "type": "string",
@@ -573,13 +1182,16 @@
           },
           "included_fields": {
             "type": "array",
+            "description": "Case fields included in the message.",
             "items": {
-              "type": "string"
+              "type": "string",
+              "description": "Included field name."
             }
           },
           "sent_at": {
             "type": "string",
-            "description": "Send time when available."
+            "description": "Send timestamp when available.",
+            "format": "date-time"
           }
         },
         "required": [
@@ -587,7 +1199,7 @@
           "status",
           "case_id"
         ],
-        "additionalProperties": true
+        "additionalProperties": false
       }
     },
     {
@@ -618,7 +1230,11 @@
         "properties": {
           "status": {
             "type": "string",
-            "description": "Transfer state."
+            "description": "Transfer outcome.",
+            "enum": [
+              "transferred",
+              "failed"
+            ]
           },
           "transfer_id": {
             "type": "string",
@@ -628,7 +1244,7 @@
         "required": [
           "status"
         ],
-        "additionalProperties": true
+        "additionalProperties": false
       }
     }
   ]

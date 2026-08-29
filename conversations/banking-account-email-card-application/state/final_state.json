@@ -1,0 +1,149 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "banking-account-email-card-application",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-08-27T10:55:26-04:00",
+  "notes": [
+    "The card-application session was issued and delivered but never submitted, and no credit pull was authorized (bc-009 issuance and the bc-013 read both report submitted=false and credit_pull_authorized=false)."
+  ],
+  "entities": {
+    "customers": {
+      "SF204771": {
+        "customer_id": "SF204771",
+        "full_name": "Johnny Monroe",
+        "primary_email": "johnny.monroe.travel@outlook.com",
+        "notification_email": "johnny.monroe.travel@outlook.com",
+        "login_identifier_changed": false,
+        "transition_security_notices": ["old_email", "new_email"],
+        "required_verification_methods": ["billing_zip", "mobile_last4"],
+        "trusted_channels": [
+          {
+            "channel_id": "trusted-mobile-1251",
+            "type": "sms",
+            "masked_destination": "***-***-1251"
+          }
+        ]
+      }
+    },
+    "identity_verifications": {
+      "verification-SF204771-email-change": {
+        "verification_id": "verification-SF204771-email-change",
+        "customer_id": "SF204771",
+        "status": "verified",
+        "matched_methods": ["billing_zip", "mobile_last4"]
+      }
+    },
+    "trusted_channel_confirmations": {
+      "confirmation-email-change-SF204771": {
+        "confirmation_id": "confirmation-email-change-SF204771",
+        "customer_id": "SF204771",
+        "purpose": "email_change",
+        "channel": "sms",
+        "masked_destination": "***-***-1251",
+        "status": "verified",
+        "verified_at": "2026-08-27T10:48:39-04:00"
+      }
+    },
+    "secure_self_service_sessions": {
+      "session-card-application": {
+        "session_id": "session-card-application",
+        "customer_id": "SF204771",
+        "workflow": "card_application",
+        "resource_id": "summit-journey",
+        "status": "open_not_submitted",
+        "submitted": false,
+        "credit_pull_authorized": false,
+        "save_and_continue": true,
+        "resume_supported": true,
+        "deliveries": [
+          {
+            "channel": "secure_message",
+            "status": "delivered"
+          },
+          {
+            "channel": "email_notification",
+            "status": "delivered",
+            "masked_destination": "j***@outlook.com"
+          }
+        ]
+      }
+    },
+    "knowledge_base_records": {
+      "card-products-travel-current": {
+        "record_id": "card-products-travel-current",
+        "effective_at": "2026-07-01",
+        "matches": [
+          {
+            "product_id": "summit-journey",
+            "product": "Summit Journey",
+            "annual_fee": 95,
+            "foreign_transaction_fee": false,
+            "lounge_membership": false
+          },
+          {
+            "product_id": "summit-reserve",
+            "product": "Summit Reserve",
+            "annual_fee": 395,
+            "foreign_transaction_fee": false,
+            "lounge_membership": true
+          }
+        ]
+      },
+      "summit-reserve-airline-benefits": {
+        "record_id": "summit-reserve-airline-benefits",
+        "effective_at": "2026-07-01",
+        "airline_incidental_credit": true,
+        "automatic_free_checked_bag": false,
+        "airline_specific_rules_apply": true
+      },
+      "summit-welcome-offers-current": {
+        "record_id": "summit-welcome-offers-current",
+        "effective_at": "2026-07-01",
+        "offers": [
+          {
+            "product_id": "summit-journey",
+            "product": "Summit Journey",
+            "points": 40000,
+            "spend": 3000,
+            "days": 90
+          },
+          {
+            "product_id": "summit-reserve",
+            "product": "Summit Reserve",
+            "points": 70000,
+            "spend": 5000,
+            "days": 90
+          }
+        ],
+        "offers_can_change": true,
+        "approval_guaranteed": false
+      },
+      "card-application-decision-notice": {
+        "record_id": "card-application-decision-notice",
+        "effective_at": "2026-07-01",
+        "decision_notice": {
+          "explains_factors": true,
+          "may_include_reconsideration_contact": true
+        },
+        "phone_agent_can_override_underwriting": false
+      },
+      "card-application-housing-payment-field": {
+        "record_id": "card-application-housing-payment-field",
+        "effective_at": "2026-07-01",
+        "guidance": "Enter the amount the applicant is personally responsible for each month and follow the field instructions."
+      },
+      "card-application-income-field": {
+        "record_id": "card-application-income-field",
+        "effective_at": "2026-07-01",
+        "guidance": "Report income the applicant can reasonably access and verify, consistent with the application disclosure."
+      },
+      "profile-email-login-and-notice-routing": {
+        "record_id": "profile-email-login-and-notice-routing",
+        "effective_at": "2026-07-01",
+        "login_identifier_may_remain_same": true,
+        "future_notices_use_primary_email": true,
+        "unexpected_prompt_guidance": "Use the secure banking site rather than an unexpected message link."
+      }
+    }
+  }
+}

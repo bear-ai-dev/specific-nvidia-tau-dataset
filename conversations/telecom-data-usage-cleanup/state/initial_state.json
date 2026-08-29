@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "telecom-data-usage-cleanup",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-08-27T19:30:00-05:00",
+  "entities": {
+    "customer-benjamin-reed": {
+      "entity_type": "customer",
+      "customer_id": "customer-benjamin-reed",
+      "match": "unique",
+      "required_verification_factors": [
+        "mobile_number",
+        "full_name",
+        "date_of_birth"
+      ]
+    },
+    "line-4045550176": {
+      "entity_type": "mobile_line",
+      "line_id": "line-4045550176",
+      "masked_mobile_number": "***-***-0176",
+      "status": "active",
+      "billing_cycle_id": "cycle-current-benjamin",
+      "device_id": "device-pixel-8",
+      "plan_id": "unlimited-start",
+      "remaining_high_speed_gigabytes": 2.2,
+      "usage_last_24_hours": {
+        "measurement_source": "carrier_metering",
+        "window_start": "2026-08-27T00:00:00-05:00",
+        "window_end": "2026-08-27T04:00:00-05:00",
+        "used_gigabytes": 11.8,
+        "app_attribution_available": false
+      }
+    },
+    "device-pixel-8": {
+      "entity_type": "device",
+      "device_id": "device-pixel-8",
+      "model": "Pixel 8",
+      "line_id": "line-4045550176",
+      "provisioning_status": "active"
+    },
+    "unlimited-start": {
+      "entity_type": "plan",
+      "plan_id": "unlimited-start",
+      "name": "Unlimited Start",
+      "line_id": "line-4045550176"
+    },
+    "bill-current-benjamin": {
+      "entity_type": "bill",
+      "bill_id": "bill-current-benjamin",
+      "billing_cycle_id": "cycle-current-benjamin",
+      "cycle_start": "2026-08-06T00:00:00-05:00",
+      "cycle_end": "2026-09-05T00:00:00-05:00",
+      "cycle_resets_in_days": 9,
+      "overage_charge": 0.0,
+      "currency": "USD",
+      "after_high_speed_allowance": "speed_reduced"
+    },
+    "offer-5gb-40-next-bill": {
+      "entity_type": "data_addon_offer",
+      "offer_id": "offer-5gb-40-next-bill",
+      "line_id": "line-4045550176",
+      "eligibility_status": "eligible",
+      "data_gigabytes": 5.0,
+      "price": 40.0,
+      "currency": "USD",
+      "billing_timing": "next_bill",
+      "effective_timing": "immediate",
+      "expires_at": "2026-08-28T19:35:00-05:00"
+    },
+    "customer_device": {
+      "entity_type": "customer_device",
+      "provenance": "self_reported",
+      "note": "Customer-observed phone state reported aloud on the call; not carrier telemetry.",
+      "model": "Pixel 8",
+      "streambox_download_over_cellular": true,
+      "data_saver_enabled": false,
+      "unrestricted_apps": [
+        "StreamBox",
+        "CloudPhotos",
+        "work email"
+      ],
+      "streambox_background_usage_gigabytes_shown": 10.9
+    }
+  }
+}

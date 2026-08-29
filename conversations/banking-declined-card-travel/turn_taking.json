@@ -1,0 +1,860 @@
+{
+  "schema_version": "0.1.0",
+  "source": "ElevenLabs Scribe v2 word timestamps",
+  "warning": "Backchannel and barge-in fields are automatic candidates and require human acceptance for gold labels.",
+  "turns": [
+    {
+      "turn_id": "turn-0001",
+      "role": "agent",
+      "start_seconds": 0.76,
+      "end_seconds": 4.76,
+      "text": "Thank you for calling Pioneer Bank's Card Services. This is Adrian. How can I help you?",
+      "word_count": 17,
+      "duration_seconds": 4.0,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0002",
+      "role": "customer",
+      "start_seconds": 6.2,
+      "end_seconds": 13.62,
+      "text": "Hey, this is Colin Reeves. My card was declined twice at a hotel and I'm traveling, so, uh, I need to figure out what's going on there.",
+      "word_count": 29,
+      "duration_seconds": 7.42,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0003",
+      "role": "agent",
+      "start_seconds": 15.54,
+      "end_seconds": 20.5,
+      "text": "Okay. Um, I can look at that with you. Um, are you calling from the number on the account?",
+      "word_count": 19,
+      "duration_seconds": 4.96,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0004",
+      "role": "customer",
+      "start_seconds": 22.34,
+      "end_seconds": 23.44,
+      "text": "Uh, yes. Yes, I am.",
+      "word_count": 5,
+      "duration_seconds": 1.1,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0005",
+      "role": "agent",
+      "start_seconds": 24.46,
+      "end_seconds": 29.68,
+      "text": "All right. And, um, before I pull up the card, can I confirm your billing ZIP code and the last four digits?",
+      "word_count": 22,
+      "duration_seconds": 5.22,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0006",
+      "role": "customer",
+      "start_seconds": 30.8,
+      "end_seconds": 38.74,
+      "text": "Right. Uh, the ZIP code is two zero zero zero five, and the last four digits are six one four eight.",
+      "word_count": 21,
+      "duration_seconds": 7.94,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0007",
+      "role": "agent",
+      "start_seconds": 39.4,
+      "end_seconds": 50.34,
+      "text": "Okay. Awesome. Thanks. I have the account, and I see two attempts from Harbor View Hotel for eight hundred and forty dollars. Are those both yours?",
+      "word_count": 26,
+      "duration_seconds": 10.94,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0008",
+      "role": "customer",
+      "start_seconds": 51.56,
+      "end_seconds": 57.06,
+      "text": "Uh, yeah. The, the desk ran, ran it. Uh, it declined and then, uh, I had them, um, try it again.",
+      "word_count": 21,
+      "duration_seconds": 5.5,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0009",
+      "role": "agent",
+      "start_seconds": 57.94,
+      "end_seconds": 62.54,
+      "text": "Got it. Are you checking in today or was it just a reservation charge?",
+      "word_count": 14,
+      "duration_seconds": 4.6,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0010",
+      "role": "customer",
+      "start_seconds": 63.54,
+      "end_seconds": 69.539,
+      "text": "Uh, checking in today. I'm actually standing in the lobby right now. Um, they're holding the room, but they need a card before I can, you know.",
+      "word_count": 29,
+      "duration_seconds": 5.999,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0011",
+      "role": "agent",
+      "start_seconds": 70.32,
+      "end_seconds": 71.72,
+      "text": "Okay. Give me a second.",
+      "word_count": 5,
+      "duration_seconds": 1.4,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0012",
+      "role": "agent",
+      "start_seconds": 73.76,
+      "end_seconds": 75.22,
+      "text": "Let me check the decline reason.",
+      "word_count": 6,
+      "duration_seconds": 1.46,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0013",
+      "role": "agent",
+      "start_seconds": 87.7,
+      "end_seconds": 101.72,
+      "text": "Thanks for waiting. Um, so the first attempt got triggered, um, by a travel review, and the second one was declined because the first review was still open. And I don't see the card reported lost or any past due dates. Do you-- Can you confirm that?",
+      "word_count": 48,
+      "duration_seconds": 14.02,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0014",
+      "role": "customer",
+      "start_seconds": 102.92,
+      "end_seconds": 107.16,
+      "text": "Uh, yeah. Uh, can you, can you clear it so, um, they can run, they can run the card again?",
+      "word_count": 20,
+      "duration_seconds": 4.24,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0015",
+      "role": "agent",
+      "start_seconds": 108.12,
+      "end_seconds": 114.64,
+      "text": "Sure, yeah. I can verify the activity and remove the temporary block. And, um, first though, are you currently in Portland, Maine?",
+      "word_count": 22,
+      "duration_seconds": 6.52,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0016",
+      "role": "customer",
+      "start_seconds": 115.46,
+      "end_seconds": 116.72,
+      "text": "Uh, yeah. Uh, I'm in Portland.",
+      "word_count": 7,
+      "duration_seconds": 1.26,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0017",
+      "role": "agent",
+      "start_seconds": 118.08,
+      "end_seconds": 123.92,
+      "text": "And did they use the card earlier today at Logan Airport for thirty-two dollar in change?",
+      "word_count": 17,
+      "duration_seconds": 5.84,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0018",
+      "role": "customer",
+      "start_seconds": 124.1,
+      "end_seconds": 128.479,
+      "text": "Um, ye-yes. Um, that was, that was my breakfast this morning, uh.",
+      "word_count": 13,
+      "duration_seconds": 4.379,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0019",
+      "role": "agent",
+      "start_seconds": 128.94,
+      "end_seconds": 136.82,
+      "text": "All right. Sounds good. So those transactions lined up and the restriction is off now, but let me explain one thing before they try it again.",
+      "word_count": 26,
+      "duration_seconds": 7.88,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0020",
+      "role": "customer",
+      "start_seconds": 137.72,
+      "end_seconds": 138.64,
+      "text": "Yeah. Yeah, sure. Go ahead.",
+      "word_count": 5,
+      "duration_seconds": 0.92,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0021",
+      "role": "agent",
+      "start_seconds": 139.12,
+      "end_seconds": 153.4,
+      "text": "So, um, hotels often don't authorize more than the total room charge for incidentals. The-- Your available credit is nine hundred and twelve dollars. So eight hundred and forty dollars charged should fit, but a larger hold may not.",
+      "word_count": 40,
+      "duration_seconds": 14.28,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0022",
+      "role": "customer",
+      "start_seconds": 155.36,
+      "end_seconds": 156.8,
+      "text": "Right. Uh,",
+      "word_count": 2,
+      "duration_seconds": 1.44,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0023",
+      "role": "customer",
+      "start_seconds": 158.18,
+      "end_seconds": 161.19,
+      "text": "wait, could you, could you say it again, please? Uh.",
+      "word_count": 10,
+      "duration_seconds": 3.01,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0024",
+      "role": "agent",
+      "start_seconds": 161.98,
+      "end_seconds": 167.12,
+      "text": "Yeah. Yeah. So, um, hotels often authorize more than the room total for incidentals.",
+      "word_count": 14,
+      "duration_seconds": 5.14,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0025",
+      "role": "customer",
+      "start_seconds": 167.8,
+      "end_seconds": 167.859,
+      "text": "Right.",
+      "word_count": 1,
+      "duration_seconds": 0.059,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0026",
+      "role": "agent",
+      "start_seconds": 167.88,
+      "end_seconds": 176.08,
+      "text": "But your available credit is nine hundred and twelve dollars only. So eight hundred and forty dollar charge should fit, but a larger hold might not.",
+      "word_count": 26,
+      "duration_seconds": 8.2,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0027",
+      "role": "customer",
+      "start_seconds": 177.48,
+      "end_seconds": 184.1,
+      "text": "Right. Um, the clerk, uh, the clerk said that the room is six ninety and the rest of it is a deposit, so-",
+      "word_count": 23,
+      "duration_seconds": 6.62,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0028",
+      "role": "agent",
+      "start_seconds": 185.06,
+      "end_seconds": 185.07,
+      "text": "Nice",
+      "word_count": 1,
+      "duration_seconds": 0.01,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0029",
+      "role": "customer",
+      "start_seconds": 185.07,
+      "end_seconds": 187.52,
+      "text": "... I think eight hundred and forty should be the whole hold, yeah.",
+      "word_count": 12,
+      "duration_seconds": 2.45,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0030",
+      "role": "agent",
+      "start_seconds": 187.88,
+      "end_seconds": 200.14,
+      "text": "Yeah. That works. Then it should enter and it be fine. So, um, I'd have them try once more. Not several times, just once, and if they change the amount, just ask them to tell you first, 'cause you don't want-",
+      "word_count": 43,
+      "duration_seconds": 12.26,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0031",
+      "role": "customer",
+      "start_seconds": 200.2,
+      "end_seconds": 200.34,
+      "text": "Okay",
+      "word_count": 1,
+      "duration_seconds": 0.14,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0032",
+      "role": "agent",
+      "start_seconds": 200.36,
+      "end_seconds": 201.28,
+      "text": "... you want it to fit.",
+      "word_count": 5,
+      "duration_seconds": 0.92,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0033",
+      "role": "customer",
+      "start_seconds": 202.2,
+      "end_seconds": 205.42,
+      "text": "Okay. Right. Uh, can I, can I stay on the line with you while they do it?",
+      "word_count": 17,
+      "duration_seconds": 3.22,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0034",
+      "role": "agent",
+      "start_seconds": 205.66,
+      "end_seconds": 206.359,
+      "text": "Yeah, that's fine.",
+      "word_count": 4,
+      "duration_seconds": 0.699,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0035",
+      "role": "customer",
+      "start_seconds": 207.52,
+      "end_seconds": 213.36,
+      "text": "Yeah. Uh, can you, can you run it again? Um, they just, uh, cleared it. Uh, just give me a second, please.",
+      "word_count": 22,
+      "duration_seconds": 5.84,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0036",
+      "role": "agent",
+      "start_seconds": 213.8,
+      "end_seconds": 214.5,
+      "text": "Sure. No worries.",
+      "word_count": 3,
+      "duration_seconds": 0.7,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0037",
+      "role": "customer",
+      "start_seconds": 227.02,
+      "end_seconds": 230.28,
+      "text": "Yeah. Uh, okay. They're, they're running it now. Uh, no.",
+      "word_count": 12,
+      "duration_seconds": 3.26,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0038",
+      "role": "customer",
+      "start_seconds": 231.78,
+      "end_seconds": 236.32,
+      "text": "Yeah, uh, is it working? Did it go through? Okay, great. Perfect. Uh,",
+      "word_count": 13,
+      "duration_seconds": 4.54,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0039",
+      "role": "customer",
+      "start_seconds": 237.9,
+      "end_seconds": 242.28,
+      "text": "yeah. Um, sorry. Uh, it went through. Yeah. Uh, I got the receipt. It's, it's all good now.",
+      "word_count": 20,
+      "duration_seconds": 4.38,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0040",
+      "role": "agent",
+      "start_seconds": 242.48,
+      "end_seconds": 248.06,
+      "text": "Good. And I also see the authorization approved for eight hundred and forty dollars. Can you confirm?",
+      "word_count": 17,
+      "duration_seconds": 5.58,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0041",
+      "role": "customer",
+      "start_seconds": 248.98,
+      "end_seconds": 260.19,
+      "text": "Uh, yes. Yes. That was the amount. Um, also, um, I wanted to ask while I have you here, is the, is the card going to get blocked again if I use it somewhere else here, like while I'm on my trip, or should it be good?",
+      "word_count": 48,
+      "duration_seconds": 11.21,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0042",
+      "role": "agent",
+      "start_seconds": 260.22,
+      "end_seconds": 270.56,
+      "text": "No, no, no. It should be okay, since you just confirmed the activity. And, um, I can also add your return date as a note so that, though it doesn't really guarantee every purchase will be approved, but just a note should be good.",
+      "word_count": 45,
+      "duration_seconds": 10.34,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0043",
+      "role": "customer",
+      "start_seconds": 271.98,
+      "end_seconds": 277.82,
+      "text": "Right. Yeah. Yeah. Um, thank you. That's all right. I'll, I'll, I'll be back home by Sunday night.",
+      "word_count": 22,
+      "duration_seconds": 5.84,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0044",
+      "role": "agent",
+      "start_seconds": 277.92,
+      "end_seconds": 278.86,
+      "text": "Awesome.",
+      "word_count": 1,
+      "duration_seconds": 0.94,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0045",
+      "role": "customer",
+      "start_seconds": 278.87,
+      "end_seconds": 278.87,
+      "text": "Yeah.",
+      "word_count": 1,
+      "duration_seconds": 0.0,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0046",
+      "role": "agent",
+      "start_seconds": 278.96,
+      "end_seconds": 284.52,
+      "text": "And, uh, do you recognize everything else currently pending on the card? 'Cause I wanna make sure there's no suspicious activities.",
+      "word_count": 22,
+      "duration_seconds": 5.56,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0047",
+      "role": "customer",
+      "start_seconds": 285.56,
+      "end_seconds": 287.54,
+      "text": "Right. Uh, let, let me take a look real quick.",
+      "word_count": 10,
+      "duration_seconds": 1.98,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0048",
+      "role": "customer",
+      "start_seconds": 289.44,
+      "end_seconds": 297.2,
+      "text": "Yeah. Um, so there's the airport parking and then the breakfast and then, um, the hotel.",
+      "word_count": 17,
+      "duration_seconds": 7.76,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0049",
+      "role": "agent",
+      "start_seconds": 297.48,
+      "end_seconds": 297.74,
+      "text": "Yep.",
+      "word_count": 1,
+      "duration_seconds": 0.26,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0050",
+      "role": "customer",
+      "start_seconds": 298.2,
+      "end_seconds": 299,
+      "text": "Yeah. That-",
+      "word_count": 2,
+      "duration_seconds": 0.8,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0051",
+      "role": "agent",
+      "start_seconds": 299.06,
+      "end_seconds": 299.07,
+      "text": "Awesome",
+      "word_count": 1,
+      "duration_seconds": 0.01,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0052",
+      "role": "customer",
+      "start_seconds": 299.07,
+      "end_seconds": 299.64,
+      "text": "... that's all me.",
+      "word_count": 4,
+      "duration_seconds": 0.57,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0053",
+      "role": "agent",
+      "start_seconds": 300.08,
+      "end_seconds": 309.38,
+      "text": "Awesome. All right. And just one more heads up. The hotel may stay pending for a few days after checkout, depending on when it finalizes, so just for you to be aware of that.",
+      "word_count": 34,
+      "duration_seconds": 9.3,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0054",
+      "role": "customer",
+      "start_seconds": 310.48,
+      "end_seconds": 315.7,
+      "text": "Yeah, yeah, of course. No, uh, I get it. That's fine. I just needed to get into the room and my card wasn't going through, so.",
+      "word_count": 28,
+      "duration_seconds": 5.22,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0055",
+      "role": "agent",
+      "start_seconds": 315.78,
+      "end_seconds": 322.48,
+      "text": "Understood. Understood. And the card is active and the hotel charge is approved and the travel notice on the account, so you should be ready to go.",
+      "word_count": 27,
+      "duration_seconds": 6.7,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0056",
+      "role": "customer",
+      "start_seconds": 323.74,
+      "end_seconds": 329.18,
+      "text": "Okay, perfect. That, that's great. Uh, thank you for staying on the line and then, and helping me out. Appreciate it.",
+      "word_count": 22,
+      "duration_seconds": 5.44,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0057",
+      "role": "agent",
+      "start_seconds": 329.19,
+      "end_seconds": 331.1,
+      "text": "No problem. No problem, Colin. Safe travels.",
+      "word_count": 7,
+      "duration_seconds": 1.91,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0058",
+      "role": "customer",
+      "start_seconds": 332.2,
+      "end_seconds": 334.94,
+      "text": "Yeah. Thank you. It was, it was great talking to you. Have a good day. Bye.",
+      "word_count": 16,
+      "duration_seconds": 2.74,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0059",
+      "role": "agent",
+      "start_seconds": 334.95,
+      "end_seconds": 335.88,
+      "text": "Bye. You as well.",
+      "word_count": 4,
+      "duration_seconds": 0.93,
+      "is_backchannel_candidate": false
+    }
+  ],
+  "pause_boundaries": [
+    {
+      "after_turn_id": "turn-0001",
+      "before_turn_id": "turn-0002",
+      "start_seconds": 4.76,
+      "end_seconds": 6.2,
+      "duration_seconds": 1.44,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0002",
+      "before_turn_id": "turn-0003",
+      "start_seconds": 13.62,
+      "end_seconds": 15.54,
+      "duration_seconds": 1.92,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0003",
+      "before_turn_id": "turn-0004",
+      "start_seconds": 20.5,
+      "end_seconds": 22.34,
+      "duration_seconds": 1.84,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0004",
+      "before_turn_id": "turn-0005",
+      "start_seconds": 23.44,
+      "end_seconds": 24.46,
+      "duration_seconds": 1.02,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0005",
+      "before_turn_id": "turn-0006",
+      "start_seconds": 29.68,
+      "end_seconds": 30.8,
+      "duration_seconds": 1.12,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0007",
+      "before_turn_id": "turn-0008",
+      "start_seconds": 50.34,
+      "end_seconds": 51.56,
+      "duration_seconds": 1.22,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0008",
+      "before_turn_id": "turn-0009",
+      "start_seconds": 57.06,
+      "end_seconds": 57.94,
+      "duration_seconds": 0.88,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0009",
+      "before_turn_id": "turn-0010",
+      "start_seconds": 62.54,
+      "end_seconds": 63.54,
+      "duration_seconds": 1.0,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0011",
+      "before_turn_id": "turn-0012",
+      "start_seconds": 71.72,
+      "end_seconds": 73.76,
+      "duration_seconds": 2.04,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0012",
+      "before_turn_id": "turn-0013",
+      "start_seconds": 75.22,
+      "end_seconds": 87.7,
+      "duration_seconds": 12.48,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0013",
+      "before_turn_id": "turn-0014",
+      "start_seconds": 101.72,
+      "end_seconds": 102.92,
+      "duration_seconds": 1.2,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0014",
+      "before_turn_id": "turn-0015",
+      "start_seconds": 107.16,
+      "end_seconds": 108.12,
+      "duration_seconds": 0.96,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0015",
+      "before_turn_id": "turn-0016",
+      "start_seconds": 114.64,
+      "end_seconds": 115.46,
+      "duration_seconds": 0.82,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0016",
+      "before_turn_id": "turn-0017",
+      "start_seconds": 116.72,
+      "end_seconds": 118.08,
+      "duration_seconds": 1.36,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0019",
+      "before_turn_id": "turn-0020",
+      "start_seconds": 136.82,
+      "end_seconds": 137.72,
+      "duration_seconds": 0.9,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0021",
+      "before_turn_id": "turn-0022",
+      "start_seconds": 153.4,
+      "end_seconds": 155.36,
+      "duration_seconds": 1.96,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0022",
+      "before_turn_id": "turn-0023",
+      "start_seconds": 156.8,
+      "end_seconds": 158.18,
+      "duration_seconds": 1.38,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0026",
+      "before_turn_id": "turn-0027",
+      "start_seconds": 176.08,
+      "end_seconds": 177.48,
+      "duration_seconds": 1.4,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0027",
+      "before_turn_id": "turn-0028",
+      "start_seconds": 184.1,
+      "end_seconds": 185.06,
+      "duration_seconds": 0.96,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0032",
+      "before_turn_id": "turn-0033",
+      "start_seconds": 201.28,
+      "end_seconds": 202.2,
+      "duration_seconds": 0.92,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0034",
+      "before_turn_id": "turn-0035",
+      "start_seconds": 206.359,
+      "end_seconds": 207.52,
+      "duration_seconds": 1.161,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0036",
+      "before_turn_id": "turn-0037",
+      "start_seconds": 214.5,
+      "end_seconds": 227.02,
+      "duration_seconds": 12.52,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0037",
+      "before_turn_id": "turn-0038",
+      "start_seconds": 230.28,
+      "end_seconds": 231.78,
+      "duration_seconds": 1.5,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0038",
+      "before_turn_id": "turn-0039",
+      "start_seconds": 236.32,
+      "end_seconds": 237.9,
+      "duration_seconds": 1.58,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0040",
+      "before_turn_id": "turn-0041",
+      "start_seconds": 248.06,
+      "end_seconds": 248.98,
+      "duration_seconds": 0.92,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0042",
+      "before_turn_id": "turn-0043",
+      "start_seconds": 270.56,
+      "end_seconds": 271.98,
+      "duration_seconds": 1.42,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0046",
+      "before_turn_id": "turn-0047",
+      "start_seconds": 284.52,
+      "end_seconds": 285.56,
+      "duration_seconds": 1.04,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0047",
+      "before_turn_id": "turn-0048",
+      "start_seconds": 287.54,
+      "end_seconds": 289.44,
+      "duration_seconds": 1.9,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0053",
+      "before_turn_id": "turn-0054",
+      "start_seconds": 309.38,
+      "end_seconds": 310.48,
+      "duration_seconds": 1.1,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0055",
+      "before_turn_id": "turn-0056",
+      "start_seconds": 322.48,
+      "end_seconds": 323.74,
+      "duration_seconds": 1.26,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0057",
+      "before_turn_id": "turn-0058",
+      "start_seconds": 331.1,
+      "end_seconds": 332.2,
+      "duration_seconds": 1.1,
+      "class": "short"
+    }
+  ],
+  "overlap_and_barge_in_candidates": [],
+  "source_segment_overlap_candidates": [],
+  "audio_events": [],
+  "speaker_metadata": {
+    "agent": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    },
+    "customer": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "retail-damaged-item-replacement",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-08-26T11:20:00-04:00",
+  "entities": {
+    "customer-ethan-patel": {
+      "entity_type": "customer",
+      "customer_id": "customer-ethan-patel",
+      "display_name": "Ethan Patel",
+      "verified_email": "e***@northmail.com",
+      "recent_orders": [
+        "ending-4086",
+        "ending-7319"
+      ]
+    },
+    "ending-4086": {
+      "entity_type": "order",
+      "order_reference": "ending-4086",
+      "customer_id": "customer-ethan-patel",
+      "items": [
+        {
+          "item_reference": "coffee-maker-matte-black-12-cup",
+          "name": "12-cup coffee maker",
+          "variant": "matte black"
+        }
+      ],
+      "eligible_resolutions": [
+        {
+          "type": "replacement",
+          "preserves_original_price": true,
+          "return_required": false,
+          "photo_required": false,
+          "optional_photo_upload_available": true,
+          "photo_upload_blocks_fulfillment": false,
+          "estimated_delivery": "Thursday end of day",
+          "default_fulfillment": "home_address_on_order"
+        },
+        {
+          "type": "refund"
+        }
+      ]
+    },
+    "ending-7319": {
+      "entity_type": "order",
+      "order_reference": "ending-7319",
+      "items": [
+        {
+          "name": "blue noise-canceling headphones"
+        }
+      ],
+      "open_case_id": "WST481662"
+    },
+    "WST481662": {
+      "entity_type": "support_case",
+      "case_id": "WST481662",
+      "order_reference": "ending-7319",
+      "type": "delivery_trace",
+      "item": "blue noise-canceling headphones",
+      "status": "open",
+      "carrier_response": "none",
+      "deadline": "18:00 today",
+      "preferences": {
+        "pickup": "West 23rd Street pickup counter"
+      }
+    },
+    "coffee-maker-matte-black-12-cup": {
+      "entity_type": "product",
+      "product_reference": "coffee-maker-matte-black-12-cup",
+      "variant": {
+        "name": "12-cup coffee maker",
+        "color": "matte black"
+      },
+      "inventory": {
+        "in_stock": true
+      }
+    }
+  }
+}

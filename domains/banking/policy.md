@@ -47,7 +47,7 @@ A knowledge-base result should identify the source, effective time or date, stab
 
 ### Secure self-service session
 
-A secure session has a session identifier, workflow, related resource, current status, delivery state, submission state, and expiry when applicable. Requested, issued, sent, delivered, opened, saved, submitted, expired, and closed are distinct states. Creating or delivering a session does not prove that the customer opened or submitted it.
+A secure session has a session identifier, workflow, related resource, current status, delivery state, submission state, and expiry when applicable. Requested, issued, sent, delivered, opened, saved, submitted, expired, and closed are distinct states. The backend reports the opened-but-not-yet-submitted state as `open_not_submitted`. Creating or delivering a session does not prove that the customer opened or submitted it.
 
 ### Notification
 

@@ -5,10 +5,14 @@
 [00:00:43.000 - 00:00:47.500] Jonathan: Thanks. Could I get your full name and date of birth?
 [00:00:47.920 - 00:00:59.060] Ben: Yeah, full name Benjamin Reed. That's R-E-E-D. And then date of birth, November 22, 1991.
 [00:01:01.340 - 00:01:03.580] Jonathan: Okay, give me a moment to look up your account.
+[00:01:03.580] [tool] lookup_customer: find a customer using their phone number
+[00:01:07.500] [tool] verify_customer_identity: validate collected identity factors before account access
+[00:01:10.500] [tool] get_customer_account: retrieve customer, line, device, and plan using the resolved customer ID
 [00:01:14.040 - 00:01:23.740] Jonathan: Okay, I found your account. You have one phone line on the Unlimited Start plan and a Pixel 8. Is that the phone that you're using now?
 [00:01:24.700 - 00:01:33.920] Ben: Pixel 8. Yep, it's the one I'm using. The alert said I used 85%, but I was on my home Wi-Fi, like, all night. So that doesn't make sense.
 [00:01:35.840 - 00:01:41.600] Jonathan: Okay, got it. I'm going to check the carrier's usage first. Give me a moment.
 [00:01:41.860 - 00:01:42.340] Ben: Okay.
+[00:01:42.340] [tool] get_line_data_usage: check the line's current data usage
 [00:01:46.160 - 00:01:53.620] Jonathan: So what I'm seeing on my end is the line used 11.8 gigabytes between about midnight and four in the morning.
 [00:01:55.300 - 00:01:59.560] Ben: Eleven gigs? Wait, is that real? There's no way, because I was sleeping.
 [00:02:01.740 - 00:02:04.240] Ben: Are you telling me someone hacked the phone or something?
@@ -26,11 +30,14 @@
 [00:03:38.960 - 00:03:48.440] Ben: Okay, yeah, give me one second. Okay, yeah, so I just did that. For the data, is the data coming back, though, or what's going to happen with that?
 [00:03:50.720 - 00:04:03.800] Jonathan: So unfortunately, the used data can't be put back into the plan. You still have 2.2 gigabytes left until the cycle resets. I can check when that happens and whether there's already an overage on the bill.
 [00:04:03.820 - 00:04:08.500] Ben: Yeah, please do, because I'm traveling for work before then, so I really need that.
+[00:04:08.500] [tool] get_customer_bills: retrieve the customer's current bill
 [00:04:12.880 - 00:04:15.120] Jonathan: Your cycle resets in nine days.
 [00:04:15.740 - 00:04:16.460] Ben: I see.
 [00:04:16.160 - 00:04:19.540] Jonathan: I'm going to open the current bill now. Give me a moment.
+[00:04:20.000] [tool] get_customer_bills: open the scoped current-bill sections after the agent says so
 [00:04:25.480 - 00:04:35.840] Jonathan: So it looks like there's no overage charge just yet. The plan slows down after the included high-speed amount is used.
 [00:04:37.160 - 00:04:45.080] Ben: I see. It slows down how much? Because I need maps and email. I'm traveling, so I can't have it crawling. You know what I mean?
+[00:04:45.500] [tool] get_data_addon_offers: retrieve a current eligible offer before quoting it
 [00:04:47.020 - 00:05:05.300] Jonathan: Yeah, so the exact speed can vary with the network. Maps and email may still work, but video and large files can feel much slower. I can add five gigabytes of high-speed data for $40 on the next bill. I won't add it, of course, unless you approve.
 [00:05:06.000 - 00:05:13.140] Ben: What? $40? Because this app changed its own setting? I mean, that's a lot, and it's pretty frustrating too.
 [00:05:15.620 - 00:05:17.260] Ben: Is there anything else we could do?
@@ -55,6 +62,7 @@
 [00:07:14.640 - 00:07:25.260] Jonathan: Yes, I can. Just to confirm, you want five additional gigabytes for $40 charged to your next ClearWave bill. Do you authorize that?
 [00:07:26.280 - 00:07:28.500] Ben: Yeah, yeah, definitely. I authorize that.
 [00:07:31.060 - 00:07:32.600] Jonathan: All right, give me a moment.
+[00:07:32.600] [tool] add_data_addon: add additional mobile data and charge it to the customer's bill
 [00:07:37.260 - 00:07:47.140] Jonathan: Okay, it's added. Your line should now show 7.2 gigabytes of high-speed data available for the rest of the cycle.
 [00:07:49.100 - 00:07:57.960] Ben: Okay, okay, that's great. Can we just make sure it actually works before I hang up, just while I have you on the phone? Is there a way to test that?
 [00:07:57.780 - 00:07:58.300] Jonathan: Absolutely.

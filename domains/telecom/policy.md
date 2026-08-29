@@ -109,7 +109,7 @@ After verification:
 
 1. Retrieve the customer account, selected line, device, and plan.
 2. Confirm with the customer that the selected device and line are the ones involved.
-3. Retrieve carrier-metered usage for a defined time window. The result must identify the line, measurement source, window start and end, amount used, remaining high-speed balance, and `as_of` time.
+3. Retrieve carrier-metered usage for a defined time window. A custom window requires explicit start and end bounds; the predefined windows derive their bounds automatically. The result must identify the line, measurement source, window start and end, amount used, remaining high-speed balance, and `as_of` time.
 4. State carrier usage as a carrier measurement, not proof of which phone application generated it.
 5. Ask the customer to open the phone's data-usage screen and report the app-level evidence.
 6. Compare the two sources using qualified language such as "that is consistent with the carrier total." Do not call correlation proof of cause.

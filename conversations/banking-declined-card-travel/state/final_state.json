@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "banking-declined-card-travel",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-08-28T14:35:36-04:00",
+  "entities": {
+    "customer-colin-reeves": {
+      "entity_type": "customer",
+      "customer_id": "customer-colin-reeves",
+      "full_name": "Colin Reeves",
+      "billing_zip": "20005",
+      "caller_phone_match": true,
+      "required_verification_methods": ["caller_phone", "billing_zip", "card_last4"]
+    },
+    "verification-colin-reeves-card": {
+      "entity_type": "identity_verification",
+      "verification_id": "verification-colin-reeves-card",
+      "customer_id": "customer-colin-reeves",
+      "status": "verified",
+      "matched_methods": ["caller_phone", "billing_zip", "card_last4"]
+    },
+    "card-6148": {
+      "entity_type": "card_account",
+      "customer_id": "customer-colin-reeves",
+      "card_last4": "6148",
+      "status": "active",
+      "reported_lost": false,
+      "payment_status": "current",
+      "declines": [
+        {
+          "transaction_id": "hotel-attempt-1",
+          "merchant": "Harbor View Hotel",
+          "merchant_location": "Portland, Maine",
+          "amount": 840,
+          "status": "declined",
+          "reason": "travel_review"
+        },
+        {
+          "transaction_id": "hotel-attempt-2",
+          "merchant": "Harbor View Hotel",
+          "merchant_location": "Portland, Maine",
+          "amount": 840,
+          "status": "declined",
+          "reason": "prior_review_open"
+        }
+      ],
+      "authorizations": [
+        {
+          "transaction_id": "logan-breakfast-32",
+          "merchant": "Logan Airport",
+          "amount": 32,
+          "status": "approved",
+          "occurred_at": "2026-08-28T08:05:00-04:00"
+        },
+        {
+          "transaction_id": "hotel-authorization-840",
+          "merchant": "Harbor View Hotel",
+          "amount": 840,
+          "status": "approved"
+        }
+      ],
+      "restrictions": [
+        {
+          "restriction_id": "temporary-travel-review",
+          "status": "removed",
+          "linked_transaction_ids": ["hotel-attempt-1", "hotel-attempt-2", "logan-breakfast-32"]
+        }
+      ],
+      "travel_notices": [
+        {
+          "notice_id": "travel-notice-colin-portland",
+          "status": "created",
+          "destinations": ["Portland, Maine"],
+          "return_date": "2026-08-30",
+          "authorization_guaranteed": false
+        }
+      ]
+    },
+    "hotel-authorization-holds": {
+      "entity_type": "knowledge_record",
+      "record_id": "hotel-authorization-holds",
+      "effective_at": "2026-07-01",
+      "incidental_holds_may_exceed_room_total": true,
+      "available_credit_must_cover_full_authorization": true,
+      "authorization_guaranteed": false,
+      "pending_duration": "may remain pending for a few days after checkout depending on merchant finalization"
+    }
+  }
+}

@@ -1,0 +1,778 @@
+{
+  "schema_version": "0.1.0",
+  "source": "ElevenLabs Scribe v2 word timestamps",
+  "warning": "Backchannel and barge-in fields are automatic candidates and require human acceptance for gold labels.",
+  "turns": [
+    {
+      "turn_id": "turn-0001",
+      "role": "agent",
+      "start_seconds": 0.54,
+      "end_seconds": 3.18,
+      "text": "Oak Street Pharmacy. This is Aaron. How can I help you?",
+      "word_count": 11,
+      "duration_seconds": 2.64,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0002",
+      "role": "customer",
+      "start_seconds": 4.18,
+      "end_seconds": 13.69,
+      "text": "Hey, um, uh, I'm calling about a prescription that was supposed to be ready this afternoon. Um, the app still, still says it's, um, being processed. I was wondering if you knew anything about that.",
+      "word_count": 37,
+      "duration_seconds": 9.51,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0003",
+      "role": "agent",
+      "start_seconds": 14.72,
+      "end_seconds": 18.439,
+      "text": "Okay. I can check the status. What's your name and date of birth?",
+      "word_count": 14,
+      "duration_seconds": 3.719,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0004",
+      "role": "customer",
+      "start_seconds": 19.1,
+      "end_seconds": 23.22,
+      "text": "Um, Miles Carter. June 14th, uh, 1988.",
+      "word_count": 7,
+      "duration_seconds": 4.12,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0005",
+      "role": "agent",
+      "start_seconds": 24.6,
+      "end_seconds": 24.96,
+      "text": "Thank you.",
+      "word_count": 2,
+      "duration_seconds": 0.36,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0006",
+      "role": "agent",
+      "start_seconds": 26.42,
+      "end_seconds": 28.06,
+      "text": "And which medication are you expecting?",
+      "word_count": 6,
+      "duration_seconds": 1.64,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0007",
+      "role": "customer",
+      "start_seconds": 28.9,
+      "end_seconds": 34.019,
+      "text": "Um, the inhaler, uh, Albuterol. I think, um, my doctor should have sent it this morning.",
+      "word_count": 16,
+      "duration_seconds": 5.119,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0008",
+      "role": "agent",
+      "start_seconds": 35.2,
+      "end_seconds": 36.3,
+      "text": "All right. Give me a moment.",
+      "word_count": 6,
+      "duration_seconds": 1.1,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0009",
+      "role": "agent",
+      "start_seconds": 44.82,
+      "end_seconds": 50.6,
+      "text": "I see the prescription. It's with me. It came in at ten forty-two but it stopped at the insurance step.",
+      "word_count": 22,
+      "duration_seconds": 5.78,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0010",
+      "role": "customer",
+      "start_seconds": 52.18,
+      "end_seconds": 59.55,
+      "text": "Um, what did-- what do you mean, uh, insurance? The app didn't say anything about insurance or anything. It just said, um, that it was processing. Did I miss something?",
+      "word_count": 31,
+      "duration_seconds": 7.37,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0011",
+      "role": "agent",
+      "start_seconds": 60.38,
+      "end_seconds": 71.98,
+      "text": "Um, yeah, so the app message is pretty general. The claim rejected because the plan thinks that the refill is too soon. Did you by any chance have or fill another inhaler recently?",
+      "word_count": 33,
+      "duration_seconds": 11.6,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0012",
+      "role": "customer",
+      "start_seconds": 73.36,
+      "end_seconds": 83.54,
+      "text": "Um, I, I think, I think I did it, uh, last month, but I left that one in a h- hotel room and I told the doctor's office that, um, when I was asking for, uh, for a refill.",
+      "word_count": 40,
+      "duration_seconds": 10.18,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0013",
+      "role": "agent",
+      "start_seconds": 84.6,
+      "end_seconds": 85.78,
+      "text": "Okay. Give me one moment.",
+      "word_count": 5,
+      "duration_seconds": 1.18,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0014",
+      "role": "agent",
+      "start_seconds": 89.56,
+      "end_seconds": 99.74,
+      "text": "The new prescription is valid. I'm seeing that the issue here is the payment. We can ask the insurance for a lost medication override, but they may need to speak with you.",
+      "word_count": 33,
+      "duration_seconds": 10.18,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0015",
+      "role": "customer",
+      "start_seconds": 99.84,
+      "end_seconds": 104.9,
+      "text": "Uh, is there any way you can call them right now? I'm leaving town again tomorrow morning a- and I kinda need it.",
+      "word_count": 24,
+      "duration_seconds": 5.06,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0016",
+      "role": "agent",
+      "start_seconds": 106.02,
+      "end_seconds": 112.759,
+      "text": "Okay. I can start it. One second. Before I do, do you need the inhaler tonight or do you have another one available with you?",
+      "word_count": 25,
+      "duration_seconds": 6.739,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0017",
+      "role": "customer",
+      "start_seconds": 113.54,
+      "end_seconds": 119.06,
+      "text": "Uh, I got, I got one at home with, um, maybe a f- a couple doses left, but I need the new one before I go on the trip.",
+      "word_count": 29,
+      "duration_seconds": 5.52,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0018",
+      "role": "agent",
+      "start_seconds": 120.22,
+      "end_seconds": 120.68,
+      "text": "Understood.",
+      "word_count": 1,
+      "duration_seconds": 0.46,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0019",
+      "role": "agent",
+      "start_seconds": 122.12,
+      "end_seconds": 126.6,
+      "text": "Let me call the plan while you're on the line. It may take a couple minutes. Okay?",
+      "word_count": 18,
+      "duration_seconds": 4.48,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0020",
+      "role": "customer",
+      "start_seconds": 126.66,
+      "end_seconds": 127.12,
+      "text": "Yeah. Thank you.",
+      "word_count": 3,
+      "duration_seconds": 0.46,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0021",
+      "role": "agent",
+      "start_seconds": 141.04,
+      "end_seconds": 186.5,
+      "text": "Thank you for holding.",
+      "word_count": 4,
+      "duration_seconds": 45.46,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0022",
+      "role": "customer",
+      "start_seconds": 187.4,
+      "end_seconds": 187.53,
+      "text": "Okay.",
+      "word_count": 1,
+      "duration_seconds": 0.13,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0023",
+      "role": "agent",
+      "start_seconds": 187.53,
+      "end_seconds": 195.46,
+      "text": "They approved a one-time lost medication override. I reran the claim and I'm seeing that your co-pay is fifteen dollars.",
+      "word_count": 23,
+      "duration_seconds": 7.93,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0024",
+      "role": "customer",
+      "start_seconds": 196.4,
+      "end_seconds": 198.74,
+      "text": "Okay. Um, great. So is it, is it ready now?",
+      "word_count": 10,
+      "duration_seconds": 2.34,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0025",
+      "role": "agent",
+      "start_seconds": 199.72,
+      "end_seconds": 208.14,
+      "text": "Um, not quite yet. The pharmacist on our side still has to check it. You're next in the queue, and we're looking at about thirty minutes.",
+      "word_count": 28,
+      "duration_seconds": 8.42,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0026",
+      "role": "customer",
+      "start_seconds": 208.26,
+      "end_seconds": 213.48,
+      "text": "Um, when do you guys close? It closes at, on the pharmacy, it's at, um, seven, right? Like it closes at seven?",
+      "word_count": 23,
+      "duration_seconds": 5.22,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0027",
+      "role": "agent",
+      "start_seconds": 214.32,
+      "end_seconds": 219.19,
+      "text": "Our counter closes at seven but the front store usually stays a lot open. Uh, open a lot later.",
+      "word_count": 19,
+      "duration_seconds": 4.87,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0028",
+      "role": "customer",
+      "start_seconds": 220.38,
+      "end_seconds": 225.87,
+      "text": "Right. So it's, it's like, um, six fifteen now and I'm about twenty-five minutes away. Is that,",
+      "word_count": 21,
+      "duration_seconds": 5.49,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0029",
+      "role": "customer",
+      "start_seconds": 227.14,
+      "end_seconds": 228.64,
+      "text": "is that, is that good? Is that fine?",
+      "word_count": 8,
+      "duration_seconds": 1.5,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0030",
+      "role": "agent",
+      "start_seconds": 229.68,
+      "end_seconds": 237.1,
+      "text": "Okay. Well, I think if you leave after you get the ready text you should make it. I don't wanna tell you to come before the pharmacist finishes the check though.",
+      "word_count": 32,
+      "duration_seconds": 7.42,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0031",
+      "role": "customer",
+      "start_seconds": 238.04,
+      "end_seconds": 244.12,
+      "text": "Yeah. No, no, yeah. I, I get it. Uh, can you, can you make sure it doesn't get pushed to tomorrow though? Is that possible?",
+      "word_count": 26,
+      "duration_seconds": 6.08,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0032",
+      "role": "agent",
+      "start_seconds": 244.18,
+      "end_seconds": 245.43,
+      "text": "Yeah, I can flag-",
+      "word_count": 4,
+      "duration_seconds": 1.25,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0033",
+      "role": "customer",
+      "start_seconds": 245.43,
+      "end_seconds": 245.43,
+      "text": "Sorry.",
+      "word_count": 1,
+      "duration_seconds": 0.0,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0034",
+      "role": "agent",
+      "start_seconds": 245.43,
+      "end_seconds": 254.54,
+      "text": "Yeah. All good. I can flag it on my end that you're traveling and waiting for it tonight. I can't skip the pharmacist's verification, but it is already in the active queue.",
+      "word_count": 35,
+      "duration_seconds": 9.11,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0035",
+      "role": "customer",
+      "start_seconds": 255.72,
+      "end_seconds": 261.399,
+      "text": "Oh, okay. That, that's great. Uh, what happens if I don't get the text by say like six forty-five or something like that?",
+      "word_count": 26,
+      "duration_seconds": 5.679,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0036",
+      "role": "agent",
+      "start_seconds": 262.12,
+      "end_seconds": 272.54,
+      "text": "Okay. Um, I would just call us back before you drive over. If there is a delay we can tell you whether another Oak Street location has it in stock, but we'd have to transfer the prescription.",
+      "word_count": 38,
+      "duration_seconds": 10.42,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0037",
+      "role": "customer",
+      "start_seconds": 273.34,
+      "end_seconds": 277.7,
+      "text": "And does that one also close at, on the counter at seven or is it, is it later?",
+      "word_count": 18,
+      "duration_seconds": 4.36,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0038",
+      "role": "agent",
+      "start_seconds": 279.7,
+      "end_seconds": 284.56,
+      "text": "The Park Avenue store closes at nine I believe. Let me check their stock so we know the backup.",
+      "word_count": 19,
+      "duration_seconds": 4.86,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0039",
+      "role": "agent",
+      "start_seconds": 289.22,
+      "end_seconds": 296.06,
+      "text": "They show the same inhaler in stock. I wouldn't transfer it yet because ours should be ready first.",
+      "word_count": 19,
+      "duration_seconds": 6.84,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0040",
+      "role": "customer",
+      "start_seconds": 296.83,
+      "end_seconds": 303.74,
+      "text": "Right. Yeah, yeah. Okay, yeah. We can, we can leave it there. Uh, let's... Yeah, unless you c- can't finish it then no, we can transfer it. That's good. Thank you.",
+      "word_count": 34,
+      "duration_seconds": 6.91,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0041",
+      "role": "agent",
+      "start_seconds": 304.6,
+      "end_seconds": 310.54,
+      "text": "Okay. That's what I'll do. I added the travel note and your mobile number is set for the ready alert.",
+      "word_count": 22,
+      "duration_seconds": 5.94,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0042",
+      "role": "customer",
+      "start_seconds": 311.52,
+      "end_seconds": 314.41,
+      "text": "Um, also, uh, can I, can I pay in the app before I get there?",
+      "word_count": 15,
+      "duration_seconds": 2.89,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0043",
+      "role": "agent",
+      "start_seconds": 316.06,
+      "end_seconds": 322.26,
+      "text": "Uh, yeah. Once it moves to ready the app may offer pre-pay. If it doesn't you can just pay the fifteen dollar co-pay at pickup.",
+      "word_count": 28,
+      "duration_seconds": 6.2,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0044",
+      "role": "customer",
+      "start_seconds": 322.84,
+      "end_seconds": 328.08,
+      "text": "Okay. Thank you, thank you, thank you so much. I was worried the doctor never sent it so I was kinda freaking out.",
+      "word_count": 23,
+      "duration_seconds": 5.24,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0045",
+      "role": "agent",
+      "start_seconds": 328.68,
+      "end_seconds": 334.4,
+      "text": "All good. No, no, we have it. Uh, the insurance issue is cleared. We're just waiting on the final pharmacy check.",
+      "word_count": 22,
+      "duration_seconds": 5.72,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0046",
+      "role": "customer",
+      "start_seconds": 335.28,
+      "end_seconds": 338.56,
+      "text": "All right. Okay. Uh, I'll watch for the text and thanks for calling the insurance too.",
+      "word_count": 17,
+      "duration_seconds": 3.28,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0047",
+      "role": "agent",
+      "start_seconds": 340.3,
+      "end_seconds": 343.82,
+      "text": "Uh, you're welcome, Miles. Call us by six forty-five if you haven't heard from us, okay?",
+      "word_count": 19,
+      "duration_seconds": 3.52,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0048",
+      "role": "customer",
+      "start_seconds": 344.44,
+      "end_seconds": 347.44,
+      "text": "Okay, I will. Thank you. Have a, have a great rest of your shift.",
+      "word_count": 14,
+      "duration_seconds": 3.0,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0049",
+      "role": "agent",
+      "start_seconds": 348.06,
+      "end_seconds": 349,
+      "text": "You too. Bye-bye.",
+      "word_count": 4,
+      "duration_seconds": 0.94,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0050",
+      "role": "customer",
+      "start_seconds": 349.01,
+      "end_seconds": 349.01,
+      "text": "Bye-bye.",
+      "word_count": 2,
+      "duration_seconds": 0.0,
+      "is_backchannel_candidate": false
+    }
+  ],
+  "pause_boundaries": [
+    {
+      "after_turn_id": "turn-0001",
+      "before_turn_id": "turn-0002",
+      "start_seconds": 3.18,
+      "end_seconds": 4.18,
+      "duration_seconds": 1.0,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0002",
+      "before_turn_id": "turn-0003",
+      "start_seconds": 13.69,
+      "end_seconds": 14.72,
+      "duration_seconds": 1.03,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0004",
+      "before_turn_id": "turn-0005",
+      "start_seconds": 23.22,
+      "end_seconds": 24.6,
+      "duration_seconds": 1.38,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0005",
+      "before_turn_id": "turn-0006",
+      "start_seconds": 24.96,
+      "end_seconds": 26.42,
+      "duration_seconds": 1.46,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0006",
+      "before_turn_id": "turn-0007",
+      "start_seconds": 28.06,
+      "end_seconds": 28.9,
+      "duration_seconds": 0.84,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0007",
+      "before_turn_id": "turn-0008",
+      "start_seconds": 34.019,
+      "end_seconds": 35.2,
+      "duration_seconds": 1.181,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0008",
+      "before_turn_id": "turn-0009",
+      "start_seconds": 36.3,
+      "end_seconds": 44.82,
+      "duration_seconds": 8.52,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0009",
+      "before_turn_id": "turn-0010",
+      "start_seconds": 50.6,
+      "end_seconds": 52.18,
+      "duration_seconds": 1.58,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0010",
+      "before_turn_id": "turn-0011",
+      "start_seconds": 59.55,
+      "end_seconds": 60.38,
+      "duration_seconds": 0.83,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0011",
+      "before_turn_id": "turn-0012",
+      "start_seconds": 71.98,
+      "end_seconds": 73.36,
+      "duration_seconds": 1.38,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0012",
+      "before_turn_id": "turn-0013",
+      "start_seconds": 83.54,
+      "end_seconds": 84.6,
+      "duration_seconds": 1.06,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0013",
+      "before_turn_id": "turn-0014",
+      "start_seconds": 85.78,
+      "end_seconds": 89.56,
+      "duration_seconds": 3.78,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0015",
+      "before_turn_id": "turn-0016",
+      "start_seconds": 104.9,
+      "end_seconds": 106.02,
+      "duration_seconds": 1.12,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0017",
+      "before_turn_id": "turn-0018",
+      "start_seconds": 119.06,
+      "end_seconds": 120.22,
+      "duration_seconds": 1.16,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0018",
+      "before_turn_id": "turn-0019",
+      "start_seconds": 120.68,
+      "end_seconds": 122.12,
+      "duration_seconds": 1.44,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0020",
+      "before_turn_id": "turn-0021",
+      "start_seconds": 127.12,
+      "end_seconds": 141.04,
+      "duration_seconds": 13.92,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0021",
+      "before_turn_id": "turn-0022",
+      "start_seconds": 186.5,
+      "end_seconds": 187.4,
+      "duration_seconds": 0.9,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0023",
+      "before_turn_id": "turn-0024",
+      "start_seconds": 195.46,
+      "end_seconds": 196.4,
+      "duration_seconds": 0.94,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0024",
+      "before_turn_id": "turn-0025",
+      "start_seconds": 198.74,
+      "end_seconds": 199.72,
+      "duration_seconds": 0.98,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0026",
+      "before_turn_id": "turn-0027",
+      "start_seconds": 213.48,
+      "end_seconds": 214.32,
+      "duration_seconds": 0.84,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0027",
+      "before_turn_id": "turn-0028",
+      "start_seconds": 219.19,
+      "end_seconds": 220.38,
+      "duration_seconds": 1.19,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0028",
+      "before_turn_id": "turn-0029",
+      "start_seconds": 225.87,
+      "end_seconds": 227.14,
+      "duration_seconds": 1.27,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0029",
+      "before_turn_id": "turn-0030",
+      "start_seconds": 228.64,
+      "end_seconds": 229.68,
+      "duration_seconds": 1.04,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0030",
+      "before_turn_id": "turn-0031",
+      "start_seconds": 237.1,
+      "end_seconds": 238.04,
+      "duration_seconds": 0.94,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0034",
+      "before_turn_id": "turn-0035",
+      "start_seconds": 254.54,
+      "end_seconds": 255.72,
+      "duration_seconds": 1.18,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0037",
+      "before_turn_id": "turn-0038",
+      "start_seconds": 277.7,
+      "end_seconds": 279.7,
+      "duration_seconds": 2.0,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0038",
+      "before_turn_id": "turn-0039",
+      "start_seconds": 284.56,
+      "end_seconds": 289.22,
+      "duration_seconds": 4.66,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0040",
+      "before_turn_id": "turn-0041",
+      "start_seconds": 303.74,
+      "end_seconds": 304.6,
+      "duration_seconds": 0.86,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0041",
+      "before_turn_id": "turn-0042",
+      "start_seconds": 310.54,
+      "end_seconds": 311.52,
+      "duration_seconds": 0.98,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0042",
+      "before_turn_id": "turn-0043",
+      "start_seconds": 314.41,
+      "end_seconds": 316.06,
+      "duration_seconds": 1.65,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0045",
+      "before_turn_id": "turn-0046",
+      "start_seconds": 334.4,
+      "end_seconds": 335.28,
+      "duration_seconds": 0.88,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0046",
+      "before_turn_id": "turn-0047",
+      "start_seconds": 338.56,
+      "end_seconds": 340.3,
+      "duration_seconds": 1.74,
+      "class": "short"
+    }
+  ],
+  "overlap_and_barge_in_candidates": [],
+  "source_segment_overlap_candidates": [],
+  "audio_events": [],
+  "speaker_metadata": {
+    "agent": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    },
+    "customer": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    }
+  }
+}

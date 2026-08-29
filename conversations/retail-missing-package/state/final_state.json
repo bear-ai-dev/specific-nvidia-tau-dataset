@@ -1,0 +1,101 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "retail-missing-package",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-08-25T15:48:40-04:00",
+  "entities": {
+    "customer-ethan-patel": {
+      "entity_type": "customer",
+      "customer_id": "customer-ethan-patel",
+      "display_name": "Ethan Patel",
+      "verified_email": "e***@northmail.com"
+    },
+    "order-7319": {
+      "entity_type": "order",
+      "order_reference": "7319",
+      "customer_id": "customer-ethan-patel",
+      "items": [
+        {
+          "item_reference": "blue-noise-canceling-headphones",
+          "product_reference": "blue-noise-canceling-headphones",
+          "color": "blue"
+        }
+      ],
+      "fulfillment": {
+        "status": "delivered",
+        "latest_scan": {
+          "time": "15:18 yesterday",
+          "location": "front entrance",
+          "photo": null
+        },
+        "carrier_evidence": {
+          "scan_location": "near building",
+          "unit_number": null,
+          "locker": null,
+          "photo": null,
+          "possible_misscan": true
+        }
+      },
+      "cases": [
+        "WST481662"
+      ],
+      "notifications": [
+        "notification-WST481662"
+      ]
+    },
+    "product-blue-noise-canceling-headphones": {
+      "entity_type": "product",
+      "product_reference": "blue-noise-canceling-headphones",
+      "variant": {
+        "color": "blue"
+      },
+      "inventory": {
+        "same_variant_in_stock": true
+      }
+    },
+    "WST481662": {
+      "entity_type": "delivery_trace_case",
+      "case_id": "WST481662",
+      "order_reference": "7319",
+      "item_references": [
+        "blue-noise-canceling-headphones"
+      ],
+      "reason": "delivered_not_received",
+      "status": "open",
+      "carrier_response_deadline": "18:00 tomorrow",
+      "replacement_created": false,
+      "eligibility_triggers": [
+        "carrier_confirms_missing",
+        "carrier_response_deadline_expires"
+      ],
+      "next_action": "review requested resolution and fulfillment after an eligibility trigger",
+      "approval_required": true,
+      "approval_channel": "trace_notification",
+      "requested_resolution": "replacement",
+      "preferred_pickup_location": "West 23rd Street pickup counter",
+      "note": "Preserve exact blue variant and original price if replacement becomes eligible.",
+      "review_instruction": "Check West 23rd Street pickup availability first after replacement eligibility.",
+      "pickup_guaranteed": false,
+      "visible_to_next_reviewer": true,
+      "carrier_may_contact_customer": true,
+      "notification_status": "sent"
+    },
+    "notification-WST481662": {
+      "entity_type": "case_notification",
+      "notification_id": "notification-WST481662",
+      "case_id": "WST481662",
+      "order_reference": "7319",
+      "channel": "email",
+      "template": "delivery_trace_confirmation",
+      "type": "delivery_trace_confirmation",
+      "masked_destination": "e***@northmail.com",
+      "status": "delivered",
+      "included_fields": [
+        "case_id",
+        "status",
+        "carrier_response_deadline",
+        "approval_link"
+      ]
+    }
+  }
+}

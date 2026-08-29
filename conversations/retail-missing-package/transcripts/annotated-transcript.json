@@ -1,14 +1,15 @@
 {
-  "schema_version": "0.2.0",
+  "schema_version": "0.3.0",
   "format": "nvidia_responses_api_full_trajectory",
   "trajectory_id": 7,
   "conversation_id": "retail-missing-package",
   "domain": "retail",
+  "scenario_time": "2026-08-25T15:40:00-04:00",
   "responses_create_params": {
     "input": [
       {
         "role": "system",
-        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\nService context: You represent Westline customer care. Your agent display name is Daniel.\n\n<policy>\n# Westline Retail Customer Care Policy\n\n**Current Time:** Evaluated by the environment.\n\n## Agent Capabilities\n\nAs a Westline retail customer-care agent, you may assist with:\n\n- Customer and order lookup\n- Order-item, fulfillment, carrier, payment, refund, and case questions\n- Delivered-not-received and duplicate-package reports\n- Damaged or defective item resolutions\n- Replacement creation\n- Missing-refund investigations\n- Case notes and customer preferences\n- Case notifications\n- Transfer to a specialist when policy or available tools require it\n\n## Domain Basics\n\n### Customer Profile\n\n- Customer ID\n- Verified email and contact channels\n- Saved fulfillment addresses\n- Recent orders\n- Open support cases\n\n### Order\n\n- Order reference\n- Customer and email association\n- Items and item references\n- Original price and payment tenders\n- Fulfillment destination\n- Carrier scans\n- Refunds, notifications, and related cases\n- Eligible resolutions\n\nThe normal fulfillment lifecycle is:\n\n`placed -> processing -> fulfilled -> shipped -> out_for_delivery -> delivered`\n\nCancellation, return, refund, replacement, and investigation states are separate from the original fulfillment lifecycle. A replacement is a new order linked to the affected original order; it does not overwrite the original order.\n\n### Support Case\n\n- Case ID\n- Related order and item references\n- Case type and status\n- Customer-requested resolution\n- Case-scoped fulfillment or pickup preferences\n- Notes and notification history\n\nThe support-case lifecycle is:\n\n`open -> pending_customer_or_external_response -> resolution_eligible_or_ineligible -> resolved -> closed`\n\nOnly report a state that was returned by a tool. Not every case must pass through every state.\n\n### Delivery Trace\n\n- Trace ID\n- Related order and items\n- Carrier evidence and building checks\n- Customer-requested resolution\n- Carrier-response deadline\n- Eligibility decision and final disposition\n\nThe delivery-trace lifecycle is:\n\n`open -> awaiting_carrier_response -> eligibility_determined -> resolved -> closed`\n\nA trace may remain open or close without compensation. Never infer eligibility from elapsed time alone.\n\n### Replacement Order\n\n- Original order and item references\n- Replacement order reference\n- Eligible original-price treatment\n- Fulfillment destination\n- Inventory result and delivery estimate\n- Return or no-return disposition\n- Balance due and notification state\n\n### Refund Trace\n\n- Trace ID\n- Original order, return, and payment references\n- Tender type and amount under review\n- Settlement evidence\n- Review deadline\n- Supporting case notes\n\nThe refund-trace lifecycle is:\n\n`open -> reviewing_merchant_and_tender_records -> awaiting_external_settlement -> resolved -> closed`\n\nDo not infer a bank's posting state from Westline records.\n\n### Case Notification\n\n- Notification ID\n- Related case and order\n- Destination channel\n- Message type\n- Delivery status\n\nNotification states may include `queued`, `sent`, `delivered`, and `failed`. State only the status returned by `send_case_notification` or a later notification read.\n\n## Identity, Privacy, and Order Scoping\n\n- Before disclosing order, payment, refund, delivery, or case details, obtain an order reference and the email on that order and confirm that the order read matches both.\n- Do not infer customer identity from a name, voice, caller ID, prior-call claim, or remembered conversation.\n- Use `lookup_customer` only with a verified email or customer identifier.\n- If the customer asks about a different order without its reference, retrieve candidate recent orders after verification. Do not invent the second order reference.\n- Keep every order, replacement, case, trace, preference, note, and notification explicitly scoped to its own identifiers.\n- A preference recorded on one case does not apply to another order unless the customer explicitly requests it and an authorized tool confirms the change.\n- Disclose only the information required to handle the request.\n\n## Tool Interaction and Information Provenance\n\n1. In each turn, either send a message to the customer or make one tool call. Do not do both at the same time.\n2. Perform one tool operation at a time.\n3. Every tool argument must come from earlier customer speech, this policy, or a prior tool result.\n4. State a customer-specific or backend fact only when it appears in earlier customer speech or a prior tool result.\n5. Tool results must contain only information available when the call occurred. Never backfill an earlier result with details the customer supplies later.\n6. Treat absent or null fields as unavailable. Say that the information is unavailable instead of guessing.\n7. Never claim that a mutation, replacement, trace, note, refund, or notification succeeded without an explicit successful tool result.\n8. Never use a future tool result to justify an earlier promise.\n9. Treat delivery dates, carrier response times, and pre-shipment assignments as estimates unless the result explicitly marks them guaranteed.\n10. Do not infer external carrier, bank, building, or local-government state from Westline records.\n\n## Delivered-Not-Received Packages\n\n1. Verify the affected order and item.\n2. Review available fulfillment and carrier evidence.\n3. Ask the customer for relevant checks, such as household, reception, mailroom, or delivery-location confirmation. Record these as customer-provided facts, not carrier facts.\n4. Open the required delivery trace with the affected items and the customer's requested resolution.\n5. State the trace status and carrier-response deadline exactly as returned.\n6. Make clear that a replacement or refund is not automatic before eligibility is established.\n7. Record preferences on the correct case without promising unavailable fulfillment.\n8. While the trace is open, do not create a replacement, issue a refund, or otherwise change the resolution unless a tool result explicitly allows it.\n\n## Duplicate-Package Handling\n\n- When a customer reports receiving both an original shipment and a replacement, retrieve both orders and their related cases before advising them.\n- Confirm which item and shipment the customer received; do not assume that a package is a duplicate based only on timing or appearance.\n- Do not assume that the customer will be charged, may keep the item, or must return it.\n- Use the returned eligible resolution or disposition. If available tools do not provide one, add a scoped case note and transfer to a specialist.\n- Do not cancel, refund, return, or replace either order without explicit customer confirmation and an authorized tool result.\n\n## Damaged or Defective Items\n\n1. Verify the order and affected item.\n2. Ask the customer to describe the damage. Do not place unreported damage into an earlier order result.\n3. For a visibly wet electrical item, tell the customer not to plug it in or power it on.\n4. Retrieve eligible resolutions before offering them as available.\n5. Check replacement inventory before creating a replacement.\n6. Preserve the eligible original price when the eligibility result requires it.\n7. Explain only the return requirement, photo requirement, delivery estimate, and other replacement terms returned by an authorized read. Treat pre-creation terms as provisional unless the result says they are final.\n8. Obtain explicit customer confirmation of the resolution and fulfillment method before creating the replacement. Use a saved address only when it was returned by a tool and the customer confirms it or policy defines it as the authorized default.\n9. After `create_replacement_order`, report only the returned new order reference, balance due, fulfillment destination, delivery estimate, final return disposition, and notification state.\n10. If return is waived, give only the disposal or recycling guidance authorized by the result. For electronics, direct the customer to the facility's accepted-material rules or local e-waste guidance; do not certify an unknown bin.\n\n## Missing Refunds and Payment Traces\n\n1. Verify the order, return, refund records, and original tenders.\n2. Keep card, gift-card, store-credit, and other tender components separate.\n3. State only the refund initiation or settlement status shown in Westline records.\n4. Do not claim that an external bank has posted, rejected, or delayed a refund without external evidence returned by an authorized tool.\n5. Open a refund trace only with the required order, return, payment, and amount references.\n6. Do not issue or promise a duplicate refund while a refund trace is open.\n7. State the review deadline or window exactly as returned.\n8. Do not promise reimbursement for overdraft, interest, foreign-transaction, or other bank fees unless an authorized result explicitly approves it.\n9. Add supporting information to the existing case without changing its primary outcome unless an authorized mutation does so.\n\n## Notifications\n\n- Use `send_case_notification` only for a verified, correctly scoped case and destination.\n- The requested channel, case ID, message type, and any customer-supplied destination must be available before the call.\n- Do not say that an email, text message, upload link, confirmation, or case update was sent until the tool returns a successful notification status.\n- If the customer cannot find a notification, retrieve or resend it through an authorized tool. Do not infer inbox delivery from a queued or sent state.\n- Do not claim a subject line, link location, or message content unless it appears in the tool result.\n\n## Agent Limitations\n\n- Do not answer questions or perform actions outside defined tool capabilities.\n- Never assume verification, eligibility, inventory, fulfillment location, carrier state, bank state, notification delivery, or action completion.\n- Never merge information across separate orders, cases, replacements, or traces.\n- Never fabricate remembered interactions, customer identity, order references, locations, deadlines, warehouse assignments, processing times, or external-system state.\n- Never override eligibility, pricing, return requirements, trace restrictions, tender rules, or safety requirements.\n- Do not provide location-specific disposal, legal, medical, or financial advice without an authorized source.\n\n## Escalation Protocol\n\nTransfer to a specialist when:\n\n- A damaged electrical item caused injury, smoke, fire, or electric shock\n- Fraud, account takeover, or unauthorized payment is suspected\n- A customer disputes identity verification or private account data\n- Orders, cases, tenders, or tool results conflict\n- A duplicate-package disposition is unavailable\n- A delivery or refund issue remains unresolved after its trace reaches the returned deadline\n- The requested action is outside available tool authority\n\nTransfer process:\n\n1. Call `transfer_to_specialist` with the reason and a concise summary of verified context.\n2. Send exactly: \"I'm transferring you to a specialist who can continue from the information we've already collected.\"\n</policy>\n\nTry to be helpful and always follow the policy."
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\nService context: You represent Westline customer care. Your agent display name is Daniel. The current scenario time at the start of the call is 2026-08-25T15:40:00-04:00.\n\n<policy>\n# Westline Retail Customer Care Policy\n\n**Current Time:** Evaluated by the environment.\n\n## Agent Capabilities\n\nAs a Westline retail customer-care agent, you may assist with:\n\n- Customer and order lookup\n- Order-item, fulfillment, carrier, payment, refund, and case questions\n- Delivered-not-received and duplicate-package reports\n- Damaged or defective item resolutions\n- Replacement creation\n- Missing-refund investigations\n- Case notes and customer preferences\n- Case notifications\n- Transfer to a specialist when policy or available tools require it\n\n## Domain Basics\n\n### Customer Profile\n\n- Customer ID\n- Verified email and contact channels\n- Saved fulfillment addresses\n- Recent orders\n- Open support cases\n\n### Order\n\n- Order reference\n- Customer and email association\n- Items and item references\n- Original price and payment tenders\n- Fulfillment destination\n- Carrier scans\n- Refunds, notifications, and related cases\n- Eligible resolutions\n\nThe normal fulfillment lifecycle is:\n\n`placed -> processing -> fulfilled -> shipped -> out_for_delivery -> delivered`\n\nCancellation, return, refund, replacement, and investigation states are separate from the original fulfillment lifecycle. A replacement is a new order linked to the affected original order; it does not overwrite the original order.\n\n### Support Case\n\n- Case ID\n- Related order and item references\n- Case type and status\n- Customer-requested resolution\n- Case-scoped fulfillment or pickup preferences\n- Notes and notification history\n\nThe support-case lifecycle is:\n\n`open -> pending_customer_or_external_response -> resolution_eligible_or_ineligible -> resolved -> closed`\n\nOnly report a state that was returned by a tool. Not every case must pass through every state.\n\n### Delivery Trace\n\n- Trace ID\n- Related order and items\n- Carrier evidence and building checks\n- Customer-requested resolution\n- Carrier-response deadline\n- Eligibility decision and final disposition\n\nThe delivery-trace lifecycle is:\n\n`open -> awaiting_carrier_response -> eligibility_determined -> resolved -> closed`\n\nA trace may remain open or close without compensation. Never infer eligibility from elapsed time alone.\n\n### Replacement Order\n\n- Original order and item references\n- Replacement order reference\n- Eligible original-price treatment\n- Fulfillment destination\n- Inventory result and delivery estimate\n- Return or no-return disposition\n- Balance due and notification state\n\n### Refund Trace\n\n- Trace ID\n- Original order, return, and payment references\n- Tender type and amount under review\n- Settlement evidence\n- Review deadline\n- Supporting case notes\n\nThe refund-trace lifecycle is:\n\n`open -> reviewing_merchant_and_tender_records -> awaiting_external_settlement -> resolved -> closed`\n\nDo not infer a bank's posting state from Westline records.\n\n### Case Notification\n\n- Notification ID\n- Related case and order\n- Destination channel\n- Message type\n- Delivery status\n\nNotification states may include `queued`, `sent`, `delivered`, and `failed`. State only the status returned by `send_case_notification` or a later notification read.\n\n## Identity, Privacy, and Order Scoping\n\n- Before disclosing order, payment, refund, delivery, or case details, obtain an order reference and the email on that order and confirm that the order read matches both.\n- Do not infer customer identity from a name, voice, caller ID, prior-call claim, or remembered conversation.\n- Use `lookup_customer` only with a verified email or customer identifier.\n- If the customer asks about a different order without its reference, retrieve candidate recent orders after verification. Do not invent the second order reference.\n- Keep every order, replacement, case, trace, preference, note, and notification explicitly scoped to its own identifiers.\n- A preference recorded on one case does not apply to another order unless the customer explicitly requests it and an authorized tool confirms the change.\n- Disclose only the information required to handle the request.\n\n## Tool Interaction and Information Provenance\n\n1. In each turn, either send a message to the customer or make one tool call. Do not do both at the same time.\n2. Perform one tool operation at a time.\n3. Every tool argument must come from earlier customer speech, this policy, or a prior tool result.\n4. State a customer-specific or backend fact only when it appears in earlier customer speech or a prior tool result.\n5. Tool results must contain only information available when the call occurred. Never backfill an earlier result with details the customer supplies later.\n6. Treat absent or null fields as unavailable. Say that the information is unavailable instead of guessing.\n7. Never claim that a mutation, replacement, trace, note, refund, or notification succeeded without an explicit successful tool result.\n8. Never use a future tool result to justify an earlier promise.\n9. Treat delivery dates, carrier response times, and pre-shipment assignments as estimates unless the result explicitly marks them guaranteed.\n10. Do not infer external carrier, bank, building, or local-government state from Westline records.\n\n## Delivered-Not-Received Packages\n\n1. Verify the affected order and item.\n2. Review available fulfillment and carrier evidence.\n3. Ask the customer for relevant checks, such as household, reception, mailroom, or delivery-location confirmation. Record these as customer-provided facts, not carrier facts.\n4. Open the required delivery trace with the affected items and the customer's requested resolution.\n5. State the trace status and carrier-response deadline exactly as returned.\n6. Make clear that a replacement or refund is not automatic before eligibility is established.\n7. Record preferences on the correct case without promising unavailable fulfillment.\n8. While the trace is open, do not create a replacement, issue a refund, or otherwise change the resolution unless a tool result explicitly allows it.\n\n## Duplicate-Package Handling\n\n- When a customer reports receiving both an original shipment and a replacement, retrieve both orders and their related cases before advising them.\n- Confirm which item and shipment the customer received; do not assume that a package is a duplicate based only on timing or appearance.\n- Do not assume that the customer will be charged, may keep the item, or must return it.\n- Use the returned eligible resolution or disposition. If available tools do not provide one, add a scoped case note and transfer to a specialist.\n- Do not cancel, refund, return, or replace either order without explicit customer confirmation and an authorized tool result.\n\n## Damaged or Defective Items\n\n1. Verify the order and affected item.\n2. Ask the customer to describe the damage. Do not place unreported damage into an earlier order result.\n3. For a visibly wet electrical item, tell the customer not to plug it in or power it on.\n4. Retrieve eligible resolutions before offering them as available.\n5. Check replacement inventory before creating a replacement.\n6. Preserve the eligible original price when the eligibility result requires it.\n7. Explain only the return requirement, photo requirement, delivery estimate, and other replacement terms returned by an authorized read. Treat pre-creation terms as provisional unless the result says they are final.\n8. Obtain explicit customer confirmation of the resolution and fulfillment method before creating the replacement. Use a saved address only when it was returned by a tool and the customer confirms it or policy defines it as the authorized default.\n9. After `create_replacement_order`, report only the returned new order reference, balance due, fulfillment destination, delivery estimate, final return disposition, and notification state.\n10. If return is waived, give only the disposal or recycling guidance authorized by the result. For electronics, direct the customer to the facility's accepted-material rules or local e-waste guidance; do not certify an unknown bin.\n\n## Missing Refunds and Payment Traces\n\n1. Verify the order, return, refund records, and original tenders.\n2. Keep card, gift-card, store-credit, and other tender components separate.\n3. State only the refund initiation or settlement status shown in Westline records.\n4. Do not claim that an external bank has posted, rejected, or delayed a refund without external evidence returned by an authorized tool.\n5. Open a refund trace only with the required order, return, payment, and amount references.\n6. Do not issue or promise a duplicate refund while a refund trace is open.\n7. State the review deadline or window exactly as returned.\n8. Do not promise reimbursement for overdraft, interest, foreign-transaction, or other bank fees unless an authorized result explicitly approves it.\n9. Add supporting information to the existing case without changing its primary outcome unless an authorized mutation does so.\n\n## Notifications\n\n- Use `send_case_notification` only for a verified, correctly scoped case and destination.\n- The requested channel, case ID, message type, and any customer-supplied destination must be available before the call.\n- Do not say that an email, text message, upload link, confirmation, or case update was sent until the tool returns a successful notification status.\n- If the customer cannot find a notification, retrieve or resend it through an authorized tool. Do not infer inbox delivery from a queued or sent state.\n- Do not claim a subject line, link location, or message content unless it appears in the tool result.\n\n## Agent Limitations\n\n- Do not answer questions or perform actions outside defined tool capabilities.\n- Never assume verification, eligibility, inventory, fulfillment location, carrier state, bank state, notification delivery, or action completion.\n- Never merge information across separate orders, cases, replacements, or traces.\n- Never fabricate remembered interactions, customer identity, order references, locations, deadlines, warehouse assignments, processing times, or external-system state.\n- Never override eligibility, pricing, return requirements, trace restrictions, tender rules, or safety requirements.\n- Do not provide location-specific disposal, legal, medical, or financial advice without an authorized source.\n\n## Escalation Protocol\n\nTransfer to a specialist when:\n\n- A damaged electrical item caused injury, smoke, fire, or electric shock\n- Fraud, account takeover, or unauthorized payment is suspected\n- A customer disputes identity verification or private account data\n- Orders, cases, tenders, or tool results conflict\n- A duplicate-package disposition is unavailable\n- A delivery or refund issue remains unresolved after its trace reaches the returned deadline\n- The requested action is outside available tool authority\n\nTransfer process:\n\n1. Call `transfer_to_specialist` with the reason and a concise summary of verified context.\n2. Send exactly: \"I'm transferring you to a specialist who can continue from the information we've already collected.\"\n</policy>\n\nTry to be helpful and always follow the policy."
       },
       {
         "id": "msg_0007_0000",
@@ -264,7 +265,7 @@
         "type": "message"
       },
       {
-        "arguments": "{\"order_reference\":\"7319\",\"item_references\":[\"blue-noise-canceling-headphones\"],\"reason\":\"delivered_not_received\",\"requested_resolution\":\"undecided\",\"needed_by\":\"Thursday before Friday noon travel\"}",
+        "arguments": "{\"order_reference\":\"7319\",\"item_references\":[\"blue-noise-canceling-headphones\"],\"reason\":\"delivered_not_received\",\"requested_resolution\":\"undecided\",\"needed_by\":\"2026-08-27\"}",
         "call_id": "rm-004",
         "name": "open_delivery_trace",
         "type": "function_call",
@@ -470,7 +471,7 @@
       },
       {
         "role": "user",
-        "content": "I checked it."
+        "content": "I checked it. That's it for me."
       },
       {
         "id": "msg_0007_0042",
@@ -478,7 +479,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "that's it for me. Oh, okay. Perfect. Let me know if you get that."
+            "text": "Oh, okay. Perfect. Let me know if you get that."
           }
         ],
         "role": "assistant",
@@ -609,7 +610,7 @@
           "properties": {
             "order_reference": {
               "type": "string",
-              "description": "Full or partial order reference accepted by the source system."
+              "description": "Full order reference or its last 4 digits; a partial value is resolved by longest-suffix match against the customer's orders."
             },
             "customer_email": {
               "type": "string",
@@ -715,7 +716,8 @@
             },
             "needed_by": {
               "type": "string",
-              "description": "Optional customer timing requirement."
+              "description": "Optional customer timing requirement as an ISO calendar date.",
+              "format": "date"
             }
           },
           "required": [
@@ -805,13 +807,18 @@
             "fulfillment_location": {
               "type": "string",
               "description": "Address label or pickup location when known."
+            },
+            "customer_authorized": {
+              "type": "boolean",
+              "description": "Customer explicitly authorized creating this replacement order."
             }
           },
           "required": [
             "order_reference",
             "item_references",
             "reason",
-            "fulfillment_method"
+            "fulfillment_method",
+            "customer_authorized"
           ],
           "additionalProperties": false
         },
@@ -835,7 +842,13 @@
             },
             "requested_resolution": {
               "type": "string",
-              "description": "Optional requested resolution."
+              "description": "Optional requested resolution.",
+              "enum": [
+                "replacement",
+                "refund",
+                "locate_only",
+                "undecided"
+              ]
             },
             "preferred_pickup_location": {
               "type": "string",
@@ -1023,9 +1036,12 @@
       "placement_before_text": "The carrier scan says delivered yesterday",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 72.94,
-        "end_seconds": 81.94,
-        "inferred_window_seconds": null
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          55.0,
+          63.0
+        ]
       }
     },
     {
@@ -1113,9 +1129,12 @@
       "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 121.32,
-        "end_seconds": 129.46,
-        "inferred_window_seconds": null
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          129.46,
+          137.46
+        ]
       }
     },
     {
@@ -1152,7 +1171,15 @@
         "path": "audio/full.wav",
         "start_seconds": 161.7,
         "end_seconds": 168.9
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "it may have gone to a neighboring entrance",
+          "category": "unsupported_carrier_inference",
+          "reason": "No tool result mentions a neighboring entrance; rm-002 returned only a near-building scan with possible_misscan, so the destination guess is agent-invented even though hedged.",
+          "remediation": "Report only the returned scan evidence and say the exact drop location is unavailable."
+        }
+      ]
     },
     {
       "event_index": 21,
@@ -1188,7 +1215,15 @@
         "path": "audio/full.wav",
         "start_seconds": 196.62,
         "end_seconds": 204.98
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "definitely Thursday would be ideal",
+          "category": "relative_time_resolved_from_scenario_clock",
+          "reason": "The customer's 'Thursday' before a Friday-noon departure was resolved against the scenario clock 2026-08-25T15:40:00-04:00 (Tuesday) to 2026-08-27 for the needed_by argument of rm-004.",
+          "remediation": "No agent change needed; the resolved date 2026-08-27 is recorded in the open_delivery_trace arguments."
+        }
+      ]
     },
     {
       "event_index": 24,
@@ -1215,9 +1250,12 @@
       "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 206.3,
-        "end_seconds": 211.65,
-        "inferred_window_seconds": null
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          211.65,
+          219.65
+        ]
       }
     },
     {
@@ -1265,9 +1303,12 @@
       "placement_before_text": null,
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 230.88,
-        "end_seconds": 238.14,
-        "inferred_window_seconds": null
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          238.14,
+          246.14
+        ]
       }
     },
     {
@@ -1292,7 +1333,15 @@
         "path": "audio/full.wav",
         "start_seconds": 247.44,
         "end_seconds": 265.629
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "The station gets until six tomorrow evening",
+          "category": "fabricated_entity_attribution",
+          "reason": "The 18:00-tomorrow deadline is grounded in the rm-004 result, but no tool result names a carrier 'station'; the responding entity is fabricated.",
+          "remediation": "Attribute the deadline to the carrier response deadline exactly as returned, without inventing a facility."
+        }
+      ]
     },
     {
       "event_index": 33,
@@ -1316,7 +1365,15 @@
         "path": "audio/full.wav",
         "start_seconds": 275.12,
         "end_seconds": 284.5
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "Usually, there's a link in the trace email",
+          "category": "pre_echoed_tool_result",
+          "reason": "When spoken, the rm-004 result showed notification_status 'not_sent', and an approval_link only appears later in the rm-006 result, so this message-content claim precedes any grounding result.",
+          "remediation": "Describe notification contents only after send_case_notification returns them."
+        }
+      ]
     },
     {
       "event_index": 35,
@@ -1340,7 +1397,15 @@
         "path": "audio/full.wav",
         "start_seconds": 297.78,
         "end_seconds": 306.49
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "your original price would just carry over to the replacement",
+          "category": "premature_eligibility_assertion",
+          "reason": "rm-004 left replacement eligibility pending (approval_required with unmet eligibility_triggers) and no result stated original-price treatment, so the carry-over is asserted before any eligibility determination.",
+          "remediation": "Present price treatment as conditional on the eligibility result rather than as a settled term."
+        }
+      ]
     },
     {
       "event_index": 37,
@@ -1364,7 +1429,15 @@
         "path": "audio/full.wav",
         "start_seconds": 315.92,
         "end_seconds": 325.8
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "the system will show whether a pickup is available",
+          "category": "unsupported_system_behavior_claim",
+          "reason": "No tool result describes what the system displays after a replacement is released; the hedged system-behavior claim has no source.",
+          "remediation": "Offer to record the pickup preference and say availability will be checked at review time, without describing system behavior."
+        }
+      ]
     },
     {
       "event_index": 39,
@@ -1388,7 +1461,15 @@
         "path": "audio/full.wav",
         "start_seconds": 339.14,
         "end_seconds": 344.24
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "Just give me about 10 seconds",
+          "category": "unsupported_tool_duration",
+          "reason": "No case-update SLA or tool result supports the numeric duration estimate.",
+          "remediation": "Use nonnumeric hold language."
+        }
+      ]
     },
     {
       "event_index": 41,
@@ -1406,7 +1487,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          344.24,
+          346.0,
           349.44
         ]
       }
@@ -1445,7 +1526,15 @@
         "path": "audio/full.wav",
         "start_seconds": 372.604,
         "end_seconds": 381.024
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "you can just kind of keep it, and that trace will close",
+          "category": "fabricated_disposition_guarantee",
+          "reason": "No tool result returned a keep disposition or an auto-close behavior, and the Duplicate-Package Handling policy forbids assuming the customer may keep an item.",
+          "remediation": "State a disposition only from a returned eligible resolution or disposition; otherwise add a scoped case note and defer to a specialist."
+        }
+      ]
     },
     {
       "event_index": 46,
@@ -1469,7 +1558,15 @@
         "path": "audio/full.wav",
         "start_seconds": 387.864,
         "end_seconds": 400.864
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "you would not get charged again without any sort of notice",
+          "category": "unsupported_billing_guarantee",
+          "reason": "No tool result or policy grounds an unconditional promise about future charges or advance notice.",
+          "remediation": "Say billing depends on the trace outcome and duplicate review, and promise nothing without an explicit tool result."
+        }
+      ]
     },
     {
       "event_index": 48,
@@ -1531,8 +1628,8 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          431.884,
-          440.284
+          435.0,
+          439.704
         ]
       }
     },
@@ -1557,8 +1654,9 @@
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 440.284,
-        "end_seconds": 440.904
-      }
+        "end_seconds": 442.304
+      },
+      "correction": "Audio-verified re-attribution: per-channel energy shows the customer speaking at 440.3-441.7 (overlapping the agent at 440.9-441.7), so the phrase 'That's it for me', previously attributed to Daniel, is Ethan's and was moved into this event; the segment now ends at 442.304 and overlaps Daniel's next line."
     },
     {
       "event_index": 55,
@@ -1568,9 +1666,10 @@
       "source": "transcripts/transcript.txt",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 440.904,
+        "start_seconds": 442.404,
         "end_seconds": 444.224
-      }
+      },
+      "correction": "Audio-verified re-attribution: 'that's it for me' was removed from this line because it is the customer's (spoken in overlap); only Daniel is active from 442.4 to 444.2, saying 'Oh, okay. Perfect. Let me know if you get that.'"
     },
     {
       "event_index": 56,
@@ -1604,14 +1703,17 @@
       "source_label": "review the open carrier trace and matching notification",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 463.283,
+      "placement_seconds": 462.9,
       "placement_after_text": "Is that c- is that the one",
       "placement_before_text": "That's perfect. Um, that's the right package",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 463.284,
-        "end_seconds": 475.224,
-        "inferred_window_seconds": null
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          462.9,
+          463.284
+        ]
       }
     },
     {
