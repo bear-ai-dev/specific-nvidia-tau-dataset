@@ -610,7 +610,7 @@
           "properties": {
             "order_reference": {
               "type": "string",
-              "description": "Full or partial order reference accepted by the source system."
+              "description": "Full order reference or its last 4 digits; a partial value is resolved by longest-suffix match against the customer's orders."
             },
             "customer_email": {
               "type": "string",
@@ -716,7 +716,8 @@
             },
             "needed_by": {
               "type": "string",
-              "description": "Optional customer timing requirement."
+              "description": "Optional customer timing requirement as an ISO calendar date.",
+              "format": "date"
             }
           },
           "required": [
@@ -806,13 +807,18 @@
             "fulfillment_location": {
               "type": "string",
               "description": "Address label or pickup location when known."
+            },
+            "customer_authorized": {
+              "type": "boolean",
+              "description": "Customer explicitly authorized creating this replacement order."
             }
           },
           "required": [
             "order_reference",
             "item_references",
             "reason",
-            "fulfillment_method"
+            "fulfillment_method",
+            "customer_authorized"
           ],
           "additionalProperties": false
         },
@@ -836,7 +842,13 @@
             },
             "requested_resolution": {
               "type": "string",
-              "description": "Optional requested resolution."
+              "description": "Optional requested resolution.",
+              "enum": [
+                "replacement",
+                "refund",
+                "locate_only",
+                "undecided"
+              ]
             },
             "preferred_pickup_location": {
               "type": "string",

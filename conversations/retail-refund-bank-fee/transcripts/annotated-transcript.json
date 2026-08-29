@@ -103,7 +103,7 @@
       {
         "type": "function_call_output",
         "call_id": "rr-001",
-        "output": "\n\n{\"order_reference\":\"ending-5624\",\"customer\":{\"display_name\":\"Teddy Torrez\",\"verified_email\":\"t***@harbormail.com\"},\"items\":[{\"item_reference\":\"standing-desk-converter-black\",\"name\":\"black standing desk converter\",\"total_after_tax\":186.42}],\"payments\":[{\"type\":\"gift_card\",\"amount\":40},{\"type\":\"debit\",\"amount\":146.42}],\"refunds\":[{\"return_reference\":\"ending-9182\",\"return_status\":\"complete\",\"accepted_at\":\"Eastwood store\",\"accepted_age_days\":9,\"inventory_disposition\":\"restocked\"}]}"
+        "output": "\n\n{\"order_reference\":\"ending-5624\",\"customer\":{\"display_name\":\"Teddy Torrez\",\"verified_email\":\"t***@harbormail.com\"},\"items\":[{\"item_reference\":\"standing-desk-converter-black\",\"name\":\"black standing desk converter\",\"total_after_tax\":186.42,\"currency\":\"USD\"}],\"payments\":[{\"type\":\"gift_card\",\"amount\":40,\"currency\":\"USD\"},{\"type\":\"debit\",\"amount\":146.42,\"currency\":\"USD\"}],\"refunds\":[{\"return_reference\":\"ending-9182\",\"return_status\":\"complete\",\"accepted_at\":\"Eastwood store\",\"accepted_age_days\":9,\"inventory_disposition\":\"restocked\"}]}"
       },
       {
         "role": "user",
@@ -184,7 +184,7 @@
       {
         "type": "function_call_output",
         "call_id": "rr-002",
-        "output": "\n\n{\"order_reference\":\"ending-5624\",\"payments\":[{\"type\":\"gift_card\",\"amount\":40},{\"type\":\"debit\",\"amount\":146.42,\"original_card_last4\":\"2047\"}],\"refunds\":[{\"tender_type\":\"gift_card\",\"amount\":40,\"status\":\"issued_available\"},{\"tender_type\":\"debit\",\"amount\":146.42,\"status\":\"submitted_no_settlement_confirmation\",\"original_card_last4\":\"2047\",\"initiation_source\":\"store_register\"}]}"
+        "output": "\n\n{\"order_reference\":\"ending-5624\",\"payments\":[{\"type\":\"gift_card\",\"amount\":40,\"currency\":\"USD\"},{\"type\":\"debit\",\"amount\":146.42,\"currency\":\"USD\",\"original_card_last4\":\"2047\"}],\"refunds\":[{\"tender_type\":\"gift_card\",\"amount\":40,\"currency\":\"USD\",\"status\":\"issued_available\"},{\"tender_type\":\"debit\",\"amount\":146.42,\"currency\":\"USD\",\"status\":\"submitted_no_settlement_confirmation\",\"original_card_last4\":\"2047\",\"initiation_source\":\"store_register\"}]}"
       },
       {
         "role": "user",
@@ -380,7 +380,7 @@
       {
         "type": "function_call_output",
         "call_id": "rr-003",
-        "output": "\n\n{\"order_reference\":\"ending-5624\",\"refunds\":[{\"tender_type\":\"gift_card\",\"amount\":40,\"available_balance\":40,\"status\":\"active\",\"used\":false,\"delivery\":\"digital_gift_card_number_in_email\"}]}"
+        "output": "\n\n{\"order_reference\":\"ending-5624\",\"refunds\":[{\"tender_type\":\"gift_card\",\"amount\":40,\"available_balance\":40,\"currency\":\"USD\",\"status\":\"active\",\"used\":false,\"delivery\":\"digital_gift_card_number_in_email\"}]}"
       },
       {
         "id": "msg_0005_0038",
@@ -648,7 +648,7 @@
           "properties": {
             "order_reference": {
               "type": "string",
-              "description": "Full or partial order reference accepted by the source system."
+              "description": "Full order reference or its last 4 digits; a partial value is resolved by longest-suffix match against the customer's orders."
             },
             "customer_email": {
               "type": "string",
@@ -754,7 +754,8 @@
             },
             "needed_by": {
               "type": "string",
-              "description": "Optional customer timing requirement."
+              "description": "Optional customer timing requirement as an ISO calendar date.",
+              "format": "date"
             }
           },
           "required": [
@@ -844,13 +845,18 @@
             "fulfillment_location": {
               "type": "string",
               "description": "Address label or pickup location when known."
+            },
+            "customer_authorized": {
+              "type": "boolean",
+              "description": "Customer explicitly authorized creating this replacement order."
             }
           },
           "required": [
             "order_reference",
             "item_references",
             "reason",
-            "fulfillment_method"
+            "fulfillment_method",
+            "customer_authorized"
           ],
           "additionalProperties": false
         },
@@ -874,7 +880,13 @@
             },
             "requested_resolution": {
               "type": "string",
-              "description": "Optional requested resolution."
+              "description": "Optional requested resolution.",
+              "enum": [
+                "replacement",
+                "refund",
+                "locate_only",
+                "undecided"
+              ]
             },
             "preferred_pickup_location": {
               "type": "string",

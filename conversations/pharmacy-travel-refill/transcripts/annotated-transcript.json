@@ -112,7 +112,7 @@
       {
         "type": "function_call_output",
         "call_id": "ph-002",
-        "output": "\n\n{\"prescription_id\":\"prescription-albuterol\",\"medication_id\":\"albuterol-inhaler\",\"medication_name\":\"albuterol inhaler\",\"received_at\":\"2026-08-27T10:42:00-05:00\",\"prescription_valid\":true,\"fill_store\":{\"store_id\":\"oak-street-current\",\"display_name\":\"Oak Street Pharmacy\",\"counter_closes_at\":\"19:00\",\"front_store_closes_later\":true},\"claim\":{\"status\":\"rejected\",\"reason\":\"refill_too_soon\"},\"customer_facing_status\":\"processing\",\"queue\":{\"status\":\"blocked_by_claim\"},\"notification\":{\"ready_alert_destination_id\":\"patient-miles-mobile\"},\"payment_options\":[\"pay_at_pickup\"]}"
+        "output": "\n\n{\"prescription_id\":\"prescription-albuterol\",\"medication_id\":\"albuterol-inhaler\",\"medication_name\":\"albuterol inhaler\",\"received_at\":\"2026-08-27T10:42:00-05:00\",\"prescription_valid\":true,\"workflow_status\":\"claim_rejected\",\"fill_store\":{\"store_id\":\"oak-street-current\",\"display_name\":\"Oak Street Pharmacy\",\"counter_closes_at\":\"19:00\",\"front_store_closes_later\":true},\"claim\":{\"status\":\"rejected\",\"reason\":\"refill_too_soon\"},\"customer_facing_status\":\"processing\",\"queue\":{\"status\":\"blocked_by_claim\"},\"notification\":{\"ready_alert_destination_id\":\"patient-miles-mobile\"},\"payment_options\":[\"pay_at_pickup\"]}"
       },
       {
         "id": "msg_0004_0008",
@@ -262,7 +262,7 @@
       {
         "type": "function_call_output",
         "call_id": "ph-004",
-        "output": "\n\n{\"claim_status\":\"paid\",\"copay\":15,\"next_workflow_status\":\"awaiting_pharmacist_verification\",\"queue\":{\"status\":\"active\",\"position\":1,\"estimated_minutes\":30},\"payment_options\":[\"app_prepay_if_offered_when_ready\",\"pay_15_at_pickup\"]}"
+        "output": "\n\n{\"claim_status\":\"paid\",\"copay\":15,\"currency\":\"USD\",\"next_workflow_status\":\"awaiting_pharmacist_verification\",\"queue\":{\"status\":\"active\",\"position\":1,\"estimated_minutes\":30},\"payment_options\":[\"app_prepay_if_offered_when_ready\",\"pay_15_at_pickup\"]}"
       },
       {
         "id": "msg_0004_0021",
@@ -549,7 +549,8 @@
             },
             "date_of_birth": {
               "type": "string",
-              "description": "Patient date of birth."
+              "format": "date",
+              "description": "Patient date of birth (YYYY-MM-DD)."
             }
           },
           "required": [
@@ -563,7 +564,7 @@
       {
         "type": "function",
         "name": "get_prescription",
-        "description": "Retrieve a patient's prescription, claim, queue, and notification status.",
+        "description": "Retrieve the single most recent active prescription for a resolved patient, with its workflow, claim, queue, and notification status. When medication_name is provided, returns the most recent active prescription matching that medication; supplying medication_name is recommended whenever the patient may have multiple active prescriptions.",
         "parameters": {
           "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
@@ -574,7 +575,7 @@
             },
             "medication_name": {
               "type": "string",
-              "description": "Medication name or description."
+              "description": "Medication name or description used to select among multiple active prescriptions."
             }
           },
           "required": [
@@ -682,7 +683,8 @@
             },
             "open_after_local_time": {
               "type": "string",
-              "description": "Optional local time the counter must remain open after."
+              "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+              "description": "Optional local time (HH:MM, 24-hour) the counter must remain open after."
             },
             "query": {
               "type": "string",

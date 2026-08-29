@@ -286,7 +286,7 @@
         "type": "message"
       },
       {
-        "arguments": "{\"order_reference\":\"ending-4086\",\"item_references\":[\"coffee-maker-matte-black-12-cup\"],\"reason\":\"damaged\",\"fulfillment_method\":\"ship_to_address\",\"fulfillment_location\":\"home_address_on_order\"}",
+        "arguments": "{\"order_reference\":\"ending-4086\",\"item_references\":[\"coffee-maker-matte-black-12-cup\"],\"reason\":\"damaged\",\"fulfillment_method\":\"ship_to_address\",\"fulfillment_location\":\"home_address_on_order\",\"customer_authorized\":true}",
         "call_id": "rd-004",
         "name": "create_replacement_order",
         "type": "function_call",
@@ -296,7 +296,7 @@
       {
         "type": "function_call_output",
         "call_id": "rd-004",
-        "output": "\n\n{\"replacement_order_reference\":\"ending-8821\",\"status\":\"created\",\"balance_due\":0,\"fulfillment\":{\"method\":\"ship_to_address\",\"location\":\"home_address_on_order\",\"estimated_delivery\":\"Thursday end of day\",\"estimate_guaranteed\":false,\"distribution_center\":\"Edison\",\"distribution_center_status\":\"provisional_until_shipped\",\"tracking_notifications\":true},\"return_disposition\":{\"return_required\":false,\"disposition\":\"discard_or_recycle\",\"safety\":\"do_not_power_on\"},\"notification\":{\"status\":\"queued\",\"optional_photo_link\":true,\"photo_link_section\":\"later_in_email\"}}"
+        "output": "\n\n{\"replacement_order_reference\":\"ending-8821\",\"status\":\"created\",\"balance_due\":0,\"currency\":\"USD\",\"fulfillment\":{\"method\":\"ship_to_address\",\"location\":\"home_address_on_order\",\"estimated_delivery\":\"Thursday end of day\",\"estimate_guaranteed\":false,\"distribution_center\":\"Edison\",\"distribution_center_status\":\"provisional_until_shipped\",\"tracking_notifications\":true},\"return_disposition\":{\"return_required\":false,\"disposition\":\"discard_or_recycle\",\"safety\":\"do_not_power_on\"},\"notification\":{\"status\":\"queued\",\"optional_photo_link\":true,\"photo_link_section\":\"later_in_email\"}}"
       },
       {
         "id": "msg_0006_0025",
@@ -636,7 +636,7 @@
           "properties": {
             "order_reference": {
               "type": "string",
-              "description": "Full or partial order reference accepted by the source system."
+              "description": "Full order reference or its last 4 digits; a partial value is resolved by longest-suffix match against the customer's orders."
             },
             "customer_email": {
               "type": "string",
@@ -742,7 +742,8 @@
             },
             "needed_by": {
               "type": "string",
-              "description": "Optional customer timing requirement."
+              "description": "Optional customer timing requirement as an ISO calendar date.",
+              "format": "date"
             }
           },
           "required": [
@@ -832,13 +833,18 @@
             "fulfillment_location": {
               "type": "string",
               "description": "Address label or pickup location when known."
+            },
+            "customer_authorized": {
+              "type": "boolean",
+              "description": "Customer explicitly authorized creating this replacement order."
             }
           },
           "required": [
             "order_reference",
             "item_references",
             "reason",
-            "fulfillment_method"
+            "fulfillment_method",
+            "customer_authorized"
           ],
           "additionalProperties": false
         },
@@ -862,7 +868,13 @@
             },
             "requested_resolution": {
               "type": "string",
-              "description": "Optional requested resolution."
+              "description": "Optional requested resolution.",
+              "enum": [
+                "replacement",
+                "refund",
+                "locate_only",
+                "undecided"
+              ]
             },
             "preferred_pickup_location": {
               "type": "string",
