@@ -1,9 +1,9 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "registry_name": "telecom",
-  "registry_version": "0.1.0",
+  "registry_version": "0.2.0",
   "compatibility": "custom_tau_style_not_literal_tau_registry",
-  "design_note": "Carrier account reads and the paid data-add-on mutation are agent tools; customer-side phone settings and tests remain spoken actions.",
+  "design_note": "Carrier account, usage, billing, offer, and paid add-on operations are tools; customer-guided device settings and tests remain customer-sourced actions.",
   "tools": [
     {
       "name": "lookup_customer",
@@ -12,12 +12,120 @@
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
-          "mobile_number": {"type": "string", "description": "Mobile number on the account."},
-          "full_name": {"type": "string", "description": "Customer full name."},
-          "date_of_birth": {"type": "string", "description": "Customer date of birth."}
+          "mobile_number": {
+            "type": "string",
+            "description": "Mobile number on the account."
+          },
+          "full_name": {
+            "type": "string",
+            "description": "Customer full name."
+          },
+          "date_of_birth": {
+            "type": "string",
+            "description": "Customer date of birth."
+          }
         },
-        "required": ["mobile_number", "full_name", "date_of_birth"],
+        "required": [
+          "mobile_number",
+          "full_name",
+          "date_of_birth"
+        ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "Customer identifier."
+          },
+          "match": {
+            "type": "string",
+            "description": "Lookup result."
+          },
+          "required_verification_factors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "customer_id",
+          "match"
+        ],
+        "additionalProperties": true
+      }
+    },
+    {
+      "name": "verify_customer_identity",
+      "description": "Validate the collected telecom identity factors and return a scoped verification record before protected account access.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "Resolved customer identifier."
+          },
+          "mobile_number": {
+            "type": "string",
+            "description": "Customer-supplied mobile number."
+          },
+          "full_name": {
+            "type": "string",
+            "description": "Customer full name."
+          },
+          "date_of_birth": {
+            "type": "string",
+            "description": "Customer date of birth."
+          }
+        },
+        "required": [
+          "customer_id",
+          "mobile_number",
+          "full_name",
+          "date_of_birth"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "verification_id": {
+            "type": "string",
+            "description": "Verification identifier."
+          },
+          "status": {
+            "type": "string",
+            "description": "Verification status."
+          },
+          "matched_factors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "access_scope": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "verified_at": {
+            "type": "string",
+            "description": "Verification time."
+          }
+        },
+        "required": [
+          "verification_id",
+          "status",
+          "matched_factors",
+          "access_scope"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -27,16 +135,69 @@
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
-          "customer_id": {"type": "string", "description": "Resolved customer identifier."},
+          "customer_id": {
+            "type": "string",
+            "description": "Resolved customer identifier."
+          },
           "include": {
             "type": "array",
             "description": "Account sections to retrieve.",
-            "items": {"type": "string", "enum": ["lines", "devices", "plans"]},
+            "items": {
+              "type": "string",
+              "enum": [
+                "lines",
+                "devices",
+                "plans"
+              ]
+            },
             "minItems": 1
+          },
+          "verification_id": {
+            "type": "string",
+            "description": "Successful identity-verification record."
           }
         },
-        "required": ["customer_id", "include"],
+        "required": [
+          "customer_id",
+          "include",
+          "verification_id"
+        ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "Customer identifier."
+          },
+          "lines": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "devices": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "plans": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "customer_id",
+          "lines",
+          "devices",
+          "plans"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -46,11 +207,81 @@
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
-          "line_id": {"type": "string", "description": "Resolved phone-line identifier."},
-          "window": {"type": "string", "description": "Usage window to inspect.", "enum": ["current_billing_cycle", "last_24_hours", "custom"]}
+          "line_id": {
+            "type": "string",
+            "description": "Resolved phone-line identifier."
+          },
+          "window": {
+            "type": "string",
+            "description": "Usage window to inspect.",
+            "enum": [
+              "current_billing_cycle",
+              "last_24_hours",
+              "custom"
+            ]
+          },
+          "verification_id": {
+            "type": "string",
+            "description": "Successful identity-verification record."
+          }
         },
-        "required": ["line_id", "window"],
+        "required": [
+          "line_id",
+          "window",
+          "verification_id"
+        ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "line_id": {
+            "type": "string",
+            "description": "Line identifier."
+          },
+          "billing_cycle_id": {
+            "type": "string",
+            "description": "Billing-cycle identifier."
+          },
+          "measurement_source": {
+            "type": "string",
+            "description": "Measurement source."
+          },
+          "window_start": {
+            "type": "string",
+            "description": "Window start."
+          },
+          "window_end": {
+            "type": "string",
+            "description": "Window end."
+          },
+          "used_gigabytes": {
+            "type": "number",
+            "description": "Used data."
+          },
+          "remaining_high_speed_gigabytes": {
+            "type": "number",
+            "description": "Remaining high-speed data."
+          },
+          "app_attribution_available": {
+            "type": "boolean",
+            "description": "Whether carrier metering identifies apps."
+          },
+          "as_of": {
+            "type": "string",
+            "description": "Measurement time."
+          }
+        },
+        "required": [
+          "line_id",
+          "billing_cycle_id",
+          "measurement_source",
+          "used_gigabytes",
+          "remaining_high_speed_gigabytes",
+          "app_attribution_available"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -60,33 +291,216 @@
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
-          "customer_id": {"type": "string", "description": "Resolved customer identifier."},
-          "status": {"type": "string", "enum": ["current", "historical"]},
+          "customer_id": {
+            "type": "string",
+            "description": "Resolved customer identifier."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "current",
+              "historical"
+            ]
+          },
           "include": {
             "type": "array",
-            "items": {"type": "string", "enum": ["cycle", "charges", "overages", "plan_behavior"]},
+            "items": {
+              "type": "string",
+              "enum": [
+                "cycle",
+                "charges",
+                "overages",
+                "plan_behavior"
+              ]
+            },
             "minItems": 1
+          },
+          "verification_id": {
+            "type": "string",
+            "description": "Successful identity-verification record."
           }
         },
-        "required": ["customer_id", "status", "include"],
+        "required": [
+          "customer_id",
+          "status",
+          "include",
+          "verification_id"
+        ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "bill_id": {
+            "type": "string",
+            "description": "Bill identifier."
+          },
+          "billing_cycle_id": {
+            "type": "string",
+            "description": "Cycle identifier."
+          },
+          "cycle_resets_in_days": {
+            "type": "number",
+            "description": "Days until reset."
+          },
+          "cycle_start": {
+            "type": "string",
+            "description": "Cycle start."
+          },
+          "cycle_end": {
+            "type": "string",
+            "description": "Cycle end."
+          },
+          "overage_charge": {
+            "type": "number",
+            "description": "Current overage amount."
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency."
+          },
+          "after_high_speed_allowance": {
+            "type": "string",
+            "description": "Post-allowance behavior."
+          },
+          "as_of": {
+            "type": "string",
+            "description": "Read time."
+          }
+        },
+        "required": [
+          "bill_id",
+          "billing_cycle_id"
+        ],
+        "additionalProperties": true
       }
     },
     {
       "name": "add_data_addon",
-      "description": "Add explicitly authorized high-speed data to one line and charge the stated price to the stated bill.",
+      "description": "Activate one current eligible data add-on after explicit customer authorization, using the stable offer ID rather than reconstructed price fields.",
       "parameters": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
-          "line_id": {"type": "string", "description": "Resolved phone-line identifier."},
-          "data_gigabytes": {"type": "number", "minimum": 0},
-          "price": {"type": "number", "minimum": 0},
-          "billing_timing": {"type": "string", "enum": ["current_bill", "next_bill"]},
-          "customer_authorized": {"type": "boolean", "description": "Whether the customer explicitly authorized the stated add-on and price."}
+          "line_id": {
+            "type": "string",
+            "description": "Resolved phone-line identifier."
+          },
+          "offer_id": {
+            "type": "string",
+            "description": "Eligible offer identifier returned by the offer lookup."
+          },
+          "customer_authorized": {
+            "type": "boolean",
+            "description": "Whether the customer explicitly approved the returned data amount, price, currency, and billing timing."
+          }
         },
-        "required": ["line_id", "data_gigabytes", "price", "billing_timing", "customer_authorized"],
+        "required": [
+          "line_id",
+          "offer_id",
+          "customer_authorized"
+        ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "transaction_id": {
+            "type": "string",
+            "description": "Add-on transaction identifier."
+          },
+          "status": {
+            "type": "string",
+            "description": "Activation status."
+          },
+          "offer_id": {
+            "type": "string",
+            "description": "Selected offer."
+          },
+          "effective_at": {
+            "type": "string",
+            "description": "Activation time."
+          },
+          "bill_reference": {
+            "type": "string",
+            "description": "Bill reference."
+          },
+          "charged_price": {
+            "type": "number",
+            "description": "Charged amount."
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency."
+          },
+          "added_high_speed_gigabytes": {
+            "type": "number",
+            "description": "Added data."
+          },
+          "remaining_high_speed_gigabytes": {
+            "type": "number",
+            "description": "Updated balance."
+          }
+        },
+        "required": [
+          "transaction_id",
+          "status",
+          "offer_id",
+          "charged_price",
+          "currency",
+          "remaining_high_speed_gigabytes"
+        ],
+        "additionalProperties": true
+      }
+    },
+    {
+      "name": "get_data_addon_offers",
+      "description": "Return current eligible high-speed data offers for a verified line before any price is quoted or add-on is submitted.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "line_id": {
+            "type": "string",
+            "description": "Resolved line identifier."
+          },
+          "verification_id": {
+            "type": "string",
+            "description": "Successful identity-verification record."
+          }
+        },
+        "required": [
+          "line_id",
+          "verification_id"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "line_id": {
+            "type": "string",
+            "description": "Line identifier."
+          },
+          "offers": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "as_of": {
+            "type": "string",
+            "description": "Offer read time."
+          }
+        },
+        "required": [
+          "line_id",
+          "offers"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -96,11 +510,38 @@
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
-          "reason": {"type": "string", "description": "Why the transfer is required."},
-          "summary": {"type": "string", "description": "Context already collected so the customer does not repeat it."}
+          "reason": {
+            "type": "string",
+            "description": "Why the transfer is required."
+          },
+          "summary": {
+            "type": "string",
+            "description": "Context already collected so the customer does not repeat it."
+          }
         },
-        "required": ["reason", "summary"],
+        "required": [
+          "reason",
+          "summary"
+        ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Transfer status."
+          },
+          "transfer_id": {
+            "type": "string",
+            "description": "Transfer identifier."
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "additionalProperties": true
       }
     }
   ]

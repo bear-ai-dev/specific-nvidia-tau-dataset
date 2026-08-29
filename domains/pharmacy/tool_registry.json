@@ -1,7 +1,7 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "registry_name": "pharmacy",
-  "registry_version": "0.1.0",
+  "registry_version": "0.2.0",
   "compatibility": "custom_tau_style_not_literal_tau_registry",
   "design_note": "Stable entity reads and consequential business mutations; source narration labels are normalized rather than copied one-for-one.",
   "tools": [
@@ -26,6 +26,31 @@
           "date_of_birth"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "patient_id": {
+            "type": "string",
+            "description": "Patient identifier."
+          },
+          "match": {
+            "type": "string",
+            "description": "Lookup outcome."
+          },
+          "verified_notification_destinations": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "patient_id",
+          "match"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -48,6 +73,45 @@
           "patient_id"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "prescription_id": {
+            "type": "string",
+            "description": "Prescription identifier."
+          },
+          "medication_id": {
+            "type": "string",
+            "description": "Canonical medication identifier."
+          },
+          "fill_store": {
+            "type": "object"
+          },
+          "claim": {
+            "type": "object"
+          },
+          "queue": {
+            "type": "object"
+          },
+          "notification": {
+            "type": "object"
+          },
+          "payment_options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "prescription_id",
+          "medication_id",
+          "fill_store",
+          "claim"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -81,6 +145,25 @@
           "reason"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "override_id": {
+            "type": "string",
+            "description": "Override identifier."
+          },
+          "status": {
+            "type": "string",
+            "description": "Payer decision."
+          }
+        },
+        "required": [
+          "override_id",
+          "status"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -103,6 +186,38 @@
           "prescription_id"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "claim_status": {
+            "type": "string",
+            "description": "Claim outcome."
+          },
+          "copay": {
+            "type": "number",
+            "description": "Patient copay."
+          },
+          "next_workflow_status": {
+            "type": "string",
+            "description": "Next prescription state."
+          },
+          "queue": {
+            "type": "object"
+          },
+          "payment_options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "claim_status",
+          "next_workflow_status"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -126,6 +241,134 @@
           "medication_id"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "store_id": {
+            "type": "string",
+            "description": "Store identifier."
+          },
+          "medication_id": {
+            "type": "string",
+            "description": "Medication identifier."
+          },
+          "in_stock": {
+            "type": "boolean",
+            "description": "Inventory state."
+          },
+          "reserved": {
+            "type": "boolean",
+            "description": "Whether inventory was reserved."
+          }
+        },
+        "required": [
+          "store_id",
+          "medication_id",
+          "in_stock",
+          "reserved"
+        ],
+        "additionalProperties": true
+      }
+    },
+    {
+      "name": "search_pharmacy_locations",
+      "description": "Discover pharmacy locations and verified local hours before naming an alternate store or evaluating pickup timing.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "origin_store_id": {
+            "type": "string",
+            "description": "Current fill-store identifier when known."
+          },
+          "open_after_local_time": {
+            "type": "string",
+            "description": "Optional local time the counter must remain open after."
+          },
+          "query": {
+            "type": "string",
+            "description": "Optional customer-supplied location or store-name query."
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "locations"
+        ],
+        "additionalProperties": true
+      }
+    },
+    {
+      "name": "request_prescription_transfer",
+      "description": "Request transfer of a prescription after explicit patient authorization; a request does not imply completion.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "prescription_id": {
+            "type": "string",
+            "description": "Prescription identifier."
+          },
+          "destination_store_id": {
+            "type": "string",
+            "description": "Destination pharmacy identifier returned by location search."
+          },
+          "reason": {
+            "type": "string",
+            "description": "Patient-provided transfer reason."
+          },
+          "patient_authorized": {
+            "type": "boolean",
+            "description": "Whether the patient explicitly authorized this transfer request."
+          }
+        },
+        "required": [
+          "prescription_id",
+          "destination_store_id",
+          "patient_authorized"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Transfer-request state."
+          },
+          "source_store_id": {
+            "type": "string",
+            "description": "Current store."
+          },
+          "destination_store_id": {
+            "type": "string",
+            "description": "Requested destination."
+          },
+          "original_fill_active": {
+            "type": "boolean",
+            "description": "Whether original fill remains active."
+          }
+        },
+        "required": [
+          "status",
+          "destination_store_id"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -152,15 +395,42 @@
               "email"
             ]
           },
-          "notification_destination_last4": {
+          "notification_destination_id": {
             "type": "string",
-            "description": "Optional masked destination digits."
+            "description": "Stable verified destination identifier returned by a prior patient or prescription read."
           }
         },
         "required": [
           "prescription_id"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Update outcome."
+          },
+          "updated_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notification": {
+            "type": "object"
+          },
+          "queue": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "status",
+          "updated_fields"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -184,6 +454,24 @@
           "summary"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Transfer state."
+          },
+          "transfer_id": {
+            "type": "string",
+            "description": "Transfer identifier."
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "additionalProperties": true
       }
     }
   ]

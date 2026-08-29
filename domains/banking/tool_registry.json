@@ -1,7 +1,7 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "registry_name": "banking",
-  "registry_version": "0.1.0",
+  "registry_version": "0.2.0",
   "compatibility": "custom_tau_style_not_literal_tau_registry",
   "design_note": "Stable entity reads and consequential business mutations; source narration labels are normalized rather than copied one-for-one.",
   "tools": [
@@ -44,6 +44,41 @@
         },
         "required": [],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "Stable customer identifier."
+          },
+          "match": {
+            "type": "string",
+            "description": "Lookup outcome."
+          },
+          "full_name": {
+            "type": "string",
+            "description": "Customer display name."
+          },
+          "required_verification_methods": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "trusted_channels": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "customer_id",
+          "match"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -55,11 +90,33 @@
         "properties": {},
         "required": [],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Whether authoritative time was available."
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "RFC 3339 timestamp when available."
+          },
+          "timezone": {
+            "type": "string",
+            "description": "Authoritative timezone when available."
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "additionalProperties": true
       }
     },
     {
-      "name": "log_identity_verification",
-      "description": "Record that the required identity checks succeeded; never store full card or one-time-code values in the call.",
+      "name": "verify_customer_identity",
+      "description": "Validate supplied non-secret identity factors against the resolved profile and return a scoped verification record. Collecting or naming factors alone never establishes success.",
       "parameters": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -68,31 +125,181 @@
             "type": "string",
             "description": "Resolved customer identifier."
           },
-          "methods": {
-            "type": "array",
-            "description": "Verification checks completed.",
-            "items": {
-              "type": "string",
-              "description": "A verification method.",
-              "enum": [
-                "billing_zip",
-                "mobile_last4",
-                "date_of_birth",
-                "one_time_code"
-              ]
-            },
-            "minItems": 1
+          "billing_zip": {
+            "type": "string",
+            "description": "Billing ZIP supplied by the customer."
+          },
+          "mobile_last4": {
+            "type": "string",
+            "description": "Last four digits of the registered mobile number.",
+            "pattern": "^[0-9]{4}$"
+          },
+          "card_last4": {
+            "type": "string",
+            "description": "Last four digits of the card used as a permitted verification factor.",
+            "pattern": "^[0-9]{4}$"
+          },
+          "birth_month_day": {
+            "type": "string",
+            "description": "Customer-supplied birth month and day, without requiring the full date."
           },
           "verified_at": {
             "type": "string",
-            "description": "Authoritative verification timestamp, if available."
+            "description": "Authoritative verification timestamp when available."
+          }
+        },
+        "required": [
+          "customer_id"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "verification_id": {
+            "type": "string",
+            "description": "Scoped verification record."
+          },
+          "status": {
+            "type": "string",
+            "description": "Verification outcome."
+          },
+          "matched_methods": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "verified_at": {
+            "type": "string",
+            "description": "Verification timestamp when available."
+          }
+        },
+        "required": [
+          "verification_id",
+          "status",
+          "matched_methods"
+        ],
+        "additionalProperties": true
+      }
+    },
+    {
+      "name": "start_trusted_channel_confirmation",
+      "description": "Send a purpose-bound confirmation challenge to an already trusted masked channel. The agent must not request or place the secret response in ordinary tool arguments.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "Resolved customer identifier."
+          },
+          "purpose": {
+            "type": "string",
+            "description": "Confirmation purpose.",
+            "enum": [
+              "email_change"
+            ]
+          },
+          "channel": {
+            "type": "string",
+            "description": "Trusted channel to use.",
+            "enum": [
+              "sms",
+              "secure_message"
+            ]
+          },
+          "verification_id": {
+            "type": "string",
+            "description": "Active identity-verification record."
           }
         },
         "required": [
           "customer_id",
-          "methods"
+          "purpose",
+          "channel",
+          "verification_id"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "confirmation_id": {
+            "type": "string",
+            "description": "Purpose-bound confirmation record."
+          },
+          "status": {
+            "type": "string",
+            "description": "Challenge delivery state."
+          },
+          "masked_destination": {
+            "type": "string",
+            "description": "Masked trusted destination."
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "Expiration time when available."
+          }
+        },
+        "required": [
+          "confirmation_id",
+          "status",
+          "masked_destination"
+        ],
+        "additionalProperties": true
+      }
+    },
+    {
+      "name": "get_trusted_channel_confirmation",
+      "description": "Read the current state of a purpose-bound trusted-channel challenge without receiving or exposing the secret response.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "Resolved customer identifier."
+          },
+          "confirmation_id": {
+            "type": "string",
+            "description": "Confirmation record returned when the challenge was started."
+          }
+        },
+        "required": [
+          "customer_id",
+          "confirmation_id"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "confirmation_id": {
+            "type": "string",
+            "description": "Purpose-bound confirmation record."
+          },
+          "status": {
+            "type": "string",
+            "description": "Current verification state."
+          },
+          "verified_at": {
+            "type": "string",
+            "description": "Confirmation time when available."
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "Expiration time when available."
+          }
+        },
+        "required": [
+          "confirmation_id",
+          "status"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -111,22 +318,55 @@
             "description": "New customer email.",
             "format": "email"
           },
-          "confirmation_method": {
+          "verification_id": {
             "type": "string",
-            "description": "How the change was confirmed.",
-            "enum": [
-              "one_time_code",
-              "secure_message",
-              "in_person"
-            ]
+            "description": "Active identity-verification record."
+          },
+          "confirmation_id": {
+            "type": "string",
+            "description": "Successful trusted-channel confirmation record."
           }
         },
         "required": [
           "customer_id",
           "new_email",
-          "confirmation_method"
+          "verification_id",
+          "confirmation_id"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Mutation outcome."
+          },
+          "primary_email": {
+            "type": "string",
+            "description": "New primary email."
+          },
+          "notification_email": {
+            "type": "string",
+            "description": "Current notification email."
+          },
+          "login_identifier_changed": {
+            "type": "boolean",
+            "description": "Whether the login identifier changed."
+          },
+          "transition_security_notices": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "status",
+          "primary_email"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -158,6 +398,29 @@
           "search_mode"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "record_id": {
+            "type": "string",
+            "description": "Versioned knowledge record."
+          },
+          "effective_at": {
+            "type": "string",
+            "description": "Effective date or version."
+          },
+          "retrieved_at": {
+            "type": "string",
+            "description": "Retrieval timestamp when available."
+          }
+        },
+        "required": [
+          "record_id",
+          "effective_at"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -198,6 +461,57 @@
           "customer_id"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "Customer identifier."
+          },
+          "card_last4": {
+            "type": "string",
+            "description": "Card last four."
+          },
+          "status": {
+            "type": "string",
+            "description": "Card status."
+          },
+          "available_credit": {
+            "type": "number",
+            "description": "Available credit."
+          },
+          "authorizations": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "declines": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "restrictions": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "pending_activity": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "customer_id",
+          "card_last4"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -236,6 +550,29 @@
           "confirmed_transaction_ids"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Restriction outcome."
+          },
+          "card_status": {
+            "type": "string",
+            "description": "Resulting card status."
+          },
+          "effective_at": {
+            "type": "string",
+            "description": "Mutation time when available."
+          }
+        },
+        "required": [
+          "status",
+          "card_status"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -274,6 +611,29 @@
           "return_date"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Creation outcome."
+          },
+          "notice_id": {
+            "type": "string",
+            "description": "Travel-notice identifier."
+          },
+          "authorization_guaranteed": {
+            "type": "boolean",
+            "description": "Whether the notice guarantees authorization."
+          }
+        },
+        "required": [
+          "status",
+          "authorization_guaranteed"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -296,6 +656,22 @@
           "customer_id"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "referrals": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "referrals"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -332,6 +708,22 @@
           "customer_id"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "transactions": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "transactions"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -379,6 +771,39 @@
           "delivery_channels"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "description": "Session identifier."
+          },
+          "status": {
+            "type": "string",
+            "description": "Issued-session state."
+          },
+          "deliveries": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "submitted": {
+            "type": "boolean",
+            "description": "Whether customer submitted the workflow."
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "Expiration time when available."
+          }
+        },
+        "required": [
+          "session_id",
+          "status"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -402,6 +827,37 @@
           "session_id"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "description": "Session identifier."
+          },
+          "status": {
+            "type": "string",
+            "description": "Current session state."
+          },
+          "submitted": {
+            "type": "boolean",
+            "description": "Whether submitted."
+          },
+          "resume_supported": {
+            "type": "boolean",
+            "description": "Whether the customer can resume."
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "Expiration time when available."
+          }
+        },
+        "required": [
+          "session_id",
+          "status"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -439,6 +895,33 @@
           "template"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "notification_id": {
+            "type": "string",
+            "description": "Notification identifier."
+          },
+          "status": {
+            "type": "string",
+            "description": "Notification state."
+          },
+          "masked_destination": {
+            "type": "string",
+            "description": "Masked destination."
+          },
+          "contains_working_secure_link": {
+            "type": "boolean",
+            "description": "Whether ordinary notification contains a working secure link."
+          }
+        },
+        "required": [
+          "notification_id",
+          "status"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -462,6 +945,24 @@
           "summary"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Transfer state."
+          },
+          "transfer_id": {
+            "type": "string",
+            "description": "Transfer identifier."
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "additionalProperties": true
       }
     }
   ]

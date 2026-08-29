@@ -1,7 +1,7 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "registry_name": "retail",
-  "registry_version": "0.1.0",
+  "registry_version": "0.2.0",
   "compatibility": "custom_tau_style_not_literal_tau_registry",
   "design_note": "Stable entity reads and consequential business mutations; source narration labels are normalized rather than copied one-for-one.",
   "tools": [
@@ -24,6 +24,35 @@
         },
         "required": [],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "Customer identifier."
+          },
+          "match": {
+            "type": "string",
+            "description": "Lookup outcome."
+          },
+          "display_name": {
+            "type": "string",
+            "description": "Customer display name."
+          },
+          "recent_orders": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "customer_id",
+          "match"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -67,6 +96,62 @@
           "customer_email"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "order_reference": {
+            "type": "string",
+            "description": "Order reference."
+          },
+          "customer": {
+            "type": "object"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "fulfillment": {
+            "type": "object"
+          },
+          "payments": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "refunds": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "cases": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "eligible_resolutions": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "notifications": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "order_reference"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -94,6 +179,26 @@
           "include_inventory"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "product_reference": {
+            "type": "string",
+            "description": "Product reference."
+          },
+          "variant": {
+            "type": "object"
+          },
+          "inventory": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "product_reference"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -127,11 +232,12 @@
           },
           "requested_resolution": {
             "type": "string",
-            "description": "Customer preference.",
+            "description": "Customer preference when already chosen.",
             "enum": [
               "replacement",
               "refund",
-              "locate_only"
+              "locate_only",
+              "undecided"
             ]
           },
           "needed_by": {
@@ -142,10 +248,47 @@
         "required": [
           "order_reference",
           "item_references",
-          "reason",
-          "requested_resolution"
+          "reason"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "description": "Case identifier."
+          },
+          "status": {
+            "type": "string",
+            "description": "Trace state."
+          },
+          "carrier_response_deadline": {
+            "type": "string",
+            "description": "Carrier deadline."
+          },
+          "replacement_created": {
+            "type": "boolean",
+            "description": "Whether replacement exists."
+          },
+          "eligibility_triggers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_action": {
+            "type": "string",
+            "description": "Next supported action."
+          }
+        },
+        "required": [
+          "case_id",
+          "status",
+          "replacement_created"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -180,6 +323,44 @@
           "amount"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "description": "Case identifier."
+          },
+          "status": {
+            "type": "string",
+            "description": "Trace state."
+          },
+          "review_window_business_days": {
+            "type": "array",
+            "description": "Review-window endpoints.",
+            "items": {
+              "type": "number",
+              "description": "Business-day count."
+            },
+            "minItems": 0
+          },
+          "duplicate_refund_blocked": {
+            "type": "boolean",
+            "description": "Whether duplicate refund is blocked."
+          },
+          "return_evidence_attached": {
+            "type": "boolean",
+            "description": "Whether return evidence was attached."
+          }
+        },
+        "required": [
+          "case_id",
+          "status",
+          "review_window_business_days",
+          "duplicate_refund_blocked"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -232,6 +413,41 @@
           "fulfillment_method"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "replacement_order_reference": {
+            "type": "string",
+            "description": "Replacement order reference."
+          },
+          "status": {
+            "type": "string",
+            "description": "Creation state."
+          },
+          "balance_due": {
+            "type": "number",
+            "description": "Replacement balance due."
+          },
+          "fulfillment": {
+            "type": "object"
+          },
+          "return_disposition": {
+            "type": "object"
+          },
+          "notification": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "replacement_order_reference",
+          "status",
+          "balance_due",
+          "fulfillment",
+          "return_disposition"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -262,6 +478,116 @@
           "case_id"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Case-update state."
+          },
+          "visible_to_next_reviewer": {
+            "type": "boolean",
+            "description": "Whether later reviewers see the update."
+          },
+          "pickup_guaranteed": {
+            "type": "boolean",
+            "description": "Whether pickup was guaranteed."
+          },
+          "fee_reimbursement_approved": {
+            "type": "boolean",
+            "description": "Whether fee reimbursement was approved."
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "additionalProperties": true
+      }
+    },
+    {
+      "name": "send_case_notification",
+      "description": "Send or resend an existing case summary to the verified contact associated with the case and return the actual delivery state.",
+      "parameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "description": "Support case identifier."
+          },
+          "channel": {
+            "type": "string",
+            "description": "Notification channel.",
+            "enum": [
+              "email",
+              "sms"
+            ]
+          },
+          "destination_source": {
+            "type": "string",
+            "description": "Verified destination source.",
+            "enum": [
+              "order_contact",
+              "verified_customer_contact"
+            ]
+          },
+          "template": {
+            "type": "string",
+            "description": "Approved case-notification template.",
+            "enum": [
+              "delivery_trace_confirmation",
+              "refund_trace_confirmation",
+              "case_reference"
+            ]
+          }
+        },
+        "required": [
+          "case_id",
+          "channel",
+          "destination_source",
+          "template"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "notification_id": {
+            "type": "string",
+            "description": "Notification identifier."
+          },
+          "status": {
+            "type": "string",
+            "description": "Notification state."
+          },
+          "masked_destination": {
+            "type": "string",
+            "description": "Masked verified destination."
+          },
+          "case_id": {
+            "type": "string",
+            "description": "Related case identifier."
+          },
+          "included_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sent_at": {
+            "type": "string",
+            "description": "Send time when available."
+          }
+        },
+        "required": [
+          "notification_id",
+          "status",
+          "case_id"
+        ],
+        "additionalProperties": true
       }
     },
     {
@@ -285,6 +611,24 @@
           "summary"
         ],
         "additionalProperties": false
+      },
+      "result_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Transfer state."
+          },
+          "transfer_id": {
+            "type": "string",
+            "description": "Transfer identifier."
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "additionalProperties": true
       }
     }
   ]

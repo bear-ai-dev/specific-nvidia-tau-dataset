@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "format": "nvidia_responses_api_full_trajectory",
   "trajectory_id": 4,
   "conversation_id": "pharmacy-travel-refill",
@@ -8,7 +8,7 @@
     "input": [
       {
         "role": "system",
-        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\n<policy>\n# Pharmacy support policy\n\nResolve the patient using name and date of birth before discussing a prescription. Confirm the requested medication.\n\nA valid prescription may still have a rejected payer claim. Request only the applicable override and make clear that the insurer can require the patient to participate. Rerun the claim only after an approval.\n\nDo not say a prescription is ready until the pharmacist's required verification is complete. Operational priority notes cannot bypass clinical review. Give realistic queue and store-closing information without guaranteeing completion.\n\nInventory checks do not reserve medication or transfer a prescription. Keep the current fill in place unless the patient authorizes a transfer. Use a verified notification destination for ready alerts.\n</policy>\n\nTry to be helpful and always follow the policy."
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\nService context: You represent Oak Street Pharmacy pharmacy support. Your agent display name is Aaron.\n\n<policy>\n# Pharmacy Support Agent Policy\n\n**Current Time:** Supplied by the environment in the current pharmacy's local timezone. Use that value for all time-sensitive decisions. Do not infer the current time, date, timezone, or business hours from conversational context alone.\n\n## Supported Workflows\n\nThe agent may assist with:\n\n- Patient and prescription lookup\n- Prescription and payer-claim status\n- Eligible payer override requests\n- Claim resubmission after an override approval\n- Operational queue and priority notes\n- Pharmacy location and medication-inventory checks\n- Ready-alert settings\n- Prescription-transfer requests when supported\n- Transfer to a pharmacist or other pharmacy specialist\n\nThe agent provides operational customer service only. It does not provide medical or clinical advice.\n\n## Domain Basics\n\n### Patient Profile\n\n- Patient ID\n- Full name and date of birth\n- Identity-resolution status\n- Verified, masked notification destinations\n- Privacy and authorization status\n\n### Prescription\n\n- Prescription ID\n- Canonical medication ID and display name\n- Fill-store ID\n- Prescription validity\n- Received time\n- Claim, queue, verification, and readiness status\n- Notification and payment eligibility\n\n### Prescription Lifecycle\n\n`received` -> `claim_pending` -> `claim_rejected` or `claim_paid` -> `awaiting_pharmacist_verification` -> `ready_for_pickup` -> `picked_up`, `transferred`, `cancelled`, or `expired`\n\nDo not imply that one status means another. A valid prescription may have a rejected payer claim. A paid claim does not mean that the prescription is ready.\n\n### Payer Claim\n\n- Claim status and rejection reason\n- Override reason, identifier, scope, and decision\n- Payer participation requirements\n- Copay and payment eligibility\n- Claim-resubmission result\n\n### Pharmacy Location\n\n- Stable store ID\n- Display name and address\n- Local timezone\n- Current pharmacy-counter and front-store hours\n- Available services\n\n### Medication Inventory\n\n- Store ID\n- Canonical medication ID\n- In-stock status\n- Reservation status\n\nAn inventory result does not reserve medication, transfer a prescription, or guarantee future availability.\n\n## Identity and Privacy Rules\n\n1. Collect the patient's full name and date of birth before accessing a prescription.\n2. Call `lookup_patient` and require a unique match before disclosing prescription or claim details.\n3. Confirm which medication the patient is asking about before retrieving its record.\n4. Use only patient, prescription, medication, store, and contact identifiers supplied by the patient, the system context, or an earlier tool result.\n5. Do not invent, infer, or expose phone numbers, email addresses, prescription IDs, medication IDs, or store IDs.\n6. Use only verified notification destinations returned by a tool. Keep destinations masked when speaking to the patient.\n\n## Prescription, Claim, and Override Rules\n\n- Describe a payer rejection as an insurance or claim issue. Do not describe it as an invalid prescription or generic payment failure unless a tool explicitly returns that status.\n- Request only an override that matches facts supplied by the patient and the available override reasons.\n- Explain that the payer may require the patient to participate.\n- Do not resubmit a claim until the override result explicitly says it is approved.\n- Do not say an override was approved, a claim was paid, or an insurance issue was cleared until a successful tool result confirms it.\n- State a copay only from the latest successful claim result.\n\n## Queue and Readiness Rules\n\n- Do not say a prescription is ready until a tool returns `ready_for_pickup`.\n- Pharmacist verification cannot be skipped or bypassed by an urgency or travel note.\n- An operational priority note may describe the patient's circumstances but does not change clinical requirements.\n- State an exact queue position only when a tool returns that position.\n- State an estimated completion time only when a tool returns it, and label it as an estimate.\n- Never guarantee completion, readiness, or pickup feasibility.\n- When discussing whether the patient can arrive before closing, use the environment time, the latest returned estimate, verified location hours, and the patient's stated travel time. If those values indicate that arrival may be late, say so plainly.\n\n## Store, Location, Inventory, and Transfer Rules\n\n- Do not name an alternate pharmacy, state its hours, or describe its services until `search_pharmacy_locations` or another location result returns those facts.\n- Check inventory only with store and medication IDs obtained from prior context or tool results.\n- An inventory check does not reserve medication or alter the current fill.\n- Keep the current fill in place unless the patient explicitly authorizes a transfer.\n- Use `request_prescription_transfer` for a transfer request. Do not claim that a transfer was accepted or completed unless its result explicitly confirms that state.\n- If a transfer requires pharmacist review, communicate that status and escalate when necessary.\n\n## Notification and Payment Rules\n\n- A notification update requires clear patient consent and a verified destination identifier returned by a tool.\n- Confirm an alert change only after the update result reports success, including the selected channel and masked destination.\n- Do not claim that app prepayment is available unless a tool result explicitly confirms eligibility.\n- Do not collect or modify payment credentials in conversation.\n\n## Tool Interaction and Provenance Rules\n\n1. In each turn, either send a message to the patient or make one tool call. Do not do both at the same time.\n2. Every tool argument must come from earlier patient speech, the system or policy context, or an earlier tool result.\n3. Never derive a backend identifier from an ordinary name or from the agent's own unsupported statement.\n4. Never state a backend fact before receiving the supporting tool result.\n5. The agent may state an intention before a call, but may state that an action succeeded only after a successful result.\n6. Do not use a later tool result to retroactively justify an earlier spoken fact.\n7. If a required fact or capability is unavailable, ask the patient for the missing information or transfer to a specialist. Do not guess.\n\n## Hard Limitations\n\nThe agent must not:\n\n- Provide diagnosis, treatment, dosing, substitution, or other clinical advice\n- Override pharmacist verification or other clinical review\n- Guarantee payer approval, inventory, readiness, completion time, or arrival before closing\n- Invent store names, store hours, queue positions, contact destinations, payment options, or action outcomes\n- Reserve medication unless a defined tool explicitly supports and confirms reservation\n- Transfer a prescription without explicit patient authorization\n- Change a notification route without a verified destination and patient consent\n- Suggest or claim completion of an action that no defined tool can perform\n\n## Escalation Protocol\n\nTransfer to a pharmacist or pharmacy specialist for:\n\n1. Clinical, dosing, substitution, interaction, or medication-safety questions\n2. A suspected allergic reaction or other urgent safety concern\n3. Controlled-substance, regulatory, or prescriber exceptions\n4. Failed identity verification or a privacy concern\n5. A payer case requiring patient or specialist participation that the available tools cannot complete\n6. A prescription transfer that requires pharmacist action or cannot be completed by `request_prescription_transfer`\n7. Conflicting prescription, claim, queue, or readiness records\n\nCall `transfer_to_specialist` with a concise reason and the context already collected. After a successful transfer request, say exactly:\n\n\"I'm transferring you to a pharmacy specialist who can help with this safely.\"\n</policy>\n\nTry to be helpful and always follow the policy."
       },
       {
         "id": "msg_0004_0000",
@@ -55,7 +55,7 @@
       {
         "type": "function_call_output",
         "call_id": "ph-001",
-        "output": "\n\n{\"patient_id\":\"patient-miles-carter\",\"match\":\"unique\"}"
+        "output": "\n\n{\"patient_id\":\"patient-miles-carter\",\"match\":\"unique\",\"verified_notification_destinations\":[{\"destination_id\":\"patient-miles-mobile\",\"channel\":\"sms\",\"masked_destination\":\"***-***-on-file\",\"verified\":true}]}"
       },
       {
         "id": "msg_0004_0004",
@@ -111,7 +111,7 @@
       {
         "type": "function_call_output",
         "call_id": "ph-002",
-        "output": "\n\n{\"prescription_id\":\"prescription-albuterol\",\"received_at\":\"10:42\",\"claim_status\":\"rejected_refill_too_soon\",\"prescription_valid\":true}"
+        "output": "\n\n{\"prescription_id\":\"prescription-albuterol\",\"medication_id\":\"albuterol-inhaler\",\"medication_name\":\"albuterol inhaler\",\"received_at\":\"10:42\",\"prescription_valid\":true,\"fill_store\":{\"store_id\":\"oak-street-current\",\"display_name\":\"Oak Street Pharmacy\",\"counter_closes_at\":\"19:00\",\"front_store_closes_later\":true},\"claim\":{\"status\":\"rejected\",\"reason\":\"refill_too_soon\"},\"customer_facing_status\":\"processing\",\"queue\":{\"status\":\"blocked_by_claim\"},\"notification\":{\"ready_alert_destination_id\":\"patient-miles-mobile\"},\"payment_options\":[\"pay_at_pickup\"]}"
       },
       {
         "id": "msg_0004_0008",
@@ -261,7 +261,7 @@
       {
         "type": "function_call_output",
         "call_id": "ph-004",
-        "output": "\n\n{\"claim_status\":\"paid\",\"copay\":15,\"next_workflow_status\":\"awaiting_pharmacist_verification\",\"estimated_minutes\":30}"
+        "output": "\n\n{\"claim_status\":\"paid\",\"copay\":15,\"next_workflow_status\":\"awaiting_pharmacist_verification\",\"queue\":{\"status\":\"active\",\"position\":1,\"estimated_minutes\":30},\"payment_options\":[\"app_prepay_if_offered_when_ready\",\"pay_15_at_pickup\"]}"
       },
       {
         "id": "msg_0004_0021",
@@ -355,7 +355,7 @@
       {
         "type": "function_call_output",
         "call_id": "ph-005",
-        "output": "\n\n{\"status\":\"active_queue\",\"pharmacist_verification_required\":true,\"estimated_minutes\":30}"
+        "output": "\n\n{\"status\":\"updated\",\"updated_fields\":[\"priority_reason\"],\"queue\":{\"status\":\"active\",\"pharmacist_verification_required\":true,\"estimated_minutes\":30}}"
       },
       {
         "role": "user",
@@ -379,6 +379,19 @@
         "content": "And does that one also close at, on the counter at 7:00 or is it, is it later?"
       },
       {
+        "arguments": "{\"origin_store_id\":\"oak-street-current\",\"open_after_local_time\":\"19:00\",\"query\":\"Park Avenue\"}",
+        "call_id": "ph-006",
+        "name": "search_pharmacy_locations",
+        "type": "function_call",
+        "id": "ph-006",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "ph-006",
+        "output": "\n\n{\"locations\":[{\"store_id\":\"park-avenue\",\"display_name\":\"Park Avenue\",\"counter_closes_at\":\"21:00\",\"timezone\":\"store_local\"}]}"
+      },
+      {
         "id": "msg_0004_0033",
         "content": [
           {
@@ -393,16 +406,16 @@
       },
       {
         "arguments": "{\"store_id\":\"park-avenue\",\"medication_id\":\"albuterol-inhaler\"}",
-        "call_id": "ph-006",
+        "call_id": "ph-007",
         "name": "get_store_inventory",
         "type": "function_call",
-        "id": "ph-006",
+        "id": "ph-007",
         "status": "completed"
       },
       {
         "type": "function_call_output",
-        "call_id": "ph-006",
-        "output": "\n\n{\"in_stock\":true,\"counter_closes_at\":\"21:00\",\"reserved\":false}"
+        "call_id": "ph-007",
+        "output": "\n\n{\"store_id\":\"park-avenue\",\"medication_id\":\"albuterol-inhaler\",\"in_stock\":true,\"reserved\":false}"
       },
       {
         "id": "msg_0004_0034",
@@ -422,17 +435,17 @@
         "content": "Right. Yeah, yeah. Okay, yeah. We can, we can leave it there. Uh, let's, yeah, unless you, you can't finish it then no, we can transfer it. That's good. Thank you."
       },
       {
-        "arguments": "{\"prescription_id\":\"prescription-albuterol\",\"notification_channel\":\"sms\",\"notification_destination_last4\":\"on_file\"}",
-        "call_id": "ph-007",
+        "arguments": "{\"prescription_id\":\"prescription-albuterol\",\"notification_channel\":\"sms\",\"notification_destination_id\":\"patient-miles-mobile\"}",
+        "call_id": "ph-008",
         "name": "update_prescription",
         "type": "function_call",
-        "id": "ph-007",
+        "id": "ph-008",
         "status": "completed"
       },
       {
         "type": "function_call_output",
-        "call_id": "ph-007",
-        "output": "\n\n{\"ready_alert\":\"enabled\",\"priority_note\":\"present\"}"
+        "call_id": "ph-008",
+        "output": "\n\n{\"status\":\"updated\",\"updated_fields\":[\"notification_channel\",\"notification_destination\"],\"notification\":{\"ready_alert\":\"enabled\",\"destination_id\":\"patient-miles-mobile\",\"masked_destination\":\"***-***-on-file\",\"verified\":true},\"queue\":{\"priority_note\":\"present\"}}"
       },
       {
         "id": "msg_0004_0036",
@@ -656,6 +669,66 @@
       },
       {
         "type": "function",
+        "name": "search_pharmacy_locations",
+        "description": "Discover pharmacy locations and verified local hours before naming an alternate store or evaluating pickup timing.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "origin_store_id": {
+              "type": "string",
+              "description": "Current fill-store identifier when known."
+            },
+            "open_after_local_time": {
+              "type": "string",
+              "description": "Optional local time the counter must remain open after."
+            },
+            "query": {
+              "type": "string",
+              "description": "Optional customer-supplied location or store-name query."
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "request_prescription_transfer",
+        "description": "Request transfer of a prescription after explicit patient authorization; a request does not imply completion.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "prescription_id": {
+              "type": "string",
+              "description": "Prescription identifier."
+            },
+            "destination_store_id": {
+              "type": "string",
+              "description": "Destination pharmacy identifier returned by location search."
+            },
+            "reason": {
+              "type": "string",
+              "description": "Patient-provided transfer reason."
+            },
+            "patient_authorized": {
+              "type": "boolean",
+              "description": "Whether the patient explicitly authorized this transfer request."
+            }
+          },
+          "required": [
+            "prescription_id",
+            "destination_store_id",
+            "patient_authorized"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
         "name": "update_prescription",
         "description": "Update operational prescription fields such as priority context or notification channel; this cannot bypass pharmacist verification.",
         "parameters": {
@@ -679,9 +752,9 @@
                 "email"
               ]
             },
-            "notification_destination_last4": {
+            "notification_destination_id": {
               "type": "string",
-              "description": "Optional masked destination digits."
+              "description": "Stable verified destination identifier returned by a prior patient or prescription read."
             }
           },
           "required": [
@@ -925,7 +998,15 @@
         "path": "audio/full.wav",
         "start_seconds": 89.5,
         "end_seconds": 99.3
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "the issue here is the payment",
+          "category": "incorrect_operational_terminology",
+          "reason": "The backend state is an insurance claim rejection, not a generic payment failure.",
+          "remediation": "Re-record using 'insurance claim issue.'"
+        }
+      ]
     },
     {
       "event_index": 19,
@@ -985,7 +1066,15 @@
         "path": "audio/full.wav",
         "start_seconds": 122.12,
         "end_seconds": 126.6
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "It may take a couple minutes",
+          "category": "unsupported_tool_duration",
+          "reason": "No payer SLA or result supports this numeric duration.",
+          "remediation": "Use nonnumeric hold language unless a tool returns an estimate."
+        }
+      ]
     },
     {
       "event_index": 24,
@@ -1129,7 +1218,15 @@
         "path": "audio/full.wav",
         "start_seconds": 229.68,
         "end_seconds": 237.07999999999998
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "if you leave after you get the ready text you should make it",
+          "category": "contradictory_arrival_prediction",
+          "reason": "The stated 30-minute estimate plus 25-minute travel from about 6:15 implies arrival after the 7:00 counter closing.",
+          "remediation": "Re-record that the timing is tight and may miss closing."
+        }
+      ]
     },
     {
       "event_index": 37,
@@ -1211,6 +1308,27 @@
     },
     {
       "event_index": 44,
+      "kind": "function_call",
+      "call_id": "ph-006",
+      "source": "transcripts/transcript.txt",
+      "source_label": "discover the Park Avenue location and verified hours before naming it",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 279.5,
+      "placement_after_text": "is it later",
+      "placement_before_text": "The Park Avenue store closes at 9:00",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          273.34,
+          279.66
+        ]
+      }
+    },
+    {
+      "event_index": 46,
       "kind": "speech",
       "speaker": "Aaron",
       "role": "assistant",
@@ -1222,9 +1340,9 @@
       }
     },
     {
-      "event_index": 45,
+      "event_index": 47,
       "kind": "function_call",
-      "call_id": "ph-006",
+      "call_id": "ph-007",
       "source": "transcripts/transcript.txt",
       "source_label": "check alternate pharmacy inventory",
       "annotation_confidence": "high",
@@ -1240,7 +1358,7 @@
       }
     },
     {
-      "event_index": 47,
+      "event_index": 49,
       "kind": "speech",
       "speaker": "Aaron",
       "role": "assistant",
@@ -1249,10 +1367,18 @@
         "path": "audio/full.wav",
         "start_seconds": 289.22,
         "end_seconds": 296.08
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "ours should be ready first",
+          "category": "unsupported_completion_prediction",
+          "reason": "No refreshed comparative ETA proves the current fill will be ready first.",
+          "remediation": "State only that the alternate has stock and no transfer has occurred."
+        }
+      ]
     },
     {
-      "event_index": 48,
+      "event_index": 50,
       "kind": "speech",
       "speaker": "Miles",
       "role": "user",
@@ -1264,9 +1390,9 @@
       }
     },
     {
-      "event_index": 49,
+      "event_index": 51,
       "kind": "function_call",
-      "call_id": "ph-007",
+      "call_id": "ph-008",
       "source": "transcripts/transcript.txt",
       "source_label": "update the prescription notification",
       "annotation_confidence": "medium",
@@ -1282,7 +1408,7 @@
       }
     },
     {
-      "event_index": 51,
+      "event_index": 53,
       "kind": "speech",
       "speaker": "Aaron",
       "role": "assistant",
@@ -1294,7 +1420,7 @@
       }
     },
     {
-      "event_index": 52,
+      "event_index": 54,
       "kind": "speech",
       "speaker": "Miles",
       "role": "user",
@@ -1306,7 +1432,7 @@
       }
     },
     {
-      "event_index": 53,
+      "event_index": 55,
       "kind": "speech",
       "speaker": "Aaron",
       "role": "assistant",
@@ -1318,7 +1444,7 @@
       }
     },
     {
-      "event_index": 54,
+      "event_index": 56,
       "kind": "speech",
       "speaker": "Miles",
       "role": "user",
@@ -1330,7 +1456,7 @@
       }
     },
     {
-      "event_index": 55,
+      "event_index": 57,
       "kind": "speech",
       "speaker": "Aaron",
       "role": "assistant",
@@ -1342,7 +1468,7 @@
       }
     },
     {
-      "event_index": 56,
+      "event_index": 58,
       "kind": "speech",
       "speaker": "Miles",
       "role": "user",
@@ -1354,7 +1480,7 @@
       }
     },
     {
-      "event_index": 57,
+      "event_index": 59,
       "kind": "speech",
       "speaker": "Aaron",
       "role": "assistant",
@@ -1366,7 +1492,7 @@
       }
     },
     {
-      "event_index": 58,
+      "event_index": 60,
       "kind": "speech",
       "speaker": "Miles",
       "role": "user",
@@ -1378,7 +1504,7 @@
       }
     },
     {
-      "event_index": 59,
+      "event_index": 61,
       "kind": "speech",
       "speaker": "Aaron",
       "role": "assistant",
@@ -1390,7 +1516,7 @@
       }
     },
     {
-      "event_index": 60,
+      "event_index": 62,
       "kind": "speech",
       "speaker": "Miles",
       "role": "user",

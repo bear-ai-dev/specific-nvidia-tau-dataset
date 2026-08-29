@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "format": "nvidia_responses_api_full_trajectory",
   "trajectory_id": 9,
   "conversation_id": "telecom-data-usage-cleanup",
@@ -8,7 +8,7 @@
     "input": [
       {
         "role": "system",
-        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\n<policy>\n# Telecom data-support policy\n\nResolve one customer using the mobile number, full name, and date of birth before disclosing line, device, usage, or billing details. Keep the resolved line and billing cycle consistent throughout the call.\n\nCompare carrier-recorded usage with the customer's device-side app evidence before attributing a cause. Do not characterize unexpected usage as hacking without evidence. State the measured usage, remaining high-speed allowance, billing-cycle reset, and any current overage accurately.\n\nPhone settings, app permissions, Data Saver, and speed tests are customer-side actions. Guide the customer and rely on their spoken confirmation; do not represent those actions as agent backend function calls.\n\nExplain that already-consumed data cannot be restored. Before adding paid data, state the amount, price, billing timing, and resulting allowance, then obtain explicit authorization. The add-on mutation must return the charged price and updated high-speed balance.\n\nDo not guarantee a particular throttled or test speed. If unexplained idle usage continues after the settings cleanup, escalate for further account or security investigation.\n</policy>\n\nTry to be helpful and always follow the policy."
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\nService context: You represent ClearWave Mobile telecom customer service. Your agent display name is Jonathan.\n\n<policy>\n# ClearWave Mobile Telecom Support Policy\n\nAs a ClearWave Mobile customer-service agent, you may help with account and line identification, carrier-recorded data usage, billing-cycle questions, data-add-on purchases, customer-guided phone settings, basic connectivity checks, and escalation of unexplained usage.\n\nYou MUST NOT:\n\n- Disclose account, line, device, usage, billing, or offer details before identity verification succeeds.\n- Treat a record lookup as identity verification unless the tool result explicitly reports a verified status and its permitted access scope.\n- Invent backend facts, app-level usage, prices, eligibility, transaction status, or completion.\n- Present customer-observed phone information as carrier telemetry.\n- Claim that unexplained usage proves hacking, malware, an app update, or a specific app caused the traffic without sufficient evidence.\n- Change device settings remotely when the available tools only support spoken guidance.\n- Add a paid product without a current eligible offer and explicit customer authorization for its data amount, price, currency, and billing timing.\n- Guarantee a particular network speed, application performance, or future usage outcome.\n- Assume a tool operation succeeded without an explicit successful tool result.\n\n## Domain Basics\n\n### Customer Profile\n\n- Customer ID\n- Account status\n- Verified identity status and verification ID\n- Contact channels, represented as masked values after verification\n- Authorized account-access scope\n\n### Mobile Line\n\n- Line ID\n- Masked mobile number\n- Line status: `active`, `suspended`, `disconnected`, or `pending`\n- Assigned device ID\n- Assigned plan ID\n- Current billing-cycle ID\n\n### Device\n\n- Device ID\n- Manufacturer and model\n- Line assignment\n- Provisioning status\n\nCarrier account records do not normally include a phone's per-application usage screen, app preferences, Data Saver settings, unrestricted-app list, or speed-test result. Those are customer-observed device facts unless a specifically defined and authorized device-telemetry tool returns them.\n\n### Plan and Billing Cycle\n\n- Plan ID and display name\n- Included high-speed data allowance\n- Carrier-metered usage and remaining high-speed data\n- Billing-cycle start and end timestamps\n- Post-allowance behavior\n- Current charges and overage amount\n\n### Data Add-on Offer\n\n- Stable add-on or offer ID\n- Eligible line ID\n- High-speed data amount\n- Price and currency\n- Billing timing\n- Effective timing\n- Eligibility status and expiration time\n\n### Add-on Transaction\n\n- Stable transaction ID\n- Selected offer ID\n- Line ID\n- Status: `pending`, `active`, `failed`, or `reversed`\n- Charged amount, currency, and bill reference\n- Effective timestamp\n- Updated high-speed data balance\n\n## Authentication and Access\n\n1. Collect the mobile number and approved identity factors, such as full name and date of birth.\n2. Resolve the customer record. A unique match identifies a candidate record but does not by itself authorize disclosure.\n3. Verify the customer using the configured identity-verification operation.\n4. Continue only when the result explicitly returns `verified` and an access scope that covers the requested line, usage, and billing information.\n5. Keep the returned customer ID, line ID, verification ID, and billing-cycle ID consistent throughout the call.\n6. Do not expose raw stored identity data or unmasked contact details in tool results or spoken responses.\n\nIf verification fails, is inconclusive, or the caller is not authorized for the line, do not disclose protected information. Offer an approved verification retry or transfer to account security.\n\n## Provenance and Tool Interaction Rules\n\nEvery factual claim must be traceable to one of these sources:\n\n- `backend`: an earlier successful tool result;\n- `customer`: a fact the customer stated or read from the phone;\n- `policy`: a general rule stated in this policy;\n- `inference`: a clearly qualified comparison of backend and customer evidence.\n\nFollow these rules:\n\n1. Make one tool call at a time.\n2. Send either a message or a tool call in a turn, not both.\n3. Use only identifiers returned by earlier successful calls.\n4. Do not use a future tool result to justify an earlier statement.\n5. Do not state that a record is being opened after its complete result has already been used. Split reads when facts are disclosed at different points in the call.\n6. Treat a successful read as read-only. It never proves that a mutation occurred.\n7. State that a mutation completed only after the mutation result returns a successful terminal status.\n8. When a tool fails or omits a field, say that the information is unavailable; do not fill it from assumption.\n9. Keep carrier facts and customer-observed device facts explicitly separate in the conversation.\n\n## Data-Usage Investigation\n\nAfter verification:\n\n1. Retrieve the customer account, selected line, device, and plan.\n2. Confirm with the customer that the selected device and line are the ones involved.\n3. Retrieve carrier-metered usage for a defined time window. The result must identify the line, measurement source, window start and end, amount used, remaining high-speed balance, and `as_of` time.\n4. State carrier usage as a carrier measurement, not proof of which phone application generated it.\n5. Ask the customer to open the phone's data-usage screen and report the app-level evidence.\n6. Compare the two sources using qualified language such as \"that is consistent with the carrier total.\" Do not call correlation proof of cause.\n7. If the customer asks about hacking, explain that unexpected usage alone is not proof. Continue with evidence collection and escalate if material usage remains unexplained.\n\nThe agent may explain general possibilities such as background synchronization, downloads, or loss of Wi-Fi, but must label them as possibilities. Do not claim that an update reset a preference unless supported by an authoritative diagnostic source.\n\n## Customer-Guided Device Settings\n\nPhone settings, app permissions, Wi-Fi-only download controls, Data Saver, unrestricted-app lists, and speed tests are customer-side actions.\n\n- Give one clear step at a time.\n- Rely on the customer's spoken report of what is visible and what they changed.\n- Do not create backend function calls for these actions unless a dedicated, authorized device-management tool actually performs them.\n- Preserve essential background access selected by the customer, such as work email, rather than disabling all background traffic indiscriminately.\n- A speed test confirms only the connection and observed result at that moment. It does not guarantee normal service, future speed, or application performance.\n- A warning such as \"downloads paused until Wi-Fi\" confirms only the application behavior the customer reports at that moment.\n\n## Billing and Remaining Data\n\n- Retrieve the current billing-cycle record before stating its reset date or days remaining.\n- Retrieve current charges, overages, and post-allowance behavior before stating them.\n- If the agent first reads the reset date and later says they are opening the current bill, use separate scoped reads so the chronology matches the call.\n- Explain reduced-speed behavior qualitatively when exact performance depends on network conditions.\n- Do not guarantee that maps, email, video, or another application will work at a specific level after the high-speed allowance is exhausted.\n- Already carrier-metered usage is not restored merely because a device setting is changed. Any courtesy adjustment or disputed-usage credit requires a specifically defined adjustment or dispute tool and its successful result.\n\n## Paid Data Add-ons\n\nBefore quoting or recommending a paid add-on:\n\n1. Retrieve current add-on offers for the verified line.\n2. Use only an offer whose result reports `eligible` and has not expired.\n3. State the exact data amount, price, currency, billing timing, and effective timing returned by the offer.\n4. Obtain explicit authorization after stating all of those terms.\n5. Submit the mutation using the stable offer ID and line ID; do not reconstruct the product from free-form numbers.\n6. Confirm success only when the result returns an `active` or otherwise successful terminal status.\n7. Read back the transaction ID or bill reference when useful, the charged amount, effective timing, and updated high-speed balance exactly as returned.\n\nIf an offer lookup tool is not available, do not invent or quote an add-on price. Transfer to a billing specialist.\n\n## Usage Disputes and Credits\n\n- A disagreement with valid carrier metering does not itself authorize restoration or a credit.\n- If the customer disputes the carrier measurement, preserve the measurement window and observed device evidence.\n- Use a defined usage-dispute tool when available. Otherwise transfer with a concise evidence summary.\n- Never promise a credit, reversal, fraud finding, or restored allowance before a successful tool result explicitly confirms it.\n\n## Agent Limitations\n\n- Do not provide cybersecurity findings based only on unexpected usage.\n- Do not claim access to app-specific carrier usage when the carrier result provides only aggregate line usage.\n- Do not remotely control or alter the customer's phone without an authorized device-management capability.\n- Do not override offer eligibility, price, billing timing, data balance, or carrier metering.\n- Do not quote unsupported resolution times or guarantee future network behavior.\n- Do not reveal full identity attributes or account secrets.\n\n## Escalation Protocol\n\nTransfer to a specialist when:\n\n1. Identity verification fails or the caller lacks authority.\n2. Carrier-metered usage remains materially unexplained after the customer checks device evidence.\n3. The customer reports account takeover, SIM-swap indicators, or other security evidence.\n4. A billing adjustment, disputed-usage credit, or paid offer is requested but no corresponding tool is available.\n5. An add-on mutation fails, remains pending, produces inconsistent billing, or does not update the line balance.\n6. The same issue recurs after settings cleanup or requires network engineering.\n\nTransfer process:\n\n1. Call `transfer_to_specialist` with the reason and a concise summary containing verification status, line ID, carrier measurement window, customer-observed device evidence, billing findings, and attempted actions.\n2. After the transfer result confirms acceptance, tell the customer: \"I'm transferring you to a specialist with the details we've already collected.\"\n\nNever claim that a transfer completed until the tool result confirms it.\n</policy>\n\nTry to be helpful and always follow the policy."
       },
       {
         "id": "msg_0009_0000",
@@ -85,10 +85,23 @@
       {
         "type": "function_call_output",
         "call_id": "td-001",
-        "output": "\n\n{\"customer_id\":\"customer-benjamin-reed\",\"match\":\"unique\"}"
+        "output": "\n\n{\"customer_id\":\"customer-benjamin-reed\",\"match\":\"unique\",\"required_verification_factors\":[\"mobile_number\",\"full_name\",\"date_of_birth\"]}"
       },
       {
-        "arguments": "{\"customer_id\":\"customer-benjamin-reed\",\"include\":[\"lines\",\"devices\",\"plans\"]}",
+        "arguments": "{\"customer_id\":\"customer-benjamin-reed\",\"mobile_number\":\"404-555-0176\",\"full_name\":\"Benjamin Reed\",\"date_of_birth\":\"November 22, 1991\"}",
+        "call_id": "td-001b",
+        "name": "verify_customer_identity",
+        "type": "function_call",
+        "id": "td-001b",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "td-001b",
+        "output": "\n\n{\"verification_id\":\"verification-benjamin-reed-support\",\"status\":\"verified\",\"matched_factors\":[\"mobile_number\",\"full_name\",\"date_of_birth\"],\"access_scope\":[\"lines\",\"usage\",\"billing\"],\"verified_at\":\"scenario_call_time\"}"
+      },
+      {
+        "arguments": "{\"customer_id\":\"customer-benjamin-reed\",\"verification_id\":\"verification-benjamin-reed-support\",\"include\":[\"lines\",\"devices\",\"plans\"]}",
         "call_id": "td-002",
         "name": "get_customer_account",
         "type": "function_call",
@@ -98,7 +111,7 @@
       {
         "type": "function_call_output",
         "call_id": "td-002",
-        "output": "\n\n{\"lines\":[{\"line_id\":\"line-4045550176\",\"mobile_number\":\"404-555-0176\"}],\"devices\":[{\"device_id\":\"device-pixel-8\",\"model\":\"Pixel 8\",\"line_id\":\"line-4045550176\"}],\"plans\":[{\"plan_id\":\"unlimited-start\",\"name\":\"Unlimited Start\",\"line_id\":\"line-4045550176\"}]}"
+        "output": "\n\n{\"customer_id\":\"customer-benjamin-reed\",\"lines\":[{\"line_id\":\"line-4045550176\",\"masked_mobile_number\":\"***-***-0176\",\"status\":\"active\",\"billing_cycle_id\":\"cycle-current-benjamin\"}],\"devices\":[{\"device_id\":\"device-pixel-8\",\"model\":\"Pixel 8\",\"line_id\":\"line-4045550176\",\"provisioning_status\":\"active\"}],\"plans\":[{\"plan_id\":\"unlimited-start\",\"name\":\"Unlimited Start\",\"line_id\":\"line-4045550176\"}]}"
       },
       {
         "id": "msg_0009_0007",
@@ -135,7 +148,7 @@
         "content": "Okay."
       },
       {
-        "arguments": "{\"line_id\":\"line-4045550176\",\"window\":\"last_24_hours\"}",
+        "arguments": "{\"line_id\":\"line-4045550176\",\"verification_id\":\"verification-benjamin-reed-support\",\"window\":\"last_24_hours\"}",
         "call_id": "td-003",
         "name": "get_line_data_usage",
         "type": "function_call",
@@ -145,7 +158,7 @@
       {
         "type": "function_call_output",
         "call_id": "td-003",
-        "output": "\n\n{\"used_gigabytes\":11.8,\"usage_window\":\"approximately midnight to 04:00\",\"remaining_high_speed_gigabytes\":2.2}"
+        "output": "\n\n{\"line_id\":\"line-4045550176\",\"billing_cycle_id\":\"cycle-current-benjamin\",\"measurement_source\":\"carrier_metering\",\"window_start\":\"approximately 00:00\",\"window_end\":\"approximately 04:00\",\"used_gigabytes\":11.8,\"remaining_high_speed_gigabytes\":2.2,\"app_attribution_available\":false,\"as_of\":\"scenario_usage_read_time\"}"
       },
       {
         "id": "msg_0009_0011",
@@ -279,7 +292,7 @@
         "content": "Yeah, please do, because I'm traveling for work before then, so I really need that."
       },
       {
-        "arguments": "{\"customer_id\":\"customer-benjamin-reed\",\"status\":\"current\",\"include\":[\"cycle\",\"charges\",\"overages\",\"plan_behavior\"]}",
+        "arguments": "{\"customer_id\":\"customer-benjamin-reed\",\"verification_id\":\"verification-benjamin-reed-support\",\"status\":\"current\",\"include\":[\"cycle\"]}",
         "call_id": "td-004",
         "name": "get_customer_bills",
         "type": "function_call",
@@ -289,7 +302,7 @@
       {
         "type": "function_call_output",
         "call_id": "td-004",
-        "output": "\n\n{\"cycle_resets_in_days\":9,\"overage_charge\":0.0,\"after_high_speed_allowance\":\"speed_reduced\",\"currency\":\"USD\"}"
+        "output": "\n\n{\"bill_id\":\"bill-current-benjamin\",\"billing_cycle_id\":\"cycle-current-benjamin\",\"cycle_start\":\"scenario_cycle_start\",\"cycle_end\":\"in_9_days\",\"cycle_resets_in_days\":9,\"as_of\":\"scenario_cycle_read_time\"}"
       },
       {
         "id": "msg_0009_0028",
@@ -322,6 +335,19 @@
         "type": "message"
       },
       {
+        "arguments": "{\"customer_id\":\"customer-benjamin-reed\",\"verification_id\":\"verification-benjamin-reed-support\",\"status\":\"current\",\"include\":[\"charges\",\"overages\",\"plan_behavior\"]}",
+        "call_id": "td-004b",
+        "name": "get_customer_bills",
+        "type": "function_call",
+        "id": "td-004b",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "td-004b",
+        "output": "\n\n{\"bill_id\":\"bill-current-benjamin\",\"billing_cycle_id\":\"cycle-current-benjamin\",\"overage_charge\":0.0,\"currency\":\"USD\",\"after_high_speed_allowance\":\"speed_reduced\",\"as_of\":\"scenario_bill_read_time\"}"
+      },
+      {
         "id": "msg_0009_0031",
         "content": [
           {
@@ -337,6 +363,19 @@
       {
         "role": "user",
         "content": "I see. It slows down how much? Because I need maps and email. I'm traveling, so I can't have it crawling. You know what I mean?"
+      },
+      {
+        "arguments": "{\"line_id\":\"line-4045550176\",\"verification_id\":\"verification-benjamin-reed-support\"}",
+        "call_id": "td-004c",
+        "name": "get_data_addon_offers",
+        "type": "function_call",
+        "id": "td-004c",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "td-004c",
+        "output": "\n\n{\"line_id\":\"line-4045550176\",\"offers\":[{\"offer_id\":\"offer-5gb-40-next-bill\",\"eligibility_status\":\"eligible\",\"data_gigabytes\":5.0,\"price\":40.0,\"currency\":\"USD\",\"billing_timing\":\"next_bill\",\"effective_timing\":\"immediate\",\"expires_at\":\"end_of_call\"}],\"as_of\":\"scenario_offer_read_time\"}"
       },
       {
         "id": "msg_0009_0033",
@@ -534,7 +573,7 @@
         "type": "message"
       },
       {
-        "arguments": "{\"line_id\":\"line-4045550176\",\"data_gigabytes\":5.0,\"price\":40.0,\"billing_timing\":\"next_bill\",\"customer_authorized\":true}",
+        "arguments": "{\"line_id\":\"line-4045550176\",\"offer_id\":\"offer-5gb-40-next-bill\",\"customer_authorized\":true}",
         "call_id": "td-005",
         "name": "add_data_addon",
         "type": "function_call",
@@ -544,7 +583,7 @@
       {
         "type": "function_call_output",
         "call_id": "td-005",
-        "output": "\n\n{\"status\":\"added\",\"added_high_speed_gigabytes\":5.0,\"charged_price\":40.0,\"billing_timing\":\"next_bill\",\"remaining_high_speed_gigabytes\":7.2,\"currency\":\"USD\"}"
+        "output": "\n\n{\"transaction_id\":\"addon-transaction-benjamin-5gb\",\"status\":\"active\",\"offer_id\":\"offer-5gb-40-next-bill\",\"effective_at\":\"scenario_activation_time\",\"bill_reference\":\"bill-current-benjamin\",\"charged_price\":40.0,\"currency\":\"USD\",\"added_high_speed_gigabytes\":5.0,\"remaining_high_speed_gigabytes\":7.2}"
       },
       {
         "id": "msg_0009_0057",
@@ -706,6 +745,7 @@
     ],
     "tools": [
       {
+        "type": "function",
         "name": "lookup_customer",
         "description": "Resolve one telecom customer using the mobile number and identity attributes collected on the call.",
         "parameters": {
@@ -732,10 +772,45 @@
           ],
           "additionalProperties": false
         },
-        "type": "function",
         "strict": true
       },
       {
+        "type": "function",
+        "name": "verify_customer_identity",
+        "description": "Validate the collected telecom identity factors and return a scoped verification record before protected account access.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier."
+            },
+            "mobile_number": {
+              "type": "string",
+              "description": "Customer-supplied mobile number."
+            },
+            "full_name": {
+              "type": "string",
+              "description": "Customer full name."
+            },
+            "date_of_birth": {
+              "type": "string",
+              "description": "Customer date of birth."
+            }
+          },
+          "required": [
+            "customer_id",
+            "mobile_number",
+            "full_name",
+            "date_of_birth"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
         "name": "get_customer_account",
         "description": "Retrieve selected line, device, and plan sections for a resolved telecom customer.",
         "parameters": {
@@ -758,18 +833,23 @@
                 ]
               },
               "minItems": 1
+            },
+            "verification_id": {
+              "type": "string",
+              "description": "Successful identity-verification record."
             }
           },
           "required": [
             "customer_id",
-            "include"
+            "include",
+            "verification_id"
           ],
           "additionalProperties": false
         },
-        "type": "function",
         "strict": true
       },
       {
+        "type": "function",
         "name": "get_line_data_usage",
         "description": "Read carrier-recorded usage and remaining high-speed data for one line and billing-cycle window.",
         "parameters": {
@@ -788,18 +868,23 @@
                 "last_24_hours",
                 "custom"
               ]
+            },
+            "verification_id": {
+              "type": "string",
+              "description": "Successful identity-verification record."
             }
           },
           "required": [
             "line_id",
-            "window"
+            "window",
+            "verification_id"
           ],
           "additionalProperties": false
         },
-        "type": "function",
         "strict": true
       },
       {
+        "type": "function",
         "name": "get_customer_bills",
         "description": "Retrieve current billing-cycle dates, overage charges, and post-allowance plan behavior.",
         "parameters": {
@@ -829,21 +914,26 @@
                 ]
               },
               "minItems": 1
+            },
+            "verification_id": {
+              "type": "string",
+              "description": "Successful identity-verification record."
             }
           },
           "required": [
             "customer_id",
             "status",
-            "include"
+            "include",
+            "verification_id"
           ],
           "additionalProperties": false
         },
-        "type": "function",
         "strict": true
       },
       {
+        "type": "function",
         "name": "add_data_addon",
-        "description": "Add explicitly authorized high-speed data to one line and charge the stated price to the stated bill.",
+        "description": "Activate one current eligible data add-on after explicit customer authorization, using the stable offer ID rather than reconstructed price fields.",
         "parameters": {
           "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
@@ -852,39 +942,51 @@
               "type": "string",
               "description": "Resolved phone-line identifier."
             },
-            "data_gigabytes": {
-              "type": "number",
-              "minimum": 0
-            },
-            "price": {
-              "type": "number",
-              "minimum": 0
-            },
-            "billing_timing": {
+            "offer_id": {
               "type": "string",
-              "enum": [
-                "current_bill",
-                "next_bill"
-              ]
+              "description": "Eligible offer identifier returned by the offer lookup."
             },
             "customer_authorized": {
               "type": "boolean",
-              "description": "Whether the customer explicitly authorized the stated add-on and price."
+              "description": "Whether the customer explicitly approved the returned data amount, price, currency, and billing timing."
             }
           },
           "required": [
             "line_id",
-            "data_gigabytes",
-            "price",
-            "billing_timing",
+            "offer_id",
             "customer_authorized"
           ],
           "additionalProperties": false
         },
-        "type": "function",
         "strict": true
       },
       {
+        "type": "function",
+        "name": "get_data_addon_offers",
+        "description": "Return current eligible high-speed data offers for a verified line before any price is quoted or add-on is submitted.",
+        "parameters": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "line_id": {
+              "type": "string",
+              "description": "Resolved line identifier."
+            },
+            "verification_id": {
+              "type": "string",
+              "description": "Successful identity-verification record."
+            }
+          },
+          "required": [
+            "line_id",
+            "verification_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
         "name": "transfer_to_specialist",
         "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
         "parameters": {
@@ -906,7 +1008,6 @@
           ],
           "additionalProperties": false
         },
-        "type": "function",
         "strict": true
       }
     ],
@@ -1021,6 +1122,27 @@
     {
       "event_index": 10,
       "kind": "function_call",
+      "call_id": "td-001b",
+      "source": "transcripts/transcript.txt",
+      "source_label": "validate collected identity factors before account access",
+      "annotation_confidence": "medium",
+      "state_effect": "identity_verified",
+      "placement_seconds": 55.1,
+      "placement_after_text": "look up your account",
+      "placement_before_text": "found your account",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          54.7,
+          55.3
+        ]
+      }
+    },
+    {
+      "event_index": 12,
+      "kind": "function_call",
       "call_id": "td-002",
       "source": "transcripts/transcript.txt",
       "source_label": "retrieve customer, line, device, and plan using the resolved customer ID",
@@ -1040,7 +1162,7 @@
       }
     },
     {
-      "event_index": 12,
+      "event_index": 14,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1052,7 +1174,7 @@
       }
     },
     {
-      "event_index": 13,
+      "event_index": 15,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1064,7 +1186,7 @@
       }
     },
     {
-      "event_index": 14,
+      "event_index": 16,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1076,7 +1198,7 @@
       }
     },
     {
-      "event_index": 15,
+      "event_index": 17,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1088,7 +1210,7 @@
       }
     },
     {
-      "event_index": 16,
+      "event_index": 18,
       "kind": "function_call",
       "call_id": "td-003",
       "source": "transcripts/transcript.txt",
@@ -1109,7 +1231,7 @@
       }
     },
     {
-      "event_index": 18,
+      "event_index": 20,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1121,7 +1243,7 @@
       }
     },
     {
-      "event_index": 19,
+      "event_index": 21,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1133,7 +1255,7 @@
       }
     },
     {
-      "event_index": 20,
+      "event_index": 22,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1145,7 +1267,7 @@
       }
     },
     {
-      "event_index": 21,
+      "event_index": 23,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1157,7 +1279,7 @@
       }
     },
     {
-      "event_index": 22,
+      "event_index": 24,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1169,7 +1291,7 @@
       }
     },
     {
-      "event_index": 23,
+      "event_index": 25,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1181,7 +1303,7 @@
       }
     },
     {
-      "event_index": 24,
+      "event_index": 26,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1193,7 +1315,7 @@
       }
     },
     {
-      "event_index": 25,
+      "event_index": 27,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1205,7 +1327,7 @@
       }
     },
     {
-      "event_index": 26,
+      "event_index": 28,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1217,7 +1339,7 @@
       }
     },
     {
-      "event_index": 27,
+      "event_index": 29,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1229,7 +1351,7 @@
       }
     },
     {
-      "event_index": 28,
+      "event_index": 30,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1241,7 +1363,7 @@
       }
     },
     {
-      "event_index": 29,
+      "event_index": 31,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1253,7 +1375,7 @@
       }
     },
     {
-      "event_index": 30,
+      "event_index": 32,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1265,7 +1387,7 @@
       }
     },
     {
-      "event_index": 31,
+      "event_index": 33,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1274,10 +1396,18 @@
         "path": "audio/full.wav",
         "start_seconds": 204.22,
         "end_seconds": 216.42000000000002
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "an update can sometimes reset an app preference",
+          "category": "unsupported_causal_speculation",
+          "reason": "No diagnostic established that an update reset this preference.",
+          "remediation": "Present background downloads or loss of Wi-Fi only as possibilities and omit the update claim."
+        }
+      ]
     },
     {
-      "event_index": 32,
+      "event_index": 34,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1289,7 +1419,7 @@
       }
     },
     {
-      "event_index": 33,
+      "event_index": 35,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1301,7 +1431,7 @@
       }
     },
     {
-      "event_index": 34,
+      "event_index": 36,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1313,7 +1443,7 @@
       }
     },
     {
-      "event_index": 35,
+      "event_index": 37,
       "kind": "function_call",
       "call_id": "td-004",
       "source": "transcripts/transcript.txt",
@@ -1334,7 +1464,7 @@
       }
     },
     {
-      "event_index": 37,
+      "event_index": 39,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1346,7 +1476,7 @@
       }
     },
     {
-      "event_index": 38,
+      "event_index": 40,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1358,7 +1488,7 @@
       }
     },
     {
-      "event_index": 39,
+      "event_index": 41,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1370,7 +1500,28 @@
       }
     },
     {
-      "event_index": 40,
+      "event_index": 42,
+      "kind": "function_call",
+      "call_id": "td-004b",
+      "source": "transcripts/transcript.txt",
+      "source_label": "open the scoped current-bill sections after the agent says so",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 265.0,
+      "placement_after_text": "open the current bill now",
+      "placement_before_text": "no overage charge just yet",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          264.5,
+          265.5
+        ]
+      }
+    },
+    {
+      "event_index": 44,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1382,7 +1533,7 @@
       }
     },
     {
-      "event_index": 41,
+      "event_index": 45,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1394,7 +1545,28 @@
       }
     },
     {
-      "event_index": 42,
+      "event_index": 46,
+      "kind": "function_call",
+      "call_id": "td-004c",
+      "source": "transcripts/transcript.txt",
+      "source_label": "retrieve a current eligible offer before quoting it",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 285.0,
+      "placement_after_text": "I need maps and email",
+      "placement_before_text": "I can add five gigabytes",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          284.5,
+          285.5
+        ]
+      }
+    },
+    {
+      "event_index": 48,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1406,7 +1578,7 @@
       }
     },
     {
-      "event_index": 43,
+      "event_index": 49,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1418,7 +1590,7 @@
       }
     },
     {
-      "event_index": 44,
+      "event_index": 50,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1430,7 +1602,7 @@
       }
     },
     {
-      "event_index": 45,
+      "event_index": 51,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1439,10 +1611,18 @@
         "path": "audio/full.wav",
         "start_seconds": 318.38,
         "end_seconds": 331.38
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "the app setting caused it",
+          "category": "causal_overstatement",
+          "reason": "Carrier aggregate usage and the customer screen support a likely source, not definitive causation.",
+          "remediation": "Say the evidence is consistent with StreamBox background downloads."
+        }
+      ]
     },
     {
-      "event_index": 46,
+      "event_index": 52,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1454,7 +1634,7 @@
       }
     },
     {
-      "event_index": 47,
+      "event_index": 53,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1466,7 +1646,7 @@
       }
     },
     {
-      "event_index": 48,
+      "event_index": 54,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1478,7 +1658,7 @@
       }
     },
     {
-      "event_index": 49,
+      "event_index": 55,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1490,7 +1670,7 @@
       }
     },
     {
-      "event_index": 50,
+      "event_index": 56,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1502,7 +1682,7 @@
       }
     },
     {
-      "event_index": 51,
+      "event_index": 57,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1514,7 +1694,7 @@
       }
     },
     {
-      "event_index": 52,
+      "event_index": 58,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1526,7 +1706,7 @@
       }
     },
     {
-      "event_index": 53,
+      "event_index": 59,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1538,7 +1718,7 @@
       }
     },
     {
-      "event_index": 54,
+      "event_index": 60,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1550,7 +1730,7 @@
       }
     },
     {
-      "event_index": 55,
+      "event_index": 61,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1562,7 +1742,7 @@
       }
     },
     {
-      "event_index": 56,
+      "event_index": 62,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1574,7 +1754,7 @@
       }
     },
     {
-      "event_index": 57,
+      "event_index": 63,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1586,7 +1766,7 @@
       }
     },
     {
-      "event_index": 58,
+      "event_index": 64,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1598,7 +1778,7 @@
       }
     },
     {
-      "event_index": 59,
+      "event_index": 65,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1610,7 +1790,7 @@
       }
     },
     {
-      "event_index": 60,
+      "event_index": 66,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1622,7 +1802,7 @@
       }
     },
     {
-      "event_index": 61,
+      "event_index": 67,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1631,10 +1811,18 @@
         "path": "audio/full.wav",
         "start_seconds": 416.8,
         "end_seconds": 422.64
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "CloudPhotos on my end is showing 300 megabytes",
+          "category": "unsupported_backend_fact",
+          "reason": "The carrier result explicitly lacks per-app attribution, and the customer never reported this number.",
+          "remediation": "Ask the customer to read the phone's app-usage screen or re-record/omit the line."
+        }
+      ]
     },
     {
-      "event_index": 62,
+      "event_index": 68,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1646,7 +1834,7 @@
       }
     },
     {
-      "event_index": 63,
+      "event_index": 69,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1658,7 +1846,7 @@
       }
     },
     {
-      "event_index": 64,
+      "event_index": 70,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1670,7 +1858,7 @@
       }
     },
     {
-      "event_index": 65,
+      "event_index": 71,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1682,7 +1870,7 @@
       }
     },
     {
-      "event_index": 66,
+      "event_index": 72,
       "kind": "function_call",
       "call_id": "td-005",
       "source": "transcripts/transcript.txt",
@@ -1703,7 +1891,7 @@
       }
     },
     {
-      "event_index": 68,
+      "event_index": 74,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1715,7 +1903,7 @@
       }
     },
     {
-      "event_index": 69,
+      "event_index": 75,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1727,7 +1915,7 @@
       }
     },
     {
-      "event_index": 70,
+      "event_index": 76,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1739,7 +1927,7 @@
       }
     },
     {
-      "event_index": 71,
+      "event_index": 77,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1751,7 +1939,7 @@
       }
     },
     {
-      "event_index": 72,
+      "event_index": 78,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1763,7 +1951,7 @@
       }
     },
     {
-      "event_index": 73,
+      "event_index": 79,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1775,7 +1963,7 @@
       }
     },
     {
-      "event_index": 74,
+      "event_index": 80,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1787,7 +1975,7 @@
       }
     },
     {
-      "event_index": 75,
+      "event_index": 81,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1799,7 +1987,7 @@
       }
     },
     {
-      "event_index": 76,
+      "event_index": 82,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1808,10 +1996,18 @@
         "path": "audio/full.wav",
         "start_seconds": 508.28,
         "end_seconds": 520.22
-      }
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "confirms that cellular data is working normally",
+          "category": "diagnostic_overclaim",
+          "reason": "One customer-run speed test confirms present connectivity and the observed result only.",
+          "remediation": "Report the observed test result without claiming normal service generally."
+        }
+      ]
     },
     {
-      "event_index": 77,
+      "event_index": 83,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1823,7 +2019,7 @@
       }
     },
     {
-      "event_index": 78,
+      "event_index": 84,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1835,7 +2031,7 @@
       }
     },
     {
-      "event_index": 79,
+      "event_index": 85,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1847,7 +2043,7 @@
       }
     },
     {
-      "event_index": 80,
+      "event_index": 86,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1859,7 +2055,7 @@
       }
     },
     {
-      "event_index": 81,
+      "event_index": 87,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1871,7 +2067,7 @@
       }
     },
     {
-      "event_index": 82,
+      "event_index": 88,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1883,7 +2079,7 @@
       }
     },
     {
-      "event_index": 83,
+      "event_index": 89,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1895,7 +2091,7 @@
       }
     },
     {
-      "event_index": 84,
+      "event_index": 90,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",
@@ -1907,7 +2103,7 @@
       }
     },
     {
-      "event_index": 85,
+      "event_index": 91,
       "kind": "speech",
       "speaker": "Jonathan",
       "role": "assistant",
@@ -1919,7 +2115,7 @@
       }
     },
     {
-      "event_index": 86,
+      "event_index": 92,
       "kind": "speech",
       "speaker": "Ben",
       "role": "user",

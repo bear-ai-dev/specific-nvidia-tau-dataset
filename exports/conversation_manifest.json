@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "conversations": [
     {
       "trajectory_id": 0,
@@ -10,7 +10,6 @@
         "label": "resolved",
         "summary": "Email updated and card-application session issued; no application was submitted and no credit pull was authorized."
       },
-      "annotation": "../conversations/banking-account-email-card-application/conversation.json",
       "structured_transcript": "../conversations/banking-account-email-card-application/transcripts/annotated-transcript.json"
     },
     {
@@ -22,7 +21,6 @@
         "label": "pending_external_qualification",
         "summary": "Referral is approved but purchase qualification remains pending; tracker and reference RF8241 were provided."
       },
-      "annotation": "../conversations/banking-referral-missing-reward/conversation.json",
       "structured_transcript": "../conversations/banking-referral-missing-reward/transcripts/annotated-transcript.json"
     },
     {
@@ -34,7 +32,6 @@
         "label": "resolved_without_dispute",
         "summary": "Transaction identified as an authorized household purchase; the dispute session was not submitted and no account change occurred."
       },
-      "annotation": "../conversations/banking-transaction-dispute-session/conversation.json",
       "structured_transcript": "../conversations/banking-transaction-dispute-session/transcripts/annotated-transcript.json"
     },
     {
@@ -46,7 +43,6 @@
         "label": "resolved",
         "summary": "Temporary restriction removed, the $840 hotel authorization succeeded, pending activity was confirmed, and a travel notice was added."
       },
-      "annotation": "../conversations/banking-declined-card-travel/conversation.json",
       "structured_transcript": "../conversations/banking-declined-card-travel/transcripts/annotated-transcript.json"
     },
     {
@@ -58,7 +54,6 @@
         "label": "pending_pharmacist_check",
         "summary": "One-time lost-medication override approved and claim accepted at a $15 copay; prescription remains in pharmacist verification with SMS alert enabled."
       },
-      "annotation": "../conversations/pharmacy-travel-refill/conversation.json",
       "structured_transcript": "../conversations/pharmacy-travel-refill/transcripts/annotated-transcript.json"
     },
     {
@@ -70,7 +65,6 @@
         "label": "pending_payment_trace",
         "summary": "$40 gift-card refund is available; a $146.42 debit refund trace WST735204 is open for three to five business days; bank-fee reimbursement is not promised."
       },
-      "annotation": "../conversations/retail-refund-bank-fee/conversation.json",
       "structured_transcript": "../conversations/retail-refund-bank-fee/transcripts/annotated-transcript.json"
     },
     {
@@ -82,7 +76,6 @@
         "label": "resolved",
         "summary": "Replacement order ending 8821 created at zero balance for Thursday delivery; return waived; earlier headphones trace remained unchanged."
       },
-      "annotation": "../conversations/retail-damaged-item-replacement/conversation.json",
       "structured_transcript": "../conversations/retail-damaged-item-replacement/transcripts/annotated-transcript.json"
     },
     {
@@ -94,7 +87,6 @@
         "label": "pending_carrier_trace",
         "summary": "Trace WST481662 opened until 6 PM tomorrow; same blue item is in stock; replacement preference recorded but no replacement created."
       },
-      "annotation": "../conversations/retail-missing-package/conversation.json",
       "structured_transcript": "../conversations/retail-missing-package/transcripts/annotated-transcript.json"
     },
     {
@@ -106,7 +98,6 @@
         "label": "resolved",
         "summary": "Reservation B9RT6M was booked PHX-DCA round trip for Linda and Evan with two checked bags, a folding walker, and insurance; $200 was applied from certificate CT-449108 and $1,081.00 to Visa ending 1182."
       },
-      "annotation": "../conversations/airline-family-reservation/conversation.json",
       "structured_transcript": "../conversations/airline-family-reservation/transcripts/annotated-transcript.json"
     },
     {
@@ -118,7 +109,6 @@
         "label": "resolved",
         "summary": "StreamBox background downloads explained 10.9 of 11.8 GB; the customer set it to Wi-Fi only and enabled Data Saver, then authorized 5 GB for $40, leaving 7.2 GB high-speed data and a successful 62/8 speed test."
       },
-      "annotation": "../conversations/telecom-data-usage-cleanup/conversation.json",
       "structured_transcript": "../conversations/telecom-data-usage-cleanup/transcripts/annotated-transcript.json"
     }
   ]
