@@ -31,7 +31,7 @@ Identity verification has a verification identifier, required methods, status, c
 ### Trusted-channel confirmation
 
 A trusted-channel confirmation has a confirmation identifier, purpose, masked destination, delivery status, verification status, and expiry. `start_trusted_channel_confirmation` may initiate the challenge, but initiation or delivery does not prove successful confirmation.
-Use `get_trusted_channel_confirmation` to read the current backend state after the customer completes the approved secure-input step. The secret response itself must never be passed to this tool or retained in the training trajectory.
+Use `get_trusted_channel_confirmation` to read the current backend state after the customer completes the approved secure-input step. The secret response itself must never be passed to this tool.
 
 ### Card account and transactions
 
