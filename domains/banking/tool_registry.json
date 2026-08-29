@@ -370,32 +370,23 @@
       }
     },
     {
-      "name": "search_policy_knowledge",
-      "description": "Search current product or policy knowledge. Search mode is an argument, not a separate business function.",
+      "name": "search_knowledge_base",
+      "description": "Search external, versioned product and process documentation that is not already included in the system policy. The backend selects the retrieval method.",
       "parameters": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "query": {
             "type": "string",
-            "description": "Plain-language policy or product question."
-          },
-          "search_mode": {
-            "type": "string",
-            "description": "Retrieval strategy.",
-            "enum": [
-              "keyword",
-              "semantic"
-            ]
+            "description": "Plain-language question for external product or process documentation."
           },
           "as_of": {
             "type": "string",
-            "description": "Optional date or timestamp for time-sensitive terms."
+            "description": "Optional authoritative date or timestamp for time-sensitive terms."
           }
         },
         "required": [
-          "query",
-          "search_mode"
+          "query"
         ],
         "additionalProperties": false
       },
@@ -405,7 +396,7 @@
         "properties": {
           "record_id": {
             "type": "string",
-            "description": "Versioned knowledge record."
+            "description": "Versioned external knowledge record."
           },
           "effective_at": {
             "type": "string",
