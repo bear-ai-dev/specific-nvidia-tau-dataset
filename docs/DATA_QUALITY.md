@@ -44,6 +44,20 @@ sides can agree up front on acceptance criteria before any larger order.
    85 tool calls are exported; their arguments are schema-valid and the flags
    that concern them live on the surrounding speech.
 
+### Note on `communicate_info` and voice transcripts
+
+`communicate_info` entries are canonical values (the exact IDs, amounts, and
+deadlines from tool results) describing what a correct agent must communicate
+— not verbatim substrings of this call's transcript. Voice transcripts spell
+values out ("WST four eight one- six six two" for WST481662; "six tomorrow
+evening" for 18:00 tomorrow), so a COMMUNICATE checker running on voice
+transcripts must normalize spoken forms before matching. A few entries are
+values the recorded agent failed to say at all (e.g. the airline call's
+$1,281.00 total); they are included deliberately — scoring the recorded call
+against its task should penalize the recorded defect, which is also flagged in
+`grounding_review`. The spoken evidence for every fact that was actually
+voiced sits in the task's `required_information` (verbatim quote + timestamp).
+
 ## Machine checks (run on every revision)
 
 - JSON-Schema validation of all 85 call argument sets against registry

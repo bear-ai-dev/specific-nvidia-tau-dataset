@@ -65,7 +65,8 @@
           ],
           "reason": "damaged",
           "fulfillment_method": "ship_to_address",
-          "fulfillment_location": "home_address_on_order"
+          "fulfillment_location": "home_address_on_order",
+          "customer_authorized": true
         },
         "info": "Create the replacement at the preserved original price after the customer confirms replacement and the fulfillment method.",
         "state_effect": "replacement_order_created"
