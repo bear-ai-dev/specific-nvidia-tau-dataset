@@ -4,7 +4,7 @@
   "derivation": "reconstructed_from_tool_results",
   "as_of": "2026-08-27T13:14:55-04:00",
   "entities": {
-    "order:ending-5624": {
+    "ending-5624": {
       "entity_type": "order",
       "order_reference": "ending-5624",
       "customer": {
@@ -30,7 +30,7 @@
         }
       ]
     },
-    "return:ending-9182": {
+    "ending-9182": {
       "entity_type": "return",
       "return_reference": "ending-9182",
       "order_reference": "ending-5624",
@@ -58,7 +58,7 @@
       "original_card_last4": "2047",
       "initiation_source": "store_register"
     },
-    "refund_trace:WST735204": {
+    "WST735204": {
       "entity_type": "refund_trace_case",
       "case_id": "WST735204",
       "order_reference": "ending-5624",
@@ -66,7 +66,10 @@
       "payment_reference": "card-ending-2047",
       "amount_under_review": 146.42,
       "status": "open",
-      "review_window_business_days": [3, 5],
+      "review_window_business_days": [
+        3,
+        5
+      ],
       "duplicate_refund_blocked": true,
       "return_evidence_attached": true,
       "fee_reimbursement_approved": false,
@@ -85,7 +88,7 @@
         }
       ]
     },
-    "notification:notification-WST735204": {
+    "notification-WST735204": {
       "entity_type": "case_notification",
       "notification_id": "notification-WST735204",
       "case_id": "WST735204",

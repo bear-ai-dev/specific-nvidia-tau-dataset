@@ -10,7 +10,7 @@
       "display_name": "Ethan Patel",
       "verified_email": "e***@northmail.com"
     },
-    "order-7319": {
+    "7319": {
       "entity_type": "order",
       "order_reference": "7319",
       "customer_id": "customer-ethan-patel",
@@ -39,7 +39,7 @@
       "cases": [],
       "notifications": []
     },
-    "product-blue-noise-canceling-headphones": {
+    "blue-noise-canceling-headphones": {
       "entity_type": "product",
       "product_reference": "blue-noise-canceling-headphones",
       "variant": {

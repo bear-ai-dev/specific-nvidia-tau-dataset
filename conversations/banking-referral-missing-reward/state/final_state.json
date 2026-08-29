@@ -4,110 +4,98 @@
   "derivation": "reconstructed_from_tool_results",
   "as_of": "2026-08-28T09:16:18-04:00",
   "entities": {
-    "customers": {
-      "customer-daniel-brooks": {
-        "customer_id": "customer-daniel-brooks",
-        "email": "daniel.brooks17@gmail.com",
-        "masked_email_destination": "d***@gmail.com",
-        "required_verification_methods": [
-          "billing_zip",
-          "birth_month_day"
-        ]
-      }
+    "customer-daniel-brooks": {
+      "customer_id": "customer-daniel-brooks",
+      "email": "daniel.brooks17@gmail.com",
+      "masked_email_destination": "d***@gmail.com",
+      "required_verification_methods": [
+        "billing_zip",
+        "birth_month_day"
+      ]
     },
-    "referrals": {
-      "RF8241": {
-        "referral_id": "RF8241",
-        "referring_customer_id": "customer-daniel-brooks",
-        "invited_at": "August 2",
-        "invited_contact": {
-          "channel": "email",
-          "masked": "a-brooks…"
-        },
-        "application_status": "approved",
-        "qualification_status": "purchase_pending",
-        "offer": "$100 statement credit"
-      }
-    },
-    "knowledge_records": {
-      "referral-qualification-and-posting": {
-        "record_id": "referral-qualification-and-posting",
-        "effective_at": "2026-07-01",
-        "qualifying_purchase_window_days": 90,
-        "posting_window": "up to two billing cycles after qualifying purchase posts",
-        "excluded": [
-          "cash advances",
-          "balance transfers",
-          "fees",
-          "returned purchases"
-        ],
-        "ordinary_retail_purchase": "eligible_if_posted_in_window_and_not_returned",
-        "purchase_pending_meanings": [
-          "qualifying purchase has not posted",
-          "referral match is processing",
-          "reward has not reached posting stage"
-        ]
-      },
-      "referral-RF8241-offer-version": {
-        "record_id": "referral-RF8241-offer-version",
-        "effective_at": "2026-08-02",
-        "offer": "$100 statement credit",
-        "deadline_status": "not_passed",
-        "exact_deadline": "available_in_tracker"
-      },
-      "referral-email-mismatch-and-duplicate-applications": {
-        "record_id": "referral-email-mismatch-and-duplicate-applications",
-        "effective_at": "2026-07-01",
-        "email_mismatch_effect": "may delay automated matching",
-        "approved_status_meaning": "application is associated to the referral",
-        "reapplication_guidance": "do not reapply; use the referred customer's secure account for card questions"
-      }
-    },
-    "identity_verifications": {
-      "verification-daniel-brooks-referral": {
-        "verification_id": "verification-daniel-brooks-referral",
-        "customer_id": "customer-daniel-brooks",
-        "status": "verified",
-        "matched_methods": [
-          "billing_zip",
-          "birth_month_day"
-        ],
-        "verified_at": "2026-08-28T09:09:00-04:00"
-      }
-    },
-    "secure_self_service_sessions": {
-      "session-referral-RF8241": {
-        "session_id": "session-referral-RF8241",
-        "customer_id": "customer-daniel-brooks",
-        "workflow": "referral_status",
-        "resource_id": "RF8241",
-        "status": "issued",
-        "submitted": false,
-        "visible_stages": [
-          "invite",
-          "approval",
-          "qualification",
-          "reward_posting"
-        ],
-        "deliveries": [
-          {
-            "channel": "secure_message",
-            "status": "delivered"
-          }
-        ]
-      }
-    },
-    "notifications": {
-      "notification-referral-RF8241": {
-        "notification_id": "notification-referral-RF8241",
-        "customer_id": "customer-daniel-brooks",
-        "related_resource_id": "session-referral-RF8241",
+    "RF8241": {
+      "referral_id": "RF8241",
+      "referring_customer_id": "customer-daniel-brooks",
+      "invited_at": "August 2",
+      "invited_contact": {
         "channel": "email",
-        "template": "secure_message_waiting",
-        "status": "sent",
-        "masked_destination": "d***@gmail.com",
-        "contains_working_secure_link": false
-      }
+        "masked": "a-brooks…"
+      },
+      "application_status": "approved",
+      "qualification_status": "purchase_pending",
+      "offer": "$100 statement credit"
+    },
+    "referral-qualification-and-posting": {
+      "record_id": "referral-qualification-and-posting",
+      "effective_at": "2026-07-01",
+      "qualifying_purchase_window_days": 90,
+      "posting_window": "up to two billing cycles after qualifying purchase posts",
+      "excluded": [
+        "cash advances",
+        "balance transfers",
+        "fees",
+        "returned purchases"
+      ],
+      "ordinary_retail_purchase": "eligible_if_posted_in_window_and_not_returned",
+      "purchase_pending_meanings": [
+        "qualifying purchase has not posted",
+        "referral match is processing",
+        "reward has not reached posting stage"
+      ]
+    },
+    "referral-RF8241-offer-version": {
+      "record_id": "referral-RF8241-offer-version",
+      "effective_at": "2026-08-02",
+      "offer": "$100 statement credit",
+      "deadline_status": "not_passed",
+      "exact_deadline": "available_in_tracker"
+    },
+    "referral-email-mismatch-and-duplicate-applications": {
+      "record_id": "referral-email-mismatch-and-duplicate-applications",
+      "effective_at": "2026-07-01",
+      "email_mismatch_effect": "may delay automated matching",
+      "approved_status_meaning": "application is associated to the referral",
+      "reapplication_guidance": "do not reapply; use the referred customer's secure account for card questions"
+    },
+    "verification-daniel-brooks-referral": {
+      "verification_id": "verification-daniel-brooks-referral",
+      "customer_id": "customer-daniel-brooks",
+      "status": "verified",
+      "matched_methods": [
+        "billing_zip",
+        "birth_month_day"
+      ],
+      "verified_at": "2026-08-28T09:09:00-04:00"
+    },
+    "session-referral-RF8241": {
+      "session_id": "session-referral-RF8241",
+      "customer_id": "customer-daniel-brooks",
+      "workflow": "referral_status",
+      "resource_id": "RF8241",
+      "status": "issued",
+      "submitted": false,
+      "visible_stages": [
+        "invite",
+        "approval",
+        "qualification",
+        "reward_posting"
+      ],
+      "deliveries": [
+        {
+          "channel": "secure_message",
+          "status": "delivered"
+        }
+      ]
+    },
+    "notification-referral-RF8241": {
+      "notification_id": "notification-referral-RF8241",
+      "customer_id": "customer-daniel-brooks",
+      "related_resource_id": "session-referral-RF8241",
+      "channel": "email",
+      "template": "secure_message_waiting",
+      "status": "sent",
+      "masked_destination": "d***@gmail.com",
+      "contains_working_secure_link": false
     }
   }
 }

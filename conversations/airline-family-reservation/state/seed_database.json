@@ -1,0 +1,245 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "airline-family-reservation",
+  "derivation": "synthetic_complete_backend_state",
+  "note": "Complete records at call start. Fields observed in tool results are verbatim; unobserved fields are synthetic and consistent with the call.",
+  "tables": {
+    "destination_areas": {
+      "washington-dc-national-mall": {
+        "destination_area": "Washington, DC National Mall",
+        "aliases": [
+          "washington dc national mall",
+          "national mall",
+          "washington dc"
+        ],
+        "airport_codes": [
+          "DCA",
+          "IAD",
+          "BWI"
+        ],
+        "recommended_airport_code": "DCA",
+        "recommendation_basis": "closest airport returned for the National Mall destination area and most direct city access among the supported options",
+        "retrieved_at": "2026-08-26T12:31:00-07:00"
+      }
+    },
+    "supported_airports": {
+      "DCA": {
+        "code": "DCA",
+        "name": "Washington Reagan National"
+      },
+      "IAD": {
+        "code": "IAD",
+        "name": "Washington Dulles International"
+      },
+      "BWI": {
+        "code": "BWI",
+        "name": "Baltimore/Washington International"
+      },
+      "PHX": {
+        "code": "PHX",
+        "name": "Phoenix Sky Harbor"
+      }
+    },
+    "flights": {
+      "BM-PHX-DCA-0910": {
+        "flight_id": "BM-PHX-DCA-0910",
+        "origin": {
+          "code": "PHX",
+          "name": "Phoenix Sky Harbor"
+        },
+        "destination": {
+          "code": "DCA",
+          "name": "Washington Reagan National"
+        },
+        "departure_date": "2026-10-14",
+        "departure_time": "09:10",
+        "arrival_time": "16:30",
+        "duration_minutes": 260,
+        "stops": 0,
+        "currency": "USD",
+        "fares_one_way_per_traveler": {
+          "basic_economy": 256.2,
+          "standard_economy": 279.1
+        },
+        "fare_options": [
+          {
+            "fare_class": "basic_economy",
+            "relative_price_rank": "lower",
+            "advance_seat_selection_allowed": false
+          },
+          {
+            "fare_class": "standard_economy",
+            "relative_price_rank": "higher",
+            "advance_seat_selection_allowed": true
+          }
+        ]
+      },
+      "BM-DCA-PHX-1540": {
+        "flight_id": "BM-DCA-PHX-1540",
+        "origin": {
+          "code": "DCA",
+          "name": "Washington Reagan National"
+        },
+        "destination": {
+          "code": "PHX",
+          "name": "Phoenix Sky Harbor"
+        },
+        "departure_date": "2026-10-19",
+        "departure_time": "15:40",
+        "arrival_time": "17:30",
+        "duration_minutes": 290,
+        "stops": 0,
+        "currency": "USD",
+        "fares_one_way_per_traveler": {
+          "basic_economy": 256.2,
+          "standard_economy": 279.1
+        },
+        "fare_options": [
+          {
+            "fare_class": "basic_economy",
+            "relative_price_rank": "lower",
+            "advance_seat_selection_allowed": false
+          },
+          {
+            "fare_class": "standard_economy",
+            "relative_price_rank": "higher",
+            "advance_seat_selection_allowed": true
+          }
+        ]
+      }
+    },
+    "itineraries": {
+      "itinerary-phx-dca-one-stop-best-current": {
+        "itinerary_id": "itinerary-phx-dca-one-stop-best-current",
+        "origin_airport": "PHX",
+        "destination_airport": "DCA",
+        "stops_each_way": 1,
+        "connection_airport": "DFW",
+        "total_savings": 62.0,
+        "currency": "USD",
+        "additional_duration_each_way": "almost three hours",
+        "additional_duration_minutes_each_way": 170
+      }
+    },
+    "flight_searches": {
+      "search-phx-dca-nonstop-oct14-oct19": {
+        "search_id": "search-phx-dca-nonstop-oct14-oct19",
+        "result_kind": "direct",
+        "criteria": {
+          "origin_airport": "PHX",
+          "destination_airport": "DCA",
+          "departure_date": "2026-10-14",
+          "return_date": "2026-10-19",
+          "traveler_count": 2,
+          "max_stops": 0
+        },
+        "outbound_flight_id": "BM-PHX-DCA-0910",
+        "return_flight_id": "BM-DCA-PHX-1540",
+        "availability_checked_at": "2026-08-26T12:31:33-07:00",
+        "expires_at": "quote_required_before_booking"
+      },
+      "search-phx-dca-one-stop-oct14-oct19": {
+        "search_id": "search-phx-dca-one-stop-oct14-oct19",
+        "result_kind": "connection",
+        "criteria": {
+          "origin_airport": "PHX",
+          "destination_airport": "DCA",
+          "departure_date": "2026-10-14",
+          "return_date": "2026-10-19",
+          "traveler_count": 2,
+          "max_stops": 1,
+          "max_layover_minutes": 300
+        },
+        "itinerary_id": "itinerary-phx-dca-one-stop-best-current",
+        "availability_checked_at": "2026-08-26T12:32:17-07:00",
+        "expires_at": "quote_required_before_booking"
+      }
+    },
+    "accessibility_rules": {
+      "folding-walker": {
+        "device_type": "folding walker",
+        "counts_as_paid_bag": false,
+        "fee": 0.0,
+        "currency": "USD",
+        "serial_number_required": false,
+        "labeling_guidance": "label with customer contact information and identify it as a mobility device at the airport",
+        "airport_notification_required": true,
+        "effective_at": "2026-07-01"
+      }
+    },
+    "customers": {
+      "customer-linda-carver": {
+        "customer_id": "customer-linda-carver",
+        "full_name": "Linda Marie Carver",
+        "date_of_birth": "1954-03-08",
+        "email": "linda.carver9@outlook.com",
+        "phone": "+1-602-555-0164",
+        "loyalty_tier": "standard",
+        "payment_methods": [
+          {
+            "token": "visa-on-file-1182",
+            "brand": "Visa",
+            "last4": "1182"
+          }
+        ],
+        "reservations": [],
+        "duplicate_reservation": false,
+        "travel_certificate_input_required": true
+      }
+    },
+    "travel_certificates": {
+      "certificate-CT-449108": {
+        "certificate_id": "certificate-CT-449108",
+        "code": "CT-449108",
+        "masked_code": "CT-***108",
+        "owner_customer_id": "customer-linda-carver",
+        "status": "valid",
+        "available_balance": 200.0,
+        "currency": "USD",
+        "issued_at": "2026-01-15",
+        "expires_at": "2026-12-31"
+      }
+    },
+    "identity_verifications": {},
+    "fare_quotes": {},
+    "reservations": {},
+    "transfers": {},
+    "system": {
+      "pricing_config": {
+        "currency": "USD",
+        "checked_bag_fee_round_trip": 35.0,
+        "mobility_device_fee": 0.0,
+        "trip_insurance_per_traveler": 47.3,
+        "insurance_plan_document": "insurance-plan-document-current"
+      },
+      "quote_issuance": {
+        "queue": [
+          {
+            "quote_id": "quote-phx-dca-standard-2-travelers",
+            "expires_at": "2026-08-27T12:33:00-07:00"
+          }
+        ],
+        "counter": 1,
+        "default_validity": "24h"
+      },
+      "verification_issuance": {
+        "queue": [
+          "verification-linda-carver-booking"
+        ],
+        "counter": 1,
+        "expires_at": "end_of_call"
+      },
+      "reservation_issuance": {
+        "confirmation_codes": [
+          "B9RT6M"
+        ],
+        "counter": 1
+      },
+      "transfer_issuance": {
+        "queue": [],
+        "counter": 1
+      }
+    }
+  },
+  "external_events": []
+}

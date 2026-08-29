@@ -71,6 +71,10 @@ facts against voice transcripts must normalize spoken forms before matching.
   trajectory_ids unique.
 - Audio: sample rate, bit depth, duration, and high-band energy per file
   (`exports/audio_manifest.json`).
+- Environment replay: `python3 env/replay.py` executes every conversation's
+  recorded gold calls against its seed database using the domain's mock tools
+  and verifies each output byte-for-byte, then subset-checks the finished
+  database against `final_state.json`. All 10 conversations pass.
 
 ## Provenance of the annotation layers
 
@@ -102,9 +106,12 @@ facts against voice transcripts must normalize spoken forms before matching.
   booking without spoken total authorization, a session issued without channel
   consent). Each is flagged. Do not train on flagged turns as positive
   examples.
-- **Tools are contracts, not code**: the registries define schemas and
-  lifecycles but no executable simulator; the state snapshots are
-  reconstructed from tool results rather than a seeded database.
+- **Seed databases are synthetic-complete**: fields observed in tool results
+  are verbatim; unobserved fields carry invented values consistent with the
+  call (the data is synthetic, so this is by design, and each file says so).
+  A few mid-call world changes no tool caused (a merchant rerunning a charge)
+  are modeled as scripted `external_events` in the seed rather than being
+  hidden inside tool logic.
 - **Two conversations share a customer story** (retail missing-package and
   damaged-item are consecutive days for the same customer); their tool
   outputs intentionally cross-reference.

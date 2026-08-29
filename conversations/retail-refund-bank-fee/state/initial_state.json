@@ -4,7 +4,7 @@
   "derivation": "reconstructed_from_tool_results",
   "as_of": "2026-08-27T13:05:00-04:00",
   "entities": {
-    "order:ending-5624": {
+    "ending-5624": {
       "entity_type": "order",
       "order_reference": "ending-5624",
       "customer": {
@@ -30,7 +30,7 @@
         }
       ]
     },
-    "return:ending-9182": {
+    "ending-9182": {
       "entity_type": "return",
       "return_reference": "ending-9182",
       "order_reference": "ending-5624",

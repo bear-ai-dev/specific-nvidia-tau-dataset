@@ -1,0 +1,171 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "banking-account-email-card-application",
+  "derivation": "synthetic_complete_backend_state",
+  "note": "Complete records at call start. Fields observed in tool results are verbatim; unobserved fields are synthetic and consistent with the call. The pre-change primary email is synthetic (the customer only described it as an old address he can no longer access). Pending confirmation and session records are pre-provisioned with their ids; the customer's off-channel actions (completing the SMS confirmation, opening the application session) are seeded as backend state flags with the timestamps the outputs carry.",
+  "tables": {
+    "customers": {
+      "SF204771": {
+        "customer_id": "SF204771",
+        "account_id": "SF204771",
+        "full_name": "Johnny Monroe",
+        "lookup_match": "unique",
+        "primary_email": "johnny.monroe.legacy@webmail.example.com",
+        "notification_email": "johnny.monroe.legacy@webmail.example.com",
+        "masked_email_destination": "j***@webmail.example.com",
+        "login_identifier": "jmonroe204771",
+        "billing_zip": "19447",
+        "mobile_last4": "1251",
+        "required_verification_methods": ["billing_zip", "mobile_last4"],
+        "trusted_channels": [
+          {
+            "channel_id": "trusted-mobile-1251",
+            "type": "sms",
+            "masked_destination": "***-***-1251"
+          }
+        ]
+      }
+    },
+    "identity_verifications": {
+      "verification-SF204771-email-change": {
+        "verification_id": "verification-SF204771-email-change",
+        "customer_id": "SF204771",
+        "status": "pending"
+      }
+    },
+    "trusted_channel_confirmations": {
+      "confirmation-email-change-SF204771": {
+        "confirmation_id": "confirmation-email-change-SF204771",
+        "customer_id": "SF204771",
+        "purpose": "email_change",
+        "channel": "sms",
+        "masked_destination": "***-***-1251",
+        "status": "requested",
+        "secure_response_received": true,
+        "verified_at": "2026-08-27T10:48:39-04:00"
+      }
+    },
+    "secure_self_service_sessions": {
+      "session-card-application": {
+        "session_id": "session-card-application",
+        "customer_id": "SF204771",
+        "workflow": "card_application",
+        "resource_id": "summit-journey",
+        "status": "provisioned",
+        "submitted": false,
+        "credit_pull_authorized": false,
+        "save_and_continue": true,
+        "resume_supported": true,
+        "customer_opened": true
+      }
+    },
+    "knowledge_base": {
+      "card-products-travel-current": {
+        "record_id": "card-products-travel-current",
+        "effective_at": "2026-07-01",
+        "queries": [
+          "travel cards with no foreign transaction fee, lounge access, and annual fee below $700"
+        ],
+        "matches": [
+          {
+            "product_id": "summit-journey",
+            "product": "Summit Journey",
+            "annual_fee": 95,
+            "foreign_transaction_fee": false,
+            "lounge_membership": false
+          },
+          {
+            "product_id": "summit-reserve",
+            "product": "Summit Reserve",
+            "annual_fee": 395,
+            "foreign_transaction_fee": false,
+            "lounge_membership": true
+          }
+        ]
+      },
+      "summit-reserve-airline-benefits": {
+        "record_id": "summit-reserve-airline-benefits",
+        "effective_at": "2026-07-01",
+        "queries": [
+          "Does Summit Reserve include a free checked bag?"
+        ],
+        "airline_incidental_credit": true,
+        "automatic_free_checked_bag": false,
+        "airline_specific_rules_apply": true
+      },
+      "summit-welcome-offers-current": {
+        "record_id": "summit-welcome-offers-current",
+        "effective_at": "2026-07-01",
+        "queries": [
+          "Current welcome offers for Summit Journey and Summit Reserve"
+        ],
+        "offers": [
+          {
+            "product_id": "summit-journey",
+            "product": "Summit Journey",
+            "points": 40000,
+            "spend": 3000,
+            "days": 90
+          },
+          {
+            "product_id": "summit-reserve",
+            "product": "Summit Reserve",
+            "points": 70000,
+            "spend": 5000,
+            "days": 90
+          }
+        ],
+        "offers_can_change": true,
+        "approval_guaranteed": false
+      },
+      "card-application-decision-notice": {
+        "record_id": "card-application-decision-notice",
+        "effective_at": "2026-07-01",
+        "queries": [
+          "What information appears in an adverse-action decision notice and can phone agents override underwriting?"
+        ],
+        "decision_notice": {
+          "explains_factors": true,
+          "may_include_reconsideration_contact": true
+        },
+        "phone_agent_can_override_underwriting": false
+      },
+      "card-application-housing-payment-field": {
+        "record_id": "card-application-housing-payment-field",
+        "effective_at": "2026-07-01",
+        "queries": [
+          "How should an applicant interpret the monthly housing payment field?"
+        ],
+        "guidance": "Enter the amount the applicant is personally responsible for each month and follow the field instructions."
+      },
+      "card-application-income-field": {
+        "record_id": "card-application-income-field",
+        "effective_at": "2026-07-01",
+        "queries": [
+          "How should salary and freelance income be reported in the card application?"
+        ],
+        "guidance": "Report income the applicant can reasonably access and verify, consistent with the application disclosure."
+      },
+      "profile-email-login-and-notice-routing": {
+        "record_id": "profile-email-login-and-notice-routing",
+        "effective_at": "2026-07-01",
+        "queries": [
+          "After a profile email change, what happens to the login identifier and future notice routing?"
+        ],
+        "login_identifier_may_remain_same": true,
+        "future_notices_use_primary_email": true,
+        "unexpected_prompt_guidance": "Use the secure banking site rather than an unexpected message link."
+      }
+    },
+    "service_state": {
+      "clock": {
+        "offset_seconds": 91,
+        "timezone": "America/New_York"
+      },
+      "transfer_service": {
+        "next_transfer_id": "transfer-SF204771-0001"
+      }
+    }
+  },
+  "external_events": []
+}

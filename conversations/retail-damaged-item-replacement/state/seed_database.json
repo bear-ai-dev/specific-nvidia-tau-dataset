@@ -1,0 +1,185 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "retail-damaged-item-replacement",
+  "derivation": "synthetic_complete_backend_state",
+  "note": "Complete records at call start. Fields observed in tool results are verbatim; unobserved fields are synthetic and consistent with the call. Same customer as retail-missing-package, one day later: the WST481662 delivery-trace case from order ending-7319 is already present, still open, with its deadline now reading '18:00 today'.",
+  "tables": {
+    "customers": {
+      "customer-ethan-patel": {
+        "entity_type": "customer",
+        "customer_id": "customer-ethan-patel",
+        "display_name": "Ethan Patel",
+        "email": "ethan.patel@northmail.com",
+        "verified_email": "e***@northmail.com",
+        "phone_masked": "***-***-4412",
+        "recent_orders": ["ending-4086", "ending-7319"],
+        "recent_orders__view": [
+          {
+            "order_reference": "ending-7319",
+            "item": "blue noise-canceling headphones",
+            "open_case_id": "WST481662"
+          }
+        ]
+      }
+    },
+    "orders": {
+      "ending-4086": {
+        "entity_type": "order",
+        "order_reference": "ending-4086",
+        "customer_id": "customer-ethan-patel",
+        "customer": {
+          "customer_id": "customer-ethan-patel",
+          "display_name": "Ethan Patel",
+          "verified_email": "e***@northmail.com"
+        },
+        "items": [
+          {
+            "item_reference": "coffee-maker-matte-black-12-cup",
+            "name": "12-cup coffee maker",
+            "variant": "matte black"
+          }
+        ],
+        "eligible_resolutions": [
+          {
+            "type": "replacement",
+            "preserves_original_price": true,
+            "return_required": false,
+            "photo_required": false,
+            "optional_photo_upload_available": true,
+            "photo_upload_blocks_fulfillment": false,
+            "estimated_delivery": "Thursday end of day",
+            "default_fulfillment": "home_address_on_order"
+          },
+          {
+            "type": "refund"
+          }
+        ],
+        "eligible_resolutions__views": [
+          null,
+          [
+            {
+              "type": "replacement",
+              "preserves_original_price": true,
+              "return_required": false,
+              "photo_required": false,
+              "optional_photo_upload_available": true,
+              "photo_upload_blocks_fulfillment": false,
+              "estimated_delivery": "Thursday end of day",
+              "default_fulfillment": "home_address_on_order"
+            },
+            {
+              "type": "refund"
+            }
+          ]
+        ],
+        "fulfillment": {
+          "status": "delivered",
+          "latest_scan": {
+            "time": "09:41 today",
+            "location": "front door",
+            "photo": null
+          }
+        },
+        "payments": [
+          {
+            "type": "credit",
+            "amount": 84.53,
+            "original_card_last4": "5580"
+          }
+        ],
+        "cases": [],
+        "notifications": []
+      },
+      "ending-7319": {
+        "entity_type": "order",
+        "order_reference": "ending-7319",
+        "customer_id": "customer-ethan-patel",
+        "items": [
+          {
+            "name": "blue noise-canceling headphones"
+          }
+        ],
+        "open_case_id": "WST481662",
+        "cases": ["WST481662"],
+        "notifications": ["notification-WST481662"]
+      }
+    },
+    "products": {
+      "coffee-maker-matte-black-12-cup": {
+        "entity_type": "product",
+        "product_reference": "coffee-maker-matte-black-12-cup",
+        "name": "12-cup coffee maker",
+        "variant": {
+          "name": "12-cup coffee maker",
+          "color": "matte black"
+        },
+        "inventory": {
+          "in_stock": true
+        }
+      }
+    },
+    "cases": {
+      "WST481662": {
+        "entity_type": "support_case",
+        "case_id": "WST481662",
+        "order_reference": "ending-7319",
+        "type": "delivery_trace",
+        "item": "blue noise-canceling headphones",
+        "status": "open",
+        "carrier_response": "none",
+        "deadline": "18:00 today",
+        "preferences": {
+          "pickup": "West 23rd Street pickup counter"
+        }
+      }
+    },
+    "notifications": {
+      "notification-WST481662": {
+        "entity_type": "case_notification",
+        "notification_id": "notification-WST481662",
+        "case_id": "WST481662",
+        "order_reference": "ending-7319",
+        "channel": "email",
+        "template": "delivery_trace_confirmation",
+        "type": "delivery_trace_confirmation",
+        "masked_destination": "e***@northmail.com",
+        "status": "delivered"
+      }
+    },
+    "pending_replacements": {
+      "ending-4086": {
+        "replacement_order_reference": "ending-8821",
+        "status": "created",
+        "balance_due": 0,
+        "currency": "USD",
+        "fulfillment": {
+          "method": "ship_to_address",
+          "location": "home_address_on_order",
+          "estimated_delivery": "Thursday end of day",
+          "estimate_guaranteed": false,
+          "distribution_center": "Edison",
+          "distribution_center_status": "provisional_until_shipped",
+          "tracking_notifications": true
+        },
+        "return_disposition": {
+          "return_required": false,
+          "disposition": "discard_or_recycle",
+          "safety": "do_not_power_on"
+        },
+        "notification": {
+          "status": "queued",
+          "optional_photo_link": true,
+          "photo_link_section": "later_in_email"
+        },
+        "notification_record": {
+          "type": "replacement_confirmation",
+          "status": "sent",
+          "subject_prefix": "Your Westline replacement",
+          "optional_photo_link": true,
+          "photo_link_section": "later_in_email"
+        }
+      }
+    }
+  },
+  "external_events": []
+}

@@ -1,0 +1,201 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "retail-refund-bank-fee",
+  "derivation": "synthetic_complete_backend_state",
+  "note": "Complete records at call start. Fields observed in tool results are verbatim; unobserved fields are synthetic and consistent with the call.",
+  "tables": {
+    "customers": {
+      "customer-teddy-torrez": {
+        "entity_type": "customer",
+        "customer_id": "customer-teddy-torrez",
+        "display_name": "Teddy Torrez",
+        "email": "teddy.torrez@harbormail.com",
+        "verified_email": "t***@harbormail.com",
+        "phone_masked": "***-***-8305",
+        "recent_orders": ["ending-5624"],
+        "recent_orders__view": [
+          {
+            "order_reference": "ending-5624",
+            "item": "black standing desk converter"
+          }
+        ]
+      }
+    },
+    "orders": {
+      "ending-5624": {
+        "entity_type": "order",
+        "order_reference": "ending-5624",
+        "customer_id": "customer-teddy-torrez",
+        "customer": {
+          "display_name": "Teddy Torrez",
+          "verified_email": "t***@harbormail.com"
+        },
+        "items": [
+          {
+            "item_reference": "standing-desk-converter-black",
+            "name": "black standing desk converter",
+            "total_after_tax": 186.42
+          }
+        ],
+        "items__view": [
+          {
+            "item_reference": "standing-desk-converter-black",
+            "name": "black standing desk converter",
+            "total_after_tax": 186.42,
+            "currency": "USD"
+          }
+        ],
+        "payments": [
+          {
+            "type": "gift_card",
+            "amount": 40
+          },
+          {
+            "type": "debit",
+            "amount": 146.42,
+            "original_card_last4": "2047"
+          }
+        ],
+        "payments__views": [
+          [
+            {
+              "type": "gift_card",
+              "amount": 40,
+              "currency": "USD"
+            },
+            {
+              "type": "debit",
+              "amount": 146.42,
+              "currency": "USD"
+            }
+          ],
+          [
+            {
+              "type": "gift_card",
+              "amount": 40,
+              "currency": "USD"
+            },
+            {
+              "type": "debit",
+              "amount": 146.42,
+              "currency": "USD",
+              "original_card_last4": "2047"
+            }
+          ],
+          null
+        ],
+        "refunds__views": [
+          [
+            {
+              "return_reference": "ending-9182",
+              "return_status": "complete",
+              "accepted_at": "Eastwood store",
+              "accepted_age_days": 9,
+              "inventory_disposition": "restocked"
+            }
+          ],
+          [
+            {
+              "tender_type": "gift_card",
+              "amount": 40,
+              "currency": "USD",
+              "status": "issued_available"
+            },
+            {
+              "tender_type": "debit",
+              "amount": 146.42,
+              "currency": "USD",
+              "status": "submitted_no_settlement_confirmation",
+              "original_card_last4": "2047",
+              "initiation_source": "store_register"
+            }
+          ],
+          [
+            {
+              "tender_type": "gift_card",
+              "amount": 40,
+              "available_balance": 40,
+              "currency": "USD",
+              "status": "active",
+              "used": false,
+              "delivery": "digital_gift_card_number_in_email"
+            }
+          ]
+        ],
+        "fulfillment": {
+          "status": "delivered",
+          "latest_scan": {
+            "time": "12 days ago",
+            "location": "front door",
+            "photo": null
+          }
+        },
+        "cases": [],
+        "notifications": []
+      }
+    },
+    "products": {
+      "standing-desk-converter-black": {
+        "entity_type": "product",
+        "product_reference": "standing-desk-converter-black",
+        "name": "standing desk converter",
+        "variant": {
+          "name": "standing desk converter",
+          "color": "black"
+        },
+        "inventory": {
+          "in_stock": true
+        }
+      }
+    },
+    "returns": {
+      "ending-9182": {
+        "entity_type": "return",
+        "return_reference": "ending-9182",
+        "order_reference": "ending-5624",
+        "return_status": "complete",
+        "accepted_at": "Eastwood store",
+        "accepted_age_days": 9,
+        "inventory_disposition": "restocked"
+      }
+    },
+    "refunds": {
+      "refund:ending-5624:gift_card": {
+        "entity_type": "refund",
+        "order_reference": "ending-5624",
+        "tender_type": "gift_card",
+        "amount": 40,
+        "currency": "USD",
+        "status": "issued_available",
+        "available_balance": 40,
+        "used": false,
+        "delivery": "digital_gift_card_number_in_email"
+      },
+      "refund:ending-5624:debit": {
+        "entity_type": "refund",
+        "order_reference": "ending-5624",
+        "tender_type": "debit",
+        "amount": 146.42,
+        "currency": "USD",
+        "status": "submitted_no_settlement_confirmation",
+        "original_card_last4": "2047",
+        "initiation_source": "store_register"
+      }
+    },
+    "cases": {},
+    "notifications": {},
+    "pending_cases": {
+      "refund_trace:ending-5624": {
+        "case_id": "WST735204",
+        "status": "open",
+        "review_window_business_days": [3, 5],
+        "duplicate_refund_blocked": true,
+        "return_evidence_attached": true,
+        "fee_reimbursement_approved": false,
+        "notification_final_status": "sent",
+        "note_source_ids": ["rr-005", "rr-007"]
+      }
+    }
+  },
+  "external_events": []
+}

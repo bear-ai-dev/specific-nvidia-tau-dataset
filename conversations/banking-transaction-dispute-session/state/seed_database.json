@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "banking-transaction-dispute-session",
+  "derivation": "synthetic_complete_backend_state",
+  "note": "Complete records at call start. Fields observed in tool results are verbatim; unobserved fields are synthetic and consistent with the call. The dispute review session is pre-provisioned; claim_id stays null because the customer reviews but never submits. The customer's opening of the session between bd-005 and bd-006 is seeded backend state (customer_opened), not a tool effect.",
+  "tables": {
+    "customers": {
+      "customer-justin-porter": {
+        "customer_id": "customer-justin-porter",
+        "full_name": "Justin Porter",
+        "lookup_match": "unique",
+        "email": "jporter92@email.com",
+        "masked_email_destination": "j***@email.com",
+        "billing_zip": "64114",
+        "birth_month_day": "February 19",
+        "required_verification_methods": ["billing_zip", "birth_month_day"]
+      }
+    },
+    "identity_verifications": {
+      "verification-justin-porter-dispute": {
+        "verification_id": "verification-justin-porter-dispute",
+        "customer_id": "customer-justin-porter",
+        "status": "pending"
+      }
+    },
+    "transactions": {
+      "transaction-ending-8472": {
+        "transaction_id": "transaction-ending-8472",
+        "customer_id": "customer-justin-porter",
+        "card_last4": "9102",
+        "amount": 243.18,
+        "descriptor": "MRKTPLC*8472",
+        "posted_date": "2026-02-23",
+        "category": "online marketplace",
+        "preceded_by_authorization_amount": 1.0
+      }
+    },
+    "secure_self_service_sessions": {
+      "session-dispute-8472": {
+        "session_id": "session-dispute-8472",
+        "customer_id": "customer-justin-porter",
+        "workflow": "transaction_dispute",
+        "resource_id": "transaction-ending-8472",
+        "status": "provisioned",
+        "submitted": false,
+        "claim_id": null,
+        "access_location": "online_banking",
+        "display_label": "Review transaction ending 8472",
+        "allowed_customer_actions": ["review", "submit", "close_page"],
+        "resume_supported": true,
+        "customer_opened": true
+      }
+    },
+    "knowledge_base": {
+      "unauthorized-transaction-procedure": {
+        "record_id": "unauthorized-transaction-procedure",
+        "effective_at": "2026-01-15",
+        "queries": [
+          "unauthorized transaction procedure for unfamiliar marketplace descriptor and possible household use"
+        ],
+        "steps": ["review household use", "review saved wallets", "submit only if unauthorized"],
+        "posted_charge_can_be_erased": false,
+        "provisional_credit_guaranteed": false,
+        "investigation_timing_basis": "transaction_type",
+        "post_submit_outputs": ["claim reference", "written timing disclosures in secure messages"]
+      },
+      "unused-dispute-session-rights": {
+        "record_id": "unused-dispute-session-rights",
+        "effective_at": "2026-01-15",
+        "queries": [
+          "Does an unused unsubmitted dispute session affect future dispute rights?"
+        ],
+        "unused_unsubmitted_session_waives_future_rights": false,
+        "guidance": "Contact the bank promptly if a genuinely unauthorized transaction is later discovered."
+      }
+    },
+    "service_state": {
+      "clock": {
+        "offset_seconds": 0,
+        "timezone": "America/New_York"
+      },
+      "transfer_service": {
+        "next_transfer_id": "transfer-justin-porter-0001"
+      }
+    }
+  },
+  "external_events": []
+}

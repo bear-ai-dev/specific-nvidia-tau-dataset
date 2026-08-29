@@ -1,0 +1,182 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "telecom-data-usage-cleanup",
+  "derivation": "synthetic_complete_backend_state",
+  "note": "Complete records at call start. Fields observed in tool results are verbatim; unobserved fields are synthetic and consistent with the call. The customer_devices table holds self-reported phone state (provenance self_reported), not carrier telemetry; no backend tool reads it.",
+  "tables": {
+    "customers": {
+      "customer-benjamin-reed": {
+        "entity_type": "customer",
+        "customer_id": "customer-benjamin-reed",
+        "full_name": "Benjamin Reed",
+        "mobile_number": "404-555-0176",
+        "date_of_birth": "November 22, 1991",
+        "email": "benjamin.reed@example.com",
+        "address": "1184 Juniper Hollow Ln, Atlanta, GA 30306",
+        "account_status": "active",
+        "customer_since": "2023-04-12T00:00:00-05:00",
+        "match": "unique",
+        "required_verification_factors": [
+          "mobile_number",
+          "full_name",
+          "date_of_birth"
+        ],
+        "line_ids": [
+          "line-4045550176"
+        ]
+      }
+    },
+    "verifications": {
+      "verification-benjamin-reed-support": {
+        "entity_type": "identity_verification",
+        "verification_id": "verification-benjamin-reed-support",
+        "customer_id": "customer-benjamin-reed",
+        "status": "pending",
+        "matched_factors": [],
+        "access_scope": [
+          "lines",
+          "usage",
+          "billing"
+        ],
+        "verified_at": "2026-08-27T19:31:08-05:00"
+      }
+    },
+    "lines": {
+      "line-4045550176": {
+        "entity_type": "mobile_line",
+        "line_id": "line-4045550176",
+        "customer_id": "customer-benjamin-reed",
+        "mobile_number": "404-555-0176",
+        "masked_mobile_number": "***-***-0176",
+        "status": "active",
+        "billing_cycle_id": "cycle-current-benjamin",
+        "device_id": "device-pixel-8",
+        "plan_id": "unlimited-start",
+        "high_speed_allowance_gigabytes": 30.0,
+        "remaining_high_speed_gigabytes": 2.2,
+        "usage_last_24_hours": {
+          "measurement_source": "carrier_metering",
+          "window_start": "2026-08-27T00:00:00-05:00",
+          "window_end": "2026-08-27T04:00:00-05:00",
+          "used_gigabytes": 11.8,
+          "app_attribution_available": false
+        },
+        "usage_current_billing_cycle": {
+          "measurement_source": "carrier_metering",
+          "window_start": "2026-08-06T00:00:00-05:00",
+          "window_end": "2026-08-27T19:30:00-05:00",
+          "used_gigabytes": 27.8,
+          "app_attribution_available": false
+        },
+        "usage_as_of_schedule": [
+          "2026-08-27T19:31:45-05:00"
+        ],
+        "offers_as_of_schedule": [
+          "2026-08-27T19:34:46-05:00"
+        ],
+        "next_addon_transaction_id": "addon-transaction-benjamin-5gb",
+        "next_addon_effective_at": "2026-08-27T19:37:35-05:00"
+      }
+    },
+    "devices": {
+      "device-pixel-8": {
+        "entity_type": "device",
+        "device_id": "device-pixel-8",
+        "model": "Pixel 8",
+        "line_id": "line-4045550176",
+        "provisioning_status": "active",
+        "imei_last_4": "4821",
+        "activated_at": "2025-10-18T00:00:00-05:00"
+      }
+    },
+    "plans": {
+      "unlimited-start": {
+        "entity_type": "plan",
+        "plan_id": "unlimited-start",
+        "name": "Unlimited Start",
+        "line_id": "line-4045550176",
+        "monthly_price": 65.0,
+        "currency": "USD",
+        "after_high_speed_allowance": "speed_reduced"
+      }
+    },
+    "bills": {
+      "bill-current-benjamin": {
+        "entity_type": "bill",
+        "bill_id": "bill-current-benjamin",
+        "customer_id": "customer-benjamin-reed",
+        "billing_cycle_id": "cycle-current-benjamin",
+        "status": "current",
+        "cycle_start": "2026-08-06T00:00:00-05:00",
+        "cycle_end": "2026-09-05T00:00:00-05:00",
+        "cycle_resets_in_days": 9,
+        "overage_charge": 0.0,
+        "currency": "USD",
+        "after_high_speed_allowance": "speed_reduced",
+        "as_of_schedule": [
+          "2026-08-27T19:34:10-05:00",
+          "2026-08-27T19:34:22-05:00"
+        ]
+      }
+    },
+    "data_addon_offers": {
+      "offer-5gb-40-next-bill": {
+        "entity_type": "data_addon_offer",
+        "offer_id": "offer-5gb-40-next-bill",
+        "line_id": "line-4045550176",
+        "eligibility_status": "eligible",
+        "data_gigabytes": 5.0,
+        "price": 40.0,
+        "currency": "USD",
+        "billing_timing": "next_bill",
+        "effective_timing": "immediate",
+        "expires_at": "2026-08-28T19:35:00-05:00"
+      }
+    },
+    "addon_transactions": {},
+    "customer_devices": {
+      "customer_device": {
+        "entity_type": "customer_device",
+        "provenance": "self_reported",
+        "note": "Customer-observed phone state reported aloud on the call; not carrier telemetry.",
+        "model": "Pixel 8",
+        "streambox_download_over_cellular": true,
+        "data_saver_enabled": false,
+        "unrestricted_apps": [
+          "StreamBox",
+          "CloudPhotos",
+          "work email"
+        ],
+        "streambox_background_usage_gigabytes_shown": 10.9
+      }
+    },
+    "counters": {
+      "transfer": {
+        "next_transfer_id": "transfer-telecom-0001"
+      }
+    }
+  },
+  "external_events": [
+    {
+      "before_call_id": "td-005",
+      "note": "Customer-side phone changes made aloud during the call (StreamBox cellular download off, Wi-Fi only, Data Saver on, unrestricted apps trimmed) plus the post-cleanup speed test and StreamBox warning the customer reads back near the end of the call. Self-reported device state, not caused by any backend tool; attached before the final tool call because the harness applies events only before a call.",
+      "patch": {
+        "customer_devices": {
+          "customer_device": {
+            "streambox_download_over_cellular": false,
+            "streambox_wifi_only": true,
+            "data_saver_enabled": true,
+            "unrestricted_apps": [
+              "work email"
+            ],
+            "streambox_cellular_warning": "downloads paused until Wi-Fi",
+            "speed_test_result": {
+              "download_mbps": 62,
+              "upload_mbps": 8
+            }
+          }
+        }
+      }
+    }
+  ]
+}

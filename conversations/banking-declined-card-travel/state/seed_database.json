@@ -1,0 +1,126 @@
+{
+  "schema_version": "0.1.0",
+  "conversation_id": "banking-declined-card-travel",
+  "derivation": "synthetic_complete_backend_state",
+  "note": "Complete records at call start. Fields observed in tool results are verbatim; unobserved fields are synthetic and consistent with the call. The single external event models the desk clerk rerunning the $840 hotel charge between the bt-004 and bt-007 account reads, after the travel restriction was removed by bt-005: the authorization appears and available credit drops by the authorized amount. Decline records store the full review detail (status, location, reason); the account read renders summary or review detail depending on the sections requested.",
+  "tables": {
+    "customers": {
+      "customer-colin-reeves": {
+        "entity_type": "customer",
+        "customer_id": "customer-colin-reeves",
+        "full_name": "Colin Reeves",
+        "lookup_match": "unique",
+        "primary_email": "colin.reeves.dc@webmail.example.com",
+        "billing_zip": "20005",
+        "card_last4": "6148",
+        "caller_phone_match": true,
+        "required_verification_methods": ["caller_phone", "billing_zip", "card_last4"]
+      }
+    },
+    "identity_verifications": {
+      "verification-colin-reeves-card": {
+        "entity_type": "identity_verification",
+        "verification_id": "verification-colin-reeves-card",
+        "customer_id": "customer-colin-reeves",
+        "status": "pending"
+      }
+    },
+    "card_accounts": {
+      "card-6148": {
+        "entity_type": "card_account",
+        "customer_id": "customer-colin-reeves",
+        "card_last4": "6148",
+        "status": "temporarily_restricted",
+        "available_credit": 912,
+        "reported_lost": false,
+        "payment_status": "current",
+        "declines": [
+          {
+            "transaction_id": "hotel-attempt-1",
+            "merchant": "Harbor View Hotel",
+            "merchant_location": "Portland, Maine",
+            "amount": 840,
+            "status": "declined",
+            "reason": "travel_review"
+          },
+          {
+            "transaction_id": "hotel-attempt-2",
+            "merchant": "Harbor View Hotel",
+            "merchant_location": "Portland, Maine",
+            "amount": 840,
+            "status": "declined",
+            "reason": "prior_review_open"
+          }
+        ],
+        "authorizations": [
+          {
+            "transaction_id": "logan-breakfast-32",
+            "merchant": "Logan Airport",
+            "amount": 32,
+            "status": "approved",
+            "occurred_at": "2026-08-28T08:05:00-04:00"
+          }
+        ],
+        "restrictions": [
+          {
+            "restriction_id": "temporary-travel-review",
+            "status": "open",
+            "linked_transaction_ids": ["hotel-attempt-1", "hotel-attempt-2", "logan-breakfast-32"]
+          }
+        ],
+        "travel_notices": [],
+        "next_travel_notice_id": "travel-notice-colin-portland"
+      }
+    },
+    "knowledge_base": {
+      "hotel-authorization-holds": {
+        "entity_type": "knowledge_record",
+        "record_id": "hotel-authorization-holds",
+        "effective_at": "2026-07-01",
+        "queries": [
+          "Hotel incidental authorization holds, available-credit constraints, authorization guarantees, and pending duration"
+        ],
+        "incidental_holds_may_exceed_room_total": true,
+        "available_credit_must_cover_full_authorization": true,
+        "authorization_guaranteed": false,
+        "pending_duration": "may remain pending for a few days after checkout depending on merchant finalization"
+      }
+    },
+    "service_state": {
+      "clock": {
+        "offset_seconds": 0,
+        "timezone": "America/New_York"
+      },
+      "transfer_service": {
+        "next_transfer_id": "transfer-colin-reeves-0001"
+      }
+    }
+  },
+  "external_events": [
+    {
+      "before_call_id": "bt-007",
+      "patch": {
+        "card_accounts": {
+          "card-6148": {
+            "authorizations": [
+              {
+                "transaction_id": "logan-breakfast-32",
+                "merchant": "Logan Airport",
+                "amount": 32,
+                "status": "approved",
+                "occurred_at": "2026-08-28T08:05:00-04:00"
+              },
+              {
+                "transaction_id": "hotel-authorization-840",
+                "merchant": "Harbor View Hotel",
+                "amount": 840,
+                "status": "approved"
+              }
+            ],
+            "available_credit": 72
+          }
+        }
+      }
+    }
+  ]
+}

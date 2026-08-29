@@ -60,6 +60,15 @@ is the point.
 - `conversations/<id>/state/initial_state.json` / `final_state.json`:
   before/after backend state reconstructed strictly from tool results (no
   invented fields; derivation is stated in the file).
+- `conversations/<id>/state/seed_database.json`: the complete backend records
+  at call start — every field observed in tool results verbatim, plus
+  synthetic-but-consistent values for unobserved fields — with a minimal
+  `external_events` list for mid-call world changes no tool caused.
+- `env/<domain>/tools.py`: executable, deterministic mock implementations of
+  every registry tool, operating on the seed database. `env/replay.py`
+  replays each conversation's recorded gold calls against its seed and
+  verifies every tool output byte-for-byte plus the final state:
+  `python3 env/replay.py` passes on all 10 conversations.
 - `exports/nemotron_tool_calls.jsonl`: the NVIDIA training view — one
   prefix/expected-action row per agent tool call (85 rows).
 - `exports/nemotron_message_actions.jsonl`: same row schema with
@@ -102,5 +111,6 @@ environment labels have not been human-annotated and are marked as such.
 This package follows the useful structural ideas from Tau (domain policy and
 typed tools) and NVIDIA Nemotron (policy + tools + conversation context ->
 expected next action). It does not claim that these custom-domain functions
-are literal Tau tools — the registries are declarative contracts, not
-executable implementations.
+are literal Tau tools, but each domain's tools are executable: `env/` holds
+deterministic reference implementations over per-conversation seed databases,
+verified by replaying every recorded call.
