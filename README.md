@@ -6,8 +6,8 @@ intentionally described as **Tau-style custom-domain data**, not as an exact
 export of Tau's public registries.
 
 The snapshot contains 10 conversations, 30 synchronized audio tracks, 5 domain
-registries, 10 tau2-style task files, 85 structured agent tool calls, 10
-annotated conversation transcripts, and 341 NVIDIA-schema next-action rows
+registries, 85 structured agent tool calls, 10 annotated conversation
+transcripts, and 341 NVIDIA-schema next-action rows
 (85 tool-call targets plus 256 clean assistant-message targets). Every
 conversation includes full-call audio and isolated speaker tracks as 48 kHz,
 24-bit, mono PCM WAV files; measured per-file bandwidth is published in
@@ -37,11 +37,6 @@ is the point.
 - `domains/<domain>/policy.md`: operational policy used for the annotations;
   byte-identical to the `<policy>` block embedded in each conversation's
   system message.
-- `tasks/<conversation_id>.json`: tau2-bench-style task file per conversation —
-  user scenario, gold `actions` (name + typed arguments per call),
-  `communicate_info` (verbatim substrings the agent must say),
-  `nl_assertions`, `reward_basis`, and `required_information` (facts collected
-  or read back, with verbatim quotes and audio timestamps).
 - `conversations/<id>/audio/full.wav`: synchronized full-call audio.
 - `conversations/<id>/audio/speaker-1.wav` / `speaker-2.wav`: synchronized
   isolated speaker tracks.
@@ -71,7 +66,7 @@ is the point.
   `expected_action.type: "message"` for every assistant speech turn that is
   free of grounding_review flags (256 rows; 72 flagged turns excluded).
 - `exports/conversation_manifest.json`: index — goal, outcome, scenario_time,
-  per-conversation row counts, and pointers to task/state/turn-taking files.
+  per-conversation row counts, and pointers to state/turn-taking files.
 - `exports/audio_manifest.json`: per-file sample rate, bit depth, duration,
   and measured spectral energy above 10/16/20 kHz.
 
@@ -104,9 +99,8 @@ environment labels have not been human-annotated and are marked as such.
 
 ## Compatibility statement
 
-This package follows the useful structural ideas from Tau (domain policy,
-typed tools, and task files with actions/communicate_info/reward_basis) and
-NVIDIA Nemotron (policy + tools + conversation context -> expected next
-action). It does not claim that these custom-domain functions are literal Tau
-tools, and the task files are Tau2-style rather than drop-in Tau2 tasks — the
-tools are declarative contracts, not executable implementations.
+This package follows the useful structural ideas from Tau (domain policy and
+typed tools) and NVIDIA Nemotron (policy + tools + conversation context ->
+expected next action). It does not claim that these custom-domain functions
+are literal Tau tools — the registries are declarative contracts, not
+executable implementations.

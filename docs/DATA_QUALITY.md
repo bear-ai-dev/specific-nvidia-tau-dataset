@@ -44,19 +44,12 @@ sides can agree up front on acceptance criteria before any larger order.
    85 tool calls are exported; their arguments are schema-valid and the flags
    that concern them live on the surrounding speech.
 
-### Note on `communicate_info` and voice transcripts
+### Note on spoken values in voice transcripts
 
-`communicate_info` entries are canonical values (the exact IDs, amounts, and
-deadlines from tool results) describing what a correct agent must communicate
-— not verbatim substrings of this call's transcript. Voice transcripts spell
-values out ("WST four eight one- six six two" for WST481662; "six tomorrow
-evening" for 18:00 tomorrow), so a COMMUNICATE checker running on voice
-transcripts must normalize spoken forms before matching. A few entries are
-values the recorded agent failed to say at all (e.g. the airline call's
-$1,281.00 total); they are included deliberately — scoring the recorded call
-against its task should penalize the recorded defect, which is also flagged in
-`grounding_review`. The spoken evidence for every fact that was actually
-voiced sits in the task's `required_information` (verbatim quote + timestamp).
+Canonical values from tool results (IDs, amounts, deadlines) appear in voice
+transcripts spelled out ("WST four eight one- six six two" for WST481662;
+"six tomorrow evening" for 18:00 tomorrow). Any checker that matches required
+facts against voice transcripts must normalize spoken forms before matching.
 
 ## Machine checks (run on every revision)
 
@@ -107,12 +100,11 @@ voiced sits in the task's `required_information` (verbatim quote + timestamp).
 - **Behavioral exceptions are retained by design**: several conversations
   contain policy violations by the enacted agent (an OTP read-back request, a
   booking without spoken total authorization, a session issued without channel
-  consent). Each is flagged; task files still assert the correct behavior, so
-  scoring against the task will correctly penalize the recorded defect. Do
-  not train on flagged turns as positive examples.
+  consent). Each is flagged. Do not train on flagged turns as positive
+  examples.
 - **Tools are contracts, not code**: the registries define schemas and
-  lifecycles but no executable simulator; tau2-style task files reference
-  reconstructed state snapshots rather than a seeded database.
+  lifecycles but no executable simulator; the state snapshots are
+  reconstructed from tool results rather than a seeded database.
 - **Two conversations share a customer story** (retail missing-package and
   damaged-item are consecutive days for the same customer); their tool
   outputs intentionally cross-reference.

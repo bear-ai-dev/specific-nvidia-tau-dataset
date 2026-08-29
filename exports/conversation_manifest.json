@@ -17,7 +17,6 @@
         "message_rows": 28,
         "flagged_excluded": 6
       },
-      "task": "../tasks/banking-account-email-card-application.json",
       "state": {
         "initial": "../conversations/banking-account-email-card-application/state/initial_state.json",
         "final": "../conversations/banking-account-email-card-application/state/final_state.json"
@@ -41,7 +40,6 @@
         "message_rows": 30,
         "flagged_excluded": 7
       },
-      "task": "../tasks/banking-referral-missing-reward.json",
       "state": {
         "initial": "../conversations/banking-referral-missing-reward/state/initial_state.json",
         "final": "../conversations/banking-referral-missing-reward/state/final_state.json"
@@ -65,7 +63,6 @@
         "message_rows": 31,
         "flagged_excluded": 4
       },
-      "task": "../tasks/banking-transaction-dispute-session.json",
       "state": {
         "initial": "../conversations/banking-transaction-dispute-session/state/initial_state.json",
         "final": "../conversations/banking-transaction-dispute-session/state/final_state.json"
@@ -89,7 +86,6 @@
         "message_rows": 20,
         "flagged_excluded": 5
       },
-      "task": "../tasks/banking-declined-card-travel.json",
       "state": {
         "initial": "../conversations/banking-declined-card-travel/state/initial_state.json",
         "final": "../conversations/banking-declined-card-travel/state/final_state.json"
@@ -113,7 +109,6 @@
         "message_rows": 21,
         "flagged_excluded": 5
       },
-      "task": "../tasks/pharmacy-travel-refill.json",
       "state": {
         "initial": "../conversations/pharmacy-travel-refill/state/initial_state.json",
         "final": "../conversations/pharmacy-travel-refill/state/final_state.json"
@@ -137,7 +132,6 @@
         "message_rows": 18,
         "flagged_excluded": 13
       },
-      "task": "../tasks/retail-refund-bank-fee.json",
       "state": {
         "initial": "../conversations/retail-refund-bank-fee/state/initial_state.json",
         "final": "../conversations/retail-refund-bank-fee/state/final_state.json"
@@ -161,7 +155,6 @@
         "message_rows": 24,
         "flagged_excluded": 7
       },
-      "task": "../tasks/retail-damaged-item-replacement.json",
       "state": {
         "initial": "../conversations/retail-damaged-item-replacement/state/initial_state.json",
         "final": "../conversations/retail-damaged-item-replacement/state/final_state.json"
@@ -185,7 +178,6 @@
         "message_rows": 18,
         "flagged_excluded": 11
       },
-      "task": "../tasks/retail-missing-package.json",
       "state": {
         "initial": "../conversations/retail-missing-package/state/initial_state.json",
         "final": "../conversations/retail-missing-package/state/final_state.json"
@@ -209,7 +201,6 @@
         "message_rows": 36,
         "flagged_excluded": 8
       },
-      "task": "../tasks/airline-family-reservation.json",
       "state": {
         "initial": "../conversations/airline-family-reservation/state/initial_state.json",
         "final": "../conversations/airline-family-reservation/state/final_state.json"
@@ -233,7 +224,6 @@
         "message_rows": 30,
         "flagged_excluded": 6
       },
-      "task": "../tasks/telecom-data-usage-cleanup.json",
       "state": {
         "initial": "../conversations/telecom-data-usage-cleanup/state/initial_state.json",
         "final": "../conversations/telecom-data-usage-cleanup/state/final_state.json"
