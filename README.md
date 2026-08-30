@@ -6,13 +6,11 @@ intentionally described as **Tau-style custom-domain data**, not as an exact
 export of Tau's public registries.
 
 The snapshot contains 10 conversations, 30 synchronized audio tracks, 5 domain
-registries, 85 structured agent tool calls, 10 annotated conversation
-transcripts, and 344 NVIDIA-schema next-action rows
-(85 tool-call targets plus 259 clean assistant-message targets). Every
-conversation includes full-call audio and isolated speaker tracks as 48 kHz,
-24-bit, mono PCM WAV files; measured per-file bandwidth is published in
-`exports/audio_manifest.json` (all 30 files carry genuine wideband content —
-they are not upsampled telephony audio).
+registries, 85 structured agent tool calls, and 10 annotated conversation
+transcripts. Every conversation includes full-call audio and isolated speaker
+tracks as 48 kHz, 24-bit, mono PCM WAV files; measured per-file bandwidth is
+published in `audio_manifest.json` (all 30 files carry genuine wideband content
+— they are not upsampled telephony audio).
 
 Every tool has JSON-Schema contracts for both arguments and results, closed
 with `additionalProperties: false` at every level, with policy-defined status
@@ -30,11 +28,9 @@ references, but later tool calls use the UUID returned for the resolved entity.
 The trajectories include 86 explicit `grounding_review` records marking spoken
 behavior that is unsupported, contradictory, unsafe, or otherwise not clean
 training behavior (fabricated guarantees, results spoken before the grounding
-call, consent gaps, source conflation). Assistant turns carrying a
-`grounding_review` flag are excluded from the message-action training export.
-This snapshot is suitable for schema and pilot-fit review; it must not be
-represented as 10 exception-free behavioral trajectories — the exception layer
-is the point.
+call, consent gaps, source conflation). This snapshot is suitable for schema
+and pilot-fit review; it must not be represented as 10 exception-free
+behavioral trajectories — the exception layer is the point.
 
 ## Package map
 
@@ -66,35 +62,10 @@ is the point.
 - `conversations/<id>/state/initial_state.json` / `final_state.json`:
   before/after backend state reconstructed strictly from tool results (no
   invented fields; derivation is stated in the file).
-- `exports/nemotron_tool_calls.jsonl`: the NVIDIA training view — one
-  prefix/expected-action row per agent tool call (85 rows).
-- `exports/nemotron_message_actions.jsonl`: same row schema with
-  `expected_action.type: "message"` for every assistant speech turn that is
-  free of grounding_review flags (259 rows; 72 flagged turns excluded).
-- `exports/conversation_manifest.json`: index — goal, outcome, scenario_time,
-  per-conversation row counts, and pointers to state/turn-taking files.
-- `exports/audio_manifest.json`: per-file sample rate, bit depth, duration,
+- `conversation_manifest.json`: index — goal, outcome, scenario time, and
+  pointers to transcript, state, and turn-taking files.
+- `audio_manifest.json`: per-file sample rate, bit depth, duration,
   and measured spectral energy above 10/16/20 kHz.
-
-## Export-format notes (Nemotron compatibility)
-
-Rows follow the schema of
-`nvidia/Nemotron-RL-Agentic-Conversational-Tool-Use-Pivot-v1`: identical
-top-level field set, policy carried as the first `input` item (a system
-message), `parallel_tool_calls: false`, `expected_action` as
-`function_call` (JSON-string arguments) or `message`. Honest divergences,
-rather than fabricated values:
-
-- `pass_rate*`, `qwen_235b_info`, and `num_unique_actions` are placeholders
-  (0 / empty / 1). The reference dataset fills these from verifier rollouts;
-  no rollouts were run against this human-gold data, and we will not invent
-  reward statistics. Filter or re-score before mixing with the reference set.
-- `agent_ref` is `{"type": "human_annotations", "name": "voice_tool_call_gold"}`
-  — these rows are human gold labels, not verifier-generated trajectories.
-- `trajectory_id` is unique per row (as in the reference set);
-  `meta_info.conversation_id` and `meta_info.source_event_index` link each row
-  back to its conversation and position — two extra keys the reference set
-  does not carry.
 
 ## Publication scope
 
