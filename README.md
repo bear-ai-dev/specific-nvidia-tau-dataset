@@ -1,8 +1,7 @@
-# NVIDIA voice-agent pilot deliverables
+# Customer Service Dataset
 
-This repository contains the 10-conversation pilot requested in NVIDIA's
-email. The sample covers airline, banking, pharmacy, retail, and telecom
-customer-service calls.
+This repository contains 10 annotated customer-service conversations covering
+airline, banking, pharmacy, retail, and telecom support.
 
 ## 1. Tool-call annotations
 
