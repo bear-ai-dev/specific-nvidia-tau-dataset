@@ -183,5 +183,5 @@
     }
   ],
   "conversation_count": 10,
-  "facts_file": "Facts.json"
+  "facts_file": "facts.json"
 }

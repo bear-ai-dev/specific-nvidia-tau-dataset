@@ -1,9 +1,5 @@
 # Specific Labs Tau Bench Dataset
 
-![Synchronized playback: the transcript follows the call audio while annotated tool calls appear inline with their arguments and recorded outputs](docs/assets/qc-viewer-demo.gif)
-
-*Playback at 4x speed: the annotated transcript follows the call audio while tool calls surface inline with their arguments and recorded outputs.*
-
 ## 1. Tool-call annotations
 
 The function-calling deliverable is the
@@ -119,7 +115,7 @@ speech transcript is stored at
 
 The [conversation manifest](conversation_manifest.json) provides a one-line
 goal, outcome label, outcome summary, scenario time, and file pointers for all
-10 conversations. The [Facts.json](Facts.json) file provides the required information for all
+10 conversations. The [facts.json](facts.json) file provides the required information for all
 10 conversations. It separates facts the agent had to collect from facts the
 agent had to communicate, with each canonical value, exact spoken text,
 speaker, event index, and audio start and end timestamp.
@@ -147,10 +143,3 @@ and `audio/speaker-2.wav` tracks.
 The [audio manifest](audio_manifest.json) contains the exact audited sample
 rate, bit depth, duration, channel count, and spectral measurements for every
 file.
-
-## 7. Quality review
-
-The [data-quality document](docs/DATA_QUALITY.md) defines transcription,
-speaker attribution, tool-placement, schema, policy-sync, and audio checks. It
-also lists the known limitations and identifies speech that should not be
-treated as a clean positive training example.
