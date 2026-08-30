@@ -154,7 +154,7 @@ file.
 ## Known behavioral exception
 
 In `banking-account-email-card-application` the enacted agent asks the
-customer to read a one-time code aloud (about 02:00-02:40 in the audio) and
+customer to read a one-time code aloud (about 03:25-03:50 in the audio) and
 acknowledges it. The code never enters a tool argument, but the exchange
 should not be treated as compliant agent behavior or used as a positive
 training example for those turns.
