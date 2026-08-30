@@ -1,6 +1,5 @@
 {
   "schema_version": "0.1.0",
-  "source": "faster-whisper small.en word timestamps on channel-isolated speaker stems",
   "warning": "Backchannel and barge-in fields are automatic candidates and require human acceptance for gold labels.",
   "turns": [
     {
