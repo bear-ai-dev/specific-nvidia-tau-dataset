@@ -1,12 +1,8 @@
-# NVIDIA voice-agent pilot deliverables
+# Specific Labs Tau Bench Dataset
 
 ![Synchronized playback: the transcript follows the call audio while annotated tool calls appear inline with their arguments and recorded outputs](docs/assets/qc-viewer-demo.gif)
 
 *Playback at 4x speed: the annotated transcript follows the call audio while tool calls surface inline with their arguments and recorded outputs.*
-
-This repository contains the 10-conversation pilot requested in NVIDIA's
-email. The sample covers airline, banking, pharmacy, retail, and telecom
-customer-service calls.
 
 ## 1. Tool-call annotations
 
@@ -74,7 +70,7 @@ The matching timing annotation in `event_metadata` is:
 ```
 
 This sample includes the full function-result payload and call-placement
-timing. It does not claim a separately observed backend return timestamp.
+timing.
 
 All annotated transcripts are under [conversations/](conversations/):
 
