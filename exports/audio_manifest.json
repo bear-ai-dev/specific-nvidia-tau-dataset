@@ -1,6 +1,5 @@
 {
   "schema_version": "0.1.0",
-  "method": "ffmpeg volumedetect mean level, full band and after 10/16/20 kHz high-pass; a file whose >16 kHz and >20 kHz bands sit within 60 dB of the full-band mean carries genuine wideband content and is not an upsample of narrowband telephony audio.",
   "files": [
     {
       "file": "conversations/airline-family-reservation/audio/full.wav",
