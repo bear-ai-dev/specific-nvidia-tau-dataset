@@ -40,7 +40,7 @@
 [00:06:40.940 - 00:06:44.600] Daniel: Yes. Um, give me one second. Let me just check that balance for you.
 [00:06:46.000] [tool] get_order: check the refunded gift-card balance
 [00:06:49.100 - 00:06:56.880] Daniel: Yeah. So it looks like on my end that the balance and the digital gift card have forty dollars available.
-[00:06:58.160 - 00:07:02.820] Daniel: It has not been used, and the number and the email, uh, still looks to be active.
+[00:06:58.160 - 00:07:02.820] Daniel: It has not been used, and the number in the email, uh, still looks to be active.
 [00:07:04.080 - 00:07:04.440] Teddy: Okay.
 [00:07:06.000] [tool] open_refund_trace: open a refund payment trace
 [00:07:06.200] [tool] update_case: record the customer's card-replacement report without asserting external bank state

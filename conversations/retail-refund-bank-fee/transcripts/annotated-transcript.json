@@ -400,7 +400,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "It has not been used, and the number and the email, uh, still looks to be active."
+            "text": "It has not been used, and the number in the email, uh, still looks to be active."
           }
         ],
         "role": "assistant",
