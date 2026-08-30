@@ -43,11 +43,19 @@ sides can agree up front on acceptance criteria before any larger order.
    from `nemotron_message_actions.jsonl` (72 turns excluded, 259 kept). All
    85 tool calls are exported; their arguments are schema-valid and the flags
    that concern them live on the surrounding speech.
+7. **Identifier separation.** Internal customer, patient, traveler, account
+   entity, case, transaction, session, catalog, and workflow identifiers are
+   opaque UUIDs validated with `format: uuid`. Readable account IDs, order and
+   return references, referral reference codes, case numbers, certificate
+   codes, and booking confirmation codes remain separate business fields. The
+   model must obtain an internal UUID from a lookup result rather than derive
+   it from a person's name or a readable reference.
 
 ### Note on spoken values in voice transcripts
 
-Canonical values from tool results (IDs, amounts, deadlines) appear in voice
-transcripts spelled out ("WST four eight one- six six two" for WST481662;
+Canonical customer-facing values from tool results (reference codes, amounts,
+deadlines) appear in voice transcripts spelled out ("WST four eight one- six
+six two" for case number WST481662;
 "six tomorrow evening" for 18:00 tomorrow). Any checker that matches required
 facts against voice transcripts must normalize spoken forms before matching.
 
@@ -55,7 +63,7 @@ facts against voice transcripts must normalize spoken forms before matching.
 
 - JSON-Schema validation of all 85 call argument sets against registry
   parameter schemas, and all 85 result payloads against registry result
-  schemas (closed).
+  schemas (closed), including UUID format validation for internal identifiers.
 - Call/output pairing, unique call ids, chronological input order,
   event-index alignment between `input` and `event_metadata`.
 - Placement invariants from convention 3, with a 1 s tolerance against

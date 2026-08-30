@@ -1,7 +1,7 @@
 {
   "schema_version": "0.2.0",
   "registry_name": "telecom",
-  "registry_version": "0.3.0",
+  "registry_version": "0.4.0",
   "compatibility": "custom_tau_style_not_literal_tau_registry",
   "design_note": "ClearWave Mobile carrier-support registry, implementable as a deterministic mock over a fixed customer store: account, usage, billing, offer, and paid add-on operations are backend tools; customer-guided device settings, app-level usage screens, and speed tests remain spoken customer actions with no tool. The lookup_customer -> verify_customer_identity sequence is intentional two-step verification, not redundancy: the lookup resolves a candidate record and reports which identity factors verification requires, and the verify call re-submits those collected factors so the mock can gate every protected read and mutation on the returned verification_id and its access_scope. Sectioned reads (get_customer_account.include, get_customer_bills.include) return only the requested sections, so section-specific result fields are optional and present only when their section was requested. get_line_data_usage with window=\"custom\" requires window_start and window_end per those parameter descriptions; the other windows derive their bounds server-side. Identity strings follow the on-call spoken representations: 10-digit dashed US mobile numbers and long-form month-name dates of birth. All money amounts carry an ISO 4217 currency sibling, and all temporal fields are ISO 8601 date-times.",
   "tools": [
@@ -40,7 +40,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Candidate customer identifier. Present when match is \"unique\"."
+            "description": "Candidate customer identifier. Present when match is \"unique\".",
+            "format": "uuid"
           },
           "match": {
             "type": "string",
@@ -79,7 +80,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "mobile_number": {
             "type": "string",
@@ -110,7 +112,8 @@
         "properties": {
           "verification_id": {
             "type": "string",
-            "description": "Verification record identifier. Cite on every subsequent protected read or mutation."
+            "description": "Verification record identifier. Cite on every subsequent protected read or mutation.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -172,7 +175,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "include": {
             "type": "array",
@@ -189,7 +193,8 @@
           },
           "verification_id": {
             "type": "string",
-            "description": "Successful identity-verification record."
+            "description": "Successful identity-verification record.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -205,7 +210,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Customer identifier."
+            "description": "Customer identifier.",
+            "format": "uuid"
           },
           "lines": {
             "type": "array",
@@ -215,7 +221,8 @@
               "properties": {
                 "line_id": {
                   "type": "string",
-                  "description": "Phone-line identifier."
+                  "description": "Phone-line identifier.",
+                  "format": "uuid"
                 },
                 "masked_mobile_number": {
                   "type": "string",
@@ -234,7 +241,8 @@
                 },
                 "billing_cycle_id": {
                   "type": "string",
-                  "description": "Current billing-cycle identifier for the line."
+                  "description": "Current billing-cycle identifier for the line.",
+                  "format": "uuid"
                 }
               },
               "required": [
@@ -254,7 +262,8 @@
               "properties": {
                 "device_id": {
                   "type": "string",
-                  "description": "Device identifier."
+                  "description": "Device identifier.",
+                  "format": "uuid"
                 },
                 "model": {
                   "type": "string",
@@ -262,7 +271,8 @@
                 },
                 "line_id": {
                   "type": "string",
-                  "description": "Line the device is assigned to."
+                  "description": "Line the device is assigned to.",
+                  "format": "uuid"
                 },
                 "provisioning_status": {
                   "type": "string",
@@ -286,7 +296,8 @@
               "properties": {
                 "plan_id": {
                   "type": "string",
-                  "description": "Plan identifier."
+                  "description": "Plan identifier.",
+                  "format": "uuid"
                 },
                 "name": {
                   "type": "string",
@@ -294,7 +305,8 @@
                 },
                 "line_id": {
                   "type": "string",
-                  "description": "Line the plan is assigned to."
+                  "description": "Line the plan is assigned to.",
+                  "format": "uuid"
                 }
               },
               "required": [
@@ -321,7 +333,8 @@
         "properties": {
           "line_id": {
             "type": "string",
-            "description": "Resolved phone-line identifier."
+            "description": "Resolved phone-line identifier.",
+            "format": "uuid"
           },
           "window": {
             "type": "string",
@@ -344,7 +357,8 @@
           },
           "verification_id": {
             "type": "string",
-            "description": "Successful identity-verification record."
+            "description": "Successful identity-verification record.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -360,11 +374,13 @@
         "properties": {
           "line_id": {
             "type": "string",
-            "description": "Line identifier."
+            "description": "Line identifier.",
+            "format": "uuid"
           },
           "billing_cycle_id": {
             "type": "string",
-            "description": "Billing-cycle identifier."
+            "description": "Billing-cycle identifier.",
+            "format": "uuid"
           },
           "measurement_source": {
             "type": "string",
@@ -426,7 +442,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -452,7 +469,8 @@
           },
           "verification_id": {
             "type": "string",
-            "description": "Successful identity-verification record."
+            "description": "Successful identity-verification record.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -469,11 +487,13 @@
         "properties": {
           "bill_id": {
             "type": "string",
-            "description": "Bill identifier."
+            "description": "Bill identifier.",
+            "format": "uuid"
           },
           "billing_cycle_id": {
             "type": "string",
-            "description": "Billing-cycle identifier."
+            "description": "Billing-cycle identifier.",
+            "format": "uuid"
           },
           "cycle_start": {
             "type": "string",
@@ -531,11 +551,13 @@
         "properties": {
           "line_id": {
             "type": "string",
-            "description": "Resolved phone-line identifier."
+            "description": "Resolved phone-line identifier.",
+            "format": "uuid"
           },
           "offer_id": {
             "type": "string",
-            "description": "Eligible offer identifier returned by the offer lookup."
+            "description": "Eligible offer identifier returned by the offer lookup.",
+            "format": "uuid"
           },
           "customer_authorized": {
             "type": "boolean",
@@ -555,7 +577,8 @@
         "properties": {
           "transaction_id": {
             "type": "string",
-            "description": "Add-on transaction identifier."
+            "description": "Add-on transaction identifier.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -569,7 +592,8 @@
           },
           "offer_id": {
             "type": "string",
-            "description": "Selected offer identifier."
+            "description": "Selected offer identifier.",
+            "format": "uuid"
           },
           "effective_at": {
             "type": "string",
@@ -624,11 +648,13 @@
         "properties": {
           "line_id": {
             "type": "string",
-            "description": "Resolved line identifier."
+            "description": "Resolved line identifier.",
+            "format": "uuid"
           },
           "verification_id": {
             "type": "string",
-            "description": "Successful identity-verification record."
+            "description": "Successful identity-verification record.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -643,7 +669,8 @@
         "properties": {
           "line_id": {
             "type": "string",
-            "description": "Line identifier."
+            "description": "Line identifier.",
+            "format": "uuid"
           },
           "offers": {
             "type": "array",
@@ -653,7 +680,8 @@
               "properties": {
                 "offer_id": {
                   "type": "string",
-                  "description": "Stable offer identifier to submit with add_data_addon."
+                  "description": "Stable offer identifier to submit with add_data_addon.",
+                  "format": "uuid"
                 },
                 "eligibility_status": {
                   "type": "string",
@@ -763,7 +791,8 @@
           },
           "transfer_id": {
             "type": "string",
-            "description": "Transfer identifier. Present when the transfer is accepted."
+            "description": "Transfer identifier. Present when the transfer is accepted.",
+            "format": "uuid"
           }
         },
         "required": [

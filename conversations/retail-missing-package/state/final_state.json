@@ -1,19 +1,19 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "conversation_id": "retail-missing-package",
   "derivation": "reconstructed_from_tool_results",
   "as_of": "2026-08-25T15:48:40-04:00",
   "entities": {
-    "customer-ethan-patel": {
+    "c51d2171-c10b-489b-9186-a93ebd98613d": {
       "entity_type": "customer",
-      "customer_id": "customer-ethan-patel",
+      "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
       "display_name": "Ethan Patel",
       "verified_email": "e***@northmail.com"
     },
     "order-7319": {
       "entity_type": "order",
       "order_reference": "7319",
-      "customer_id": "customer-ethan-patel",
+      "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
       "items": [
         {
           "item_reference": "blue-noise-canceling-headphones",
@@ -37,10 +37,10 @@
         }
       },
       "cases": [
-        "WST481662"
+        "8cf648a4-ca60-4387-bc11-ec38f426123a"
       ],
       "notifications": [
-        "notification-WST481662"
+        "521527dc-8856-4b33-8e08-69658b1ca80b"
       ]
     },
     "product-blue-noise-canceling-headphones": {
@@ -53,9 +53,9 @@
         "same_variant_in_stock": true
       }
     },
-    "WST481662": {
+    "8cf648a4-ca60-4387-bc11-ec38f426123a": {
       "entity_type": "delivery_trace_case",
-      "case_id": "WST481662",
+      "case_id": "8cf648a4-ca60-4387-bc11-ec38f426123a",
       "order_reference": "7319",
       "item_references": [
         "blue-noise-canceling-headphones"
@@ -78,12 +78,13 @@
       "pickup_guaranteed": false,
       "visible_to_next_reviewer": true,
       "carrier_may_contact_customer": true,
-      "notification_status": "sent"
+      "notification_status": "sent",
+      "case_number": "WST481662"
     },
-    "notification-WST481662": {
+    "521527dc-8856-4b33-8e08-69658b1ca80b": {
       "entity_type": "case_notification",
-      "notification_id": "notification-WST481662",
-      "case_id": "WST481662",
+      "notification_id": "521527dc-8856-4b33-8e08-69658b1ca80b",
+      "case_id": "8cf648a4-ca60-4387-bc11-ec38f426123a",
       "order_reference": "7319",
       "channel": "email",
       "template": "delivery_trace_confirmation",
@@ -91,11 +92,12 @@
       "masked_destination": "e***@northmail.com",
       "status": "delivered",
       "included_fields": [
-        "case_id",
+        "case_number",
         "status",
         "carrier_response_deadline",
         "approval_link"
-      ]
+      ],
+      "case_number": "WST481662"
     }
   }
 }

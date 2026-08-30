@@ -1,12 +1,12 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "conversation_id": "banking-transaction-dispute-session",
   "derivation": "reconstructed_from_tool_results",
   "as_of": "2026-02-25T16:28:04-05:00",
   "entities": {
     "customers": {
-      "customer-justin-porter": {
-        "customer_id": "customer-justin-porter",
+      "4e8c3a97-e6ad-4737-aede-c8acd4993277": {
+        "customer_id": "4e8c3a97-e6ad-4737-aede-c8acd4993277",
         "lookup_match": "unique",
         "required_verification_methods": [
           "billing_zip",
@@ -15,8 +15,8 @@
       }
     },
     "transactions": {
-      "transaction-ending-8472": {
-        "transaction_id": "transaction-ending-8472",
+      "b2047621-d2c7-437c-bb56-c81a700e2099": {
+        "transaction_id": "b2047621-d2c7-437c-bb56-c81a700e2099",
         "card_last4": "9102",
         "amount": 243.18,
         "category": "online marketplace",
@@ -24,8 +24,8 @@
       }
     },
     "knowledge_records": {
-      "unauthorized-transaction-procedure": {
-        "record_id": "unauthorized-transaction-procedure",
+      "8d5fe793-b41b-48c9-aef8-e3ffd9d1d4ab": {
+        "record_id": "8d5fe793-b41b-48c9-aef8-e3ffd9d1d4ab",
         "effective_at": "2026-01-15",
         "steps": [
           "review household use",
@@ -40,16 +40,16 @@
           "written timing disclosures in secure messages"
         ]
       },
-      "unused-dispute-session-rights": {
-        "record_id": "unused-dispute-session-rights",
+      "022398d3-51e3-4dcd-b56b-064d53b159f0": {
+        "record_id": "022398d3-51e3-4dcd-b56b-064d53b159f0",
         "effective_at": "2026-01-15",
         "unused_unsubmitted_session_waives_future_rights": false,
         "guidance": "Contact the bank promptly if a genuinely unauthorized transaction is later discovered."
       }
     },
     "identity_verifications": {
-      "verification-justin-porter-dispute": {
-        "verification_id": "verification-justin-porter-dispute",
+      "dbf560d6-9aa5-4471-a5b1-7a3af5c51fb8": {
+        "verification_id": "dbf560d6-9aa5-4471-a5b1-7a3af5c51fb8",
         "status": "verified",
         "matched_methods": [
           "billing_zip",
@@ -58,8 +58,8 @@
       }
     },
     "secure_self_service_sessions": {
-      "session-dispute-8472": {
-        "session_id": "session-dispute-8472",
+      "0ae36057-bbbb-42e3-994f-55f064bc374c": {
+        "session_id": "0ae36057-bbbb-42e3-994f-55f064bc374c",
         "status": "open_not_submitted",
         "submitted": false,
         "claim_id": null,

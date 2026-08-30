@@ -21,6 +21,12 @@ environment. Each conversation carries a scenario clock (`scenario_time`, also
 stated in the system message), and every tool-result value is concrete against
 it — no placeholder or relative values remain in tool payloads.
 
+Internal backend identifiers are opaque UUIDs and are declared with
+`format: uuid` in the registries. Human-facing business references remain
+separate readable values: for example, `account_id`, `reference_code`,
+`case_number`, and `confirmation_code`. A lookup may accept one of those
+references, but later tool calls use the UUID returned for the resolved entity.
+
 The trajectories include 86 explicit `grounding_review` records marking spoken
 behavior that is unsupported, contradictory, unsafe, or otherwise not clean
 training behavior (fabricated guarantees, results spoken before the grounding
@@ -33,7 +39,7 @@ is the point.
 ## Package map
 
 - `domains/<domain>/tool_registry.json`: versioned tool definitions with closed
-  JSON-Schema argument/result contracts (registry_version 0.3.0).
+  JSON-Schema argument/result contracts (registry_version 0.4.0).
 - `domains/<domain>/policy.md`: operational policy used for the annotations;
   byte-identical to the `<policy>` block embedded in each conversation's
   system message.

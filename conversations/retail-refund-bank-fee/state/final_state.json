@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "conversation_id": "retail-refund-bank-fee",
   "derivation": "reconstructed_from_tool_results",
   "as_of": "2026-08-27T13:14:55-04:00",
@@ -58,15 +58,18 @@
       "original_card_last4": "2047",
       "initiation_source": "store_register"
     },
-    "refund_trace:WST735204": {
+    "refund_trace:b0fee5fa-0534-4c47-a42a-b3a252106888": {
       "entity_type": "refund_trace_case",
-      "case_id": "WST735204",
+      "case_id": "b0fee5fa-0534-4c47-a42a-b3a252106888",
       "order_reference": "ending-5624",
       "return_reference": "ending-9182",
       "payment_reference": "card-ending-2047",
       "amount_under_review": 146.42,
       "status": "open",
-      "review_window_business_days": [3, 5],
+      "review_window_business_days": [
+        3,
+        5
+      ],
       "duplicate_refund_blocked": true,
       "return_evidence_attached": true,
       "fee_reimbursement_approved": false,
@@ -83,12 +86,13 @@
           "status": "note_added",
           "visible_to_next_reviewer": true
         }
-      ]
+      ],
+      "case_number": "WST735204"
     },
-    "notification:notification-WST735204": {
+    "notification:43e020c5-a9da-4175-aec7-5989435d95a6": {
       "entity_type": "case_notification",
-      "notification_id": "notification-WST735204",
-      "case_id": "WST735204",
+      "notification_id": "43e020c5-a9da-4175-aec7-5989435d95a6",
+      "case_id": "b0fee5fa-0534-4c47-a42a-b3a252106888",
       "channel": "email",
       "template": "refund_trace_confirmation",
       "status": "sent",
@@ -97,8 +101,9 @@
         "amount",
         "masked_original_payment_reference",
         "review_window",
-        "case_id"
-      ]
+        "case_number"
+      ],
+      "case_number": "WST735204"
     }
   }
 }

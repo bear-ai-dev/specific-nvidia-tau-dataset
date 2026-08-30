@@ -1,19 +1,19 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "conversation_id": "retail-missing-package",
   "derivation": "reconstructed_from_tool_results",
   "as_of": "2026-08-25T15:40:00-04:00",
   "entities": {
-    "customer-ethan-patel": {
+    "c51d2171-c10b-489b-9186-a93ebd98613d": {
       "entity_type": "customer",
-      "customer_id": "customer-ethan-patel",
+      "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
       "display_name": "Ethan Patel",
       "verified_email": "e***@northmail.com"
     },
     "order-7319": {
       "entity_type": "order",
       "order_reference": "7319",
-      "customer_id": "customer-ethan-patel",
+      "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
       "items": [
         {
           "item_reference": "blue-noise-canceling-headphones",

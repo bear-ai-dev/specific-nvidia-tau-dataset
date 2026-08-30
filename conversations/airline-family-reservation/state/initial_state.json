@@ -1,18 +1,18 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "conversation_id": "airline-family-reservation",
   "derivation": "reconstructed_from_tool_results",
   "as_of": "2026-08-26T12:30:00-07:00",
   "entities": {
     "customers": {
-      "customer-linda-carver": {
-        "customer_id": "customer-linda-carver",
+      "7fe38f6f-b7c5-4f50-a56a-e2d68d6b11d0": {
+        "customer_id": "7fe38f6f-b7c5-4f50-a56a-e2d68d6b11d0",
         "full_name": "Linda Marie Carver",
         "date_of_birth": "March 8, 1954",
         "email": "linda.carver9@outlook.com",
         "payment_methods": [
           {
-            "token": "visa-on-file-1182",
+            "token": "c1200f87-9c48-41f4-a6f9-04d89f28b2b2",
             "brand": "Visa",
             "last4": "1182"
           }
@@ -23,8 +23,8 @@
       }
     },
     "travel_certificates": {
-      "certificate-CT-449108": {
-        "certificate_id": "certificate-CT-449108",
+      "18e422e6-a2c3-4cb8-93fa-daf7a28c328b": {
+        "certificate_id": "18e422e6-a2c3-4cb8-93fa-daf7a28c328b",
         "masked_code": "CT-***108",
         "status": "valid",
         "available_balance": 200.0,
@@ -51,8 +51,8 @@
       }
     },
     "flights": {
-      "BM-PHX-DCA-0910": {
-        "flight_id": "BM-PHX-DCA-0910",
+      "2133fbc8-ed10-42aa-baa2-12e3d15a6a05": {
+        "flight_id": "2133fbc8-ed10-42aa-baa2-12e3d15a6a05",
         "origin": {
           "code": "PHX",
           "name": "Phoenix Sky Harbor"
@@ -77,8 +77,8 @@
           }
         ]
       },
-      "BM-DCA-PHX-1540": {
-        "flight_id": "BM-DCA-PHX-1540",
+      "3ac31d55-0dbc-4f79-892e-743257ec9f13": {
+        "flight_id": "3ac31d55-0dbc-4f79-892e-743257ec9f13",
         "origin": {
           "code": "DCA",
           "name": "Washington Reagan National"
@@ -105,8 +105,8 @@
       }
     },
     "itineraries": {
-      "itinerary-phx-dca-one-stop-best-current": {
-        "itinerary_id": "itinerary-phx-dca-one-stop-best-current",
+      "87ba9919-0d38-418a-868c-42185e5a9ab9": {
+        "itinerary_id": "87ba9919-0d38-418a-868c-42185e5a9ab9",
         "total_savings": 62.0,
         "additional_duration_each_way": "almost three hours"
       }
