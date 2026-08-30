@@ -1645,15 +1645,7 @@
         "path": "audio/full.wav",
         "start_seconds": 177.64,
         "end_seconds": 179.94
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "while I update it for you",
-          "category": "misleading_read_only_language",
-          "reason": "The following action is a knowledge-base lookup, not an update.",
-          "remediation": "Re-record as 'while I look that up for you.'"
-        }
-      ]
+      }
     },
     {
       "event_index": 32,
@@ -1767,15 +1759,7 @@
         "path": "audio/full.wav",
         "start_seconds": 241.3,
         "end_seconds": 248.52
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "If her qualifying purchase posted, the deadline has not passed",
-          "category": "garbled_returned_term",
-          "reason": "br-006 returns deadline_status 'not_passed' unconditionally; the spoken conditional linkage to a posted purchase is invented.",
-          "remediation": "Report the returned status plainly: the deadline has not passed, and the exact deadline is available in the tracker."
-        }
-      ]
+      }
     },
     {
       "event_index": 42,
@@ -1799,15 +1783,7 @@
         "path": "audio/full.wav",
         "start_seconds": 253.7,
         "end_seconds": 262.64
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "It shows invite approval, qualification, and reward posting stages without exposing your sister's account details",
-          "category": "pre_echoed_tool_result",
-          "reason": "This enumerates the visible_stages and privacy property of session br-007 before create_secure_self_service_session ran; no prior output supports either claim.",
-          "remediation": "Describe the tracker generically before issuing it, and state its stages and privacy scope only after the issuing result returns them."
-        }
-      ]
+      }
     },
     {
       "event_index": 44,
@@ -1819,21 +1795,7 @@
         "path": "audio/full.wav",
         "start_seconds": 265.72,
         "end_seconds": 268.24
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "All right, I'm gonna check that now",
-          "category": "missing_delivery_authorization",
-          "reason": "The agent proceeds directly to create_secure_self_service_session (br-007) with delivery channel secure_message without any customer turn authorizing the channel or destination, which policy requires before sending a session.",
-          "remediation": "Ask the customer to confirm delivery to the secure message center and wait for an explicit yes before issuing the session."
-        },
-        {
-          "text_anchor": "check that now",
-          "category": "misleading_read_only_language",
-          "reason": "The following action issues a self-service session, a mutation, not a check or read.",
-          "remediation": "Re-record as 'I'm going to send that tracker to your secure message center now.'"
-        }
-      ]
+      }
     },
     {
       "event_index": 45,
@@ -1902,15 +1864,7 @@
         "path": "audio/full.wav",
         "start_seconds": 292.5,
         "end_seconds": 302.27
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "after 2 billing cycles from her purchase",
-          "category": "policy_misstatement",
-          "reason": "The policy window begins after a qualifying purchase posts, not merely from the purchase.",
-          "remediation": "Re-record with the precise posting-window language."
-        }
-      ]
+      }
     },
     {
       "event_index": 51,
@@ -2027,15 +1981,7 @@
         "path": "audio/full.wav",
         "start_seconds": 355.62,
         "end_seconds": 368.98
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "The tracker deliberately does not reveal which purchases she made",
-          "category": "unsupported_backend_design_claim",
-          "reason": "No tool output states the tracker's design intent; the br-007 visible_stages list does not establish deliberate concealment of the referred person's purchases.",
-          "remediation": "Say the tracker shows only referral stages and does not include her transactions, without asserting backend design intent."
-        }
-      ]
+      }
     },
     {
       "event_index": 61,
@@ -2212,15 +2158,7 @@
         "path": "audio/full.wav",
         "start_seconds": 452.77,
         "end_seconds": 465.21
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "remains pending after an eligible purchase post",
-          "category": "unsupported_private_transaction_implication",
-          "reason": "The agent cannot establish that an eligible private purchase posted from the referrer's profile.",
-          "remediation": "Separate the current pending status from the general posting-window explanation."
-        }
-      ]
+      }
     },
     {
       "event_index": 76,

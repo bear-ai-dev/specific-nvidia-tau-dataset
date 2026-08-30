@@ -1320,15 +1320,7 @@
         "path": "audio/full.wav",
         "start_seconds": 234.5,
         "end_seconds": 253.78
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "Refunds normally route to the underlying account even if a card was replaced",
-          "category": "unsupported_external_bank_process",
-          "reason": "This external bank-processing claim, including manual matching of the old card token, appears in no tool result or policy source.",
-          "remediation": "Do not describe external bank routing behavior; record the customer's card-replacement report and open the trace."
-        }
-      ]
+      }
     },
     {
       "event_index": 30,
@@ -1352,15 +1344,7 @@
         "path": "audio/full.wav",
         "start_seconds": 262.419,
         "end_seconds": 265.46
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "Let me take a look to see if that's on the purchase",
-          "category": "narrated_nonexistent_lookup",
-          "reason": "No tool call occurs between this narration and the next utterance's 'that does match'; the card match was already grounded in rr-002's original_card_last4 field.",
-          "remediation": "Either perform the narrated lookup or attribute the match to the earlier payment read."
-        }
-      ]
+      }
     },
     {
       "event_index": 32,
@@ -1396,21 +1380,7 @@
         "path": "audio/full.wav",
         "start_seconds": 294.42,
         "end_seconds": 310.58
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "you could receive both and then the system kind of blocks that",
-          "category": "pre_echoed_tool_result",
-          "reason": "duplicate_refund_blocked is only returned by the later open_refund_trace result (rr-004); no tool result available at this point establishes that the system blocks a second refund.",
-          "remediation": "Explain duplicate-refund blocking only after a tool result returns it, or cite the policy rule without asserting backend state."
-        },
-        {
-          "text_anchor": "The payment team has to close or cancel the original request first",
-          "category": "unsupported_backend_procedure",
-          "reason": "No tool result or policy text describes a close-or-cancel procedure for redirecting an open refund request to another card.",
-          "remediation": "Offer only procedures returned by tools or stated in policy."
-        }
-      ]
+      }
     },
     {
       "event_index": 35,
@@ -1434,15 +1404,7 @@
         "path": "audio/full.wav",
         "start_seconds": 323.4,
         "end_seconds": 339.92
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "three to five business days from today",
-          "category": "pre_echoed_tool_result",
-          "reason": "The [3,5] business-day review window exists only in the open_refund_trace result (rr-004), which is placed about 86 seconds after this utterance ends.",
-          "remediation": "State the review window only after open_refund_trace returns review_window_business_days."
-        }
-      ]
+      }
     },
     {
       "event_index": 37,
@@ -1466,21 +1428,7 @@
         "path": "audio/full.wav",
         "start_seconds": 345.1,
         "end_seconds": 363.9
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "five business days is outside the review window",
-          "category": "self_contradictory_statement",
-          "reason": "Five business days is inside the three-to-five business-day window the agent itself just described, so the sentence contradicts the agent's own prior statement.",
-          "remediation": "State the review window consistently, exactly as returned by the tool."
-        },
-        {
-          "text_anchor": "we'll go ahead and send you the settlement reference",
-          "category": "unsupported_capability_promise",
-          "reason": "No settlement-reference notification template exists in the tool registry, and no tool provides a Westline reissue-by-approved-alternative-method capability.",
-          "remediation": "Promise only actions supported by available tools; otherwise defer to the payments team without committing to a mechanism."
-        }
-      ]
+      }
     },
     {
       "event_index": 39,
@@ -1504,15 +1452,7 @@
         "path": "audio/full.wav",
         "start_seconds": 372.78,
         "end_seconds": 391.22
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "the option may include the replacement card or mailed check",
-          "category": "fabricated_option_set",
-          "reason": "No tool result or policy source lists replacement-card or mailed-check reissue options for a rejected refund.",
-          "remediation": "Say the payments team will confirm available options without enumerating unverified ones."
-        }
-      ]
+      }
     },
     {
       "event_index": 41,
@@ -1581,15 +1521,7 @@
         "path": "audio/full.wav",
         "start_seconds": 418.15999999999997,
         "end_seconds": 422.82
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "the number and the email",
-          "category": "transcription_error",
-          "reason": "The Scribe transcript supports 'the number in the email,' not two active identifiers.",
-          "remediation": "Correct the transcript only after audio review; do not invent an email-status field."
-        }
-      ]
+      }
     },
     {
       "event_index": 47,
@@ -1655,15 +1587,7 @@
         "path": "audio/full.wav",
         "start_seconds": 427.7,
         "end_seconds": 450.96
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "the checking account remains open",
-          "category": "unsupported_external_bank_state",
-          "reason": "The customer only believes the cards map to the same account; a retail backend cannot verify that bank-account state.",
-          "remediation": "Re-record as an attributed customer report."
-        }
-      ]
+      }
     },
     {
       "event_index": 53,
@@ -1687,15 +1611,7 @@
         "path": "audio/full.wav",
         "start_seconds": 454.72,
         "end_seconds": 468.42
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "it should list out the amount under review",
-          "category": "pre_echoed_tool_result",
-          "reason": "The email contents are described before send_case_notification (rr-006) runs; although hedged with 'should', the included_fields are only known from the tool result.",
-          "remediation": "Describe notification contents only after the send result returns included_fields."
-        }
-      ]
+      }
     },
     {
       "event_index": 55,
@@ -1764,15 +1680,7 @@
         "path": "audio/full.wav",
         "start_seconds": 506.58,
         "end_seconds": 526.72
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "customer service relations can kind of review any supporting statement",
-          "category": "fabricated_org_detail",
-          "reason": "No tool result or policy source establishes a 'customer service relations' team or a supporting-statement review process.",
-          "remediation": "Document the fee note without naming unverified internal teams or review processes."
-        }
-      ]
+      }
     },
     {
       "event_index": 61,
@@ -1817,15 +1725,7 @@
         "path": "audio/full.wav",
         "start_seconds": 531.86,
         "end_seconds": 548.04
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "If you don't want to receive an update",
-          "category": "malformed_script_sentence",
-          "reason": "The sentence is internally incoherent and likely intended to say 'If you don't receive an update.'",
-          "remediation": "Review audio and re-record or exclude this utterance."
-        }
-      ]
+      }
     },
     {
       "event_index": 65,
@@ -1849,15 +1749,7 @@
         "path": "audio/full.wav",
         "start_seconds": 553.4,
         "end_seconds": 561.1
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "the processor should update the case automatically, and you should receive a closure email",
-          "category": "unsupported_capability_promise",
-          "reason": "No tool supports automatic processor-driven case updates or settlement closure emails; notifications require an explicit send_case_notification call.",
-          "remediation": "Describe follow-up only in terms of capabilities the available tools provide."
-        }
-      ]
+      }
     },
     {
       "event_index": 67,
@@ -1905,15 +1797,7 @@
         "path": "audio/full.wav",
         "start_seconds": 584.68,
         "end_seconds": 591.2
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "we'll contact you as soon as the payment team responds",
-          "category": "unsupported_proactive_contact_promise",
-          "reason": "No tool provides proactive outbound contact when the payments team responds; only explicit case notifications exist.",
-          "remediation": "Point the customer to the case email and offer updates only via supported notification tools."
-        }
-      ]
+      }
     },
     {
       "event_index": 71,

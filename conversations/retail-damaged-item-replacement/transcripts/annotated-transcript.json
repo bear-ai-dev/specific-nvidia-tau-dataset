@@ -1002,15 +1002,7 @@
         "path": "audio/full.wav",
         "start_seconds": 14.3,
         "end_seconds": 19.46
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "I remember that case",
-          "category": "unsupported_agent_memory",
-          "reason": "No verified case was retrieved before the agent claimed personal memory.",
-          "remediation": "Re-record as an acknowledgment of the customer's statement, not remembered backend state."
-        }
-      ]
+      }
     },
     {
       "event_index": 4,
@@ -1244,15 +1236,7 @@
         "path": "audio/full.wav",
         "start_seconds": 139.14,
         "end_seconds": 140.74
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "Should just be about 20, 30 seconds",
-          "category": "unsupported_tool_duration",
-          "reason": "No tool SLA supports this estimate.",
-          "remediation": "Use nonnumeric hold language."
-        }
-      ]
+      }
     },
     {
       "event_index": 24,
@@ -1297,15 +1281,7 @@
         "path": "audio/full.wav",
         "start_seconds": 163.549,
         "end_seconds": 169.04
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "The system is also waiving the return",
-          "category": "provisional_term_stated_as_final",
-          "reason": "The return waiver was stated as final from the pre-creation eligibility read (rd-002 return_required:false), but policy treats pre-creation replacement terms as provisional.",
-          "remediation": "Present the waiver as provisional until create_replacement_order returns the final return disposition."
-        }
-      ]
+      }
     },
     {
       "event_index": 28,
@@ -1353,21 +1329,7 @@
         "path": "audio/full.wav",
         "start_seconds": 198.04,
         "end_seconds": 209.0
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "about 15 seconds as it's going through",
-          "category": "unsupported_tool_duration",
-          "reason": "No replacement-service SLA supports this estimate.",
-          "remediation": "Use nonnumeric processing language."
-        },
-        {
-          "text_anchor": "let me submit that replacement for you",
-          "category": "missing_fulfillment_confirmation",
-          "reason": "create_replacement_order was executed with home_address_on_order taken from the eligibility default before the customer ever confirmed the fulfillment method or destination.",
-          "remediation": "Confirm the fulfillment method and destination with the customer before creating the replacement."
-        }
-      ]
+      }
     },
     {
       "event_index": 32,
@@ -1424,15 +1386,7 @@
         "path": "audio/full.wav",
         "start_seconds": 226.38,
         "end_seconds": 235.76
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "only noted on yesterday's missing package case",
-          "category": "unsupported_exclusivity_claim",
-          "reason": "Tool results show the pickup preference on case WST481662 but do not establish that it exists nowhere else, so the exclusivity claim is unverified.",
-          "remediation": "State where the preference was observed without claiming it is recorded only there."
-        }
-      ]
+      }
     },
     {
       "event_index": 37,
@@ -1576,27 +1530,7 @@
         "path": "audio/full.wav",
         "start_seconds": 347.18,
         "end_seconds": 357.44
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "Yeah, that works",
-          "category": "uncertifiable_disposal_endorsement",
-          "reason": "The agent certifies an unknown building electronics bin; policy directs the customer to the facility's accepted-material rules or local e-waste guidance and forbids certifying an unknown bin.",
-          "remediation": "Direct the customer to check the bin's accepted-material rules or local e-waste guidance instead of endorsing it."
-        },
-        {
-          "text_anchor": "the city you're in may also have small appliance recycling",
-          "category": "unsupported_location_specific_advice",
-          "reason": "No customer location or local accepted-material rule is available.",
-          "remediation": "Direct the customer to local e-waste guidance without certifying a program."
-        },
-        {
-          "text_anchor": "the confirmation will simply show that the return was just waived",
-          "category": "unsupported_notification_content",
-          "reason": "No notification tool output contains a message-content field, so the claimed confirmation wording is unsupported.",
-          "remediation": "Describe only the notification fields actually returned by a tool."
-        }
-      ]
+      }
     },
     {
       "event_index": 49,
@@ -1689,15 +1623,7 @@
         "path": "audio/full.wav",
         "start_seconds": 389.42,
         "end_seconds": 395.5
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "Yeah, that's the one",
-          "category": "unverified_match_confirmation",
-          "reason": "The customer read a subject \"Your order 8821 delivery, zero balance\" while the tool returned subject_prefix \"Your Westline replacement\"; no data supports confirming the match.",
-          "remediation": "Compare against the returned subject_prefix or say the exact subject line cannot be verified."
-        }
-      ]
+      }
     },
     {
       "event_index": 57,

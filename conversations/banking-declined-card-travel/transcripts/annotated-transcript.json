@@ -1486,15 +1486,7 @@
         "path": "audio/full.wav",
         "start_seconds": 139.12,
         "end_seconds": 153.4
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "hotels often don't authorize more than the total room charge",
-          "category": "contradictory_script_fact",
-          "reason": "This reverses the correct incidental-hold explanation given moments later.",
-          "remediation": "Re-record as 'hotels often authorize more than the room total for incidentals.'"
-        }
-      ]
+      }
     },
     {
       "event_index": 34,
@@ -1566,15 +1558,7 @@
         "path": "audio/full.wav",
         "start_seconds": 187.88,
         "end_seconds": 201.28
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "Then it should enter and it be fine",
-          "category": "unsupported_authorization_guarantee",
-          "reason": "Available credit and restriction removal do not guarantee merchant authorization.",
-          "remediation": "Re-record as a qualified possibility, not a guarantee."
-        }
-      ]
+      }
     },
     {
       "event_index": 40,
@@ -1703,21 +1687,7 @@
         "path": "audio/full.wav",
         "start_seconds": 260.22,
         "end_seconds": 271.06
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "It should be okay since you just confirmed the activity",
-          "category": "unsupported_future_block_guarantee",
-          "reason": "Confirmed activity does not guarantee that no later fraud control will trigger.",
-          "remediation": "Re-record with the policy-required no-guarantee qualification."
-        },
-        {
-          "text_anchor": "I can also add your return date as a note",
-          "category": "missing_current_time_read",
-          "reason": "The agent sets up a time-dependent travel notice without ever calling get_current_time, which policy requires before any time-dependent handling such as interpreting a return date.",
-          "remediation": "Call get_current_time before interpreting the return date or creating the travel notice."
-        }
-      ]
+      }
     },
     {
       "event_index": 51,
@@ -1729,15 +1699,7 @@
         "path": "audio/full.wav",
         "start_seconds": 271.98,
         "end_seconds": 277.4
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "I'll, I'll, I'll be back home by Sunday night",
-          "category": "relative_time_resolved_from_scenario_clock",
-          "reason": "The customer's relative return date resolves to Sunday 2026-08-30 under the scenario clock of Friday 2026-08-28T14:30:00-04:00, and the create_travel_notice return_date argument was normalized to that concrete date.",
-          "remediation": "The agent should ground relative dates with get_current_time before writing them into a travel notice."
-        }
-      ]
+      }
     },
     {
       "event_index": 52,
@@ -1797,15 +1759,7 @@
         "path": "audio/full.wav",
         "start_seconds": 300.08,
         "end_seconds": 309.36
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "Awesome. All right.",
-          "category": "unretrieved_state_reviewed",
-          "reason": "The agent blesses the customer's list of pending items (airport parking, breakfast, hotel) but no pending-activity read exists at this point and 'airport parking' appears in no tool output.",
-          "remediation": "Read current authorizations with get_card_account before confirming that all pending activity is recognized."
-        }
-      ]
+      }
     },
     {
       "event_index": 57,
@@ -1850,15 +1804,7 @@
         "path": "audio/full.wav",
         "start_seconds": 315.78,
         "end_seconds": 322.52
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "the travel notice on the account",
-          "category": "ambiguous_mutation_consent",
-          "reason": "The customer's only authorization for the travel notice was the ambiguous 'Um, thank you. That's all right. I'll, I'll, I'll be back home by Sunday night,' which is not an explicit confirmation of the mutation.",
-          "remediation": "Read back the destination and return date and obtain an explicit yes before calling create_travel_notice."
-        }
-      ]
+      }
     },
     {
       "event_index": 61,

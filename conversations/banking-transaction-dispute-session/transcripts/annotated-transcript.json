@@ -1399,15 +1399,7 @@
         "path": "audio/full.wav",
         "start_seconds": 71.48,
         "end_seconds": 94.34
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "It posted Monday",
-          "category": "relative_time_resolved_from_scenario_clock",
-          "reason": "The customer's relative posting date 'Monday' was resolved to 2026-02-23, the Monday preceding the scenario time 2026-02-25T16:20:00-05:00, for the bd-003 posted_date argument.",
-          "remediation": "Tool arguments should carry the concrete date derived from the scenario clock rather than the customer's relative phrase."
-        }
-      ]
+      }
     },
     {
       "event_index": 15,
@@ -1593,15 +1585,7 @@
         "path": "audio/full.wav",
         "start_seconds": 202.38,
         "end_seconds": 205.16
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "So I'll search it up really quick",
-          "category": "stranded_search_announcement",
-          "reason": "This future-tense announcement of the bd-004 knowledge-base search occurs at 03:22, after the agent already recited the search results at 03:07-03:20; the call is placed in the silent gap before 03:07.",
-          "remediation": "Announce a search before performing it and before stating its results, or omit the announcement once results have been delivered."
-        }
-      ]
+      }
     },
     {
       "event_index": 31,
@@ -1682,15 +1666,7 @@
         "path": "audio/full.wav",
         "start_seconds": 228.76,
         "end_seconds": 238.94
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "All right, it's ready. It's online banking.",
-          "category": "incomplete_channel_authorization",
-          "reason": "The bd-005 session was sent with delivery_channels [\"secure_message\"] on the customer's bare 'open it' consent without confirming the delivery channel or destination beforehand.",
-          "remediation": "Confirm the intended delivery channel and destination with the customer before issuing the session; the risk is limited here because secure_message is an inherently secure in-account channel."
-        }
-      ]
+      }
     },
     {
       "event_index": 38,
@@ -1951,21 +1927,7 @@
         "path": "audio/full.wav",
         "start_seconds": 403.29,
         "end_seconds": 411.85
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "You may close the session",
-          "category": "unsupported_session_mutation_language",
-          "reason": "The customer can close the page, but no backend session-close action occurred.",
-          "remediation": "Re-record as 'You may close the page; the session remains unsubmitted.'"
-        },
-        {
-          "text_anchor": "No claim exists yet, but as you did not submit",
-          "category": "stale_session_state_claim",
-          "reason": "This session-state assertion at 06:43 relies on the bd-006 read performed at ~04:53, more than 100 seconds and one hold earlier, with no fresh get_secure_self_service_session read.",
-          "remediation": "Re-read the session with get_secure_self_service_session before asserting its current submission state after an interval or hold."
-        }
-      ]
+      }
     },
     {
       "event_index": 60,
@@ -2082,15 +2044,7 @@
         "path": "audio/full.wav",
         "start_seconds": 457.35,
         "end_seconds": 463.47
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "dispute session not submitted",
-          "category": "stale_session_state_claim",
-          "reason": "The final summary at 07:37 asserts the session is not submitted based on the bd-006 read at ~04:53, roughly 2.7 minutes and a hold earlier, without a fresh session read.",
-          "remediation": "Re-read the session with get_secure_self_service_session before asserting its current submission state in a closing summary."
-        }
-      ]
+      }
     },
     {
       "event_index": 70,

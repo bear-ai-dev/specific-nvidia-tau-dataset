@@ -1423,15 +1423,7 @@
         "path": "audio/full.wav",
         "start_seconds": 54.48,
         "end_seconds": 60.2
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "leave October 14th and then come back home on October 19th",
-          "category": "relative_time_resolved_from_scenario_clock",
-          "reason": "The customer states month-and-day travel dates with no year; resolved to 2026-10-14 and 2026-10-19 as the next occurrence after the scenario clock 2026-08-26T12:30:00-07:00.",
-          "remediation": "Search-flight arguments carry the resolved ISO dates 2026-10-14 and 2026-10-19."
-        }
-      ]
+      }
     },
     {
       "event_index": 13,
@@ -1464,15 +1456,7 @@
         "path": "audio/full.wav",
         "start_seconds": 61.28,
         "end_seconds": 74.11
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "closest and easiest",
-          "category": "embellished_tool_basis",
-          "reason": "The airport result gives the basis \"closest airport ... and most direct city access\"; \"easiest\" is a convenience inference the policy forbids and \"right there in town\" is geography the tool did not return.",
-          "remediation": "Describe Reagan only with the returned basis: closest to the National Mall area with the most direct city access."
-        }
-      ]
+      }
     },
     {
       "event_index": 16,
@@ -1669,15 +1653,7 @@
         "path": "audio/full.wav",
         "start_seconds": 168.42000000000002,
         "end_seconds": 181.7
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "best possible itinerary",
-          "category": "unsupported_absolute",
-          "reason": "No result defines a global search scope or proves global optimality.",
-          "remediation": "Say the best matching option returned by the current search, or re-record."
-        }
-      ]
+      }
     },
     {
       "event_index": 33,
@@ -1867,15 +1843,7 @@
         "path": "audio/full.wav",
         "start_seconds": 284.42,
         "end_seconds": 290.0
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "And how would you like to pay",
-          "category": "ambiguous_authentication_context",
-          "reason": "The inferred verification reuses traveler details without an explicit authentication explanation in the enacted call.",
-          "remediation": "Re-enact with a clear identity-verification step before stored profile and payment access."
-        }
-      ]
+      }
     },
     {
       "event_index": 49,
@@ -1990,15 +1958,7 @@
         "path": "audio/full.wav",
         "start_seconds": 331.56,
         "end_seconds": 341.76
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "I'm just going to read that back. It's C-T-449108.",
-          "category": "missing_explicit_purchase_authorization",
-          "reason": "The booking call asserts customer authorization without spoken approval of the exact $1,281 total and $200 certificate / $1,081 Visa split.",
-          "remediation": "Read back the exact final total and tender split, obtain explicit approval, and re-enact the booking turn."
-        }
-      ]
+      }
     },
     {
       "event_index": 59,
@@ -2077,15 +2037,7 @@
         "path": "audio/full.wav",
         "start_seconds": 346.7,
         "end_seconds": 367.36
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "the booking is confirmed",
-          "category": "underreported_returned_state",
-          "reason": "The booking result also returned ticketing_status \"ticketed\" and payment_status \"captured\", which are never read back; policy requires distinguishing Confirmed, Ticketed, and payment capture rather than collapsing them.",
-          "remediation": "Read back that the reservation is confirmed and ticketed and that payment was captured, exactly as returned."
-        }
-      ]
+      }
     },
     {
       "event_index": 66,
@@ -2133,15 +2085,7 @@
         "path": "audio/full.wav",
         "start_seconds": 381.43,
         "end_seconds": 390.13
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "The remaining authorized amount went to the Visa",
-          "category": "payment_state_mischaracterized",
-          "reason": "The booking result returned payment_status \"captured\" and a $1,081.00 Visa allocation; calling it an \"authorized amount\" collapses the authorized and captured states, and the $1,081.00 figure is never spoken.",
-          "remediation": "Report the payment status exactly as returned (captured) and read the $1,081.00 Visa amount aloud with the $200 certificate amount."
-        }
-      ]
+      }
     },
     {
       "event_index": 70,
@@ -2393,15 +2337,7 @@
         "path": "audio/full.wav",
         "start_seconds": 563.85,
         "end_seconds": 570.07
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "Yes, those are adjacent pairs",
-          "category": "unsupported_adjacency_confirmation",
-          "reason": "No seat-map or seat tool result was returned; policy says customer-reported seat labels are not backend confirmation, so affirming adjacency converts a customer statement into a backend fact.",
-          "remediation": "Say the customer-reported pairs look adjacent by label but must be verified on the aircraft map for each direction, without confirming them as backend fact."
-        }
-      ]
+      }
     },
     {
       "event_index": 91,
@@ -2425,15 +2361,7 @@
         "path": "audio/full.wav",
         "start_seconds": 577.41,
         "end_seconds": 586.25
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "just so they're aware",
-          "category": "softened_required_notification",
-          "reason": "The mobility-device result returned airport_notification_required true, but the phrasing presents identifying the device at the airport as an optional courtesy.",
-          "remediation": "State that notifying the airport and identifying the walker as a mobility device is required under the returned accessibility rules."
-        }
-      ]
+      }
     },
     {
       "event_index": 93,

@@ -1014,15 +1014,7 @@
         "path": "audio/full.wav",
         "start_seconds": 89.5,
         "end_seconds": 99.3
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "the issue here is the payment",
-          "category": "incorrect_operational_terminology",
-          "reason": "The backend state is an insurance claim rejection, not a generic payment failure.",
-          "remediation": "Re-record using 'insurance claim issue.'"
-        }
-      ]
+      }
     },
     {
       "event_index": 19,
@@ -1034,15 +1026,7 @@
         "path": "audio/full.wav",
         "start_seconds": 99.78999999999999,
         "end_seconds": 105.97999999999999
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "I'm leaving town again tomorrow morning",
-          "category": "relative_time_resolved_from_scenario_clock",
-          "reason": "With the scenario clock at 2026-08-27 18:12 local, 'tomorrow morning' resolves to the morning of 2026-08-28 and 'tonight' to the evening of 2026-08-27; the ph-003 urgency_context argument was made concrete accordingly.",
-          "remediation": "Carry patient-stated relative times into tool arguments as concrete dates resolved from the environment clock."
-        }
-      ]
+      }
     },
     {
       "event_index": 20,
@@ -1090,15 +1074,7 @@
         "path": "audio/full.wav",
         "start_seconds": 122.12,
         "end_seconds": 126.6
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "It may take a couple minutes",
-          "category": "unsupported_tool_duration",
-          "reason": "No payer SLA or result supports this numeric duration.",
-          "remediation": "Use nonnumeric hold language unless a tool returns an estimate."
-        }
-      ]
+      }
     },
     {
       "event_index": 24,
@@ -1248,15 +1224,7 @@
         "path": "audio/full.wav",
         "start_seconds": 229.68,
         "end_seconds": 237.07999999999998
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "if you leave after you get the ready text you should make it",
-          "category": "contradictory_arrival_prediction",
-          "reason": "The stated 30-minute estimate plus 25-minute travel from about 6:15 implies arrival after the 7:00 counter closing.",
-          "remediation": "Re-record that the timing is tight and may miss closing."
-        }
-      ]
+      }
     },
     {
       "event_index": 37,
@@ -1268,15 +1236,7 @@
         "path": "audio/full.wav",
         "start_seconds": 238.07999999999998,
         "end_seconds": 243.1
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "make sure it doesn't get pushed to tomorrow",
-          "category": "relative_time_resolved_from_scenario_clock",
-          "reason": "With the scenario clock at 2026-08-27 18:12 local, 'tomorrow' resolves to 2026-08-28 and pickup 'tonight' to the evening of 2026-08-27; the ph-005 priority_reason argument was made concrete accordingly.",
-          "remediation": "Carry patient-stated relative times into tool arguments as concrete dates resolved from the environment clock."
-        }
-      ]
+      }
     },
     {
       "event_index": 38,
@@ -1411,15 +1371,7 @@
         "path": "audio/full.wav",
         "start_seconds": 289.22,
         "end_seconds": 296.08
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "ours should be ready first",
-          "category": "unsupported_completion_prediction",
-          "reason": "No refreshed comparative ETA proves the current fill will be ready first.",
-          "remediation": "State only that the alternate has stock and no transfer has occurred."
-        }
-      ]
+      }
     },
     {
       "event_index": 50,
@@ -1464,15 +1416,7 @@
         "path": "audio/full.wav",
         "start_seconds": 304.6,
         "end_seconds": 310.5
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "your mobile number is set for the ready alert",
-          "category": "missing_notification_consent",
-          "reason": "The agent rewrote notification_channel and notification_destination via ph-008 without the patient asking for or consenting to an alert change, which policy requires alongside a verified destination.",
-          "remediation": "Ask the patient to confirm the SMS ready alert to the masked mobile on file before calling update_prescription."
-        }
-      ]
+      }
     },
     {
       "event_index": 54,

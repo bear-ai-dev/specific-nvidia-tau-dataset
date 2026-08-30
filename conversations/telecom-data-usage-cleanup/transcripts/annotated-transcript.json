@@ -1418,15 +1418,7 @@
         "path": "audio/full.wav",
         "start_seconds": 204.8,
         "end_seconds": 216.52
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "An update can sometimes reset an app, uh, preference",
-          "category": "unsupported_causal_speculation",
-          "reason": "No diagnostic established that an update reset this preference.",
-          "remediation": "Present background downloads or loss of Wi-Fi only as possibilities and omit the update claim."
-        }
-      ]
+      }
     },
     {
       "event_index": 31,
@@ -1621,15 +1613,7 @@
         "path": "audio/full.wav",
         "start_seconds": 287.64,
         "end_seconds": 305.62
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "I can add five gigabytes of high-speed data for $40 on the next bill",
-          "category": "missing_required_disclosure",
-          "reason": "The offer's effective timing (immediate) is never stated before authorization, although policy requires stating data amount, price, currency, billing timing, and effective timing.",
-          "remediation": "State that the add-on takes effect immediately, alongside the amount, price, currency, and billing timing, before asking the customer to authorize."
-        }
-      ]
+      }
     },
     {
       "event_index": 48,
@@ -1665,15 +1649,7 @@
         "path": "audio/full.wav",
         "start_seconds": 319.54,
         "end_seconds": 331.88
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "the app setting caused it",
-          "category": "causal_overstatement",
-          "reason": "Carrier aggregate usage and the customer screen support a likely source, not definitive causation.",
-          "remediation": "Say the evidence is consistent with StreamBox background downloads."
-        }
-      ]
+      }
     },
     {
       "event_index": 51,
@@ -1853,15 +1829,7 @@
         "path": "audio/full.wav",
         "start_seconds": 409.348,
         "end_seconds": 416.428
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "the phone does show that StreamBox used almost all of the 11.8 gigs",
-          "category": "source_conflation",
-          "reason": "The customer's phone screen showed 10.9 GB for StreamBox; 11.8 GB is the carrier-metered line total, and the agent attributes the carrier figure to the phone display.",
-          "remediation": "Keep the sources distinct, e.g. the phone showed 10.9 GB for StreamBox, which is consistent with the 11.8 GB the carrier metered."
-        }
-      ]
+      }
     },
     {
       "event_index": 66,
@@ -1885,15 +1853,7 @@
         "path": "audio/full.wav",
         "start_seconds": 417.108,
         "end_seconds": 423.388
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "Cloud Photos, on my end, is showing 300 megabytes",
-          "category": "unsupported_backend_fact",
-          "reason": "The carrier result explicitly lacks per-app attribution, and the customer never reported this number.",
-          "remediation": "Ask the customer to read the phone's app-usage screen or re-record/omit the line."
-        }
-      ]
+      }
     },
     {
       "event_index": 68,
@@ -2046,15 +2006,7 @@
         "path": "audio/full.wav",
         "start_seconds": 508.748,
         "end_seconds": 518.648
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "confirms that cellular data is working normally",
-          "category": "diagnostic_overclaim",
-          "reason": "One customer-run speed test confirms present connectivity and the observed result only.",
-          "remediation": "Report the observed test result without claiming normal service generally."
-        }
-      ]
+      }
     },
     {
       "event_index": 81,

@@ -1587,15 +1587,7 @@
         "path": "audio/full.wav",
         "start_seconds": 149.07999999999998,
         "end_seconds": 152.56
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "adding this as an additional email",
-          "category": "mutation_mischaracterized_in_confirmation",
-          "reason": "The pending update_customer_email operation replaces the primary and notification email (bc-005 output changes primary_email and notification_email) rather than adding an additional address, so the spoken description mischaracterizes the mutation.",
-          "remediation": "Describe the operation exactly as a replacement of the primary email and confirm that description before proceeding."
-        }
-      ]
+      }
     },
     {
       "event_index": 23,
@@ -1628,15 +1620,7 @@
         "path": "audio/full.wav",
         "start_seconds": 205.72,
         "end_seconds": 211.32
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "Can you read the number back to me",
-          "category": "unsafe_authentication_script",
-          "reason": "The agent asks the customer to speak a one-time secret in ordinary conversation.",
-          "remediation": "Re-record using secure keypad or self-service confirmation; do not train this utterance as compliant behavior."
-        }
-      ]
+      }
     },
     {
       "event_index": 26,
@@ -1714,15 +1698,7 @@
         "path": "audio/full.wav",
         "start_seconds": 220.22,
         "end_seconds": 228.36
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "Thanks. Got it.",
-          "category": "spoken_otp_acknowledged",
-          "reason": "The agent acknowledges receipt of a one-time code the customer read aloud, a code policy forbids collecting in ordinary conversation; the code is correctly causally inert in the bc-004b arguments.",
-          "remediation": "The agent should remind the customer never to read one-time codes aloud and rely on the trusted-channel confirmation state instead."
-        }
-      ]
+      }
     },
     {
       "event_index": 33,
@@ -1860,15 +1836,7 @@
         "path": "audio/full.wav",
         "start_seconds": 326.78,
         "end_seconds": 337.5
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "an annual airline incidental credit",
-          "category": "unsupported_benefit_qualifier",
-          "reason": "The bc-007 result returns airline_incidental_credit only as a boolean with no cadence, so the 'annual' qualifier is not supported by any tool output.",
-          "remediation": "State the benefit without a cadence qualifier, or retrieve terms that specify the credit's frequency before stating one."
-        }
-      ]
+      }
     },
     {
       "event_index": 45,
@@ -1973,15 +1941,7 @@
         "path": "audio/full.wav",
         "start_seconds": 394.03,
         "end_seconds": 399.79
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "message center and your email",
-          "category": "incomplete_channel_authorization",
-          "reason": "The customer asked for the application link but did not explicitly authorize both the secure-message and email delivery channels before the agent announced delivery to both and issued the session that way.",
-          "remediation": "Confirm each intended delivery channel and destination with the customer before creating the session."
-        }
-      ]
+      }
     },
     {
       "event_index": 54,
@@ -2107,15 +2067,7 @@
         "path": "audio/full.wav",
         "start_seconds": 442.17,
         "end_seconds": 463.81
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "lounge access subject to its program terms",
-          "category": "unsupported_terms_qualifier",
-          "reason": "No tool result attaches a program-terms condition to Summit Reserve lounge access; bc-006 returns only lounge_membership true.",
-          "remediation": "Report lounge membership exactly as returned, or search the knowledge base for the lounge program's terms before qualifying them."
-        }
-      ]
+      }
     },
     {
       "event_index": 65,
