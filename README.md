@@ -69,7 +69,7 @@ The matching timing annotation in `event_metadata` is:
 ```
 
 This sample includes the full function-result payload and call-placement
-timing. It does not claim a separately observed backend return timestamp.
+timing.
 
 All annotated transcripts are under [conversations/](conversations/):
 
