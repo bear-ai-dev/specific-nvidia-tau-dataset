@@ -1,5 +1,9 @@
 # Specific Labs Tau Bench Dataset
 
+![Synchronized playback: the transcript follows the call audio while annotated tool calls appear inline with their arguments and recorded outputs](assets/qc-viewer-demo.gif)
+
+*Playback at 4x speed: the annotated transcript follows the call audio while tool calls surface inline with their arguments and recorded outputs.*
+
 ## 1. Tool-call annotations
 
 The function-calling deliverable is the
