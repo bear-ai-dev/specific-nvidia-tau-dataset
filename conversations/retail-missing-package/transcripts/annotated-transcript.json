@@ -76,6 +76,10 @@
         "type": "message"
       },
       {
+        "role": "user",
+        "content": "Yeah."
+      },
+      {
         "arguments": "{\"order_reference\":\"7319\",\"customer_email\":\"ethan.patel@northmail.com\",\"include\":[\"items\",\"fulfillment\",\"carrier_scans\"]}",
         "call_id": "rm-001",
         "name": "get_order",
@@ -89,7 +93,7 @@
         "output": "\n\n{\"order_reference\":\"7319\",\"customer\":{\"customer_id\":\"customer-ethan-patel\",\"display_name\":\"Ethan Patel\",\"verified_email\":\"e***@northmail.com\"},\"items\":[{\"item_reference\":\"blue-noise-canceling-headphones\",\"product_reference\":\"blue-noise-canceling-headphones\",\"color\":\"blue\"}],\"fulfillment\":{\"status\":\"delivered\",\"latest_scan\":{\"time\":\"15:18 yesterday\",\"location\":\"front entrance\",\"photo\":null}}}"
       },
       {
-        "id": "msg_0007_0007",
+        "id": "msg_0007_0008",
         "content": [
           {
             "annotations": [],
@@ -106,7 +110,7 @@
         "content": "Uh, yes, it is an apartment building. Um, there's a front desk and then also a package room behind it. Um, I checked both last night and this morning, and yeah, the desk just doesn't have anything for me. So wanted to know what's going on."
       },
       {
-        "id": "msg_0007_0009",
+        "id": "msg_0007_0010",
         "content": [
           {
             "annotations": [],
@@ -123,7 +127,7 @@
         "content": "Yeah, they checked both. The attendant said there wasn't a driver signature, like, around that time too. Um, there's also no delivery photo in the email."
       },
       {
-        "id": "msg_0007_0011",
+        "id": "msg_0007_0012",
         "content": [
           {
             "annotations": [],
@@ -136,7 +140,7 @@
         "type": "message"
       },
       {
-        "id": "msg_0007_0012",
+        "id": "msg_0007_0013",
         "content": [
           {
             "annotations": [],
@@ -166,7 +170,7 @@
         "content": "Yeah, for sure."
       },
       {
-        "id": "msg_0007_0014",
+        "id": "msg_0007_0015",
         "content": [
           {
             "annotations": [],
@@ -179,7 +183,7 @@
         "type": "message"
       },
       {
-        "id": "msg_0007_0015",
+        "id": "msg_0007_0016",
         "content": [
           {
             "annotations": [],
@@ -196,7 +200,7 @@
         "content": "I see. Yeah, that's what I've-- that's kind of what I figured, that it could have gone somewhere else. Um, the problem is these are a gift, so it's time sensitive, and I'm flying out Friday around noon. Is there anything you could do just to get it in time or...?"
       },
       {
-        "id": "msg_0007_0017",
+        "id": "msg_0007_0018",
         "content": [
           {
             "annotations": [],
@@ -213,7 +217,7 @@
         "content": "Yeah, definitely Thursday would be ideal. Friday, you know, noon, afternoon doesn't really help me, 'cause I would have left already at that time."
       },
       {
-        "id": "msg_0007_0019",
+        "id": "msg_0007_0020",
         "content": [
           {
             "annotations": [],
@@ -239,7 +243,11 @@
         "output": "\n\n{\"product_reference\":\"blue-noise-canceling-headphones\",\"variant\":{\"color\":\"blue\"},\"inventory\":{\"same_variant_in_stock\":true}}"
       },
       {
-        "id": "msg_0007_0020",
+        "role": "user",
+        "content": "Yeah."
+      },
+      {
+        "id": "msg_0007_0022",
         "content": [
           {
             "annotations": [],
@@ -252,7 +260,7 @@
         "type": "message"
       },
       {
-        "id": "msg_0007_0021",
+        "id": "msg_0007_0023",
         "content": [
           {
             "annotations": [],
@@ -282,7 +290,7 @@
         "content": "Hmm. Does that mean I have to wait another two days before you send it? Like, what does that actually mean?"
       },
       {
-        "id": "msg_0007_0023",
+        "id": "msg_0007_0025",
         "content": [
           {
             "annotations": [],
@@ -299,7 +307,7 @@
         "content": "I see. So it doesn't go out automatically? Is there any way you could just because of how time sensitive it is?"
       },
       {
-        "id": "msg_0007_0025",
+        "id": "msg_0007_0027",
         "content": [
           {
             "annotations": [],
@@ -316,7 +324,7 @@
         "content": "Okay. Okay, yeah. Can you just make sure it's the exact same model and the color is the same, the blue one? I know the black one has a different price now."
       },
       {
-        "id": "msg_0007_0027",
+        "id": "msg_0007_0029",
         "content": [
           {
             "annotations": [],
@@ -333,7 +341,7 @@
         "content": "Okay. And could I have it sent somewhere besides my building, just so, you know, it doesn't happen again?"
       },
       {
-        "id": "msg_0007_0029",
+        "id": "msg_0007_0031",
         "content": [
           {
             "annotations": [],
@@ -350,7 +358,7 @@
         "content": "Yeah, the location, um, the branch on the West Twenty-third Street, the pickup counter. I've used, I've used that one before, so I would prefer that."
       },
       {
-        "id": "msg_0007_0031",
+        "id": "msg_0007_0033",
         "content": [
           {
             "annotations": [],
@@ -376,7 +384,7 @@
         "output": "\n\n{\"status\":\"preference_added\",\"visible_to_next_reviewer\":true,\"review_instruction\":\"Check West 23rd Street pickup availability first after replacement eligibility.\",\"pickup_guaranteed\":false}"
       },
       {
-        "id": "msg_0007_0032",
+        "id": "msg_0007_0034",
         "content": [
           {
             "annotations": [],
@@ -393,7 +401,7 @@
         "content": "Okay. No, yeah, that's fine. I mostly don't want the second one. I just want, you know, the first one, wherever it is. Uh, so yeah, that's fine."
       },
       {
-        "id": "msg_0007_0034",
+        "id": "msg_0007_0036",
         "content": [
           {
             "annotations": [],
@@ -410,7 +418,7 @@
         "content": "Okay. Nice. Um, and what if it turns up after the replacement ships?"
       },
       {
-        "id": "msg_0007_0036",
+        "id": "msg_0007_0038",
         "content": [
           {
             "annotations": [],
@@ -427,7 +435,7 @@
         "content": "Okay. Okay, yeah. Just so, um, I can keep track and just so I don't get, like, double-charged, um, what's the case number for this?"
       },
       {
-        "id": "msg_0007_0038",
+        "id": "msg_0007_0040",
         "content": [
           {
             "annotations": [],
@@ -457,7 +465,7 @@
         "output": "\n\n{\"notification_id\":\"notification-WST481662\",\"status\":\"sent\",\"masked_destination\":\"e***@northmail.com\",\"case_id\":\"WST481662\",\"included_fields\":[\"case_id\",\"status\",\"carrier_response_deadline\",\"approval_link\"]}"
       },
       {
-        "id": "msg_0007_0040",
+        "id": "msg_0007_0042",
         "content": [
           {
             "annotations": [],
@@ -471,15 +479,15 @@
       },
       {
         "role": "user",
-        "content": "I checked it. That's it for me."
+        "content": "I'm just checking."
       },
       {
-        "id": "msg_0007_0042",
+        "id": "msg_0007_0044",
         "content": [
           {
             "annotations": [],
             "type": "output_text",
-            "text": "Oh, okay. Perfect. Let me know if you get that."
+            "text": "That's it for me. Oh, okay. Perfect. Let me know if you get that."
           }
         ],
         "role": "assistant",
@@ -508,7 +516,7 @@
         "output": "\n\n{\"order_reference\":\"7319\",\"cases\":[{\"case_id\":\"WST481662\",\"status\":\"open\",\"deadline\":\"18:00 tomorrow\",\"carrier_may_contact_customer\":true,\"replacement_created\":false}],\"notifications\":[{\"notification_id\":\"notification-WST481662\",\"status\":\"delivered\",\"type\":\"delivery_trace_confirmation\"}]}"
       },
       {
-        "id": "msg_0007_0045",
+        "id": "msg_0007_0047",
         "content": [
           {
             "annotations": [],
@@ -525,12 +533,12 @@
         "content": "Okay. Okay. No, yeah, um, thanks for, thanks for this. I know it's not ideal, but at least I know, like, where it's gonna be and that there's gonna be a replacement coming if not. Um, yeah."
       },
       {
-        "id": "msg_0007_0047",
+        "id": "msg_0007_0049",
         "content": [
           {
             "annotations": [],
             "type": "output_text",
-            "text": "Yeah. Once again, so sorry about that. I, I totally get it. Is there anything else I can do on this order that you wanted me to kind of check while I have it open? (apologetic)"
+            "text": "Yeah. Once again, so sorry about that. I, I totally get it. Is there anything else I can do on this order that you wanted me to kind of check while I have it open?"
           }
         ],
         "role": "assistant",
@@ -542,7 +550,7 @@
         "content": "Um, no, that's it for this one. We're just... Hopefully we just find it."
       },
       {
-        "id": "msg_0007_0049",
+        "id": "msg_0007_0051",
         "content": [
           {
             "annotations": [],
@@ -556,15 +564,15 @@
       },
       {
         "role": "user",
-        "content": "Okay. Okay, will do. Um, yeah, thank you so much. (relieved)"
+        "content": "Okay. Okay, will do. Um, yeah, thank you so much."
       },
       {
-        "id": "msg_0007_0051",
+        "id": "msg_0007_0053",
         "content": [
           {
             "annotations": [],
             "type": "output_text",
-            "text": "You're welcome. Take care."
+            "text": "You're welcome. Take so much care."
           }
         ],
         "role": "assistant",
@@ -1025,6 +1033,18 @@
     },
     {
       "event_index": 8,
+      "kind": "speech",
+      "speaker": "Ethan",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 54.38,
+        "end_seconds": 54.76
+      }
+    },
+    {
+      "event_index": 9,
       "kind": "function_call",
       "call_id": "rm-001",
       "source": "transcripts/transcript.txt",
@@ -1045,7 +1065,7 @@
       }
     },
     {
-      "event_index": 10,
+      "event_index": 11,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1057,7 +1077,7 @@
       }
     },
     {
-      "event_index": 11,
+      "event_index": 12,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1069,7 +1089,7 @@
       }
     },
     {
-      "event_index": 12,
+      "event_index": 13,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1081,7 +1101,7 @@
       }
     },
     {
-      "event_index": 13,
+      "event_index": 14,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1093,7 +1113,7 @@
       }
     },
     {
-      "event_index": 14,
+      "event_index": 15,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1105,7 +1125,7 @@
       }
     },
     {
-      "event_index": 15,
+      "event_index": 16,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1117,7 +1137,7 @@
       }
     },
     {
-      "event_index": 16,
+      "event_index": 17,
       "kind": "function_call",
       "call_id": "rm-002",
       "source": "transcripts/transcript.txt",
@@ -1138,7 +1158,7 @@
       }
     },
     {
-      "event_index": 18,
+      "event_index": 19,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1150,7 +1170,7 @@
       }
     },
     {
-      "event_index": 19,
+      "event_index": 20,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1162,7 +1182,7 @@
       }
     },
     {
-      "event_index": 20,
+      "event_index": 21,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1182,7 +1202,7 @@
       ]
     },
     {
-      "event_index": 21,
+      "event_index": 22,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1194,7 +1214,7 @@
       }
     },
     {
-      "event_index": 22,
+      "event_index": 23,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1206,7 +1226,7 @@
       }
     },
     {
-      "event_index": 23,
+      "event_index": 24,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1226,7 +1246,7 @@
       ]
     },
     {
-      "event_index": 24,
+      "event_index": 25,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1238,7 +1258,7 @@
       }
     },
     {
-      "event_index": 25,
+      "event_index": 26,
       "kind": "function_call",
       "call_id": "rm-003",
       "source": "transcripts/transcript.txt",
@@ -1259,7 +1279,19 @@
       }
     },
     {
-      "event_index": 27,
+      "event_index": 28,
+      "kind": "speech",
+      "speaker": "Ethan",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 212.48,
+        "end_seconds": 212.96
+      }
+    },
+    {
+      "event_index": 29,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1279,7 +1311,7 @@
       ]
     },
     {
-      "event_index": 28,
+      "event_index": 30,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1291,7 +1323,7 @@
       }
     },
     {
-      "event_index": 29,
+      "event_index": 31,
       "kind": "function_call",
       "call_id": "rm-004",
       "source": "transcripts/transcript.txt",
@@ -1312,7 +1344,7 @@
       }
     },
     {
-      "event_index": 31,
+      "event_index": 33,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1324,7 +1356,7 @@
       }
     },
     {
-      "event_index": 32,
+      "event_index": 34,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1344,7 +1376,7 @@
       ]
     },
     {
-      "event_index": 33,
+      "event_index": 35,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1356,7 +1388,7 @@
       }
     },
     {
-      "event_index": 34,
+      "event_index": 36,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1376,7 +1408,7 @@
       ]
     },
     {
-      "event_index": 35,
+      "event_index": 37,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1388,7 +1420,7 @@
       }
     },
     {
-      "event_index": 36,
+      "event_index": 38,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1408,7 +1440,7 @@
       ]
     },
     {
-      "event_index": 37,
+      "event_index": 39,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1420,7 +1452,7 @@
       }
     },
     {
-      "event_index": 38,
+      "event_index": 40,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1440,7 +1472,7 @@
       ]
     },
     {
-      "event_index": 39,
+      "event_index": 41,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1452,7 +1484,7 @@
       }
     },
     {
-      "event_index": 40,
+      "event_index": 42,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1472,7 +1504,7 @@
       ]
     },
     {
-      "event_index": 41,
+      "event_index": 43,
       "kind": "function_call",
       "call_id": "rm-005",
       "source": "transcripts/transcript.txt",
@@ -1493,7 +1525,7 @@
       }
     },
     {
-      "event_index": 43,
+      "event_index": 45,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1505,7 +1537,7 @@
       }
     },
     {
-      "event_index": 44,
+      "event_index": 46,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1517,7 +1549,7 @@
       }
     },
     {
-      "event_index": 45,
+      "event_index": 47,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1537,7 +1569,7 @@
       ]
     },
     {
-      "event_index": 46,
+      "event_index": 48,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1549,7 +1581,7 @@
       }
     },
     {
-      "event_index": 47,
+      "event_index": 49,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1569,7 +1601,7 @@
       ]
     },
     {
-      "event_index": 48,
+      "event_index": 50,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1581,7 +1613,7 @@
       }
     },
     {
-      "event_index": 49,
+      "event_index": 51,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1601,7 +1633,7 @@
       ]
     },
     {
-      "event_index": 50,
+      "event_index": 52,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1613,7 +1645,7 @@
       }
     },
     {
-      "event_index": 51,
+      "event_index": 53,
       "kind": "function_call",
       "call_id": "rm-006",
       "source": "transcripts/transcript.txt",
@@ -1634,7 +1666,7 @@
       }
     },
     {
-      "event_index": 53,
+      "event_index": 55,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1646,33 +1678,31 @@
       }
     },
     {
-      "event_index": 54,
+      "event_index": 56,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 440.284,
-        "end_seconds": 442.304
-      },
-      "correction": "Audio-verified re-attribution: per-channel energy shows the customer speaking at 440.3-441.7 (overlapping the agent at 440.9-441.7), so the phrase 'That's it for me', previously attributed to Daniel, is Ethan's and was moved into this event; the segment now ends at 442.304 and overlaps Daniel's next line."
+        "start_seconds": 440.08,
+        "end_seconds": 441.36
+      }
     },
     {
-      "event_index": 55,
+      "event_index": 57,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 442.404,
-        "end_seconds": 444.224
-      },
-      "correction": "Audio-verified re-attribution: 'that's it for me' was removed from this line because it is the customer's (spoken in overlap); only Daniel is active from 442.4 to 444.2, saying 'Oh, okay. Perfect. Let me know if you get that.'"
+        "start_seconds": 440.6,
+        "end_seconds": 444.08
+      }
     },
     {
-      "event_index": 56,
+      "event_index": 58,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1684,7 +1714,7 @@
       }
     },
     {
-      "event_index": 57,
+      "event_index": 59,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1696,7 +1726,7 @@
       }
     },
     {
-      "event_index": 58,
+      "event_index": 60,
       "kind": "function_call",
       "call_id": "rm-007",
       "source": "transcripts/transcript.txt",
@@ -1717,7 +1747,7 @@
       }
     },
     {
-      "event_index": 60,
+      "event_index": 62,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1729,7 +1759,7 @@
       }
     },
     {
-      "event_index": 61,
+      "event_index": 63,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1741,7 +1771,7 @@
       }
     },
     {
-      "event_index": 62,
+      "event_index": 64,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1761,7 +1791,7 @@
       ]
     },
     {
-      "event_index": 63,
+      "event_index": 65,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1773,7 +1803,7 @@
       }
     },
     {
-      "event_index": 64,
+      "event_index": 66,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1785,7 +1815,7 @@
       }
     },
     {
-      "event_index": 65,
+      "event_index": 67,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",
@@ -1797,7 +1827,7 @@
       }
     },
     {
-      "event_index": 66,
+      "event_index": 68,
       "kind": "speech",
       "speaker": "Daniel",
       "role": "assistant",
@@ -1809,7 +1839,7 @@
       }
     },
     {
-      "event_index": 67,
+      "event_index": 69,
       "kind": "speech",
       "speaker": "Ethan",
       "role": "user",

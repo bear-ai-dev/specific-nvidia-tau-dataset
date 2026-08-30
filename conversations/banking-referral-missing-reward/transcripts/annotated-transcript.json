@@ -17,7 +17,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "What can I help you with?"
+            "text": "...help you with?"
           }
         ],
         "role": "assistant",
@@ -206,7 +206,7 @@
       },
       {
         "role": "user",
-        "content": "August 3rd. Her name is Alicia Brooks. She got the card maybe 10 days ago."
+        "content": "August 3rd. Her name is Alisa Brooks. She got the card maybe 10 days ago."
       },
       {
         "id": "msg_0001_0017",
@@ -557,7 +557,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "It could delay automated matching. The referral record already shows approved, so the application was associated successfully. I would not ask her to reapply; duplicate applications can create"
+            "text": "It could delay automated matching. The referral record already shows approved, so the application was associated successfully. I would not ask her to reapply, but she should duplicate applications to create"
           }
         ],
         "role": "assistant",
@@ -1274,8 +1274,8 @@
       "source": "transcripts/transcript.txt",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 0.08,
-        "end_seconds": 1.52
+        "start_seconds": 0.0,
+        "end_seconds": 0.541
       }
     },
     {

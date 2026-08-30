@@ -496,7 +496,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "Okay. I'm just going to read that back: C-T-449108."
+            "text": "Okay. I'm just going to read that back. It's C-T-449108."
           }
         ],
         "role": "assistant",
@@ -505,7 +505,7 @@
       },
       {
         "role": "user",
-        "content": "Okay."
+        "content": "Yes. Okay."
       },
       {
         "id": "msg_0008_0045",
@@ -513,7 +513,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "C-T-449108. Okay. Thanks, got it."
+            "text": "Thanks. Got it."
           }
         ],
         "role": "assistant",
@@ -561,7 +561,7 @@
       },
       {
         "role": "user",
-        "content": "Okay. Is it B9RT6M?"
+        "content": "Okay. Can I- Is it B9RT6M?"
       },
       {
         "id": "msg_0008_0048",
@@ -603,7 +603,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "Yep, that's right. Two paid checked bags total, plus the folding walker as a mobility device. Again, no charge for that. And insurance is included for both travelers."
+            "text": "Yep, that's right. Two paid checked bags total, plus the folding walker as a mobility device. And again, no charge for that. And insurance is included for both travelers."
           }
         ],
         "role": "assistant",
@@ -612,7 +612,7 @@
       },
       {
         "role": "user",
-        "content": "Okay. And can you please repeat the airports?"
+        "content": "Okay. And can you just please report- repeat rather the airports?"
       },
       {
         "id": "msg_0008_0054",
@@ -697,7 +697,7 @@
       },
       {
         "role": "user",
-        "content": "The certificate number had a zero or the letter O?"
+        "content": "The certificate number had a zero or the letter 'O'?"
       },
       {
         "id": "msg_0008_0064",
@@ -739,7 +739,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "The reservation is confirmed in standard economy. Seat selection can be completed from the reservation screen, so just choose two adjacent available seats and verify both directions, okay?"
+            "text": "The reservation is confirmed in standard economy. Seat selection can be completed from the reservation screen, so just choose two adjacent available seats and verify both directions for that, okay?"
           }
         ],
         "role": "assistant",
@@ -794,7 +794,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "No problem. That was $1,186.40 for fare, taxes, and two checked bags, plus $94.60 for that insurance. And a $200 credit was applied; the remainder was charged to the Visa on file ending in 1182."
+            "text": "No problem. That was $1,186.40 for fare, taxes, and two checked bags, plus $94.60 for that insurance. And a $200 credit was applied; the remainder was charged to the Visa on file. And that's the card I have ending in 1182."
           }
         ],
         "role": "assistant",
@@ -845,7 +845,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "Oh, you're very welcome, ma'am. It's my pleasure. Thank you for choosing BlueMesa Airlines, and have a wonderful trip with your grandson."
+            "text": "Oh, you're very welcome, ma'am. It's my pleasure. And thank you for choosing BlueMesa Airlines, and have a wonderful trip with your grandson."
           }
         ],
         "role": "assistant",
@@ -1291,7 +1291,7 @@
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 8.38,
-        "end_seconds": 14.07
+        "end_seconds": 14.665
       }
     },
     {
@@ -1302,8 +1302,8 @@
       "source": "transcripts/transcript.txt",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 14.07,
-        "end_seconds": 14.94
+        "start_seconds": 13.762,
+        "end_seconds": 14.979
       }
     },
     {
@@ -1977,9 +1977,17 @@
       "source": "transcripts/transcript.txt",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 332.12,
-        "end_seconds": 335.81
-      }
+        "start_seconds": 331.56,
+        "end_seconds": 341.76
+      },
+      "grounding_review": [
+        {
+          "text_anchor": "I'm just going to read that back. It's C-T-449108.",
+          "category": "missing_explicit_purchase_authorization",
+          "reason": "The booking call asserts customer authorization without spoken approval of the exact $1,281 total and $200 certificate / $1,081 Visa split.",
+          "remediation": "Read back the exact final total and tender split, obtain explicit approval, and re-enact the booking turn."
+        }
+      ]
     },
     {
       "event_index": 59,
@@ -1989,8 +1997,8 @@
       "source": "transcripts/transcript.txt",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 335.81,
-        "end_seconds": 336.15
+        "start_seconds": 342.52,
+        "end_seconds": 343.76
       }
     },
     {
@@ -2001,17 +2009,9 @@
       "source": "transcripts/transcript.txt",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 337.76,
-        "end_seconds": 345.38
-      },
-      "grounding_review": [
-        {
-          "text_anchor": "C-T-449108. Okay. Thanks, got it",
-          "category": "missing_explicit_purchase_authorization",
-          "reason": "The booking call asserts customer authorization without spoken approval of the exact $1,281 total and $200 certificate / $1,081 Visa split.",
-          "remediation": "Read back the exact final total and tender split, obtain explicit approval, and re-enact the booking turn."
-        }
-      ]
+        "start_seconds": 344.2,
+        "end_seconds": 345.32
+      }
     },
     {
       "event_index": 61,

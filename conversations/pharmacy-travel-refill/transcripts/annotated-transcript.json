@@ -176,7 +176,7 @@
       },
       {
         "role": "user",
-        "content": "Uh, is there any way you can call them right now? I'm leaving town again tomorrow morning a- and I kinda need it. (concerned)"
+        "content": "Uh, is there any way you can call them right now? I'm leaving town again tomorrow morning a- and I kinda need it."
       },
       {
         "id": "msg_0004_0015",
@@ -360,7 +360,7 @@
       },
       {
         "role": "user",
-        "content": "Oh, okay. That, that's great. Uh, what happens if I don't get the text by say like 6:45 or something like that? (relieved)"
+        "content": "Oh, okay. That, that's great. Uh, what happens if I don't get the text by say like 6:45 or something like that?"
       },
       {
         "id": "msg_0004_0031",

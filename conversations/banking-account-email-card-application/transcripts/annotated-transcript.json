@@ -26,7 +26,7 @@
       },
       {
         "role": "user",
-        "content": "Hey, um, I'm calling because I'm locked out of my old email and I want to apply for a travel card before a trip. The bank is connected to this old email. I've already tried, um, changing this online twice and it keeps sending codes to an email I can't access, so would appreciate any help here. (frustrated)"
+        "content": "Hey, um, I'm calling because I'm locked out of my old email and I want to apply for a travel card before a trip. The bank is connected to this old email. I've already tried, um, changing this online twice and it keeps sending codes to an email I can't access, so would appreciate any help here."
       },
       {
         "id": "msg_0000_0002",
@@ -270,7 +270,7 @@
       },
       {
         "role": "user",
-        "content": "Okay, nice. Thank you. I'll check on that."
+        "content": "Okay, nice. Thank you. I'll, I'll check on that."
       },
       {
         "id": "msg_0000_0021",
@@ -287,7 +287,7 @@
       },
       {
         "role": "user",
-        "content": "I don't actually have a specific one in mind yet. I want no foreign transaction fee and airport lounge access, but I'm not paying 700 dollars a year."
+        "content": "I, I, I don't actually have a specific one in mind yet. Now I- I want no foreign transaction fee and airport lounge access, but I'm not paying 700 dollars a year."
       },
       {
         "id": "msg_0000_0023",
@@ -295,7 +295,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "I'll search our current product terms."
+            "text": "Uh, I'll search our current product terms."
           }
         ],
         "role": "assistant",
@@ -321,7 +321,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "Okay. So I see that two products fit part of that. We have Summit Journey, which has no foreign transaction fee and a 95 dollar annual fee, but has no general lounge membership. And then Summit Reserve includes lounge access and costs 395 dollars annually."
+            "text": "Okay. So I see that two products fit that- fit part of that. We have Summit Journey that has no foreign transaction fee and a 95 dollar annual fee, but has no general lounge membership. And then Summit Reserve includes lounge access and costs 395 annual."
           }
         ],
         "role": "assistant",
@@ -338,7 +338,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "Okay. Just give me a moment while I pull that up."
+            "text": "Okay. Just give, um, give me a moment while I pull that up."
           }
         ],
         "role": "assistant",
@@ -373,7 +373,7 @@
       },
       {
         "role": "user",
-        "content": "Yeah. I mean, that makes sense. Um, what about the welcome bonus?"
+        "content": "Yeah. I mean, that, that makes sense. Um, what about the welcome bonus?"
       },
       {
         "id": "msg_0000_0029",
@@ -416,7 +416,7 @@
       },
       {
         "role": "user",
-        "content": "Got it. I think Journey sounds more reasonable. Can you apply for me?"
+        "content": "Got it. I, I, I think Journey sounds more reasonable. Can you apply for me?"
       },
       {
         "id": "msg_0000_0032",
@@ -433,7 +433,7 @@
       },
       {
         "role": "user",
-        "content": "Okay, I see. Um, yeah. Can you send me the link for the application, or guide me to where I can find it?"
+        "content": "Okay, I see. Um, yeah. Can, can you send me the link for the application, um, or guide me to where I can find it?"
       },
       {
         "id": "msg_0000_0034",
@@ -463,7 +463,7 @@
       },
       {
         "role": "user",
-        "content": "Is it going to my new email that we just set up?"
+        "content": "I- is it going to my new email that we just set up?"
       },
       {
         "id": "msg_0000_0036",
@@ -493,7 +493,7 @@
       },
       {
         "role": "user",
-        "content": "Got it. If I get denied, will you know why?"
+        "content": "Got it. If, if I get denied, will you know why?"
       },
       {
         "arguments": "{\"query\":\"What information appears in an adverse-action decision notice and can phone agents override underwriting?\"}",
@@ -514,7 +514,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "So the decision notice usually explains the factors and any reconsideration contact, and phone agents cannot promise approval or override the underwriting."
+            "text": "So the deci- the decision notice usually explains the factors and any reconsideration contact, and phone agents cannot promise approval or override the underwriting."
           }
         ],
         "role": "assistant",
@@ -523,7 +523,7 @@
       },
       {
         "role": "user",
-        "content": "Fair. Can you confirm the fees for the two cards one more time?"
+        "content": "Fair. Can, can you confirm the fees for the two cards one more time?"
       },
       {
         "id": "msg_0000_0041",
@@ -531,7 +531,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "Yeah, sure. Journey is a 95 dollar annual fee, no foreign transaction fee, and no general lounge membership. For Reserve, it's a 395 dollar annual fee, no foreign transaction fee, and lounge access subject to its program terms."
+            "text": "Yeah, sure. So the Journey is a 95 dollar annual fee, no foreign transaction fee, and no general lounge membership. And for the Reserve, it's 395 dollar annual fee, no foreign tr- foreign transaction fee, and lounge access subject to its program terms."
           }
         ],
         "role": "assistant",
@@ -540,7 +540,7 @@
       },
       {
         "role": "user",
-        "content": "Thanks. Yeah, I think I'm gonna go with Journey."
+        "content": "Thanks. Yeah, I, I think I'm gonna go with Journey."
       },
       {
         "id": "msg_0000_0043",
@@ -587,7 +587,7 @@
       },
       {
         "role": "user",
-        "content": "Got it. It also asks annual income. I have a salary and freelance work."
+        "content": "It- it also asks annual income. I have a salary and freelance work."
       },
       {
         "arguments": "{\"query\":\"How should salary and freelance income be reported in the card application?\"}",
@@ -608,7 +608,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "So you can report income you can reasonably access and verify, consistent with the application disclosure. If you're unsure how a category applies, use the explanation beside the field rather than guessing."
+            "text": "So you can report income you can reasonably access and verify, um, consistent with the application disclosure. If you're un- if you're unsure how a category applies, use the explanation beside the field gathering, um, rather than guessing."
           }
         ],
         "role": "assistant",
@@ -617,7 +617,7 @@
       },
       {
         "role": "user",
-        "content": "Got it. I don't want to submit while we're talking. Can I save it?"
+        "content": "Got it. I, I, I don't want to submit while we're talking. Can I save it?"
       },
       {
         "arguments": "{\"customer_id\":\"SF204771\",\"session_id\":\"session-card-application\"}",
@@ -677,7 +677,7 @@
       },
       {
         "role": "user",
-        "content": "Good. I was worried you had already run my credit."
+        "content": "Good. I, I was worried you had already run my credit."
       },
       {
         "id": "msg_0000_0054",
@@ -694,7 +694,7 @@
       },
       {
         "role": "user",
-        "content": "Got it. Does the old email still work for login too? I'm just curious."
+        "content": "Got it. Does the old email still work for login too? I'm just, just curious."
       },
       {
         "arguments": "{\"query\":\"After a profile email change, what happens to the login identifier and future notice routing?\"}",
@@ -715,7 +715,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "Yeah. So your username may remain the same, but future notices go to the new email. If the security system prompts you to confirm the change, use the secure banking site rather than a link from an unexpected message."
+            "text": "Yeah. So y- your username may remain the same, but future notices go to the new email. If the security system prompts you to confirm the change, use the secure banking site rather than a link from an unexpected message."
           }
         ],
         "role": "assistant",
@@ -1427,7 +1427,7 @@
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 70.2,
-        "end_seconds": 78.12
+        "end_seconds": 76.42
       }
     },
     {
@@ -1504,8 +1504,8 @@
       "source": "transcripts/transcript.txt",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 92.08,
-        "end_seconds": 93.0
+        "start_seconds": 92.82,
+        "end_seconds": 93.06
       }
     },
     {
@@ -1736,7 +1736,7 @@
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 241.08,
-        "end_seconds": 254.18
+        "end_seconds": 252.94
       }
     },
     {
@@ -1915,7 +1915,7 @@
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 372.13,
-        "end_seconds": 377.35
+        "end_seconds": 376.132
       }
     },
     {
@@ -2207,7 +2207,7 @@
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 509.55,
-        "end_seconds": 530.67
+        "end_seconds": 528.532
       }
     },
     {
@@ -2299,10 +2299,9 @@
       "source": "transcripts/transcript.txt",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 568.91,
-        "end_seconds": 572.19
-      },
-      "correction": "Removed trailing '(worried)' from the message content: word-level alignment (transcripts/words.json) contains no such spoken token, so it is a leaked stage direction. Corrected the audio window from 560.59-572.77 to 568.91-572.19 per word-level alignment, which shows the customer speaking only after the agent finished at 565.29; there is no genuine overlap."
+        "start_seconds": 568.912,
+        "end_seconds": 572.192
+      }
     },
     {
       "event_index": 83,

@@ -12,7 +12,7 @@
 [00:01:07.540 - 00:01:21.040] Daniel: Okay. Um, I just found that order. I see one standing desk converter for one hundred and eighty-six dollars and forty-two cents after tax. Does that sound about right?
 [00:01:21.140 - 00:01:26.800] Teddy: Yep. I paid forty dollars with a Westline gift card, and then the rest should be on my debit.
 [00:01:28.040 - 00:01:41.200] Daniel: Okay, perfect. Yeah, that, that definitely helps. I can see that the return was accepted at the Eastwood store about nine days ago, and the system shows that the item is back in inventory, so the return itself is actually complete.
-[00:01:43.360 - 00:01:58.400] Teddy: Oh, oh, okay. I think that's what the person at the store told me, but the email I got is only about forty-two dollars, so I'm still missing the one hundred and forty-six dollars and the forty-two cents. I don't know where that is. It isn't in my account. (concerned)
+[00:01:43.360 - 00:01:58.400] Teddy: Oh, oh, okay. I think that's what the person at the store told me, but the email I got is only about forty-two dollars, so I'm still missing the one hundred and forty-six dollars and the forty-two cents. I don't know where that is. It isn't in my account.
 [00:01:59.540 - 00:02:10.960] Daniel: Okay, understood. Um, the, the forty dollar portion should have gone back to the gift card. Did you receive a new digital gift card number in that email by any chance?
 [00:02:12.480 - 00:02:18.560] Teddy: Uh, yeah, I did, but I haven't tried it yet. I was just more worried about the debit card.
 [00:02:19.420 - 00:02:30.600] Daniel: Okay. Yeah, that's, um, that's totally fair. Let me go ahead and check the payment history and the card reference. I may need to place you on hold for a few moments while I kind of open the return details.
@@ -58,7 +58,7 @@
 [00:09:09.220 - 00:09:12.080] Teddy: Okay. And if the return appears before then, do I need to call?
 [00:09:13.400 - 00:09:21.100] Daniel: No. So the processor should update the case automatically, and you should receive a closure email once the settlement is confirmed.
 [00:09:22.840 - 00:09:27.440] Teddy: Okay. All right. Well, I still wish we were back today, but this makes more sense to me now.
-[00:09:29.760 - 00:09:41.460] Daniel: Yeah. I totally understand you. So sorry again for the trouble. The gift card portion is available now, and the card portion is kind of just actively under review. If there's anything else from the order that you want me to check, just let me know. (apologetic)
+[00:09:29.760 - 00:09:41.460] Daniel: Yeah. I totally understand you. So sorry again for the trouble. The gift card portion is available now, and the card portion is kind of just actively under review. If there's anything else from the order that you want me to check, just let me know.
 [00:09:42.240 - 00:09:43.560] Teddy: Okay. I'm good now. That's everything.
 [00:09:44.680 - 00:09:51.200] Daniel: Okay. All right, Teddy. Um, keep the case email for reference, and we'll contact you as soon as the payment team responds.
 [00:09:52.280 - 00:09:53.200] Teddy: All right. Thanks, Daniel.

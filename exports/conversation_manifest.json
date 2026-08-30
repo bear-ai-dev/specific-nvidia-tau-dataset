@@ -221,7 +221,7 @@
       "scenario_time": "2026-08-27T19:30:00-05:00",
       "exports": {
         "tool_rows": 8,
-        "message_rows": 30,
+        "message_rows": 33,
         "flagged_excluded": 6
       },
       "state": {

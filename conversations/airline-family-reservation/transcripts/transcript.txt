@@ -1,8 +1,8 @@
 [00:00:01.640 - 00:00:07.060] Jordan: Hi. Thanks for calling BlueMesa Airlines. This is Jordan. How are you doing today?
 
-[00:00:08.380 - 00:00:14.070] Linda: Good. Um, I'm trying to— [laughs] I'm trying to book—
+[00:00:08.380 - 00:00:14.665] Linda: Good. Um, I'm trying to— [laughs] I'm trying to book—
 
-[00:00:14.070 - 00:00:14.940] Jordan: Where are we trying to get you today, ma'am?
+[00:00:13.762 - 00:00:14.979] Jordan: Where are we trying to get you today, ma'am?
 
 [00:00:16.560 - 00:00:17.340] Linda: Pardon me?
 
@@ -98,11 +98,11 @@
 
 [00:05:19.980 - 00:05:31.060] Linda: The code number is C-T-449108.
 
-[00:05:32.120 - 00:05:35.810] Jordan: Okay. I'm just going to read that back: C-T-449108.
+[00:05:31.560 - 00:05:41.760] Jordan: Okay. I'm just going to read that back. It's C-T-449108.
 
-[00:05:35.810 - 00:05:36.150] Linda: Okay.
+[00:05:42.520 - 00:05:43.760] Linda: Yes. Okay.
 
-[00:05:37.760 - 00:05:45.380] Jordan: C-T-449108. Okay. Thanks, got it.
+[00:05:44.200 - 00:05:45.320] Jordan: Thanks. Got it.
 
 [00:05:45.500] [tool] validate_travel_certificate: validate the supplied certificate before applying it
 
@@ -110,7 +110,7 @@
 
 [00:05:46.700 - 00:06:07.360] Jordan: Um, all right. Well, the booking is confirmed. Let me give you your confirmation code. The code is B as in Bravo, 9, R as in Romeo, T as in Tango, 6, M as in Mike.
 
-[00:06:10.210 - 00:06:16.110] Linda: Okay. Is it B9RT6M?
+[00:06:10.210 - 00:06:16.110] Linda: Okay. Can I- Is it B9RT6M?
 
 [00:06:17.390 - 00:06:18.630] Jordan: Yes.
 
@@ -120,9 +120,9 @@
 
 [00:06:31.430 - 00:06:33.430] Linda: And 2 checked bags, right?
 
-[00:06:33.430 - 00:06:45.110] Jordan: Yep, that's right. Two paid checked bags total, plus the folding walker as a mobility device. Again, no charge for that. And insurance is included for both travelers.
+[00:06:33.430 - 00:06:45.110] Jordan: Yep, that's right. Two paid checked bags total, plus the folding walker as a mobility device. And again, no charge for that. And insurance is included for both travelers.
 
-[00:06:46.770 - 00:06:52.510] Linda: Okay. And can you please repeat the airports?
+[00:06:46.770 - 00:06:52.510] Linda: Okay. And can you just please report- repeat rather the airports?
 
 [00:06:53.610 - 00:07:04.290] Jordan: Yes. Phoenix Sky Harbor to Washington Reagan National. That is round trip, October 14th through October 19th.
 
@@ -142,7 +142,7 @@
 
 [00:08:14.830 - 00:08:17.090] Jordan: Yep, that's right. I have that right there, ma'am.
 
-[00:08:18.829 - 00:08:22.250] Linda: The certificate number had a zero or the letter O?
+[00:08:18.829 - 00:08:22.250] Linda: The certificate number had a zero or the letter 'O'?
 
 [00:08:23.570 - 00:08:35.750] Jordan: It was recorded as C-T-449108, with the digit zero between one and eight.
 
@@ -152,7 +152,7 @@
 
 [00:08:49.870 - 00:08:51.710] Linda: Can we choose the seats now?
 
-[00:08:53.470 - 00:09:06.350] Jordan: The reservation is confirmed in standard economy. Seat selection can be completed from the reservation screen, so just choose two adjacent available seats and verify both directions, okay?
+[00:08:53.470 - 00:09:06.350] Jordan: The reservation is confirmed in standard economy. Seat selection can be completed from the reservation screen, so just choose two adjacent available seats and verify both directions for that, okay?
 
 [00:09:08.730 - 00:09:09.350] Linda: Okay.
 
@@ -166,7 +166,7 @@
 
 [00:09:47.870 - 00:09:52.490] Linda: Okay. Uh, please, uh, give me the total one more time.
 
-[00:09:52.490 - 00:10:15.770] Jordan: No problem. That was $1,186.40 for fare, taxes, and two checked bags, plus $94.60 for that insurance. And a $200 credit was applied; the remainder was charged to the Visa on file ending in 1182.
+[00:09:52.490 - 00:10:15.770] Jordan: No problem. That was $1,186.40 for fare, taxes, and two checked bags, plus $94.60 for that insurance. And a $200 credit was applied; the remainder was charged to the Visa on file. And that's the card I have ending in 1182.
 
 [00:10:17.850 - 00:10:20.750] Linda: Okay, that matches my screen.
 
@@ -178,6 +178,6 @@
 
 [00:10:45.840 - 00:10:50.010] Linda: No, that covers it. Thank you for being patient with me.
 
-[00:10:50.010 - 00:10:58.710] Jordan: Oh, you're very welcome, ma'am. It's my pleasure. Thank you for choosing BlueMesa Airlines, and have a wonderful trip with your grandson.
+[00:10:50.010 - 00:10:58.710] Jordan: Oh, you're very welcome, ma'am. It's my pleasure. And thank you for choosing BlueMesa Airlines, and have a wonderful trip with your grandson.
 
 [00:10:58.710 - 00:10:59.190] Linda: Thank you.
