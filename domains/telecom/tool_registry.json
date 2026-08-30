@@ -7,7 +7,6 @@
       "name": "lookup_customer",
       "description": "Resolve one telecom customer using the mobile number and identity attributes collected on the call.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "mobile_number": {
@@ -33,7 +32,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
@@ -73,7 +71,6 @@
       "name": "verify_customer_identity",
       "description": "Validate the collected telecom identity factors and return a scoped verification record before protected account access.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
@@ -105,7 +102,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "verification_id": {
@@ -168,7 +164,6 @@
       "name": "get_customer_account",
       "description": "Retrieve selected line, device, and plan sections for a resolved telecom customer.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
@@ -203,7 +198,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
@@ -326,7 +320,6 @@
       "name": "get_line_data_usage",
       "description": "Read carrier-recorded usage and remaining high-speed data for one line and billing-cycle window.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "line_id": {
@@ -367,7 +360,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "line_id": {
@@ -435,7 +427,6 @@
       "name": "get_customer_bills",
       "description": "Retrieve current billing-cycle dates, overage charges, and post-allowance plan behavior.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
@@ -480,7 +471,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "bill_id": {
@@ -544,7 +534,6 @@
       "name": "add_data_addon",
       "description": "Activate one current eligible data add-on after explicit customer authorization, using the stable offer ID rather than reconstructed price fields.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "line_id": {
@@ -570,7 +559,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "transaction_id": {
@@ -641,7 +629,6 @@
       "name": "get_data_addon_offers",
       "description": "Return current eligible high-speed data offers for a verified line before any price is quoted or add-on is submitted.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "line_id": {
@@ -662,7 +649,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "line_id": {
@@ -757,7 +743,6 @@
       "name": "transfer_to_specialist",
       "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "reason": {
@@ -776,7 +761,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "status": {

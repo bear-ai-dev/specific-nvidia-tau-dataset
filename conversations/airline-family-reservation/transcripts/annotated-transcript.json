@@ -862,7 +862,6 @@
         "name": "list_supported_airports",
         "description": "List airports supported for a destination area before recommending one.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "destination_area": {
@@ -882,7 +881,6 @@
         "name": "search_flights",
         "description": "Search round-trip flight options for a fixed route, dates, traveler count, and stop limit.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "origin_airport": {
@@ -939,7 +937,6 @@
         "name": "calculate_itinerary_price",
         "description": "Calculate fare, taxes, baggage, mobility-device treatment, and an optional insurance quote for an itinerary.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "outbound_flight_id": {
@@ -998,7 +995,6 @@
         "name": "check_mobility_device_requirements",
         "description": "Return current fee, baggage-count, labeling, serial-number, and airport-notification rules for one mobility-device type.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "device_type": {
@@ -1018,7 +1014,6 @@
         "name": "get_customer_profile",
         "description": "Retrieve a customer profile with selected reservation and masked payment sections.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "email": {
@@ -1059,7 +1054,6 @@
         "name": "verify_customer_identity",
         "description": "Validate collected customer identity factors before reading stored reservations, payment methods, or certificates.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "full_name": {
@@ -1091,7 +1085,6 @@
         "name": "book_reservation",
         "description": "Create an authorized reservation and return its confirmation, itinerary, ancillary products, and tender allocation.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "customer_id": {
@@ -1225,7 +1218,6 @@
         "name": "validate_travel_certificate",
         "description": "Validate a customer-provided travel certificate and return a stable certificate ID, status, balance, and applicable amount before booking.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "customer_id": {
@@ -1257,7 +1249,6 @@
         "name": "transfer_to_specialist",
         "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "reason": {

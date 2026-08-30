@@ -715,7 +715,6 @@
         "name": "lookup_customer",
         "description": "Find one banking customer using a stable customer identifier or verified profile attribute. At least one identifier parameter must be supplied; no parameter is individually required because different lookups legitimately use different identifiers. Precedence when multiple are supplied: account_id, then email, then full_name, with billing_zip, card_last4, and account_match used as corroborating attributes to narrow to exactly one profile.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "description": "At least one identifier property must be supplied. Precedence: account_id, then email, then full_name; billing_zip, card_last4, and account_match narrow the match.",
           "properties": {
@@ -759,7 +758,6 @@
         "name": "get_current_time",
         "description": "Return the authoritative current timestamp for an audit or verification record.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {},
           "required": [],
@@ -772,7 +770,6 @@
         "name": "verify_customer_identity",
         "description": "Validate supplied non-secret identity factors against the resolved profile and return a scoped verification record. Collecting or naming factors alone never establishes success.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "customer_id": {
@@ -817,7 +814,6 @@
         "name": "start_trusted_channel_confirmation",
         "description": "Send a purpose-bound confirmation challenge to an already trusted masked channel. The agent must not request or place the secret response in ordinary tool arguments.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "customer_id": {
@@ -861,7 +857,6 @@
         "name": "get_trusted_channel_confirmation",
         "description": "Read the current state of a purpose-bound trusted-channel challenge without receiving or exposing the secret response.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "customer_id": {
@@ -888,7 +883,6 @@
         "name": "update_customer_email",
         "description": "Change the email on a verified customer profile after the required confirmation flow succeeds.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "customer_id": {
@@ -927,7 +921,6 @@
         "name": "search_knowledge_base",
         "description": "Search external, versioned product and process documentation that is not already included in the system policy. The backend selects the retrieval method and returns exactly one versioned record; which optional content fields are present depends on the record.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "query": {
@@ -951,7 +944,6 @@
         "name": "get_card_account",
         "description": "Retrieve card status, available credit, recent authorizations, declines, restrictions, and travel notices in one account read.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "customer_id": {
@@ -994,7 +986,6 @@
         "name": "resolve_card_restriction",
         "description": "Remove a temporary card restriction after the customer confirms the triggering activity.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "customer_id": {
@@ -1037,7 +1028,6 @@
         "name": "create_travel_notice",
         "description": "Add a travel notice without promising that every future authorization will be approved.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "customer_id": {
@@ -1079,7 +1069,6 @@
         "name": "get_referrals",
         "description": "Retrieve referral invitations, offer terms, qualification state, and posting state without exposing the referred person's private transactions.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "customer_id": {
@@ -1105,7 +1094,6 @@
         "name": "get_credit_card_transactions",
         "description": "Retrieve candidate credit-card transactions for a verified customer using amount, descriptor, date, or card filters.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "customer_id": {
@@ -1144,7 +1132,6 @@
         "name": "create_secure_self_service_session",
         "description": "Issue a secure customer-controlled workflow session. Issuing a session does not submit an application or claim.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "customer_id": {
@@ -1195,7 +1182,6 @@
         "name": "get_secure_self_service_session",
         "description": "Read whether an issued self-service session is open, saved, submitted, expired, or closed.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "customer_id": {
@@ -1222,7 +1208,6 @@
         "name": "send_secure_notification",
         "description": "Send a notification that points the customer to a secure in-account resource without placing a working secure link in ordinary email.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "customer_id": {
@@ -1263,7 +1248,6 @@
         "name": "transfer_to_specialist",
         "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "reason": {

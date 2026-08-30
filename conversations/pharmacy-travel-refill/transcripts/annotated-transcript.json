@@ -539,7 +539,6 @@
         "name": "lookup_patient",
         "description": "Resolve one pharmacy patient after collecting the required identity attributes.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "full_name": {
@@ -565,7 +564,6 @@
         "name": "get_prescription",
         "description": "Retrieve the single most recent active prescription for a resolved patient, with its workflow, claim, queue, and notification status. When medication_name is provided, returns the most recent active prescription matching that medication; supplying medication_name is recommended whenever the patient may have multiple active prescriptions.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "patient_id": {
@@ -590,7 +588,6 @@
         "name": "request_claim_override",
         "description": "Request a payer decision for an eligible prescription-claim exception; the payer may require the patient to participate.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "prescription_id": {
@@ -626,7 +623,6 @@
         "name": "submit_prescription_claim",
         "description": "Submit or rerun a prescription claim after any required override is approved.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "prescription_id": {
@@ -652,7 +648,6 @@
         "name": "get_store_inventory",
         "description": "Check medication inventory at a specific pharmacy without reserving or transferring it.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "store_id": {
@@ -679,7 +674,6 @@
         "name": "search_pharmacy_locations",
         "description": "Discover pharmacy locations and verified local hours before naming an alternate store or evaluating pickup timing.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "origin_store_id": {
@@ -707,7 +701,6 @@
         "name": "request_prescription_transfer",
         "description": "Request transfer of a prescription after explicit patient authorization; a request does not imply completion.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "prescription_id": {
@@ -743,7 +736,6 @@
         "name": "update_prescription",
         "description": "Update operational prescription fields such as priority context or notification channel; this cannot bypass pharmacist verification.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "prescription_id": {
@@ -782,7 +774,6 @@
         "name": "transfer_to_specialist",
         "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
         "parameters": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "reason": {

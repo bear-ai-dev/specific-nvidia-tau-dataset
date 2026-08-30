@@ -7,7 +7,6 @@
       "name": "lookup_customer",
       "description": "Find a retail customer and recent orders using a verified email or customer identifier.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "email": {
@@ -25,7 +24,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
@@ -88,7 +86,6 @@
       "name": "get_order",
       "description": "Retrieve an order with items, fulfillment, carrier scans, payments, refunds, cases, and eligible resolutions.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "order_reference": {
@@ -127,7 +124,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "order_reference": {
@@ -597,7 +593,6 @@
       "name": "get_product",
       "description": "Retrieve product variant, price, and inventory for replacement or fulfillment decisions.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "product_reference": {
@@ -621,7 +616,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "product_reference": {
@@ -671,7 +665,6 @@
       "name": "open_delivery_trace",
       "description": "Open a missing-package or carrier investigation with the customer's requested resolution and timing constraints.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "order_reference": {
@@ -720,7 +713,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "case_id": {
@@ -796,7 +788,6 @@
       "name": "open_refund_trace",
       "description": "Open a payment investigation for a refund that lacks settlement confirmation; do not issue a duplicate refund while it is open.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "order_reference": {
@@ -826,7 +817,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "case_id": {
@@ -882,7 +872,6 @@
       "name": "create_replacement_order",
       "description": "Create a replacement at the eligible original price and return the new order, delivery estimate, return disposition, and notification state.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "order_reference": {
@@ -935,7 +924,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "replacement_order_reference": {
@@ -1069,7 +1057,6 @@
       "name": "update_case",
       "description": "Add a note, customer preference, or supporting-information marker to an existing support case without changing its primary outcome.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "case_id": {
@@ -1102,7 +1089,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "status": {
@@ -1140,7 +1126,6 @@
       "name": "send_case_notification",
       "description": "Send or resend an existing case summary to the verified contact associated with the case and return the actual delivery state.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "case_id": {
@@ -1183,7 +1168,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "notification_id": {
@@ -1241,7 +1225,6 @@
       "name": "transfer_to_specialist",
       "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "reason": {
@@ -1260,7 +1243,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "status": {
