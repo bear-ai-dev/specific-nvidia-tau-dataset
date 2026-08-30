@@ -34,7 +34,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "I'm sorry you've had to worry about it. Let's slow it down and figure out what the charge actually is before we take any action. May I have your name and email?"
+            "text": "I'm sorry you've had to worry about it. Let's slow down and figure out the charge actually, what it actually is, before we take any action. May I have your name and email?"
           }
         ],
         "role": "assistant",
@@ -51,7 +51,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "Got it. Give me one 2nd."
+            "text": "Got it. Give me one second."
           }
         ],
         "role": "assistant",
@@ -129,7 +129,7 @@
       },
       {
         "role": "user",
-        "content": "I recognize the amount because it's right there on my statement, but I don't recognize buying anything for $243.18. It posted Monday. There's no city listed, and the description says M-R-K-T-P-L-C star"
+        "content": "I recognize the amount because it's right there on my statement, but I don't recognize anything buying anything for $243.18. It posted Monday. There's no city listed, and the description says M-R-K-T-P-L-C star"
       },
       {
         "role": "user",
@@ -257,7 +257,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "Okay, hold on one 2nd. The policy says to review household and digital wallet activity, then submit the dispute through the secure tool. Filing does not guarantee provisional credit, and investigation timing depends on the transaction type."
+            "text": "Okay, hold on one second. The policy says to review household and digital wallet activity, then submit the dispute through the secure tool. Filing does not guarantee provisional credit, and investigation timing depends on the transaction type."
           }
         ],
         "role": "assistant",
@@ -287,7 +287,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "I can't erase a posted charge, but I can send the secure dispute form for this transaction. Would you like me to open it for you?"
+            "text": "You know, I can't erase a posted charge, but I can send the secure dispute form from this transaction. Uh, would you like me to open it for you?"
           }
         ],
         "role": "assistant",
@@ -407,7 +407,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "Additionally, I can confirm the dispute session was issued, but no claim is recorded until you press Submit."
+            "text": "Additionally, I can confirm the dispute session if it was issued, but no claim is recorded until you press Submit."
           }
         ],
         "role": "assistant",
@@ -416,7 +416,7 @@
       },
       {
         "role": "user",
-        "content": "That's clear. Let me call my daughter 1st, then finish it if needed."
+        "content": "That's clear. Let me call my daughter first, then finish it if needed."
       },
       {
         "id": "msg_0002_0035",
@@ -522,7 +522,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "No claim exists yet because you did not submit. You may close the session. The tool log will show that it was issued, not that the transaction was disputed."
+            "text": "No claim exists yet, but as you did not submit, uh, you may close the session. The tool log will show that it was issued, not that the transaction was disputed."
           }
         ],
         "role": "assistant",
@@ -569,7 +569,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "Yes, the policy is designed to separate merchant confusion, household use, and actual unauthorized activity. Each can require a different remedy."
+            "text": "Yes, the policy is designated, or designed to separate merchant confusion, household use, and actual unauthorized activity. Each can require a different remedy."
           }
         ],
         "role": "assistant",
@@ -1319,7 +1319,7 @@
       "source": "transcripts/transcript.txt",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 50.04,
+        "start_seconds": 49.76,
         "end_seconds": 54.7
       }
     },
@@ -1396,7 +1396,7 @@
       "source": "transcripts/transcript.txt",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 95.52000000000001,
+        "start_seconds": 95.36,
         "end_seconds": 96.86
       }
     },
@@ -1703,7 +1703,7 @@
       "source": "transcripts/transcript.txt",
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 261.28,
+        "start_seconds": 260.959,
         "end_seconds": 265.1
       }
     },
@@ -1939,7 +1939,7 @@
           "remediation": "Re-record as 'You may close the page; the session remains unsubmitted.'"
         },
         {
-          "text_anchor": "No claim exists yet because you did not submit",
+          "text_anchor": "No claim exists yet, but as you did not submit",
           "category": "stale_session_state_claim",
           "reason": "This session-state assertion at 06:43 relies on the bd-006 read performed at ~04:53, more than 100 seconds and one hold earlier, with no fresh get_secure_self_service_session read.",
           "remediation": "Re-read the session with get_secure_self_service_session before asserting its current submission state after an interval or hold."

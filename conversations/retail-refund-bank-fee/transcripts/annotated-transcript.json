@@ -141,7 +141,7 @@
       },
       {
         "role": "user",
-        "content": "Oh, oh, okay. I think that's what the person at the store told me, but the email I got is only about forty-two dollars, so I'm still missing the one hundred and forty-six dollars and the forty-two cents. I don't know where that is. It isn't in my account. (concerned)"
+        "content": "Oh, oh, okay. I think that's what the person at the store told me, but the email I got is only about forty-two dollars, so I'm still missing the one hundred and forty-six dollars and the forty-two cents. I don't know where that is. It isn't in my account."
       },
       {
         "id": "msg_0005_0014",
@@ -572,7 +572,7 @@
           {
             "annotations": [],
             "type": "output_text",
-            "text": "Yeah. I totally understand you. So sorry again for the trouble. The gift card portion is available now, and the card portion is kind of just actively under review. If there's anything else from the order that you want me to check, just let me know. (apologetic)"
+            "text": "Yeah. I totally understand you. So sorry again for the trouble. The gift card portion is available now, and the card portion is kind of just actively under review. If there's anything else from the order that you want me to check, just let me know."
           }
         ],
         "role": "assistant",

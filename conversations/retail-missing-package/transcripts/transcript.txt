@@ -5,6 +5,7 @@
 [00:00:28.400 - 00:00:33.440] Daniel: Got it. And just to make sure I pull up the right account, what's the email address on the order?
 [00:00:35.030 - 00:00:47.040] Ethan: The email address is ethan.patel, that's P-A-T-E-L, @northmail.com. N-O-R-T-H-M-A-I-L.com.
 [00:00:49.040 - 00:00:53.500] Daniel: All right, one second. I'm going to kind of take a look.
+[00:00:54.380 - 00:00:54.760] Ethan: Yeah.
 [00:00:55.000] [tool] get_order: open the order record
 [00:01:12.940 - 00:01:21.940] Daniel: Okay, I found it. The carrier scan says delivered yesterday at three eighteen and left at the front entrance. Is this an apartment building?
 [00:01:25.400 - 00:01:39.740] Ethan: Uh, yes, it is an apartment building. Um, there's a front desk and then also a package room behind it. Um, I checked both last night and this morning, and yeah, the desk just doesn't have anything for me. So wanted to know what's going on.
@@ -21,6 +22,7 @@
 [00:03:16.620 - 00:03:24.980] Ethan: Yeah, definitely Thursday would be ideal. Friday, you know, noon, afternoon doesn't really help me, 'cause I would have left already at that time.
 [00:03:26.300 - 00:03:31.650] Daniel: Right. That makes a ton of sense. Let me see what the replacement inventory looks like before I tell you anything.
 [00:03:31.650] [tool] get_product: check replacement inventory
+[00:03:32.480 - 00:03:32.960] Ethan: Yeah.
 [00:03:33.280 - 00:03:34.420] Daniel: Give me about 20 seconds.
 [00:03:50.880 - 00:03:58.140] Daniel: All right. So the same blue model that you ordered is still in stock. The catch is I have to open a carrier trace first.
 [00:03:58.140] [tool] open_delivery_trace: open a missing-package trace
@@ -45,16 +47,16 @@
 [00:07:11.884 - 00:07:13.264] Ethan: Okay, yeah. That sounds good.
 [00:07:15.000] [tool] send_case_notification: send the delivery-trace email after customer approval
 [00:07:19.704 - 00:07:20.284] Daniel: Okay. Well-
-[00:07:20.284 - 00:07:22.304] Ethan: I checked it. That's it for me.
-[00:07:22.404 - 00:07:24.224] Daniel: Oh, okay. Perfect. Let me know if you get that.
+[00:07:20.080 - 00:07:21.360] Ethan: I'm just checking.
+[00:07:20.600 - 00:07:24.080] Daniel: That's it for me. Oh, okay. Perfect. Let me know if you get that.
 [00:07:30.024 - 00:07:39.284] Ethan: Okay. Yeah, I, I got the email just now. Um, yeah, it says here the trace is open until 6:00 tomorrow.
 [00:07:41.544 - 00:07:43.284] Ethan: Is that c- is that the one?
 [00:07:42.900] [tool] get_order: review the open carrier trace and matching notification
 [00:07:43.284 - 00:07:55.224] Daniel: That's perfect. Um, that's the right package. Um, in the case that they find the package, the carrier may contact you directly. Otherwise, go ahead and just kind of use that trace after it closes.
 [00:07:57.064 - 00:08:08.724] Ethan: Okay. Okay. No, yeah, um, thanks for, thanks for this. I know it's not ideal, but at least I know, like, where it's gonna be and that there's gonna be a replacement coming if not. Um, yeah.
-[00:08:09.844 - 00:08:18.444] Daniel: Yeah. Once again, so sorry about that. I, I totally get it. Is there anything else I can do on this order that you wanted me to kind of check while I have it open? (apologetic)
+[00:08:09.844 - 00:08:18.444] Daniel: Yeah. Once again, so sorry about that. I, I totally get it. Is there anything else I can do on this order that you wanted me to kind of check while I have it open?
 [00:08:19.804 - 00:08:23.183] Ethan: Um, no, that's it for this one. We're just... Hopefully we just find it.
 [00:08:25.124 - 00:08:29.724] Daniel: Well, all right, Ethan. Um, keep that case number handy, and we'll go from there tomorrow.
-[00:08:31.304 - 00:08:34.044] Ethan: Okay. Okay, will do. Um, yeah, thank you so much. (relieved)
-[00:08:34.924 - 00:08:36.984] Daniel: You're welcome. Take care.
+[00:08:31.304 - 00:08:34.044] Ethan: Okay. Okay, will do. Um, yeah, thank you so much.
+[00:08:34.924 - 00:08:36.984] Daniel: You're welcome. Take so much care.
 [00:08:37.064 - 00:08:38.484] Ethan: Okay. Thank you. Bye-bye.

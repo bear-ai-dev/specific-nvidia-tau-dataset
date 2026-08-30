@@ -40,7 +40,7 @@ sides can agree up front on acceptance criteria before any larger order.
    a result the agent must read back verbatim), the schema documents that
    representation instead of mislabeling it as ISO.
 6. **Training exports.** A turn flagged by `grounding_review` is excluded
-   from `nemotron_message_actions.jsonl` (72 turns excluded, 256 kept). All
+   from `nemotron_message_actions.jsonl` (72 turns excluded, 259 kept). All
    85 tool calls are exported; their arguments are schema-valid and the flags
    that concern them live on the surrounding speech.
 

@@ -1,4 +1,4 @@
-[00:00:00.080 - 00:00:01.520] Darren: What can I help you with?
+[00:00:00.000 - 00:00:00.541] Darren: ...help you with?
 [00:00:01.720 - 00:00:13.700] Daniel: Hi. I referred my sister for one of your cards. She was approved, and the 100 dollars bonus never showed up. Honestly, a little annoyed. I've checked the app 3 times, and it just keeps saying pending.
 [00:00:15.460 - 00:00:21.960] Darren: I see. I can completely get why that's frustrating. Let's pull up the referral and see exactly where it's getting held up. May I have your full name?
 [00:00:23.100 - 00:00:30.020] Daniel: Daniel Brooks. Brooks, B as in Boston, R-O-O-K-S.
@@ -17,7 +17,7 @@
 [00:01:46.740 - 00:01:49.800] Darren: All right. I'm checking that now. This may take a few seconds, okay?
 [00:02:10.800] [tool] verify_customer_identity: validate the supplied identity factors
 [00:02:10.980 - 00:02:13.760] Darren: All right, thanks. You're verified. About when did your sister apply?
-[00:02:15.120 - 00:02:21.220] Daniel: August 3rd. Her name is Alicia Brooks. She got the card maybe 10 days ago.
+[00:02:15.120 - 00:02:21.220] Daniel: August 3rd. Her name is Alisa Brooks. She got the card maybe 10 days ago.
 [00:02:22.840 - 00:02:24.440] Darren: Okay, let me look at what the system has on that.
 [00:02:25.000] [tool] get_referrals: retrieve referrals created by the customer
 [00:02:27.500 - 00:02:30.910] Darren: I see an invitation sent August 2nd to an email beginning
@@ -52,7 +52,7 @@
 [00:05:55.620 - 00:06:08.980] Darren: Not necessarily. Uh, it could mean the qualifying purchase has not posted, the referral match is still processing, or the reward window has not reached its posting stage. The tracker deliberately does not reveal which purchases she made.
 [00:06:10.530 - 00:06:17.790] Daniel: She used a different email on the application than the one I invite- invited. Could that break the match?
 [00:06:19.800] [tool] search_knowledge_base: retrieve email-mismatch and duplicate-application guidance
-[00:06:19.990 - 00:06:33.790] Darren: It could delay automated matching. The referral record already shows approved, so the application was associated successfully. I would not ask her to reapply; duplicate applications can create
+[00:06:19.990 - 00:06:33.790] Darren: It could delay automated matching. The referral record already shows approved, so the application was associated successfully. I would not ask her to reapply, but she should duplicate applications to create
 [00:06:34.870 - 00:06:35.490] Darren: a different problem.
 [00:06:37.470 - 00:06:40.010] Daniel: Okay, yeah, because she was about to try it again.
 [00:06:41.470 - 00:06:49.070] Darren: Yeah, please tell her not to. She should use her own secure account for questions about her card. I can discuss your reward, but not her balance, purchases, or approval details.
