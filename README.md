@@ -119,8 +119,10 @@ speech transcript is stored at
 
 The [conversation manifest](conversation_manifest.json) provides a one-line
 goal, outcome label, outcome summary, scenario time, and file pointers for all
-10 conversations. This sample does not yet include a separate normalized list
-of required facts.
+10 conversations. The [Facts.json](Facts.json) file provides the required information for all
+10 conversations. It separates facts the agent had to collect from facts the
+agent had to communicate, with each canonical value, exact spoken text,
+speaker, event index, and audio start and end timestamp.
 
 ## 5. Turn-taking
 

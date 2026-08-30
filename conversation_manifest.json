@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.4.0",
+  "schema_version": "0.5.0",
   "conversations": [
     {
       "trajectory_id": 0,
@@ -181,5 +181,7 @@
       "turn_taking": null,
       "word_timestamps": null
     }
-  ]
+  ],
+  "conversation_count": 10,
+  "facts_file": "Facts.json"
 }
