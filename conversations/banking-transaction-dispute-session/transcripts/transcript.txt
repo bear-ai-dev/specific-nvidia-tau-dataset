@@ -1,16 +1,16 @@
 [00:00:00.480 - 00:00:05.160] Darren: Hi. Thanks for calling Harveston Bank. This is Darren. How are you doing, and how can I help?
 [00:00:06.360 - 00:00:19.120] Justin: Hey, I'm calling because there's a 243 dollar and 18 cent charge from a company I've never heard of. I haven't filed anything yet. I'm trying to figure out whether I need to dispute it.
-[00:00:20.950 - 00:00:27.900] Darren: I'm sorry you've had to worry about it. Let's slow it down and figure out what the charge actually is before we take any action. May I have your name and email?
+[00:00:20.950 - 00:00:27.900] Darren: I'm sorry you've had to worry about it. Let's slow down and figure out the charge actually, what it actually is, before we take any action. May I have your name and email?
 [00:00:28.940 - 00:00:34.200] Justin: Justin Porter, jporter92@email.com.
-[00:00:35.520 - 00:00:37.920] Darren: Got it. Give me one 2nd.
+[00:00:35.520 - 00:00:37.920] Darren: Got it. Give me one second.
 [00:00:38.420] [tool] lookup_customer: find the customer by name and email
 [00:00:45.140 - 00:00:48.320] Darren: All right. Could you tell me your billing zip code and month and day of birth?
-[00:00:50.040 - 00:00:54.700] Justin: 64114, February 19th.
+[00:00:49.760 - 00:00:54.700] Justin: 64114, February 19th.
 [00:00:55.740 - 00:00:58.460] Darren: Awesome. Give me 2 seconds really quick.
 [00:00:59.060] [tool] verify_customer_identity: validate the supplied identity factors
 [00:01:04.360 - 00:01:10.020] Darren: All right, you're verified. Uh, do you recognize the amount, date, or city, even if the merchant name is unfamiliar?
-[00:01:11.480 - 00:01:34.340] Justin: I recognize the amount because it's right there on my statement, but I don't recognize buying anything for $243.18. It posted Monday. There's no city listed, and the description says M-R-K-T-P-L-C star
-[00:01:35.520 - 00:01:36.860] Justin: 8472.
+[00:01:11.480 - 00:01:34.340] Justin: I recognize the amount because it's right there on my statement, but I don't recognize anything buying anything for $243.18. It posted Monday. There's no city listed, and the description says M-R-K-T-P-L-C star
+[00:01:35.360 - 00:01:36.860] Justin: 8472.
 [00:01:39.600 - 00:01:44.160] Darren: Okay, give me one moment to retrieve those transactions.
 [00:01:44.760] [tool] get_credit_card_transactions: retrieve the customer's credit-card transactions
 [00:02:13.120 - 00:02:26.240] Darren: All right, Justin. Uh, I found the transactions on the card ending 9102. The merchant category is online marketplace, and it posted after a smaller one dollar authorization. Did you purchase anything online recently?
@@ -22,23 +22,23 @@
 [00:02:47.700 - 00:02:52.820] Justin: My daughter has used the marketplace, but not my card. I'll ask her now.
 [00:02:52.820 - 00:03:03.380] Darren: Yes. Uh, please ask your daughter whether she used a saved card, but don't call any phone number shown in a suspicious transaction description, please. While she checks, I'll review the bank's current unauthorized transaction procedure.
 [00:03:05.000] [tool] search_knowledge_base: review the unauthorized-transaction procedure
-[00:03:07.640 - 00:03:20.620] Darren: Okay, hold on one 2nd. The policy says to review household and digital wallet activity, then submit the dispute through the secure tool. Filing does not guarantee provisional credit, and investigation timing depends on the transaction type.
+[00:03:07.640 - 00:03:20.620] Darren: Okay, hold on one second. The policy says to review household and digital wallet activity, then submit the dispute through the secure tool. Filing does not guarantee provisional credit, and investigation timing depends on the transaction type.
 [00:03:22.380 - 00:03:25.160] Darren: So I'll search it up really quick.
 [00:03:27.480 - 00:03:28.640] Justin: Can you just remove it?
-[00:03:31.380 - 00:03:38.940] Darren: I can't erase a posted charge, but I can send the secure dispute form for this transaction. Would you like me to open it for you?
+[00:03:31.380 - 00:03:38.940] Darren: You know, I can't erase a posted charge, but I can send the secure dispute form from this transaction. Uh, would you like me to open it for you?
 [00:03:39.960 - 00:03:44.360] Justin: Yes, please. I'd rather have it ready while I'm checking with my daughter.
 [00:03:44.360 - 00:03:46.300] Darren: All right. Give me one moment while I open it, okay?
 [00:03:46.900] [tool] create_secure_self_service_session: open a secure dispute session for transaction ending 8472
 [00:03:48.760 - 00:03:58.940] Darren: All right, it's ready. It's online banking. Look for review transaction ending 8472. You'll review the details and submit it yourself if the purchase was not authorized.
 [00:04:00.580 - 00:04:05.740] Justin: Okay, wait. I see it. It's-- it asks whether I contacted the merchant.
 [00:04:13.060 - 00:04:19.820] Darren: Okay. Answer accurately. If you determine your daughter made the purchase, stop before submitting and resolve it with her. If you did not authorize it, complete the form.
-[00:04:21.280 - 00:04:25.100] Justin: It also asks if I want a representative.
+[00:04:20.959 - 00:04:25.100] Justin: It also asks if I want a representative.
 [00:04:27.400 - 00:04:32.400] Darren: Yeah, you can request one. If the tool fails or you need an accommodation, I can transfer you with the reason attached.
 [00:04:33.900 - 00:04:37.800] Justin: Okay, I can finish it myself, but what happens after submit?
 [00:04:39.480 - 00:04:47.460] Darren: You should receive a claim reference and written timing disclosures in secure messages. Keep any receipts or com- communications for yourself.
 [00:04:53.800] [tool] get_secure_self_service_session: review the issued dispute session; no claim has been submitted
-[00:04:54.160 - 00:05:00.660] Darren: Additionally, I can confirm the dispute session was issued, but no claim is recorded until you press Submit.
-[00:05:00.660 - 00:05:06.540] Justin: That's clear. Let me call my daughter 1st, then finish it if needed.
+[00:04:54.160 - 00:05:00.660] Darren: Additionally, I can confirm the dispute session if it was issued, but no claim is recorded until you press Submit.
+[00:05:00.660 - 00:05:06.540] Justin: That's clear. Let me call my daughter first, then finish it if needed.
 [00:05:06.540 - 00:05:07.700] Darren: Yes, that would be the next step.
 [00:05:09.900 - 00:05:13.180] Justin: Okay, my daughter is calling me back now. Can you hold?
 [00:05:13.180 - 00:05:13.880] Darren: Yes, absolutely.
@@ -50,12 +50,12 @@
 [00:06:19.250 - 00:06:25.330] Justin: She found it. The receipt shows my last 4 digits. She just clicked too fast when checking out.
 [00:06:27.350 - 00:06:34.710] Darren: Okay, got it. That's good. Then don't submit the unauthorized transaction claim. You can work out repayment with her or ask the merchant whether its return policy applies.
 [00:06:36.170 - 00:06:38.030] Justin: Can you cancel the dispute tool?
-[00:06:43.290 - 00:06:51.850] Darren: No claim exists yet because you did not submit. You may close the session. The tool log will show that it was issued, not that the transaction was disputed.
+[00:06:43.290 - 00:06:51.850] Darren: No claim exists yet, but as you did not submit, uh, you may close the session. The tool log will show that it was issued, not that the transaction was disputed.
 [00:06:53.230 - 00:06:54.240] Justin: Will that hurt me later?
 [00:06:54.600] [tool] search_knowledge_base: retrieve unused-session and future-rights guidance
 [00:06:55.370 - 00:07:03.770] Darren: Uh, no, it should not. If you later discover a genuinely unauthorized transaction, contact us immediately. Uh, today's unused session does not waive your rights at all.
 [00:07:05.170 - 00:07:08.770] Justin: Okay. I appreciate that you made me check before filing.
-[00:07:11.150 - 00:07:20.630] Darren: Yes, the policy is designed to separate merchant confusion, household use, and actual unauthorized activity. Each can require a different remedy.
+[00:07:11.150 - 00:07:20.630] Darren: Yes, the policy is designated, or designed to separate merchant confusion, household use, and actual unauthorized activity. Each can require a different remedy.
 [00:07:20.630 - 00:07:22.790] Justin: Should I remove my card from her account?
 [00:07:25.130 - 00:07:31.650] Darren: That's a sensible security step you can take with the marketplace, but also review your own digital wallets and saved payment set- settings.
 [00:07:31.650 - 00:07:35.950] Justin: So the final... Oh, okay. So the final outcome is no bank dispute?

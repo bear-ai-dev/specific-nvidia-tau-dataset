@@ -1,84 +1,85 @@
-[00:00:00.840 - 00:00:07.200] Jonathan: Hi. Thanks for calling ClearWave Mobile. This is Jonathan. How are you doing today, and what can I help you with?
-[00:00:08.160 - 00:00:18.200] Ben: Hey, honestly, not great. I woke up to an alert saying I used almost all of my data, and I was actually asleep this whole time when that happened. So I'm just calling to see what's going on.
-[00:00:19.500 - 00:00:29.600] Jonathan: Yeah, I'd definitely be concerned too. Let's figure out whether the usage is real, which line it came from, and what was running. Could I know what the mobile number is?
-[00:00:30.000 - 00:00:40.500] Ben: Yeah, it's the same number I'm calling from. It's 404-555-0176.
-[00:00:43.000 - 00:00:47.500] Jonathan: Thanks. Could I get your full name and date of birth?
-[00:00:47.920 - 00:00:59.060] Ben: Yeah, full name Benjamin Reed. That's R-E-E-D. And then date of birth, November 22, 1991.
-[00:01:01.340 - 00:01:03.580] Jonathan: Okay, give me a moment to look up your account.
+[00:00:01.260 - 00:00:07.280] Jonathan: Hi. Thanks for calling Clearwave Mobile. This is Jonathan. How are we doing today, and what can I help you with?
+[00:00:08.120 - 00:00:18.180] Ben: Hey, um, honestly, not great. I woke up to an alert saying, um, I used all of my data, and I was actually asleep this whole time when that happened, so just calling to see what's going on.
+[00:00:19.980 - 00:00:29.640] Jonathan: Yeah. Uh, I'd definitely be concerned, too. Let's kind of figure out whether the usage is real, which line it came from, and what was kind of running. Could I know what the mobile number is?
+[00:00:30.220 - 00:00:40.540] Ben: Yeah, it's the same number I'm calling from. It's 404-555-0176.
+[00:00:43.280 - 00:00:47.640] Jonathan: Thanks. Could I get your full name and date of birth?
+[00:00:48.500 - 00:00:59.490] Ben: Yeah. Full name, Benjamin Reed. That's R-E-E-D. And then date of birth, November 22nd, 1991.
+[00:01:01.640 - 00:01:03.580] Jonathan: Okay. Give me a moment to look up your account.
 [00:01:03.580] [tool] lookup_customer: find a customer using their phone number
 [00:01:07.500] [tool] verify_customer_identity: validate collected identity factors before account access
 [00:01:10.500] [tool] get_customer_account: retrieve customer, line, device, and plan using the resolved customer ID
-[00:01:14.040 - 00:01:23.740] Jonathan: Okay, I found your account. You have one phone line on the Unlimited Start plan and a Pixel 8. Is that the phone that you're using now?
-[00:01:24.700 - 00:01:33.920] Ben: Pixel 8. Yep, it's the one I'm using. The alert said I used 85%, but I was on my home Wi-Fi, like, all night. So that doesn't make sense.
-[00:01:35.840 - 00:01:41.600] Jonathan: Okay, got it. I'm going to check the carrier's usage first. Give me a moment.
-[00:01:41.860 - 00:01:42.340] Ben: Okay.
+[00:01:14.040 - 00:01:23.820] Jonathan: Okay, I found your account. You have one phone line on the unlimited start plan and a Pixel 8. Is that the phone that you're using now?
+[00:01:24.820 - 00:01:34.020] Ben: Pixel 8, yep. It's the one I'm using. The alert said I used 85%, um, but I was on my home Wi-Fi, like, all night, so that doesn't make sense.
+[00:01:36.160 - 00:01:41.720] Jonathan: Okay, got it. I'm gonna check the carrier's, uh, usage first. Give me a moment.
+[00:01:42.160 - 00:01:42.420] Ben: Okay.
 [00:01:42.340] [tool] get_line_data_usage: check the line's current data usage
-[00:01:46.160 - 00:01:53.620] Jonathan: So what I'm seeing on my end is the line used 11.8 gigabytes between about midnight and four in the morning.
-[00:01:55.300 - 00:01:59.560] Ben: Eleven gigs? Wait, is that real? There's no way, because I was sleeping.
-[00:02:01.740 - 00:02:04.240] Ben: Are you telling me someone hacked the phone or something?
-[00:02:05.780 - 00:02:13.180] Jonathan: Not necessarily. Background backups, video downloads, or even an app switching off Wi-Fi can do that.
-[00:02:13.600 - 00:02:14.320] Ben: Okay.
-[00:02:14.620 - 00:02:21.680] Jonathan: Before we assume anything worse, look at the phone's data-usage screen and tell me which app is at the top.
-[00:02:22.960 - 00:02:28.540] Ben: Okay, data-usage screen, one second. Let me just pull that up.
-[00:02:33.340 - 00:02:44.460] Ben: Okay, yeah. So I'm on that page, and StreamBox is first. It says 10.9 gigabytes in the background. Is that what I'm supposed to look at?
-[00:02:46.740 - 00:02:53.060] Jonathan: Yeah, that lines up closely with what the carrier recorded. Did you download anything in StreamBox last night?
-[00:02:53.760 - 00:03:01.380] Ben: Yeah, I started downloading, like, a season for a flight. I thought it would wait for the Wi-Fi.
-[00:03:05.240 - 00:03:13.260] Jonathan: That makes sense. Could you open the StreamBox settings and check whether Download over Cellular is turned on?
-[00:03:13.520 - 00:03:13.920] Ben: Yeah.
-[00:03:16.760 - 00:03:21.900] Ben: Yeah, okay, I see that. Wow. Yeah, it's on. I swear I never turned that on. I don't know how that happened.
-[00:03:24.220 - 00:03:36.420] Jonathan: Yeah, an update can sometimes reset an app preference. Let's go ahead and turn that setting off, then go back to your phone's cellular settings and set StreamBox to Wi-Fi only.
-[00:03:38.960 - 00:03:48.440] Ben: Okay, yeah, give me one second. Okay, yeah, so I just did that. For the data, is the data coming back, though, or what's going to happen with that?
-[00:03:50.720 - 00:04:03.800] Jonathan: So unfortunately, the used data can't be put back into the plan. You still have 2.2 gigabytes left until the cycle resets. I can check when that happens and whether there's already an overage on the bill.
-[00:04:03.820 - 00:04:08.500] Ben: Yeah, please do, because I'm traveling for work before then, so I really need that.
+[00:01:46.680 - 00:01:53.720] Jonathan: So what I'm seeing on my end is the line used 11.8 gigabytes between about midnight and 4:00 in the morning.
+[00:01:55.340 - 00:02:04.340] Ben: 11 gigs? Wait, is that real? Then there's no way, 'cause I was sleeping. Uh, are you telling me someone hacked my, the phone or something?
+[00:02:06.100 - 00:02:13.280] Jonathan: Not necessarily. Background backups, video downloads, or even an app switching off Wi-Fi can do that.
+[00:02:13.820 - 00:02:14.120] Ben: Hmm.
+[00:02:14.300 - 00:02:21.820] Jonathan: Before we assume anything worse, look at the phone's data usage screen and tell me which app is on the top.
+[00:02:23.500 - 00:02:44.640] Ben: Okay, uh, data usage screen. One second. Let me just pull that up. Okay, yeah. Um, so I'm on that page, and Streambox is first. It says 10.9 gigabytes in the background. Is that ... Is that what I'm supposed to look at?
+[00:02:47.120 - 00:02:53.140] Jonathan: Yeah. That lines up closely with what the carrier recorded. Did you download anything in Streambox last night?
+[00:02:54.200 - 00:03:01.600] Ben: Yeah. I started downloading, like, a season for a flight. I thought it would wait for the Wi-Fi. Um.
+[00:03:05.880 - 00:03:13.260] Jonathan: That makes sense. Could you open the Streambox settings and check whether Download Over Cellular is turned on?
+[00:03:13.370 - 00:03:21.960] Ben: Hmm, yeah. Yeah, okay, I see that. Wow, yeah, it's on. I swear I never turned that on. I don't know how that happened.
+[00:03:24.800 - 00:03:36.520] Jonathan: Yeah. An update can sometimes reset an app, uh, preference. Let's go ahead and turn that setting off, then go back to your phone's cellular settings and set Streambox to Wi-Fi only.
+[00:03:39.140 - 00:03:48.540] Ben: Okay, yeah. Give me one second. Okay, yeah. So I just did that. Um, for the data, is the data coming back though? Or what's gonna happen with that?
+[00:03:50.680 - 00:03:58.160] Jonathan: So unfortunately, the used data can't be put back into the plan. You still have 2.2 gigabytes left until the cycle resets.
+[00:03:58.240 - 00:03:58.530] Ben: Hmm.
+[00:03:59.040 - 00:04:03.860] Jonathan: I can check when that happens and whether there's already overage on the bill.
+[00:04:04.320 - 00:04:08.620] Ben: Yeah, please do, because, um, I'm traveling for work before then, so I n- I, I really need that.
 [00:04:08.500] [tool] get_customer_bills: retrieve the customer's current bill
-[00:04:12.880 - 00:04:15.120] Jonathan: Your cycle resets in nine days.
+[00:04:12.220 - 00:04:15.360] Jonathan: So your cycle resets in nine days.
 [00:04:15.740 - 00:04:16.460] Ben: I see.
-[00:04:16.160 - 00:04:19.540] Jonathan: I'm going to open the current bill now. Give me a moment.
+[00:04:16.060 - 00:04:20.240] Jonathan: And I'm gonna be opening up the current bill now. Give me a moment.
 [00:04:20.000] [tool] get_customer_bills: open the scoped current-bill sections after the agent says so
-[00:04:25.480 - 00:04:35.840] Jonathan: So it looks like there's no overage charge just yet. The plan slows down after the included high-speed amount is used.
-[00:04:37.160 - 00:04:45.080] Ben: I see. It slows down how much? Because I need maps and email. I'm traveling, so I can't have it crawling. You know what I mean?
+[00:04:25.440 - 00:04:36.040] Jonathan: So it looks like there's no overage charge just yet. The plan slows down after the included high-speed amount is kind of used.
+[00:04:37.160 - 00:04:45.090] Ben: Hmm, I see. Um, slows down how much? 'Cause I need, like, maps, emails. I'm traveling, so I can't have it, like, crawling. You know what I mean?
 [00:04:45.500] [tool] get_data_addon_offers: retrieve a current eligible offer before quoting it
-[00:04:47.020 - 00:05:05.300] Jonathan: Yeah, so the exact speed can vary with the network. Maps and email may still work, but video and large files can feel much slower. I can add five gigabytes of high-speed data for $40 on the next bill. I won't add it, of course, unless you approve.
-[00:05:06.000 - 00:05:13.140] Ben: What? $40? Because this app changed its own setting? I mean, that's a lot, and it's pretty frustrating too.
-[00:05:15.620 - 00:05:17.260] Ben: Is there anything else we could do?
-[00:05:18.380 - 00:05:31.380] Jonathan: Yeah, I get it. The network did carry the traffic, but the app setting caused it. We can also turn on Data Saver and stop background use before we decide whether you need the add-on.
-[00:05:32.580 - 00:05:34.400] Ben: Yeah, yeah, let's do that first.
-[00:05:36.740 - 00:05:43.820] Jonathan: All right, so in order to do that, I need you to open up Network and then Internet.
-[00:05:42.900 - 00:05:43.500] Ben: Mm-hmm.
-[00:05:44.780 - 00:05:49.340] Jonathan: Then you need to go into Data Saver, and you need to turn that on.
-[00:05:49.880 - 00:06:03.260] Ben: Okay, I'm going in. Okay, yeah, it's on. There's an option for unrestricted apps. Is that supposed to be there?
-[00:06:04.600 - 00:06:17.740] Jonathan: Yes. If you open that list, keep only anything you truly need in the background, like your work messaging app. So what's currently allowed?
-[00:06:18.360 - 00:06:29.100] Ben: Okay, so I'm looking through it. Right now it has StreamBox, CloudPhotos, and my work email. I pretty much only need the email to be working, like, in the background.
-[00:06:30.200 - 00:06:32.440] Jonathan: Okay, that makes sense.
+[00:04:47.640 - 00:05:05.620] Jonathan: Yeah. So the exact speed can vary with the network. Maps and emails may still work, but video and large files can feel much slower. I can add five gigabytes of high-speed data for $40 on the next bill. I won't add it, of course, unless you approve.
+[00:05:06.220 - 00:05:16.780] Ben: What? $40? Because this app changed its own setting? Um, I mean, that's a lot, and it's pretty frustrating too, like ... Is there anything else-
+[00:05:16.850 - 00:05:17.620] Ben: ... we could do, or?
+[00:05:19.540 - 00:05:31.880] Jonathan: I get it. The network did carry the traffic, but the app setting caused it. We can also turn on Data Saver and stop background use before you decide whether you need the add-on.
+[00:05:32.940 - 00:05:34.600] Ben: Yeah, yeah. Let's do that first.
+[00:05:37.140 - 00:05:42.969] Jonathan: All right. So in order to kind of do that, I need you to open up Network and-
+[00:05:42.900 - 00:05:43.500] Ben: Mm-hmm
+[00:05:43.230 - 00:05:49.480] Jonathan: ... then Internet. Then you need to go into Data Saver, and you need to turn that on.
+[00:05:50.380 - 00:05:59.140] Ben: Okay. I'm going in. Okay, yeah. It's on. There's an op- there's an option for unrestricted apps.
+[00:06:00.860 - 00:06:03.260] Ben: Is that ... Is that supposed to be there?
+[00:06:05.168 - 00:06:17.908] Jonathan: Yes. If you open that list, keep only anything you truly need in the background, like your work messaging app. So what's currently allowed?
+[00:06:18.708 - 00:06:29.208] Ben: Okay, so I'm looking through it. Um, right now it ha- has Streambox, Cloud Photos, and my work email. I pretty much only need the email to be working, like in the background.
+[00:06:30.788 - 00:06:32.608] Jonathan: Okay. That makes sense.
 [00:06:31.740 - 00:06:32.240] Ben: Yeah.
-[00:06:32.860 - 00:06:41.400] Jonathan: Leave the work email on and go ahead and turn off unrestricted access to StreamBox and CloudPhotos.
-[00:06:39.980 - 00:06:40.420] Ben: Okay.
-[00:06:42.640 - 00:06:48.980] Ben: Okay, yeah. No, I just turned it off. Could CloudPhotos have used some of that too, or...?
-[00:06:49.380 - 00:06:56.240] Jonathan: It could have, but the phone does show that StreamBox used almost all of the 11.8 gigs.
-[00:06:53.200 - 00:06:53.640] Ben: Like...
-[00:06:56.460 - 00:06:56.900] Ben: Right.
-[00:06:56.800 - 00:07:02.640] Jonathan: CloudPhotos on my end is showing 300 megabytes, so it wasn't the main issue.
-[00:07:03.140 - 00:07:12.400] Ben: Right. Okay. Yeah, I mean, after everything, I still think I would need the extra data. Can you add that in?
-[00:07:14.640 - 00:07:25.260] Jonathan: Yes, I can. Just to confirm, you want five additional gigabytes for $40 charged to your next ClearWave bill. Do you authorize that?
-[00:07:26.280 - 00:07:28.500] Ben: Yeah, yeah, definitely. I authorize that.
-[00:07:31.060 - 00:07:32.600] Jonathan: All right, give me a moment.
+[00:06:33.308 - 00:06:40.228] Jonathan: Leave the work email on, and go ahead and turn off unrestricted access to Streambox and-
+[00:06:39.980 - 00:06:40.420] Ben: Okay
+[00:06:40.238 - 00:06:41.488] Jonathan: ... Cloud Photos.
+[00:06:42.928 - 00:06:47.768] Ben: Okay, yeah. Now I just turned it off. Uh, could Cloud Photos have used some of that too, or...?
+[00:06:49.348 - 00:06:56.428] Jonathan: Like, it could have, but the phone does show that Streambox used almost all of the 11.8 gigs.
+[00:06:56.788 - 00:06:56.968] Ben: Right.
+[00:06:57.108 - 00:07:03.388] Jonathan: Cloud Photos, on my end, is showing 300 megabytes, so it wasn't the main issue.
+[00:07:03.508 - 00:07:12.868] Ben: Right. Okay. Um, yeah, I mean, after everything, I, I still think I would need the extra data. Can you add that in?
+[00:07:15.228 - 00:07:25.388] Jonathan: Yes, I can. Just to confirm, you want five additional gigabytes for $40 charged to your next Clearwave bill. Do you authorize that?
+[00:07:26.628 - 00:07:28.648] Ben: Yeah. Yeah, definitely. I authorize that.
+[00:07:31.668 - 00:07:32.600] Jonathan: All right. Give me a moment.
 [00:07:32.600] [tool] add_data_addon: add additional mobile data and charge it to the customer's bill
-[00:07:37.260 - 00:07:47.140] Jonathan: Okay, it's added. Your line should now show 7.2 gigabytes of high-speed data available for the rest of the cycle.
-[00:07:49.100 - 00:07:57.960] Ben: Okay, okay, that's great. Can we just make sure it actually works before I hang up, just while I have you on the phone? Is there a way to test that?
-[00:07:57.780 - 00:07:58.300] Jonathan: Absolutely.
-[00:08:00.600 - 00:08:04.940] Jonathan: Go ahead and turn Wi-Fi off and then run a quick speed test.
-[00:08:04.780 - 00:08:05.760] Ben: Mm-hmm.
-[00:08:04.940 - 00:08:09.920] Jonathan: You don't need to stream a long video; we just need a small test.
-[00:08:11.360 - 00:08:13.020] Ben: Okay, yeah, one second.
-[00:08:17.660 - 00:08:26.240] Ben: Okay, I'm just running through, like, a quick speed test, and it says 62 down and eight up.
-[00:08:28.280 - 00:08:40.220] Jonathan: Okay, great. That confirms that cellular data is working normally. Open StreamBox once with Wi-Fi still off and make sure it warns you instead of downloading.
-[00:08:41.740 - 00:08:43.000] Ben: Okay, one second.
-[00:08:47.260 - 00:08:56.600] Ben: Okay, I'm looking at it now. Yeah, it says downloads are paused until Wi-Fi. Yeah, that's what I wanted in the first place. So that's great.
-[00:09:00.820 - 00:09:04.800] Jonathan: Okay, perfect. So you can go ahead and turn Wi-Fi back on.
+[00:07:37.790 - 00:07:47.208] Jonathan: Okay. It's added. Your line should now show 7.2 gigabytes of high-speed data available for the rest of the cycle.
+[00:07:49.348 - 00:07:58.208] Ben: Okay. Okay, that's great. Uh, can we just make sure it actually works before I hang up, just, you know, while I have you on the phone? Is there a way to test that?
+[00:07:59.648 - 00:08:05.108] Jonathan: Abs- absolutely. Go ahead and turn Wi-Fi on, and then run a quick speed test.
+[00:08:05.488 - 00:08:05.748] Ben: Mm-hmm.
+[00:08:05.788 - 00:08:10.008] Jonathan: Uh, you don't need to stream a long video. We just need a small portion and test.
+[00:08:12.028 - 00:08:26.328] Ben: Okay, yeah. One second. Okay. I'm just running through, like, a qui- quick speed test, and it says 62 down and eight up.
+[00:08:28.748 - 00:08:38.648] Jonathan: Okay, great. That confirms that cellular data is working normally. Now, I want you to open Streambox once with Wi-Fi still off and make sure-
+[00:08:38.708 - 00:08:38.878] Ben: Mm-hmm
+[00:08:38.878 - 00:08:40.368] Jonathan: ... it warns you instead of downloading.
+[00:08:42.048 - 00:08:56.668] Ben: Okay, one second. Okay, yeah, I'm looking at it now. Yeah, it does say downloads are paused until Wi-Fi. Um, yeah, that's what I wanted in the first place, so that's great.
+[00:09:00.668 - 00:09:04.888] Jonathan: Okay, perfect. So you can go ahead and turn Wi-Fi back on.
 [00:09:05.200 - 00:09:05.800] Ben: Yeah.
-[00:09:05.380 - 00:09:22.540] Jonathan: And the final state is that StreamBox is set to Wi-Fi only, Data Saver is on, background access is limited, and five gigs were added for $40.
-[00:09:23.460 - 00:09:39.000] Ben: Yeah. No, yeah. I mean, I'm still annoyed about the $40 and just having this data spent overnight. But I'm glad at least we found the cause, right? And we turned it off. So, yeah, thanks for that.
-[00:09:40.780 - 00:09:52.500] Jonathan: Yeah, totally fair. Keep an eye on the usage screen for the next day. If the number keeps climbing while the phone is idle, call us back and we'll investigate further.
-[00:09:53.240 - 00:10:04.280] Ben: Yeah, yeah, no, I definitely will. So thanks for actually making me check the app and trying to find the cause instead of just, like, selling me the data. I really appreciate that. But, yeah, thanks.
-[00:10:03.820 - 00:10:10.160] Jonathan: Yeah, you're welcome, Ben. Thanks for calling ClearWave Mobile, and I hope you have a good trip.
-[00:10:10.680 - 00:10:12.040] Ben: Sounds good. Thanks. Bye.
+[00:09:05.818 - 00:09:17.928] Jonathan: And the final state is that Streambox is gonna be set to Wi-Fi only. Make sure that your data saver is on. Make sure that the background access is limited and that-
+[00:09:17.400 - 00:09:18.000] Ben: Mm-hmm
+[00:09:18.008 - 00:09:23.028] Jonathan: ... five gigs were added to the, um, total amount, which would be $40.
+[00:09:23.988 - 00:09:39.128] Ben: Yeah, yeah. Um, no, yeah, thanks for that. I mean, I'm still annoyed about the $40 and just, you know, having this data spent overnight. Uh, but I'm glad at least we found the cause, right, and we turned it off. So yeah, thanks for that.
+[00:09:41.248 - 00:09:53.428] Jonathan: Yeah, totally fair. Keep an eye out on the usage screen for the next day. If the number keeps climbing while the phone is idle, call us back and we'll investigate further.
+[00:09:53.548 - 00:10:04.338] Ben: Yeah. Yeah, no, I definitely will. Thanks for, you know, actually making me check the app and trying to find the cause and, instead of just, like, selling me the data. I, I really appreciate that. Um, but yeah. Thanks.
+[00:10:06.168 - 00:10:10.248] Jonathan: Yeah. Yeah, you're welcome, Ben. Thanks for calling Clearwave Mobile, and hope you have a good trip.
+[00:10:10.968 - 00:10:12.368] Ben: Sounds good. Thanks. Bye.

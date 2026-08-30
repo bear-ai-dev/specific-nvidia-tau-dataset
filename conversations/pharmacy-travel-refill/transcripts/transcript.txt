@@ -14,7 +14,7 @@
 [00:01:13.360 - 00:01:23.520] Miles: Um, I- I think, I think I did it, uh, last month, but I left that one in a h- hotel room and I told the doctor's office that, um, when I was asking for a, uh, for a refill.
 [00:01:24.620 - 00:01:25.780] Aaron: Okay. Give me one moment.
 [00:01:29.500 - 00:01:39.300] Aaron: The new prescription is valid. I'm seeing that the issue here is the payment. We can ask the insurance for a lost medication override, but they may need to speak with you.
-[00:01:39.790 - 00:01:45.980] Miles: Uh, is there any way you can call them right now? I'm leaving town again tomorrow morning a- and I kinda need it. (concerned)
+[00:01:39.790 - 00:01:45.980] Miles: Uh, is there any way you can call them right now? I'm leaving town again tomorrow morning a- and I kinda need it.
 [00:01:46.020 - 00:01:52.759] Aaron: Okay. I can start it. One second. Before I do, do you need the inhaler tonight or do you have another one available with you?
 [00:01:53.540 - 00:01:59.100] Miles: Uh, I got, I got one at home with, um, maybe a f- a couple doses left, but I need the new one before I go on the trip.
 [00:02:00.220 - 00:02:00.680] Aaron: Understood.
@@ -33,7 +33,7 @@
 [00:03:58.080 - 00:04:03.100] Miles: Yeah. No, no, yeah. I, I get it. Uh, can you, can you make sure it doesn't get pushed to tomorrow though? Is that possible?
 [00:04:03.140 - 00:04:15.680] Aaron: I can flag- Yeah. All good. I can flag it on my end that you're traveling and waiting for it tonight. I can't skip the pharmacist's verification, but it is already in the active queue.
 [00:04:15.680] [tool] update_prescription: add a travel-priority note
-[00:04:15.740 - 00:04:22.079] Miles: Oh, okay. That, that's great. Uh, what happens if I don't get the text by say like 6:45 or something like that? (relieved)
+[00:04:15.740 - 00:04:22.079] Miles: Oh, okay. That, that's great. Uh, what happens if I don't get the text by say like 6:45 or something like that?
 [00:04:22.120 - 00:04:32.540] Aaron: Okay. Um, I would just call us back before you drive over. If there is a delay we can tell you whether another Oak Street location has it in-stock, but we'd have to transfer the prescription.
 [00:04:33.340 - 00:04:37.690] Miles: And does that one also close at, on the counter at 7:00 or is it, is it later?
 [00:04:38.000] [tool] search_pharmacy_locations: search nearby Oak Street locations with counters open after 19:00

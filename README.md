@@ -7,8 +7,8 @@ export of Tau's public registries.
 
 The snapshot contains 10 conversations, 30 synchronized audio tracks, 5 domain
 registries, 85 structured agent tool calls, 10 annotated conversation
-transcripts, and 341 NVIDIA-schema next-action rows
-(85 tool-call targets plus 256 clean assistant-message targets). Every
+transcripts, and 344 NVIDIA-schema next-action rows
+(85 tool-call targets plus 259 clean assistant-message targets). Every
 conversation includes full-call audio and isolated speaker tracks as 48 kHz,
 24-bit, mono PCM WAV files; measured per-file bandwidth is published in
 `exports/audio_manifest.json` (all 30 files carry genuine wideband content —
@@ -73,7 +73,7 @@ is the point.
   prefix/expected-action row per agent tool call (85 rows).
 - `exports/nemotron_message_actions.jsonl`: same row schema with
   `expected_action.type: "message"` for every assistant speech turn that is
-  free of grounding_review flags (256 rows; 72 flagged turns excluded).
+  free of grounding_review flags (259 rows; 72 flagged turns excluded).
 - `exports/conversation_manifest.json`: index — goal, outcome, scenario_time,
   per-conversation row counts, and pointers to state/turn-taking files.
 - `exports/audio_manifest.json`: per-file sample rate, bit depth, duration,
