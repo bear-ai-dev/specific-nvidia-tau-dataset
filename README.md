@@ -126,17 +126,20 @@ speaker, event index, and audio start and end timestamp.
 
 ## 5. Turn-taking
 
-Eight conversations include:
+All 10 conversations include:
 
 - `transcripts/words.json` with word-level timestamps, speaker labels, and
   confidence.
 - `turn_taking.json` with turn segments, pause boundaries, backchannel and
   overlap candidates, and speaker metadata.
 
-Airline and telecom do not include those two annotation files. Their available
-paths are recorded as `null` in the
-[conversation manifest](conversation_manifest.json). Accent and environment
-fields are marked `not_human_annotated` rather than inferred.
+Each `turn_taking.json` names its timestamp source in its `source` field:
+eight conversations use ElevenLabs Scribe v2 word timestamps, and the airline
+and telecom conversations use faster-whisper word timestamps computed on the
+channel-isolated speaker stems (speaker attribution is exact by channel).
+Backchannel and overlap fields are automatic candidates, not human-accepted
+gold. Accent and environment fields are marked `not_human_annotated` rather
+than inferred.
 
 ## 6. Audio
 

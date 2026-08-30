@@ -160,8 +160,8 @@
         "initial": "conversations/airline-family-reservation/state/initial_state.json",
         "final": "conversations/airline-family-reservation/state/final_state.json"
       },
-      "turn_taking": null,
-      "word_timestamps": null
+      "turn_taking": "conversations/airline-family-reservation/turn_taking.json",
+      "word_timestamps": "conversations/airline-family-reservation/transcripts/words.json"
     },
     {
       "trajectory_id": 9,
@@ -178,8 +178,8 @@
         "initial": "conversations/telecom-data-usage-cleanup/state/initial_state.json",
         "final": "conversations/telecom-data-usage-cleanup/state/final_state.json"
       },
-      "turn_taking": null,
-      "word_timestamps": null
+      "turn_taking": "conversations/telecom-data-usage-cleanup/turn_taking.json",
+      "word_timestamps": "conversations/telecom-data-usage-cleanup/transcripts/words.json"
     }
   ],
   "conversation_count": 10,
