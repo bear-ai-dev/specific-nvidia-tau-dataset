@@ -1,5 +1,9 @@
 # NVIDIA voice-agent pilot deliverables
 
+![Synchronized QC playback: the transcript follows the call audio while annotated tool calls appear inline with their arguments and recorded outputs](docs/assets/qc-viewer-demo.gif)
+
+*QC review playback (4x speed): the annotated transcript follows the call audio while gold tool calls surface inline with their arguments and recorded outputs.*
+
 This repository contains the 10-conversation pilot requested in NVIDIA's
 email. The sample covers airline, banking, pharmacy, retail, and telecom
 customer-service calls.
