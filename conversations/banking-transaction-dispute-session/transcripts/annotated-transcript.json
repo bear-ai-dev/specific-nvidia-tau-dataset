@@ -1,0 +1,2106 @@
+{
+  "schema_version": "0.4.0",
+  "trajectory_id": 2,
+  "conversation_id": "banking-transaction-dispute-session",
+  "domain": "banking",
+  "scenario_time": "2026-02-25T16:20:00-05:00",
+  "responses_create_params": {
+    "input": [
+      {
+        "role": "system",
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\nService context: You represent Harveston Bank banking customer service. Your agent display name is Darren. The current scenario time at the start of the call is 2026-02-25T16:20:00-05:00.\n\n<policy>\n# Banking Customer-Service Policy\n\n## Current time\n\nThe current time is determined by the environment. Use `get_current_time` before making any time-dependent claim about offer validity, posting windows, deadlines, session expiry, return dates, or verification records. Do not infer the current time from the conversation. If the tool does not return an authoritative timestamp, explain that the timing cannot yet be confirmed.\n\n## Agent capabilities\n\nThe agent may:\n\n- Resolve and verify one banking customer.\n- Read card-account, transaction, referral, and secure-session state.\n- Update a verified customer profile after the required confirmation.\n- Resolve eligible temporary card restrictions and add travel notices.\n- Search current published product and process knowledge.\n- Issue customer-controlled application or dispute sessions.\n- Send secure notifications and transfer the customer to a specialist.\n\nThe agent does not approve applications, make underwriting decisions, certify customer-provided information, file customer-controlled disputes, or perform actions outside the available tools.\n\n## Domain basics\n\n### Customer profile\n\nA customer profile has a stable customer identifier, identity-verification requirements, trusted contact channels, and profile attributes such as the primary email. A successful customer lookup identifies the profile; it does not by itself authenticate the caller.\n\n### Identity verification\n\nIdentity verification has a verification identifier, required methods, status, completion time, and expiry. Only a successful `verify_customer_identity` result establishes a verified customer. A statement that the customer supplied requested information is not proof that it matched the profile.\n\n### Trusted-channel confirmation\n\nA trusted-channel confirmation has a confirmation identifier, purpose, masked destination, delivery status, verification status, and expiry. `start_trusted_channel_confirmation` may initiate the challenge, but initiation or delivery does not prove successful confirmation.\nUse `get_trusted_channel_confirmation` to read the current backend state after the customer completes the approved secure-input step. The secret response itself must never be passed to this tool.\n\n### Card account and transactions\n\nA card account may include card status, available credit, authorizations, declines, restrictions, and travel notices. A transaction has a stable transaction identifier and may include its descriptor, amount, date, card, merchant details, and household or saved-wallet indicators. Account-specific facts must come from the relevant read result.\n\n### Referral\n\nA referral has a stable referral identifier, offer terms, qualification state, and posting state. The referring customer's reward state is distinct from the referred person's private account or transaction data.\n\n### External knowledge base\n\nA knowledge-base result should identify the source, effective time or date, stable record or product identifier, and applicable terms or instructions. Product names and marketing labels are not substitutes for stable resource identifiers.\n\n### Secure self-service session\n\nA secure session has a session identifier, workflow, related resource, current status, delivery state, submission state, and expiry when applicable. Requested, issued, sent, delivered, opened, saved, submitted, expired, and closed are distinct states. The backend reports the opened-but-not-yet-submitted state as `open_not_submitted`. Creating or delivering a session does not prove that the customer opened or submitted it.\n\n### Notification\n\nA notification has a notification identifier, secure related resource, channel, masked destination, delivery status, and timestamp. Requesting a notification does not prove that it was sent or delivered.\n\n## Identifier handling\n\n- Internal customer, verification, confirmation, transaction, restriction, referral, session, notification, product, and knowledge-record IDs are opaque UUIDs returned by tools. Never derive one from a person's name, contact details, a card suffix, or a displayed reference.\n- Customer-facing values such as an account ID or referral reference code may be accepted for lookup and spoken back when appropriate, but they are not substitutes for the internal UUID returned by the lookup.\n- Once a lookup resolves a record, use its returned UUID in subsequent tool calls. Preserve the separate customer-facing reference only for customer communication and reference-code searches.\n\n## Authentication and privacy\n\n- Public product information may be discussed before authentication.\n- Before exposing customer-specific account information or making any profile or card change, resolve exactly one customer and complete the verification methods required for that profile.\n- Never infer verification success. Proceed only after `verify_customer_identity` returns a successful, unexpired verification record.\n- Never request, repeat, or place a full card number, password, PIN, CVV, or one-time code in ordinary conversation or tool arguments.\n- A customer must complete any one-time-code step through an approved secure input path. The agent may refer only to the resulting confirmation identifier and status.\n- Use masked contact and card details whenever the full value is unnecessary.\n- Never disclose another person's purchases, balance, transactions, credentials, or other private account data.\n\n## Tool interaction and fact provenance\n\n- In each turn, either speak to the customer or make a tool call; do not do both in one turn.\n- A specific identity, account, transaction, merchant, location, balance, status, timestamp, product term, delivery, or action result may be stated only when it comes from prior customer speech, this policy, or a prior successful tool result.\n- The agent may combine previously grounded facts, but must not fill missing fields through inference. For example, a merchant name does not establish a merchant location, and a requested destination does not establish that a notification was delivered there.\n- Never present reconstructed, inferred, or annotation-authored state as observed backend state. If a result is synthetic or reconstructed, it must be labeled as such outside the customer-facing trajectory and must not be described as a live observation.\n- Use stable identifiers returned by prior reads. Do not derive an account, transaction, product, restriction, referral, or session identifier from a display name.\n- Call arguments describe the requested operation; they do not prove that it succeeded. Claim that something was found, verified, updated, removed, issued, sent, delivered, saved, submitted, or completed only when a prior result explicitly confirms that state.\n- If the exact rule or fact is already present in this system policy, answer from the policy without making a knowledge-base tool call.\n- Use `search_knowledge_base` only for current product terms or field-specific process documentation that is not included in this system policy. The backend selects the retrieval method; the agent supplies the question and, when needed, an authoritative `as_of` time. Ground time-sensitive answers in the returned source and effective date.\n- If a result is missing a required field, ambiguous, failed, or expired, state the limitation and retry safely or transfer to a specialist. Do not guess.\n\n## Confirmation and mutation rules\n\n- Handle one customer-authorized operation at a time.\n- Before a mutation, summarize the exact target and proposed change and obtain explicit customer confirmation.\n- Do not mutate a profile or card on the basis of an intention, a partial confirmation, or a customer silence.\n- A successful mutation result must identify the resulting state. Until then, describe the operation as requested or in progress, not completed.\n- If a mutation succeeds only partially, explain the confirmed portion and the unresolved portion separately.\n\n## Profile email and trusted-channel confirmation\n\n- An email change requires a resolved customer, an active identity verification, the new email read back and confirmed by the customer, and a successful trusted-channel confirmation for that purpose.\n- Use `start_trusted_channel_confirmation` to initiate the confirmation. State only the masked destination and delivery state returned by the tool.\n- Do not ask the customer to speak a one-time code. The customer completes that step through the approved secure path.\n- Before the email mutation, call `get_trusted_channel_confirmation` and require an unexpired successful status.\n- The email-change mutation must reference the successful verification and confirmation records.\n- State the new primary email, transition notices, notification routing, and any login-identifier effect only when the mutation result, this system policy, or a current knowledge-base result explicitly provides those fields.\n- Direct the customer to the secure banking site for an unexpected prompt, message, or link.\n\n## Card declines and travel notices\n\n- Read the relevant card-account state before explaining a decline or restriction.\n- Confirm the triggering activity with the customer before resolving a temporary restriction. Use the stable transaction and restriction identifiers returned by the account read.\n- Removing a restriction does not guarantee a future authorization. Available credit, merchant holds, and other authorization controls may still apply.\n- A travel notice is informational and does not guarantee approval.\n- Before creating a travel notice, confirm the destinations and return date with the customer. Use the customer-stated values without adding or inferring locations.\n- After a restriction or travel-notice mutation, report only the status and limitations returned by the tool.\n\n## Referrals\n\n- Referral support may expose the referring customer's invitation, qualification, reward, and posting state.\n- Do not expose the referred person's purchases, balance, transactions, or other private account information.\n- State offer terms, qualification requirements, and posting windows exactly as returned, including the applicable source or offer version when available.\n- If the referral cannot be resolved to one record, ask for a stable identifier or transfer rather than guessing which referral applies.\n\n## Unfamiliar transactions and disputes\n\n- Retrieve candidate transactions for the verified customer before naming or discussing a specific transaction.\n- Review relevant household and saved-wallet indicators before issuing a fraud or dispute workflow when those checks are required.\n- Do not infer that a transaction is fraudulent. Distinguish unfamiliar, under review, disputed, and confirmed fraud states.\n- Issuing a dispute session does not file a claim. Only the customer's successful Submit action creates a submitted claim.\n- Do not claim that a claim was filed without a current session result confirming submission.\n- Never promise provisional credit, a dispute outcome, or a posting date that was not returned by an authoritative tool.\n\n## Product comparisons and card applications\n\n- Product comparisons must come from current published terms returned by `search_knowledge_base` unless the exact terms are already present in this system policy.\n- State annual fees, foreign-transaction fees, benefits, welcome offers, eligibility conditions, and effective dates precisely. Do not generalize a limited benefit into an unconditional benefit.\n- Field-specific application guidance must come from current application instructions. Do not improvise financial, tax, legal, housing, or income guidance.\n- The customer completes, reviews, and certifies the application. The agent may explain sourced instructions but may not choose or alter the customer's answers.\n- Creating, opening, or saving an application session does not submit an application, authorize a credit pull, guarantee approval, or permit the agent to override underwriting.\n- Do not promise approval or claim to know an underwriting decision before a result exists. Current decision-notice and reconsideration guidance must come from this system policy or the external knowledge base.\n\n## Notifications and secure-session communication\n\n- Obtain customer authorization for the intended delivery channel and destination before sending a notification or session.\n- Keep secure resources inside approved authenticated channels. Ordinary email or SMS may notify the customer that a secure resource is available but must not expose protected content.\n- Distinguish session issuance from notification delivery. Report each channel's status separately when the result provides it.\n- Before saying that a session remains open, saved, submitted, or usable later, read its current state with `get_secure_self_service_session` unless the issuing result explicitly provides an applicable expiry and resumability guarantee.\n- Do not claim that the customer received, opened, saved, or submitted a resource solely because the agent requested delivery.\n\n## Agent limitations and prohibitions\n\n- Never invent backend state, customer or merchant location, eligibility, balance, product terms, delivery, or completion.\n- Never treat a tool request, spoken intention, or future plan as a successful result.\n- Never bypass identity verification, trusted-channel confirmation, explicit mutation confirmation, or customer-controlled self-service boundaries.\n- Never submit, certify, approve, or promise an application or dispute outcome on the customer's behalf.\n- Never expose sensitive values or another person's private banking information.\n- Never make a time-dependent claim without an authoritative current time and the relevant effective or expiry data.\n- Never continue with an account-specific operation when the customer, record, required identifier, or authorization is ambiguous.\n\n## Escalation\n\nUse `transfer_to_specialist` when:\n\n- Identity cannot be verified or no approved trusted channel is available.\n- Required account state, external knowledge, or stable identifiers remain unavailable.\n- A tool fails repeatedly, returns conflicting state, or cannot complete the authorized operation.\n- The request requires fraud, underwriting, legal, account-recovery, or security judgment outside the available tools.\n- The customer disputes a confirmed mutation or reports a security condition that cannot be handled safely with the registry.\n\nBefore calling the transfer tool, say exactly:\n\n> To protect your account and avoid giving you an unsupported answer, I need to transfer you to a banking specialist. I'll pass along the context you've already provided.\n\nPass only the minimum verified context required so the customer does not need to repeat it.\n</policy>\n\nTry to be helpful and always follow the policy."
+      },
+      {
+        "id": "msg_0002_0000",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Hi. Thanks for calling Harveston Bank. This is Darren. How are you doing, and how can I help?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Hey, I'm calling because there's a 243 dollar and 18 cent charge from a company I've never heard of. I haven't filed anything yet. I'm trying to figure out whether I need to dispute it."
+      },
+      {
+        "id": "msg_0002_0002",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "I'm sorry you've had to worry about it. Let's slow down and figure out the charge actually, what it actually is, before we take any action. May I have your name and email?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Justin Porter, jporter92@email.com."
+      },
+      {
+        "id": "msg_0002_0004",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Got it. Give me one second."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"full_name\":\"Justin Porter\",\"email\":\"jporter92@email.com\"}",
+        "call_id": "bd-001",
+        "name": "lookup_customer",
+        "type": "function_call",
+        "id": "bd-001",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bd-001",
+        "output": "\n\n{\"customer_id\":\"4e8c3a97-e6ad-4737-aede-c8acd4993277\",\"match\":\"unique\",\"required_verification_methods\":[\"billing_zip\",\"birth_month_day\"]}"
+      },
+      {
+        "id": "msg_0002_0005",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right. Could you tell me your billing zip code and month and day of birth?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "64114, February 19th."
+      },
+      {
+        "id": "msg_0002_0007",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Awesome. Give me 2 seconds really quick."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"4e8c3a97-e6ad-4737-aede-c8acd4993277\",\"billing_zip\":\"64114\",\"birth_month_day\":\"February 19\"}",
+        "call_id": "bd-002",
+        "name": "verify_customer_identity",
+        "type": "function_call",
+        "id": "bd-002",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bd-002",
+        "output": "\n\n{\"verification_id\":\"dbf560d6-9aa5-4471-a5b1-7a3af5c51fb8\",\"status\":\"verified\",\"matched_methods\":[\"billing_zip\",\"birth_month_day\"]}"
+      },
+      {
+        "id": "msg_0002_0008",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right, you're verified. Uh, do you recognize the amount, date, or city, even if the merchant name is unfamiliar?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "I recognize the amount because it's right there on my statement, but I don't recognize anything buying anything for $243.18. It posted Monday. There's no city listed, and the description says M-R-K-T-P-L-C star"
+      },
+      {
+        "role": "user",
+        "content": "8472."
+      },
+      {
+        "id": "msg_0002_0011",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, give me one moment to retrieve those transactions."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"4e8c3a97-e6ad-4737-aede-c8acd4993277\",\"amount\":243.18,\"descriptor_contains\":\"MRKTPLC*8472\",\"posted_date\":\"2026-02-23\"}",
+        "call_id": "bd-003",
+        "name": "get_credit_card_transactions",
+        "type": "function_call",
+        "id": "bd-003",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bd-003",
+        "output": "\n\n{\"transactions\":[{\"transaction_id\":\"b2047621-d2c7-437c-bb56-c81a700e2099\",\"card_last4\":\"9102\",\"amount\":243.18,\"currency\":\"USD\",\"category\":\"online marketplace\",\"preceded_by_authorization_amount\":1.0}]}"
+      },
+      {
+        "id": "msg_0002_0012",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right, Justin. Uh, I found the transactions on the card ending 9102. The merchant category is online marketplace, and it posted after a smaller one dollar authorization. Did you purchase anything online recently?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "No, I did not buy anything for 243 dollars."
+      },
+      {
+        "id": "msg_0002_0014",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Well, is the physical card in your possession still?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yes, in my wallet."
+      },
+      {
+        "id": "msg_0002_0016",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0002_0017",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Did anyone in your household use the card or a saved wallet perhaps?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "My daughter has used the marketplace, but not my card. I'll ask her now."
+      },
+      {
+        "id": "msg_0002_0019",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yes. Uh, please ask your daughter whether she used a saved card, but don't call any phone number shown in a suspicious transaction description, please. While she checks, I'll review the bank's current unauthorized transaction procedure."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"query\":\"unauthorized transaction procedure for unfamiliar marketplace descriptor and possible household use\"}",
+        "call_id": "bd-004",
+        "name": "search_knowledge_base",
+        "type": "function_call",
+        "id": "bd-004",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bd-004",
+        "output": "\n\n{\"record_id\":\"8d5fe793-b41b-48c9-aef8-e3ffd9d1d4ab\",\"effective_at\":\"2026-01-15\",\"steps\":[\"review household use\",\"review saved wallets\",\"submit only if unauthorized\"],\"posted_charge_can_be_erased\":false,\"provisional_credit_guaranteed\":false,\"investigation_timing_basis\":\"transaction_type\",\"post_submit_outputs\":[\"claim reference\",\"written timing disclosures in secure messages\"]}"
+      },
+      {
+        "id": "msg_0002_0020",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, hold on one second. The policy says to review household and digital wallet activity, then submit the dispute through the secure tool. Filing does not guarantee provisional credit, and investigation timing depends on the transaction type."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0002_0021",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "So I'll search it up really quick."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Can you just remove it?"
+      },
+      {
+        "id": "msg_0002_0023",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "You know, I can't erase a posted charge, but I can send the secure dispute form from this transaction. Uh, would you like me to open it for you?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yes, please. I'd rather have it ready while I'm checking with my daughter."
+      },
+      {
+        "id": "msg_0002_0025",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right. Give me one moment while I open it, okay?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"4e8c3a97-e6ad-4737-aede-c8acd4993277\",\"workflow\":\"transaction_dispute\",\"resource_id\":\"b2047621-d2c7-437c-bb56-c81a700e2099\",\"delivery_channels\":[\"secure_message\"]}",
+        "call_id": "bd-005",
+        "name": "create_secure_self_service_session",
+        "type": "function_call",
+        "id": "bd-005",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bd-005",
+        "output": "\n\n{\"session_id\":\"0ae36057-bbbb-42e3-994f-55f064bc374c\",\"status\":\"issued\",\"submitted\":false,\"claim_id\":null,\"access_location\":\"online_banking\",\"display_label\":\"Review transaction ending 8472\",\"allowed_customer_actions\":[\"review\",\"submit\",\"close_page\"],\"deliveries\":[{\"channel\":\"secure_message\",\"status\":\"delivered\"}]}"
+      },
+      {
+        "id": "msg_0002_0026",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right, it's ready. It's online banking. Look for review transaction ending 8472. You'll review the details and submit it yourself if the purchase was not authorized."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, wait. I see it. It's-- it asks whether I contacted the merchant."
+      },
+      {
+        "id": "msg_0002_0028",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Answer accurately. If you determine your daughter made the purchase, stop before submitting and resolve it with her. If you did not authorize it, complete the form."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "It also asks if I want a representative."
+      },
+      {
+        "id": "msg_0002_0030",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah, you can request one. If the tool fails or you need an accommodation, I can transfer you with the reason attached."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, I can finish it myself, but what happens after submit?"
+      },
+      {
+        "id": "msg_0002_0032",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "You should receive a claim reference and written timing disclosures in secure messages. Keep any receipts or com- communications for yourself."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"4e8c3a97-e6ad-4737-aede-c8acd4993277\",\"session_id\":\"0ae36057-bbbb-42e3-994f-55f064bc374c\"}",
+        "call_id": "bd-006",
+        "name": "get_secure_self_service_session",
+        "type": "function_call",
+        "id": "bd-006",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bd-006",
+        "output": "\n\n{\"session_id\":\"0ae36057-bbbb-42e3-994f-55f064bc374c\",\"status\":\"open_not_submitted\",\"submitted\":false,\"resume_supported\":true,\"claim_id\":null}"
+      },
+      {
+        "id": "msg_0002_0033",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Additionally, I can confirm the dispute session if it was issued, but no claim is recorded until you press Submit."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "That's clear. Let me call my daughter first, then finish it if needed."
+      },
+      {
+        "id": "msg_0002_0035",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yes, that would be the next step."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, my daughter is calling me back now. Can you hold?"
+      },
+      {
+        "id": "msg_0002_0037",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yes, absolutely."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0002_0038",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Keep the dispute page open, but do not press submit until you know whether or not anyone authorized the purchase."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, I'm back. She says she bought a patio set, but she swears she used her own card."
+      },
+      {
+        "id": "msg_0002_0040",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Ask her whether or not the card is ending in 9102 and if it was saved in the marketplace wallet. Sometimes the checkout screen defaults to a previously stored payment method and, you know, you end up using that."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, wait. I just texted her. She's checking. This is embarrassing."
+      },
+      {
+        "id": "msg_0002_0042",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "[laughs] No, no, it's useful information. A known household purchase should not be reported as fraud merely because the descriptor was unfamiliar."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "She found it. The receipt shows my last 4 digits. She just clicked too fast when checking out."
+      },
+      {
+        "id": "msg_0002_0044",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, got it. That's good. Then don't submit the unauthorized transaction claim. You can work out repayment with her or ask the merchant whether its return policy applies."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Can you cancel the dispute tool?"
+      },
+      {
+        "id": "msg_0002_0046",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "No claim exists yet, but as you did not submit, uh, you may close the session. The tool log will show that it was issued, not that the transaction was disputed."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Will that hurt me later?"
+      },
+      {
+        "arguments": "{\"query\":\"Does an unused unsubmitted dispute session affect future dispute rights?\"}",
+        "call_id": "bd-007",
+        "name": "search_knowledge_base",
+        "type": "function_call",
+        "id": "bd-007",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bd-007",
+        "output": "\n\n{\"record_id\":\"022398d3-51e3-4dcd-b56b-064d53b159f0\",\"effective_at\":\"2026-01-15\",\"unused_unsubmitted_session_waives_future_rights\":false,\"guidance\":\"Contact the bank promptly if a genuinely unauthorized transaction is later discovered.\"}"
+      },
+      {
+        "id": "msg_0002_0048",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Uh, no, it should not. If you later discover a genuinely unauthorized transaction, contact us immediately. Uh, today's unused session does not waive your rights at all."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay. I appreciate that you made me check before filing."
+      },
+      {
+        "id": "msg_0002_0050",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yes, the policy is designated, or designed to separate merchant confusion, household use, and actual unauthorized activity. Each can require a different remedy."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Should I remove my card from her account?"
+      },
+      {
+        "id": "msg_0002_0052",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "That's a sensible security step you can take with the marketplace, but also review your own digital wallets and saved payment set- settings."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "So the final... Oh, okay. So the final outcome is no bank dispute?"
+      },
+      {
+        "id": "msg_0002_0054",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Correct, yes. Transaction identified as a household purchase, dispute session not submitted, and no change made to the card account."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, that makes sense. I'm glad we figured it out before I filed anything."
+      },
+      {
+        "id": "msg_0002_0056",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yes, of course. Me too. Is there anything else I can help you with?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "No, that's it. Thanks for walking me through it."
+      },
+      {
+        "id": "msg_0002_0058",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah, of course. You're welcome. Thanks for calling Harveston Bank, and please take care."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0002_0059",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Bye-bye."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Bye-bye."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "name": "lookup_customer",
+        "description": "Find one banking customer using a stable customer identifier or verified profile attribute. At least one identifier parameter must be supplied; no parameter is individually required because different lookups legitimately use different identifiers. Precedence when multiple are supplied: account_id, then email, then full_name, with billing_zip, card_last4, and account_match used as corroborating attributes to narrow to exactly one profile.",
+        "parameters": {
+          "type": "object",
+          "description": "At least one identifier property must be supplied. Precedence: account_id, then email, then full_name; billing_zip, card_last4, and account_match narrow the match.",
+          "properties": {
+            "account_id": {
+              "type": "string",
+              "description": "Customer account identifier."
+            },
+            "full_name": {
+              "type": "string",
+              "description": "Customer full name."
+            },
+            "email": {
+              "type": "string",
+              "description": "Email on the profile.",
+              "format": "email"
+            },
+            "account_match": {
+              "type": "string",
+              "description": "Trusted calling-channel match when available.",
+              "enum": [
+                "caller_phone"
+              ]
+            },
+            "billing_zip": {
+              "type": "string",
+              "description": "Billing ZIP collected for the lookup or verification."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits collected for the lookup or verification.",
+              "pattern": "^[0-9]{4}$"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_current_time",
+        "description": "Return the authoritative current timestamp for an audit or verification record.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "verify_customer_identity",
+        "description": "Validate supplied non-secret identity factors against the resolved profile and return a scoped verification record. Collecting or naming factors alone never establishes success.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "billing_zip": {
+              "type": "string",
+              "description": "Billing ZIP supplied by the customer."
+            },
+            "mobile_last4": {
+              "type": "string",
+              "description": "Last four digits of the registered mobile number.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four digits of the card used as a permitted verification factor.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "birth_month_day": {
+              "type": "string",
+              "description": "Customer-supplied birth month and day, without requiring the full date, as '<Month> <day>' (for example 'October 12').",
+              "pattern": "^(January|February|March|April|May|June|July|August|September|October|November|December) (0?[1-9]|[12][0-9]|3[01])$"
+            },
+            "verified_at": {
+              "type": "string",
+              "description": "Annotation-supplied observation timestamp taken from a prior get_current_time result. Informational only; the backend's own record time is authoritative, not this value.",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "start_trusted_channel_confirmation",
+        "description": "Send a purpose-bound confirmation challenge to an already trusted masked channel. The agent must not request or place the secret response in ordinary tool arguments.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "purpose": {
+              "type": "string",
+              "description": "Confirmation purpose.",
+              "enum": [
+                "email_change"
+              ]
+            },
+            "channel": {
+              "type": "string",
+              "description": "Trusted channel to use.",
+              "enum": [
+                "sms",
+                "secure_message"
+              ]
+            },
+            "verification_id": {
+              "type": "string",
+              "description": "Active identity-verification record.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "customer_id",
+            "purpose",
+            "channel",
+            "verification_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_trusted_channel_confirmation",
+        "description": "Read the current state of a purpose-bound trusted-channel challenge without receiving or exposing the secret response.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "confirmation_id": {
+              "type": "string",
+              "description": "Confirmation record returned when the challenge was started.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "customer_id",
+            "confirmation_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "update_customer_email",
+        "description": "Change the email on a verified customer profile after the required confirmation flow succeeds.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "new_email": {
+              "type": "string",
+              "description": "New customer email.",
+              "format": "email"
+            },
+            "verification_id": {
+              "type": "string",
+              "description": "Active identity-verification record.",
+              "format": "uuid"
+            },
+            "confirmation_id": {
+              "type": "string",
+              "description": "Successful trusted-channel confirmation record.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "customer_id",
+            "new_email",
+            "verification_id",
+            "confirmation_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "search_knowledge_base",
+        "description": "Search external, versioned product and process documentation that is not already included in the system policy. The backend selects the retrieval method and returns exactly one versioned record; which optional content fields are present depends on the record.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Plain-language question for external product or process documentation."
+            },
+            "as_of": {
+              "type": "string",
+              "description": "Optional authoritative date or timestamp for time-sensitive terms."
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_card_account",
+        "description": "Retrieve card status, available credit, recent authorizations, declines, restrictions, and travel notices in one account read.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "include": {
+              "type": "array",
+              "description": "Requested account sections.",
+              "items": {
+                "type": "string",
+                "description": "Account section.",
+                "enum": [
+                  "status",
+                  "available_credit",
+                  "authorizations",
+                  "declines",
+                  "restrictions",
+                  "travel_notices"
+                ]
+              },
+              "minItems": 0
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "resolve_card_restriction",
+        "description": "Remove a temporary card restriction after the customer confirms the triggering activity.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "restriction_id": {
+              "type": "string",
+              "description": "Restriction to resolve.",
+              "format": "uuid"
+            },
+            "confirmed_transaction_ids": {
+              "type": "array",
+              "description": "Transactions the customer confirmed.",
+              "items": {
+                "type": "string",
+                "description": "Transaction identifier.",
+                "format": "uuid"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "customer_id",
+            "restriction_id",
+            "confirmed_transaction_ids"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "create_travel_notice",
+        "description": "Add a travel notice without promising that every future authorization will be approved.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "destinations": {
+              "type": "array",
+              "description": "Travel destinations.",
+              "items": {
+                "type": "string",
+                "description": "City, region, or country."
+              },
+              "minItems": 1
+            },
+            "return_date": {
+              "type": "string",
+              "description": "Customer-stated return date as YYYY-MM-DD.",
+              "format": "date"
+            }
+          },
+          "required": [
+            "customer_id",
+            "destinations",
+            "return_date"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_referrals",
+        "description": "Retrieve referral invitations, offer terms, qualification state, and posting state without exposing the referred person's private transactions.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Referring customer identifier.",
+              "format": "uuid"
+            },
+            "referral_id": {
+              "type": "string",
+              "description": "Optional referral identifier.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_credit_card_transactions",
+        "description": "Retrieve candidate credit-card transactions for a verified customer using amount, descriptor, date, or card filters.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Optional last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "amount": {
+              "type": "number",
+              "description": "Optional exact transaction amount.",
+              "minimum": 0
+            },
+            "descriptor_contains": {
+              "type": "string",
+              "description": "Optional descriptor text."
+            },
+            "posted_date": {
+              "type": "string",
+              "description": "Optional posted date or customer-relative date."
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "create_secure_self_service_session",
+        "description": "Issue a secure customer-controlled workflow session. Issuing a session does not submit an application or claim.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "workflow": {
+              "type": "string",
+              "description": "Self-service workflow.",
+              "enum": [
+                "card_application",
+                "referral_status",
+                "transaction_dispute"
+              ]
+            },
+            "resource_id": {
+              "type": "string",
+              "description": "Related product, referral, or transaction identifier.",
+              "format": "uuid"
+            },
+            "delivery_channels": {
+              "type": "array",
+              "description": "Authorized delivery channels.",
+              "items": {
+                "type": "string",
+                "description": "Delivery channel.",
+                "enum": [
+                  "secure_message",
+                  "email_notification"
+                ]
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "customer_id",
+            "workflow",
+            "resource_id",
+            "delivery_channels"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_secure_self_service_session",
+        "description": "Read whether an issued self-service session is open, saved, submitted, expired, or closed.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "session_id": {
+              "type": "string",
+              "description": "Self-service session identifier.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "customer_id",
+            "session_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "send_secure_notification",
+        "description": "Send a notification that points the customer to a secure in-account resource without placing a working secure link in ordinary email.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "related_resource_id": {
+              "type": "string",
+              "description": "Secure resource identifier.",
+              "format": "uuid"
+            },
+            "channel": {
+              "type": "string",
+              "description": "Notification channel.",
+              "enum": [
+                "email",
+                "sms"
+              ]
+            },
+            "template": {
+              "type": "string",
+              "description": "Approved notification template identifier."
+            }
+          },
+          "required": [
+            "customer_id",
+            "related_resource_id",
+            "channel",
+            "template"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "transfer_to_specialist",
+        "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "reason": {
+              "type": "string",
+              "description": "Why the transfer is required."
+            },
+            "summary": {
+              "type": "string",
+              "description": "Context already collected so the customer does not repeat it."
+            }
+          },
+          "required": [
+            "reason",
+            "summary"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    ],
+    "parallel_tool_calls": false
+  },
+  "event_metadata": [
+    {
+      "event_index": 1,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 0.48,
+        "end_seconds": 5.16
+      }
+    },
+    {
+      "event_index": 2,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 6.36,
+        "end_seconds": 19.12
+      }
+    },
+    {
+      "event_index": 3,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 20.95,
+        "end_seconds": 27.9
+      }
+    },
+    {
+      "event_index": 4,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 28.94,
+        "end_seconds": 34.2
+      }
+    },
+    {
+      "event_index": 5,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 35.52,
+        "end_seconds": 37.92
+      }
+    },
+    {
+      "event_index": 6,
+      "kind": "function_call",
+      "call_id": "bd-001",
+      "source": "transcripts/transcript.txt",
+      "source_label": "find the customer by name and email",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "placement_seconds": 38.42,
+      "placement_after_text": null,
+      "placement_before_text": null,
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          38.42,
+          45.14
+        ]
+      }
+    },
+    {
+      "event_index": 8,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 45.14,
+        "end_seconds": 48.32
+      }
+    },
+    {
+      "event_index": 9,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 49.76,
+        "end_seconds": 54.7
+      }
+    },
+    {
+      "event_index": 10,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 55.74,
+        "end_seconds": 58.46
+      }
+    },
+    {
+      "event_index": 11,
+      "kind": "function_call",
+      "call_id": "bd-002",
+      "source": "transcripts/transcript.txt",
+      "source_label": "validate the supplied identity factors",
+      "annotation_confidence": "medium",
+      "state_effect": "identity_verified",
+      "placement_seconds": 59.06,
+      "placement_after_text": null,
+      "placement_before_text": null,
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          59.06,
+          64.36
+        ]
+      }
+    },
+    {
+      "event_index": 13,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 64.36,
+        "end_seconds": 70.02
+      }
+    },
+    {
+      "event_index": 14,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 71.48,
+        "end_seconds": 94.34
+      }
+    },
+    {
+      "event_index": 15,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 95.36,
+        "end_seconds": 96.86
+      }
+    },
+    {
+      "event_index": 16,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 99.6,
+        "end_seconds": 104.16
+      }
+    },
+    {
+      "event_index": 17,
+      "kind": "function_call",
+      "call_id": "bd-003",
+      "source": "transcripts/transcript.txt",
+      "source_label": "retrieve the customer's credit-card transactions",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "placement_seconds": 104.76,
+      "placement_after_text": null,
+      "placement_before_text": null,
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          104.76,
+          112.76
+        ]
+      }
+    },
+    {
+      "event_index": 19,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 133.12,
+        "end_seconds": 146.24
+      }
+    },
+    {
+      "event_index": 20,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 148.1,
+        "end_seconds": 152.74
+      }
+    },
+    {
+      "event_index": 21,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 152.74,
+        "end_seconds": 155.76
+      }
+    },
+    {
+      "event_index": 22,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 155.76,
+        "end_seconds": 156.92000000000002
+      }
+    },
+    {
+      "event_index": 23,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 158.07999999999998,
+        "end_seconds": 158.36
+      }
+    },
+    {
+      "event_index": 24,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 162.8,
+        "end_seconds": 166.56
+      }
+    },
+    {
+      "event_index": 25,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 167.7,
+        "end_seconds": 172.82
+      }
+    },
+    {
+      "event_index": 26,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 172.82,
+        "end_seconds": 183.38
+      }
+    },
+    {
+      "event_index": 27,
+      "kind": "function_call",
+      "call_id": "bd-004",
+      "source": "transcripts/transcript.txt",
+      "source_label": "review the unauthorized-transaction procedure",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 185.0,
+      "placement_after_text": "While she checks, I'll review the bank's current unauthorized transaction procedure",
+      "placement_before_text": "The policy says to review household and digital wallet activity",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          185.0,
+          187.64
+        ]
+      }
+    },
+    {
+      "event_index": 29,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 187.64,
+        "end_seconds": 200.62
+      }
+    },
+    {
+      "event_index": 30,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 202.38,
+        "end_seconds": 205.16
+      }
+    },
+    {
+      "event_index": 31,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 207.48,
+        "end_seconds": 208.64
+      }
+    },
+    {
+      "event_index": 32,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 211.38,
+        "end_seconds": 218.94
+      }
+    },
+    {
+      "event_index": 33,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 219.96,
+        "end_seconds": 224.36
+      }
+    },
+    {
+      "event_index": 34,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 224.36,
+        "end_seconds": 226.3
+      }
+    },
+    {
+      "event_index": 35,
+      "kind": "function_call",
+      "call_id": "bd-005",
+      "source": "transcripts/transcript.txt",
+      "source_label": "open a secure dispute session for transaction ending 8472",
+      "annotation_confidence": "high",
+      "state_effect": "self_service_session_issued",
+      "placement_seconds": 226.9,
+      "placement_after_text": null,
+      "placement_before_text": null,
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          226.9,
+          228.76
+        ]
+      }
+    },
+    {
+      "event_index": 37,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 228.76,
+        "end_seconds": 238.94
+      }
+    },
+    {
+      "event_index": 38,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 240.58,
+        "end_seconds": 245.74
+      }
+    },
+    {
+      "event_index": 39,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 253.06,
+        "end_seconds": 259.82
+      }
+    },
+    {
+      "event_index": 40,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 260.959,
+        "end_seconds": 265.1
+      }
+    },
+    {
+      "event_index": 41,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 267.4,
+        "end_seconds": 272.4
+      }
+    },
+    {
+      "event_index": 42,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 273.9,
+        "end_seconds": 277.8
+      }
+    },
+    {
+      "event_index": 43,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 279.48,
+        "end_seconds": 287.46
+      }
+    },
+    {
+      "event_index": 44,
+      "kind": "function_call",
+      "call_id": "bd-006",
+      "source": "transcripts/transcript.txt",
+      "source_label": "review the issued dispute session; no claim has been submitted",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 293.8,
+      "placement_after_text": "Keep any receipts or com- communications for yourself",
+      "placement_before_text": "I can confirm the dispute session was issued",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          293.8,
+          294.16
+        ]
+      }
+    },
+    {
+      "event_index": 46,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 294.15999999999997,
+        "end_seconds": 300.66
+      }
+    },
+    {
+      "event_index": 47,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 300.66,
+        "end_seconds": 306.54
+      }
+    },
+    {
+      "event_index": 48,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 306.54,
+        "end_seconds": 307.7
+      }
+    },
+    {
+      "event_index": 49,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 309.9,
+        "end_seconds": 313.18
+      }
+    },
+    {
+      "event_index": 50,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 313.18,
+        "end_seconds": 313.88
+      }
+    },
+    {
+      "event_index": 51,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 316.04,
+        "end_seconds": 321.52
+      }
+    },
+    {
+      "event_index": 52,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 345.82,
+        "end_seconds": 352.72
+      }
+    },
+    {
+      "event_index": 53,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 352.72,
+        "end_seconds": 362.84
+      }
+    },
+    {
+      "event_index": 54,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 363.85,
+        "end_seconds": 369.55
+      }
+    },
+    {
+      "event_index": 55,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 369.55,
+        "end_seconds": 379.25
+      }
+    },
+    {
+      "event_index": 56,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 379.25,
+        "end_seconds": 385.33
+      }
+    },
+    {
+      "event_index": 57,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 387.35,
+        "end_seconds": 394.71
+      }
+    },
+    {
+      "event_index": 58,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 396.17,
+        "end_seconds": 398.03
+      }
+    },
+    {
+      "event_index": 59,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 403.29,
+        "end_seconds": 411.85
+      }
+    },
+    {
+      "event_index": 60,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 413.23,
+        "end_seconds": 414.24
+      }
+    },
+    {
+      "event_index": 61,
+      "kind": "function_call",
+      "call_id": "bd-007",
+      "source": "transcripts/transcript.txt",
+      "source_label": "retrieve unused-session and future-rights guidance",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 414.6,
+      "placement_after_text": "Will that hurt me later",
+      "placement_before_text": "today's unused session does not waive your rights",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          414.6,
+          415.37
+        ]
+      }
+    },
+    {
+      "event_index": 63,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 415.37,
+        "end_seconds": 423.77
+      }
+    },
+    {
+      "event_index": 64,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 425.17,
+        "end_seconds": 428.77
+      }
+    },
+    {
+      "event_index": 65,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 431.15,
+        "end_seconds": 440.63
+      }
+    },
+    {
+      "event_index": 66,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 440.63,
+        "end_seconds": 442.79
+      }
+    },
+    {
+      "event_index": 67,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 445.13,
+        "end_seconds": 451.65
+      }
+    },
+    {
+      "event_index": 68,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 451.65,
+        "end_seconds": 455.95
+      }
+    },
+    {
+      "event_index": 69,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 457.35,
+        "end_seconds": 463.47
+      }
+    },
+    {
+      "event_index": 70,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 464.61,
+        "end_seconds": 469.57
+      }
+    },
+    {
+      "event_index": 71,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 469.57,
+        "end_seconds": 473.55
+      }
+    },
+    {
+      "event_index": 72,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 473.55,
+        "end_seconds": 476.05
+      }
+    },
+    {
+      "event_index": 73,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 476.05,
+        "end_seconds": 479.59000000000003
+      }
+    },
+    {
+      "event_index": 74,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 481.51,
+        "end_seconds": 481.81
+      }
+    },
+    {
+      "event_index": 75,
+      "kind": "speech",
+      "speaker": "Justin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 483.35,
+        "end_seconds": 483.71
+      }
+    }
+  ]
+}

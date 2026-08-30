@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.2.0",
+  "conversation_id": "pharmacy-travel-refill",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-08-27T18:17:49-05:00",
+  "entities": {
+    "0e28b5d4-a93b-437e-9ba0-cbe4e7d9dbbb": {
+      "entity_type": "patient",
+      "patient_id": "0e28b5d4-a93b-437e-9ba0-cbe4e7d9dbbb",
+      "full_name": "Miles Carter",
+      "date_of_birth": "1988-06-14",
+      "identity_resolution": "unique",
+      "verified_notification_destinations": [
+        {
+          "destination_id": "94c55afb-c756-4c14-9f4a-0c0cf2e3d69e",
+          "channel": "sms",
+          "masked_destination": "***-***-on-file",
+          "verified": true
+        }
+      ]
+    },
+    "9670dbb4-6227-48ed-99fc-7ce746085502": {
+      "entity_type": "prescription",
+      "prescription_id": "9670dbb4-6227-48ed-99fc-7ce746085502",
+      "patient_id": "0e28b5d4-a93b-437e-9ba0-cbe4e7d9dbbb",
+      "medication_id": "9dcd4906-4db3-4290-bccd-afde111823cb",
+      "medication_name": "albuterol inhaler",
+      "received_at": "2026-08-27T10:42:00-05:00",
+      "prescription_valid": true,
+      "fill_store_id": "8e22d41d-843c-4e73-95c0-3c9877366ba9",
+      "workflow_status": "awaiting_pharmacist_verification",
+      "claim": {
+        "status": "paid",
+        "copay": 15,
+        "override_id": "9e90544a-3497-4aee-a1f0-4437d4f4684c"
+      },
+      "queue": {
+        "status": "active",
+        "position": 1,
+        "estimated_minutes": 30,
+        "pharmacist_verification_required": true,
+        "priority_note": "present"
+      },
+      "priority_reason": "traveling on 2026-08-28; waiting for pickup on the evening of 2026-08-27",
+      "notification": {
+        "ready_alert": "enabled",
+        "channel": "sms",
+        "destination_id": "94c55afb-c756-4c14-9f4a-0c0cf2e3d69e",
+        "masked_destination": "***-***-on-file",
+        "verified": true
+      },
+      "payment_options": [
+        "app_prepay_if_offered_when_ready",
+        "pay_15_at_pickup"
+      ]
+    },
+    "9e90544a-3497-4aee-a1f0-4437d4f4684c": {
+      "entity_type": "payer_claim_override",
+      "override_id": "9e90544a-3497-4aee-a1f0-4437d4f4684c",
+      "prescription_id": "9670dbb4-6227-48ed-99fc-7ce746085502",
+      "reason": "lost_medication",
+      "status": "approved_one_time"
+    },
+    "8e22d41d-843c-4e73-95c0-3c9877366ba9": {
+      "entity_type": "pharmacy_location",
+      "store_id": "8e22d41d-843c-4e73-95c0-3c9877366ba9",
+      "display_name": "Oak Street Pharmacy",
+      "counter_closes_at": "19:00",
+      "front_store_closes_later": true
+    },
+    "155059ca-b6aa-4372-b0af-86c2d681c393": {
+      "entity_type": "pharmacy_location",
+      "store_id": "155059ca-b6aa-4372-b0af-86c2d681c393",
+      "display_name": "Park Avenue",
+      "counter_closes_at": "21:00",
+      "timezone": "America/Chicago"
+    },
+    "155059ca-b6aa-4372-b0af-86c2d681c393:9dcd4906-4db3-4290-bccd-afde111823cb": {
+      "entity_type": "medication_inventory",
+      "store_id": "155059ca-b6aa-4372-b0af-86c2d681c393",
+      "medication_id": "9dcd4906-4db3-4290-bccd-afde111823cb",
+      "in_stock": true,
+      "reserved": false
+    }
+  }
+}

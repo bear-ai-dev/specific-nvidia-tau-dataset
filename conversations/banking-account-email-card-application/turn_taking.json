@@ -1,0 +1,1065 @@
+{
+  "schema_version": "0.1.0",
+  "source": "ElevenLabs Scribe v2 word timestamps",
+  "warning": "Backchannel and barge-in fields are automatic candidates and require human acceptance for gold labels.",
+  "turns": [
+    {
+      "turn_id": "turn-0001",
+      "role": "agent",
+      "start_seconds": 0.1,
+      "end_seconds": 6.04,
+      "text": "Hi, thanks for calling Harbor Stone Bank. My name is Maya. What can I take care of for you?",
+      "word_count": 19,
+      "duration_seconds": 5.94,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0002",
+      "role": "customer",
+      "start_seconds": 7.74,
+      "end_seconds": 25.08,
+      "text": "Hey, um, I'm calling because I'm locked out of my old email and I want to apply for a travel card before a trip. The bank is connected to this old email. I've already tried, um, changing this online twice, and it keeps sending codes to an email I can't access, so would appreciate any help here.",
+      "word_count": 61,
+      "duration_seconds": 17.34,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0003",
+      "role": "agent",
+      "start_seconds": 26.28,
+      "end_seconds": 40.12,
+      "text": "I see. Okay, I'm so sorry to hear that. Um, let's see what we can do today. I'll first handle the email address change, and then we can take our time with the card options. Can I start with your full name?",
+      "word_count": 45,
+      "duration_seconds": 13.84,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0004",
+      "role": "customer",
+      "start_seconds": 41.22,
+      "end_seconds": 52.48,
+      "text": "Yeah, sure. Um, so my name is Johnny Monroe. That is J-O-H-N-N-Y M-O-N-R-O-E.",
+      "word_count": 23,
+      "duration_seconds": 11.26,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0005",
+      "role": "agent",
+      "start_seconds": 53.9,
+      "end_seconds": 56.36,
+      "text": "Okay, great. Account ID, if you have it.",
+      "word_count": 8,
+      "duration_seconds": 2.46,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0006",
+      "role": "customer",
+      "start_seconds": 58.1,
+      "end_seconds": 63.9,
+      "text": "Yeah. It is S-F-two oh four-seven seven one.",
+      "word_count": 11,
+      "duration_seconds": 5.8,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0007",
+      "role": "agent",
+      "start_seconds": 65.88,
+      "end_seconds": 76.42,
+      "text": "Okay. Give me a minute while I pull that up. Um, can you please verify your billing zip and the last four digits of the mobile number?",
+      "word_count": 27,
+      "duration_seconds": 10.54,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0008",
+      "role": "customer",
+      "start_seconds": 77.76,
+      "end_seconds": 86.54,
+      "text": "Yep. My zip code is one nine four four seven, and the last four digits of my number are one two five one.",
+      "word_count": 23,
+      "duration_seconds": 8.78,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0009",
+      "role": "agent",
+      "start_seconds": 88.24,
+      "end_seconds": 91.6,
+      "text": "All right. I'm checking that now. This may take a few seconds.",
+      "word_count": 13,
+      "duration_seconds": 3.36,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0010",
+      "role": "customer",
+      "start_seconds": 92.82,
+      "end_seconds": 93.06,
+      "text": "Sure.",
+      "word_count": 1,
+      "duration_seconds": 0.24,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0011",
+      "role": "agent",
+      "start_seconds": 119.14,
+      "end_seconds": 122.86,
+      "text": "Okay, great. You're verified. What's the new email you'd like to change to?",
+      "word_count": 16,
+      "duration_seconds": 3.72,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0012",
+      "role": "customer",
+      "start_seconds": 124.7,
+      "end_seconds": 132.36,
+      "text": "The new email is Johnny.Monroe.travel@outlook.com.",
+      "word_count": 9,
+      "duration_seconds": 7.66,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0013",
+      "role": "agent",
+      "start_seconds": 133.44,
+      "end_seconds": 146.54,
+      "text": "Okay. Let me spell it back. It's J-O-H-N-N-Y dot M-O-N-R-O-E dot T-R-A-V-E-L @outlook.com.",
+      "word_count": 30,
+      "duration_seconds": 13.1,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0014",
+      "role": "customer",
+      "start_seconds": 147.5,
+      "end_seconds": 148,
+      "text": "That's correct.",
+      "word_count": 3,
+      "duration_seconds": 0.5,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0015",
+      "role": "agent",
+      "start_seconds": 149.1,
+      "end_seconds": 152.56,
+      "text": "Sounds good. I'm working on adding this as an additional email.",
+      "word_count": 12,
+      "duration_seconds": 3.46,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0016",
+      "role": "agent",
+      "start_seconds": 205.72,
+      "end_seconds": 212.84,
+      "text": "I just sent you a verification code to the number we have on file. Can you read the number back to me?",
+      "word_count": 22,
+      "duration_seconds": 7.12,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0017",
+      "role": "customer",
+      "start_seconds": 212.94,
+      "end_seconds": 214.6,
+      "text": "Yep. Give me one second.",
+      "word_count": 5,
+      "duration_seconds": 1.66,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0018",
+      "role": "customer",
+      "start_seconds": 216.28,
+      "end_seconds": 219.56,
+      "text": "The number is three three seven four six four.",
+      "word_count": 9,
+      "duration_seconds": 3.28,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0019",
+      "role": "agent",
+      "start_seconds": 220.22,
+      "end_seconds": 228.36,
+      "text": "Thanks. Got it. The email is now updated. You may receive security notices at both addresses during the transition.",
+      "word_count": 19,
+      "duration_seconds": 8.14,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0020",
+      "role": "customer",
+      "start_seconds": 228.94,
+      "end_seconds": 231.88,
+      "text": "Okay. Nice. Thank you. I'll, I'll check on that.",
+      "word_count": 11,
+      "duration_seconds": 2.94,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0021",
+      "role": "agent",
+      "start_seconds": 233.1,
+      "end_seconds": 238.72,
+      "text": "And as for the credit card you mentioned, do you know which of the cards you wanted to get?",
+      "word_count": 19,
+      "duration_seconds": 5.62,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0022",
+      "role": "customer",
+      "start_seconds": 241.08,
+      "end_seconds": 252.94,
+      "text": "I, I, I don't actually have a specific one in mind yet. Now, I, I want no foreign transaction fee and airport lounge access, but I'm not paying seven hundred dollars a year.",
+      "word_count": 35,
+      "duration_seconds": 11.86,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0023",
+      "role": "agent",
+      "start_seconds": 255.5,
+      "end_seconds": 257.78,
+      "text": "Uh, I'll search our current product terms.",
+      "word_count": 8,
+      "duration_seconds": 2.28,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0024",
+      "role": "agent",
+      "start_seconds": 292.36,
+      "end_seconds": 313.62,
+      "text": "Okay, so I see that two products fit the, fit part of that. So we have Summit Journey that has no foreign transaction fee and a ninety-five dollar annual fee, but has no general lounge membership. And then Summit Reserve includes lounge access and costs three hundred and ninety-five annual.",
+      "word_count": 52,
+      "duration_seconds": 21.26,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0025",
+      "role": "customer",
+      "start_seconds": 315.73,
+      "end_seconds": 318.1,
+      "text": "Does Reserve give free checked bags?",
+      "word_count": 6,
+      "duration_seconds": 2.37,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0026",
+      "role": "agent",
+      "start_seconds": 319.62,
+      "end_seconds": 323.76,
+      "text": "Okay, just give, um, give me a moment while I pull that up.",
+      "word_count": 13,
+      "duration_seconds": 4.14,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0027",
+      "role": "agent",
+      "start_seconds": 326.76,
+      "end_seconds": 337.3,
+      "text": "It offers an annual airline incidental credit, but it does not automatically provide a free checked bag on every airline. Airline specific rules still apply.",
+      "word_count": 25,
+      "duration_seconds": 10.54,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0028",
+      "role": "customer",
+      "start_seconds": 338.98,
+      "end_seconds": 342.68,
+      "text": "Yeah, I mean, that, that makes sense. Um, what about the welcome bonus?",
+      "word_count": 13,
+      "duration_seconds": 3.7,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0029",
+      "role": "agent",
+      "start_seconds": 343.74,
+      "end_seconds": 346.86,
+      "text": "All right. I'm checking that now. This may take a few seconds.",
+      "word_count": 13,
+      "duration_seconds": 3.12,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0030",
+      "role": "agent",
+      "start_seconds": 350.74,
+      "end_seconds": 370.652,
+      "text": "Okay. So Journey currently offers forty thousand points after three thousand dollars in eligible purchases within ninety days. Reserve offers- $70,000 after $5,000 within 90 days. Offers can change, and approval is not guaranteed.",
+      "word_count": 36,
+      "duration_seconds": 19.912,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0031",
+      "role": "customer",
+      "start_seconds": 372.132,
+      "end_seconds": 376.132,
+      "text": "Got it. I, I, I think Journey sounds more reasonable. Can, can you apply for me?",
+      "word_count": 16,
+      "duration_seconds": 4.0,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0032",
+      "role": "agent",
+      "start_seconds": 376.952,
+      "end_seconds": 385.712,
+      "text": "Yeah. So the application is completed by you and not by me. I can provide the secure card application tool associated with your verified profile.",
+      "word_count": 25,
+      "duration_seconds": 8.76,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0033",
+      "role": "customer",
+      "start_seconds": 387.372,
+      "end_seconds": 393.132,
+      "text": "Okay, I see. Um, yeah. Can, can you send me the link for the application, um, or guide me to where I can find it?",
+      "word_count": 25,
+      "duration_seconds": 5.76,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0034",
+      "role": "agent",
+      "start_seconds": 394.051,
+      "end_seconds": 399.492,
+      "text": "Of course. Let me look at the system and send it to your message center and your email.",
+      "word_count": 18,
+      "duration_seconds": 5.441,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0035",
+      "role": "customer",
+      "start_seconds": 403.952,
+      "end_seconds": 406.012,
+      "text": "I- is it going to my new email that we just set up?",
+      "word_count": 13,
+      "duration_seconds": 2.06,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0036",
+      "role": "agent",
+      "start_seconds": 406.952,
+      "end_seconds": 413.752,
+      "text": "Yeah. So the profile now shows johnnymunrotravel@outlook.com.",
+      "word_count": 9,
+      "duration_seconds": 6.8,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0037",
+      "role": "agent",
+      "start_seconds": 415.272,
+      "end_seconds": 417.912,
+      "text": "Um, please review every field before submitting.",
+      "word_count": 7,
+      "duration_seconds": 2.64,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0038",
+      "role": "customer",
+      "start_seconds": 419.312,
+      "end_seconds": 421.672,
+      "text": "Got it. If, if I get denied, will you know why?",
+      "word_count": 11,
+      "duration_seconds": 2.36,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0039",
+      "role": "agent",
+      "start_seconds": 423.032,
+      "end_seconds": 436.032,
+      "text": "So the deci- the decision notice usually explains the factors and any reconsideration contact, and phone agents cannot promise approval or override the underwriting.",
+      "word_count": 24,
+      "duration_seconds": 13.0,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0040",
+      "role": "customer",
+      "start_seconds": 438.132,
+      "end_seconds": 441.592,
+      "text": "Fair. Can, can you confirm the fees for the two cards one more time?",
+      "word_count": 14,
+      "duration_seconds": 3.46,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0041",
+      "role": "agent",
+      "start_seconds": 442.172,
+      "end_seconds": 463.792,
+      "text": "Yeah, sure. So the Journey is $95 annual fee, no foreign transaction fee, and no general lounge membership. And for the Reserve is $395 annual fee, no foreign tr- foreign transaction fee, and lounge access subject to its program terms.",
+      "word_count": 40,
+      "duration_seconds": 21.62,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0042",
+      "role": "customer",
+      "start_seconds": 465.912,
+      "end_seconds": 468.312,
+      "text": "Thanks. Yeah, I, I think I'm gonna go with Journey.",
+      "word_count": 11,
+      "duration_seconds": 2.4,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0043",
+      "role": "agent",
+      "start_seconds": 469.732,
+      "end_seconds": 477.132,
+      "text": "Sounds great. Um, just complete the secure application when you're ready, and your email update is already complete.",
+      "word_count": 19,
+      "duration_seconds": 7.4,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0044",
+      "role": "customer",
+      "start_seconds": 478.932,
+      "end_seconds": 487.732,
+      "text": "Okay. Yeah. I see the application page on my end. Looks like it wants my housing payment. Is that monthly rent or the amount I split with my roommate?",
+      "word_count": 29,
+      "duration_seconds": 8.8,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0045",
+      "role": "agent",
+      "start_seconds": 489.112,
+      "end_seconds": 500.632,
+      "text": "So you enter the amount you personally are responsible for each month and follow the field's instruction. I cannot choose or alter the financial information for you.",
+      "word_count": 28,
+      "duration_seconds": 11.52,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0046",
+      "role": "customer",
+      "start_seconds": 503.432,
+      "end_seconds": 508.592,
+      "text": "It, it also asks annual income. I have a salary and freelance work.",
+      "word_count": 13,
+      "duration_seconds": 5.16,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0047",
+      "role": "agent",
+      "start_seconds": 509.532,
+      "end_seconds": 528.532,
+      "text": "So you can report income you can reasonably access and verify, um, consistent with the application disclosure. If you're un- if you're unsure how a category applies, use the explanation beside the field gathering, um, rather than guessing.",
+      "word_count": 40,
+      "duration_seconds": 19.0,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0048",
+      "role": "customer",
+      "start_seconds": 530.012,
+      "end_seconds": 533.932,
+      "text": "Got it. I, I, I don't want to submit while we're talking. Can I save it?",
+      "word_count": 18,
+      "duration_seconds": 3.92,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0049",
+      "role": "agent",
+      "start_seconds": 535.212,
+      "end_seconds": 543.732,
+      "text": "So the secure tool offers save and continue later, um, before the final certification. Can you confirm that you see that option?",
+      "word_count": 22,
+      "duration_seconds": 8.52,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0050",
+      "role": "customer",
+      "start_seconds": 546.032,
+      "end_seconds": 551.152,
+      "text": "Um, yeah, I do actually. There's also a consent about pulling credit.",
+      "word_count": 13,
+      "duration_seconds": 5.12,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0051",
+      "role": "agent",
+      "start_seconds": 553.132,
+      "end_seconds": 565.291,
+      "text": "Um, so read it fully. Submitting the application authorizes the review described there. Opening or saving the tool does not itself submit an application.",
+      "word_count": 24,
+      "duration_seconds": 12.159,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0052",
+      "role": "customer",
+      "start_seconds": 568.912,
+      "end_seconds": 572.192,
+      "text": "Good. I, I was worried you had already run my credit.",
+      "word_count": 11,
+      "duration_seconds": 3.28,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0053",
+      "role": "agent",
+      "start_seconds": 573.132,
+      "end_seconds": 580.552,
+      "text": "Oh, no, I have not. I only updated your email, searched published product information, and delivered the application tool.",
+      "word_count": 19,
+      "duration_seconds": 7.42,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0054",
+      "role": "customer",
+      "start_seconds": 582.812,
+      "end_seconds": 587.152,
+      "text": "Got it. Does the old email still work for login too? I'm just, just curious.",
+      "word_count": 16,
+      "duration_seconds": 4.34,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0055",
+      "role": "agent",
+      "start_seconds": 588.412,
+      "end_seconds": 605.492,
+      "text": "Yeah. So y- your username may remain the same, but future notices go to the new email. If the security system prompts you to confirm the change, use the secure banking site rather than a link from an unexpected message.",
+      "word_count": 40,
+      "duration_seconds": 17.08,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0056",
+      "role": "customer",
+      "start_seconds": 607.372,
+      "end_seconds": 612.732,
+      "text": "Okay. Well, thank you for taking my questions. I'll save this link and finish after dinner.",
+      "word_count": 17,
+      "duration_seconds": 5.36,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0057",
+      "role": "agent",
+      "start_seconds": 613.512,
+      "end_seconds": 621.712,
+      "text": "Yeah, that's fine. The secure tool remains associated with your verified profile. Thank you, and please let me know if you have any questions.",
+      "word_count": 25,
+      "duration_seconds": 8.2,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0058",
+      "role": "customer",
+      "start_seconds": 622.812,
+      "end_seconds": 624.732,
+      "text": "All good. Thank you. Bye-bye.",
+      "word_count": 6,
+      "duration_seconds": 1.92,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0059",
+      "role": "agent",
+      "start_seconds": 625.192,
+      "end_seconds": 625.612,
+      "text": "Bye.",
+      "word_count": 1,
+      "duration_seconds": 0.42,
+      "is_backchannel_candidate": false
+    }
+  ],
+  "pause_boundaries": [
+    {
+      "after_turn_id": "turn-0001",
+      "before_turn_id": "turn-0002",
+      "start_seconds": 6.04,
+      "end_seconds": 7.74,
+      "duration_seconds": 1.7,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0002",
+      "before_turn_id": "turn-0003",
+      "start_seconds": 25.08,
+      "end_seconds": 26.28,
+      "duration_seconds": 1.2,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0003",
+      "before_turn_id": "turn-0004",
+      "start_seconds": 40.12,
+      "end_seconds": 41.22,
+      "duration_seconds": 1.1,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0004",
+      "before_turn_id": "turn-0005",
+      "start_seconds": 52.48,
+      "end_seconds": 53.9,
+      "duration_seconds": 1.42,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0005",
+      "before_turn_id": "turn-0006",
+      "start_seconds": 56.36,
+      "end_seconds": 58.1,
+      "duration_seconds": 1.74,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0006",
+      "before_turn_id": "turn-0007",
+      "start_seconds": 63.9,
+      "end_seconds": 65.88,
+      "duration_seconds": 1.98,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0007",
+      "before_turn_id": "turn-0008",
+      "start_seconds": 76.42,
+      "end_seconds": 77.76,
+      "duration_seconds": 1.34,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0008",
+      "before_turn_id": "turn-0009",
+      "start_seconds": 86.54,
+      "end_seconds": 88.24,
+      "duration_seconds": 1.7,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0009",
+      "before_turn_id": "turn-0010",
+      "start_seconds": 91.6,
+      "end_seconds": 92.82,
+      "duration_seconds": 1.22,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0010",
+      "before_turn_id": "turn-0011",
+      "start_seconds": 93.06,
+      "end_seconds": 119.14,
+      "duration_seconds": 26.08,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0011",
+      "before_turn_id": "turn-0012",
+      "start_seconds": 122.86,
+      "end_seconds": 124.7,
+      "duration_seconds": 1.84,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0012",
+      "before_turn_id": "turn-0013",
+      "start_seconds": 132.36,
+      "end_seconds": 133.44,
+      "duration_seconds": 1.08,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0013",
+      "before_turn_id": "turn-0014",
+      "start_seconds": 146.54,
+      "end_seconds": 147.5,
+      "duration_seconds": 0.96,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0014",
+      "before_turn_id": "turn-0015",
+      "start_seconds": 148,
+      "end_seconds": 149.1,
+      "duration_seconds": 1.1,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0015",
+      "before_turn_id": "turn-0016",
+      "start_seconds": 152.56,
+      "end_seconds": 205.72,
+      "duration_seconds": 53.16,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0017",
+      "before_turn_id": "turn-0018",
+      "start_seconds": 214.6,
+      "end_seconds": 216.28,
+      "duration_seconds": 1.68,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0020",
+      "before_turn_id": "turn-0021",
+      "start_seconds": 231.88,
+      "end_seconds": 233.1,
+      "duration_seconds": 1.22,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0021",
+      "before_turn_id": "turn-0022",
+      "start_seconds": 238.72,
+      "end_seconds": 241.08,
+      "duration_seconds": 2.36,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0022",
+      "before_turn_id": "turn-0023",
+      "start_seconds": 252.94,
+      "end_seconds": 255.5,
+      "duration_seconds": 2.56,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0023",
+      "before_turn_id": "turn-0024",
+      "start_seconds": 257.78,
+      "end_seconds": 292.36,
+      "duration_seconds": 34.58,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0024",
+      "before_turn_id": "turn-0025",
+      "start_seconds": 313.62,
+      "end_seconds": 315.73,
+      "duration_seconds": 2.11,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0025",
+      "before_turn_id": "turn-0026",
+      "start_seconds": 318.1,
+      "end_seconds": 319.62,
+      "duration_seconds": 1.52,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0026",
+      "before_turn_id": "turn-0027",
+      "start_seconds": 323.76,
+      "end_seconds": 326.76,
+      "duration_seconds": 3.0,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0027",
+      "before_turn_id": "turn-0028",
+      "start_seconds": 337.3,
+      "end_seconds": 338.98,
+      "duration_seconds": 1.68,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0028",
+      "before_turn_id": "turn-0029",
+      "start_seconds": 342.68,
+      "end_seconds": 343.74,
+      "duration_seconds": 1.06,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0029",
+      "before_turn_id": "turn-0030",
+      "start_seconds": 346.86,
+      "end_seconds": 350.74,
+      "duration_seconds": 3.88,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0030",
+      "before_turn_id": "turn-0031",
+      "start_seconds": 370.652,
+      "end_seconds": 372.132,
+      "duration_seconds": 1.48,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0031",
+      "before_turn_id": "turn-0032",
+      "start_seconds": 376.132,
+      "end_seconds": 376.952,
+      "duration_seconds": 0.82,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0032",
+      "before_turn_id": "turn-0033",
+      "start_seconds": 385.712,
+      "end_seconds": 387.372,
+      "duration_seconds": 1.66,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0033",
+      "before_turn_id": "turn-0034",
+      "start_seconds": 393.132,
+      "end_seconds": 394.051,
+      "duration_seconds": 0.919,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0034",
+      "before_turn_id": "turn-0035",
+      "start_seconds": 399.492,
+      "end_seconds": 403.952,
+      "duration_seconds": 4.46,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0035",
+      "before_turn_id": "turn-0036",
+      "start_seconds": 406.012,
+      "end_seconds": 406.952,
+      "duration_seconds": 0.94,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0036",
+      "before_turn_id": "turn-0037",
+      "start_seconds": 413.752,
+      "end_seconds": 415.272,
+      "duration_seconds": 1.52,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0037",
+      "before_turn_id": "turn-0038",
+      "start_seconds": 417.912,
+      "end_seconds": 419.312,
+      "duration_seconds": 1.4,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0038",
+      "before_turn_id": "turn-0039",
+      "start_seconds": 421.672,
+      "end_seconds": 423.032,
+      "duration_seconds": 1.36,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0039",
+      "before_turn_id": "turn-0040",
+      "start_seconds": 436.032,
+      "end_seconds": 438.132,
+      "duration_seconds": 2.1,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0041",
+      "before_turn_id": "turn-0042",
+      "start_seconds": 463.792,
+      "end_seconds": 465.912,
+      "duration_seconds": 2.12,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0042",
+      "before_turn_id": "turn-0043",
+      "start_seconds": 468.312,
+      "end_seconds": 469.732,
+      "duration_seconds": 1.42,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0043",
+      "before_turn_id": "turn-0044",
+      "start_seconds": 477.132,
+      "end_seconds": 478.932,
+      "duration_seconds": 1.8,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0044",
+      "before_turn_id": "turn-0045",
+      "start_seconds": 487.732,
+      "end_seconds": 489.112,
+      "duration_seconds": 1.38,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0045",
+      "before_turn_id": "turn-0046",
+      "start_seconds": 500.632,
+      "end_seconds": 503.432,
+      "duration_seconds": 2.8,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0046",
+      "before_turn_id": "turn-0047",
+      "start_seconds": 508.592,
+      "end_seconds": 509.532,
+      "duration_seconds": 0.94,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0047",
+      "before_turn_id": "turn-0048",
+      "start_seconds": 528.532,
+      "end_seconds": 530.012,
+      "duration_seconds": 1.48,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0048",
+      "before_turn_id": "turn-0049",
+      "start_seconds": 533.932,
+      "end_seconds": 535.212,
+      "duration_seconds": 1.28,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0049",
+      "before_turn_id": "turn-0050",
+      "start_seconds": 543.732,
+      "end_seconds": 546.032,
+      "duration_seconds": 2.3,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0050",
+      "before_turn_id": "turn-0051",
+      "start_seconds": 551.152,
+      "end_seconds": 553.132,
+      "duration_seconds": 1.98,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0051",
+      "before_turn_id": "turn-0052",
+      "start_seconds": 565.291,
+      "end_seconds": 568.912,
+      "duration_seconds": 3.621,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0052",
+      "before_turn_id": "turn-0053",
+      "start_seconds": 572.192,
+      "end_seconds": 573.132,
+      "duration_seconds": 0.94,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0053",
+      "before_turn_id": "turn-0054",
+      "start_seconds": 580.552,
+      "end_seconds": 582.812,
+      "duration_seconds": 2.26,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0054",
+      "before_turn_id": "turn-0055",
+      "start_seconds": 587.152,
+      "end_seconds": 588.412,
+      "duration_seconds": 1.26,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0055",
+      "before_turn_id": "turn-0056",
+      "start_seconds": 605.492,
+      "end_seconds": 607.372,
+      "duration_seconds": 1.88,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0057",
+      "before_turn_id": "turn-0058",
+      "start_seconds": 621.712,
+      "end_seconds": 622.812,
+      "duration_seconds": 1.1,
+      "class": "short"
+    }
+  ],
+  "overlap_and_barge_in_candidates": [],
+  "source_segment_overlap_candidates": [
+    {
+      "first_role": "agent",
+      "incoming_role": "customer",
+      "start_seconds": 77.76,
+      "end_seconds": 78.12,
+      "overlap_seconds": 0.36,
+      "incoming_text": "Yep. My ZIP code is 19447 and the last four digits of my number are 1251.",
+      "barge_in_candidate": true
+    },
+    {
+      "first_role": "customer",
+      "incoming_role": "agent",
+      "start_seconds": 376.95,
+      "end_seconds": 377.35,
+      "overlap_seconds": 0.4,
+      "incoming_text": "Yeah. So the application is completed by you and not by me. I can provide the secure card application tool associated with your verified profile.",
+      "barge_in_candidate": true
+    },
+    {
+      "first_role": "agent",
+      "incoming_role": "customer",
+      "start_seconds": 529.98,
+      "end_seconds": 530.67,
+      "overlap_seconds": 0.69,
+      "incoming_text": "Got it. I don't want to submit while we're talking. Can I save it?",
+      "barge_in_candidate": true
+    },
+    {
+      "first_role": "agent",
+      "incoming_role": "customer",
+      "start_seconds": 560.59,
+      "end_seconds": 565.27,
+      "overlap_seconds": 4.68,
+      "incoming_text": "Good. I was worried you had already run my credit. (worried)",
+      "barge_in_candidate": true
+    }
+  ],
+  "audio_events": [],
+  "speaker_metadata": {
+    "agent": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    },
+    "customer": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    }
+  }
+}

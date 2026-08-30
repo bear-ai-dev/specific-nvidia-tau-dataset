@@ -1,0 +1,54 @@
+[00:00:00.540 - 00:00:03.180] Aaron: Oak Street Pharmacy. This is Aaron. How can I help you?
+[00:00:04.180 - 00:00:13.690] Miles: Hey, um, I- I'm calling about a prescription that was supposed to be ready this afternoon. Um, the app still, still says it's, um, being processed. I was wondering if you knew anything about that.
+[00:00:14.720 - 00:00:18.440] Aaron: Okay. I can check the status. What's your name and date of birth?
+[00:00:19.100 - 00:00:23.220] Miles: Um, Miles Carter. June 14th, uh, 1988.
+[00:00:24.000] [tool] lookup_patient: patient lookup implied before prescription retrieval
+[00:00:24.640 - 00:00:24.920] Aaron: Thank you.
+[00:00:26.420 - 00:00:28.030] Aaron: And which medication are you expecting?
+[00:00:28.880 - 00:00:34.019] Miles: Um, the inhaler, uh, Albuterol. I think, uh, my doctor should have sent it this morning.
+[00:00:35.200 - 00:00:36.300] Aaron: All right. Give me a moment.
+[00:00:36.500] [tool] get_prescription: open the prescription record
+[00:00:44.840 - 00:00:52.020] Aaron: I see the prescription. It's with me. It came in at 10:42, but it stopped at the insurance step.
+[00:00:52.180 - 00:00:59.560] Miles: Um, what did- what do you mean, uh, insurance? The app didn't say anything about insurance or anything. It just said, um, that it was processing. Did I miss something?
+[00:01:00.440 - 00:01:11.980] Aaron: Um, yeah, so the app message is pretty general. The claim rejected because the plan thinks that the refill is too soon. Did you by any chance have or fill another inhaler recently?
+[00:01:13.360 - 00:01:23.520] Miles: Um, I- I think, I think I did it, uh, last month, but I left that one in a h- hotel room and I told the doctor's office that, um, when I was asking for a, uh, for a refill.
+[00:01:24.620 - 00:01:25.780] Aaron: Okay. Give me one moment.
+[00:01:29.500 - 00:01:39.300] Aaron: The new prescription is valid. I'm seeing that the issue here is the payment. We can ask the insurance for a lost medication override, but they may need to speak with you.
+[00:01:39.790 - 00:01:45.980] Miles: Uh, is there any way you can call them right now? I'm leaving town again tomorrow morning a- and I kinda need it.
+[00:01:46.020 - 00:01:52.759] Aaron: Okay. I can start it. One second. Before I do, do you need the inhaler tonight or do you have another one available with you?
+[00:01:53.540 - 00:01:59.100] Miles: Uh, I got, I got one at home with, um, maybe a f- a couple doses left, but I need the new one before I go on the trip.
+[00:02:00.220 - 00:02:00.680] Aaron: Understood.
+[00:02:02.120 - 00:02:06.600] Aaron: Let me call the plan while you're on the line. It may take a couple minutes. Okay?
+[00:02:06.660 - 00:02:07.180] Miles: Yeah. Thank you.
+[00:02:07.500] [tool] request_claim_override: contact the insurance plan for an override
+[00:03:05.700 - 00:03:06.950] Aaron: Thank you for holding.
+[00:03:07.200] [tool] submit_prescription_claim: rerun the insurance claim
+[00:03:07.549 - 00:03:15.440] Aaron: They approved a one-time lost medication override. I reran the claim and I'm seeing that your co-pay is $15.
+[00:03:16.420 - 00:03:19.640] Miles: Okay. Um, great. So is it, is it ready now?
+[00:03:19.720 - 00:03:28.140] Aaron: Um, not quite yet. The pharmacist on our side still has to check it. You're next in the queue and we're looking at about 30 minutes.
+[00:03:28.260 - 00:03:34.280] Miles: Um, when do you guys close? It closes at, on the pharmacy it's at, um, 7:00, right? Like it closes at 7:00?
+[00:03:34.320 - 00:03:39.180] Aaron: Our counter closes at 7:00 but the front store usually stays a lot open, uh, open a lot later.
+[00:03:40.380 - 00:03:48.600] Miles: Right. So it's, it's like, um, 6:15 now and I'm about 25 minutes away. Is that, is that, is that good? Is that fine?
+[00:03:49.680 - 00:03:57.080] Aaron: Okay. Well, I think if you leave after you get the ready text you should make it. I don't wanna tell you to come before the pharmacist finishes the check though.
+[00:03:58.080 - 00:04:03.100] Miles: Yeah. No, no, yeah. I, I get it. Uh, can you, can you make sure it doesn't get pushed to tomorrow though? Is that possible?
+[00:04:03.140 - 00:04:15.680] Aaron: I can flag- Yeah. All good. I can flag it on my end that you're traveling and waiting for it tonight. I can't skip the pharmacist's verification, but it is already in the active queue.
+[00:04:15.680] [tool] update_prescription: add a travel-priority note
+[00:04:15.740 - 00:04:22.079] Miles: Oh, okay. That, that's great. Uh, what happens if I don't get the text by say like 6:45 or something like that?
+[00:04:22.120 - 00:04:32.540] Aaron: Okay. Um, I would just call us back before you drive over. If there is a delay we can tell you whether another Oak Street location has it in-stock, but we'd have to transfer the prescription.
+[00:04:33.340 - 00:04:37.690] Miles: And does that one also close at, on the counter at 7:00 or is it, is it later?
+[00:04:38.000] [tool] search_pharmacy_locations: search nearby Oak Street locations with counters open after 19:00
+[00:04:39.660 - 00:04:44.560] Aaron: The Park Avenue store closes at 9:00 I believe. Let me check their stock so we know the backup.
+[00:04:44.560] [tool] get_store_inventory: check alternate pharmacy inventory
+[00:04:49.220 - 00:04:56.080] Aaron: They show the same inhaler in-stock. I wouldn't transfer it yet because ours should be ready first.
+[00:04:56.840 - 00:05:03.820] Miles: Right. Yeah, yeah. Okay, yeah. We can, we can leave it there. Uh, let's, yeah, unless you, you can't finish it then no, we can transfer it. That's good. Thank you.
+[00:05:04.200] [tool] update_prescription: update the prescription notification
+[00:05:04.600 - 00:05:10.500] Aaron: Okay. That's what I'll do. I added the travel note and your mobile number is set for the ready alert.
+[00:05:11.520 - 00:05:14.400] Miles: Um, also, uh, can I, can I pay in the app before I get there?
+[00:05:16.060 - 00:05:22.240] Aaron: Uh, yeah. Once it moves to ready the app may offer pre-pay. If it doesn't you can just pay the $15 co-pay at pickup.
+[00:05:22.840 - 00:05:28.120] Miles: Okay. Thank you. Thank you. Thank you so much. I was worried the doctor never sent it, so I was kinda freaking out.
+[00:05:28.680 - 00:05:34.400] Aaron: All good. No, no, we have it. Uh, the insurance issue is cleared. We're just waiting on the final pharmacy check.
+[00:05:35.280 - 00:05:38.640] Miles: All right. Okay. Uh, I'll watch for the text and thanks for calling the insurance too.
+[00:05:40.300 - 00:05:43.820] Aaron: Uh, you're welcome Miles. Call us by 6:45 if you haven't heard from us, okay?
+[00:05:44.440 - 00:05:47.440] Miles: Okay, I will. Thank you. Have a, have a great rest of your shift.
+[00:05:48.060 - 00:05:49.000] Aaron: You too. Bye bye.
+[00:05:49.000 - 00:05:49.320] Miles: Bye bye.

@@ -1,0 +1,109 @@
+{
+  "schema_version": "0.2.0",
+  "conversation_id": "retail-refund-bank-fee",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-08-27T13:14:55-04:00",
+  "entities": {
+    "order:ending-5624": {
+      "entity_type": "order",
+      "order_reference": "ending-5624",
+      "customer": {
+        "display_name": "Teddy Torrez",
+        "verified_email": "t***@harbormail.com"
+      },
+      "items": [
+        {
+          "item_reference": "standing-desk-converter-black",
+          "name": "black standing desk converter",
+          "total_after_tax": 186.42
+        }
+      ],
+      "payments": [
+        {
+          "type": "gift_card",
+          "amount": 40
+        },
+        {
+          "type": "debit",
+          "amount": 146.42,
+          "original_card_last4": "2047"
+        }
+      ]
+    },
+    "return:ending-9182": {
+      "entity_type": "return",
+      "return_reference": "ending-9182",
+      "order_reference": "ending-5624",
+      "return_status": "complete",
+      "accepted_at": "Eastwood store",
+      "accepted_age_days": 9,
+      "inventory_disposition": "restocked"
+    },
+    "refund:ending-5624:gift_card": {
+      "entity_type": "refund",
+      "order_reference": "ending-5624",
+      "tender_type": "gift_card",
+      "amount": 40,
+      "status": "issued_available",
+      "available_balance": 40,
+      "used": false,
+      "delivery": "digital_gift_card_number_in_email"
+    },
+    "refund:ending-5624:debit": {
+      "entity_type": "refund",
+      "order_reference": "ending-5624",
+      "tender_type": "debit",
+      "amount": 146.42,
+      "status": "submitted_no_settlement_confirmation",
+      "original_card_last4": "2047",
+      "initiation_source": "store_register"
+    },
+    "refund_trace:b0fee5fa-0534-4c47-a42a-b3a252106888": {
+      "entity_type": "refund_trace_case",
+      "case_id": "b0fee5fa-0534-4c47-a42a-b3a252106888",
+      "order_reference": "ending-5624",
+      "return_reference": "ending-9182",
+      "payment_reference": "card-ending-2047",
+      "amount_under_review": 146.42,
+      "status": "open",
+      "review_window_business_days": [
+        3,
+        5
+      ],
+      "duplicate_refund_blocked": true,
+      "return_evidence_attached": true,
+      "fee_reimbursement_approved": false,
+      "notes": [
+        {
+          "source_call_id": "rr-005",
+          "note": "Customer reports card ending 2047 was replaced by card ending 8163 and believes both map to the same checking account; external bank-account status is not verified by Westline.",
+          "status": "note_added",
+          "visible_to_next_reviewer": true
+        },
+        {
+          "source_call_id": "rr-007",
+          "note": "Customer reports an overdraft fee while expecting the refund; supporting statement may be reviewed after trace outcome.",
+          "status": "note_added",
+          "visible_to_next_reviewer": true
+        }
+      ],
+      "case_number": "WST735204"
+    },
+    "notification:43e020c5-a9da-4175-aec7-5989435d95a6": {
+      "entity_type": "case_notification",
+      "notification_id": "43e020c5-a9da-4175-aec7-5989435d95a6",
+      "case_id": "b0fee5fa-0534-4c47-a42a-b3a252106888",
+      "channel": "email",
+      "template": "refund_trace_confirmation",
+      "status": "sent",
+      "masked_destination": "t***@harbormail.com",
+      "included_fields": [
+        "amount",
+        "masked_original_payment_reference",
+        "review_window",
+        "case_number"
+      ],
+      "case_number": "WST735204"
+    }
+  }
+}
