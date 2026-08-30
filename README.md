@@ -135,8 +135,10 @@ All 10 conversations include:
 
 Each `turn_taking.json` names its timestamp source in its `source` field:
 eight conversations use ElevenLabs Scribe v2 word timestamps, and the airline
-and telecom conversations use faster-whisper word timestamps computed on the
-channel-isolated speaker stems (speaker attribution is exact by channel).
+and telecom conversations use Scribe v2 word timestamps aligned onto the
+verbatim transcript words from the channel-isolated speaker stems, so their
+word sequence matches the annotated transcript exactly and every word falls
+inside its utterance's timestamp window.
 Backchannel and overlap fields are automatic candidates, not human-accepted
 gold. Accent and environment fields are marked `not_human_annotated` rather
 than inferred.
