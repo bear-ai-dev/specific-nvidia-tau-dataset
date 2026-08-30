@@ -150,3 +150,11 @@ and `audio/speaker-2.wav` tracks.
 The [audio manifest](audio_manifest.json) contains the exact audited sample
 rate, bit depth, duration, channel count, and spectral measurements for every
 file.
+
+## Known behavioral exception
+
+In `banking-account-email-card-application` the enacted agent asks the
+customer to read a one-time code aloud (about 02:00-02:40 in the audio) and
+acknowledges it. The code never enters a tool argument, but the exchange
+should not be treated as compliant agent behavior or used as a positive
+training example for those turns.
