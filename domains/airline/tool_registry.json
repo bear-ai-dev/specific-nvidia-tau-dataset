@@ -2,8 +2,6 @@
   "schema_version": "0.2.0",
   "registry_name": "airline",
   "registry_version": "0.4.0",
-  "compatibility": "custom_tau_style_not_literal_tau_registry",
-  "design_note": "Airline booking domain typed for deterministic mock backends: every result schema is fully typed with additionalProperties:false, closed enums cover identity-verification status, fare families, certificate status, and the reservation lifecycle (draft -> quoted -> pending_payment -> confirmed -> ticketed) with payment authorization distinguished from capture; airport codes are IATA-patterned, temporal fields use ISO 8601 date/date-time (documented sentinels excepted), and every monetary amount carries an ISO 4217 currency. book_reservation keeps certificate_id and quote_id required but nullable so callers must state 'no certificate' / 'no prior quote' explicitly. Customer-side seat selection remains a customer action, not an agent mutation.",
   "tools": [
     {
       "name": "list_supported_airports",

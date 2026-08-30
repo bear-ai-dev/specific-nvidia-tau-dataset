@@ -1,6 +1,5 @@
 {
   "schema_version": "0.4.0",
-  "format": "nvidia_responses_api_full_trajectory",
   "trajectory_id": 8,
   "conversation_id": "airline-family-reservation",
   "domain": "airline",

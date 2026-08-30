@@ -2,8 +2,6 @@
   "schema_version": "0.2.0",
   "registry_name": "retail",
   "registry_version": "0.4.0",
-  "compatibility": "custom_tau_style_not_literal_tau_registry",
-  "design_note": "Models a single-brand retail customer-care desk: verified customer/order reads, delivered-not-received and missing-refund traces, replacement creation, case notes, and case notifications over a small closed entity graph. Result schemas are fully typed and closed (additionalProperties: false at every level) so a deterministic tau2-bench-style mock environment can be implemented from this registry alone. Status and resolution vocabularies are enumerated as the union of the policy lifecycles and the recorded tool outputs.",
   "tools": [
     {
       "name": "lookup_customer",

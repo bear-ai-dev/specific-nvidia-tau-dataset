@@ -10,19 +10,14 @@
         "label": "resolved",
         "summary": "Email updated and card-application session issued; no application was submitted and no credit pull was authorized."
       },
-      "structured_transcript": "../conversations/banking-account-email-card-application/transcripts/annotated-transcript.json",
+      "structured_transcript": "conversations/banking-account-email-card-application/transcripts/annotated-transcript.json",
       "scenario_time": "2026-08-27T10:45:00-04:00",
-      "exports": {
-        "tool_rows": 15,
-        "message_rows": 28,
-        "flagged_excluded": 6
-      },
       "state": {
-        "initial": "../conversations/banking-account-email-card-application/state/initial_state.json",
-        "final": "../conversations/banking-account-email-card-application/state/final_state.json"
+        "initial": "conversations/banking-account-email-card-application/state/initial_state.json",
+        "final": "conversations/banking-account-email-card-application/state/final_state.json"
       },
-      "turn_taking": "../conversations/banking-account-email-card-application/turn_taking.json",
-      "word_timestamps": "../conversations/banking-account-email-card-application/transcripts/words.json"
+      "turn_taking": "conversations/banking-account-email-card-application/turn_taking.json",
+      "word_timestamps": "conversations/banking-account-email-card-application/transcripts/words.json"
     },
     {
       "trajectory_id": 1,
@@ -33,19 +28,14 @@
         "label": "pending_external_qualification",
         "summary": "Referral is approved but purchase qualification remains pending; tracker and reference RF8241 were provided."
       },
-      "structured_transcript": "../conversations/banking-referral-missing-reward/transcripts/annotated-transcript.json",
+      "structured_transcript": "conversations/banking-referral-missing-reward/transcripts/annotated-transcript.json",
       "scenario_time": "2026-08-28T09:08:03-04:00",
-      "exports": {
-        "tool_rows": 9,
-        "message_rows": 30,
-        "flagged_excluded": 7
-      },
       "state": {
-        "initial": "../conversations/banking-referral-missing-reward/state/initial_state.json",
-        "final": "../conversations/banking-referral-missing-reward/state/final_state.json"
+        "initial": "conversations/banking-referral-missing-reward/state/initial_state.json",
+        "final": "conversations/banking-referral-missing-reward/state/final_state.json"
       },
-      "turn_taking": "../conversations/banking-referral-missing-reward/turn_taking.json",
-      "word_timestamps": "../conversations/banking-referral-missing-reward/transcripts/words.json"
+      "turn_taking": "conversations/banking-referral-missing-reward/turn_taking.json",
+      "word_timestamps": "conversations/banking-referral-missing-reward/transcripts/words.json"
     },
     {
       "trajectory_id": 2,
@@ -56,19 +46,14 @@
         "label": "resolved_without_dispute",
         "summary": "Transaction identified as an authorized household purchase; the dispute session was not submitted and no account change occurred."
       },
-      "structured_transcript": "../conversations/banking-transaction-dispute-session/transcripts/annotated-transcript.json",
+      "structured_transcript": "conversations/banking-transaction-dispute-session/transcripts/annotated-transcript.json",
       "scenario_time": "2026-02-25T16:20:00-05:00",
-      "exports": {
-        "tool_rows": 7,
-        "message_rows": 31,
-        "flagged_excluded": 4
-      },
       "state": {
-        "initial": "../conversations/banking-transaction-dispute-session/state/initial_state.json",
-        "final": "../conversations/banking-transaction-dispute-session/state/final_state.json"
+        "initial": "conversations/banking-transaction-dispute-session/state/initial_state.json",
+        "final": "conversations/banking-transaction-dispute-session/state/final_state.json"
       },
-      "turn_taking": "../conversations/banking-transaction-dispute-session/turn_taking.json",
-      "word_timestamps": "../conversations/banking-transaction-dispute-session/transcripts/words.json"
+      "turn_taking": "conversations/banking-transaction-dispute-session/turn_taking.json",
+      "word_timestamps": "conversations/banking-transaction-dispute-session/transcripts/words.json"
     },
     {
       "trajectory_id": 3,
@@ -79,19 +64,14 @@
         "label": "resolved",
         "summary": "Temporary restriction removed, the $840 hotel authorization succeeded, pending activity was confirmed, and a travel notice was added."
       },
-      "structured_transcript": "../conversations/banking-declined-card-travel/transcripts/annotated-transcript.json",
+      "structured_transcript": "conversations/banking-declined-card-travel/transcripts/annotated-transcript.json",
       "scenario_time": "2026-08-28T14:30:00-04:00",
-      "exports": {
-        "tool_rows": 8,
-        "message_rows": 20,
-        "flagged_excluded": 5
-      },
       "state": {
-        "initial": "../conversations/banking-declined-card-travel/state/initial_state.json",
-        "final": "../conversations/banking-declined-card-travel/state/final_state.json"
+        "initial": "conversations/banking-declined-card-travel/state/initial_state.json",
+        "final": "conversations/banking-declined-card-travel/state/final_state.json"
       },
-      "turn_taking": "../conversations/banking-declined-card-travel/turn_taking.json",
-      "word_timestamps": "../conversations/banking-declined-card-travel/transcripts/words.json"
+      "turn_taking": "conversations/banking-declined-card-travel/turn_taking.json",
+      "word_timestamps": "conversations/banking-declined-card-travel/transcripts/words.json"
     },
     {
       "trajectory_id": 4,
@@ -102,19 +82,14 @@
         "label": "pending_pharmacist_check",
         "summary": "One-time lost-medication override approved and claim accepted at a $15 copay; prescription remains in pharmacist verification with SMS alert enabled."
       },
-      "structured_transcript": "../conversations/pharmacy-travel-refill/transcripts/annotated-transcript.json",
+      "structured_transcript": "conversations/pharmacy-travel-refill/transcripts/annotated-transcript.json",
       "scenario_time": "2026-08-27T18:12:00-05:00",
-      "exports": {
-        "tool_rows": 8,
-        "message_rows": 21,
-        "flagged_excluded": 5
-      },
       "state": {
-        "initial": "../conversations/pharmacy-travel-refill/state/initial_state.json",
-        "final": "../conversations/pharmacy-travel-refill/state/final_state.json"
+        "initial": "conversations/pharmacy-travel-refill/state/initial_state.json",
+        "final": "conversations/pharmacy-travel-refill/state/final_state.json"
       },
-      "turn_taking": "../conversations/pharmacy-travel-refill/turn_taking.json",
-      "word_timestamps": "../conversations/pharmacy-travel-refill/transcripts/words.json"
+      "turn_taking": "conversations/pharmacy-travel-refill/turn_taking.json",
+      "word_timestamps": "conversations/pharmacy-travel-refill/transcripts/words.json"
     },
     {
       "trajectory_id": 5,
@@ -125,19 +100,14 @@
         "label": "pending_payment_trace",
         "summary": "$40 gift-card refund is available; a $146.42 debit refund trace WST735204 is open for three to five business days; bank-fee reimbursement is not promised."
       },
-      "structured_transcript": "../conversations/retail-refund-bank-fee/transcripts/annotated-transcript.json",
+      "structured_transcript": "conversations/retail-refund-bank-fee/transcripts/annotated-transcript.json",
       "scenario_time": "2026-08-27T13:05:00-04:00",
-      "exports": {
-        "tool_rows": 7,
-        "message_rows": 18,
-        "flagged_excluded": 13
-      },
       "state": {
-        "initial": "../conversations/retail-refund-bank-fee/state/initial_state.json",
-        "final": "../conversations/retail-refund-bank-fee/state/final_state.json"
+        "initial": "conversations/retail-refund-bank-fee/state/initial_state.json",
+        "final": "conversations/retail-refund-bank-fee/state/final_state.json"
       },
-      "turn_taking": "../conversations/retail-refund-bank-fee/turn_taking.json",
-      "word_timestamps": "../conversations/retail-refund-bank-fee/transcripts/words.json"
+      "turn_taking": "conversations/retail-refund-bank-fee/turn_taking.json",
+      "word_timestamps": "conversations/retail-refund-bank-fee/transcripts/words.json"
     },
     {
       "trajectory_id": 6,
@@ -148,19 +118,14 @@
         "label": "resolved",
         "summary": "Replacement order ending 8821 created at zero balance for Thursday delivery; return waived; earlier headphones trace remained unchanged."
       },
-      "structured_transcript": "../conversations/retail-damaged-item-replacement/transcripts/annotated-transcript.json",
+      "structured_transcript": "conversations/retail-damaged-item-replacement/transcripts/annotated-transcript.json",
       "scenario_time": "2026-08-26T11:20:00-04:00",
-      "exports": {
-        "tool_rows": 7,
-        "message_rows": 24,
-        "flagged_excluded": 7
-      },
       "state": {
-        "initial": "../conversations/retail-damaged-item-replacement/state/initial_state.json",
-        "final": "../conversations/retail-damaged-item-replacement/state/final_state.json"
+        "initial": "conversations/retail-damaged-item-replacement/state/initial_state.json",
+        "final": "conversations/retail-damaged-item-replacement/state/final_state.json"
       },
-      "turn_taking": "../conversations/retail-damaged-item-replacement/turn_taking.json",
-      "word_timestamps": "../conversations/retail-damaged-item-replacement/transcripts/words.json"
+      "turn_taking": "conversations/retail-damaged-item-replacement/turn_taking.json",
+      "word_timestamps": "conversations/retail-damaged-item-replacement/transcripts/words.json"
     },
     {
       "trajectory_id": 7,
@@ -171,19 +136,14 @@
         "label": "pending_carrier_trace",
         "summary": "Trace WST481662 opened until 6 PM tomorrow; same blue item is in stock; replacement preference recorded but no replacement created."
       },
-      "structured_transcript": "../conversations/retail-missing-package/transcripts/annotated-transcript.json",
+      "structured_transcript": "conversations/retail-missing-package/transcripts/annotated-transcript.json",
       "scenario_time": "2026-08-25T15:40:00-04:00",
-      "exports": {
-        "tool_rows": 7,
-        "message_rows": 18,
-        "flagged_excluded": 11
-      },
       "state": {
-        "initial": "../conversations/retail-missing-package/state/initial_state.json",
-        "final": "../conversations/retail-missing-package/state/final_state.json"
+        "initial": "conversations/retail-missing-package/state/initial_state.json",
+        "final": "conversations/retail-missing-package/state/final_state.json"
       },
-      "turn_taking": "../conversations/retail-missing-package/turn_taking.json",
-      "word_timestamps": "../conversations/retail-missing-package/transcripts/words.json"
+      "turn_taking": "conversations/retail-missing-package/turn_taking.json",
+      "word_timestamps": "conversations/retail-missing-package/transcripts/words.json"
     },
     {
       "trajectory_id": 8,
@@ -194,16 +154,11 @@
         "label": "resolved",
         "summary": "Reservation B9RT6M was booked PHX-DCA round trip for Linda and Evan with two checked bags, a folding walker, and insurance; $200 was applied from certificate CT-449108 and $1,081.00 to Visa ending 1182."
       },
-      "structured_transcript": "../conversations/airline-family-reservation/transcripts/annotated-transcript.json",
+      "structured_transcript": "conversations/airline-family-reservation/transcripts/annotated-transcript.json",
       "scenario_time": "2026-08-26T12:30:00-07:00",
-      "exports": {
-        "tool_rows": 9,
-        "message_rows": 36,
-        "flagged_excluded": 8
-      },
       "state": {
-        "initial": "../conversations/airline-family-reservation/state/initial_state.json",
-        "final": "../conversations/airline-family-reservation/state/final_state.json"
+        "initial": "conversations/airline-family-reservation/state/initial_state.json",
+        "final": "conversations/airline-family-reservation/state/final_state.json"
       },
       "turn_taking": null,
       "word_timestamps": null
@@ -217,16 +172,11 @@
         "label": "resolved",
         "summary": "StreamBox background downloads explained 10.9 of 11.8 GB; the customer set it to Wi-Fi only and enabled Data Saver, then authorized 5 GB for $40, leaving 7.2 GB high-speed data and a successful 62/8 speed test."
       },
-      "structured_transcript": "../conversations/telecom-data-usage-cleanup/transcripts/annotated-transcript.json",
+      "structured_transcript": "conversations/telecom-data-usage-cleanup/transcripts/annotated-transcript.json",
       "scenario_time": "2026-08-27T19:30:00-05:00",
-      "exports": {
-        "tool_rows": 8,
-        "message_rows": 33,
-        "flagged_excluded": 6
-      },
       "state": {
-        "initial": "../conversations/telecom-data-usage-cleanup/state/initial_state.json",
-        "final": "../conversations/telecom-data-usage-cleanup/state/final_state.json"
+        "initial": "conversations/telecom-data-usage-cleanup/state/initial_state.json",
+        "final": "conversations/telecom-data-usage-cleanup/state/final_state.json"
       },
       "turn_taking": null,
       "word_timestamps": null

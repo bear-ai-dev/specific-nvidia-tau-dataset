@@ -2,8 +2,6 @@
   "schema_version": "0.2.0",
   "registry_name": "pharmacy",
   "registry_version": "0.4.0",
-  "compatibility": "custom_tau_style_not_literal_tau_registry",
-  "design_note": "Deterministic-mock pharmacy registry: every result schema is closed (additionalProperties: false) and fully typed from observed trajectory outputs; the policy's prescription lifecycle (received -> claim_pending -> claim_rejected/claim_paid -> awaiting_pharmacist_verification -> ready_for_pickup -> picked_up/transferred/cancelled/expired) is expressed as the closed workflow_status enum shared by reads and claim submissions; local counter hours use an HH:MM pattern with an IANA timezone; copays carry an explicit USD currency tag. Pharmacy deliberately has no standalone identity-verification tool: name-plus-date-of-birth resolution via lookup_patient is this domain's verification tier by design, not an omission.",
   "tools": [
     {
       "name": "lookup_patient",

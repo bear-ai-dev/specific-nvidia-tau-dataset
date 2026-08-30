@@ -39,10 +39,10 @@ sides can agree up front on acceptance criteria before any larger order.
    human-relative strings (e.g. a deadline spoken as "18:00 tomorrow" inside
    a result the agent must read back verbatim), the schema documents that
    representation instead of mislabeling it as ISO.
-6. **Training exports.** A turn flagged by `grounding_review` is excluded
-   from `nemotron_message_actions.jsonl` (72 turns excluded, 259 kept). All
-   85 tool calls are exported; their arguments are schema-valid and the flags
-   that concern them live on the surrounding speech.
+6. **Training suitability.** Turns carrying `grounding_review` are retained in
+   the annotated conversation and must not be treated as clean positive
+   examples. All 85 tool calls have schema-valid arguments, and flags that
+   concern them live on the surrounding speech.
 7. **Identifier separation.** Internal customer, patient, traveler, account
    entity, case, transaction, session, catalog, and workflow identifiers are
    opaque UUIDs validated with `format: uuid`. Readable account IDs, order and
@@ -74,11 +74,8 @@ facts against voice transcripts must normalize spoken forms before matching.
   `earlier_today`-style values anywhere in a trajectory.
 - Policy sync: the `<policy>` block in every system message is byte-identical
   to its domain's `policy.md`.
-- Export consistency: every JSONL row's `input` is an exact prefix of its
-  conversation trajectory and its `expected_action` equals the next item;
-  trajectory_ids unique.
 - Audio: sample rate, bit depth, duration, and high-band energy per file
-  (`exports/audio_manifest.json`).
+  (`audio_manifest.json`).
 
 ## Provenance of the annotation layers
 
@@ -94,9 +91,6 @@ facts against voice transcripts must normalize spoken forms before matching.
   with inferred windows.
 - State snapshots: reconstructed strictly from tool results; fields the
   outputs never reveal are null with an explanatory note, not invented.
-- Verifier fields in the exports (`pass_rate*`, `qwen_235b_info`,
-  `num_unique_actions`): intentionally unpopulated placeholders — see the
-  README's export-format notes.
 
 ## Known limitations
 

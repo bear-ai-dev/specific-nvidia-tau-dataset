@@ -1,112 +1,154 @@
-# NVIDIA voice-agent pilot
+# NVIDIA voice-agent pilot deliverables
 
-This public, data-only sample contains structured voice-agent conversations for
-custom airline, banking, pharmacy, retail, and telecom workflows. It is
-intentionally described as **Tau-style custom-domain data**, not as an exact
-export of Tau's public registries.
+This repository contains the 10-conversation pilot requested in NVIDIA's
+email. The sample covers airline, banking, pharmacy, retail, and telecom
+customer-service calls.
 
-The snapshot contains 10 conversations, 30 synchronized audio tracks, 5 domain
-registries, 85 structured agent tool calls, 10 annotated conversation
-transcripts, and 344 NVIDIA-schema next-action rows
-(85 tool-call targets plus 259 clean assistant-message targets). Every
-conversation includes full-call audio and isolated speaker tracks as 48 kHz,
-24-bit, mono PCM WAV files; measured per-file bandwidth is published in
-`exports/audio_manifest.json` (all 30 files carry genuine wideband content —
-they are not upsampled telephony audio).
+## 1. Tool-call annotations
 
-Every tool has JSON-Schema contracts for both arguments and results, closed
-with `additionalProperties: false` at every level, with policy-defined status
-lifecycles expressed as enums so the registries can back a deterministic mock
-environment. Each conversation carries a scenario clock (`scenario_time`, also
-stated in the system message), and every tool-result value is concrete against
-it — no placeholder or relative values remain in tool payloads.
+The function-calling deliverable is the
+`conversations/<conversation-id>/transcripts/annotated-transcript.json` file
+inside each conversation. These files carry the function-call annotations in
+the core trajectory structure from the
+[Hugging Face NVIDIA Nemotron conversational tool-use dataset](https://huggingface.co/datasets/nvidia/Nemotron-RL-Agentic-Conversational-Tool-Use-Pivot-v1):
 
-Internal backend identifiers are opaque UUIDs and are declared with
-`format: uuid` in the registries. Human-facing business references remain
-separate readable values: for example, `account_id`, `reference_code`,
-`case_number`, and `confirmation_code`. A lookup may accept one of those
-references, but later tool calls use the UUID returned for the resolved entity.
+- `responses_create_params.input` contains the chronological system message,
+  customer and agent messages, structured function calls, and function outputs.
+- Each function call has a tool name and JSON-string arguments.
+- Each function output is stored under the same `call_id` as the call.
+- `event_metadata` records call placement in seconds against `audio/full.wav`,
+  the inferred call window, annotation confidence, and state effect.
+- `responses_create_params.tools` contains the JSON-Schema tool definitions
+  used for that conversation.
 
-The trajectories include 86 explicit `grounding_review` records marking spoken
-behavior that is unsupported, contradictory, unsafe, or otherwise not clean
-training behavior (fabricated guarantees, results spoken before the grounding
-call, consent gaps, source conflation). Assistant turns carrying a
-`grounding_review` flag are excluded from the message-action training export.
-This snapshot is suitable for schema and pilot-fit review; it must not be
-represented as 10 exception-free behavioral trajectories — the exception layer
-is the point.
+Here is an exact annotation excerpt from the
+[retail missing-package transcript](conversations/retail-missing-package/transcripts/annotated-transcript.json).
+The call and result appear consecutively in `responses_create_params.input`:
 
-## Package map
+```json
+[
+  {
+    "arguments": "{\"product_reference\":\"blue-noise-canceling-headphones\",\"include_inventory\":true}",
+    "call_id": "rm-003",
+    "name": "get_product",
+    "type": "function_call",
+    "id": "rm-003",
+    "status": "completed"
+  },
+  {
+    "type": "function_call_output",
+    "call_id": "rm-003",
+    "output": "\n\n{\"product_reference\":\"blue-noise-canceling-headphones\",\"variant\":{\"color\":\"blue\"},\"inventory\":{\"same_variant_in_stock\":true}}"
+  }
+]
+```
 
-- `domains/<domain>/tool_registry.json`: versioned tool definitions with closed
-  JSON-Schema argument/result contracts (registry_version 0.4.0).
-- `domains/<domain>/policy.md`: operational policy used for the annotations;
-  byte-identical to the `<policy>` block embedded in each conversation's
-  system message.
-- `conversations/<id>/audio/full.wav`: synchronized full-call audio.
-- `conversations/<id>/audio/speaker-1.wav` / `speaker-2.wav`: synchronized
-  isolated speaker tracks.
-- `conversations/<id>/transcripts/annotated-transcript.json`: the full
-  chronological trajectory — system policy message, speech, function calls,
-  function outputs, per-event audio timestamps, call-placement windows, and
-  `grounding_review` records. Call placement obeys two invariants: a call is
-  placed after the speech that supplies its arguments and before the speech
-  that reports its results.
-- `conversations/<id>/transcripts/transcript.txt`: the timestamped mixed-call
-  transcript; each tool call appears as one standalone
-  `[HH:MM:SS.mmm] [tool] <name>: <label>` line at its placement time.
-- `conversations/<id>/transcripts/words.json`: word-level timestamps with
-  speaker labels and confidence (ElevenLabs Scribe v2), for 8 of 10
-  conversations (absent for airline and telecom, which were recorded in a
-  later batch).
-- `conversations/<id>/turn_taking.json`: turn segmentation, pause boundaries,
-  backchannel and overlap candidates, per-speaker metadata (same 8 of 10;
-  accent/environment fields are marked `not_human_annotated` rather than
-  guessed).
-- `conversations/<id>/state/initial_state.json` / `final_state.json`:
-  before/after backend state reconstructed strictly from tool results (no
-  invented fields; derivation is stated in the file).
-- `exports/nemotron_tool_calls.jsonl`: the NVIDIA training view — one
-  prefix/expected-action row per agent tool call (85 rows).
-- `exports/nemotron_message_actions.jsonl`: same row schema with
-  `expected_action.type: "message"` for every assistant speech turn that is
-  free of grounding_review flags (259 rows; 72 flagged turns excluded).
-- `exports/conversation_manifest.json`: index — goal, outcome, scenario_time,
-  per-conversation row counts, and pointers to state/turn-taking files.
-- `exports/audio_manifest.json`: per-file sample rate, bit depth, duration,
-  and measured spectral energy above 10/16/20 kHz.
+The matching timing annotation in `event_metadata` is:
 
-## Export-format notes (Nemotron compatibility)
+```json
+{
+  "event_index": 26,
+  "kind": "function_call",
+  "call_id": "rm-003",
+  "source": "transcripts/transcript.txt",
+  "source_label": "check replacement inventory",
+  "annotation_confidence": "high",
+  "state_effect": "read_only",
+  "placement_seconds": 211.65,
+  "placement_after_text": null,
+  "placement_before_text": null,
+  "audio_reference": {
+    "path": "audio/full.wav",
+    "start_seconds": null,
+    "end_seconds": null,
+    "inferred_window_seconds": [
+      211.65,
+      219.65
+    ]
+  }
+}
+```
 
-Rows follow the schema of
-`nvidia/Nemotron-RL-Agentic-Conversational-Tool-Use-Pivot-v1`: identical
-top-level field set, policy carried as the first `input` item (a system
-message), `parallel_tool_calls: false`, `expected_action` as
-`function_call` (JSON-string arguments) or `message`. Honest divergences,
-rather than fabricated values:
+This sample includes the full function-result payload and call-placement
+timing. It does not claim a separately observed backend return timestamp.
 
-- `pass_rate*`, `qwen_235b_info`, and `num_unique_actions` are placeholders
-  (0 / empty / 1). The reference dataset fills these from verifier rollouts;
-  no rollouts were run against this human-gold data, and we will not invent
-  reward statistics. Filter or re-score before mixing with the reference set.
-- `agent_ref` is `{"type": "human_annotations", "name": "voice_tool_call_gold"}`
-  — these rows are human gold labels, not verifier-generated trajectories.
-- `trajectory_id` is unique per row (as in the reference set);
-  `meta_info.conversation_id` and `meta_info.source_event_index` link each row
-  back to its conversation and position — two extra keys the reference set
-  does not carry.
+All annotated transcripts are under [conversations/](conversations/):
 
-## Publication scope
+- Airline: [family reservation](conversations/airline-family-reservation/transcripts/annotated-transcript.json)
+- Banking: [account email and card application](conversations/banking-account-email-card-application/transcripts/annotated-transcript.json), [declined card while traveling](conversations/banking-declined-card-travel/transcripts/annotated-transcript.json), [missing referral reward](conversations/banking-referral-missing-reward/transcripts/annotated-transcript.json), and [transaction dispute session](conversations/banking-transaction-dispute-session/transcripts/annotated-transcript.json)
+- Pharmacy: [travel refill](conversations/pharmacy-travel-refill/transcripts/annotated-transcript.json)
+- Retail: [damaged-item replacement](conversations/retail-damaged-item-replacement/transcripts/annotated-transcript.json), [missing package](conversations/retail-missing-package/transcripts/annotated-transcript.json), and [refund bank fee](conversations/retail-refund-bank-fee/transcripts/annotated-transcript.json)
+- Telecom: [data-usage cleanup](conversations/telecom-data-usage-cleanup/transcripts/annotated-transcript.json)
 
-Each conversation intentionally excludes internal reports, source scripts,
-and build tooling. Word-level timestamps and turn-taking annotations are
-included where they exist (8 of 10 conversations); per-speaker accent and
-environment labels have not been human-annotated and are marked as such.
+## 2. Per-domain tool registries
 
-## Compatibility statement
+The tool registry for each domain is located at
+`domains/<domain>/tool_registry.json`. Each registry defines tool names,
+descriptions, JSON-Schema argument contracts, and typed result contracts.
 
-This package follows the useful structural ideas from Tau (domain policy and
-typed tools) and NVIDIA Nemotron (policy + tools + conversation context ->
-expected next action). It does not claim that these custom-domain functions
-are literal Tau tools — the registries are declarative contracts, not
-executable implementations.
+- [Airline tool registry](domains/airline/tool_registry.json)
+- [Banking tool registry](domains/banking/tool_registry.json)
+- [Pharmacy tool registry](domains/pharmacy/tool_registry.json)
+- [Retail tool registry](domains/retail/tool_registry.json)
+- [Telecom tool registry](domains/telecom/tool_registry.json)
+
+## 3. CSR policies and reconstructed state
+
+The policy used by each CSR is located at `domains/<domain>/policy.md` and is
+also embedded in the system message of each annotated transcript.
+
+- [Airline policy](domains/airline/policy.md)
+- [Banking policy](domains/banking/policy.md)
+- [Pharmacy policy](domains/pharmacy/policy.md)
+- [Retail policy](domains/retail/policy.md)
+- [Telecom policy](domains/telecom/policy.md)
+
+Each conversation also has `state/initial_state.json` and
+`state/final_state.json`. These are reconstructed from the annotated tool
+results. They are not presented as exports from a source CRM or production
+database. The [conversation manifest](conversation_manifest.json) links to
+both state files for every conversation.
+
+## 4. Required information, goals, and outcomes
+
+Collected and read-back facts appear verbatim in the chronological speech
+events in each annotated transcript. The matching `event_metadata` entries
+provide start and end timestamps against the audio. The timestamped baseline
+speech transcript is stored at
+`conversations/<conversation-id>/transcripts/transcript.txt`.
+
+The [conversation manifest](conversation_manifest.json) provides a one-line
+goal, outcome label, outcome summary, scenario time, and file pointers for all
+10 conversations. This sample does not yet include a separate normalized list
+of required facts.
+
+## 5. Turn-taking
+
+Eight conversations include:
+
+- `transcripts/words.json` with word-level timestamps, speaker labels, and
+  confidence.
+- `turn_taking.json` with turn segments, pause boundaries, backchannel and
+  overlap candidates, and speaker metadata.
+
+Airline and telecom do not include those two annotation files. Their available
+paths are recorded as `null` in the
+[conversation manifest](conversation_manifest.json). Accent and environment
+fields are marked `not_human_annotated` rather than inferred.
+
+## 6. Audio
+
+All 30 delivered audio files are 48 kHz, 24-bit, mono PCM WAV files. Each
+conversation includes synchronized `audio/full.wav`, `audio/speaker-1.wav`,
+and `audio/speaker-2.wav` tracks.
+
+The [audio manifest](audio_manifest.json) contains the exact audited sample
+rate, bit depth, duration, channel count, and spectral measurements for every
+file.
+
+## 7. Quality review
+
+The [data-quality document](docs/DATA_QUALITY.md) defines transcription,
+speaker attribution, tool-placement, schema, policy-sync, and audio checks. It
+also lists the known limitations and identifies speech that should not be
+treated as a clean positive training example.

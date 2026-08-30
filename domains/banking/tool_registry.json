@@ -2,8 +2,6 @@
   "schema_version": "0.2.0",
   "registry_name": "banking",
   "registry_version": "0.4.0",
-  "compatibility": "custom_tau_style_not_literal_tau_registry",
-  "design_note": "Banking registry typed for deterministic mock implementation from this file alone. Every result schema is closed (additionalProperties: false) and typed from the union of observed tool outputs across the four banking conversations plus policy vocabulary. Session, challenge-delivery, and notification statuses are enumerated from policy states plus observed values; the backend reports the opened-but-not-yet-submitted session state as 'open_not_submitted'. Identity-verification factors form one closed enum shared by lookup and verification results. Every monetary amount carries an explicit USD currency sibling, and temporal fields carry date or date-time formats. search_knowledge_base returns exactly one versioned record whose optional content fields are the typed union of every observed knowledge payload. Failure or unavailable states not enumerated here surface as tool errors rather than result payloads.",
   "tools": [
     {
       "name": "lookup_customer",
