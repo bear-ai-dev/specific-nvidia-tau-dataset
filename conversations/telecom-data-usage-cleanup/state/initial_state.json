@@ -1,12 +1,12 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "conversation_id": "telecom-data-usage-cleanup",
   "derivation": "reconstructed_from_tool_results",
   "as_of": "2026-08-27T19:30:00-05:00",
   "entities": {
-    "customer-benjamin-reed": {
+    "6dcb2039-012b-4723-a256-13bb7b6467c2": {
       "entity_type": "customer",
-      "customer_id": "customer-benjamin-reed",
+      "customer_id": "6dcb2039-012b-4723-a256-13bb7b6467c2",
       "match": "unique",
       "required_verification_factors": [
         "mobile_number",
@@ -14,14 +14,14 @@
         "date_of_birth"
       ]
     },
-    "line-4045550176": {
+    "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac": {
       "entity_type": "mobile_line",
-      "line_id": "line-4045550176",
+      "line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac",
       "masked_mobile_number": "***-***-0176",
       "status": "active",
-      "billing_cycle_id": "cycle-current-benjamin",
-      "device_id": "device-pixel-8",
-      "plan_id": "unlimited-start",
+      "billing_cycle_id": "305af2ad-04af-420c-9562-a935b04b855b",
+      "device_id": "17c528ea-9b9d-48cd-8268-c6cca19d817e",
+      "plan_id": "70102739-54a7-4e7b-b251-5040b1fc2f21",
       "remaining_high_speed_gigabytes": 2.2,
       "usage_last_24_hours": {
         "measurement_source": "carrier_metering",
@@ -31,23 +31,23 @@
         "app_attribution_available": false
       }
     },
-    "device-pixel-8": {
+    "17c528ea-9b9d-48cd-8268-c6cca19d817e": {
       "entity_type": "device",
-      "device_id": "device-pixel-8",
+      "device_id": "17c528ea-9b9d-48cd-8268-c6cca19d817e",
       "model": "Pixel 8",
-      "line_id": "line-4045550176",
+      "line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac",
       "provisioning_status": "active"
     },
-    "unlimited-start": {
+    "70102739-54a7-4e7b-b251-5040b1fc2f21": {
       "entity_type": "plan",
-      "plan_id": "unlimited-start",
+      "plan_id": "70102739-54a7-4e7b-b251-5040b1fc2f21",
       "name": "Unlimited Start",
-      "line_id": "line-4045550176"
+      "line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac"
     },
-    "bill-current-benjamin": {
+    "7af62370-8858-4af6-b2cd-2b702fd15586": {
       "entity_type": "bill",
-      "bill_id": "bill-current-benjamin",
-      "billing_cycle_id": "cycle-current-benjamin",
+      "bill_id": "7af62370-8858-4af6-b2cd-2b702fd15586",
+      "billing_cycle_id": "305af2ad-04af-420c-9562-a935b04b855b",
       "cycle_start": "2026-08-06T00:00:00-05:00",
       "cycle_end": "2026-09-05T00:00:00-05:00",
       "cycle_resets_in_days": 9,
@@ -55,10 +55,10 @@
       "currency": "USD",
       "after_high_speed_allowance": "speed_reduced"
     },
-    "offer-5gb-40-next-bill": {
+    "21298486-3eca-4c2e-8d07-2b13c0a33fcc": {
       "entity_type": "data_addon_offer",
-      "offer_id": "offer-5gb-40-next-bill",
-      "line_id": "line-4045550176",
+      "offer_id": "21298486-3eca-4c2e-8d07-2b13c0a33fcc",
+      "line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac",
       "eligibility_status": "eligible",
       "data_gigabytes": 5.0,
       "price": 40.0,

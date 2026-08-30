@@ -53,6 +53,12 @@ A secure session has a session identifier, workflow, related resource, current s
 
 A notification has a notification identifier, secure related resource, channel, masked destination, delivery status, and timestamp. Requesting a notification does not prove that it was sent or delivered.
 
+## Identifier handling
+
+- Internal customer, verification, confirmation, transaction, restriction, referral, session, notification, product, and knowledge-record IDs are opaque UUIDs returned by tools. Never derive one from a person's name, contact details, a card suffix, or a displayed reference.
+- Customer-facing values such as an account ID or referral reference code may be accepted for lookup and spoken back when appropriate, but they are not substitutes for the internal UUID returned by the lookup.
+- Once a lookup resolves a record, use its returned UUID in subsequent tool calls. Preserve the separate customer-facing reference only for customer communication and reference-code searches.
+
 ## Authentication and privacy
 
 - Public product information may be discussed before authentication.

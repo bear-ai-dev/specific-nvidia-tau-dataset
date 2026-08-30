@@ -1,12 +1,12 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "conversation_id": "retail-damaged-item-replacement",
   "derivation": "reconstructed_from_tool_results",
   "as_of": "2026-08-26T11:27:55-04:00",
   "entities": {
-    "customer-ethan-patel": {
+    "c51d2171-c10b-489b-9186-a93ebd98613d": {
       "entity_type": "customer",
-      "customer_id": "customer-ethan-patel",
+      "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
       "display_name": "Ethan Patel",
       "verified_email": "e***@northmail.com",
       "recent_orders": [
@@ -17,7 +17,7 @@
     "ending-4086": {
       "entity_type": "order",
       "order_reference": "ending-4086",
-      "customer_id": "customer-ethan-patel",
+      "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
       "items": [
         {
           "item_reference": "coffee-maker-matte-black-12-cup",
@@ -50,11 +50,12 @@
           "name": "blue noise-canceling headphones"
         }
       ],
-      "open_case_id": "WST481662"
+      "open_case_id": "8cf648a4-ca60-4387-bc11-ec38f426123a",
+      "open_case_number": "WST481662"
     },
-    "WST481662": {
+    "8cf648a4-ca60-4387-bc11-ec38f426123a": {
       "entity_type": "support_case",
-      "case_id": "WST481662",
+      "case_id": "8cf648a4-ca60-4387-bc11-ec38f426123a",
       "order_reference": "ending-7319",
       "type": "delivery_trace",
       "item": "blue noise-canceling headphones",
@@ -63,7 +64,8 @@
       "deadline": "18:00 today",
       "preferences": {
         "pickup": "West 23rd Street pickup counter"
-      }
+      },
+      "case_number": "WST481662"
     },
     "coffee-maker-matte-black-12-cup": {
       "entity_type": "product",

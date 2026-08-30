@@ -1,7 +1,7 @@
 {
   "schema_version": "0.2.0",
   "registry_name": "airline",
-  "registry_version": "0.3.0",
+  "registry_version": "0.4.0",
   "compatibility": "custom_tau_style_not_literal_tau_registry",
   "design_note": "Airline booking domain typed for deterministic mock backends: every result schema is fully typed with additionalProperties:false, closed enums cover identity-verification status, fare families, certificate status, and the reservation lifecycle (draft -> quoted -> pending_payment -> confirmed -> ticketed) with payment authorization distinguished from capture; airport codes are IATA-patterned, temporal fields use ISO 8601 date/date-time (documented sentinels excepted), and every monetary amount carries an ISO 4217 currency. book_reservation keeps certificate_id and quote_id required but nullable so callers must state 'no certificate' / 'no prior quote' explicitly. Customer-side seat selection remains a customer action, not an agent mutation.",
   "tools": [
@@ -134,7 +134,8 @@
         "properties": {
           "search_id": {
             "type": "string",
-            "description": "Flight-search identifier."
+            "description": "Flight-search identifier.",
+            "format": "uuid"
           },
           "outbound": {
             "type": "object",
@@ -142,7 +143,8 @@
             "properties": {
               "flight_id": {
                 "type": "string",
-                "description": "Stable flight identifier for downstream pricing and booking."
+                "description": "Stable flight identifier for downstream pricing and booking.",
+                "format": "uuid"
               },
               "origin": {
                 "type": "object",
@@ -229,7 +231,8 @@
             "properties": {
               "flight_id": {
                 "type": "string",
-                "description": "Stable flight identifier for downstream pricing and booking."
+                "description": "Stable flight identifier for downstream pricing and booking.",
+                "format": "uuid"
               },
               "origin": {
                 "type": "object",
@@ -364,7 +367,8 @@
             "properties": {
               "itinerary_id": {
                 "type": "string",
-                "description": "Stable itinerary identifier for the connecting option."
+                "description": "Stable itinerary identifier for the connecting option.",
+                "format": "uuid"
               },
               "total_savings": {
                 "type": "number",
@@ -422,11 +426,13 @@
         "properties": {
           "outbound_flight_id": {
             "type": "string",
-            "description": "Selected outbound flight identifier."
+            "description": "Selected outbound flight identifier.",
+            "format": "uuid"
           },
           "return_flight_id": {
             "type": "string",
-            "description": "Selected return flight identifier."
+            "description": "Selected return flight identifier.",
+            "format": "uuid"
           },
           "traveler_count": {
             "type": "integer",
@@ -473,7 +479,8 @@
         "properties": {
           "quote_id": {
             "type": "string",
-            "description": "Quote identifier."
+            "description": "Quote identifier.",
+            "format": "uuid"
           },
           "fare_taxes_and_checked_bags": {
             "type": "number",
@@ -617,7 +624,8 @@
           },
           "verification_id": {
             "type": "string",
-            "description": "Successful identity-verification record."
+            "description": "Successful identity-verification record.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -633,11 +641,13 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Customer identifier."
+            "description": "Customer identifier.",
+            "format": "uuid"
           },
           "verification_id": {
             "type": "string",
-            "description": "Verification record used for this read."
+            "description": "Verification record used for this read.",
+            "format": "uuid"
           },
           "duplicate_reservation": {
             "type": "boolean",
@@ -651,7 +661,8 @@
               "properties": {
                 "token": {
                   "type": "string",
-                  "description": "Tokenized payment-method identifier for booking."
+                  "description": "Tokenized payment-method identifier for booking.",
+                  "format": "uuid"
                 },
                 "brand": {
                   "type": "string",
@@ -719,7 +730,8 @@
         "properties": {
           "verification_id": {
             "type": "string",
-            "description": "Verification identifier for subsequent account calls."
+            "description": "Verification identifier for subsequent account calls.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -735,7 +747,8 @@
               "string",
               "null"
             ],
-            "description": "Resolved customer identifier. Null unless status is 'verified'."
+            "description": "Resolved customer identifier. Null unless status is 'verified'.",
+            "format": "uuid"
           },
           "matched_factors": {
             "type": "array",
@@ -773,15 +786,18 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "outbound_flight_id": {
             "type": "string",
-            "description": "Selected outbound flight identifier."
+            "description": "Selected outbound flight identifier.",
+            "format": "uuid"
           },
           "return_flight_id": {
             "type": "string",
-            "description": "Selected return flight identifier."
+            "description": "Selected return flight identifier.",
+            "format": "uuid"
           },
           "travelers": {
             "type": "array",
@@ -839,7 +855,8 @@
           },
           "payment_method_token": {
             "type": "string",
-            "description": "Masked or tokenized remainder-payment method."
+            "description": "Masked or tokenized remainder-payment method.",
+            "format": "uuid"
           },
           "confirmed_total": {
             "type": "number",
@@ -852,21 +869,24 @@
           },
           "verification_id": {
             "type": "string",
-            "description": "Successful identity-verification record."
+            "description": "Successful identity-verification record.",
+            "format": "uuid"
           },
           "quote_id": {
             "type": [
               "string",
               "null"
             ],
-            "description": "Current itinerary quote identifier from calculate_itinerary_price. Null means no prior quote exists for this booking; state null explicitly rather than omitting the field."
+            "description": "Current itinerary quote identifier from calculate_itinerary_price. Null means no prior quote exists for this booking; state null explicitly rather than omitting the field.",
+            "format": "uuid"
           },
           "certificate_id": {
             "type": [
               "string",
               "null"
             ],
-            "description": "Validated certificate identifier from validate_travel_certificate. Null means no travel certificate is applied to this booking; state null explicitly rather than omitting the field."
+            "description": "Validated certificate identifier from validate_travel_certificate. Null means no travel certificate is applied to this booking; state null explicitly rather than omitting the field.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -894,7 +914,8 @@
         "properties": {
           "reservation_id": {
             "type": "string",
-            "description": "Reservation identifier."
+            "description": "Reservation identifier.",
+            "format": "uuid"
           },
           "confirmation_code": {
             "type": "string",
@@ -991,7 +1012,8 @@
               "properties": {
                 "traveler_id": {
                   "type": "string",
-                  "description": "Stable traveler identifier."
+                  "description": "Stable traveler identifier.",
+                  "format": "uuid"
                 },
                 "full_name": {
                   "type": "string",
@@ -1093,7 +1115,8 @@
                 "type": "array",
                 "description": "Traveler IDs covered by the plan. Present when included is true.",
                 "items": {
-                  "type": "string"
+                  "type": "string",
+                  "format": "uuid"
                 }
               }
             },
@@ -1169,11 +1192,13 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "verification_id": {
             "type": "string",
-            "description": "Successful identity-verification record."
+            "description": "Successful identity-verification record.",
+            "format": "uuid"
           },
           "certificate_code": {
             "type": "string",
@@ -1193,7 +1218,8 @@
         "properties": {
           "certificate_id": {
             "type": "string",
-            "description": "Stable certificate identifier for booking."
+            "description": "Stable certificate identifier for booking.",
+            "format": "uuid"
           },
           "masked_code": {
             "type": "string",
@@ -1280,7 +1306,8 @@
               "string",
               "null"
             ],
-            "description": "Transfer identifier. Null when status is 'failed'."
+            "description": "Transfer identifier. Null when status is 'failed'.",
+            "format": "uuid"
           }
         },
         "required": [

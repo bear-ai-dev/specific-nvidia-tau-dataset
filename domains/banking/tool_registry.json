@@ -1,7 +1,7 @@
 {
   "schema_version": "0.2.0",
   "registry_name": "banking",
-  "registry_version": "0.3.0",
+  "registry_version": "0.4.0",
   "compatibility": "custom_tau_style_not_literal_tau_registry",
   "design_note": "Banking registry typed for deterministic mock implementation from this file alone. Every result schema is closed (additionalProperties: false) and typed from the union of observed tool outputs across the four banking conversations plus policy vocabulary. Session, challenge-delivery, and notification statuses are enumerated from policy states plus observed values; the backend reports the opened-but-not-yet-submitted session state as 'open_not_submitted'. Identity-verification factors form one closed enum shared by lookup and verification results. Every monetary amount carries an explicit USD currency sibling, and temporal fields carry date or date-time formats. search_knowledge_base returns exactly one versioned record whose optional content fields are the typed union of every observed knowledge payload. Failure or unavailable states not enumerated here surface as tool errors rather than result payloads.",
   "tools": [
@@ -52,7 +52,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Stable customer identifier."
+            "description": "Stable customer identifier.",
+            "format": "uuid"
           },
           "match": {
             "type": "string",
@@ -89,7 +90,8 @@
               "properties": {
                 "channel_id": {
                   "type": "string",
-                  "description": "Stable trusted-channel identifier."
+                  "description": "Stable trusted-channel identifier.",
+                  "format": "uuid"
                 },
                 "type": {
                   "type": "string",
@@ -111,6 +113,10 @@
               ],
               "additionalProperties": false
             }
+          },
+          "account_id": {
+            "type": "string",
+            "description": "Customer-facing account reference supplied for lookup; distinct from the internal customer UUID."
           }
         },
         "required": [
@@ -167,7 +173,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "billing_zip": {
             "type": "string",
@@ -205,7 +212,8 @@
         "properties": {
           "verification_id": {
             "type": "string",
-            "description": "Scoped verification record."
+            "description": "Scoped verification record.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -249,7 +257,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "purpose": {
             "type": "string",
@@ -268,7 +277,8 @@
           },
           "verification_id": {
             "type": "string",
-            "description": "Active identity-verification record."
+            "description": "Active identity-verification record.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -285,7 +295,8 @@
         "properties": {
           "confirmation_id": {
             "type": "string",
-            "description": "Purpose-bound confirmation record."
+            "description": "Purpose-bound confirmation record.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -323,11 +334,13 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "confirmation_id": {
             "type": "string",
-            "description": "Confirmation record returned when the challenge was started."
+            "description": "Confirmation record returned when the challenge was started.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -342,7 +355,8 @@
         "properties": {
           "confirmation_id": {
             "type": "string",
-            "description": "Purpose-bound confirmation record."
+            "description": "Purpose-bound confirmation record.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -381,7 +395,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "new_email": {
             "type": "string",
@@ -390,11 +405,13 @@
           },
           "verification_id": {
             "type": "string",
-            "description": "Active identity-verification record."
+            "description": "Active identity-verification record.",
+            "format": "uuid"
           },
           "confirmation_id": {
             "type": "string",
-            "description": "Successful trusted-channel confirmation record."
+            "description": "Successful trusted-channel confirmation record.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -474,7 +491,8 @@
         "properties": {
           "record_id": {
             "type": "string",
-            "description": "Versioned external knowledge record."
+            "description": "Versioned external knowledge record.",
+            "format": "uuid"
           },
           "effective_at": {
             "type": "string",
@@ -494,7 +512,8 @@
               "properties": {
                 "product_id": {
                   "type": "string",
-                  "description": "Stable product identifier."
+                  "description": "Stable product identifier.",
+                  "format": "uuid"
                 },
                 "product": {
                   "type": "string",
@@ -536,7 +555,8 @@
               "properties": {
                 "product_id": {
                   "type": "string",
-                  "description": "Stable product identifier."
+                  "description": "Stable product identifier.",
+                  "format": "uuid"
                 },
                 "product": {
                   "type": "string",
@@ -746,7 +766,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "card_last4": {
             "type": "string",
@@ -782,7 +803,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Customer identifier."
+            "description": "Customer identifier.",
+            "format": "uuid"
           },
           "card_last4": {
             "type": "string",
@@ -825,7 +847,8 @@
               "properties": {
                 "transaction_id": {
                   "type": "string",
-                  "description": "Stable transaction identifier."
+                  "description": "Stable transaction identifier.",
+                  "format": "uuid"
                 },
                 "merchant": {
                   "type": "string",
@@ -875,7 +898,8 @@
               "properties": {
                 "transaction_id": {
                   "type": "string",
-                  "description": "Stable transaction identifier."
+                  "description": "Stable transaction identifier.",
+                  "format": "uuid"
                 },
                 "merchant": {
                   "type": "string",
@@ -923,7 +947,8 @@
               "properties": {
                 "restriction_id": {
                   "type": "string",
-                  "description": "Stable restriction identifier."
+                  "description": "Stable restriction identifier.",
+                  "format": "uuid"
                 },
                 "status": {
                   "type": "string",
@@ -934,7 +959,8 @@
                   "description": "Transactions linked to the restriction.",
                   "items": {
                     "type": "string",
-                    "description": "Transaction identifier."
+                    "description": "Transaction identifier.",
+                    "format": "uuid"
                   }
                 }
               },
@@ -953,7 +979,8 @@
               "properties": {
                 "notice_id": {
                   "type": "string",
-                  "description": "Travel-notice identifier."
+                  "description": "Travel-notice identifier.",
+                  "format": "uuid"
                 },
                 "destinations": {
                   "type": "array",
@@ -996,7 +1023,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "card_last4": {
             "type": "string",
@@ -1005,14 +1033,16 @@
           },
           "restriction_id": {
             "type": "string",
-            "description": "Restriction to resolve."
+            "description": "Restriction to resolve.",
+            "format": "uuid"
           },
           "confirmed_transaction_ids": {
             "type": "array",
             "description": "Transactions the customer confirmed.",
             "items": {
               "type": "string",
-              "description": "Transaction identifier."
+              "description": "Transaction identifier.",
+              "format": "uuid"
             },
             "minItems": 1
           }
@@ -1062,7 +1092,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "card_last4": {
             "type": "string",
@@ -1101,7 +1132,8 @@
           },
           "notice_id": {
             "type": "string",
-            "description": "Travel-notice identifier."
+            "description": "Travel-notice identifier.",
+            "format": "uuid"
           },
           "authorization_guaranteed": {
             "type": "boolean",
@@ -1124,11 +1156,13 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Referring customer identifier."
+            "description": "Referring customer identifier.",
+            "format": "uuid"
           },
           "referral_id": {
             "type": "string",
-            "description": "Optional referral identifier."
+            "description": "Optional referral identifier.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -1148,7 +1182,8 @@
               "properties": {
                 "referral_id": {
                   "type": "string",
-                  "description": "Stable referral identifier."
+                  "description": "Stable referral identifier.",
+                  "format": "uuid"
                 },
                 "invited_at": {
                   "type": "string",
@@ -1188,13 +1223,18 @@
                 "offer": {
                   "type": "string",
                   "description": "Offer terms as displayed, e.g. '$100 statement credit'."
+                },
+                "reference_code": {
+                  "type": "string",
+                  "description": "Customer-facing referral reference code; distinct from the internal referral UUID."
                 }
               },
               "required": [
                 "referral_id",
                 "application_status",
                 "qualification_status",
-                "offer"
+                "offer",
+                "reference_code"
               ],
               "additionalProperties": false
             }
@@ -1215,7 +1255,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "card_last4": {
             "type": "string",
@@ -1253,7 +1294,8 @@
               "properties": {
                 "transaction_id": {
                   "type": "string",
-                  "description": "Stable transaction identifier."
+                  "description": "Stable transaction identifier.",
+                  "format": "uuid"
                 },
                 "card_last4": {
                   "type": "string",
@@ -1306,7 +1348,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "workflow": {
             "type": "string",
@@ -1319,7 +1362,8 @@
           },
           "resource_id": {
             "type": "string",
-            "description": "Related product, referral, or transaction identifier."
+            "description": "Related product, referral, or transaction identifier.",
+            "format": "uuid"
           },
           "delivery_channels": {
             "type": "array",
@@ -1349,7 +1393,8 @@
         "properties": {
           "session_id": {
             "type": "string",
-            "description": "Session identifier."
+            "description": "Session identifier.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -1390,7 +1435,8 @@
               "string",
               "null"
             ],
-            "description": "Claim reference; null until the customer submits (transaction_dispute workflow)."
+            "description": "Claim reference; null until the customer submits (transaction_dispute workflow).",
+            "format": "uuid"
           },
           "access_location": {
             "type": "string",
@@ -1469,11 +1515,13 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "session_id": {
             "type": "string",
-            "description": "Self-service session identifier."
+            "description": "Self-service session identifier.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -1488,7 +1536,8 @@
         "properties": {
           "session_id": {
             "type": "string",
-            "description": "Session identifier."
+            "description": "Session identifier.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -1523,7 +1572,8 @@
               "string",
               "null"
             ],
-            "description": "Claim reference; null until the customer submits (transaction_dispute workflow)."
+            "description": "Claim reference; null until the customer submits (transaction_dispute workflow).",
+            "format": "uuid"
           },
           "expires_at": {
             "type": "string",
@@ -1547,11 +1597,13 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "related_resource_id": {
             "type": "string",
-            "description": "Secure resource identifier."
+            "description": "Secure resource identifier.",
+            "format": "uuid"
           },
           "channel": {
             "type": "string",
@@ -1580,7 +1632,8 @@
         "properties": {
           "notification_id": {
             "type": "string",
-            "description": "Notification identifier."
+            "description": "Notification identifier.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -1639,7 +1692,8 @@
           },
           "transfer_id": {
             "type": "string",
-            "description": "Transfer identifier."
+            "description": "Transfer identifier.",
+            "format": "uuid"
           }
         },
         "required": [

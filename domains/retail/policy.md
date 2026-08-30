@@ -88,6 +88,12 @@ A trace may remain open or close without compensation. Never infer eligibility f
 - Trace ID
 - Original order, return, and payment references
 - Tender type and amount under review
+
+## Identifier Handling
+
+- Internal customer, case, and notification IDs are opaque UUIDs returned by tools. Never construct one from a customer name, email, order suffix, item description, or case number.
+- Customer-facing order, return, replacement-order, and case numbers remain readable business references. A returned `case_number` is for customer communication; the corresponding `case_id` UUID is the value used by later case tools.
+- After a lookup or trace operation resolves a record, use its returned UUID for downstream mutations and notifications while preserving the readable reference for customer readback.
 - Settlement evidence
 - Review deadline
 - Supporting case notes

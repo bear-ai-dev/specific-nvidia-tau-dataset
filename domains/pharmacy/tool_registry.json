@@ -1,7 +1,7 @@
 {
   "schema_version": "0.2.0",
   "registry_name": "pharmacy",
-  "registry_version": "0.3.0",
+  "registry_version": "0.4.0",
   "compatibility": "custom_tau_style_not_literal_tau_registry",
   "design_note": "Deterministic-mock pharmacy registry: every result schema is closed (additionalProperties: false) and fully typed from observed trajectory outputs; the policy's prescription lifecycle (received -> claim_pending -> claim_rejected/claim_paid -> awaiting_pharmacist_verification -> ready_for_pickup -> picked_up/transferred/cancelled/expired) is expressed as the closed workflow_status enum shared by reads and claim submissions; local counter hours use an HH:MM pattern with an IANA timezone; copays carry an explicit USD currency tag. Pharmacy deliberately has no standalone identity-verification tool: name-plus-date-of-birth resolution via lookup_patient is this domain's verification tier by design, not an omission.",
   "tools": [
@@ -34,7 +34,8 @@
         "properties": {
           "patient_id": {
             "type": "string",
-            "description": "Patient identifier."
+            "description": "Patient identifier.",
+            "format": "uuid"
           },
           "match": {
             "type": "string",
@@ -53,7 +54,8 @@
               "properties": {
                 "destination_id": {
                   "type": "string",
-                  "description": "Stable verified destination identifier."
+                  "description": "Stable verified destination identifier.",
+                  "format": "uuid"
                 },
                 "channel": {
                   "type": "string",
@@ -99,7 +101,8 @@
         "properties": {
           "patient_id": {
             "type": "string",
-            "description": "Resolved patient identifier."
+            "description": "Resolved patient identifier.",
+            "format": "uuid"
           },
           "medication_name": {
             "type": "string",
@@ -117,11 +120,13 @@
         "properties": {
           "prescription_id": {
             "type": "string",
-            "description": "Prescription identifier."
+            "description": "Prescription identifier.",
+            "format": "uuid"
           },
           "medication_id": {
             "type": "string",
-            "description": "Canonical medication identifier."
+            "description": "Canonical medication identifier.",
+            "format": "uuid"
           },
           "medication_name": {
             "type": "string",
@@ -167,7 +172,8 @@
             "properties": {
               "store_id": {
                 "type": "string",
-                "description": "Stable store identifier."
+                "description": "Stable store identifier.",
+                "format": "uuid"
               },
               "display_name": {
                 "type": "string",
@@ -256,7 +262,8 @@
             "properties": {
               "ready_alert_destination_id": {
                 "type": "string",
-                "description": "Verified destination identifier currently set for ready alerts."
+                "description": "Verified destination identifier currently set for ready alerts.",
+                "format": "uuid"
               }
             },
             "required": [
@@ -298,7 +305,8 @@
         "properties": {
           "prescription_id": {
             "type": "string",
-            "description": "Prescription identifier."
+            "description": "Prescription identifier.",
+            "format": "uuid"
           },
           "reason": {
             "type": "string",
@@ -327,7 +335,8 @@
         "properties": {
           "override_id": {
             "type": "string",
-            "description": "Override identifier."
+            "description": "Override identifier.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -356,11 +365,13 @@
         "properties": {
           "prescription_id": {
             "type": "string",
-            "description": "Prescription identifier."
+            "description": "Prescription identifier.",
+            "format": "uuid"
           },
           "override_id": {
             "type": "string",
-            "description": "Approved override identifier, when applicable."
+            "description": "Approved override identifier, when applicable.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -463,11 +474,13 @@
         "properties": {
           "store_id": {
             "type": "string",
-            "description": "Pharmacy location identifier."
+            "description": "Pharmacy location identifier.",
+            "format": "uuid"
           },
           "medication_id": {
             "type": "string",
-            "description": "Medication/product identifier."
+            "description": "Medication/product identifier.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -482,11 +495,13 @@
         "properties": {
           "store_id": {
             "type": "string",
-            "description": "Store identifier."
+            "description": "Store identifier.",
+            "format": "uuid"
           },
           "medication_id": {
             "type": "string",
-            "description": "Medication identifier."
+            "description": "Medication identifier.",
+            "format": "uuid"
           },
           "in_stock": {
             "type": "boolean",
@@ -515,7 +530,8 @@
         "properties": {
           "origin_store_id": {
             "type": "string",
-            "description": "Current fill-store identifier when known."
+            "description": "Current fill-store identifier when known.",
+            "format": "uuid"
           },
           "open_after_local_time": {
             "type": "string",
@@ -542,7 +558,8 @@
               "properties": {
                 "store_id": {
                   "type": "string",
-                  "description": "Stable store identifier."
+                  "description": "Stable store identifier.",
+                  "format": "uuid"
                 },
                 "display_name": {
                   "type": "string",
@@ -599,11 +616,13 @@
         "properties": {
           "prescription_id": {
             "type": "string",
-            "description": "Prescription identifier."
+            "description": "Prescription identifier.",
+            "format": "uuid"
           },
           "destination_store_id": {
             "type": "string",
-            "description": "Destination pharmacy identifier returned by location search."
+            "description": "Destination pharmacy identifier returned by location search.",
+            "format": "uuid"
           },
           "reason": {
             "type": "string",
@@ -642,7 +661,8 @@
           },
           "destination_store_id": {
             "type": "string",
-            "description": "Requested destination store."
+            "description": "Requested destination store.",
+            "format": "uuid"
           },
           "original_fill_active": {
             "type": "boolean",
@@ -665,7 +685,8 @@
         "properties": {
           "prescription_id": {
             "type": "string",
-            "description": "Prescription identifier."
+            "description": "Prescription identifier.",
+            "format": "uuid"
           },
           "priority_reason": {
             "type": "string",
@@ -682,7 +703,8 @@
           },
           "notification_destination_id": {
             "type": "string",
-            "description": "Stable verified destination identifier returned by a prior patient or prescription read."
+            "description": "Stable verified destination identifier returned by a prior patient or prescription read.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -728,7 +750,8 @@
               },
               "destination_id": {
                 "type": "string",
-                "description": "Verified destination identifier now set for ready alerts."
+                "description": "Verified destination identifier now set for ready alerts.",
+                "format": "uuid"
               },
               "masked_destination": {
                 "type": "string",
@@ -830,7 +853,8 @@
           },
           "transfer_id": {
             "type": "string",
-            "description": "Transfer identifier when the transfer was initiated."
+            "description": "Transfer identifier when the transfer was initiated.",
+            "format": "uuid"
           }
         },
         "required": [

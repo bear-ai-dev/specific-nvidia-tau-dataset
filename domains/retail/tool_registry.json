@@ -1,7 +1,7 @@
 {
   "schema_version": "0.2.0",
   "registry_name": "retail",
-  "registry_version": "0.3.0",
+  "registry_version": "0.4.0",
   "compatibility": "custom_tau_style_not_literal_tau_registry",
   "design_note": "Models a single-brand retail customer-care desk: verified customer/order reads, delivered-not-received and missing-refund traces, replacement creation, case notes, and case notifications over a small closed entity graph. Result schemas are fully typed and closed (additionalProperties: false at every level) so a deterministic tau2-bench-style mock environment can be implemented from this registry alone. Status and resolution vocabularies are enumerated as the union of the policy lifecycles and the recorded tool outputs.",
   "tools": [
@@ -19,7 +19,8 @@
           },
           "customer_id": {
             "type": "string",
-            "description": "Optional customer identifier."
+            "description": "Optional customer identifier.",
+            "format": "uuid"
           }
         },
         "required": [],
@@ -31,7 +32,8 @@
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Customer identifier."
+            "description": "Customer identifier.",
+            "format": "uuid"
           },
           "match": {
             "type": "string",
@@ -62,7 +64,12 @@
                 },
                 "open_case_id": {
                   "type": "string",
-                  "description": "Open support case attached to the order, when one exists."
+                  "description": "Open support case attached to the order, when one exists.",
+                  "format": "uuid"
+                },
+                "open_case_number": {
+                  "type": "string",
+                  "description": "Customer-facing number for the open support case."
                 }
               },
               "required": [
@@ -135,7 +142,8 @@
             "properties": {
               "customer_id": {
                 "type": "string",
-                "description": "Customer identifier."
+                "description": "Customer identifier.",
+                "format": "uuid"
               },
               "display_name": {
                 "type": "string",
@@ -409,7 +417,8 @@
               "properties": {
                 "case_id": {
                   "type": "string",
-                  "description": "Support case identifier."
+                  "description": "Support case identifier.",
+                  "format": "uuid"
                 },
                 "order_reference": {
                   "type": "string",
@@ -465,11 +474,16 @@
                 "replacement_created": {
                   "type": "boolean",
                   "description": "Whether a replacement order exists for this case."
+                },
+                "case_number": {
+                  "type": "string",
+                  "description": "Customer-facing support-case number; distinct from the internal case UUID."
                 }
               },
               "required": [
                 "case_id",
-                "status"
+                "status",
+                "case_number"
               ],
               "additionalProperties": false
             }
@@ -532,7 +546,8 @@
               "properties": {
                 "notification_id": {
                   "type": "string",
-                  "description": "Notification identifier."
+                  "description": "Notification identifier.",
+                  "format": "uuid"
                 },
                 "type": {
                   "type": "string",
@@ -593,7 +608,8 @@
           },
           "location_id": {
             "type": "string",
-            "description": "Optional store, pickup, or distribution location."
+            "description": "Optional store, pickup, or distribution location.",
+            "format": "uuid"
           },
           "include_inventory": {
             "type": "boolean",
@@ -711,7 +727,8 @@
         "properties": {
           "case_id": {
             "type": "string",
-            "description": "Case identifier."
+            "description": "Case identifier.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -762,12 +779,17 @@
               "delivered",
               "failed"
             ]
+          },
+          "case_number": {
+            "type": "string",
+            "description": "Customer-facing support-case number; distinct from the internal case UUID."
           }
         },
         "required": [
           "case_id",
           "status",
-          "replacement_created"
+          "replacement_created",
+          "case_number"
         ],
         "additionalProperties": false
       }
@@ -811,7 +833,8 @@
         "properties": {
           "case_id": {
             "type": "string",
-            "description": "Case identifier."
+            "description": "Case identifier.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -841,13 +864,18 @@
           "return_evidence_attached": {
             "type": "boolean",
             "description": "Whether return evidence was attached."
+          },
+          "case_number": {
+            "type": "string",
+            "description": "Customer-facing support-case number; distinct from the internal case UUID."
           }
         },
         "required": [
           "case_id",
           "status",
           "review_window_business_days",
-          "duplicate_refund_blocked"
+          "duplicate_refund_blocked",
+          "case_number"
         ],
         "additionalProperties": false
       }
@@ -1048,7 +1076,8 @@
         "properties": {
           "case_id": {
             "type": "string",
-            "description": "Support case identifier."
+            "description": "Support case identifier.",
+            "format": "uuid"
           },
           "note": {
             "type": "string",
@@ -1118,7 +1147,8 @@
         "properties": {
           "case_id": {
             "type": "string",
-            "description": "Support case identifier."
+            "description": "Support case identifier.",
+            "format": "uuid"
           },
           "channel": {
             "type": "string",
@@ -1160,7 +1190,8 @@
         "properties": {
           "notification_id": {
             "type": "string",
-            "description": "Notification identifier."
+            "description": "Notification identifier.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -1178,7 +1209,8 @@
           },
           "case_id": {
             "type": "string",
-            "description": "Related case identifier."
+            "description": "Related case identifier.",
+            "format": "uuid"
           },
           "included_fields": {
             "type": "array",
@@ -1192,12 +1224,17 @@
             "type": "string",
             "description": "Send timestamp when available.",
             "format": "date-time"
+          },
+          "case_number": {
+            "type": "string",
+            "description": "Customer-facing support-case number; distinct from the internal case UUID."
           }
         },
         "required": [
           "notification_id",
           "status",
-          "case_id"
+          "case_id",
+          "case_number"
         ],
         "additionalProperties": false
       }
@@ -1238,7 +1275,8 @@
           },
           "transfer_id": {
             "type": "string",
-            "description": "Transfer identifier."
+            "description": "Transfer identifier.",
+            "format": "uuid"
           }
         },
         "required": [
