@@ -1727,7 +1727,7 @@
           {
             "fact": "gift_card_status",
             "value": "Unused and active",
-            "spoken_text": "It has not been used, and the number and the email, uh, still looks to be active.",
+            "spoken_text": "It has not been used, and the number in the email, uh, still looks to be active.",
             "speaker": "Daniel",
             "role": "assistant",
             "event_index": 46,
