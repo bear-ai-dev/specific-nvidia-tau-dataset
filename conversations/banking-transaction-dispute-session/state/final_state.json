@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.2.0",
+  "conversation_id": "banking-transaction-dispute-session",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-02-25T16:28:04-05:00",
+  "entities": {
+    "customers": {
+      "4e8c3a97-e6ad-4737-aede-c8acd4993277": {
+        "customer_id": "4e8c3a97-e6ad-4737-aede-c8acd4993277",
+        "lookup_match": "unique",
+        "required_verification_methods": [
+          "billing_zip",
+          "birth_month_day"
+        ]
+      }
+    },
+    "transactions": {
+      "b2047621-d2c7-437c-bb56-c81a700e2099": {
+        "transaction_id": "b2047621-d2c7-437c-bb56-c81a700e2099",
+        "card_last4": "9102",
+        "amount": 243.18,
+        "category": "online marketplace",
+        "preceded_by_authorization_amount": 1.0
+      }
+    },
+    "knowledge_records": {
+      "8d5fe793-b41b-48c9-aef8-e3ffd9d1d4ab": {
+        "record_id": "8d5fe793-b41b-48c9-aef8-e3ffd9d1d4ab",
+        "effective_at": "2026-01-15",
+        "steps": [
+          "review household use",
+          "review saved wallets",
+          "submit only if unauthorized"
+        ],
+        "posted_charge_can_be_erased": false,
+        "provisional_credit_guaranteed": false,
+        "investigation_timing_basis": "transaction_type",
+        "post_submit_outputs": [
+          "claim reference",
+          "written timing disclosures in secure messages"
+        ]
+      },
+      "022398d3-51e3-4dcd-b56b-064d53b159f0": {
+        "record_id": "022398d3-51e3-4dcd-b56b-064d53b159f0",
+        "effective_at": "2026-01-15",
+        "unused_unsubmitted_session_waives_future_rights": false,
+        "guidance": "Contact the bank promptly if a genuinely unauthorized transaction is later discovered."
+      }
+    },
+    "identity_verifications": {
+      "dbf560d6-9aa5-4471-a5b1-7a3af5c51fb8": {
+        "verification_id": "dbf560d6-9aa5-4471-a5b1-7a3af5c51fb8",
+        "status": "verified",
+        "matched_methods": [
+          "billing_zip",
+          "birth_month_day"
+        ]
+      }
+    },
+    "secure_self_service_sessions": {
+      "0ae36057-bbbb-42e3-994f-55f064bc374c": {
+        "session_id": "0ae36057-bbbb-42e3-994f-55f064bc374c",
+        "status": "open_not_submitted",
+        "submitted": false,
+        "claim_id": null,
+        "resume_supported": true,
+        "access_location": "online_banking",
+        "display_label": "Review transaction ending 8472",
+        "allowed_customer_actions": [
+          "review",
+          "submit",
+          "close_page"
+        ],
+        "deliveries": [
+          {
+            "channel": "secure_message",
+            "status": "delivered"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "schema_version": "0.2.0",
+  "conversation_id": "banking-account-email-card-application",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-08-27T10:55:26-04:00",
+  "notes": [
+    "The card-application session was issued and delivered but never submitted, and no credit pull was authorized (bc-009 issuance and the bc-013 read both report submitted=false and credit_pull_authorized=false)."
+  ],
+  "entities": {
+    "customers": {
+      "4d6679ca-bcef-4893-81bf-488f66c8c666": {
+        "customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666",
+        "full_name": "Johnny Monroe",
+        "primary_email": "johnny.monroe.travel@outlook.com",
+        "notification_email": "johnny.monroe.travel@outlook.com",
+        "login_identifier_changed": false,
+        "transition_security_notices": [
+          "old_email",
+          "new_email"
+        ],
+        "required_verification_methods": [
+          "billing_zip",
+          "mobile_last4"
+        ],
+        "trusted_channels": [
+          {
+            "channel_id": "279561c9-f2ce-4402-a23a-2e19316678b3",
+            "type": "sms",
+            "masked_destination": "***-***-1251"
+          }
+        ],
+        "account_id": "SF204771"
+      }
+    },
+    "identity_verifications": {
+      "613f42b7-69cd-4767-bf41-9a9db63ff731": {
+        "verification_id": "613f42b7-69cd-4767-bf41-9a9db63ff731",
+        "customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666",
+        "status": "verified",
+        "matched_methods": [
+          "billing_zip",
+          "mobile_last4"
+        ]
+      }
+    },
+    "trusted_channel_confirmations": {
+      "a241c1d7-d6c0-4489-9406-65a28d3bca66": {
+        "confirmation_id": "a241c1d7-d6c0-4489-9406-65a28d3bca66",
+        "customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666",
+        "purpose": "email_change",
+        "channel": "sms",
+        "masked_destination": "***-***-1251",
+        "status": "verified",
+        "verified_at": "2026-08-27T10:48:39-04:00"
+      }
+    },
+    "secure_self_service_sessions": {
+      "f4136da6-25dc-464b-b50c-8f02a5cc1ca3": {
+        "session_id": "f4136da6-25dc-464b-b50c-8f02a5cc1ca3",
+        "customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666",
+        "workflow": "card_application",
+        "resource_id": "c6c675e6-0faf-4004-a5de-881eaaa805b7",
+        "status": "open_not_submitted",
+        "submitted": false,
+        "credit_pull_authorized": false,
+        "save_and_continue": true,
+        "resume_supported": true,
+        "deliveries": [
+          {
+            "channel": "secure_message",
+            "status": "delivered"
+          },
+          {
+            "channel": "email_notification",
+            "status": "delivered",
+            "masked_destination": "j***@outlook.com"
+          }
+        ]
+      }
+    },
+    "knowledge_base_records": {
+      "63b6eab2-5559-4d42-a781-47c7c0413493": {
+        "record_id": "63b6eab2-5559-4d42-a781-47c7c0413493",
+        "effective_at": "2026-07-01",
+        "matches": [
+          {
+            "product_id": "c6c675e6-0faf-4004-a5de-881eaaa805b7",
+            "product": "Summit Journey",
+            "annual_fee": 95,
+            "foreign_transaction_fee": false,
+            "lounge_membership": false
+          },
+          {
+            "product_id": "acda644c-1054-410a-98a1-39fad9fe411e",
+            "product": "Summit Reserve",
+            "annual_fee": 395,
+            "foreign_transaction_fee": false,
+            "lounge_membership": true
+          }
+        ]
+      },
+      "0d57772d-88ff-474b-8c24-5476b7dc1921": {
+        "record_id": "0d57772d-88ff-474b-8c24-5476b7dc1921",
+        "effective_at": "2026-07-01",
+        "airline_incidental_credit": true,
+        "automatic_free_checked_bag": false,
+        "airline_specific_rules_apply": true
+      },
+      "88b888dd-e6b1-4d27-927c-22d21bdaa700": {
+        "record_id": "88b888dd-e6b1-4d27-927c-22d21bdaa700",
+        "effective_at": "2026-07-01",
+        "offers": [
+          {
+            "product_id": "c6c675e6-0faf-4004-a5de-881eaaa805b7",
+            "product": "Summit Journey",
+            "points": 40000,
+            "spend": 3000,
+            "days": 90
+          },
+          {
+            "product_id": "acda644c-1054-410a-98a1-39fad9fe411e",
+            "product": "Summit Reserve",
+            "points": 70000,
+            "spend": 5000,
+            "days": 90
+          }
+        ],
+        "offers_can_change": true,
+        "approval_guaranteed": false
+      },
+      "204dbd70-136e-4b56-9036-cf148e95a870": {
+        "record_id": "204dbd70-136e-4b56-9036-cf148e95a870",
+        "effective_at": "2026-07-01",
+        "decision_notice": {
+          "explains_factors": true,
+          "may_include_reconsideration_contact": true
+        },
+        "phone_agent_can_override_underwriting": false
+      },
+      "4a2df74d-36c6-4669-8ad0-c71d09611681": {
+        "record_id": "4a2df74d-36c6-4669-8ad0-c71d09611681",
+        "effective_at": "2026-07-01",
+        "guidance": "Enter the amount the applicant is personally responsible for each month and follow the field instructions."
+      },
+      "2adb7239-a280-4c4f-8e5f-1755aa55c925": {
+        "record_id": "2adb7239-a280-4c4f-8e5f-1755aa55c925",
+        "effective_at": "2026-07-01",
+        "guidance": "Report income the applicant can reasonably access and verify, consistent with the application disclosure."
+      },
+      "f603e573-6b4f-4f50-a390-b18c917712a9": {
+        "record_id": "f603e573-6b4f-4f50-a390-b18c917712a9",
+        "effective_at": "2026-07-01",
+        "login_identifier_may_remain_same": true,
+        "future_notices_use_primary_email": true,
+        "unexpected_prompt_guidance": "Use the secure banking site rather than an unexpected message link."
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "schema_version": "0.2.0",
+  "conversation_id": "retail-damaged-item-replacement",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-08-26T11:27:55-04:00",
+  "entities": {
+    "c51d2171-c10b-489b-9186-a93ebd98613d": {
+      "entity_type": "customer",
+      "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
+      "display_name": "Ethan Patel",
+      "verified_email": "e***@northmail.com",
+      "recent_orders": [
+        "ending-4086",
+        "ending-7319"
+      ]
+    },
+    "ending-4086": {
+      "entity_type": "order",
+      "order_reference": "ending-4086",
+      "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
+      "items": [
+        {
+          "item_reference": "coffee-maker-matte-black-12-cup",
+          "name": "12-cup coffee maker",
+          "variant": "matte black"
+        }
+      ],
+      "eligible_resolutions": [
+        {
+          "type": "replacement",
+          "preserves_original_price": true,
+          "return_required": false,
+          "photo_required": false,
+          "optional_photo_upload_available": true,
+          "photo_upload_blocks_fulfillment": false,
+          "estimated_delivery": "Thursday end of day",
+          "default_fulfillment": "home_address_on_order"
+        },
+        {
+          "type": "refund"
+        }
+      ],
+      "replacement_order_reference": "ending-8821"
+    },
+    "ending-7319": {
+      "entity_type": "order",
+      "order_reference": "ending-7319",
+      "items": [
+        {
+          "name": "blue noise-canceling headphones"
+        }
+      ],
+      "open_case_id": "8cf648a4-ca60-4387-bc11-ec38f426123a",
+      "open_case_number": "WST481662"
+    },
+    "8cf648a4-ca60-4387-bc11-ec38f426123a": {
+      "entity_type": "support_case",
+      "case_id": "8cf648a4-ca60-4387-bc11-ec38f426123a",
+      "order_reference": "ending-7319",
+      "type": "delivery_trace",
+      "item": "blue noise-canceling headphones",
+      "status": "open",
+      "carrier_response": "none",
+      "deadline": "18:00 today",
+      "preferences": {
+        "pickup": "West 23rd Street pickup counter"
+      },
+      "case_number": "WST481662"
+    },
+    "coffee-maker-matte-black-12-cup": {
+      "entity_type": "product",
+      "product_reference": "coffee-maker-matte-black-12-cup",
+      "variant": {
+        "name": "12-cup coffee maker",
+        "color": "matte black"
+      },
+      "inventory": {
+        "in_stock": true
+      }
+    },
+    "ending-8821": {
+      "entity_type": "replacement_order",
+      "replacement_order_reference": "ending-8821",
+      "original_order_reference": "ending-4086",
+      "item_references": [
+        "coffee-maker-matte-black-12-cup"
+      ],
+      "reason": "damaged",
+      "status": "created",
+      "balance_due": 0,
+      "fulfillment": {
+        "method": "ship_to_address",
+        "location": "home_address_on_order",
+        "estimated_delivery": "Thursday end of day",
+        "estimate_guaranteed": false,
+        "distribution_center": "Edison",
+        "distribution_center_status": "provisional_until_shipped",
+        "tracking_notifications": true
+      },
+      "return_disposition": {
+        "return_required": false,
+        "disposition": "discard_or_recycle",
+        "safety": "do_not_power_on"
+      },
+      "notifications": [
+        {
+          "type": "replacement_confirmation",
+          "status": "sent",
+          "subject_prefix": "Your Westline replacement",
+          "optional_photo_link": true,
+          "photo_link_section": "later_in_email"
+        }
+      ]
+    }
+  }
+}

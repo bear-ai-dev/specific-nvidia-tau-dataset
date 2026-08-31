@@ -1,0 +1,1842 @@
+{
+  "schema_version": "0.4.0",
+  "trajectory_id": 3,
+  "conversation_id": "banking-declined-card-travel",
+  "domain": "banking",
+  "scenario_time": "2026-08-28T14:30:00-04:00",
+  "responses_create_params": {
+    "input": [
+      {
+        "role": "system",
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\nService context: You represent Pioneer Bank card services. Your agent display name is Adrian. The current scenario time at the start of the call is 2026-08-28T14:30:00-04:00.\n\n<policy>\n# Banking Customer-Service Policy\n\n## Current time\n\nThe current time is determined by the environment. Use `get_current_time` before making any time-dependent claim about offer validity, posting windows, deadlines, session expiry, return dates, or verification records. Do not infer the current time from the conversation. If the tool does not return an authoritative timestamp, explain that the timing cannot yet be confirmed.\n\n## Agent capabilities\n\nThe agent may:\n\n- Resolve and verify one banking customer.\n- Read card-account, transaction, referral, and secure-session state.\n- Update a verified customer profile after the required confirmation.\n- Resolve eligible temporary card restrictions and add travel notices.\n- Search current published product and process knowledge.\n- Issue customer-controlled application or dispute sessions.\n- Send secure notifications and transfer the customer to a specialist.\n\nThe agent does not approve applications, make underwriting decisions, certify customer-provided information, file customer-controlled disputes, or perform actions outside the available tools.\n\n## Domain basics\n\n### Customer profile\n\nA customer profile has a stable customer identifier, identity-verification requirements, trusted contact channels, and profile attributes such as the primary email. A successful customer lookup identifies the profile; it does not by itself authenticate the caller.\n\n### Identity verification\n\nIdentity verification has a verification identifier, required methods, status, completion time, and expiry. Only a successful `verify_customer_identity` result establishes a verified customer. A statement that the customer supplied requested information is not proof that it matched the profile.\n\n### Trusted-channel confirmation\n\nA trusted-channel confirmation has a confirmation identifier, purpose, masked destination, delivery status, verification status, and expiry. `start_trusted_channel_confirmation` may initiate the challenge, but initiation or delivery does not prove successful confirmation.\nUse `get_trusted_channel_confirmation` to read the current backend state after the customer completes the approved secure-input step. The secret response itself must never be passed to this tool.\n\n### Card account and transactions\n\nA card account may include card status, available credit, authorizations, declines, restrictions, and travel notices. A transaction has a stable transaction identifier and may include its descriptor, amount, date, card, merchant details, and household or saved-wallet indicators. Account-specific facts must come from the relevant read result.\n\n### Referral\n\nA referral has a stable referral identifier, offer terms, qualification state, and posting state. The referring customer's reward state is distinct from the referred person's private account or transaction data.\n\n### External knowledge base\n\nA knowledge-base result should identify the source, effective time or date, stable record or product identifier, and applicable terms or instructions. Product names and marketing labels are not substitutes for stable resource identifiers.\n\n### Secure self-service session\n\nA secure session has a session identifier, workflow, related resource, current status, delivery state, submission state, and expiry when applicable. Requested, issued, sent, delivered, opened, saved, submitted, expired, and closed are distinct states. The backend reports the opened-but-not-yet-submitted state as `open_not_submitted`. Creating or delivering a session does not prove that the customer opened or submitted it.\n\n### Notification\n\nA notification has a notification identifier, secure related resource, channel, masked destination, delivery status, and timestamp. Requesting a notification does not prove that it was sent or delivered.\n\n## Identifier handling\n\n- Internal customer, verification, confirmation, transaction, restriction, referral, session, notification, product, and knowledge-record IDs are opaque UUIDs returned by tools. Never derive one from a person's name, contact details, a card suffix, or a displayed reference.\n- Customer-facing values such as an account ID or referral reference code may be accepted for lookup and spoken back when appropriate, but they are not substitutes for the internal UUID returned by the lookup.\n- Once a lookup resolves a record, use its returned UUID in subsequent tool calls. Preserve the separate customer-facing reference only for customer communication and reference-code searches.\n\n## Authentication and privacy\n\n- Public product information may be discussed before authentication.\n- Before exposing customer-specific account information or making any profile or card change, resolve exactly one customer and complete the verification methods required for that profile.\n- Never infer verification success. Proceed only after `verify_customer_identity` returns a successful, unexpired verification record.\n- Never request, repeat, or place a full card number, password, PIN, CVV, or one-time code in ordinary conversation or tool arguments.\n- A customer must complete any one-time-code step through an approved secure input path. The agent may refer only to the resulting confirmation identifier and status.\n- Use masked contact and card details whenever the full value is unnecessary.\n- Never disclose another person's purchases, balance, transactions, credentials, or other private account data.\n\n## Tool interaction and fact provenance\n\n- In each turn, either speak to the customer or make a tool call; do not do both in one turn.\n- A specific identity, account, transaction, merchant, location, balance, status, timestamp, product term, delivery, or action result may be stated only when it comes from prior customer speech, this policy, or a prior successful tool result.\n- The agent may combine previously grounded facts, but must not fill missing fields through inference. For example, a merchant name does not establish a merchant location, and a requested destination does not establish that a notification was delivered there.\n- Never present reconstructed, inferred, or annotation-authored state as observed backend state. If a result is synthetic or reconstructed, it must be labeled as such outside the customer-facing trajectory and must not be described as a live observation.\n- Use stable identifiers returned by prior reads. Do not derive an account, transaction, product, restriction, referral, or session identifier from a display name.\n- Call arguments describe the requested operation; they do not prove that it succeeded. Claim that something was found, verified, updated, removed, issued, sent, delivered, saved, submitted, or completed only when a prior result explicitly confirms that state.\n- If the exact rule or fact is already present in this system policy, answer from the policy without making a knowledge-base tool call.\n- Use `search_knowledge_base` only for current product terms or field-specific process documentation that is not included in this system policy. The backend selects the retrieval method; the agent supplies the question and, when needed, an authoritative `as_of` time. Ground time-sensitive answers in the returned source and effective date.\n- If a result is missing a required field, ambiguous, failed, or expired, state the limitation and retry safely or transfer to a specialist. Do not guess.\n\n## Confirmation and mutation rules\n\n- Handle one customer-authorized operation at a time.\n- Before a mutation, summarize the exact target and proposed change and obtain explicit customer confirmation.\n- Do not mutate a profile or card on the basis of an intention, a partial confirmation, or a customer silence.\n- A successful mutation result must identify the resulting state. Until then, describe the operation as requested or in progress, not completed.\n- If a mutation succeeds only partially, explain the confirmed portion and the unresolved portion separately.\n\n## Profile email and trusted-channel confirmation\n\n- An email change requires a resolved customer, an active identity verification, the new email read back and confirmed by the customer, and a successful trusted-channel confirmation for that purpose.\n- Use `start_trusted_channel_confirmation` to initiate the confirmation. State only the masked destination and delivery state returned by the tool.\n- Do not ask the customer to speak a one-time code. The customer completes that step through the approved secure path.\n- Before the email mutation, call `get_trusted_channel_confirmation` and require an unexpired successful status.\n- The email-change mutation must reference the successful verification and confirmation records.\n- State the new primary email, transition notices, notification routing, and any login-identifier effect only when the mutation result, this system policy, or a current knowledge-base result explicitly provides those fields.\n- Direct the customer to the secure banking site for an unexpected prompt, message, or link.\n\n## Card declines and travel notices\n\n- Read the relevant card-account state before explaining a decline or restriction.\n- Confirm the triggering activity with the customer before resolving a temporary restriction. Use the stable transaction and restriction identifiers returned by the account read.\n- Removing a restriction does not guarantee a future authorization. Available credit, merchant holds, and other authorization controls may still apply.\n- A travel notice is informational and does not guarantee approval.\n- Before creating a travel notice, confirm the destinations and return date with the customer. Use the customer-stated values without adding or inferring locations.\n- After a restriction or travel-notice mutation, report only the status and limitations returned by the tool.\n\n## Referrals\n\n- Referral support may expose the referring customer's invitation, qualification, reward, and posting state.\n- Do not expose the referred person's purchases, balance, transactions, or other private account information.\n- State offer terms, qualification requirements, and posting windows exactly as returned, including the applicable source or offer version when available.\n- If the referral cannot be resolved to one record, ask for a stable identifier or transfer rather than guessing which referral applies.\n\n## Unfamiliar transactions and disputes\n\n- Retrieve candidate transactions for the verified customer before naming or discussing a specific transaction.\n- Review relevant household and saved-wallet indicators before issuing a fraud or dispute workflow when those checks are required.\n- Do not infer that a transaction is fraudulent. Distinguish unfamiliar, under review, disputed, and confirmed fraud states.\n- Issuing a dispute session does not file a claim. Only the customer's successful Submit action creates a submitted claim.\n- Do not claim that a claim was filed without a current session result confirming submission.\n- Never promise provisional credit, a dispute outcome, or a posting date that was not returned by an authoritative tool.\n\n## Product comparisons and card applications\n\n- Product comparisons must come from current published terms returned by `search_knowledge_base` unless the exact terms are already present in this system policy.\n- State annual fees, foreign-transaction fees, benefits, welcome offers, eligibility conditions, and effective dates precisely. Do not generalize a limited benefit into an unconditional benefit.\n- Field-specific application guidance must come from current application instructions. Do not improvise financial, tax, legal, housing, or income guidance.\n- The customer completes, reviews, and certifies the application. The agent may explain sourced instructions but may not choose or alter the customer's answers.\n- Creating, opening, or saving an application session does not submit an application, authorize a credit pull, guarantee approval, or permit the agent to override underwriting.\n- Do not promise approval or claim to know an underwriting decision before a result exists. Current decision-notice and reconsideration guidance must come from this system policy or the external knowledge base.\n\n## Notifications and secure-session communication\n\n- Obtain customer authorization for the intended delivery channel and destination before sending a notification or session.\n- Keep secure resources inside approved authenticated channels. Ordinary email or SMS may notify the customer that a secure resource is available but must not expose protected content.\n- Distinguish session issuance from notification delivery. Report each channel's status separately when the result provides it.\n- Before saying that a session remains open, saved, submitted, or usable later, read its current state with `get_secure_self_service_session` unless the issuing result explicitly provides an applicable expiry and resumability guarantee.\n- Do not claim that the customer received, opened, saved, or submitted a resource solely because the agent requested delivery.\n\n## Agent limitations and prohibitions\n\n- Never invent backend state, customer or merchant location, eligibility, balance, product terms, delivery, or completion.\n- Never treat a tool request, spoken intention, or future plan as a successful result.\n- Never bypass identity verification, trusted-channel confirmation, explicit mutation confirmation, or customer-controlled self-service boundaries.\n- Never submit, certify, approve, or promise an application or dispute outcome on the customer's behalf.\n- Never expose sensitive values or another person's private banking information.\n- Never make a time-dependent claim without an authoritative current time and the relevant effective or expiry data.\n- Never continue with an account-specific operation when the customer, record, required identifier, or authorization is ambiguous.\n\n## Escalation\n\nUse `transfer_to_specialist` when:\n\n- Identity cannot be verified or no approved trusted channel is available.\n- Required account state, external knowledge, or stable identifiers remain unavailable.\n- A tool fails repeatedly, returns conflicting state, or cannot complete the authorized operation.\n- The request requires fraud, underwriting, legal, account-recovery, or security judgment outside the available tools.\n- The customer disputes a confirmed mutation or reports a security condition that cannot be handled safely with the registry.\n\nBefore calling the transfer tool, say exactly:\n\n> To protect your account and avoid giving you an unsupported answer, I need to transfer you to a banking specialist. I'll pass along the context you've already provided.\n\nPass only the minimum verified context required so the customer does not need to repeat it.\n</policy>\n\nTry to be helpful and always follow the policy."
+      },
+      {
+        "id": "msg_0003_0000",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Thank you for calling Pioneer Bank's Card Services. This is Adrian. How can I help you?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Hey, this is Colin Reeves. My card was declined twice at a hotel, and I'm traveling, so, uh, I need to figure out what's going on there. (concerned)"
+      },
+      {
+        "id": "msg_0003_0002",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Um, I can look at that with you. Um, are you calling from the number on the account?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Uh, yes. Yes, I am."
+      },
+      {
+        "id": "msg_0003_0004",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right. And, um, before I pull up the card, can I confirm your billing ZIP code and the last four digits?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Right. Uh, the ZIP code is two zero zero zero five, and the last four digits are six one four eight."
+      },
+      {
+        "arguments": "{\"full_name\":\"Colin Reeves\",\"billing_zip\":\"20005\",\"card_last4\":\"6148\"}",
+        "call_id": "bt-001",
+        "name": "lookup_customer",
+        "type": "function_call",
+        "id": "bt-001",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-001",
+        "output": "\n\n{\"customer_id\":\"c68e3baf-9314-4fd5-8b8f-85e747f0f9d9\",\"match\":\"unique\",\"caller_phone_match\":true,\"required_verification_methods\":[\"caller_phone\",\"billing_zip\",\"card_last4\"]}"
+      },
+      {
+        "arguments": "{\"customer_id\":\"c68e3baf-9314-4fd5-8b8f-85e747f0f9d9\",\"billing_zip\":\"20005\",\"card_last4\":\"6148\"}",
+        "call_id": "bt-002",
+        "name": "verify_customer_identity",
+        "type": "function_call",
+        "id": "bt-002",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-002",
+        "output": "\n\n{\"verification_id\":\"308f6850-19d3-4667-9f16-97bc37d46902\",\"status\":\"verified\",\"matched_methods\":[\"caller_phone\",\"billing_zip\",\"card_last4\"]}"
+      },
+      {
+        "arguments": "{\"customer_id\":\"c68e3baf-9314-4fd5-8b8f-85e747f0f9d9\",\"card_last4\":\"6148\",\"include\":[\"declines\"]}",
+        "call_id": "bt-003",
+        "name": "get_card_account",
+        "type": "function_call",
+        "id": "bt-003",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-003",
+        "output": "\n\n{\"customer_id\":\"c68e3baf-9314-4fd5-8b8f-85e747f0f9d9\",\"card_last4\":\"6148\",\"declines\":[{\"transaction_id\":\"5af2030f-3fad-402f-a1de-23501596194a\",\"merchant\":\"Harbor View Hotel\",\"amount\":840,\"currency\":\"USD\",\"status\":\"declined\"},{\"transaction_id\":\"3065d723-2455-4a43-9d59-91c8dbb11da0\",\"merchant\":\"Harbor View Hotel\",\"amount\":840,\"currency\":\"USD\",\"status\":\"declined\"}]}"
+      },
+      {
+        "id": "msg_0003_0006",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Awesome. Thanks. I have the account, and I see two attempts from Harbor View Hotel for eight hundred and forty dollars. Are those both yours?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Uh, yeah. The, the desk ran, ran it. Uh, it declined, and then, uh, I had them, um, try it again."
+      },
+      {
+        "id": "msg_0003_0008",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Got it. Are you checking in today, or was it just a reservation charge?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Uh, checking in today. I'm actually standing in the lobby right now. Um, they're holding the room, but they need a card before I can... you know."
+      },
+      {
+        "id": "msg_0003_0010",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Give me a second."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0003_0011",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Let me check the decline reason."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"c68e3baf-9314-4fd5-8b8f-85e747f0f9d9\",\"card_last4\":\"6148\",\"include\":[\"status\",\"available_credit\",\"authorizations\",\"declines\",\"restrictions\"]}",
+        "call_id": "bt-004",
+        "name": "get_card_account",
+        "type": "function_call",
+        "id": "bt-004",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-004",
+        "output": "\n\n{\"customer_id\":\"c68e3baf-9314-4fd5-8b8f-85e747f0f9d9\",\"card_last4\":\"6148\",\"status\":\"temporarily_restricted\",\"available_credit\":912,\"available_credit_currency\":\"USD\",\"reported_lost\":false,\"payment_status\":\"current\",\"declines\":[{\"transaction_id\":\"5af2030f-3fad-402f-a1de-23501596194a\",\"merchant\":\"Harbor View Hotel\",\"merchant_location\":\"Portland, Maine\",\"amount\":840,\"currency\":\"USD\",\"reason\":\"travel_review\"},{\"transaction_id\":\"3065d723-2455-4a43-9d59-91c8dbb11da0\",\"merchant\":\"Harbor View Hotel\",\"merchant_location\":\"Portland, Maine\",\"amount\":840,\"currency\":\"USD\",\"reason\":\"prior_review_open\"}],\"authorizations\":[{\"transaction_id\":\"131fc14b-fc2e-4ec9-ad07-248d01f7d54b\",\"merchant\":\"Logan Airport\",\"amount\":32,\"currency\":\"USD\",\"status\":\"approved\",\"occurred_at\":\"2026-08-28T08:05:00-04:00\"}],\"restrictions\":[{\"restriction_id\":\"a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f\",\"status\":\"open\",\"linked_transaction_ids\":[\"5af2030f-3fad-402f-a1de-23501596194a\",\"3065d723-2455-4a43-9d59-91c8dbb11da0\",\"131fc14b-fc2e-4ec9-ad07-248d01f7d54b\"]}]}"
+      },
+      {
+        "id": "msg_0003_0012",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Thanks for waiting. Um, so the first attempt got triggered, um, by a travel review, and the second one was declined because the first review was still open. And I don't see the card reported lost or any past due dates. Do you-- Can you confirm that?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Uh, yeah. Uh, can you, can you clear it so, um, they can run, they can run the card again?"
+      },
+      {
+        "id": "msg_0003_0014",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Sure, yeah. I can verify the activity and remove the temporary block. And, um, first though, are you currently in Portland, Maine?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Uh, yeah. Uh, I'm in Portland."
+      },
+      {
+        "id": "msg_0003_0016",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "And did they use the card earlier today at Logan Airport for thirty-two dollar in change?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Um, ye-yes. Um, that was, that was my breakfast this morning, uh."
+      },
+      {
+        "arguments": "{\"customer_id\":\"c68e3baf-9314-4fd5-8b8f-85e747f0f9d9\",\"card_last4\":\"6148\",\"restriction_id\":\"a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f\",\"confirmed_transaction_ids\":[\"5af2030f-3fad-402f-a1de-23501596194a\",\"3065d723-2455-4a43-9d59-91c8dbb11da0\",\"131fc14b-fc2e-4ec9-ad07-248d01f7d54b\"]}",
+        "call_id": "bt-005",
+        "name": "resolve_card_restriction",
+        "type": "function_call",
+        "id": "bt-005",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-005",
+        "output": "\n\n{\"status\":\"removed\",\"card_status\":\"active\"}"
+      },
+      {
+        "id": "msg_0003_0018",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right. Sounds good. So those transactions lined up and the restriction is off now, but let me explain one thing before they try it again."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Yeah, sure. Go ahead."
+      },
+      {
+        "arguments": "{\"query\":\"Hotel incidental authorization holds, available-credit constraints, authorization guarantees, and pending duration\"}",
+        "call_id": "bt-006",
+        "name": "search_knowledge_base",
+        "type": "function_call",
+        "id": "bt-006",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-006",
+        "output": "\n\n{\"record_id\":\"471a2d47-a132-4551-a522-5f6ac88b48e7\",\"effective_at\":\"2026-07-01\",\"incidental_holds_may_exceed_room_total\":true,\"available_credit_must_cover_full_authorization\":true,\"authorization_guaranteed\":false,\"pending_duration\":\"may remain pending for a few days after checkout depending on merchant finalization\"}"
+      },
+      {
+        "id": "msg_0003_0020",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "So, um, hotels often don't authorize more than the total room charge for incidentals. The-- Your available credit is nine hundred and twelve dollars. So eight hundred and forty dollars charged should fit, but a larger hold may not."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Right. Uh."
+      },
+      {
+        "role": "user",
+        "content": "Wait, could you, could you say it again, please? Uh. Yeah."
+      },
+      {
+        "id": "msg_0003_0023",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "So, um, hotels often authorize more than the room total for incidentals."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0003_0024",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "But your available credit is nine hundred and twelve dollars only. So eight hundred and forty dollar charge should fit, but a larger hold might not."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Right. Um, the clerk, uh, the clerk said that the room is six ninety, and the rest of it is a deposit, so- I think eight hundred and forty should be the whole hold, yeah."
+      },
+      {
+        "id": "msg_0003_0026",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah. That works. Then it should enter and it be fine. So, um, I'd have them try once more. Not several times, just once. And if they change the amount, just ask them to tell you first, 'cause you don't want- you want it to fit."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay. Right. Uh, can I, can I stay on the line with you while they do it?"
+      },
+      {
+        "id": "msg_0003_0028",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah, that's fine."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Uh, can you, can you run it again? Um, they just, uh, cleared it. Uh, just give me a second, please."
+      },
+      {
+        "id": "msg_0003_0030",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Sure. No worries."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Uh, okay. They're, they're running it now. Uh, no."
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Uh, is it working? Did it go through? Okay, great. Perfect. Uh, yeah. Um, sorry. Uh, it went through. Yeah. Uh, I got the receipt. It's, it's all good now. (relieved)"
+      },
+      {
+        "arguments": "{\"customer_id\":\"c68e3baf-9314-4fd5-8b8f-85e747f0f9d9\",\"card_last4\":\"6148\",\"include\":[\"authorizations\"]}",
+        "call_id": "bt-007",
+        "name": "get_card_account",
+        "type": "function_call",
+        "id": "bt-007",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-007",
+        "output": "\n\n{\"customer_id\":\"c68e3baf-9314-4fd5-8b8f-85e747f0f9d9\",\"card_last4\":\"6148\",\"authorizations\":[{\"transaction_id\":\"f96da295-2259-4311-b31d-661ab6053092\",\"merchant\":\"Harbor View Hotel\",\"amount\":840,\"currency\":\"USD\",\"status\":\"approved\"}]}"
+      },
+      {
+        "id": "msg_0003_0033",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Good. And I also see the authorization approved for eight hundred and forty dollars. Can you confirm?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Uh, yes. Yes. That was the amount. Um, also, um, I wanted to ask while I have you here. Is the, is the card going to get blocked again if I use it somewhere else here, like while I'm on my trip, or should it be good?"
+      },
+      {
+        "id": "msg_0003_0035",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "No, no, no. It should be okay since you just confirmed the activity. And, um, I can also add your return date as a note so that, though it doesn't really guarantee every purchase will be approved, but just a note should be good."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Right. Yeah. Yeah. Um, thank you. That's all right. I'll, I'll, I'll be back home by Sunday night."
+      },
+      {
+        "id": "msg_0003_0037",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Awesome."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0003_0038",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "And, uh, do you recognize everything else currently pending on the card? 'Cause I wanna make sure there's no suspicious activities."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Right. Uh, let, let me take a look real quick."
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Um, so there's the airport parking and then the breakfast and then, um, the hotel. Yep. Yeah. That- that's all me."
+      },
+      {
+        "id": "msg_0003_0041",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Awesome. All right. And just one more heads up. The hotel may stay pending for a few days after checkout, depending on when it finalizes, so just for you to be aware of that."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Yeah, of course. No, uh, I get it. That's fine. I just needed to get into the room, and my card wasn't going through, so."
+      },
+      {
+        "arguments": "{\"customer_id\":\"c68e3baf-9314-4fd5-8b8f-85e747f0f9d9\",\"card_last4\":\"6148\",\"destinations\":[\"Portland, Maine\"],\"return_date\":\"2026-08-30\"}",
+        "call_id": "bt-008",
+        "name": "create_travel_notice",
+        "type": "function_call",
+        "id": "bt-008",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "bt-008",
+        "output": "\n\n{\"status\":\"created\",\"notice_id\":\"31d46fb6-e721-4a9c-b54d-6c631dbe9686\",\"authorization_guaranteed\":false}"
+      },
+      {
+        "id": "msg_0003_0043",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Understood. Understood. And the card is active, and the hotel charge is approved, and the travel notice on the account, so you should be ready to go."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, perfect. That, that's great. Uh, thank you for staying on the line and then, and helping me out. Appreciate it."
+      },
+      {
+        "id": "msg_0003_0045",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "No problem. No problem, Colin. Safe travels."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Thank you. It was, it was great talking to you. Have a good day. Bye."
+      },
+      {
+        "id": "msg_0003_0047",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Bye. You as well."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "name": "lookup_customer",
+        "description": "Find one banking customer using a stable customer identifier or verified profile attribute. At least one identifier parameter must be supplied; no parameter is individually required because different lookups legitimately use different identifiers. Precedence when multiple are supplied: account_id, then email, then full_name, with billing_zip, card_last4, and account_match used as corroborating attributes to narrow to exactly one profile.",
+        "parameters": {
+          "type": "object",
+          "description": "At least one identifier property must be supplied. Precedence: account_id, then email, then full_name; billing_zip, card_last4, and account_match narrow the match.",
+          "properties": {
+            "account_id": {
+              "type": "string",
+              "description": "Customer account identifier."
+            },
+            "full_name": {
+              "type": "string",
+              "description": "Customer full name."
+            },
+            "email": {
+              "type": "string",
+              "description": "Email on the profile.",
+              "format": "email"
+            },
+            "account_match": {
+              "type": "string",
+              "description": "Trusted calling-channel match when available.",
+              "enum": [
+                "caller_phone"
+              ]
+            },
+            "billing_zip": {
+              "type": "string",
+              "description": "Billing ZIP collected for the lookup or verification."
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits collected for the lookup or verification.",
+              "pattern": "^[0-9]{4}$"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_current_time",
+        "description": "Return the authoritative current timestamp for an audit or verification record.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "verify_customer_identity",
+        "description": "Validate supplied non-secret identity factors against the resolved profile and return a scoped verification record. Collecting or naming factors alone never establishes success.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "billing_zip": {
+              "type": "string",
+              "description": "Billing ZIP supplied by the customer."
+            },
+            "mobile_last4": {
+              "type": "string",
+              "description": "Last four digits of the registered mobile number.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four digits of the card used as a permitted verification factor.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "birth_month_day": {
+              "type": "string",
+              "description": "Customer-supplied birth month and day, without requiring the full date, as '<Month> <day>' (for example 'October 12').",
+              "pattern": "^(January|February|March|April|May|June|July|August|September|October|November|December) (0?[1-9]|[12][0-9]|3[01])$"
+            },
+            "verified_at": {
+              "type": "string",
+              "description": "Annotation-supplied observation timestamp taken from a prior get_current_time result. Informational only; the backend's own record time is authoritative, not this value.",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "start_trusted_channel_confirmation",
+        "description": "Send a purpose-bound confirmation challenge to an already trusted masked channel. The agent must not request or place the secret response in ordinary tool arguments.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "purpose": {
+              "type": "string",
+              "description": "Confirmation purpose.",
+              "enum": [
+                "email_change"
+              ]
+            },
+            "channel": {
+              "type": "string",
+              "description": "Trusted channel to use.",
+              "enum": [
+                "sms",
+                "secure_message"
+              ]
+            },
+            "verification_id": {
+              "type": "string",
+              "description": "Active identity-verification record.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "customer_id",
+            "purpose",
+            "channel",
+            "verification_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_trusted_channel_confirmation",
+        "description": "Read the current state of a purpose-bound trusted-channel challenge without receiving or exposing the secret response.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "confirmation_id": {
+              "type": "string",
+              "description": "Confirmation record returned when the challenge was started.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "customer_id",
+            "confirmation_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "update_customer_email",
+        "description": "Change the email on a verified customer profile after the required confirmation flow succeeds.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "new_email": {
+              "type": "string",
+              "description": "New customer email.",
+              "format": "email"
+            },
+            "verification_id": {
+              "type": "string",
+              "description": "Active identity-verification record.",
+              "format": "uuid"
+            },
+            "confirmation_id": {
+              "type": "string",
+              "description": "Successful trusted-channel confirmation record.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "customer_id",
+            "new_email",
+            "verification_id",
+            "confirmation_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "search_knowledge_base",
+        "description": "Search external, versioned product and process documentation that is not already included in the system policy. The backend selects the retrieval method and returns exactly one versioned record; which optional content fields are present depends on the record.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Plain-language question for external product or process documentation."
+            },
+            "as_of": {
+              "type": "string",
+              "description": "Optional authoritative date or timestamp for time-sensitive terms."
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_card_account",
+        "description": "Retrieve card status, available credit, recent authorizations, declines, restrictions, and travel notices in one account read.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "include": {
+              "type": "array",
+              "description": "Requested account sections.",
+              "items": {
+                "type": "string",
+                "description": "Account section.",
+                "enum": [
+                  "status",
+                  "available_credit",
+                  "authorizations",
+                  "declines",
+                  "restrictions",
+                  "travel_notices"
+                ]
+              },
+              "minItems": 0
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "resolve_card_restriction",
+        "description": "Remove a temporary card restriction after the customer confirms the triggering activity.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "restriction_id": {
+              "type": "string",
+              "description": "Restriction to resolve.",
+              "format": "uuid"
+            },
+            "confirmed_transaction_ids": {
+              "type": "array",
+              "description": "Transactions the customer confirmed.",
+              "items": {
+                "type": "string",
+                "description": "Transaction identifier.",
+                "format": "uuid"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "customer_id",
+            "restriction_id",
+            "confirmed_transaction_ids"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "create_travel_notice",
+        "description": "Add a travel notice without promising that every future authorization will be approved.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "destinations": {
+              "type": "array",
+              "description": "Travel destinations.",
+              "items": {
+                "type": "string",
+                "description": "City, region, or country."
+              },
+              "minItems": 1
+            },
+            "return_date": {
+              "type": "string",
+              "description": "Customer-stated return date as YYYY-MM-DD.",
+              "format": "date"
+            }
+          },
+          "required": [
+            "customer_id",
+            "destinations",
+            "return_date"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_referrals",
+        "description": "Retrieve referral invitations, offer terms, qualification state, and posting state without exposing the referred person's private transactions.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Referring customer identifier.",
+              "format": "uuid"
+            },
+            "referral_id": {
+              "type": "string",
+              "description": "Optional referral identifier.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_credit_card_transactions",
+        "description": "Retrieve candidate credit-card transactions for a verified customer using amount, descriptor, date, or card filters.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "card_last4": {
+              "type": "string",
+              "description": "Optional last four card digits.",
+              "pattern": "^[0-9]{4}$"
+            },
+            "amount": {
+              "type": "number",
+              "description": "Optional exact transaction amount.",
+              "minimum": 0
+            },
+            "descriptor_contains": {
+              "type": "string",
+              "description": "Optional descriptor text."
+            },
+            "posted_date": {
+              "type": "string",
+              "description": "Optional posted date or customer-relative date."
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "create_secure_self_service_session",
+        "description": "Issue a secure customer-controlled workflow session. Issuing a session does not submit an application or claim.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "workflow": {
+              "type": "string",
+              "description": "Self-service workflow.",
+              "enum": [
+                "card_application",
+                "referral_status",
+                "transaction_dispute"
+              ]
+            },
+            "resource_id": {
+              "type": "string",
+              "description": "Related product, referral, or transaction identifier.",
+              "format": "uuid"
+            },
+            "delivery_channels": {
+              "type": "array",
+              "description": "Authorized delivery channels.",
+              "items": {
+                "type": "string",
+                "description": "Delivery channel.",
+                "enum": [
+                  "secure_message",
+                  "email_notification"
+                ]
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "customer_id",
+            "workflow",
+            "resource_id",
+            "delivery_channels"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_secure_self_service_session",
+        "description": "Read whether an issued self-service session is open, saved, submitted, expired, or closed.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "session_id": {
+              "type": "string",
+              "description": "Self-service session identifier.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "customer_id",
+            "session_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "send_secure_notification",
+        "description": "Send a notification that points the customer to a secure in-account resource without placing a working secure link in ordinary email.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "related_resource_id": {
+              "type": "string",
+              "description": "Secure resource identifier.",
+              "format": "uuid"
+            },
+            "channel": {
+              "type": "string",
+              "description": "Notification channel.",
+              "enum": [
+                "email",
+                "sms"
+              ]
+            },
+            "template": {
+              "type": "string",
+              "description": "Approved notification template identifier."
+            }
+          },
+          "required": [
+            "customer_id",
+            "related_resource_id",
+            "channel",
+            "template"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "transfer_to_specialist",
+        "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "reason": {
+              "type": "string",
+              "description": "Why the transfer is required."
+            },
+            "summary": {
+              "type": "string",
+              "description": "Context already collected so the customer does not repeat it."
+            }
+          },
+          "required": [
+            "reason",
+            "summary"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    ],
+    "parallel_tool_calls": false
+  },
+  "event_metadata": [
+    {
+      "event_index": 1,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 0.76,
+        "end_seconds": 4.76
+      }
+    },
+    {
+      "event_index": 2,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 6.2,
+        "end_seconds": 13.62
+      }
+    },
+    {
+      "event_index": 3,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 15.54,
+        "end_seconds": 20.5
+      }
+    },
+    {
+      "event_index": 4,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 22.34,
+        "end_seconds": 23.44
+      }
+    },
+    {
+      "event_index": 5,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 24.46,
+        "end_seconds": 29.68
+      }
+    },
+    {
+      "event_index": 6,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 30.8,
+        "end_seconds": 38.74
+      }
+    },
+    {
+      "event_index": 7,
+      "kind": "function_call",
+      "call_id": "bt-001",
+      "source": "transcripts/transcript.txt",
+      "source_label": "open the customer account",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 38.9,
+      "placement_after_text": "the last four digits are six one four eight",
+      "placement_before_text": "I have the account",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          38.9,
+          39.38
+        ]
+      }
+    },
+    {
+      "event_index": 9,
+      "kind": "function_call",
+      "call_id": "bt-002",
+      "source": "transcripts/transcript.txt",
+      "source_label": "validate caller channel, billing ZIP, and card last four before account disclosure",
+      "annotation_confidence": "medium",
+      "state_effect": "identity_verified",
+      "placement_seconds": 38.95,
+      "placement_after_text": "the last four digits are six one four eight",
+      "placement_before_text": "I have the account",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          38.95,
+          39.38
+        ]
+      }
+    },
+    {
+      "event_index": 11,
+      "kind": "function_call",
+      "call_id": "bt-003",
+      "source": "transcripts/transcript.txt",
+      "source_label": "retrieve the two Harbor View Hotel attempts before reading them back",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 39.0,
+      "placement_after_text": "the last four digits are six one four eight",
+      "placement_before_text": "I have the account",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          39.0,
+          39.38
+        ]
+      }
+    },
+    {
+      "event_index": 13,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 39.38,
+        "end_seconds": 50.31
+      }
+    },
+    {
+      "event_index": 14,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 51.58,
+        "end_seconds": 57.06
+      }
+    },
+    {
+      "event_index": 15,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 57.94,
+        "end_seconds": 62.54
+      }
+    },
+    {
+      "event_index": 16,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 63.54,
+        "end_seconds": 70.22
+      }
+    },
+    {
+      "event_index": 17,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 70.3,
+        "end_seconds": 71.72
+      }
+    },
+    {
+      "event_index": 18,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 73.76,
+        "end_seconds": 75.14
+      }
+    },
+    {
+      "event_index": 19,
+      "kind": "function_call",
+      "call_id": "bt-004",
+      "source": "transcripts/transcript.txt",
+      "source_label": "review the card decline",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "placement_seconds": 75.14,
+      "placement_after_text": "Let me check the decline reason",
+      "placement_before_text": "Thanks for waiting",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          75.14,
+          83.14
+        ]
+      }
+    },
+    {
+      "event_index": 21,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 87.7,
+        "end_seconds": 101.72
+      }
+    },
+    {
+      "event_index": 22,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 102.92,
+        "end_seconds": 107.1
+      }
+    },
+    {
+      "event_index": 23,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 108.12,
+        "end_seconds": 114.64
+      }
+    },
+    {
+      "event_index": 24,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 115.47999999999999,
+        "end_seconds": 116.75999999999999
+      }
+    },
+    {
+      "event_index": 25,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 118.08,
+        "end_seconds": 122.71
+      }
+    },
+    {
+      "event_index": 26,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 124.2,
+        "end_seconds": 128.9
+      }
+    },
+    {
+      "event_index": 27,
+      "kind": "function_call",
+      "call_id": "bt-005",
+      "source": "transcripts/transcript.txt",
+      "source_label": "remove the temporary card block",
+      "annotation_confidence": "medium",
+      "state_effect": "card_restriction_removed",
+      "placement_seconds": 128.91,
+      "placement_after_text": "that was my breakfast this morning",
+      "placement_before_text": "the restriction is off now",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          128.91,
+          128.92
+        ]
+      }
+    },
+    {
+      "event_index": 29,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 128.92,
+        "end_seconds": 136.82
+      }
+    },
+    {
+      "event_index": 30,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 137.72,
+        "end_seconds": 138.64
+      }
+    },
+    {
+      "event_index": 31,
+      "kind": "function_call",
+      "call_id": "bt-006",
+      "source": "transcripts/transcript.txt",
+      "source_label": "retrieve hotel authorization-hold guidance",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 139.0,
+      "placement_after_text": "Go ahead",
+      "placement_before_text": "Your available credit is nine hundred and twelve dollars",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          139.0,
+          139.12
+        ]
+      }
+    },
+    {
+      "event_index": 33,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 139.12,
+        "end_seconds": 153.4
+      }
+    },
+    {
+      "event_index": 34,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 155.36,
+        "end_seconds": 156.82
+      }
+    },
+    {
+      "event_index": 35,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 158.18,
+        "end_seconds": 162.23
+      }
+    },
+    {
+      "event_index": 36,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 162.26,
+        "end_seconds": 167.14
+      }
+    },
+    {
+      "event_index": 37,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 167.86,
+        "end_seconds": 176.1
+      }
+    },
+    {
+      "event_index": 38,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 177.48,
+        "end_seconds": 187.52
+      }
+    },
+    {
+      "event_index": 39,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 187.88,
+        "end_seconds": 201.28
+      }
+    },
+    {
+      "event_index": 40,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 202.2,
+        "end_seconds": 205.42000000000002
+      }
+    },
+    {
+      "event_index": 41,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 205.66,
+        "end_seconds": 206.359
+      }
+    },
+    {
+      "event_index": 42,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 207.52,
+        "end_seconds": 213.36
+      }
+    },
+    {
+      "event_index": 43,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 213.8,
+        "end_seconds": 214.5
+      }
+    },
+    {
+      "event_index": 44,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 227.02,
+        "end_seconds": 230.16
+      }
+    },
+    {
+      "event_index": 45,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 231.8,
+        "end_seconds": 241.94
+      }
+    },
+    {
+      "event_index": 46,
+      "kind": "function_call",
+      "call_id": "bt-007",
+      "source": "transcripts/transcript.txt",
+      "source_label": "confirm the successful hotel authorization",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 242.2,
+      "placement_after_text": "I got the receipt. It's, it's all good now",
+      "placement_before_text": "I also see the authorization approved",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          242.2,
+          242.48
+        ]
+      }
+    },
+    {
+      "event_index": 48,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 242.48,
+        "end_seconds": 248.06
+      }
+    },
+    {
+      "event_index": 49,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 248.98,
+        "end_seconds": 260.19
+      }
+    },
+    {
+      "event_index": 50,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 260.22,
+        "end_seconds": 271.06
+      }
+    },
+    {
+      "event_index": 51,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 271.98,
+        "end_seconds": 277.4
+      }
+    },
+    {
+      "event_index": 52,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 277.88,
+        "end_seconds": 278.22
+      }
+    },
+    {
+      "event_index": 53,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 278.94,
+        "end_seconds": 284.54
+      }
+    },
+    {
+      "event_index": 54,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 285.56,
+        "end_seconds": 287.54
+      }
+    },
+    {
+      "event_index": 55,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 289.42,
+        "end_seconds": 299.55
+      }
+    },
+    {
+      "event_index": 56,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 300.08,
+        "end_seconds": 309.36
+      }
+    },
+    {
+      "event_index": 57,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 310.48,
+        "end_seconds": 315.5
+      }
+    },
+    {
+      "event_index": 58,
+      "kind": "function_call",
+      "call_id": "bt-008",
+      "source": "transcripts/transcript.txt",
+      "source_label": "add a travel notice",
+      "annotation_confidence": "medium",
+      "state_effect": "travel_notice_created",
+      "placement_seconds": 315.7,
+      "placement_after_text": "I just needed to get into the room",
+      "placement_before_text": "the travel notice on the account",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          315.7,
+          315.78
+        ]
+      }
+    },
+    {
+      "event_index": 60,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 315.78,
+        "end_seconds": 322.52
+      }
+    },
+    {
+      "event_index": 61,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 323.72,
+        "end_seconds": 329.07
+      }
+    },
+    {
+      "event_index": 62,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 329.08,
+        "end_seconds": 331.05
+      }
+    },
+    {
+      "event_index": 63,
+      "kind": "speech",
+      "speaker": "Colin",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 332.2,
+        "end_seconds": 334.94
+      }
+    },
+    {
+      "event_index": 64,
+      "kind": "speech",
+      "speaker": "Adrian",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 335.02,
+        "end_seconds": 335.88
+      }
+    }
+  ]
+}
