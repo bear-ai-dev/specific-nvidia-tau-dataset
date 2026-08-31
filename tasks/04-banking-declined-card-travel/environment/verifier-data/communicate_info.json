@@ -9,6 +9,14 @@
     "",
     "Each entry is satisfied when any one of its surface forms appears in the",
     "agent's utterances, matched case-insensitively with whitespace collapsed.",
+    "",
+    "A form that is a single number or a single word is matched on boundaries; a",
+    "form of two or more words is matched as a plain substring. That is why bare",
+    "figures like '15' are listed: '15' will find \"15 USD\", \"15.00 dollars\" and",
+    "\"a total of 15\", but will not match '$150', so an agent that quotes the wrong",
+    "amount gets no credit. Bare words are fenced for the same reason - 'two' must",
+    "not be found inside 'network'. Anchors are only ever the whole value: 'five'",
+    "is not listed for 95, since \"five business days\" would then satisfy a fee.",
     "The alternatives exist so an agent is not failed for saying 'nine hundred and",
     "twelve dollars' instead of '$912'. Every form is a distinctive multi-word",
     "phrase or a specific figure; nothing here would match an arbitrary",
@@ -28,7 +36,8 @@
         "912 dollars",
         "912 dollar",
         "nine hundred and twelve dollars",
-        "nine hundred twelve dollars"
+        "nine hundred twelve dollars",
+        "912"
       ]
     },
     {

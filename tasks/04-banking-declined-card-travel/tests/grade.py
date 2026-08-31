@@ -99,11 +99,49 @@ def read_transcript(path: str) -> tuple[str, str]:
     return normalize(" ".join(spoken)), f"{len(spoken)} assistant message{plural}"
 
 
+# A form is "bare" when it is a single number or a single word, and those are the
+# only ones matched on token boundaries. The distinction matters in both
+# directions. Bare forms need boundaries: '15' is inside '150', '62' is inside
+# '62.00', and 'two' is inside 'network', so a bare form matched as a substring
+# would credit an agent for quoting a different figure entirely. Multi-word forms
+# must NOT have them, because several are deliberate stems - '90-day' is there to
+# match "90-day window" and "90-days" alike, and a trailing boundary would break
+# exactly the flexibility the form was written for.
+BARE_FORM = re.compile(r"^[$€£]?\d[\d,.]*$|^[a-z]+$")
+
+
+def form_matcher(form: str):
+    """Return a predicate deciding whether `form` occurs in a transcript.
+
+    Numbers and words need different fences. A number must not be adjacent to
+    another digit, which stops '15' matching '$150' while still allowing '15.00'
+    and '11.8GB'; a word boundary would be wrong here, since it would reject
+    '11.8GB' for the sake of a collision that cannot happen. A word needs a real
+    word boundary, because 'two' is a substring of 'network'.
+    """
+    if not BARE_FORM.match(form):
+        return lambda text: form in text
+    if any(ch.isdigit() for ch in form):
+        # The fences accept a different way of writing the same value and reject a
+        # different value. Trailing: not another digit, so '15' misses '$150', and
+        # not a decimal carrying a non-zero, so '$62' misses '$62.09' while still
+        # finding '$62.00'. Leading: not a digit and not a digit-then-point, so
+        # '62' misses '$1.62'.
+        pattern = re.compile(
+            r"(?<!\d)(?<!\d\.)" + re.escape(form) + r"(?!\d)(?!\.\d*[1-9])"
+        )
+    else:
+        pattern = re.compile(r"\b" + re.escape(form) + r"\b")
+    return lambda text: pattern.search(text) is not None
+
+
 def check_communication(transcript: str, required: list[dict]) -> list[dict]:
     results = []
     for entry in required:
         forms = [normalize(f) for f in entry.get("any_of", []) if f.strip()]
-        matched = next((f for f in forms if f and f in transcript), None)
+        matched = next(
+            (f for f in forms if f and form_matcher(f)(transcript)), None
+        )
         results.append({
             "id": entry.get("id", "?"),
             "met": matched is not None,

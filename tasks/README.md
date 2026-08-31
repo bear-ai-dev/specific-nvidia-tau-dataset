@@ -123,6 +123,20 @@ deterministic substring matching with no LLM judge, with one improvement: each
 requirement carries alternative surface forms and any one satisfies it, so an
 agent is not failed for saying "fifteen dollars" instead of "$15".
 
+Phrase lists alone only cover the wordings somebody anticipated, so numeric facts
+also list the **bare figure**. `15` finds "15 USD", "15.00 dollars", "fifteen
+bucks" and "a total of 15" without anyone predicting each one — on a dozen
+plausible renderings of the pharmacy copay, the phrase list matched four and the
+bare figure takes it to twelve. Bare forms are fenced so they cannot credit a
+*different* figure: a number must not sit against another digit or a non-zero
+decimal, so `$15` finds `$15.00` but not `$150` or `$15.09`, and a bare word gets
+word boundaries so `two` is not found inside `network`. Multi-word forms stay
+plain substrings, because several are deliberate stems — `90-day` has to match
+"90-days". Anchors are only ever the whole value and only for a single value of
+ten or more, since `five` would otherwise let "five business days" satisfy a $95
+fee. `check_communication_matching.py` enforces this, importing the live matcher
+so it cannot drift and trying 184 wrong figures across the ten tasks.
+
 The run's speech arrives at `/workspace/transcript.txt`, which is agent-writable,
 or at `$AGENT_TRANSCRIPT` if a harness puts it elsewhere. Plain text is read
 whole; a JSON message list is accepted too, in which case only assistant-role
@@ -242,8 +256,13 @@ KEEP_IMAGES=1 ./verify_all.sh    # keep the images afterwards
 ./check_containment.sh           # agent cannot reach the answers
 ./check_read_freedom.sh          # looking at things cannot lower a score
 ./audit_read_sensitivity.py      # no assertion pins a read-advanced column
+./check_communication_matching.py  # no required fact accepts a wrong figure
 ./report_seed_volume.sh          # exact row counts, read from each database
 ```
+
+Only the first three need Docker. `audit_read_sensitivity.py` and
+`check_communication_matching.py` read the task files directly and finish in about
+a second, so there is no reason not to run them on every change.
 
 `verify_all.sh` runs three gates per task: conformance, the oracle graded (must be
 1.0), and an idle container graded (must be 0.0).

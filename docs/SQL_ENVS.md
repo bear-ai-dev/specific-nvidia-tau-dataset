@@ -514,13 +514,54 @@ each required fact carries alternative surface forms and any one satisfies it:
 ```json
 {"required": [
   {"id": "copay",
-   "any_of": ["$15", "15 dollars", "fifteen dollars"],
+   "any_of": ["$15", "15 dollars", "fifteen dollars", "15", "fifteen"],
    "why": "the caller must be told what he will pay at the counter"}]}
 ```
 
 This stays deterministic and needs no LLM judge, while not failing an agent for
 saying "fifteen dollars" instead of "$15". Matching is case-insensitive with
 collapsed whitespace.
+
+### Bare figures, and the fences that make them safe
+
+Enumerating whole phrases is not enough on its own, because a phrase list only
+covers the orderings somebody thought of. Listing `$15`, `15 dollars` and
+`fifteen dollars` still misses `15 USD`, `15.00 dollars`, `fifteen bucks`, a
+`fifteen-dollar copay` and "a total of 15" — five natural ways to say the same
+thing. Measured on a dozen plausible renderings of the pharmacy copay, the phrase
+list alone matched four; that is a false-negative rate the agent cannot see and
+cannot avoid, and `instruction.md` explicitly invites it to "say these in your own
+words", so failing it for words nobody enumerated breaks a promise the task makes.
+
+The fix is to also list the **bare figure**, which collapses the whole family into
+one entry. `15` finds every phrasing above regardless of the unit word or its
+position. The same twelve renderings then all match.
+
+A bare form cannot be matched as a plain substring, though, because `15` is inside
+`$150`, `62` is inside `1.62`, and `two` is inside `network`. Crediting an agent
+for quoting a *different* figure is far worse than missing a phrasing, so bare
+forms are fenced while multi-word forms stay plain substrings:
+
+| Form shape | Matched as | Reason |
+|---|---|---|
+| single number, e.g. `15`, `$62`, `11.8` | not adjacent to another digit, and not followed by a decimal carrying a non-zero | `$15` finds `$15.00` but not `$150` or `$15.09` |
+| single word, e.g. `fifteen` | word boundaries | `two` must not be found inside `network` |
+| two or more words, e.g. `90-day`, `too soon` | plain substring | several are deliberate stems: `90-day` has to find "90-days" |
+
+Two rules govern when a bare figure may be added at all, and both exist because a
+loose anchor silently credits a wrong answer. **It must be the whole value, never
+a fragment** — `fifteen` is the number 15, but `five` is a piece of "ninety-five"
+and would let "five business days" satisfy a $95 annual fee. **It must be a single
+value of ten or more** — `40,000 points` keeps its unit word because a bare
+`40000` could be dollars, and `2` is too common in prose to carry a fact alone.
+Seven of the nineteen numeric requirements therefore have no bare figure, by
+design rather than oversight, and `check_communication_matching.py` lists them.
+
+That script is the guard. It imports the real matcher out of `tests/grade.py`
+rather than reimplementing it, so it cannot drift from what is actually scored,
+and it tries deliberately wrong figures against every numeric requirement in
+every task — 184 of them at present, none accepted. It runs in under a second and
+needs no Docker.
 
 The agent's speech arrives at `/workspace/transcript.txt`, which is
 agent-writable, or at `$AGENT_TRANSCRIPT` when a harness puts it elsewhere. Plain
