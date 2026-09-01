@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.4.0",
+  "schema_version": "0.5.0",
   "trajectory_id": 1,
   "conversation_id": "banking-referral-missing-reward",
   "domain": "banking",
@@ -1277,6 +1277,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 0.0,
@@ -1289,6 +1290,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 1.72,
@@ -1301,6 +1303,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 15.46,
@@ -1313,6 +1316,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 23.1,
@@ -1325,6 +1329,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 32.2,
@@ -1337,6 +1342,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 36.64,
@@ -1349,6 +1355,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 43.04,
@@ -1403,6 +1410,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 57.14,
@@ -1415,6 +1423,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 62.12,
@@ -1427,6 +1436,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 70.3,
@@ -1439,6 +1449,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 78.84,
@@ -1451,6 +1462,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 85.24,
@@ -1463,6 +1475,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 94.92,
@@ -1475,6 +1488,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 98.38,
@@ -1487,6 +1501,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 106.74000000000001,
@@ -1520,6 +1535,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 130.98,
@@ -1532,6 +1548,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 135.12,
@@ -1544,6 +1561,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 142.84,
@@ -1577,6 +1595,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 147.5,
@@ -1589,6 +1608,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 152.38,
@@ -1601,6 +1621,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 158.44,
@@ -1613,6 +1634,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 165.14,
@@ -1625,6 +1647,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 177.64,
@@ -1658,6 +1681,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 198.44,
@@ -1670,6 +1694,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 207.82,
@@ -1682,6 +1707,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 214.12,
@@ -1694,6 +1720,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 223.62,
@@ -1706,6 +1733,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 228.48,
@@ -1739,6 +1767,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 241.3,
@@ -1751,6 +1780,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 249.9,
@@ -1763,6 +1793,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 253.7,
@@ -1775,6 +1806,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 265.72,
@@ -1808,6 +1840,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 277.74,
@@ -1820,6 +1853,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 281.98,
@@ -1832,6 +1866,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 285.9,
@@ -1844,6 +1879,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 292.5,
@@ -1856,6 +1892,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 303.98,
@@ -1868,6 +1905,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 306.8,
@@ -1880,6 +1918,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 315.84,
@@ -1913,6 +1952,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 320.88,
@@ -1925,6 +1965,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 334.65999999999997,
@@ -1937,6 +1978,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 338.44,
@@ -1949,6 +1991,14 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "paralinguistic",
+          "label": "lip_smack",
+          "source": "inline_transcript",
+          "source_text": "[lip smack]"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 344.24,
@@ -1961,6 +2011,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 355.62,
@@ -1973,6 +2024,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 370.53,
@@ -2006,6 +2058,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 379.99,
@@ -2018,6 +2071,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 394.87,
@@ -2030,6 +2084,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 397.47,
@@ -2042,6 +2097,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 401.47,
@@ -2054,6 +2110,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 410.83,
@@ -2066,6 +2123,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 416.67,
@@ -2078,6 +2136,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 419.88,
@@ -2090,6 +2149,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 427.31,
@@ -2102,6 +2162,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 434.21,
@@ -2114,6 +2175,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 438.99,
@@ -2126,6 +2188,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 449.01,
@@ -2138,6 +2201,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 452.77,
@@ -2150,6 +2214,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 466.67,
@@ -2162,6 +2227,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 469.17,
@@ -2174,6 +2240,7 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 475.97,
@@ -2186,6 +2253,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 483.07,
@@ -2198,6 +2266,7 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 494.73,

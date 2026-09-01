@@ -153,6 +153,57 @@ The [audio manifest](audio_manifest.json) contains the exact audited sample
 rate, bit depth, duration, channel count, and spectral measurements for every
 file.
 
+## 7. Emotion and paralinguistic annotations
+
+Every timestamped speech event in each `annotated-transcript.json` now has an
+`event_metadata[].annotations` array. Explicit parenthetical emotion labels
+from the verbatim transcript are stored with `type: "emotion"`; audible event
+labels such as `[laughs]`, `[sighs]`, and `[lip smack]` are stored separately
+with `type: "paralinguistic"`. Empty arrays mean that the source transcript did
+not explicitly label that speech event; they do not mean the emotion was
+neutral.
+
+For example:
+
+```json
+{
+  "event_index": 65,
+  "kind": "speech",
+  "speaker": "Ethan",
+  "role": "user",
+  "source": "transcripts/transcript.txt",
+  "annotations": [
+    {
+      "type": "emotion",
+      "label": "relieved",
+      "source": "inline_transcript",
+      "source_text": "(relieved)"
+    },
+    {
+      "type": "paralinguistic",
+      "label": "laughs",
+      "source": "inline_transcript",
+      "source_text": "[laughs]"
+    }
+  ],
+  "audio_reference": {
+    "path": "audio/full.wav",
+    "start_seconds": 442.86,
+    "end_seconds": 454.38
+  }
+}
+```
+
+The [`emotion_distribution.json`](emotion_distribution.json) file reports the
+total speech-turn denominator, category counts, role breakdowns, and
+per-conversation counts. It is derived only from explicit inline labels; no
+emotion is inferred from ordinary dialogue wording.
+
+The `annotations` arrays nested inside Responses API `output_text` content
+retain their standard output-text meaning and are not repurposed. Dataset-level
+emotion annotations live in `event_metadata`, which covers both customer and
+agent speech without changing the chronological Responses payload.
+
 ## Known behavioral exception
 
 In `banking-account-email-card-application` the enacted agent asks the

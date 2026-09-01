@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.4.0",
+  "schema_version": "0.5.0",
   "trajectory_id": 8,
   "conversation_id": "airline-family-reservation",
   "domain": "airline",
@@ -1278,6 +1278,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 1.64,
@@ -1290,6 +1291,14 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "paralinguistic",
+          "label": "laughs",
+          "source": "inline_transcript",
+          "source_text": "[laughs]"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 8.38,
@@ -1302,6 +1311,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 13.762,
@@ -1314,6 +1324,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 16.56,
@@ -1326,6 +1337,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 17.34,
@@ -1338,6 +1350,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 19.66,
@@ -1350,6 +1363,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 34.28,
@@ -1362,6 +1376,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 46.84,
@@ -1374,6 +1389,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 47.5,
@@ -1386,6 +1402,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 50.16,
@@ -1398,6 +1415,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 53.34,
@@ -1410,6 +1428,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 54.48,
@@ -1443,6 +1462,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 61.28,
@@ -1455,6 +1475,14 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "paralinguistic",
+          "label": "laughs",
+          "source": "inline_transcript",
+          "source_text": "[laughs]"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 75.99,
@@ -1489,6 +1517,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 93.5,
@@ -1501,6 +1530,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 111.56,
@@ -1513,6 +1543,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 117.08,
@@ -1525,6 +1556,14 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "paralinguistic",
+          "label": "laughs",
+          "source": "inline_transcript",
+          "source_text": "[laughs]"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 127.46,
@@ -1537,6 +1576,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 132.1,
@@ -1570,6 +1610,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 139.38,
@@ -1582,6 +1623,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 148.82,
@@ -1616,6 +1658,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 161.42000000000002,
@@ -1628,6 +1671,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 166.64,
@@ -1640,6 +1684,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 168.42000000000002,
@@ -1674,6 +1719,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 193.58,
@@ -1686,6 +1732,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 204.32,
@@ -1698,6 +1745,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 229.86,
@@ -1710,6 +1758,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 233.24,
@@ -1722,6 +1771,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 240.98,
@@ -1734,6 +1784,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 245.64,
@@ -1746,6 +1797,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 245.86,
@@ -1758,6 +1810,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 247.4,
@@ -1770,6 +1823,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 249.9,
@@ -1782,6 +1836,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 255.34,
@@ -1794,6 +1849,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 258.31,
@@ -1806,6 +1862,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 270.32,
@@ -1818,6 +1875,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 275.76,
@@ -1830,6 +1888,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 284.42,
@@ -1842,6 +1901,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 292.02,
@@ -1854,6 +1914,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 305.38,
@@ -1909,6 +1970,14 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "paralinguistic",
+          "label": "sighs",
+          "source": "inline_transcript",
+          "source_text": "[sighs]"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 307.72,
@@ -1921,6 +1990,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 316.18,
@@ -1933,6 +2003,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 319.98,
@@ -1945,6 +2016,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 331.56,
@@ -1957,6 +2029,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 342.52,
@@ -1969,6 +2042,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 344.2,
@@ -2024,6 +2098,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 346.7,
@@ -2036,6 +2111,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 370.21,
@@ -2048,6 +2124,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 377.39,
@@ -2060,6 +2137,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 378.63,
@@ -2072,6 +2150,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 381.43,
@@ -2084,6 +2163,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 391.43,
@@ -2096,6 +2176,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 393.43,
@@ -2108,6 +2189,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 406.77,
@@ -2120,6 +2202,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 413.61,
@@ -2132,6 +2215,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 425.71,
@@ -2144,6 +2228,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 439.73,
@@ -2156,6 +2241,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 459.97,
@@ -2168,6 +2254,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 463.17,
@@ -2180,6 +2267,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 479.35,
@@ -2192,6 +2280,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 484.33,
@@ -2204,6 +2293,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 488.49,
@@ -2216,6 +2306,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 494.83,
@@ -2228,6 +2319,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 498.829,
@@ -2240,6 +2332,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 503.57,
@@ -2252,6 +2345,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 517.15,
@@ -2264,6 +2358,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 520.97,
@@ -2276,6 +2371,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 529.87,
@@ -2288,6 +2384,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 533.47,
@@ -2300,6 +2397,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 548.73,
@@ -2312,6 +2410,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 551.01,
@@ -2324,6 +2423,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 563.85,
@@ -2336,6 +2436,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 572.35,
@@ -2348,6 +2449,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 577.41,
@@ -2360,6 +2462,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 587.87,
@@ -2372,6 +2475,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 592.49,
@@ -2384,6 +2488,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 617.85,
@@ -2396,6 +2501,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 620.75,
@@ -2408,6 +2514,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 636.55,
@@ -2420,6 +2527,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 641.59,
@@ -2432,6 +2540,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 645.84,
@@ -2444,6 +2553,7 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 650.01,
@@ -2456,6 +2566,7 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 658.71,

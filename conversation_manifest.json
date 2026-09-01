@@ -1,5 +1,6 @@
 {
-  "schema_version": "0.5.0",
+  "schema_version": "0.6.0",
+  "emotion_distribution_file": "emotion_distribution.json",
   "conversations": [
     {
       "trajectory_id": 0,

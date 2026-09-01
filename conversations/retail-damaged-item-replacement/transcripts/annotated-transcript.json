@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.4.0",
+  "schema_version": "0.5.0",
   "trajectory_id": 6,
   "conversation_id": "retail-damaged-item-replacement",
   "domain": "retail",
@@ -965,6 +965,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 0.94,
@@ -977,6 +978,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 6.08,
@@ -989,6 +991,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 14.3,
@@ -1001,6 +1004,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 20.62,
@@ -1013,6 +1017,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 31.66,
@@ -1025,6 +1030,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 39.0,
@@ -1037,6 +1043,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 45.44,
@@ -1049,6 +1056,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 48.26,
@@ -1061,6 +1069,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 62.28,
@@ -1094,6 +1103,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 72.64,
@@ -1106,6 +1116,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 79.12,
@@ -1118,6 +1129,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 82.82,
@@ -1130,6 +1142,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 93.75999999999999,
@@ -1142,6 +1155,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 100.32,
@@ -1154,6 +1168,14 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "apologetic",
+          "source": "inline_transcript",
+          "source_text": "(apologetic)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 107.58,
@@ -1166,6 +1188,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 117.24000000000001,
@@ -1199,6 +1222,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 125.32,
@@ -1211,6 +1235,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 136.4,
@@ -1223,6 +1248,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 139.14,
@@ -1256,6 +1282,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 153.74,
@@ -1268,6 +1295,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 163.549,
@@ -1280,6 +1308,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 170.9,
@@ -1292,6 +1321,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 178.14,
@@ -1304,6 +1334,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 190.06,
@@ -1316,6 +1347,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 198.04,
@@ -1349,6 +1381,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 211.2,
@@ -1361,6 +1394,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 214.34,
@@ -1373,6 +1407,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 226.38,
@@ -1385,6 +1420,14 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "worried",
+          "source": "inline_transcript",
+          "source_text": "(worried)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 236.78,
@@ -1397,6 +1440,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 244.78,
@@ -1409,6 +1453,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 259.3,
@@ -1421,6 +1466,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 265.94,
@@ -1433,6 +1479,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 275.68,
@@ -1445,6 +1492,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 283.36,
@@ -1457,6 +1505,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 297.28,
@@ -1469,6 +1518,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 305.96,
@@ -1481,6 +1531,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 315.94,
@@ -1493,6 +1544,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 323.64,
@@ -1505,6 +1557,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 337.18,
@@ -1517,6 +1570,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 347.18,
@@ -1529,6 +1583,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 359.18,
@@ -1541,6 +1596,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 365.22,
@@ -1553,6 +1609,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 368.74,
@@ -1586,6 +1643,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 372.3,
@@ -1598,6 +1656,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 379.92,
@@ -1610,6 +1669,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 389.42,
@@ -1622,6 +1682,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 397.14,
@@ -1676,6 +1737,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 411.78,
@@ -1688,6 +1750,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 427.66,
@@ -1700,6 +1763,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 433.74,
@@ -1712,6 +1776,20 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "relieved",
+          "source": "inline_transcript",
+          "source_text": "(relieved)"
+        },
+        {
+          "type": "paralinguistic",
+          "label": "laughs",
+          "source": "inline_transcript",
+          "source_text": "[laughs]"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 442.86,
@@ -1724,6 +1802,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 455.34000000000003,
@@ -1736,6 +1815,14 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "paralinguistic",
+          "label": "laughs",
+          "source": "inline_transcript",
+          "source_text": "[laughs]"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 467.34000000000003,
@@ -1748,6 +1835,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 472.4,
@@ -1760,6 +1848,7 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 474.62,

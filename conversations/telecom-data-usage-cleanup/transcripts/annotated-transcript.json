@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.4.0",
+  "schema_version": "0.5.0",
   "trajectory_id": 9,
   "conversation_id": "telecom-data-usage-cleanup",
   "domain": "telecom",
@@ -1070,6 +1070,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 1.26,
@@ -1082,6 +1083,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 8.12,
@@ -1094,6 +1096,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 19.98,
@@ -1106,6 +1109,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 30.22,
@@ -1118,6 +1122,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 43.28,
@@ -1130,6 +1135,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 48.5,
@@ -1142,6 +1148,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 61.64,
@@ -1217,6 +1224,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 74.04,
@@ -1229,6 +1237,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 84.82,
@@ -1241,6 +1250,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 96.16,
@@ -1253,6 +1263,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 102.16,
@@ -1286,6 +1297,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 106.68,
@@ -1298,6 +1310,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 115.34,
@@ -1310,6 +1323,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 126.1,
@@ -1322,6 +1336,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 133.82,
@@ -1334,6 +1349,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 134.3,
@@ -1346,6 +1362,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 143.5,
@@ -1358,6 +1375,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 167.12,
@@ -1370,6 +1388,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 174.2,
@@ -1382,6 +1401,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 185.88,
@@ -1394,6 +1414,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 193.37,
@@ -1406,6 +1427,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 204.8,
@@ -1418,6 +1440,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 219.14,
@@ -1430,6 +1453,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 230.68,
@@ -1442,6 +1466,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 238.24,
@@ -1454,6 +1479,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 239.04,
@@ -1466,6 +1492,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 244.32,
@@ -1499,6 +1526,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 252.22,
@@ -1511,6 +1539,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 255.74,
@@ -1523,6 +1552,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 256.06,
@@ -1556,6 +1586,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 265.44,
@@ -1568,6 +1599,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 277.15999999999997,
@@ -1601,6 +1633,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 287.64,
@@ -1613,6 +1646,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 306.22,
@@ -1625,6 +1659,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 316.85,
@@ -1637,6 +1672,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 319.54,
@@ -1649,6 +1685,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 332.94,
@@ -1661,6 +1698,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 337.14,
@@ -1673,6 +1711,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 342.9,
@@ -1685,6 +1724,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 343.23,
@@ -1697,6 +1737,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 350.38,
@@ -1709,6 +1750,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 360.86,
@@ -1721,6 +1763,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 365.168,
@@ -1733,6 +1776,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 378.70799999999997,
@@ -1745,6 +1789,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 390.788,
@@ -1757,6 +1802,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 391.74,
@@ -1769,6 +1815,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 393.308,
@@ -1781,6 +1828,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 399.98,
@@ -1793,6 +1841,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 400.238,
@@ -1805,6 +1854,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 402.928,
@@ -1817,6 +1867,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 409.348,
@@ -1829,6 +1880,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 416.788,
@@ -1841,6 +1893,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 417.108,
@@ -1853,6 +1906,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 423.508,
@@ -1865,6 +1919,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 435.228,
@@ -1877,6 +1932,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 446.628,
@@ -1889,6 +1945,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 451.668,
@@ -1922,6 +1979,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 457.79,
@@ -1934,6 +1992,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 469.348,
@@ -1946,6 +2005,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 479.648,
@@ -1958,6 +2018,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 485.488,
@@ -1970,6 +2031,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 485.788,
@@ -1982,6 +2044,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 492.028,
@@ -1994,6 +2057,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 508.748,
@@ -2006,6 +2070,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 518.708,
@@ -2018,6 +2083,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 518.878,
@@ -2030,6 +2096,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 522.048,
@@ -2042,6 +2109,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 540.668,
@@ -2054,6 +2122,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 545.2,
@@ -2066,6 +2135,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 545.818,
@@ -2078,6 +2148,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 557.4,
@@ -2090,6 +2161,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 558.008,
@@ -2102,6 +2174,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 563.988,
@@ -2114,6 +2187,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 581.248,
@@ -2126,6 +2200,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 593.548,
@@ -2138,6 +2213,7 @@
       "speaker": "Jonathan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 606.168,
@@ -2150,6 +2226,7 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 610.968,
