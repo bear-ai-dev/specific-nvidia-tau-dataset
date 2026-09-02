@@ -1588,7 +1588,7 @@
       "source_label": "open the scoped current-bill sections after the agent says so",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 260,
+      "placement_seconds": 260.0,
       "placement_after_text": "open the current bill now",
       "placement_before_text": "no overage charge just yet",
       "audio_reference": {
@@ -1596,7 +1596,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          260,
+          260.0,
           265.48
         ]
       }
@@ -2187,7 +2187,7 @@
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 557.4,
-        "end_seconds": 558
+        "end_seconds": 558.0
       }
     },
     {

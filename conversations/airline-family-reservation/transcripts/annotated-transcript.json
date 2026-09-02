@@ -1906,7 +1906,7 @@
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 284.42,
-        "end_seconds": 290
+        "end_seconds": 290.0
       }
     },
     {
@@ -1952,7 +1952,7 @@
         "end_seconds": null,
         "inferred_window_seconds": [
           305.8,
-          306
+          306.0
         ]
       },
       "placement_note": "Window capped at the get_customer_profile placement (306.0) because that call consumes this verification_id."
@@ -1965,7 +1965,7 @@
       "source_label": "calling tool to retrieve the customer profile and reservations",
       "annotation_confidence": "high",
       "state_effect": "read_only",
-      "placement_seconds": 306,
+      "placement_seconds": 306.0,
       "placement_after_text": "travel certificate for $200",
       "placement_before_text": "I found your profile",
       "audio_reference": {
@@ -1973,7 +1973,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          306,
+          306.0,
           307.72
         ]
       }

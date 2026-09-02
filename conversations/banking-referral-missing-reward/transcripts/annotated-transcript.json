@@ -1280,7 +1280,7 @@
       "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 0,
+        "start_seconds": 0.0,
         "end_seconds": 0.541
       }
     },
@@ -1398,7 +1398,7 @@
       "source_label": "retrieve the current time for verification records",
       "annotation_confidence": "high",
       "state_effect": "read_only",
-      "placement_seconds": 57,
+      "placement_seconds": 57.0,
       "placement_after_text": null,
       "placement_before_text": null,
       "audio_reference": {
@@ -1406,7 +1406,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          57,
+          57.0,
           57.14
         ]
       }
@@ -1583,7 +1583,7 @@
       "source_label": "retrieve referrals created by the customer",
       "annotation_confidence": "high",
       "state_effect": "read_only",
-      "placement_seconds": 145,
+      "placement_seconds": 145.0,
       "placement_after_text": null,
       "placement_before_text": null,
       "audio_reference": {
@@ -1591,7 +1591,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          145,
+          145.0,
           147.5
         ]
       }
@@ -1762,7 +1762,7 @@
       "source_label": "confirm the referral offer and deadline",
       "annotation_confidence": "high",
       "state_effect": "read_only",
-      "placement_seconds": 231,
+      "placement_seconds": 231.0,
       "placement_after_text": null,
       "placement_before_text": null,
       "audio_reference": {
@@ -1770,8 +1770,8 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          231,
-          239
+          231.0,
+          239.0
         ]
       }
     },
@@ -1947,7 +1947,7 @@
       "source_label": "customer asks for email notification; agent says Done",
       "annotation_confidence": "medium",
       "state_effect": "notification_sent",
-      "placement_seconds": 318,
+      "placement_seconds": 318.0,
       "placement_after_text": "Okay, do that",
       "placement_before_text": "Done. All right. To recap",
       "audio_reference": {
@@ -1955,7 +1955,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          318,
+          318.0,
           320.88
         ]
       }

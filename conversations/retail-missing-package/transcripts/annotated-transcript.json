@@ -950,7 +950,7 @@
       "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 0,
+        "start_seconds": 0.0,
         "end_seconds": 4.04
       }
     },
@@ -1053,7 +1053,7 @@
       "source_label": "open the order record",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 55,
+      "placement_seconds": 55.0,
       "placement_after_text": "I'm going to kind of take a look",
       "placement_before_text": "The carrier scan says delivered yesterday",
       "audio_reference": {
@@ -1061,8 +1061,8 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          55,
-          63
+          55.0,
+          63.0
         ]
       }
     },
@@ -1482,7 +1482,7 @@
       "source_label": "agent records pickup preference",
       "annotation_confidence": "medium",
       "state_effect": "case_preference_added",
-      "placement_seconds": 346,
+      "placement_seconds": 346.0,
       "placement_after_text": "add that as one of your preferences",
       "placement_before_text": "I have now added that as a preference",
       "audio_reference": {
@@ -1490,7 +1490,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          346,
+          346.0,
           349.44
         ]
       }
@@ -1607,7 +1607,7 @@
       "source_label": "send the delivery-trace email after customer approval",
       "annotation_confidence": "medium",
       "state_effect": "notification_sent",
-      "placement_seconds": 435,
+      "placement_seconds": 435.0,
       "placement_after_text": "That sounds good",
       "placement_before_text": "I checked it",
       "audio_reference": {
@@ -1615,7 +1615,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          435,
+          435.0,
           439.704
         ]
       }

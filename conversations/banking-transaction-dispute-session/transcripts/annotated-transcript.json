@@ -1561,7 +1561,7 @@
       "source_label": "review the unauthorized-transaction procedure",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 185,
+      "placement_seconds": 185.0,
       "placement_after_text": "While she checks, I'll review the bank's current unauthorized transaction procedure",
       "placement_before_text": "The policy says to review household and digital wallet activity",
       "audio_reference": {
@@ -1569,7 +1569,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          185,
+          185.0,
           187.64
         ]
       }

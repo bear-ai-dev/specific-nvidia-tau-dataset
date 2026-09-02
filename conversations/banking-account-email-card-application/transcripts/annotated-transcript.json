@@ -1604,7 +1604,7 @@
       "source_label": "send a trusted-channel confirmation challenge before the agent says it was sent",
       "annotation_confidence": "medium",
       "state_effect": "confirmation_challenge_sent",
-      "placement_seconds": 204,
+      "placement_seconds": 204.0,
       "placement_after_text": "I'm working on adding this as an additional email",
       "placement_before_text": "I just sent you a verification code",
       "audio_reference": {
@@ -1612,7 +1612,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          204,
+          204.0,
           205.72
         ]
       }
@@ -2057,7 +2057,7 @@
       "source_label": "retrieve decision-notice and underwriting guidance",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 422,
+      "placement_seconds": 422.0,
       "placement_after_text": "If I get denied, will you know why",
       "placement_before_text": "the decision notice usually explains",
       "audio_reference": {
@@ -2065,7 +2065,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          422,
+          422.0,
           422.29
         ]
       }
@@ -2156,7 +2156,7 @@
       "source_label": "retrieve application housing-payment field guidance",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 489,
+      "placement_seconds": 489.0,
       "placement_after_text": "Is that monthly rent or the amount I split with my roommate",
       "placement_before_text": "the amount you personally are responsible for",
       "audio_reference": {
@@ -2164,7 +2164,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          489,
+          489.0,
           489.11
         ]
       }
@@ -2250,7 +2250,7 @@
       "source_label": "review whether the application session can be saved and resumed",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 535,
+      "placement_seconds": 535.0,
       "placement_after_text": "Can I save it",
       "placement_before_text": "the secure tool offers save and continue later",
       "audio_reference": {
@@ -2258,7 +2258,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          535,
+          535.0,
           535.19
         ]
       }
