@@ -2,7 +2,7 @@
   "schema_version": "1.1.0",
   "dataset_schema_version": "0.6.0",
   "annotation_location": "conversations/<conversation-id>/transcripts/annotated-transcript.json#/event_metadata/*/annotations",
-  "source": "Explicit parenthetical labels from ten human-annotated combined transcripts supplied separately; no emotions inferred from dialogue wording.",
+  "source": "Explicit parenthetical labels from ten human-annotated combined transcripts supplied separately.",
   "turn_definition": "One event_metadata entry with kind=speech. Function calls and function outputs are excluded.",
   "newly_supplied_emotion_annotations": {
     "conversations": 10,
