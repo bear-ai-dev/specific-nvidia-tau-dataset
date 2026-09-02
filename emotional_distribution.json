@@ -1,0 +1,407 @@
+{
+  "schema_version": "1.1.0",
+  "dataset_schema_version": "0.6.0",
+  "annotation_location": "conversations/<conversation-id>/transcripts/annotated-transcript.json#/event_metadata/*/annotations",
+  "source": "Explicit parenthetical labels from ten human-annotated combined transcripts supplied separately.",
+  "turn_definition": "One event_metadata entry with kind=speech. Function calls and function outputs are excluded.",
+  "newly_supplied_emotion_annotations": {
+    "conversations": 10,
+    "turns": 50,
+    "distinct_categories": 16,
+    "by_role": {
+      "user": 41,
+      "agent": 9
+    },
+    "categories": {
+      "relieved": 11,
+      "concerned": 10,
+      "apologetic": 4,
+      "confused": 4,
+      "frustrated": 4,
+      "reassuring": 4,
+      "worried": 3,
+      "curious": 2,
+      "alarmed": 1,
+      "annoyed": 1,
+      "appreciative": 1,
+      "embarrassed": 1,
+      "hopeful": 1,
+      "hurried": 1,
+      "reassured": 1,
+      "surprised": 1
+    }
+  },
+  "totals": {
+    "conversations": 10,
+    "speech_turns": 606,
+    "by_role": {
+      "user": 275,
+      "agent": 331
+    },
+    "turns_with_emotion_label": 50,
+    "turns_without_emotion_label": 556,
+    "turns_with_paralinguistic_label": 8,
+    "turns_with_any_annotation": 56,
+    "annotation_objects": 58
+  },
+  "emotion_categories": [
+    {
+      "label": "alarmed",
+      "turn_count": 1,
+      "share_of_speech_turns_percent": 0.165,
+      "by_role": {
+        "user": 1,
+        "agent": 0
+      }
+    },
+    {
+      "label": "annoyed",
+      "turn_count": 1,
+      "share_of_speech_turns_percent": 0.165,
+      "by_role": {
+        "user": 1,
+        "agent": 0
+      }
+    },
+    {
+      "label": "apologetic",
+      "turn_count": 4,
+      "share_of_speech_turns_percent": 0.6601,
+      "by_role": {
+        "user": 0,
+        "agent": 4
+      }
+    },
+    {
+      "label": "appreciative",
+      "turn_count": 1,
+      "share_of_speech_turns_percent": 0.165,
+      "by_role": {
+        "user": 1,
+        "agent": 0
+      }
+    },
+    {
+      "label": "concerned",
+      "turn_count": 10,
+      "share_of_speech_turns_percent": 1.6502,
+      "by_role": {
+        "user": 10,
+        "agent": 0
+      }
+    },
+    {
+      "label": "confused",
+      "turn_count": 4,
+      "share_of_speech_turns_percent": 0.6601,
+      "by_role": {
+        "user": 4,
+        "agent": 0
+      }
+    },
+    {
+      "label": "curious",
+      "turn_count": 2,
+      "share_of_speech_turns_percent": 0.33,
+      "by_role": {
+        "user": 1,
+        "agent": 1
+      }
+    },
+    {
+      "label": "embarrassed",
+      "turn_count": 1,
+      "share_of_speech_turns_percent": 0.165,
+      "by_role": {
+        "user": 1,
+        "agent": 0
+      }
+    },
+    {
+      "label": "frustrated",
+      "turn_count": 4,
+      "share_of_speech_turns_percent": 0.6601,
+      "by_role": {
+        "user": 4,
+        "agent": 0
+      }
+    },
+    {
+      "label": "hopeful",
+      "turn_count": 1,
+      "share_of_speech_turns_percent": 0.165,
+      "by_role": {
+        "user": 1,
+        "agent": 0
+      }
+    },
+    {
+      "label": "hurried",
+      "turn_count": 1,
+      "share_of_speech_turns_percent": 0.165,
+      "by_role": {
+        "user": 1,
+        "agent": 0
+      }
+    },
+    {
+      "label": "reassured",
+      "turn_count": 1,
+      "share_of_speech_turns_percent": 0.165,
+      "by_role": {
+        "user": 1,
+        "agent": 0
+      }
+    },
+    {
+      "label": "reassuring",
+      "turn_count": 4,
+      "share_of_speech_turns_percent": 0.6601,
+      "by_role": {
+        "user": 0,
+        "agent": 4
+      }
+    },
+    {
+      "label": "relieved",
+      "turn_count": 11,
+      "share_of_speech_turns_percent": 1.8152,
+      "by_role": {
+        "user": 11,
+        "agent": 0
+      }
+    },
+    {
+      "label": "surprised",
+      "turn_count": 1,
+      "share_of_speech_turns_percent": 0.165,
+      "by_role": {
+        "user": 1,
+        "agent": 0
+      }
+    },
+    {
+      "label": "worried",
+      "turn_count": 3,
+      "share_of_speech_turns_percent": 0.495,
+      "by_role": {
+        "user": 3,
+        "agent": 0
+      }
+    }
+  ],
+  "paralinguistic_categories": [
+    {
+      "label": "laughs",
+      "turn_count": 6,
+      "share_of_speech_turns_percent": 0.9901,
+      "by_role": {
+        "user": 5,
+        "agent": 1
+      }
+    },
+    {
+      "label": "lip_smack",
+      "turn_count": 1,
+      "share_of_speech_turns_percent": 0.165,
+      "by_role": {
+        "user": 1,
+        "agent": 0
+      }
+    },
+    {
+      "label": "sighs",
+      "turn_count": 1,
+      "share_of_speech_turns_percent": 0.165,
+      "by_role": {
+        "user": 0,
+        "agent": 1
+      }
+    }
+  ],
+  "per_conversation": [
+    {
+      "conversation_id": "airline-family-reservation",
+      "speech_turns": 83,
+      "user_turns": 39,
+      "agent_turns": 44,
+      "turns_with_emotion_label": 4,
+      "turns_without_emotion_label": 79,
+      "turns_with_paralinguistic_label": 4,
+      "turns_with_any_annotation": 8,
+      "emotion_categories": {
+        "concerned": 1,
+        "confused": 1,
+        "reassuring": 1,
+        "relieved": 1
+      },
+      "paralinguistic_categories": {
+        "laughs": 3,
+        "sighs": 1
+      }
+    },
+    {
+      "conversation_id": "banking-account-email-card-application",
+      "speech_turns": 61,
+      "user_turns": 27,
+      "agent_turns": 34,
+      "turns_with_emotion_label": 3,
+      "turns_without_emotion_label": 58,
+      "turns_with_paralinguistic_label": 0,
+      "turns_with_any_annotation": 3,
+      "emotion_categories": {
+        "frustrated": 1,
+        "relieved": 1,
+        "worried": 1
+      },
+      "paralinguistic_categories": {}
+    },
+    {
+      "conversation_id": "banking-declined-card-travel",
+      "speech_turns": 48,
+      "user_turns": 23,
+      "agent_turns": 25,
+      "turns_with_emotion_label": 5,
+      "turns_without_emotion_label": 43,
+      "turns_with_paralinguistic_label": 0,
+      "turns_with_any_annotation": 5,
+      "emotion_categories": {
+        "concerned": 2,
+        "confused": 1,
+        "hurried": 1,
+        "relieved": 1
+      },
+      "paralinguistic_categories": {}
+    },
+    {
+      "conversation_id": "banking-referral-missing-reward",
+      "speech_turns": 62,
+      "user_turns": 25,
+      "agent_turns": 37,
+      "turns_with_emotion_label": 5,
+      "turns_without_emotion_label": 57,
+      "turns_with_paralinguistic_label": 1,
+      "turns_with_any_annotation": 6,
+      "emotion_categories": {
+        "annoyed": 1,
+        "frustrated": 1,
+        "reassuring": 1,
+        "relieved": 1,
+        "worried": 1
+      },
+      "paralinguistic_categories": {
+        "lip_smack": 1
+      }
+    },
+    {
+      "conversation_id": "banking-transaction-dispute-session",
+      "speech_turns": 61,
+      "user_turns": 26,
+      "agent_turns": 35,
+      "turns_with_emotion_label": 5,
+      "turns_without_emotion_label": 56,
+      "turns_with_paralinguistic_label": 1,
+      "turns_with_any_annotation": 5,
+      "emotion_categories": {
+        "concerned": 1,
+        "embarrassed": 1,
+        "reassuring": 1,
+        "relieved": 1,
+        "worried": 1
+      },
+      "paralinguistic_categories": {
+        "laughs": 1
+      }
+    },
+    {
+      "conversation_id": "pharmacy-travel-refill",
+      "speech_turns": 46,
+      "user_turns": 20,
+      "agent_turns": 26,
+      "turns_with_emotion_label": 4,
+      "turns_without_emotion_label": 42,
+      "turns_with_paralinguistic_label": 0,
+      "turns_with_any_annotation": 4,
+      "emotion_categories": {
+        "concerned": 1,
+        "confused": 1,
+        "reassuring": 1,
+        "relieved": 1
+      },
+      "paralinguistic_categories": {}
+    },
+    {
+      "conversation_id": "retail-damaged-item-replacement",
+      "speech_turns": 55,
+      "user_turns": 24,
+      "agent_turns": 31,
+      "turns_with_emotion_label": 10,
+      "turns_without_emotion_label": 45,
+      "turns_with_paralinguistic_label": 2,
+      "turns_with_any_annotation": 11,
+      "emotion_categories": {
+        "apologetic": 2,
+        "concerned": 2,
+        "confused": 1,
+        "curious": 2,
+        "relieved": 3
+      },
+      "paralinguistic_categories": {
+        "laughs": 2
+      }
+    },
+    {
+      "conversation_id": "retail-missing-package",
+      "speech_turns": 55,
+      "user_turns": 26,
+      "agent_turns": 29,
+      "turns_with_emotion_label": 4,
+      "turns_without_emotion_label": 51,
+      "turns_with_paralinguistic_label": 0,
+      "turns_with_any_annotation": 4,
+      "emotion_categories": {
+        "apologetic": 1,
+        "concerned": 1,
+        "hopeful": 1,
+        "relieved": 1
+      },
+      "paralinguistic_categories": {}
+    },
+    {
+      "conversation_id": "retail-refund-bank-fee",
+      "speech_turns": 58,
+      "user_turns": 27,
+      "agent_turns": 31,
+      "turns_with_emotion_label": 4,
+      "turns_without_emotion_label": 54,
+      "turns_with_paralinguistic_label": 0,
+      "turns_with_any_annotation": 4,
+      "emotion_categories": {
+        "apologetic": 1,
+        "concerned": 1,
+        "frustrated": 1,
+        "reassured": 1
+      },
+      "paralinguistic_categories": {}
+    },
+    {
+      "conversation_id": "telecom-data-usage-cleanup",
+      "speech_turns": 77,
+      "user_turns": 38,
+      "agent_turns": 39,
+      "turns_with_emotion_label": 6,
+      "turns_without_emotion_label": 71,
+      "turns_with_paralinguistic_label": 0,
+      "turns_with_any_annotation": 6,
+      "emotion_categories": {
+        "alarmed": 1,
+        "appreciative": 1,
+        "concerned": 1,
+        "frustrated": 1,
+        "relieved": 1,
+        "surprised": 1
+      },
+      "paralinguistic_categories": {}
+    }
+  ]
+}

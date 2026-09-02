@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.4.0",
+  "schema_version": "0.5.0",
   "trajectory_id": 0,
   "conversation_id": "banking-account-email-card-application",
   "domain": "banking",
@@ -1324,6 +1324,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 0.16,
@@ -1336,6 +1337,14 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "frustrated",
+          "source": "human_annotated_transcript",
+          "source_text": "(frustrated)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 7.74,
@@ -1348,6 +1357,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 26.28,
@@ -1360,6 +1370,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 41.2,
@@ -1372,6 +1383,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 53.9,
@@ -1384,6 +1396,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 58.1,
@@ -1396,6 +1409,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 65.86,
@@ -1429,6 +1443,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 70.2,
@@ -1441,6 +1456,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 77.76,
@@ -1453,6 +1469,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 88.22,
@@ -1507,6 +1524,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 92.82,
@@ -1519,6 +1537,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 119.12,
@@ -1531,6 +1550,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 124.68,
@@ -1543,6 +1563,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 133.42,
@@ -1555,6 +1576,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 147.48,
@@ -1567,6 +1589,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 149.07999999999998,
@@ -1600,6 +1623,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 205.72,
@@ -1612,6 +1636,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 212.94,
@@ -1624,6 +1649,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 216.27,
@@ -1678,6 +1704,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 220.22,
@@ -1690,6 +1717,14 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "relieved",
+          "source": "human_annotated_transcript",
+          "source_text": "(relieved)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 229.57999999999998,
@@ -1702,6 +1737,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 233.07999999999998,
@@ -1714,6 +1750,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 241.08,
@@ -1726,6 +1763,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 255.5,
@@ -1759,6 +1797,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 292.36,
@@ -1771,6 +1810,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 315.75,
@@ -1783,6 +1823,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 319.62,
@@ -1816,6 +1857,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 326.78,
@@ -1828,6 +1870,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 338.98,
@@ -1840,6 +1883,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 343.76,
@@ -1873,6 +1917,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 350.72,
@@ -1885,6 +1930,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 372.13,
@@ -1897,6 +1943,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 376.95,
@@ -1909,6 +1956,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 387.37,
@@ -1921,6 +1969,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 394.03,
@@ -1954,6 +2003,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 404.1,
@@ -1966,6 +2016,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 406.97,
@@ -1978,6 +2029,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 415.29,
@@ -1990,6 +2042,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 419.28,
@@ -2023,6 +2076,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 422.29,
@@ -2035,6 +2089,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 438.11,
@@ -2047,6 +2102,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 442.17,
@@ -2059,6 +2115,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 465.88,
@@ -2071,6 +2128,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 469.69,
@@ -2083,6 +2141,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 478.90999999999997,
@@ -2116,6 +2175,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 489.11,
@@ -2128,6 +2188,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 502.49,
@@ -2161,6 +2222,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 509.55,
@@ -2173,6 +2235,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 529.98,
@@ -2206,6 +2269,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 535.19,
@@ -2218,6 +2282,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 539.73,
@@ -2230,6 +2295,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 546.03,
@@ -2242,6 +2308,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 553.13,
@@ -2254,6 +2321,14 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "worried",
+          "source": "human_annotated_transcript",
+          "source_text": "(worried)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 568.912,
@@ -2266,6 +2341,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 573.11,
@@ -2278,6 +2354,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 582.85,
@@ -2311,6 +2388,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 588.41,
@@ -2323,6 +2401,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 607.37,
@@ -2335,6 +2414,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 613.51,
@@ -2347,6 +2427,7 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 622.81,
@@ -2359,6 +2440,7 @@
       "speaker": "Maya",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 625.19,

@@ -153,6 +153,60 @@ The [audio manifest](audio_manifest.json) contains the exact audited sample
 rate, bit depth, duration, channel count, and spectral measurements for every
 file.
 
+## 7. Emotion and paralinguistic annotations
+
+Every timestamped speech event in each `annotated-transcript.json` now has an
+`event_metadata[].annotations` array. Explicit parenthetical labels from the
+human-annotated transcript source are stored with `type: "emotion"`; audible
+event labels such as `[laughs]`, `[sighs]`, and `[lip smack]` are stored
+separately with `type: "paralinguistic"`. Empty arrays mean that no supplied
+source explicitly labeled that speech event; they do not mean the emotion was
+neutral.
+
+For example:
+
+```json
+{
+  "event_index": 65,
+  "kind": "speech",
+  "speaker": "Ethan",
+  "role": "user",
+  "source": "transcripts/transcript.txt",
+  "annotations": [
+    {
+      "type": "emotion",
+      "label": "relieved",
+      "source": "human_annotated_transcript",
+      "source_text": "(relieved)"
+    },
+    {
+      "type": "paralinguistic",
+      "label": "laughs",
+      "source": "inline_transcript",
+      "source_text": "[laughs]"
+    }
+  ],
+  "audio_reference": {
+    "path": "audio/full.wav",
+    "start_seconds": 442.86,
+    "end_seconds": 454.38
+  }
+}
+```
+
+The [`emotional_distribution.json`](emotional_distribution.json) file reports the
+total speech-turn denominator, category counts, role breakdowns, and
+per-conversation counts. The ten supplied human-annotated combined transcripts
+cover every conversation and contribute 50 emotion-labeled turns across 16
+categories: 41 user turns and 9 agent turns. The remaining 556 of 606 speech
+turns have no supplied emotion label. All counts use only explicit labels; no
+emotion is inferred from ordinary dialogue wording.
+
+The `annotations` arrays nested inside Responses API `output_text` content
+retain their standard output-text meaning and are not repurposed. Dataset-level
+emotion annotations live in `event_metadata`, which covers both customer and
+agent speech without changing the chronological Responses payload.
+
 ## Known behavioral exception
 
 In `banking-account-email-card-application` the enacted agent asks the

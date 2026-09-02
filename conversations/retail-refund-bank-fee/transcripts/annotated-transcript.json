@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.4.0",
+  "schema_version": "0.5.0",
   "trajectory_id": 5,
   "conversation_id": "retail-refund-bank-fee",
   "domain": "retail",
@@ -977,6 +977,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 0.0,
@@ -989,6 +990,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 3.72,
@@ -1001,6 +1003,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 14.14,
@@ -1013,6 +1016,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 20.7,
@@ -1025,6 +1029,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 27.5,
@@ -1037,6 +1042,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 33.32,
@@ -1049,6 +1055,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 40.12,
@@ -1061,6 +1068,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 47.82,
@@ -1073,6 +1081,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 52.36,
@@ -1106,6 +1115,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 57.32,
@@ -1118,6 +1128,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 67.54,
@@ -1130,6 +1141,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 81.14,
@@ -1142,6 +1154,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 88.03999999999999,
@@ -1154,6 +1167,14 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "concerned",
+          "source": "human_annotated_transcript",
+          "source_text": "(concerned)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 103.36,
@@ -1166,6 +1187,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 119.53999999999999,
@@ -1178,6 +1200,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 132.48,
@@ -1190,6 +1213,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 139.42000000000002,
@@ -1223,6 +1247,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 151.68,
@@ -1235,6 +1260,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 152.97,
@@ -1247,6 +1273,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 171.16,
@@ -1259,6 +1286,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 193.38,
@@ -1271,6 +1299,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 202.8,
@@ -1283,6 +1312,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 218.96,
@@ -1295,6 +1325,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 220.92000000000002,
@@ -1307,6 +1338,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 234.5,
@@ -1319,6 +1351,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 255.28,
@@ -1331,6 +1364,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 262.419,
@@ -1343,6 +1377,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 269.12,
@@ -1355,6 +1390,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 291.08,
@@ -1367,6 +1403,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 294.42,
@@ -1379,6 +1416,14 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "frustrated",
+          "source": "human_annotated_transcript",
+          "source_text": "(frustrated)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 313.14,
@@ -1391,6 +1436,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 323.4,
@@ -1403,6 +1449,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 340.82,
@@ -1415,6 +1462,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 345.1,
@@ -1427,6 +1475,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 366.06,
@@ -1439,6 +1488,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 372.78,
@@ -1451,6 +1501,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 393.1,
@@ -1463,6 +1514,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 400.94,
@@ -1496,6 +1548,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 409.1,
@@ -1508,6 +1561,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 418.15999999999997,
@@ -1520,6 +1574,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 424.08,
@@ -1574,6 +1629,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 427.7,
@@ -1586,6 +1642,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 452.8,
@@ -1598,6 +1655,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 454.72,
@@ -1631,6 +1689,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 470.34000000000003,
@@ -1643,6 +1702,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 479.26,
@@ -1655,6 +1715,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 497.06,
@@ -1667,6 +1728,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 506.58,
@@ -1700,6 +1762,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 528.34,
@@ -1712,6 +1775,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 531.86,
@@ -1724,6 +1788,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 549.22,
@@ -1736,6 +1801,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 553.4,
@@ -1748,6 +1814,14 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "reassured",
+          "source": "human_annotated_transcript",
+          "source_text": "(reassured)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 562.84,
@@ -1760,6 +1834,14 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "apologetic",
+          "source": "human_annotated_transcript",
+          "source_text": "(apologetic)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 569.76,
@@ -1772,6 +1854,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 582.24,
@@ -1784,6 +1867,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 584.68,
@@ -1796,6 +1880,7 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 592.28,
@@ -1808,6 +1893,7 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
+      "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 593.94,
