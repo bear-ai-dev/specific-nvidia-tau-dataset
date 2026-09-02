@@ -176,7 +176,7 @@ For example:
     {
       "type": "emotion",
       "label": "relieved",
-      "source": "inline_transcript",
+      "source": "human_annotated_transcript",
       "source_text": "(relieved)"
     },
     {
@@ -196,12 +196,11 @@ For example:
 
 The [`emotional_distribution.json`](emotional_distribution.json) file reports the
 total speech-turn denominator, category counts, role breakdowns, and
-per-conversation counts. The eight newly supplied human-annotated combined
-transcripts contribute 35 emotion-labeled turns across 14 categories. Including
-the five labels already present in the other two repository transcripts, the
-full sample contains 40 emotion-labeled turns out of 606 speech turns. All
-counts use only explicit labels; no emotion is inferred from ordinary dialogue
-wording.
+per-conversation counts. The ten supplied human-annotated combined transcripts
+cover every conversation and contribute 50 emotion-labeled turns across 16
+categories: 41 user turns and 9 agent turns. The remaining 556 of 606 speech
+turns have no supplied emotion label. All counts use only explicit labels; no
+emotion is inferred from ordinary dialogue wording.
 
 The `annotations` arrays nested inside Responses API `output_text` content
 retain their standard output-text meaning and are not repurposed. Dataset-level

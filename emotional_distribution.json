@@ -2,29 +2,31 @@
   "schema_version": "1.1.0",
   "dataset_schema_version": "0.6.0",
   "annotation_location": "conversations/<conversation-id>/transcripts/annotated-transcript.json#/event_metadata/*/annotations",
-  "source": "Explicit parenthetical labels from eight human-annotated combined transcripts supplied separately, plus explicit inline labels in two repository transcripts; no emotions inferred from dialogue wording.",
+  "source": "Explicit parenthetical labels from ten human-annotated combined transcripts supplied separately; no emotions inferred from dialogue wording.",
   "turn_definition": "One event_metadata entry with kind=speech. Function calls and function outputs are excluded.",
   "newly_supplied_emotion_annotations": {
-    "conversations": 8,
-    "turns": 35,
-    "distinct_categories": 14,
+    "conversations": 10,
+    "turns": 50,
+    "distinct_categories": 16,
     "by_role": {
-      "user": 29,
-      "agent": 6
+      "user": 41,
+      "agent": 9
     },
     "categories": {
-      "relieved": 7,
-      "concerned": 6,
+      "relieved": 11,
+      "concerned": 10,
+      "apologetic": 4,
+      "confused": 4,
       "frustrated": 4,
       "reassuring": 4,
       "worried": 3,
-      "apologetic": 2,
-      "confused": 2,
+      "curious": 2,
       "alarmed": 1,
       "annoyed": 1,
       "appreciative": 1,
       "embarrassed": 1,
       "hopeful": 1,
+      "hurried": 1,
       "reassured": 1,
       "surprised": 1
     }
@@ -36,11 +38,11 @@
       "user": 275,
       "agent": 331
     },
-    "turns_with_emotion_label": 40,
-    "turns_without_emotion_label": 566,
+    "turns_with_emotion_label": 50,
+    "turns_without_emotion_label": 556,
     "turns_with_paralinguistic_label": 8,
-    "turns_with_any_annotation": 46,
-    "annotation_objects": 48
+    "turns_with_any_annotation": 56,
+    "annotation_objects": 58
   },
   "emotion_categories": [
     {
@@ -63,11 +65,11 @@
     },
     {
       "label": "apologetic",
-      "turn_count": 3,
-      "share_of_speech_turns_percent": 0.495,
+      "turn_count": 4,
+      "share_of_speech_turns_percent": 0.6601,
       "by_role": {
         "user": 0,
-        "agent": 3
+        "agent": 4
       }
     },
     {
@@ -81,20 +83,29 @@
     },
     {
       "label": "concerned",
-      "turn_count": 7,
-      "share_of_speech_turns_percent": 1.1551,
+      "turn_count": 10,
+      "share_of_speech_turns_percent": 1.6502,
       "by_role": {
-        "user": 7,
+        "user": 10,
         "agent": 0
       }
     },
     {
       "label": "confused",
+      "turn_count": 4,
+      "share_of_speech_turns_percent": 0.6601,
+      "by_role": {
+        "user": 4,
+        "agent": 0
+      }
+    },
+    {
+      "label": "curious",
       "turn_count": 2,
       "share_of_speech_turns_percent": 0.33,
       "by_role": {
-        "user": 2,
-        "agent": 0
+        "user": 1,
+        "agent": 1
       }
     },
     {
@@ -125,6 +136,15 @@
       }
     },
     {
+      "label": "hurried",
+      "turn_count": 1,
+      "share_of_speech_turns_percent": 0.165,
+      "by_role": {
+        "user": 1,
+        "agent": 0
+      }
+    },
+    {
       "label": "reassured",
       "turn_count": 1,
       "share_of_speech_turns_percent": 0.165,
@@ -144,10 +164,10 @@
     },
     {
       "label": "relieved",
-      "turn_count": 9,
-      "share_of_speech_turns_percent": 1.4851,
+      "turn_count": 11,
+      "share_of_speech_turns_percent": 1.8152,
       "by_role": {
-        "user": 9,
+        "user": 11,
         "agent": 0
       }
     },
@@ -162,10 +182,10 @@
     },
     {
       "label": "worried",
-      "turn_count": 4,
-      "share_of_speech_turns_percent": 0.6601,
+      "turn_count": 3,
+      "share_of_speech_turns_percent": 0.495,
       "by_role": {
-        "user": 4,
+        "user": 3,
         "agent": 0
       }
     }
@@ -241,12 +261,14 @@
       "speech_turns": 48,
       "user_turns": 23,
       "agent_turns": 25,
-      "turns_with_emotion_label": 2,
-      "turns_without_emotion_label": 46,
+      "turns_with_emotion_label": 5,
+      "turns_without_emotion_label": 43,
       "turns_with_paralinguistic_label": 0,
-      "turns_with_any_annotation": 2,
+      "turns_with_any_annotation": 5,
       "emotion_categories": {
-        "concerned": 1,
+        "concerned": 2,
+        "confused": 1,
+        "hurried": 1,
         "relieved": 1
       },
       "paralinguistic_categories": {}
@@ -313,14 +335,16 @@
       "speech_turns": 55,
       "user_turns": 24,
       "agent_turns": 31,
-      "turns_with_emotion_label": 3,
-      "turns_without_emotion_label": 52,
+      "turns_with_emotion_label": 10,
+      "turns_without_emotion_label": 45,
       "turns_with_paralinguistic_label": 2,
-      "turns_with_any_annotation": 4,
+      "turns_with_any_annotation": 11,
       "emotion_categories": {
-        "apologetic": 1,
-        "relieved": 1,
-        "worried": 1
+        "apologetic": 2,
+        "concerned": 2,
+        "confused": 1,
+        "curious": 2,
+        "relieved": 3
       },
       "paralinguistic_categories": {
         "laughs": 2

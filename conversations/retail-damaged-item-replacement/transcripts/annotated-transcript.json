@@ -991,7 +991,14 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "curious",
+          "source": "human_annotated_transcript",
+          "source_text": "(curious)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 14.3,
@@ -1155,7 +1162,14 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "confused",
+          "source": "human_annotated_transcript",
+          "source_text": "(confused)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 100.32,
@@ -1172,7 +1186,7 @@
         {
           "type": "emotion",
           "label": "apologetic",
-          "source": "inline_transcript",
+          "source": "human_annotated_transcript",
           "source_text": "(apologetic)"
         }
       ],
@@ -1188,7 +1202,14 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "concerned",
+          "source": "human_annotated_transcript",
+          "source_text": "(concerned)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 117.24000000000001,
@@ -1308,7 +1329,14 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "relieved",
+          "source": "human_annotated_transcript",
+          "source_text": "(relieved)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 170.9,
@@ -1394,7 +1422,14 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "concerned",
+          "source": "human_annotated_transcript",
+          "source_text": "(concerned)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 214.34,
@@ -1423,9 +1458,9 @@
       "annotations": [
         {
           "type": "emotion",
-          "label": "worried",
-          "source": "inline_transcript",
-          "source_text": "(worried)"
+          "label": "relieved",
+          "source": "human_annotated_transcript",
+          "source_text": "(relieved)"
         }
       ],
       "audio_reference": {
@@ -1682,7 +1717,14 @@
       "speaker": "Ethan",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "curious",
+          "source": "human_annotated_transcript",
+          "source_text": "(curious)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 397.14,
@@ -1780,7 +1822,7 @@
         {
           "type": "emotion",
           "label": "relieved",
-          "source": "inline_transcript",
+          "source": "human_annotated_transcript",
           "source_text": "(relieved)"
         },
         {
@@ -1802,7 +1844,14 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "apologetic",
+          "source": "human_annotated_transcript",
+          "source_text": "(apologetic)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 455.34000000000003,
