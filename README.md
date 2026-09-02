@@ -156,11 +156,11 @@ file.
 ## 7. Emotion and paralinguistic annotations
 
 Every timestamped speech event in each `annotated-transcript.json` now has an
-`event_metadata[].annotations` array. Explicit parenthetical emotion labels
-from the verbatim transcript are stored with `type: "emotion"`; audible event
-labels such as `[laughs]`, `[sighs]`, and `[lip smack]` are stored separately
-with `type: "paralinguistic"`. Empty arrays mean that the source transcript did
-not explicitly label that speech event; they do not mean the emotion was
+`event_metadata[].annotations` array. Explicit parenthetical labels from the
+human-annotated transcript source are stored with `type: "emotion"`; audible
+event labels such as `[laughs]`, `[sighs]`, and `[lip smack]` are stored
+separately with `type: "paralinguistic"`. Empty arrays mean that no supplied
+source explicitly labeled that speech event; they do not mean the emotion was
 neutral.
 
 For example:
@@ -194,10 +194,14 @@ For example:
 }
 ```
 
-The [`emotion_distribution.json`](emotion_distribution.json) file reports the
+The [`emotional_distribution.json`](emotional_distribution.json) file reports the
 total speech-turn denominator, category counts, role breakdowns, and
-per-conversation counts. It is derived only from explicit inline labels; no
-emotion is inferred from ordinary dialogue wording.
+per-conversation counts. The eight newly supplied human-annotated combined
+transcripts contribute 35 emotion-labeled turns across 14 categories. Including
+the five labels already present in the other two repository transcripts, the
+full sample contains 40 emotion-labeled turns out of 606 speech turns. All
+counts use only explicit labels; no emotion is inferred from ordinary dialogue
+wording.
 
 The `annotations` arrays nested inside Responses API `output_text` content
 retain their standard output-text meaning and are not repurposed. Dataset-level

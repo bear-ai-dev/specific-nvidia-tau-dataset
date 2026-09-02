@@ -1350,7 +1350,14 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "confused",
+          "source": "human_annotated_transcript",
+          "source_text": "(confused)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 19.66,
@@ -1363,7 +1370,14 @@
       "speaker": "Jordan",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "reassuring",
+          "source": "human_annotated_transcript",
+          "source_text": "(reassuring)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 34.28,
@@ -1892,7 +1906,7 @@
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 284.42,
-        "end_seconds": 290.0
+        "end_seconds": 290
       }
     },
     {
@@ -1938,7 +1952,7 @@
         "end_seconds": null,
         "inferred_window_seconds": [
           305.8,
-          306.0
+          306
         ]
       },
       "placement_note": "Window capped at the get_customer_profile placement (306.0) because that call consumes this verification_id."
@@ -1951,7 +1965,7 @@
       "source_label": "calling tool to retrieve the customer profile and reservations",
       "annotation_confidence": "high",
       "state_effect": "read_only",
-      "placement_seconds": 306.0,
+      "placement_seconds": 306,
       "placement_after_text": "travel certificate for $200",
       "placement_before_text": "I found your profile",
       "audio_reference": {
@@ -1959,7 +1973,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          306.0,
+          306,
           307.72
         ]
       }
@@ -2215,7 +2229,14 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "concerned",
+          "source": "human_annotated_transcript",
+          "source_text": "(concerned)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 425.71,
@@ -2488,7 +2509,14 @@
       "speaker": "Linda",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "relieved",
+          "source": "human_annotated_transcript",
+          "source_text": "(relieved)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 617.85,

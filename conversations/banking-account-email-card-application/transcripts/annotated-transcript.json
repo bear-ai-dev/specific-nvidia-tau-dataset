@@ -1337,7 +1337,14 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "frustrated",
+          "source": "human_annotated_transcript",
+          "source_text": "(frustrated)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 7.74,
@@ -1597,7 +1604,7 @@
       "source_label": "send a trusted-channel confirmation challenge before the agent says it was sent",
       "annotation_confidence": "medium",
       "state_effect": "confirmation_challenge_sent",
-      "placement_seconds": 204.0,
+      "placement_seconds": 204,
       "placement_after_text": "I'm working on adding this as an additional email",
       "placement_before_text": "I just sent you a verification code",
       "audio_reference": {
@@ -1605,7 +1612,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          204.0,
+          204,
           205.72
         ]
       }
@@ -1710,7 +1717,14 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "relieved",
+          "source": "human_annotated_transcript",
+          "source_text": "(relieved)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 229.57999999999998,
@@ -2043,7 +2057,7 @@
       "source_label": "retrieve decision-notice and underwriting guidance",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 422.0,
+      "placement_seconds": 422,
       "placement_after_text": "If I get denied, will you know why",
       "placement_before_text": "the decision notice usually explains",
       "audio_reference": {
@@ -2051,7 +2065,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          422.0,
+          422,
           422.29
         ]
       }
@@ -2142,7 +2156,7 @@
       "source_label": "retrieve application housing-payment field guidance",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 489.0,
+      "placement_seconds": 489,
       "placement_after_text": "Is that monthly rent or the amount I split with my roommate",
       "placement_before_text": "the amount you personally are responsible for",
       "audio_reference": {
@@ -2150,7 +2164,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          489.0,
+          489,
           489.11
         ]
       }
@@ -2236,7 +2250,7 @@
       "source_label": "review whether the application session can be saved and resumed",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 535.0,
+      "placement_seconds": 535,
       "placement_after_text": "Can I save it",
       "placement_before_text": "the secure tool offers save and continue later",
       "audio_reference": {
@@ -2244,7 +2258,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          535.0,
+          535,
           535.19
         ]
       }
@@ -2307,7 +2321,14 @@
       "speaker": "Johnny",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "worried",
+          "source": "human_annotated_transcript",
+          "source_text": "(worried)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 568.912,

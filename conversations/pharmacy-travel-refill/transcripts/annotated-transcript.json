@@ -857,7 +857,7 @@
       "source_label": "patient lookup implied before prescription retrieval",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 24.0,
+      "placement_seconds": 24,
       "placement_after_text": "Miles Carter. June 14th, uh, 1988",
       "placement_before_text": "Thank you",
       "audio_reference": {
@@ -865,7 +865,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          24.0,
+          24,
           24.64
         ]
       }
@@ -962,7 +962,14 @@
       "speaker": "Miles",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "confused",
+          "source": "human_annotated_transcript",
+          "source_text": "(confused)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 52.18,
@@ -1027,7 +1034,14 @@
       "speaker": "Miles",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "concerned",
+          "source": "human_annotated_transcript",
+          "source_text": "(concerned)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 99.78999999999999,
@@ -1298,7 +1312,14 @@
       "speaker": "Miles",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "relieved",
+          "source": "human_annotated_transcript",
+          "source_text": "(relieved)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 255.74,
@@ -1339,7 +1360,7 @@
       "source_label": "search nearby Oak Street locations with counters open after 19:00",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 278.0,
+      "placement_seconds": 278,
       "placement_after_text": "is it later",
       "placement_before_text": "The Park Avenue store closes at 9:00",
       "audio_reference": {
@@ -1347,7 +1368,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          278.0,
+          278,
           279.66
         ]
       }
@@ -1491,7 +1512,14 @@
       "speaker": "Aaron",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "reassuring",
+          "source": "human_annotated_transcript",
+          "source_text": "(reassuring)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 328.68,
@@ -1547,7 +1575,7 @@
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 348.06,
-        "end_seconds": 349.0
+        "end_seconds": 349
       }
     },
     {
@@ -1559,7 +1587,7 @@
       "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 349.0,
+        "start_seconds": 349,
         "end_seconds": 349.32
       }
     }

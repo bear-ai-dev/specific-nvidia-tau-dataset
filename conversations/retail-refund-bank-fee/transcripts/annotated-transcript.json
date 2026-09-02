@@ -980,7 +980,7 @@
       "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 0.0,
+        "start_seconds": 0,
         "end_seconds": 2.5
       }
     },
@@ -1167,7 +1167,14 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "concerned",
+          "source": "human_annotated_transcript",
+          "source_text": "(concerned)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 103.36,
@@ -1409,7 +1416,14 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "frustrated",
+          "source": "human_annotated_transcript",
+          "source_text": "(frustrated)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 313.14,
@@ -1515,7 +1529,7 @@
       "source_label": "check the refunded gift-card balance",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 406.0,
+      "placement_seconds": 406,
       "placement_after_text": "Let me just check that balance for you",
       "placement_before_text": "the digital gift card have forty dollars available",
       "audio_reference": {
@@ -1523,7 +1537,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          406.0,
+          406,
           409.1
         ]
       }
@@ -1575,7 +1589,7 @@
       "source_label": "open a refund payment trace",
       "annotation_confidence": "medium",
       "state_effect": "refund_trace_opened",
-      "placement_seconds": 426.0,
+      "placement_seconds": 426,
       "placement_after_text": "It has not been used",
       "placement_before_text": "I've kind of opened up the payment trace",
       "audio_reference": {
@@ -1583,7 +1597,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          426.0,
+          426,
           427.7
         ]
       }
@@ -1656,7 +1670,7 @@
       "source_label": "send the requested refund-trace confirmation email",
       "annotation_confidence": "medium",
       "state_effect": "notification_sent",
-      "placement_seconds": 469.0,
+      "placement_seconds": 469,
       "placement_after_text": "potential expected response window",
       "placement_before_text": "I see it",
       "audio_reference": {
@@ -1664,7 +1678,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          469.0,
+          469,
           470.34
         ]
       }
@@ -1800,7 +1814,14 @@
       "speaker": "Teddy",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "reassured",
+          "source": "human_annotated_transcript",
+          "source_text": "(reassured)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 562.84,
@@ -1813,7 +1834,14 @@
       "speaker": "Daniel",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "apologetic",
+          "source": "human_annotated_transcript",
+          "source_text": "(apologetic)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 569.76,

@@ -1242,7 +1242,14 @@
       "speaker": "Justin",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "concerned",
+          "source": "human_annotated_transcript",
+          "source_text": "(concerned)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 6.36,
@@ -1554,7 +1561,7 @@
       "source_label": "review the unauthorized-transaction procedure",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 185.0,
+      "placement_seconds": 185,
       "placement_after_text": "While she checks, I'll review the bank's current unauthorized transaction procedure",
       "placement_before_text": "The policy says to review household and digital wallet activity",
       "audio_reference": {
@@ -1562,7 +1569,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          185.0,
+          185,
           187.64
         ]
       }
@@ -1888,7 +1895,14 @@
       "speaker": "Justin",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "embarrassed",
+          "source": "human_annotated_transcript",
+          "source_text": "(embarrassed)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 363.85,
@@ -1907,6 +1921,12 @@
           "label": "laughs",
           "source": "inline_transcript",
           "source_text": "[laughs]"
+        },
+        {
+          "type": "emotion",
+          "label": "reassuring",
+          "source": "human_annotated_transcript",
+          "source_text": "(reassuring)"
         }
       ],
       "audio_reference": {
@@ -1973,7 +1993,14 @@
       "speaker": "Justin",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "worried",
+          "source": "human_annotated_transcript",
+          "source_text": "(worried)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 413.23,
@@ -2098,7 +2125,14 @@
       "speaker": "Justin",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "relieved",
+          "source": "human_annotated_transcript",
+          "source_text": "(relieved)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 464.61,

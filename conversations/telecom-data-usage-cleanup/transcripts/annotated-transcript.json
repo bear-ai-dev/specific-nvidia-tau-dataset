@@ -1083,7 +1083,14 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "concerned",
+          "source": "human_annotated_transcript",
+          "source_text": "(concerned)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 8.12,
@@ -1310,7 +1317,14 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "alarmed",
+          "source": "human_annotated_transcript",
+          "source_text": "(alarmed)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 115.34,
@@ -1414,7 +1428,14 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "surprised",
+          "source": "human_annotated_transcript",
+          "source_text": "(surprised)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 193.37,
@@ -1567,7 +1588,7 @@
       "source_label": "open the scoped current-bill sections after the agent says so",
       "annotation_confidence": "medium",
       "state_effect": "read_only",
-      "placement_seconds": 260.0,
+      "placement_seconds": 260,
       "placement_after_text": "open the current bill now",
       "placement_before_text": "no overage charge just yet",
       "audio_reference": {
@@ -1575,7 +1596,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          260.0,
+          260,
           265.48
         ]
       }
@@ -1646,7 +1667,14 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "frustrated",
+          "source": "human_annotated_transcript",
+          "source_text": "(frustrated)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 306.22,
@@ -2096,7 +2124,14 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "relieved",
+          "source": "human_annotated_transcript",
+          "source_text": "(relieved)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 522.048,
@@ -2152,7 +2187,7 @@
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 557.4,
-        "end_seconds": 558.0
+        "end_seconds": 558
       }
     },
     {
@@ -2200,7 +2235,14 @@
       "speaker": "Ben",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "appreciative",
+          "source": "human_annotated_transcript",
+          "source_text": "(appreciative)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 593.548,

@@ -1280,7 +1280,7 @@
       "annotations": [],
       "audio_reference": {
         "path": "audio/full.wav",
-        "start_seconds": 0.0,
+        "start_seconds": 0,
         "end_seconds": 0.541
       }
     },
@@ -1290,7 +1290,14 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "annoyed",
+          "source": "human_annotated_transcript",
+          "source_text": "(annoyed)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 1.72,
@@ -1391,7 +1398,7 @@
       "source_label": "retrieve the current time for verification records",
       "annotation_confidence": "high",
       "state_effect": "read_only",
-      "placement_seconds": 57.0,
+      "placement_seconds": 57,
       "placement_after_text": null,
       "placement_before_text": null,
       "audio_reference": {
@@ -1399,7 +1406,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          57.0,
+          57,
           57.14
         ]
       }
@@ -1576,7 +1583,7 @@
       "source_label": "retrieve referrals created by the customer",
       "annotation_confidence": "high",
       "state_effect": "read_only",
-      "placement_seconds": 145.0,
+      "placement_seconds": 145,
       "placement_after_text": null,
       "placement_before_text": null,
       "audio_reference": {
@@ -1584,7 +1591,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          145.0,
+          145,
           147.5
         ]
       }
@@ -1694,7 +1701,14 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "frustrated",
+          "source": "human_annotated_transcript",
+          "source_text": "(frustrated)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 207.82,
@@ -1748,7 +1762,7 @@
       "source_label": "confirm the referral offer and deadline",
       "annotation_confidence": "high",
       "state_effect": "read_only",
-      "placement_seconds": 231.0,
+      "placement_seconds": 231,
       "placement_after_text": null,
       "placement_before_text": null,
       "audio_reference": {
@@ -1756,8 +1770,8 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          231.0,
-          239.0
+          231,
+          239
         ]
       }
     },
@@ -1933,7 +1947,7 @@
       "source_label": "customer asks for email notification; agent says Done",
       "annotation_confidence": "medium",
       "state_effect": "notification_sent",
-      "placement_seconds": 318.0,
+      "placement_seconds": 318,
       "placement_after_text": "Okay, do that",
       "placement_before_text": "Done. All right. To recap",
       "audio_reference": {
@@ -1941,7 +1955,7 @@
         "start_seconds": null,
         "end_seconds": null,
         "inferred_window_seconds": [
-          318.0,
+          318,
           320.88
         ]
       }
@@ -1965,7 +1979,14 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "relieved",
+          "source": "human_annotated_transcript",
+          "source_text": "(relieved)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 334.65999999999997,
@@ -2024,7 +2045,14 @@
       "speaker": "Daniel",
       "role": "user",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "worried",
+          "source": "human_annotated_transcript",
+          "source_text": "(worried)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 370.53,
@@ -2071,7 +2099,14 @@
       "speaker": "Darren",
       "role": "assistant",
       "source": "transcripts/transcript.txt",
-      "annotations": [],
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "reassuring",
+          "source": "human_annotated_transcript",
+          "source_text": "(reassuring)"
+        }
+      ],
       "audio_reference": {
         "path": "audio/full.wav",
         "start_seconds": 394.87,
