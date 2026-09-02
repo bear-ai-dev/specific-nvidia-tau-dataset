@@ -25,7 +25,8 @@
       },
       {
         "role": "user",
-        "content": "Hey, I'm calling about an order that says it's delivered, but I don't have it yet. So just wanted to check in on that."
+        "content": "Hey, I'm calling about an order that says it's delivered, but I don't have it yet. So just wanted to check in on that.",
+        "annotations": []
       },
       {
         "id": "msg_0007_0002",
@@ -42,7 +43,8 @@
       },
       {
         "role": "user",
-        "content": "I do, yeah. The order number is seven three one nine. The order is, like, a pair of n- blue noise-canceling headphones."
+        "content": "I do, yeah. The order number is seven three one nine. The order is, like, a pair of n- blue noise-canceling headphones.",
+        "annotations": []
       },
       {
         "id": "msg_0007_0004",
@@ -59,7 +61,8 @@
       },
       {
         "role": "user",
-        "content": "The email address is ethan.patel, that's P-A-T-E-L, @northmail.com. N-O-R-T-H-M-A-I-L.com."
+        "content": "The email address is ethan.patel, that's P-A-T-E-L, @northmail.com. N-O-R-T-H-M-A-I-L.com.",
+        "annotations": []
       },
       {
         "id": "msg_0007_0006",
@@ -76,7 +79,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah."
+        "content": "Yeah.",
+        "annotations": []
       },
       {
         "arguments": "{\"order_reference\":\"7319\",\"customer_email\":\"ethan.patel@northmail.com\",\"include\":[\"items\",\"fulfillment\",\"carrier_scans\"]}",
@@ -106,7 +110,8 @@
       },
       {
         "role": "user",
-        "content": "Uh, yes, it is an apartment building. Um, there's a front desk and then also a package room behind it. Um, I checked both last night and this morning, and yeah, the desk just doesn't have anything for me. So wanted to know what's going on."
+        "content": "Uh, yes, it is an apartment building. Um, there's a front desk and then also a package room behind it. Um, I checked both last night and this morning, and yeah, the desk just doesn't have anything for me. So wanted to know what's going on.",
+        "annotations": []
       },
       {
         "id": "msg_0007_0010",
@@ -123,7 +128,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah, they checked both. The attendant said there wasn't a driver signature, like, around that time too. Um, there's also no delivery photo in the email."
+        "content": "Yeah, they checked both. The attendant said there wasn't a driver signature, like, around that time too. Um, there's also no delivery photo in the email.",
+        "annotations": []
       },
       {
         "id": "msg_0007_0012",
@@ -166,7 +172,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah, for sure."
+        "content": "Yeah, for sure.",
+        "annotations": []
       },
       {
         "id": "msg_0007_0015",
@@ -196,7 +203,14 @@
       },
       {
         "role": "user",
-        "content": "I see. Yeah, that's what I've-- that's kind of what I figured, that it could have gone somewhere else. Um, the problem is these are a gift, so it's time sensitive, and I'm flying out Friday around noon. Is there anything you could do just to get it in time or...?"
+        "content": "I see. Yeah, that's what I've-- that's kind of what I figured, that it could have gone somewhere else. Um, the problem is these are a gift, so it's time sensitive, and I'm flying out Friday around noon. Is there anything you could do just to get it in time or...?",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "concerned",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0007_0018",
@@ -213,7 +227,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah, definitely Thursday would be ideal. Friday, you know, noon, afternoon doesn't really help me, 'cause I would have left already at that time."
+        "content": "Yeah, definitely Thursday would be ideal. Friday, you know, noon, afternoon doesn't really help me, 'cause I would have left already at that time.",
+        "annotations": []
       },
       {
         "id": "msg_0007_0020",
@@ -243,7 +258,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah."
+        "content": "Yeah.",
+        "annotations": []
       },
       {
         "id": "msg_0007_0022",
@@ -286,7 +302,8 @@
       },
       {
         "role": "user",
-        "content": "Hmm. Does that mean I have to wait another two days before you send it? Like, what does that actually mean?"
+        "content": "Hmm. Does that mean I have to wait another two days before you send it? Like, what does that actually mean?",
+        "annotations": []
       },
       {
         "id": "msg_0007_0025",
@@ -303,7 +320,8 @@
       },
       {
         "role": "user",
-        "content": "I see. So it doesn't go out automatically? Is there any way you could just because of how time sensitive it is?"
+        "content": "I see. So it doesn't go out automatically? Is there any way you could just because of how time sensitive it is?",
+        "annotations": []
       },
       {
         "id": "msg_0007_0027",
@@ -320,7 +338,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Okay, yeah. Can you just make sure it's the exact same model and the color is the same, the blue one? I know the black one has a different price now."
+        "content": "Okay. Okay, yeah. Can you just make sure it's the exact same model and the color is the same, the blue one? I know the black one has a different price now.",
+        "annotations": []
       },
       {
         "id": "msg_0007_0029",
@@ -337,7 +356,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. And could I have it sent somewhere besides my building, just so, you know, it doesn't happen again?"
+        "content": "Okay. And could I have it sent somewhere besides my building, just so, you know, it doesn't happen again?",
+        "annotations": []
       },
       {
         "id": "msg_0007_0031",
@@ -354,7 +374,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah, the location, um, the branch on the West Twenty-third Street, the pickup counter. I've used, I've used that one before, so I would prefer that."
+        "content": "Yeah, the location, um, the branch on the West Twenty-third Street, the pickup counter. I've used, I've used that one before, so I would prefer that.",
+        "annotations": []
       },
       {
         "id": "msg_0007_0033",
@@ -397,7 +418,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. No, yeah, that's fine. I mostly don't want the second one. I just want, you know, the first one, wherever it is. Uh, so yeah, that's fine."
+        "content": "Okay. No, yeah, that's fine. I mostly don't want the second one. I just want, you know, the first one, wherever it is. Uh, so yeah, that's fine.",
+        "annotations": []
       },
       {
         "id": "msg_0007_0036",
@@ -414,7 +436,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Nice. Um, and what if it turns up after the replacement ships?"
+        "content": "Okay. Nice. Um, and what if it turns up after the replacement ships?",
+        "annotations": []
       },
       {
         "id": "msg_0007_0038",
@@ -431,7 +454,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Okay, yeah. Just so, um, I can keep track and just so I don't get, like, double-charged, um, what's the case number for this?"
+        "content": "Okay. Okay, yeah. Just so, um, I can keep track and just so I don't get, like, double-charged, um, what's the case number for this?",
+        "annotations": []
       },
       {
         "id": "msg_0007_0040",
@@ -448,7 +472,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, yeah. That sounds good."
+        "content": "Okay, yeah. That sounds good.",
+        "annotations": []
       },
       {
         "arguments": "{\"case_id\":\"8cf648a4-ca60-4387-bc11-ec38f426123a\",\"channel\":\"email\",\"destination_source\":\"order_contact\",\"template\":\"delivery_trace_confirmation\"}",
@@ -478,7 +503,8 @@
       },
       {
         "role": "user",
-        "content": "I'm just checking."
+        "content": "I'm just checking.",
+        "annotations": []
       },
       {
         "id": "msg_0007_0044",
@@ -495,11 +521,13 @@
       },
       {
         "role": "user",
-        "content": "Okay. Yeah, I, I got the email just now. Um, yeah, it says here the trace is open until 6:00 tomorrow."
+        "content": "Okay. Yeah, I, I got the email just now. Um, yeah, it says here the trace is open until 6:00 tomorrow.",
+        "annotations": []
       },
       {
         "role": "user",
-        "content": "Is that c- is that the one?"
+        "content": "Is that c- is that the one?",
+        "annotations": []
       },
       {
         "arguments": "{\"order_reference\":\"7319\",\"customer_email\":\"ethan.patel@northmail.com\",\"include\":[\"cases\",\"notifications\"]}",
@@ -529,13 +557,20 @@
       },
       {
         "role": "user",
-        "content": "Okay. Okay. No, yeah, um, thanks for, thanks for this. I know it's not ideal, but at least I know, like, where it's gonna be and that there's gonna be a replacement coming if not. Um, yeah."
+        "content": "Okay. Okay. No, yeah, um, thanks for, thanks for this. I know it's not ideal, but at least I know, like, where it's gonna be and that there's gonna be a replacement coming if not. Um, yeah.",
+        "annotations": []
       },
       {
         "id": "msg_0007_0049",
         "content": [
           {
-            "annotations": [],
+            "annotations": [
+              {
+                "type": "emotion",
+                "label": "apologetic",
+                "source": "human_annotated_transcript"
+              }
+            ],
             "type": "output_text",
             "text": "Yeah. Once again, so sorry about that. I, I totally get it. Is there anything else I can do on this order that you wanted me to kind of check while I have it open?"
           }
@@ -546,7 +581,14 @@
       },
       {
         "role": "user",
-        "content": "Um, no, that's it for this one. We're just... Hopefully we just find it."
+        "content": "Um, no, that's it for this one. We're just... Hopefully we just find it.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "hopeful",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0007_0051",
@@ -563,7 +605,14 @@
       },
       {
         "role": "user",
-        "content": "Okay. Okay, will do. Um, yeah, thank you so much."
+        "content": "Okay. Okay, will do. Um, yeah, thank you so much.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "relieved",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0007_0053",
@@ -580,7 +629,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Thank you. Bye-bye."
+        "content": "Okay. Thank you. Bye-bye.",
+        "annotations": []
       }
     ],
     "tools": [

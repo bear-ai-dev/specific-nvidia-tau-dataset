@@ -25,7 +25,14 @@
       },
       {
         "role": "user",
-        "content": "Hey, um, honestly, not great. I woke up to an alert saying, um, I used all of my data, and I was actually asleep this whole time when that happened, so just calling to see what's going on."
+        "content": "Hey, um, honestly, not great. I woke up to an alert saying, um, I used all of my data, and I was actually asleep this whole time when that happened, so just calling to see what's going on.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "concerned",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0009_0002",
@@ -42,7 +49,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah, it's the same number I'm calling from. It's 404-555-0176."
+        "content": "Yeah, it's the same number I'm calling from. It's 404-555-0176.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0004",
@@ -59,7 +67,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. Full name, Benjamin Reed. That's R-E-E-D. And then date of birth, November 22nd, 1991."
+        "content": "Yeah. Full name, Benjamin Reed. That's R-E-E-D. And then date of birth, November 22nd, 1991.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0006",
@@ -128,7 +137,8 @@
       },
       {
         "role": "user",
-        "content": "Pixel 8, yep. It's the one I'm using. The alert said I used 85%, um, but I was on my home Wi-Fi, like, all night, so that doesn't make sense."
+        "content": "Pixel 8, yep. It's the one I'm using. The alert said I used 85%, um, but I was on my home Wi-Fi, like, all night, so that doesn't make sense.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0009",
@@ -145,7 +155,8 @@
       },
       {
         "role": "user",
-        "content": "Okay."
+        "content": "Okay.",
+        "annotations": []
       },
       {
         "arguments": "{\"line_id\":\"ec8443dc-5fa9-4579-8dbe-5eafc61d53ac\",\"verification_id\":\"ae1d7bf3-792a-4a70-8673-16c535063f29\",\"window\":\"last_24_hours\"}",
@@ -175,7 +186,14 @@
       },
       {
         "role": "user",
-        "content": "11 gigs? Wait, is that real? Then there's no way, 'cause I was sleeping. Uh, are you telling me someone hacked my, the phone or something?"
+        "content": "11 gigs? Wait, is that real? Then there's no way, 'cause I was sleeping. Uh, are you telling me someone hacked my, the phone or something?",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "alarmed",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0009_0013",
@@ -192,7 +210,8 @@
       },
       {
         "role": "user",
-        "content": "Hmm."
+        "content": "Hmm.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0015",
@@ -209,7 +228,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, uh, data usage screen. One second. Let me just pull that up. Okay, yeah. Um, so I'm on that page, and Streambox is first. It says 10.9 gigabytes in the background. Is that ... Is that what I'm supposed to look at?"
+        "content": "Okay, uh, data usage screen. One second. Let me just pull that up. Okay, yeah. Um, so I'm on that page, and Streambox is first. It says 10.9 gigabytes in the background. Is that ... Is that what I'm supposed to look at?",
+        "annotations": []
       },
       {
         "id": "msg_0009_0017",
@@ -226,7 +246,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. I started downloading, like, a season for a flight. I thought it would wait for the Wi-Fi. Um."
+        "content": "Yeah. I started downloading, like, a season for a flight. I thought it would wait for the Wi-Fi. Um.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0019",
@@ -243,7 +264,14 @@
       },
       {
         "role": "user",
-        "content": "Hmm, yeah. Yeah, okay, I see that. Wow, yeah, it's on. I swear I never turned that on. I don't know how that happened."
+        "content": "Hmm, yeah. Yeah, okay, I see that. Wow, yeah, it's on. I swear I never turned that on. I don't know how that happened.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "surprised",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0009_0021",
@@ -260,7 +288,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, yeah. Give me one second. Okay, yeah. So I just did that. Um, for the data, is the data coming back though? Or what's gonna happen with that?"
+        "content": "Okay, yeah. Give me one second. Okay, yeah. So I just did that. Um, for the data, is the data coming back though? Or what's gonna happen with that?",
+        "annotations": []
       },
       {
         "id": "msg_0009_0023",
@@ -277,7 +306,8 @@
       },
       {
         "role": "user",
-        "content": "Hmm."
+        "content": "Hmm.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0025",
@@ -294,7 +324,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah, please do, because, um, I'm traveling for work before then, so I n- I, I really need that."
+        "content": "Yeah, please do, because, um, I'm traveling for work before then, so I n- I, I really need that.",
+        "annotations": []
       },
       {
         "arguments": "{\"customer_id\":\"6dcb2039-012b-4723-a256-13bb7b6467c2\",\"verification_id\":\"ae1d7bf3-792a-4a70-8673-16c535063f29\",\"status\":\"current\",\"include\":[\"cycle\"]}",
@@ -324,7 +355,8 @@
       },
       {
         "role": "user",
-        "content": "I see."
+        "content": "I see.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0029",
@@ -367,7 +399,8 @@
       },
       {
         "role": "user",
-        "content": "Hmm, I see. Um, slows down how much? 'Cause I need, like, maps, emails. I'm traveling, so I can't have it, like, crawling. You know what I mean?"
+        "content": "Hmm, I see. Um, slows down how much? 'Cause I need, like, maps, emails. I'm traveling, so I can't have it, like, crawling. You know what I mean?",
+        "annotations": []
       },
       {
         "arguments": "{\"line_id\":\"ec8443dc-5fa9-4579-8dbe-5eafc61d53ac\",\"verification_id\":\"ae1d7bf3-792a-4a70-8673-16c535063f29\"}",
@@ -397,11 +430,19 @@
       },
       {
         "role": "user",
-        "content": "What? $40? Because this app changed its own setting? Um, I mean, that's a lot, and it's pretty frustrating too, like ... Is there anything else-"
+        "content": "What? $40? Because this app changed its own setting? Um, I mean, that's a lot, and it's pretty frustrating too, like ... Is there anything else-",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "frustrated",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "role": "user",
-        "content": "... we could do, or?"
+        "content": "... we could do, or?",
+        "annotations": []
       },
       {
         "id": "msg_0009_0035",
@@ -418,7 +459,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah, yeah. Let's do that first."
+        "content": "Yeah, yeah. Let's do that first.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0037",
@@ -435,7 +477,8 @@
       },
       {
         "role": "user",
-        "content": "Mm-hmm"
+        "content": "Mm-hmm",
+        "annotations": []
       },
       {
         "id": "msg_0009_0039",
@@ -452,11 +495,13 @@
       },
       {
         "role": "user",
-        "content": "Okay. I'm going in. Okay, yeah. It's on. There's an op- there's an option for unrestricted apps."
+        "content": "Okay. I'm going in. Okay, yeah. It's on. There's an op- there's an option for unrestricted apps.",
+        "annotations": []
       },
       {
         "role": "user",
-        "content": "Is that ... Is that supposed to be there?"
+        "content": "Is that ... Is that supposed to be there?",
+        "annotations": []
       },
       {
         "id": "msg_0009_0042",
@@ -473,7 +518,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, so I'm looking through it. Um, right now it ha- has Streambox, Cloud Photos, and my work email. I pretty much only need the email to be working, like in the background."
+        "content": "Okay, so I'm looking through it. Um, right now it ha- has Streambox, Cloud Photos, and my work email. I pretty much only need the email to be working, like in the background.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0044",
@@ -490,7 +536,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah."
+        "content": "Yeah.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0046",
@@ -507,7 +554,8 @@
       },
       {
         "role": "user",
-        "content": "Okay"
+        "content": "Okay",
+        "annotations": []
       },
       {
         "id": "msg_0009_0048",
@@ -524,7 +572,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, yeah. Now I just turned it off. Uh, could Cloud Photos have used some of that too, or...?"
+        "content": "Okay, yeah. Now I just turned it off. Uh, could Cloud Photos have used some of that too, or...?",
+        "annotations": []
       },
       {
         "id": "msg_0009_0050",
@@ -541,7 +590,8 @@
       },
       {
         "role": "user",
-        "content": "Right."
+        "content": "Right.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0052",
@@ -558,7 +608,8 @@
       },
       {
         "role": "user",
-        "content": "Right. Okay. Um, yeah, I mean, after everything, I, I still think I would need the extra data. Can you add that in?"
+        "content": "Right. Okay. Um, yeah, I mean, after everything, I, I still think I would need the extra data. Can you add that in?",
+        "annotations": []
       },
       {
         "id": "msg_0009_0054",
@@ -575,7 +626,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. Yeah, definitely. I authorize that."
+        "content": "Yeah. Yeah, definitely. I authorize that.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0056",
@@ -618,7 +670,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Okay, that's great. Uh, can we just make sure it actually works before I hang up, just, you know, while I have you on the phone? Is there a way to test that?"
+        "content": "Okay. Okay, that's great. Uh, can we just make sure it actually works before I hang up, just, you know, while I have you on the phone? Is there a way to test that?",
+        "annotations": []
       },
       {
         "id": "msg_0009_0059",
@@ -635,7 +688,8 @@
       },
       {
         "role": "user",
-        "content": "Mm-hmm."
+        "content": "Mm-hmm.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0061",
@@ -652,7 +706,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, yeah. One second. Okay. I'm just running through, like, a qui- quick speed test, and it says 62 down and eight up."
+        "content": "Okay, yeah. One second. Okay. I'm just running through, like, a qui- quick speed test, and it says 62 down and eight up.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0063",
@@ -669,7 +724,8 @@
       },
       {
         "role": "user",
-        "content": "Mm-hmm"
+        "content": "Mm-hmm",
+        "annotations": []
       },
       {
         "id": "msg_0009_0065",
@@ -686,7 +742,14 @@
       },
       {
         "role": "user",
-        "content": "Okay, one second. Okay, yeah, I'm looking at it now. Yeah, it does say downloads are paused until Wi-Fi. Um, yeah, that's what I wanted in the first place, so that's great."
+        "content": "Okay, one second. Okay, yeah, I'm looking at it now. Yeah, it does say downloads are paused until Wi-Fi. Um, yeah, that's what I wanted in the first place, so that's great.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "relieved",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0009_0067",
@@ -703,7 +766,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah."
+        "content": "Yeah.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0069",
@@ -720,7 +784,8 @@
       },
       {
         "role": "user",
-        "content": "Mm-hmm"
+        "content": "Mm-hmm",
+        "annotations": []
       },
       {
         "id": "msg_0009_0071",
@@ -737,7 +802,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah, yeah. Um, no, yeah, thanks for that. I mean, I'm still annoyed about the $40 and just, you know, having this data spent overnight. Uh, but I'm glad at least we found the cause, right, and we turned it off. So yeah, thanks for that."
+        "content": "Yeah, yeah. Um, no, yeah, thanks for that. I mean, I'm still annoyed about the $40 and just, you know, having this data spent overnight. Uh, but I'm glad at least we found the cause, right, and we turned it off. So yeah, thanks for that.",
+        "annotations": []
       },
       {
         "id": "msg_0009_0073",
@@ -754,7 +820,14 @@
       },
       {
         "role": "user",
-        "content": "Yeah. Yeah, no, I definitely will. Thanks for, you know, actually making me check the app and trying to find the cause and, instead of just, like, selling me the data. I, I really appreciate that. Um, but yeah. Thanks."
+        "content": "Yeah. Yeah, no, I definitely will. Thanks for, you know, actually making me check the app and trying to find the cause and, instead of just, like, selling me the data. I, I really appreciate that. Um, but yeah. Thanks.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "appreciative",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0009_0075",
@@ -771,7 +844,8 @@
       },
       {
         "role": "user",
-        "content": "Sounds good. Thanks. Bye."
+        "content": "Sounds good. Thanks. Bye.",
+        "annotations": []
       }
     ],
     "tools": [

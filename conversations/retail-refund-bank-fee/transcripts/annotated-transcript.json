@@ -25,7 +25,8 @@
       },
       {
         "role": "user",
-        "content": "Hi, Daniel. I'm trying to figure out what happened to a refund I asked for. I returned something at one of the stores over a week ago and the money hasn't come back yet."
+        "content": "Hi, Daniel. I'm trying to figure out what happened to a refund I asked for. I returned something at one of the stores over a week ago and the money hasn't come back yet.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0002",
@@ -42,7 +43,8 @@
       },
       {
         "role": "user",
-        "content": "Online, and I returned it to the store. It was a black standing desk converter. It was just too wide for my desk."
+        "content": "Online, and I returned it to the store. It was a black standing desk converter. It was just too wide for my desk.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0004",
@@ -59,7 +61,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah, I have both. Um, order ends in five six two four, and the return receipt ends in nine one eight two."
+        "content": "Yeah, I have both. Um, order ends in five six two four, and the return receipt ends in nine one eight two.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0006",
@@ -76,7 +79,8 @@
       },
       {
         "role": "user",
-        "content": "Teddy.torrez@harbormail.com."
+        "content": "Teddy.torrez@harbormail.com.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0008",
@@ -106,7 +110,8 @@
       },
       {
         "role": "user",
-        "content": "Okay."
+        "content": "Okay.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0010",
@@ -123,7 +128,8 @@
       },
       {
         "role": "user",
-        "content": "Yep. I paid forty dollars with a Westline gift card, and then the rest should be on my debit."
+        "content": "Yep. I paid forty dollars with a Westline gift card, and then the rest should be on my debit.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0012",
@@ -140,7 +146,14 @@
       },
       {
         "role": "user",
-        "content": "Oh, oh, okay. I think that's what the person at the store told me, but the email I got is only about forty-two dollars, so I'm still missing the one hundred and forty-six dollars and the forty-two cents. I don't know where that is. It isn't in my account."
+        "content": "Oh, oh, okay. I think that's what the person at the store told me, but the email I got is only about forty-two dollars, so I'm still missing the one hundred and forty-six dollars and the forty-two cents. I don't know where that is. It isn't in my account.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "concerned",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0005_0014",
@@ -157,7 +170,8 @@
       },
       {
         "role": "user",
-        "content": "Uh, yeah, I did, but I haven't tried it yet. I was just more worried about the debit card."
+        "content": "Uh, yeah, I did, but I haven't tried it yet. I was just more worried about the debit card.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0016",
@@ -187,7 +201,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah, sure."
+        "content": "Yeah, sure.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0018",
@@ -217,7 +232,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. What does that mean? Did Westline send it or not? 'Cause right now my bank is saying that they don't see a refund or even something pending."
+        "content": "Okay. What does that mean? Did Westline send it or not? 'Cause right now my bank is saying that they don't see a refund or even something pending.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0021",
@@ -234,11 +250,13 @@
       },
       {
         "role": "user",
-        "content": "Okay."
+        "content": "Okay.",
+        "annotations": []
       },
       {
         "role": "user",
-        "content": "Um, I mean, like I used a different physical card when I bought it because my card was replaced last month. It should be wired or linked to the same checking account though. Is that potentially an issue?"
+        "content": "Um, I mean, like I used a different physical card when I bought it because my card was replaced last month. It should be wired or linked to the same checking account though. Is that potentially an issue?",
+        "annotations": []
       },
       {
         "id": "msg_0005_0024",
@@ -255,7 +273,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah, um, two zero four seven. The new one ends in eight one six three."
+        "content": "Yeah, um, two zero four seven. The new one ends in eight one six three.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0026",
@@ -285,7 +304,8 @@
       },
       {
         "role": "user",
-        "content": "Um, can you just send it to the new card?"
+        "content": "Um, can you just send it to the new card?",
+        "annotations": []
       },
       {
         "id": "msg_0005_0029",
@@ -302,7 +322,14 @@
       },
       {
         "role": "user",
-        "content": "Okay. How long does that usually take? 'Cause I returned it because I needed the money back and nine days already kind of feels like a long time."
+        "content": "Okay. How long does that usually take? 'Cause I returned it because I needed the money back and nine days already kind of feels like a long time.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "frustrated",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0005_0031",
@@ -319,7 +346,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. So you're saying I might be waiting another week?"
+        "content": "Okay. So you're saying I might be waiting another week?",
+        "annotations": []
       },
       {
         "id": "msg_0005_0033",
@@ -336,7 +364,8 @@
       },
       {
         "role": "user",
-        "content": "Would that be a check? I don't want store credit for the whole amount, though."
+        "content": "Would that be a check? I don't want store credit for the whole amount, though.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0035",
@@ -353,7 +382,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Um, can you also confirm the forty dollar gift card actually works? Like, I don't want another problem."
+        "content": "Okay. Um, can you also confirm the forty dollar gift card actually works? Like, I don't want another problem.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0037",
@@ -409,7 +439,8 @@
       },
       {
         "role": "user",
-        "content": "Okay."
+        "content": "Okay.",
+        "annotations": []
       },
       {
         "arguments": "{\"order_reference\":\"ending-5624\",\"return_reference\":\"ending-9182\",\"payment_reference\":\"card-ending-2047\",\"amount\":146.42}",
@@ -452,7 +483,8 @@
       },
       {
         "role": "user",
-        "content": "Can you email that to me?"
+        "content": "Can you email that to me?",
+        "annotations": []
       },
       {
         "id": "msg_0005_0043",
@@ -482,7 +514,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Okay, I see it. It says not to contact the store. Does that mean that the store can't do anything right now?"
+        "content": "Okay. Okay, I see it. It says not to contact the store. Does that mean that the store can't do anything right now?",
+        "annotations": []
       },
       {
         "id": "msg_0005_0045",
@@ -499,7 +532,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Um, I also had a small overdraft fee because I was expecting this money back. Is that something Westline covers?"
+        "content": "Okay. Um, I also had a small overdraft fee because I was expecting this money back. Is that something Westline covers?",
+        "annotations": []
       },
       {
         "id": "msg_0005_0047",
@@ -529,7 +563,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, bet. Um, I just wanted it on record."
+        "content": "Okay, bet. Um, I just wanted it on record.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0049",
@@ -546,7 +581,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. And if the return appears before then, do I need to call?"
+        "content": "Okay. And if the return appears before then, do I need to call?",
+        "annotations": []
       },
       {
         "id": "msg_0005_0051",
@@ -563,13 +599,26 @@
       },
       {
         "role": "user",
-        "content": "Okay. All right. Well, I still wish we were back today, but this makes more sense to me now."
+        "content": "Okay. All right. Well, I still wish we were back today, but this makes more sense to me now.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "reassured",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0005_0053",
         "content": [
           {
-            "annotations": [],
+            "annotations": [
+              {
+                "type": "emotion",
+                "label": "apologetic",
+                "source": "human_annotated_transcript"
+              }
+            ],
             "type": "output_text",
             "text": "Yeah. I totally understand you. So sorry again for the trouble. The gift card portion is available now, and the card portion is kind of just actively under review. If there's anything else from the order that you want me to check, just let me know."
           }
@@ -580,7 +629,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. I'm good now. That's everything."
+        "content": "Okay. I'm good now. That's everything.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0055",
@@ -597,7 +647,8 @@
       },
       {
         "role": "user",
-        "content": "All right. Thanks, Daniel."
+        "content": "All right. Thanks, Daniel.",
+        "annotations": []
       },
       {
         "id": "msg_0005_0057",

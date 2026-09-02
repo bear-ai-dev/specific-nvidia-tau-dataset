@@ -25,7 +25,14 @@
       },
       {
         "role": "user",
-        "content": "Hi. I referred my sister for one of your cards. She was approved, and the 100 dollars bonus never showed up. Honestly, a little annoyed. I've checked the app 3 times, and it just keeps saying pending."
+        "content": "Hi. I referred my sister for one of your cards. She was approved, and the 100 dollars bonus never showed up. Honestly, a little annoyed. I've checked the app 3 times, and it just keeps saying pending.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "annoyed",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0001_0002",
@@ -42,7 +49,8 @@
       },
       {
         "role": "user",
-        "content": "Daniel Brooks. Brooks, B as in Boston, R-O-O-K-S."
+        "content": "Daniel Brooks. Brooks, B as in Boston, R-O-O-K-S.",
+        "annotations": []
       },
       {
         "id": "msg_0001_0004",
@@ -59,7 +67,8 @@
       },
       {
         "role": "user",
-        "content": "daniel.brooks17@gmail.com."
+        "content": "daniel.brooks17@gmail.com.",
+        "annotations": []
       },
       {
         "id": "msg_0001_0006",
@@ -128,7 +137,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah, go ahead."
+        "content": "Yeah, go ahead.",
+        "annotations": []
       },
       {
         "id": "msg_0001_0010",
@@ -145,7 +155,8 @@
       },
       {
         "role": "user",
-        "content": "2, 7, 6, 0, 9, October 12th."
+        "content": "2, 7, 6, 0, 9, October 12th.",
+        "annotations": []
       },
       {
         "id": "msg_0001_0012",
@@ -162,7 +173,8 @@
       },
       {
         "role": "user",
-        "content": "2, 7, 6, 0, 9, October 12th."
+        "content": "2, 7, 6, 0, 9, October 12th.",
+        "annotations": []
       },
       {
         "id": "msg_0001_0014",
@@ -205,7 +217,8 @@
       },
       {
         "role": "user",
-        "content": "August 3rd. Her name is Alisa Brooks. She got the card maybe 10 days ago."
+        "content": "August 3rd. Her name is Alisa Brooks. She got the card maybe 10 days ago.",
+        "annotations": []
       },
       {
         "id": "msg_0001_0017",
@@ -261,7 +274,8 @@
       },
       {
         "role": "user",
-        "content": "She told me she used it for groceries."
+        "content": "She told me she used it for groceries.",
+        "annotations": []
       },
       {
         "id": "msg_0001_0021",
@@ -317,7 +331,14 @@
       },
       {
         "role": "user",
-        "content": "2 billing cycles? The banner made it sound immediate. I thought I would have gotten it by now."
+        "content": "2 billing cycles? The banner made it sound immediate. I thought I would have gotten it by now.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "frustrated",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0001_0025",
@@ -334,7 +355,8 @@
       },
       {
         "role": "user",
-        "content": "Can you at least tell me if the 100 dollars is still the offer?"
+        "content": "Can you at least tell me if the 100 dollars is still the offer?",
+        "annotations": []
       },
       {
         "id": "msg_0001_0027",
@@ -377,7 +399,8 @@
       },
       {
         "role": "user",
-        "content": "How am I supposed to track it without calling every week?"
+        "content": "How am I supposed to track it without calling every week?",
+        "annotations": []
       },
       {
         "id": "msg_0001_0030",
@@ -433,11 +456,13 @@
       },
       {
         "role": "user",
-        "content": "Okay, I'm opening it."
+        "content": "Okay, I'm opening it.",
+        "annotations": []
       },
       {
         "role": "user",
-        "content": "It says purchase qualification pending. So that's the same thing you see?"
+        "content": "It says purchase qualification pending. So that's the same thing you see?",
+        "annotations": []
       },
       {
         "id": "msg_0001_0035",
@@ -454,7 +479,8 @@
       },
       {
         "role": "user",
-        "content": "Can you email the link, too?"
+        "content": "Can you email the link, too?",
+        "annotations": []
       },
       {
         "id": "msg_0001_0037",
@@ -471,7 +497,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, do that."
+        "content": "Okay, do that.",
+        "annotations": []
       },
       {
         "arguments": "{\"customer_id\":\"34d61a18-ede8-4533-b130-7e5937bc1e9d\",\"related_resource_id\":\"b549b0e6-fced-4596-8794-db42a62476a6\",\"channel\":\"email\",\"template\":\"secure_message_waiting\"}",
@@ -501,7 +528,14 @@
       },
       {
         "role": "user",
-        "content": "All right. At least I know it didn't disappear."
+        "content": "All right. At least I know it didn't disappear.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "relieved",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0001_0041",
@@ -518,7 +552,14 @@
       },
       {
         "role": "user",
-        "content": "Um, [lip smack] no, that's pretty much it. I'm looking at the tracker now. Does pending mean Alisa did something wrong or that she hasn't paid her balance this cycle yet?"
+        "content": "Um, [lip smack] no, that's pretty much it. I'm looking at the tracker now. Does pending mean Alisa did something wrong or that she hasn't paid her balance this cycle yet?",
+        "annotations": [
+          {
+            "type": "paralinguistic",
+            "label": "lip_smack",
+            "source": "inline_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0001_0043",
@@ -535,7 +576,14 @@
       },
       {
         "role": "user",
-        "content": "She used a different email on the application than the one I invite- invited. Could that break the match?"
+        "content": "She used a different email on the application than the one I invite- invited. Could that break the match?",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "worried",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "arguments": "{\"query\":\"Referral matching when invitation and application emails differ; duplicate application guidance\"}",
@@ -567,7 +615,13 @@
         "id": "msg_0001_0046",
         "content": [
           {
-            "annotations": [],
+            "annotations": [
+              {
+                "type": "emotion",
+                "label": "reassuring",
+                "source": "human_annotated_transcript"
+              }
+            ],
             "type": "output_text",
             "text": "a different problem."
           }
@@ -578,7 +632,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, yeah, because she was about to try it again."
+        "content": "Okay, yeah, because she was about to try it again.",
+        "annotations": []
       },
       {
         "id": "msg_0001_0048",
@@ -595,7 +650,8 @@
       },
       {
         "role": "user",
-        "content": "Understood. The tracker has a little question mark next to qualifying purchase."
+        "content": "Understood. The tracker has a little question mark next to qualifying purchase.",
+        "annotations": []
       },
       {
         "id": "msg_0001_0050",
@@ -612,7 +668,8 @@
       },
       {
         "role": "user",
-        "content": "It says, \"Purchases must be eligible and fully posted, not returned or cash-like.\""
+        "content": "It says, \"Purchases must be eligible and fully posted, not returned or cash-like.\"",
+        "annotations": []
       },
       {
         "id": "msg_0001_0052",
@@ -629,7 +686,8 @@
       },
       {
         "role": "user",
-        "content": "She bought cro- groceries, so that sounds eligible."
+        "content": "She bought cro- groceries, so that sounds eligible.",
+        "annotations": []
       },
       {
         "id": "msg_0001_0054",
@@ -646,7 +704,8 @@
       },
       {
         "role": "user",
-        "content": "Fair. Can you give me the dates again?"
+        "content": "Fair. Can you give me the dates again?",
+        "annotations": []
       },
       {
         "id": "msg_0001_0056",
@@ -663,7 +722,8 @@
       },
       {
         "role": "user",
-        "content": "And December isn't the deadline?"
+        "content": "And December isn't the deadline?",
+        "annotations": []
       },
       {
         "id": "msg_0001_0058",
@@ -680,7 +740,8 @@
       },
       {
         "role": "user",
-        "content": "All right, sorry. Someone just walked into my office. I'm writing to her, \"Don't reapply.\""
+        "content": "All right, sorry. Someone just walked into my office. I'm writing to her, \"Don't reapply.\"",
+        "annotations": []
       },
       {
         "id": "msg_0001_0060",

@@ -25,13 +25,20 @@
       },
       {
         "role": "user",
-        "content": "Hey, Daniel. This is Ethan Patel. Um, I think I actually spoke with you yesterday about some missing headphones."
+        "content": "Hey, Daniel. This is Ethan Patel. Um, I think I actually spoke with you yesterday about some missing headphones.",
+        "annotations": []
       },
       {
         "id": "msg_0006_0002",
         "content": [
           {
-            "annotations": [],
+            "annotations": [
+              {
+                "type": "emotion",
+                "label": "curious",
+                "source": "human_annotated_transcript"
+              }
+            ],
             "type": "output_text",
             "text": "Oh, okay. That's awesome, yeah. Um, I remember that case. Uh, did the package turn up?"
           }
@@ -42,7 +49,8 @@
       },
       {
         "role": "user",
-        "content": "Uh, no, not yet. Uh, but I'm actually calling about a different order today. Um, yeah, I ordered like a coffee maker, and it came in damaged, so just wanted to give you a heads-up."
+        "content": "Uh, no, not yet. Uh, but I'm actually calling about a different order today. Um, yeah, I ordered like a coffee maker, and it came in damaged, so just wanted to give you a heads-up.",
+        "annotations": []
       },
       {
         "id": "msg_0006_0004",
@@ -59,7 +67,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. Uh, this one ends in 4086."
+        "content": "Yeah. Uh, this one ends in 4086.",
+        "annotations": []
       },
       {
         "id": "msg_0006_0006",
@@ -76,7 +85,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. It's ethan.patel@northmail.com, N-O-R-T-H-M-A-I-L.com. And Patel, that's P-A-T-E-L."
+        "content": "Yeah. It's ethan.patel@northmail.com, N-O-R-T-H-M-A-I-L.com. And Patel, that's P-A-T-E-L.",
+        "annotations": []
       },
       {
         "id": "msg_0006_0008",
@@ -132,7 +142,8 @@
       },
       {
         "role": "user",
-        "content": "Uh, the water tank is cracked at the bottom, and the base was damp inside the plastic. Um, the outside wasn't beat up or anything, so yeah."
+        "content": "Uh, the water tank is cracked at the bottom, and the base was damp inside the plastic. Um, the outside wasn't beat up or anything, so yeah.",
+        "annotations": []
       },
       {
         "id": "msg_0006_0012",
@@ -149,13 +160,26 @@
       },
       {
         "role": "user",
-        "content": "Uh, no, I haven't. Um, I stopped 'cause I saw the water and I thought I probably should, uh, call first."
+        "content": "Uh, no, I haven't. Um, I stopped 'cause I saw the water and I thought I probably should, uh, call first.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "confused",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0006_0014",
         "content": [
           {
-            "annotations": [],
+            "annotations": [
+              {
+                "type": "emotion",
+                "label": "apologetic",
+                "source": "human_annotated_transcript"
+              }
+            ],
             "type": "output_text",
             "text": "Yes, that's good. Um, let me check the return options on that item. So sorry again for your trouble. Would you rather replace it or get your money back? (apologetic)"
           }
@@ -166,7 +190,14 @@
       },
       {
         "role": "user",
-        "content": "Uh, replace it, for sure, as long as I don't have to pay the current price. I saw it went up since I ordered it."
+        "content": "Uh, replace it, for sure, as long as I don't have to pay the current price. I saw it went up since I ordered it.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "concerned",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "arguments": "{\"order_reference\":\"ending-4086\",\"customer_email\":\"ethan.patel@northmail.com\",\"include\":[\"eligible_resolutions\"]}",
@@ -196,7 +227,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, yeah."
+        "content": "Okay, yeah.",
+        "annotations": []
       },
       {
         "id": "msg_0006_0018",
@@ -252,7 +284,14 @@
       },
       {
         "role": "user",
-        "content": "Oh, okay. Nice. Uh, yeah, that sounds good. Do you need pictures before you can send the replacement?"
+        "content": "Oh, okay. Nice. Uh, yeah, that sounds good. Do you need pictures before you can send the replacement?",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "relieved",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0006_0022",
@@ -269,7 +308,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Okay, yeah, I took, uh, some photos already just so, uh, just in case we needed it, so I'll probably just add them."
+        "content": "Okay. Okay, yeah, I took, uh, some photos already just so, uh, just in case we needed it, so I'll probably just add them.",
+        "annotations": []
       },
       {
         "id": "msg_0006_0024",
@@ -312,7 +352,14 @@
       },
       {
         "role": "user",
-        "content": "Okay. Okay. Oh, can you check where it's shipping to? Just because I don't want this to be tied to the pickup request from the headphone case, um, just 'cause there were some issues with that too."
+        "content": "Okay. Okay. Oh, can you check where it's shipping to? Just because I don't want this to be tied to the pickup request from the headphone case, um, just 'cause there were some issues with that too.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "concerned",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0006_0027",
@@ -329,7 +376,14 @@
       },
       {
         "role": "user",
-        "content": "Okay. Okay, yeah, th-that's perfect. I was worried the two orders would get m-mixed up together. Um, yeah. (worried)"
+        "content": "Okay. Okay, yeah, th-that's perfect. I was worried the two orders would get m-mixed up together. Um, yeah. (worried)",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "relieved",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0006_0029",
@@ -346,7 +400,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, okay. And Thursday is the estimate. It's not like a guaranteed time window. Is that correct?"
+        "content": "Okay, okay. And Thursday is the estimate. It's not like a guaranteed time window. Is that correct?",
+        "annotations": []
       },
       {
         "id": "msg_0006_0031",
@@ -363,7 +418,8 @@
       },
       {
         "role": "user",
-        "content": "I see, okay. Um, is it coming from the same warehouse as the damaged one?"
+        "content": "I see, okay. Um, is it coming from the same warehouse as the damaged one?",
+        "annotations": []
       },
       {
         "id": "msg_0006_0033",
@@ -380,7 +436,8 @@
       },
       {
         "role": "user",
-        "content": "Oh, okay. Okay. Yeah, no, I just mainly wanted to check you weren't, you know, resending the same kind of issue somehow."
+        "content": "Oh, okay. Okay. Yeah, no, I just mainly wanted to check you weren't, you know, resending the same kind of issue somehow.",
+        "annotations": []
       },
       {
         "id": "msg_0006_0035",
@@ -397,7 +454,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Okay, nice. Um, yeah, and what do I do with the damaged one since I don't need to like return it, I guess?"
+        "content": "Okay. Okay, nice. Um, yeah, and what do I do with the damaged one since I don't need to like return it, I guess?",
+        "annotations": []
       },
       {
         "id": "msg_0006_0037",
@@ -414,7 +472,8 @@
       },
       {
         "role": "user",
-        "content": "Oh, okay. Okay, and, uh, I can put it in like the electronics section? I'll check if my building has a electronic bin."
+        "content": "Oh, okay. Okay, and, uh, I can put it in like the electronics section? I'll check if my building has a electronic bin.",
+        "annotations": []
       },
       {
         "id": "msg_0006_0039",
@@ -431,7 +490,8 @@
       },
       {
         "role": "user",
-        "content": "Oh, okay. Nice. Uh, okay, yeah. Has the confirmation email gone out? I don't see it yet."
+        "content": "Oh, okay. Nice. Uh, okay, yeah. Has the confirmation email gone out? I don't see it yet.",
+        "annotations": []
       },
       {
         "id": "msg_0006_0041",
@@ -487,7 +547,8 @@
       },
       {
         "role": "user",
-        "content": "Oh, okay. Yeah. No, I see it. Your order 8821 delivery, zero balance. Okay. Yeah. No, I see that."
+        "content": "Oh, okay. Yeah. No, I see it. Your order 8821 delivery, zero balance. Okay. Yeah. No, I see that.",
+        "annotations": []
       },
       {
         "id": "msg_0006_0045",
@@ -504,7 +565,14 @@
       },
       {
         "role": "user",
-        "content": "Okay. Okay, yeah. I'll, I'll definitely upload something. Um, no, this is great. Thank you. While I have you on the call, is there any updates on the, the headphones, um, the other order that we had issues with?"
+        "content": "Okay. Okay, yeah. I'll, I'll definitely upload something. Um, no, this is great. Thank you. While I have you on the call, is there any updates on the, the headphones, um, the other order that we had issues with?",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "curious",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "arguments": "{\"email\":\"ethan.patel@northmail.com\"}",
@@ -547,7 +615,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Okay. Uh, that, yeah, that's fine. I'll use the link tonight if nothing changes. That works."
+        "content": "Okay. Okay. Uh, that, yeah, that's fine. I'll use the link tonight if nothing changes. That works.",
+        "annotations": []
       },
       {
         "id": "msg_0006_0049",
@@ -564,13 +633,31 @@
       },
       {
         "role": "user",
-        "content": "Okay. Okay, yeah, no, that, that sounds good for, for both. Uh, yeah, no, thank you so much again. I know two different issues, [laughs] uh, but I appreciate the support. (relieved)"
+        "content": "Okay. Okay, yeah, no, that, that sounds good for, for both. Uh, yeah, no, thank you so much again. I know two different issues, [laughs] uh, but I appreciate the support. (relieved)",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "relieved",
+            "source": "human_annotated_transcript"
+          },
+          {
+            "type": "paralinguistic",
+            "label": "laughs",
+            "source": "inline_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0006_0051",
         "content": [
           {
-            "annotations": [],
+            "annotations": [
+              {
+                "type": "emotion",
+                "label": "apologetic",
+                "source": "human_annotated_transcript"
+              }
+            ],
             "type": "output_text",
             "text": "You're so welcome, Ethan. Um, once again, so sorry for the trouble with the coffee maker as well as the order yesterday. Um, I hope that the next delivery that we have for you goes a little bit more smoothly."
           }
@@ -581,7 +668,14 @@
       },
       {
         "role": "user",
-        "content": "Yeah, me too. I hope it goes better. [laughs] All right, no, thank you so much for your time."
+        "content": "Yeah, me too. I hope it goes better. [laughs] All right, no, thank you so much for your time.",
+        "annotations": [
+          {
+            "type": "paralinguistic",
+            "label": "laughs",
+            "source": "inline_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0006_0053",
@@ -598,7 +692,8 @@
       },
       {
         "role": "user",
-        "content": "Yep, bye."
+        "content": "Yep, bye.",
+        "annotations": []
       }
     ],
     "tools": [

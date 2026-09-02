@@ -25,7 +25,14 @@
       },
       {
         "role": "user",
-        "content": "Hey, this is Colin Reeves. My card was declined twice at a hotel, and I'm traveling, so, uh, I need to figure out what's going on there. (concerned)"
+        "content": "Hey, this is Colin Reeves. My card was declined twice at a hotel, and I'm traveling, so, uh, I need to figure out what's going on there. (concerned)",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "concerned",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0003_0002",
@@ -42,7 +49,8 @@
       },
       {
         "role": "user",
-        "content": "Uh, yes. Yes, I am."
+        "content": "Uh, yes. Yes, I am.",
+        "annotations": []
       },
       {
         "id": "msg_0003_0004",
@@ -59,7 +67,8 @@
       },
       {
         "role": "user",
-        "content": "Right. Uh, the ZIP code is two zero zero zero five, and the last four digits are six one four eight."
+        "content": "Right. Uh, the ZIP code is two zero zero zero five, and the last four digits are six one four eight.",
+        "annotations": []
       },
       {
         "arguments": "{\"full_name\":\"Colin Reeves\",\"billing_zip\":\"20005\",\"card_last4\":\"6148\"}",
@@ -115,7 +124,8 @@
       },
       {
         "role": "user",
-        "content": "Uh, yeah. The, the desk ran, ran it. Uh, it declined, and then, uh, I had them, um, try it again."
+        "content": "Uh, yeah. The, the desk ran, ran it. Uh, it declined, and then, uh, I had them, um, try it again.",
+        "annotations": []
       },
       {
         "id": "msg_0003_0008",
@@ -132,7 +142,14 @@
       },
       {
         "role": "user",
-        "content": "Uh, checking in today. I'm actually standing in the lobby right now. Um, they're holding the room, but they need a card before I can... you know."
+        "content": "Uh, checking in today. I'm actually standing in the lobby right now. Um, they're holding the room, but they need a card before I can... you know.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "hurried",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0003_0010",
@@ -188,7 +205,8 @@
       },
       {
         "role": "user",
-        "content": "Uh, yeah. Uh, can you, can you clear it so, um, they can run, they can run the card again?"
+        "content": "Uh, yeah. Uh, can you, can you clear it so, um, they can run, they can run the card again?",
+        "annotations": []
       },
       {
         "id": "msg_0003_0014",
@@ -205,7 +223,8 @@
       },
       {
         "role": "user",
-        "content": "Uh, yeah. Uh, I'm in Portland."
+        "content": "Uh, yeah. Uh, I'm in Portland.",
+        "annotations": []
       },
       {
         "id": "msg_0003_0016",
@@ -222,7 +241,8 @@
       },
       {
         "role": "user",
-        "content": "Um, ye-yes. Um, that was, that was my breakfast this morning, uh."
+        "content": "Um, ye-yes. Um, that was, that was my breakfast this morning, uh.",
+        "annotations": []
       },
       {
         "arguments": "{\"customer_id\":\"c68e3baf-9314-4fd5-8b8f-85e747f0f9d9\",\"card_last4\":\"6148\",\"restriction_id\":\"a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f\",\"confirmed_transaction_ids\":[\"5af2030f-3fad-402f-a1de-23501596194a\",\"3065d723-2455-4a43-9d59-91c8dbb11da0\",\"131fc14b-fc2e-4ec9-ad07-248d01f7d54b\"]}",
@@ -252,7 +272,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. Yeah, sure. Go ahead."
+        "content": "Yeah. Yeah, sure. Go ahead.",
+        "annotations": []
       },
       {
         "arguments": "{\"query\":\"Hotel incidental authorization holds, available-credit constraints, authorization guarantees, and pending duration\"}",
@@ -282,11 +303,19 @@
       },
       {
         "role": "user",
-        "content": "Right. Uh."
+        "content": "Right. Uh.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "confused",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "role": "user",
-        "content": "Wait, could you, could you say it again, please? Uh. Yeah."
+        "content": "Wait, could you, could you say it again, please? Uh. Yeah.",
+        "annotations": []
       },
       {
         "id": "msg_0003_0023",
@@ -316,7 +345,8 @@
       },
       {
         "role": "user",
-        "content": "Right. Um, the clerk, uh, the clerk said that the room is six ninety, and the rest of it is a deposit, so- I think eight hundred and forty should be the whole hold, yeah."
+        "content": "Right. Um, the clerk, uh, the clerk said that the room is six ninety, and the rest of it is a deposit, so- I think eight hundred and forty should be the whole hold, yeah.",
+        "annotations": []
       },
       {
         "id": "msg_0003_0026",
@@ -333,7 +363,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Right. Uh, can I, can I stay on the line with you while they do it?"
+        "content": "Okay. Right. Uh, can I, can I stay on the line with you while they do it?",
+        "annotations": []
       },
       {
         "id": "msg_0003_0028",
@@ -350,7 +381,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. Uh, can you, can you run it again? Um, they just, uh, cleared it. Uh, just give me a second, please."
+        "content": "Yeah. Uh, can you, can you run it again? Um, they just, uh, cleared it. Uh, just give me a second, please.",
+        "annotations": []
       },
       {
         "id": "msg_0003_0030",
@@ -367,11 +399,19 @@
       },
       {
         "role": "user",
-        "content": "Yeah. Uh, okay. They're, they're running it now. Uh, no."
+        "content": "Yeah. Uh, okay. They're, they're running it now. Uh, no.",
+        "annotations": []
       },
       {
         "role": "user",
-        "content": "Yeah. Uh, is it working? Did it go through? Okay, great. Perfect. Uh, yeah. Um, sorry. Uh, it went through. Yeah. Uh, I got the receipt. It's, it's all good now. (relieved)"
+        "content": "Yeah. Uh, is it working? Did it go through? Okay, great. Perfect. Uh, yeah. Um, sorry. Uh, it went through. Yeah. Uh, I got the receipt. It's, it's all good now. (relieved)",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "relieved",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "arguments": "{\"customer_id\":\"c68e3baf-9314-4fd5-8b8f-85e747f0f9d9\",\"card_last4\":\"6148\",\"include\":[\"authorizations\"]}",
@@ -401,7 +441,14 @@
       },
       {
         "role": "user",
-        "content": "Uh, yes. Yes. That was the amount. Um, also, um, I wanted to ask while I have you here. Is the, is the card going to get blocked again if I use it somewhere else here, like while I'm on my trip, or should it be good?"
+        "content": "Uh, yes. Yes. That was the amount. Um, also, um, I wanted to ask while I have you here. Is the, is the card going to get blocked again if I use it somewhere else here, like while I'm on my trip, or should it be good?",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "concerned",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0003_0035",
@@ -418,7 +465,8 @@
       },
       {
         "role": "user",
-        "content": "Right. Yeah. Yeah. Um, thank you. That's all right. I'll, I'll, I'll be back home by Sunday night."
+        "content": "Right. Yeah. Yeah. Um, thank you. That's all right. I'll, I'll, I'll be back home by Sunday night.",
+        "annotations": []
       },
       {
         "id": "msg_0003_0037",
@@ -448,11 +496,13 @@
       },
       {
         "role": "user",
-        "content": "Right. Uh, let, let me take a look real quick."
+        "content": "Right. Uh, let, let me take a look real quick.",
+        "annotations": []
       },
       {
         "role": "user",
-        "content": "Yeah. Um, so there's the airport parking and then the breakfast and then, um, the hotel. Yep. Yeah. That- that's all me."
+        "content": "Yeah. Um, so there's the airport parking and then the breakfast and then, um, the hotel. Yep. Yeah. That- that's all me.",
+        "annotations": []
       },
       {
         "id": "msg_0003_0041",
@@ -469,7 +519,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. Yeah, of course. No, uh, I get it. That's fine. I just needed to get into the room, and my card wasn't going through, so."
+        "content": "Yeah. Yeah, of course. No, uh, I get it. That's fine. I just needed to get into the room, and my card wasn't going through, so.",
+        "annotations": []
       },
       {
         "arguments": "{\"customer_id\":\"c68e3baf-9314-4fd5-8b8f-85e747f0f9d9\",\"card_last4\":\"6148\",\"destinations\":[\"Portland, Maine\"],\"return_date\":\"2026-08-30\"}",
@@ -499,7 +550,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, perfect. That, that's great. Uh, thank you for staying on the line and then, and helping me out. Appreciate it."
+        "content": "Okay, perfect. That, that's great. Uh, thank you for staying on the line and then, and helping me out. Appreciate it.",
+        "annotations": []
       },
       {
         "id": "msg_0003_0045",
@@ -516,7 +568,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. Thank you. It was, it was great talking to you. Have a good day. Bye."
+        "content": "Yeah. Thank you. It was, it was great talking to you. Have a good day. Bye.",
+        "annotations": []
       },
       {
         "id": "msg_0003_0047",

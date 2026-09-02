@@ -163,6 +163,18 @@ separately with `type: "paralinguistic"`. Empty arrays mean that no supplied
 source explicitly labeled that speech event; they do not mean the emotion was
 neutral.
 
+The same annotation type, label, and source are also attached to the
+chronological message above:
+
+- User speech: `responses_create_params.input[].annotations`
+- Agent speech: `responses_create_params.input[].content[].annotations` on the
+  `output_text` item
+
+This keeps both the message-level view and the timestamped `event_metadata`
+view complete for all 10 conversations. The `source_text` provenance token is
+kept only in `event_metadata`; it is omitted from message-level annotations
+because it is not part of the displayed message text.
+
 For example:
 
 ```json
@@ -202,10 +214,9 @@ categories: 41 user turns and 9 agent turns. The remaining 556 of 606 speech
 turns have no supplied emotion label. All counts use only explicit labels; no
 emotion is inferred from ordinary dialogue wording.
 
-The `annotations` arrays nested inside Responses API `output_text` content
-retain their standard output-text meaning and are not repurposed. Dataset-level
-emotion annotations live in `event_metadata`, which covers both customer and
-agent speech without changing the chronological Responses payload.
+The distribution counts each speech event once from the timestamped
+`event_metadata` copy, rather than double-counting the mirrored message-level
+annotations.
 
 ## Known behavioral exception
 

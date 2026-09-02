@@ -25,7 +25,14 @@
       },
       {
         "role": "user",
-        "content": "Good. Um, I'm trying to— [laughs] I'm trying to book—"
+        "content": "Good. Um, I'm trying to— [laughs] I'm trying to book—",
+        "annotations": [
+          {
+            "type": "paralinguistic",
+            "label": "laughs",
+            "source": "inline_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0008_0002",
@@ -42,7 +49,8 @@
       },
       {
         "role": "user",
-        "content": "Pardon me?"
+        "content": "Pardon me?",
+        "annotations": []
       },
       {
         "id": "msg_0008_0004",
@@ -59,13 +67,26 @@
       },
       {
         "role": "user",
-        "content": "I'm trying to book from Phoenix to Washington, and it's for me and my grandson. But the website shows three different airports, and I have no idea which one we actually need."
+        "content": "I'm trying to book from Phoenix to Washington, and it's for me and my grandson. But the website shows three different airports, and I have no idea which one we actually need.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "confused",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0008_0006",
         "content": [
           {
-            "annotations": [],
+            "annotations": [
+              {
+                "type": "emotion",
+                "label": "reassuring",
+                "source": "human_annotated_transcript"
+              }
+            ],
             "type": "output_text",
             "text": "Right. Yeah, that can definitely be a little confusing. I'm sorry about that. Um, so what we'll do, we're gonna go ahead and figure out the airport 1st. And I won't book anything until we've gone over the full price. Okay?"
           }
@@ -76,7 +97,8 @@
       },
       {
         "role": "user",
-        "content": "Okay."
+        "content": "Okay.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0008",
@@ -93,7 +115,8 @@
       },
       {
         "role": "user",
-        "content": "Um, it's near the National Mall."
+        "content": "Um, it's near the National Mall.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0010",
@@ -110,7 +133,8 @@
       },
       {
         "role": "user",
-        "content": "Um, we wanna leave October 14th and then come back home on October 19th."
+        "content": "Um, we wanna leave October 14th and then come back home on October 19th.",
+        "annotations": []
       },
       {
         "arguments": "{\"destination_area\":\"Washington, DC National Mall\"}",
@@ -140,7 +164,14 @@
       },
       {
         "role": "user",
-        "content": "Okay. Well, Reagan then. And I also need it to be non-stop, please. Um, I'm gonna be traveling with my 12-year-old and a, uh, my grandson [laughs], and a folding walker."
+        "content": "Okay. Well, Reagan then. And I also need it to be non-stop, please. Um, I'm gonna be traveling with my 12-year-old and a, uh, my grandson [laughs], and a folding walker.",
+        "annotations": [
+          {
+            "type": "paralinguistic",
+            "label": "laughs",
+            "source": "inline_transcript"
+          }
+        ]
       },
       {
         "arguments": "{\"origin_airport\":\"PHX\",\"destination_airport\":\"DCA\",\"departure_date\":\"2026-10-14\",\"return_date\":\"2026-10-19\",\"traveler_count\":2,\"max_stops\":0}",
@@ -170,7 +201,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. Um, we definitely need standard then because we have to sit together."
+        "content": "Yeah. Um, we definitely need standard then because we have to sit together.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0016",
@@ -187,7 +219,14 @@
       },
       {
         "role": "user",
-        "content": "Uh, sure. As long as it's not one of those 5-hour layovers. [laughs]"
+        "content": "Uh, sure. As long as it's not one of those 5-hour layovers. [laughs]",
+        "annotations": [
+          {
+            "type": "paralinguistic",
+            "label": "laughs",
+            "source": "inline_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0008_0018",
@@ -230,7 +269,8 @@
       },
       {
         "role": "user",
-        "content": "Oh, no. That is not worth it. Let's go ahead and do nonstop. And we'll each check one suitcase, and I have the folding walker I mentioned."
+        "content": "Oh, no. That is not worth it. Let's go ahead and do nonstop. And we'll each check one suitcase, and I have the folding walker I mentioned.",
+        "annotations": []
       },
       {
         "arguments": "{\"device_type\":\"folding walker\"}",
@@ -260,7 +300,8 @@
       },
       {
         "role": "user",
-        "content": "Oh. Mm-hmm. Yeah."
+        "content": "Oh. Mm-hmm. Yeah.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0023",
@@ -316,7 +357,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. Go ahead. Add the insurance."
+        "content": "Yeah. Go ahead. Add the insurance.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0027",
@@ -333,7 +375,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. I'm Linda Marie Carver."
+        "content": "Okay. I'm Linda Marie Carver.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0029",
@@ -350,7 +393,8 @@
       },
       {
         "role": "user",
-        "content": "C-A-R-V-E-R."
+        "content": "C-A-R-V-E-R.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0031",
@@ -367,7 +411,8 @@
       },
       {
         "role": "user",
-        "content": "Birthday: March 8th, 1954."
+        "content": "Birthday: March 8th, 1954.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0033",
@@ -384,7 +429,8 @@
       },
       {
         "role": "user",
-        "content": "And then my grandson—yes, Evan James Carver, born July 21st of 2014."
+        "content": "And then my grandson—yes, Evan James Carver, born July 21st of 2014.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0035",
@@ -401,7 +447,8 @@
       },
       {
         "role": "user",
-        "content": "Yes. It's linda.carver9@outlook.com."
+        "content": "Yes. It's linda.carver9@outlook.com.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0037",
@@ -418,7 +465,8 @@
       },
       {
         "role": "user",
-        "content": "I should have a card attached to our account already. It's the Visa ending in 1182. I also have a travel certificate for $200."
+        "content": "I should have a card attached to our account already. It's the Visa ending in 1182. I also have a travel certificate for $200.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0039",
@@ -463,7 +511,13 @@
         "id": "msg_0008_0040",
         "content": [
           {
-            "annotations": [],
+            "annotations": [
+              {
+                "type": "paralinguistic",
+                "label": "sighs",
+                "source": "inline_transcript"
+              }
+            ],
             "type": "output_text",
             "text": "Um, okay. I found your profile, and [sighs] no duplicate reservation. All good."
           }
@@ -487,7 +541,8 @@
       },
       {
         "role": "user",
-        "content": "The code number is C-T-449108."
+        "content": "The code number is C-T-449108.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0043",
@@ -504,7 +559,8 @@
       },
       {
         "role": "user",
-        "content": "Yes. Okay."
+        "content": "Yes. Okay.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0045",
@@ -560,7 +616,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Can I- Is it B9RT6M?"
+        "content": "Okay. Can I- Is it B9RT6M?",
+        "annotations": []
       },
       {
         "id": "msg_0008_0048",
@@ -577,7 +634,8 @@
       },
       {
         "role": "user",
-        "content": "And did the certificate apply?"
+        "content": "And did the certificate apply?",
+        "annotations": []
       },
       {
         "id": "msg_0008_0050",
@@ -594,7 +652,8 @@
       },
       {
         "role": "user",
-        "content": "And 2 checked bags, right?"
+        "content": "And 2 checked bags, right?",
+        "annotations": []
       },
       {
         "id": "msg_0008_0052",
@@ -611,7 +670,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. And can you just please report- repeat rather the airports?"
+        "content": "Okay. And can you just please report- repeat rather the airports?",
+        "annotations": []
       },
       {
         "id": "msg_0008_0054",
@@ -628,7 +688,14 @@
       },
       {
         "role": "user",
-        "content": "Great. Oh—wait, I do have one more question. My grandson's last name matches mine, but his mother isn't traveling. Do I need a letter from her?"
+        "content": "Great. Oh—wait, I do have one more question. My grandson's last name matches mine, but his mother isn't traveling. Do I need a letter from her?",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "concerned",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0008_0056",
@@ -645,7 +712,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. He doesn't have a driver's license."
+        "content": "Okay. He doesn't have a driver's license.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0058",
@@ -662,7 +730,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, fine. Um, what did you enter for his birth date?"
+        "content": "Okay, fine. Um, what did you enter for his birth date?",
+        "annotations": []
       },
       {
         "id": "msg_0008_0060",
@@ -679,7 +748,8 @@
       },
       {
         "role": "user",
-        "content": "Correct. Okay. And mine is March 8th, 1954."
+        "content": "Correct. Okay. And mine is March 8th, 1954.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0062",
@@ -696,7 +766,8 @@
       },
       {
         "role": "user",
-        "content": "The certificate number had a zero or the letter 'O'?"
+        "content": "The certificate number had a zero or the letter 'O'?",
+        "annotations": []
       },
       {
         "id": "msg_0008_0064",
@@ -713,7 +784,8 @@
       },
       {
         "role": "user",
-        "content": "Good. I always mix those 2 up over the phone."
+        "content": "Good. I always mix those 2 up over the phone.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0066",
@@ -730,7 +802,8 @@
       },
       {
         "role": "user",
-        "content": "Can we choose the seats now?"
+        "content": "Can we choose the seats now?",
+        "annotations": []
       },
       {
         "id": "msg_0008_0068",
@@ -747,11 +820,13 @@
       },
       {
         "role": "user",
-        "content": "Okay."
+        "content": "Okay.",
+        "annotations": []
       },
       {
         "role": "user",
-        "content": "So I see 16A and 16B outbound, and then 14D and 14E to return."
+        "content": "So I see 16A and 16B outbound, and then 14D and 14E to return.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0071",
@@ -768,7 +843,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, confirmed. Does the walker need a serial number?"
+        "content": "Okay, confirmed. Does the walker need a serial number?",
+        "annotations": []
       },
       {
         "id": "msg_0008_0073",
@@ -785,7 +861,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Uh, please, uh, give me the total one more time."
+        "content": "Okay. Uh, please, uh, give me the total one more time.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0075",
@@ -802,7 +879,14 @@
       },
       {
         "role": "user",
-        "content": "Okay, that matches my screen."
+        "content": "Okay, that matches my screen.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "relieved",
+            "source": "human_annotated_transcript"
+          }
+        ]
       },
       {
         "id": "msg_0008_0077",
@@ -819,7 +903,8 @@
       },
       {
         "role": "user",
-        "content": "I will. I, okay, I've written down the confirmation and the total."
+        "content": "I will. I, okay, I've written down the confirmation and the total.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0079",
@@ -836,7 +921,8 @@
       },
       {
         "role": "user",
-        "content": "No, that covers it. Thank you for being patient with me."
+        "content": "No, that covers it. Thank you for being patient with me.",
+        "annotations": []
       },
       {
         "id": "msg_0008_0081",
@@ -853,7 +939,8 @@
       },
       {
         "role": "user",
-        "content": "Thank you."
+        "content": "Thank you.",
+        "annotations": []
       }
     ],
     "tools": [
