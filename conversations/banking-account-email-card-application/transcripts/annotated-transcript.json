@@ -25,7 +25,15 @@
       },
       {
         "role": "user",
-        "content": "Hey, um, I'm calling because I'm locked out of my old email and I want to apply for a travel card before a trip. The bank is connected to this old email. I've already tried, um, changing this online twice and it keeps sending codes to an email I can't access, so would appreciate any help here."
+        "content": "Hey, um, I'm calling because I'm locked out of my old email and I want to apply for a travel card before a trip. The bank is connected to this old email. I've already tried, um, changing this online twice and it keeps sending codes to an email I can't access, so would appreciate any help here.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "frustrated",
+            "source": "human_annotated_transcript",
+            "source_text": "(frustrated)"
+          }
+        ]
       },
       {
         "id": "msg_0000_0002",
@@ -42,7 +50,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah, sure. Um, so my name is Johnny Monroe. That is J-O-H-N-N-Y Monroe, M-O-N-R-O-E."
+        "content": "Yeah, sure. Um, so my name is Johnny Monroe. That is J-O-H-N-N-Y Monroe, M-O-N-R-O-E.",
+        "annotations": []
       },
       {
         "id": "msg_0000_0004",
@@ -59,7 +68,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. It is SF204771."
+        "content": "Yeah. It is SF204771.",
+        "annotations": []
       },
       {
         "id": "msg_0000_0006",
@@ -102,7 +112,8 @@
       },
       {
         "role": "user",
-        "content": "Yep. My ZIP code is 19447 and the last four digits of my number are 1251."
+        "content": "Yep. My ZIP code is 19447 and the last four digits of my number are 1251.",
+        "annotations": []
       },
       {
         "id": "msg_0000_0009",
@@ -145,7 +156,8 @@
       },
       {
         "role": "user",
-        "content": "Sure."
+        "content": "Sure.",
+        "annotations": []
       },
       {
         "id": "msg_0000_0011",
@@ -162,7 +174,8 @@
       },
       {
         "role": "user",
-        "content": "The new email is johnny.monroe.travel@outlook.com."
+        "content": "The new email is johnny.monroe.travel@outlook.com.",
+        "annotations": []
       },
       {
         "id": "msg_0000_0013",
@@ -179,7 +192,8 @@
       },
       {
         "role": "user",
-        "content": "That's correct."
+        "content": "That's correct.",
+        "annotations": []
       },
       {
         "id": "msg_0000_0015",
@@ -222,11 +236,13 @@
       },
       {
         "role": "user",
-        "content": "Yep, give me one second."
+        "content": "Yep, give me one second.",
+        "annotations": []
       },
       {
         "role": "user",
-        "content": "The number is 337464."
+        "content": "The number is 337464.",
+        "annotations": []
       },
       {
         "arguments": "{\"customer_id\":\"4d6679ca-bcef-4893-81bf-488f66c8c666\",\"confirmation_id\":\"a241c1d7-d6c0-4489-9406-65a28d3bca66\"}",
@@ -269,7 +285,15 @@
       },
       {
         "role": "user",
-        "content": "Okay, nice. Thank you. I'll, I'll check on that."
+        "content": "Okay, nice. Thank you. I'll, I'll check on that.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "relieved",
+            "source": "human_annotated_transcript",
+            "source_text": "(relieved)"
+          }
+        ]
       },
       {
         "id": "msg_0000_0021",
@@ -286,7 +310,8 @@
       },
       {
         "role": "user",
-        "content": "I, I, I don't actually have a specific one in mind yet. Now I- I want no foreign transaction fee and airport lounge access, but I'm not paying 700 dollars a year."
+        "content": "I, I, I don't actually have a specific one in mind yet. Now I- I want no foreign transaction fee and airport lounge access, but I'm not paying 700 dollars a year.",
+        "annotations": []
       },
       {
         "id": "msg_0000_0023",
@@ -329,7 +354,8 @@
       },
       {
         "role": "user",
-        "content": "Does Reserve give free checked bags?"
+        "content": "Does Reserve give free checked bags?",
+        "annotations": []
       },
       {
         "id": "msg_0000_0026",
@@ -372,7 +398,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. I mean, that, that makes sense. Um, what about the welcome bonus?"
+        "content": "Yeah. I mean, that, that makes sense. Um, what about the welcome bonus?",
+        "annotations": []
       },
       {
         "id": "msg_0000_0029",
@@ -415,7 +442,8 @@
       },
       {
         "role": "user",
-        "content": "Got it. I, I, I think Journey sounds more reasonable. Can you apply for me?"
+        "content": "Got it. I, I, I think Journey sounds more reasonable. Can you apply for me?",
+        "annotations": []
       },
       {
         "id": "msg_0000_0032",
@@ -432,7 +460,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, I see. Um, yeah. Can, can you send me the link for the application, um, or guide me to where I can find it?"
+        "content": "Okay, I see. Um, yeah. Can, can you send me the link for the application, um, or guide me to where I can find it?",
+        "annotations": []
       },
       {
         "id": "msg_0000_0034",
@@ -462,7 +491,8 @@
       },
       {
         "role": "user",
-        "content": "I- is it going to my new email that we just set up?"
+        "content": "I- is it going to my new email that we just set up?",
+        "annotations": []
       },
       {
         "id": "msg_0000_0036",
@@ -492,7 +522,8 @@
       },
       {
         "role": "user",
-        "content": "Got it. If, if I get denied, will you know why?"
+        "content": "Got it. If, if I get denied, will you know why?",
+        "annotations": []
       },
       {
         "arguments": "{\"query\":\"What information appears in an adverse-action decision notice and can phone agents override underwriting?\"}",
@@ -522,7 +553,8 @@
       },
       {
         "role": "user",
-        "content": "Fair. Can, can you confirm the fees for the two cards one more time?"
+        "content": "Fair. Can, can you confirm the fees for the two cards one more time?",
+        "annotations": []
       },
       {
         "id": "msg_0000_0041",
@@ -539,7 +571,8 @@
       },
       {
         "role": "user",
-        "content": "Thanks. Yeah, I, I think I'm gonna go with Journey."
+        "content": "Thanks. Yeah, I, I think I'm gonna go with Journey.",
+        "annotations": []
       },
       {
         "id": "msg_0000_0043",
@@ -556,7 +589,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, yeah, I see the application page on my end. Looks like it wants my housing payment. Is that monthly rent or the amount I split with my roommate?"
+        "content": "Okay, yeah, I see the application page on my end. Looks like it wants my housing payment. Is that monthly rent or the amount I split with my roommate?",
+        "annotations": []
       },
       {
         "arguments": "{\"query\":\"How should an applicant interpret the monthly housing payment field?\"}",
@@ -586,7 +620,8 @@
       },
       {
         "role": "user",
-        "content": "It- it also asks annual income. I have a salary and freelance work."
+        "content": "It- it also asks annual income. I have a salary and freelance work.",
+        "annotations": []
       },
       {
         "arguments": "{\"query\":\"How should salary and freelance income be reported in the card application?\"}",
@@ -616,7 +651,8 @@
       },
       {
         "role": "user",
-        "content": "Got it. I, I, I don't want to submit while we're talking. Can I save it?"
+        "content": "Got it. I, I, I don't want to submit while we're talking. Can I save it?",
+        "annotations": []
       },
       {
         "arguments": "{\"customer_id\":\"4d6679ca-bcef-4893-81bf-488f66c8c666\",\"session_id\":\"f4136da6-25dc-464b-b50c-8f02a5cc1ca3\"}",
@@ -659,7 +695,8 @@
       },
       {
         "role": "user",
-        "content": "Um, yeah, I do actually. There's also a consent about pulling credit."
+        "content": "Um, yeah, I do actually. There's also a consent about pulling credit.",
+        "annotations": []
       },
       {
         "id": "msg_0000_0052",
@@ -676,7 +713,15 @@
       },
       {
         "role": "user",
-        "content": "Good. I, I was worried you had already run my credit."
+        "content": "Good. I, I was worried you had already run my credit.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "worried",
+            "source": "human_annotated_transcript",
+            "source_text": "(worried)"
+          }
+        ]
       },
       {
         "id": "msg_0000_0054",
@@ -693,7 +738,8 @@
       },
       {
         "role": "user",
-        "content": "Got it. Does the old email still work for login too? I'm just, just curious."
+        "content": "Got it. Does the old email still work for login too? I'm just, just curious.",
+        "annotations": []
       },
       {
         "arguments": "{\"query\":\"After a profile email change, what happens to the login identifier and future notice routing?\"}",
@@ -723,7 +769,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Well, thank you for taking my questions. I'll save this link and finish after dinner."
+        "content": "Okay. Well, thank you for taking my questions. I'll save this link and finish after dinner.",
+        "annotations": []
       },
       {
         "id": "msg_0000_0058",
@@ -740,7 +787,8 @@
       },
       {
         "role": "user",
-        "content": "All good. Thank you. Bye-bye."
+        "content": "All good. Thank you. Bye-bye.",
+        "annotations": []
       },
       {
         "id": "msg_0000_0060",

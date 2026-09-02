@@ -25,7 +25,15 @@
       },
       {
         "role": "user",
-        "content": "Hey, I'm calling because there's a 243 dollar and 18 cent charge from a company I've never heard of. I haven't filed anything yet. I'm trying to figure out whether I need to dispute it."
+        "content": "Hey, I'm calling because there's a 243 dollar and 18 cent charge from a company I've never heard of. I haven't filed anything yet. I'm trying to figure out whether I need to dispute it.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "concerned",
+            "source": "human_annotated_transcript",
+            "source_text": "(concerned)"
+          }
+        ]
       },
       {
         "id": "msg_0002_0002",
@@ -42,7 +50,8 @@
       },
       {
         "role": "user",
-        "content": "Justin Porter, jporter92@email.com."
+        "content": "Justin Porter, jporter92@email.com.",
+        "annotations": []
       },
       {
         "id": "msg_0002_0004",
@@ -85,7 +94,8 @@
       },
       {
         "role": "user",
-        "content": "64114, February 19th."
+        "content": "64114, February 19th.",
+        "annotations": []
       },
       {
         "id": "msg_0002_0007",
@@ -128,11 +138,13 @@
       },
       {
         "role": "user",
-        "content": "I recognize the amount because it's right there on my statement, but I don't recognize anything buying anything for $243.18. It posted Monday. There's no city listed, and the description says M-R-K-T-P-L-C star"
+        "content": "I recognize the amount because it's right there on my statement, but I don't recognize anything buying anything for $243.18. It posted Monday. There's no city listed, and the description says M-R-K-T-P-L-C star",
+        "annotations": []
       },
       {
         "role": "user",
-        "content": "8472."
+        "content": "8472.",
+        "annotations": []
       },
       {
         "id": "msg_0002_0011",
@@ -175,7 +187,8 @@
       },
       {
         "role": "user",
-        "content": "No, I did not buy anything for 243 dollars."
+        "content": "No, I did not buy anything for 243 dollars.",
+        "annotations": []
       },
       {
         "id": "msg_0002_0014",
@@ -192,7 +205,8 @@
       },
       {
         "role": "user",
-        "content": "Yes, in my wallet."
+        "content": "Yes, in my wallet.",
+        "annotations": []
       },
       {
         "id": "msg_0002_0016",
@@ -222,7 +236,8 @@
       },
       {
         "role": "user",
-        "content": "My daughter has used the marketplace, but not my card. I'll ask her now."
+        "content": "My daughter has used the marketplace, but not my card. I'll ask her now.",
+        "annotations": []
       },
       {
         "id": "msg_0002_0019",
@@ -278,7 +293,8 @@
       },
       {
         "role": "user",
-        "content": "Can you just remove it?"
+        "content": "Can you just remove it?",
+        "annotations": []
       },
       {
         "id": "msg_0002_0023",
@@ -295,7 +311,8 @@
       },
       {
         "role": "user",
-        "content": "Yes, please. I'd rather have it ready while I'm checking with my daughter."
+        "content": "Yes, please. I'd rather have it ready while I'm checking with my daughter.",
+        "annotations": []
       },
       {
         "id": "msg_0002_0025",
@@ -338,7 +355,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, wait. I see it. It's-- it asks whether I contacted the merchant."
+        "content": "Okay, wait. I see it. It's-- it asks whether I contacted the merchant.",
+        "annotations": []
       },
       {
         "id": "msg_0002_0028",
@@ -355,7 +373,8 @@
       },
       {
         "role": "user",
-        "content": "It also asks if I want a representative."
+        "content": "It also asks if I want a representative.",
+        "annotations": []
       },
       {
         "id": "msg_0002_0030",
@@ -372,7 +391,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, I can finish it myself, but what happens after submit?"
+        "content": "Okay, I can finish it myself, but what happens after submit?",
+        "annotations": []
       },
       {
         "id": "msg_0002_0032",
@@ -415,7 +435,8 @@
       },
       {
         "role": "user",
-        "content": "That's clear. Let me call my daughter first, then finish it if needed."
+        "content": "That's clear. Let me call my daughter first, then finish it if needed.",
+        "annotations": []
       },
       {
         "id": "msg_0002_0035",
@@ -432,7 +453,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, my daughter is calling me back now. Can you hold?"
+        "content": "Okay, my daughter is calling me back now. Can you hold?",
+        "annotations": []
       },
       {
         "id": "msg_0002_0037",
@@ -462,7 +484,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, I'm back. She says she bought a patio set, but she swears she used her own card."
+        "content": "Okay, I'm back. She says she bought a patio set, but she swears she used her own card.",
+        "annotations": []
       },
       {
         "id": "msg_0002_0040",
@@ -479,13 +502,34 @@
       },
       {
         "role": "user",
-        "content": "Okay, wait. I just texted her. She's checking. This is embarrassing."
+        "content": "Okay, wait. I just texted her. She's checking. This is embarrassing.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "embarrassed",
+            "source": "human_annotated_transcript",
+            "source_text": "(embarrassed)"
+          }
+        ]
       },
       {
         "id": "msg_0002_0042",
         "content": [
           {
-            "annotations": [],
+            "annotations": [
+              {
+                "type": "paralinguistic",
+                "label": "laughs",
+                "source": "inline_transcript",
+                "source_text": "[laughs]"
+              },
+              {
+                "type": "emotion",
+                "label": "reassuring",
+                "source": "human_annotated_transcript",
+                "source_text": "(reassuring)"
+              }
+            ],
             "type": "output_text",
             "text": "[laughs] No, no, it's useful information. A known household purchase should not be reported as fraud merely because the descriptor was unfamiliar."
           }
@@ -496,7 +540,8 @@
       },
       {
         "role": "user",
-        "content": "She found it. The receipt shows my last 4 digits. She just clicked too fast when checking out."
+        "content": "She found it. The receipt shows my last 4 digits. She just clicked too fast when checking out.",
+        "annotations": []
       },
       {
         "id": "msg_0002_0044",
@@ -513,7 +558,8 @@
       },
       {
         "role": "user",
-        "content": "Can you cancel the dispute tool?"
+        "content": "Can you cancel the dispute tool?",
+        "annotations": []
       },
       {
         "id": "msg_0002_0046",
@@ -530,7 +576,15 @@
       },
       {
         "role": "user",
-        "content": "Will that hurt me later?"
+        "content": "Will that hurt me later?",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "worried",
+            "source": "human_annotated_transcript",
+            "source_text": "(worried)"
+          }
+        ]
       },
       {
         "arguments": "{\"query\":\"Does an unused unsubmitted dispute session affect future dispute rights?\"}",
@@ -560,7 +614,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. I appreciate that you made me check before filing."
+        "content": "Okay. I appreciate that you made me check before filing.",
+        "annotations": []
       },
       {
         "id": "msg_0002_0050",
@@ -577,7 +632,8 @@
       },
       {
         "role": "user",
-        "content": "Should I remove my card from her account?"
+        "content": "Should I remove my card from her account?",
+        "annotations": []
       },
       {
         "id": "msg_0002_0052",
@@ -594,7 +650,8 @@
       },
       {
         "role": "user",
-        "content": "So the final... Oh, okay. So the final outcome is no bank dispute?"
+        "content": "So the final... Oh, okay. So the final outcome is no bank dispute?",
+        "annotations": []
       },
       {
         "id": "msg_0002_0054",
@@ -611,7 +668,15 @@
       },
       {
         "role": "user",
-        "content": "Okay, that makes sense. I'm glad we figured it out before I filed anything."
+        "content": "Okay, that makes sense. I'm glad we figured it out before I filed anything.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "relieved",
+            "source": "human_annotated_transcript",
+            "source_text": "(relieved)"
+          }
+        ]
       },
       {
         "id": "msg_0002_0056",
@@ -628,7 +693,8 @@
       },
       {
         "role": "user",
-        "content": "No, that's it. Thanks for walking me through it."
+        "content": "No, that's it. Thanks for walking me through it.",
+        "annotations": []
       },
       {
         "id": "msg_0002_0058",
@@ -658,7 +724,8 @@
       },
       {
         "role": "user",
-        "content": "Bye-bye."
+        "content": "Bye-bye.",
+        "annotations": []
       }
     ],
     "tools": [

@@ -25,7 +25,8 @@
       },
       {
         "role": "user",
-        "content": "Hey, um, I- I'm calling about a prescription that was supposed to be ready this afternoon. Um, the app still, still says it's, um, being processed. I was wondering if you knew anything about that."
+        "content": "Hey, um, I- I'm calling about a prescription that was supposed to be ready this afternoon. Um, the app still, still says it's, um, being processed. I was wondering if you knew anything about that.",
+        "annotations": []
       },
       {
         "id": "msg_0004_0002",
@@ -42,7 +43,8 @@
       },
       {
         "role": "user",
-        "content": "Um, Miles Carter. June 14th, uh, 1988."
+        "content": "Um, Miles Carter. June 14th, uh, 1988.",
+        "annotations": []
       },
       {
         "arguments": "{\"full_name\":\"Miles Carter\",\"date_of_birth\":\"1988-06-14\"}",
@@ -85,7 +87,8 @@
       },
       {
         "role": "user",
-        "content": "Um, the inhaler, uh, Albuterol. I think, uh, my doctor should have sent it this morning."
+        "content": "Um, the inhaler, uh, Albuterol. I think, uh, my doctor should have sent it this morning.",
+        "annotations": []
       },
       {
         "id": "msg_0004_0007",
@@ -128,7 +131,15 @@
       },
       {
         "role": "user",
-        "content": "Um, what did- what do you mean, uh, insurance? The app didn't say anything about insurance or anything. It just said, um, that it was processing. Did I miss something?"
+        "content": "Um, what did- what do you mean, uh, insurance? The app didn't say anything about insurance or anything. It just said, um, that it was processing. Did I miss something?",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "confused",
+            "source": "human_annotated_transcript",
+            "source_text": "(confused)"
+          }
+        ]
       },
       {
         "id": "msg_0004_0010",
@@ -145,7 +156,8 @@
       },
       {
         "role": "user",
-        "content": "Um, I- I think, I think I did it, uh, last month, but I left that one in a h- hotel room and I told the doctor's office that, um, when I was asking for a, uh, for a refill."
+        "content": "Um, I- I think, I think I did it, uh, last month, but I left that one in a h- hotel room and I told the doctor's office that, um, when I was asking for a, uh, for a refill.",
+        "annotations": []
       },
       {
         "id": "msg_0004_0012",
@@ -175,7 +187,15 @@
       },
       {
         "role": "user",
-        "content": "Uh, is there any way you can call them right now? I'm leaving town again tomorrow morning a- and I kinda need it."
+        "content": "Uh, is there any way you can call them right now? I'm leaving town again tomorrow morning a- and I kinda need it.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "concerned",
+            "source": "human_annotated_transcript",
+            "source_text": "(concerned)"
+          }
+        ]
       },
       {
         "id": "msg_0004_0015",
@@ -192,7 +212,8 @@
       },
       {
         "role": "user",
-        "content": "Uh, I got, I got one at home with, um, maybe a f- a couple doses left, but I need the new one before I go on the trip."
+        "content": "Uh, I got, I got one at home with, um, maybe a f- a couple doses left, but I need the new one before I go on the trip.",
+        "annotations": []
       },
       {
         "id": "msg_0004_0017",
@@ -222,7 +243,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. Thank you."
+        "content": "Yeah. Thank you.",
+        "annotations": []
       },
       {
         "arguments": "{\"prescription_id\":\"9670dbb4-6227-48ed-99fc-7ce746085502\",\"reason\":\"lost_medication\",\"urgency_context\":\"Patient leaves town on the morning of 2026-08-28 and needs the inhaler on the evening of 2026-08-27\"}",
@@ -278,7 +300,8 @@
       },
       {
         "role": "user",
-        "content": "Okay. Um, great. So is it, is it ready now?"
+        "content": "Okay. Um, great. So is it, is it ready now?",
+        "annotations": []
       },
       {
         "id": "msg_0004_0023",
@@ -295,7 +318,8 @@
       },
       {
         "role": "user",
-        "content": "Um, when do you guys close? It closes at, on the pharmacy it's at, um, 7:00, right? Like it closes at 7:00?"
+        "content": "Um, when do you guys close? It closes at, on the pharmacy it's at, um, 7:00, right? Like it closes at 7:00?",
+        "annotations": []
       },
       {
         "id": "msg_0004_0025",
@@ -312,7 +336,8 @@
       },
       {
         "role": "user",
-        "content": "Right. So it's, it's like, um, 6:15 now and I'm about 25 minutes away. Is that, is that, is that good? Is that fine?"
+        "content": "Right. So it's, it's like, um, 6:15 now and I'm about 25 minutes away. Is that, is that, is that good? Is that fine?",
+        "annotations": []
       },
       {
         "id": "msg_0004_0027",
@@ -329,7 +354,8 @@
       },
       {
         "role": "user",
-        "content": "Yeah. No, no, yeah. I, I get it. Uh, can you, can you make sure it doesn't get pushed to tomorrow though? Is that possible?"
+        "content": "Yeah. No, no, yeah. I, I get it. Uh, can you, can you make sure it doesn't get pushed to tomorrow though? Is that possible?",
+        "annotations": []
       },
       {
         "id": "msg_0004_0029",
@@ -359,7 +385,15 @@
       },
       {
         "role": "user",
-        "content": "Oh, okay. That, that's great. Uh, what happens if I don't get the text by say like 6:45 or something like that?"
+        "content": "Oh, okay. That, that's great. Uh, what happens if I don't get the text by say like 6:45 or something like that?",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "relieved",
+            "source": "human_annotated_transcript",
+            "source_text": "(relieved)"
+          }
+        ]
       },
       {
         "id": "msg_0004_0031",
@@ -376,7 +410,8 @@
       },
       {
         "role": "user",
-        "content": "And does that one also close at, on the counter at 7:00 or is it, is it later?"
+        "content": "And does that one also close at, on the counter at 7:00 or is it, is it later?",
+        "annotations": []
       },
       {
         "arguments": "{\"origin_store_id\":\"8e22d41d-843c-4e73-95c0-3c9877366ba9\",\"open_after_local_time\":\"19:00\"}",
@@ -432,7 +467,8 @@
       },
       {
         "role": "user",
-        "content": "Right. Yeah, yeah. Okay, yeah. We can, we can leave it there. Uh, let's, yeah, unless you, you can't finish it then no, we can transfer it. That's good. Thank you."
+        "content": "Right. Yeah, yeah. Okay, yeah. We can, we can leave it there. Uh, let's, yeah, unless you, you can't finish it then no, we can transfer it. That's good. Thank you.",
+        "annotations": []
       },
       {
         "arguments": "{\"prescription_id\":\"9670dbb4-6227-48ed-99fc-7ce746085502\",\"notification_channel\":\"sms\",\"notification_destination_id\":\"94c55afb-c756-4c14-9f4a-0c0cf2e3d69e\"}",
@@ -462,7 +498,8 @@
       },
       {
         "role": "user",
-        "content": "Um, also, uh, can I, can I pay in the app before I get there?"
+        "content": "Um, also, uh, can I, can I pay in the app before I get there?",
+        "annotations": []
       },
       {
         "id": "msg_0004_0038",
@@ -479,13 +516,21 @@
       },
       {
         "role": "user",
-        "content": "Okay. Thank you. Thank you. Thank you so much. I was worried the doctor never sent it, so I was kinda freaking out."
+        "content": "Okay. Thank you. Thank you. Thank you so much. I was worried the doctor never sent it, so I was kinda freaking out.",
+        "annotations": []
       },
       {
         "id": "msg_0004_0040",
         "content": [
           {
-            "annotations": [],
+            "annotations": [
+              {
+                "type": "emotion",
+                "label": "reassuring",
+                "source": "human_annotated_transcript",
+                "source_text": "(reassuring)"
+              }
+            ],
             "type": "output_text",
             "text": "All good. No, no, we have it. Uh, the insurance issue is cleared. We're just waiting on the final pharmacy check."
           }
@@ -496,7 +541,8 @@
       },
       {
         "role": "user",
-        "content": "All right. Okay. Uh, I'll watch for the text and thanks for calling the insurance too."
+        "content": "All right. Okay. Uh, I'll watch for the text and thanks for calling the insurance too.",
+        "annotations": []
       },
       {
         "id": "msg_0004_0042",
@@ -513,7 +559,8 @@
       },
       {
         "role": "user",
-        "content": "Okay, I will. Thank you. Have a, have a great rest of your shift."
+        "content": "Okay, I will. Thank you. Have a, have a great rest of your shift.",
+        "annotations": []
       },
       {
         "id": "msg_0004_0044",
@@ -530,7 +577,8 @@
       },
       {
         "role": "user",
-        "content": "Bye bye."
+        "content": "Bye bye.",
+        "annotations": []
       }
     ],
     "tools": [
