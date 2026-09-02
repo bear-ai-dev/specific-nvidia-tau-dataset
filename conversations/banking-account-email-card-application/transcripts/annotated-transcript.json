@@ -30,8 +30,7 @@
           {
             "type": "emotion",
             "label": "frustrated",
-            "source": "human_annotated_transcript",
-            "source_text": "(frustrated)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -290,8 +289,7 @@
           {
             "type": "emotion",
             "label": "relieved",
-            "source": "human_annotated_transcript",
-            "source_text": "(relieved)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -718,8 +716,7 @@
           {
             "type": "emotion",
             "label": "worried",
-            "source": "human_annotated_transcript",
-            "source_text": "(worried)"
+            "source": "human_annotated_transcript"
           }
         ]
       },

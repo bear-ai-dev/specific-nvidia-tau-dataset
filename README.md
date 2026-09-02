@@ -163,14 +163,17 @@ separately with `type: "paralinguistic"`. Empty arrays mean that no supplied
 source explicitly labeled that speech event; they do not mean the emotion was
 neutral.
 
-The same annotation array is also attached to the chronological message above:
+The same annotation type, label, and source are also attached to the
+chronological message above:
 
 - User speech: `responses_create_params.input[].annotations`
 - Agent speech: `responses_create_params.input[].content[].annotations` on the
   `output_text` item
 
 This keeps both the message-level view and the timestamped `event_metadata`
-view complete for all 10 conversations.
+view complete for all 10 conversations. The `source_text` provenance token is
+kept only in `event_metadata`; it is omitted from message-level annotations
+because it is not part of the displayed message text.
 
 For example:
 

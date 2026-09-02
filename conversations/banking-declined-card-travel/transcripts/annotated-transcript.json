@@ -30,8 +30,7 @@
           {
             "type": "emotion",
             "label": "concerned",
-            "source": "human_annotated_transcript",
-            "source_text": "(concerned)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -148,8 +147,7 @@
           {
             "type": "emotion",
             "label": "hurried",
-            "source": "human_annotated_transcript",
-            "source_text": "(hurried)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -310,8 +308,7 @@
           {
             "type": "emotion",
             "label": "confused",
-            "source": "human_annotated_transcript",
-            "source_text": "(confused)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -412,8 +409,7 @@
           {
             "type": "emotion",
             "label": "relieved",
-            "source": "human_annotated_transcript",
-            "source_text": "(relieved)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -450,8 +446,7 @@
           {
             "type": "emotion",
             "label": "concerned",
-            "source": "human_annotated_transcript",
-            "source_text": "(concerned)"
+            "source": "human_annotated_transcript"
           }
         ]
       },

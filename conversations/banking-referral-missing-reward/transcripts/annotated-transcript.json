@@ -30,8 +30,7 @@
           {
             "type": "emotion",
             "label": "annoyed",
-            "source": "human_annotated_transcript",
-            "source_text": "(annoyed)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -337,8 +336,7 @@
           {
             "type": "emotion",
             "label": "frustrated",
-            "source": "human_annotated_transcript",
-            "source_text": "(frustrated)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -535,8 +533,7 @@
           {
             "type": "emotion",
             "label": "relieved",
-            "source": "human_annotated_transcript",
-            "source_text": "(relieved)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -560,8 +557,7 @@
           {
             "type": "paralinguistic",
             "label": "lip_smack",
-            "source": "inline_transcript",
-            "source_text": "[lip smack]"
+            "source": "inline_transcript"
           }
         ]
       },
@@ -585,8 +581,7 @@
           {
             "type": "emotion",
             "label": "worried",
-            "source": "human_annotated_transcript",
-            "source_text": "(worried)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -624,8 +619,7 @@
               {
                 "type": "emotion",
                 "label": "reassuring",
-                "source": "human_annotated_transcript",
-                "source_text": "(reassuring)"
+                "source": "human_annotated_transcript"
               }
             ],
             "type": "output_text",

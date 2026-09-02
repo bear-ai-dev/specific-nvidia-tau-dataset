@@ -151,8 +151,7 @@
           {
             "type": "emotion",
             "label": "concerned",
-            "source": "human_annotated_transcript",
-            "source_text": "(concerned)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -328,8 +327,7 @@
           {
             "type": "emotion",
             "label": "frustrated",
-            "source": "human_annotated_transcript",
-            "source_text": "(frustrated)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -606,8 +604,7 @@
           {
             "type": "emotion",
             "label": "reassured",
-            "source": "human_annotated_transcript",
-            "source_text": "(reassured)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -619,8 +616,7 @@
               {
                 "type": "emotion",
                 "label": "apologetic",
-                "source": "human_annotated_transcript",
-                "source_text": "(apologetic)"
+                "source": "human_annotated_transcript"
               }
             ],
             "type": "output_text",

@@ -136,8 +136,7 @@
           {
             "type": "emotion",
             "label": "confused",
-            "source": "human_annotated_transcript",
-            "source_text": "(confused)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -192,8 +191,7 @@
           {
             "type": "emotion",
             "label": "concerned",
-            "source": "human_annotated_transcript",
-            "source_text": "(concerned)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -390,8 +388,7 @@
           {
             "type": "emotion",
             "label": "relieved",
-            "source": "human_annotated_transcript",
-            "source_text": "(relieved)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -527,8 +524,7 @@
               {
                 "type": "emotion",
                 "label": "reassuring",
-                "source": "human_annotated_transcript",
-                "source_text": "(reassuring)"
+                "source": "human_annotated_transcript"
               }
             ],
             "type": "output_text",

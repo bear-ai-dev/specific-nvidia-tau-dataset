@@ -30,8 +30,7 @@
           {
             "type": "paralinguistic",
             "label": "laughs",
-            "source": "inline_transcript",
-            "source_text": "[laughs]"
+            "source": "inline_transcript"
           }
         ]
       },
@@ -73,8 +72,7 @@
           {
             "type": "emotion",
             "label": "confused",
-            "source": "human_annotated_transcript",
-            "source_text": "(confused)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -86,8 +84,7 @@
               {
                 "type": "emotion",
                 "label": "reassuring",
-                "source": "human_annotated_transcript",
-                "source_text": "(reassuring)"
+                "source": "human_annotated_transcript"
               }
             ],
             "type": "output_text",
@@ -172,8 +169,7 @@
           {
             "type": "paralinguistic",
             "label": "laughs",
-            "source": "inline_transcript",
-            "source_text": "[laughs]"
+            "source": "inline_transcript"
           }
         ]
       },
@@ -228,8 +224,7 @@
           {
             "type": "paralinguistic",
             "label": "laughs",
-            "source": "inline_transcript",
-            "source_text": "[laughs]"
+            "source": "inline_transcript"
           }
         ]
       },
@@ -520,8 +515,7 @@
               {
                 "type": "paralinguistic",
                 "label": "sighs",
-                "source": "inline_transcript",
-                "source_text": "[sighs]"
+                "source": "inline_transcript"
               }
             ],
             "type": "output_text",
@@ -699,8 +693,7 @@
           {
             "type": "emotion",
             "label": "concerned",
-            "source": "human_annotated_transcript",
-            "source_text": "(concerned)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
@@ -891,8 +884,7 @@
           {
             "type": "emotion",
             "label": "relieved",
-            "source": "human_annotated_transcript",
-            "source_text": "(relieved)"
+            "source": "human_annotated_transcript"
           }
         ]
       },
