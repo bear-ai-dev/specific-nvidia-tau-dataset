@@ -1,0 +1,204 @@
+{
+  "schema_version": "0.1.0",
+  "turns": [
+    {
+      "turn_id": "turn-0001",
+      "role": "agent",
+      "start_seconds": 0.36,
+      "end_seconds": 3.28,
+      "text": "Thanks for calling Parker Honda Service. This is Ryan. How can I help?",
+      "word_count": 13,
+      "duration_seconds": 2.92,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0002",
+      "role": "customer",
+      "start_seconds": 4.2,
+      "end_seconds": 9.14,
+      "text": "Hey, I got a text saying my Civic may be ready. Uh, can I pick it up today?",
+      "word_count": 18,
+      "duration_seconds": 4.94,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0003",
+      "role": "agent",
+      "start_seconds": 11.02,
+      "end_seconds": 14.2,
+      "text": "One second. I can check. Do you have the repair order number?",
+      "word_count": 12,
+      "duration_seconds": 3.18,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0004",
+      "role": "customer",
+      "start_seconds": 14.84,
+      "end_seconds": 20.24,
+      "text": "Yeah, I do. It's P-H-73164.",
+      "word_count": 8,
+      "duration_seconds": 5.4,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0005",
+      "role": "agent",
+      "start_seconds": 22.56,
+      "end_seconds": 22.88,
+      "text": "Thank you.",
+      "word_count": 2,
+      "duration_seconds": 0.32,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0006",
+      "role": "agent",
+      "start_seconds": 25.32,
+      "end_seconds": 30.82,
+      "text": "Let me check for you. The brake work and inspection are complete, and the car has been released for pickup.",
+      "word_count": 20,
+      "duration_seconds": 5.5,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0007",
+      "role": "customer",
+      "start_seconds": 32.32,
+      "end_seconds": 35.18,
+      "text": "Okay, great. Uh, did they add the cabin filter they mentioned?",
+      "word_count": 11,
+      "duration_seconds": 2.86,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0008",
+      "role": "agent",
+      "start_seconds": 37.04,
+      "end_seconds": 41.28,
+      "text": "Um, no. I'm seeing here that it's still listed as a recommendation,",
+      "word_count": 14,
+      "duration_seconds": 4.24,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0009",
+      "role": "agent",
+      "start_seconds": 42.78,
+      "end_seconds": 51.04,
+      "text": "but it wasn't added to today's invoice. I'm seeing here that your total is $486.12.",
+      "word_count": 19,
+      "duration_seconds": 8.26,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0010",
+      "role": "customer",
+      "start_seconds": 51.04,
+      "end_seconds": 52.7,
+      "text": "Okay, perfect. Yeah, I'll be there around 5.",
+      "word_count": 9,
+      "duration_seconds": 1.66,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0011",
+      "role": "agent",
+      "start_seconds": 53.88,
+      "end_seconds": 57.3,
+      "text": "Sounds good. The service desk should be open until 6, so yeah.",
+      "word_count": 12,
+      "duration_seconds": 3.42,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0012",
+      "role": "customer",
+      "start_seconds": 57.92,
+      "end_seconds": 59.3,
+      "text": "Okay, perfect. Thanks. Bye.",
+      "word_count": 4,
+      "duration_seconds": 1.38,
+      "is_backchannel_candidate": false
+    }
+  ],
+  "pause_boundaries": [
+    {
+      "after_turn_id": "turn-0001",
+      "before_turn_id": "turn-0002",
+      "start_seconds": 3.28,
+      "end_seconds": 4.2,
+      "duration_seconds": 0.92,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0002",
+      "before_turn_id": "turn-0003",
+      "start_seconds": 9.14,
+      "end_seconds": 11.02,
+      "duration_seconds": 1.88,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0004",
+      "before_turn_id": "turn-0005",
+      "start_seconds": 20.24,
+      "end_seconds": 22.56,
+      "duration_seconds": 2.32,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0005",
+      "before_turn_id": "turn-0006",
+      "start_seconds": 22.88,
+      "end_seconds": 25.32,
+      "duration_seconds": 2.44,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0006",
+      "before_turn_id": "turn-0007",
+      "start_seconds": 30.82,
+      "end_seconds": 32.32,
+      "duration_seconds": 1.5,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0007",
+      "before_turn_id": "turn-0008",
+      "start_seconds": 35.18,
+      "end_seconds": 37.04,
+      "duration_seconds": 1.86,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0008",
+      "before_turn_id": "turn-0009",
+      "start_seconds": 41.28,
+      "end_seconds": 42.78,
+      "duration_seconds": 1.5,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0010",
+      "before_turn_id": "turn-0011",
+      "start_seconds": 52.7,
+      "end_seconds": 53.88,
+      "duration_seconds": 1.18,
+      "class": "short"
+    }
+  ],
+  "overlap_and_barge_in_candidates": [],
+  "source_segment_overlap_candidates": [],
+  "audio_events": [],
+  "speaker_metadata": {
+    "agent": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    },
+    "customer": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    }
+  }
+}

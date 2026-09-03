@@ -1,0 +1,1515 @@
+{
+  "schema_version": "0.1.0",
+  "source": "word timestamps aligned to the verbatim transcript (channel-isolated speaker stems)",
+  "warning": "Backchannel and barge-in fields are automatic candidates and require human acceptance for gold labels.",
+  "turns": [
+    {
+      "turn_id": "turn-0001",
+      "role": "agent",
+      "start_seconds": 1.26,
+      "end_seconds": 7.28,
+      "text": "Hi. Thanks for calling Clearwave Mobile. This is Jonathan. How are we doing today, and what can I help you with?",
+      "word_count": 21,
+      "duration_seconds": 6.02,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0002",
+      "role": "customer",
+      "start_seconds": 8.12,
+      "end_seconds": 18.18,
+      "text": "Hey, um, honestly, not great. I woke up to an alert saying, um, I used all of my data, and I was actually asleep this whole time when that happened, so just calling to see what's going on.",
+      "word_count": 39,
+      "duration_seconds": 10.06,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0003",
+      "role": "agent",
+      "start_seconds": 19.98,
+      "end_seconds": 29.64,
+      "text": "Yeah. Uh, I'd definitely be concerned, too. Let's kind of figure out whether the usage is real, which line it came from, and what was kind of running. Could I know what the mobile number is?",
+      "word_count": 38,
+      "duration_seconds": 9.66,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0004",
+      "role": "customer",
+      "start_seconds": 30.22,
+      "end_seconds": 40.54,
+      "text": "Yeah, it's the same number I'm calling from. It's 404-555-0176.",
+      "word_count": 15,
+      "duration_seconds": 10.32,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0005",
+      "role": "agent",
+      "start_seconds": 43.3,
+      "end_seconds": 47.64,
+      "text": "Thanks. Could I get your full name and date of birth?",
+      "word_count": 11,
+      "duration_seconds": 4.34,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0006",
+      "role": "customer",
+      "start_seconds": 48.5,
+      "end_seconds": 53.68,
+      "text": "Yeah. Full name, Benjamin Reed. That's R-E-E-D.",
+      "word_count": 11,
+      "duration_seconds": 5.18,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0007",
+      "role": "customer",
+      "start_seconds": 54.88,
+      "end_seconds": 59.49,
+      "text": "And then date of birth, November 22nd, 1991.",
+      "word_count": 8,
+      "duration_seconds": 4.61,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0008",
+      "role": "agent",
+      "start_seconds": 61.64,
+      "end_seconds": 63.58,
+      "text": "Okay. Give me a moment to look up your account.",
+      "word_count": 10,
+      "duration_seconds": 1.94,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0009",
+      "role": "agent",
+      "start_seconds": 74.58,
+      "end_seconds": 83.82,
+      "text": "Okay, I found your account. You have one phone line on the unlimited start plan and a Pixel 8. Is that the phone that you're using now?",
+      "word_count": 28,
+      "duration_seconds": 9.24,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0010",
+      "role": "customer",
+      "start_seconds": 84.82,
+      "end_seconds": 94.0,
+      "text": "Pixel 8, yep. It's the one I'm using. The alert said I used 85%, um, but I was on my home Wi-Fi, like, all night, so that doesn't make sense.",
+      "word_count": 34,
+      "duration_seconds": 9.18,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0011",
+      "role": "agent",
+      "start_seconds": 96.16,
+      "end_seconds": 101.72,
+      "text": "Okay, got it. I'm gonna check the carrier's, uh, usage first. Give me a moment.",
+      "word_count": 17,
+      "duration_seconds": 5.56,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0012",
+      "role": "customer",
+      "start_seconds": 102.18,
+      "end_seconds": 102.42,
+      "text": "Okay.",
+      "word_count": 1,
+      "duration_seconds": 0.24,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0013",
+      "role": "agent",
+      "start_seconds": 106.68,
+      "end_seconds": 113.72,
+      "text": "So what I'm seeing on my end is the line used 11.8 gigabytes between about midnight and 4:00 in the morning.",
+      "word_count": 24,
+      "duration_seconds": 7.04,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0014",
+      "role": "customer",
+      "start_seconds": 115.34,
+      "end_seconds": 120.8,
+      "text": "11 gigs? Wait, is that real? Then there's no way, 'cause I was sleeping. Uh,",
+      "word_count": 16,
+      "duration_seconds": 5.46,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0015",
+      "role": "customer",
+      "start_seconds": 122.2,
+      "end_seconds": 124.33,
+      "text": "are you telling me someone hacked my, the phone or something?",
+      "word_count": 11,
+      "duration_seconds": 2.13,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0016",
+      "role": "agent",
+      "start_seconds": 126.1,
+      "end_seconds": 127.08,
+      "text": "Not necessarily.",
+      "word_count": 2,
+      "duration_seconds": 0.98,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0017",
+      "role": "agent",
+      "start_seconds": 128.38,
+      "end_seconds": 133.28,
+      "text": "Background backups, video downloads, or even an app switching off Wi-Fi can do that.",
+      "word_count": 15,
+      "duration_seconds": 4.9,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0018",
+      "role": "customer",
+      "start_seconds": 133.82,
+      "end_seconds": 134.12,
+      "text": "Hmm.",
+      "word_count": 1,
+      "duration_seconds": 0.3,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0019",
+      "role": "agent",
+      "start_seconds": 134.3,
+      "end_seconds": 141.82,
+      "text": "Before we assume anything worse, look at the phone's data usage screen and tell me which app is on the top.",
+      "word_count": 22,
+      "duration_seconds": 7.52,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0020",
+      "role": "customer",
+      "start_seconds": 143.5,
+      "end_seconds": 150.2,
+      "text": "Okay, uh, data usage screen. One second. Let me just pull that up.",
+      "word_count": 13,
+      "duration_seconds": 6.7,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0021",
+      "role": "customer",
+      "start_seconds": 153.8,
+      "end_seconds": 164.56,
+      "text": "Okay, yeah. Um, so I'm on that page, and Streambox is first. It says 10.9 gigabytes in the background. Is that... Is that what I'm supposed to look at?",
+      "word_count": 32,
+      "duration_seconds": 10.76,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0022",
+      "role": "agent",
+      "start_seconds": 167.12,
+      "end_seconds": 173.14,
+      "text": "Yeah. That lines up closely with what the carrier recorded. Did you download anything in Streambox last night?",
+      "word_count": 18,
+      "duration_seconds": 6.02,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0023",
+      "role": "customer",
+      "start_seconds": 174.2,
+      "end_seconds": 181.6,
+      "text": "Yeah. I started downloading, like, a season for a flight. I thought it would wait for the Wi-Fi. Um.",
+      "word_count": 20,
+      "duration_seconds": 7.4,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0024",
+      "role": "agent",
+      "start_seconds": 185.88,
+      "end_seconds": 189.13,
+      "text": "That makes sense. Could you open the Streambox settings and check",
+      "word_count": 11,
+      "duration_seconds": 3.25,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0025",
+      "role": "agent",
+      "start_seconds": 190.88,
+      "end_seconds": 193.26,
+      "text": "whether Download Over Cellular is turned on?",
+      "word_count": 7,
+      "duration_seconds": 2.38,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0026",
+      "role": "customer",
+      "start_seconds": 193.37,
+      "end_seconds": 194.06,
+      "text": "Hmm, yeah.",
+      "word_count": 2,
+      "duration_seconds": 0.69,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0027",
+      "role": "customer",
+      "start_seconds": 197.06,
+      "end_seconds": 201.96,
+      "text": "Yeah, okay, I see that. Wow, yeah, it's on. I swear I never turned that on. I don't know how that happened.",
+      "word_count": 24,
+      "duration_seconds": 4.9,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0028",
+      "role": "agent",
+      "start_seconds": 204.82,
+      "end_seconds": 216.5,
+      "text": "Yeah. An update can sometimes reset an app, uh, preference. Let's go ahead and turn that setting off, then go back to your phone's cellular settings and set Streambox to Wi-Fi only.",
+      "word_count": 35,
+      "duration_seconds": 11.68,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0029",
+      "role": "customer",
+      "start_seconds": 219.16,
+      "end_seconds": 220.36,
+      "text": "Okay, yeah. Give me one second.",
+      "word_count": 6,
+      "duration_seconds": 1.2,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0030",
+      "role": "customer",
+      "start_seconds": 222.16,
+      "end_seconds": 228.45,
+      "text": "Okay, yeah. So I just did that. Um, for the data, is the data coming back though? Or what's gonna happen with that?",
+      "word_count": 24,
+      "duration_seconds": 6.29,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0031",
+      "role": "agent",
+      "start_seconds": 230.68,
+      "end_seconds": 238.16,
+      "text": "So unfortunately, the used data can't be put back into the plan. You still have 2.2 gigabytes left until the cycle resets.",
+      "word_count": 24,
+      "duration_seconds": 7.48,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0032",
+      "role": "customer",
+      "start_seconds": 238.24,
+      "end_seconds": 238.42,
+      "text": "Hmm.",
+      "word_count": 1,
+      "duration_seconds": 0.18,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0033",
+      "role": "agent",
+      "start_seconds": 239.04,
+      "end_seconds": 243.86,
+      "text": "I can check when that happens and whether there's already overage on the bill.",
+      "word_count": 15,
+      "duration_seconds": 4.82,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0034",
+      "role": "customer",
+      "start_seconds": 244.32,
+      "end_seconds": 248.62,
+      "text": "Yeah, please do, because, um, I'm traveling for work before then, so I n- I, I really need that.",
+      "word_count": 20,
+      "duration_seconds": 4.3,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0035",
+      "role": "agent",
+      "start_seconds": 252.22,
+      "end_seconds": 255.35,
+      "text": "So your cycle resets in nine days.",
+      "word_count": 7,
+      "duration_seconds": 3.13,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0036",
+      "role": "customer",
+      "start_seconds": 256.24,
+      "end_seconds": 256.46,
+      "text": "I see.",
+      "word_count": 2,
+      "duration_seconds": 0.22,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0037",
+      "role": "agent",
+      "start_seconds": 256.06,
+      "end_seconds": 259.6,
+      "text": "And I'm gonna be opening up the current bill now. Give me a moment.",
+      "word_count": 15,
+      "duration_seconds": 3.54,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0038",
+      "role": "agent",
+      "start_seconds": 265.44,
+      "end_seconds": 276.04,
+      "text": "So it looks like there's no overage charge just yet. The plan slows down after the included high-speed amount is kind of used.",
+      "word_count": 25,
+      "duration_seconds": 10.6,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0039",
+      "role": "customer",
+      "start_seconds": 277.16,
+      "end_seconds": 285.09,
+      "text": "Hmm, I see. Um, slows down how much? 'Cause I need, like, maps, emails. I'm traveling, so I can't have it, like, crawling. You know what I mean?",
+      "word_count": 30,
+      "duration_seconds": 7.93,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0040",
+      "role": "agent",
+      "start_seconds": 287.64,
+      "end_seconds": 305.62,
+      "text": "Yeah. So the exact speed can vary with the network. Maps and emails may still work, but video and large files can feel much slower. I can add five gigabytes of high-speed data for $40 on the next bill. I won't add it, of course, unless you approve.",
+      "word_count": 50,
+      "duration_seconds": 17.98,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0041",
+      "role": "customer",
+      "start_seconds": 306.24,
+      "end_seconds": 317.62,
+      "text": "What? $40? Because this app changed its own setting? Um, I mean, that's a lot, and it's pretty frustrating too, like... Is there anything else-... we could do, or?",
+      "word_count": 31,
+      "duration_seconds": 11.38,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0042",
+      "role": "agent",
+      "start_seconds": 319.54,
+      "end_seconds": 331.88,
+      "text": "I get it. The network did carry the traffic, but the app setting caused it. We can also turn on Data Saver and stop background use before you decide whether you need the add-on.",
+      "word_count": 35,
+      "duration_seconds": 12.34,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0043",
+      "role": "customer",
+      "start_seconds": 332.94,
+      "end_seconds": 334.6,
+      "text": "Yeah, yeah. Let's do that first.",
+      "word_count": 7,
+      "duration_seconds": 1.66,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0044",
+      "role": "agent",
+      "start_seconds": 337.14,
+      "end_seconds": 339.33,
+      "text": "All right. So in order to kind of do that,",
+      "word_count": 10,
+      "duration_seconds": 2.19,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0045",
+      "role": "agent",
+      "start_seconds": 340.58,
+      "end_seconds": 342.969,
+      "text": "I need you to open up Network and-",
+      "word_count": 8,
+      "duration_seconds": 2.389,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0046",
+      "role": "customer",
+      "start_seconds": 343.22,
+      "end_seconds": 343.5,
+      "text": "Mm-hmm",
+      "word_count": 2,
+      "duration_seconds": 0.28,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0047",
+      "role": "agent",
+      "start_seconds": 343.23,
+      "end_seconds": 349.48,
+      "text": "... then Internet. Then you need to go into Data Saver, and you need to turn that on.",
+      "word_count": 17,
+      "duration_seconds": 6.25,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0048",
+      "role": "customer",
+      "start_seconds": 350.38,
+      "end_seconds": 352.48,
+      "text": "Okay. I'm going in.",
+      "word_count": 5,
+      "duration_seconds": 2.1,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0049",
+      "role": "customer",
+      "start_seconds": 354.42,
+      "end_seconds": 359.14,
+      "text": "Okay, yeah. It's on. There's an op- there's an option for unrestricted apps.",
+      "word_count": 16,
+      "duration_seconds": 4.72,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0050",
+      "role": "customer",
+      "start_seconds": 360.86,
+      "end_seconds": 363.26,
+      "text": "Is that... Is that supposed to be there?",
+      "word_count": 8,
+      "duration_seconds": 2.4,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0051",
+      "role": "agent",
+      "start_seconds": 365.168,
+      "end_seconds": 373.948,
+      "text": "Yes. If you open that list, keep only anything you truly need in the background, like your work messaging app.",
+      "word_count": 20,
+      "duration_seconds": 8.78,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0052",
+      "role": "agent",
+      "start_seconds": 375.848,
+      "end_seconds": 377.908,
+      "text": "So what's currently allowed?",
+      "word_count": 5,
+      "duration_seconds": 2.06,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0053",
+      "role": "customer",
+      "start_seconds": 378.708,
+      "end_seconds": 389.17,
+      "text": "Okay, so I'm looking through it. Um, right now it ha- has Streambox, Cloud Photos, and my work email. I pretty much only need the email to be working, like in the background.",
+      "word_count": 34,
+      "duration_seconds": 10.462,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0054",
+      "role": "agent",
+      "start_seconds": 390.788,
+      "end_seconds": 392.568,
+      "text": "Okay. That makes sense.",
+      "word_count": 4,
+      "duration_seconds": 1.78,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0055",
+      "role": "customer",
+      "start_seconds": 392.13,
+      "end_seconds": 392.24,
+      "text": "Yeah.",
+      "word_count": 1,
+      "duration_seconds": 0.11,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0056",
+      "role": "agent",
+      "start_seconds": 393.308,
+      "end_seconds": 400.228,
+      "text": "Leave the work email on, and go ahead and turn off unrestricted access to Streambox and-",
+      "word_count": 16,
+      "duration_seconds": 6.92,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0057",
+      "role": "customer",
+      "start_seconds": 400.27,
+      "end_seconds": 400.42,
+      "text": "Okay",
+      "word_count": 1,
+      "duration_seconds": 0.15,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0058",
+      "role": "agent",
+      "start_seconds": 400.238,
+      "end_seconds": 401.488,
+      "text": "... Cloud Photos.",
+      "word_count": 2,
+      "duration_seconds": 1.25,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0059",
+      "role": "customer",
+      "start_seconds": 402.95,
+      "end_seconds": 407.66,
+      "text": "Okay, yeah. Now I just turned it off. Uh, could Cloud Photos have used some of that too, or...?",
+      "word_count": 19,
+      "duration_seconds": 4.71,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0060",
+      "role": "agent",
+      "start_seconds": 409.348,
+      "end_seconds": 416.428,
+      "text": "Like, it could have, but the phone does show that Streambox used almost all of the 11.8 gigs.",
+      "word_count": 19,
+      "duration_seconds": 7.08,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0061",
+      "role": "customer",
+      "start_seconds": 416.788,
+      "end_seconds": 416.968,
+      "text": "Right.",
+      "word_count": 1,
+      "duration_seconds": 0.18,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0062",
+      "role": "agent",
+      "start_seconds": 417.108,
+      "end_seconds": 422.768,
+      "text": "Cloud Photos, on my end, is showing 300 megabytes, so it wasn't the main issue.",
+      "word_count": 16,
+      "duration_seconds": 5.66,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0063",
+      "role": "customer",
+      "start_seconds": 423.508,
+      "end_seconds": 423.77,
+      "text": "Right.",
+      "word_count": 1,
+      "duration_seconds": 0.262,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0064",
+      "role": "customer",
+      "start_seconds": 425.29,
+      "end_seconds": 432.45,
+      "text": "Okay. Um, yeah, I mean, after everything, I, I still think I would need the extra data. Can you add that in?",
+      "word_count": 22,
+      "duration_seconds": 7.16,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0065",
+      "role": "agent",
+      "start_seconds": 435.248,
+      "end_seconds": 445.388,
+      "text": "Yes, I can. Just to confirm, you want five additional gigabytes for $40 charged to your next Clearwave bill. Do you authorize that?",
+      "word_count": 23,
+      "duration_seconds": 10.14,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0066",
+      "role": "customer",
+      "start_seconds": 446.63,
+      "end_seconds": 448.648,
+      "text": "Yeah. Yeah, definitely. I authorize that.",
+      "word_count": 6,
+      "duration_seconds": 2.018,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0067",
+      "role": "agent",
+      "start_seconds": 451.668,
+      "end_seconds": 452.6,
+      "text": "All right. Give me a moment.",
+      "word_count": 6,
+      "duration_seconds": 0.932,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0068",
+      "role": "agent",
+      "start_seconds": 457.79,
+      "end_seconds": 467.208,
+      "text": "Okay. It's added. Your line should now show 7.2 gigabytes of high-speed data available for the rest of the cycle.",
+      "word_count": 23,
+      "duration_seconds": 9.418,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0069",
+      "role": "customer",
+      "start_seconds": 469.348,
+      "end_seconds": 475.69,
+      "text": "Okay. Okay, that's great. Uh, can we just make sure it actually works before I hang up, just, you know, while I have you on the phone?",
+      "word_count": 28,
+      "duration_seconds": 6.342,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0070",
+      "role": "customer",
+      "start_seconds": 477.07,
+      "end_seconds": 478.03,
+      "text": "Is there a way to test that?",
+      "word_count": 7,
+      "duration_seconds": 0.96,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0071",
+      "role": "agent",
+      "start_seconds": 479.648,
+      "end_seconds": 485.008,
+      "text": "Abs- absolutely. Go ahead and turn Wi-Fi on, and then run a quick speed test.",
+      "word_count": 16,
+      "duration_seconds": 5.36,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0072",
+      "role": "customer",
+      "start_seconds": 485.488,
+      "end_seconds": 485.748,
+      "text": "Mm-hmm.",
+      "word_count": 2,
+      "duration_seconds": 0.26,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0073",
+      "role": "agent",
+      "start_seconds": 485.848,
+      "end_seconds": 490.008,
+      "text": "Uh, you don't need to stream a long video. We just need a small portion and test.",
+      "word_count": 18,
+      "duration_seconds": 4.16,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0074",
+      "role": "customer",
+      "start_seconds": 492.028,
+      "end_seconds": 493.17,
+      "text": "Okay, yeah. One second.",
+      "word_count": 4,
+      "duration_seconds": 1.142,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0075",
+      "role": "customer",
+      "start_seconds": 498.29,
+      "end_seconds": 506.328,
+      "text": "Okay. I'm just running through, like, a qui- quick speed test, and it says 62 down and eight up.",
+      "word_count": 20,
+      "duration_seconds": 8.038,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0076",
+      "role": "agent",
+      "start_seconds": 508.748,
+      "end_seconds": 518.648,
+      "text": "Okay, great. That confirms that cellular data is working normally. Now, I want you to open Streambox once with Wi-Fi still off and make sure-",
+      "word_count": 26,
+      "duration_seconds": 9.9,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0077",
+      "role": "customer",
+      "start_seconds": 518.71,
+      "end_seconds": 518.878,
+      "text": "Mm-hmm",
+      "word_count": 2,
+      "duration_seconds": 0.168,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0078",
+      "role": "agent",
+      "start_seconds": 518.878,
+      "end_seconds": 520.368,
+      "text": "... it warns you instead of downloading.",
+      "word_count": 6,
+      "duration_seconds": 1.49,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0079",
+      "role": "customer",
+      "start_seconds": 522.048,
+      "end_seconds": 523.29,
+      "text": "Okay, one second.",
+      "word_count": 3,
+      "duration_seconds": 1.242,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0080",
+      "role": "customer",
+      "start_seconds": 527.55,
+      "end_seconds": 536.668,
+      "text": "Okay, yeah, I'm looking at it now. Yeah, it does say downloads are paused until Wi-Fi. Um, yeah, that's what I wanted in the first place, so that's great.",
+      "word_count": 33,
+      "duration_seconds": 9.118,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0081",
+      "role": "agent",
+      "start_seconds": 540.668,
+      "end_seconds": 544.888,
+      "text": "Okay, perfect. So you can go ahead and turn Wi-Fi back on.",
+      "word_count": 13,
+      "duration_seconds": 4.22,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0082",
+      "role": "customer",
+      "start_seconds": 545.69,
+      "end_seconds": 545.8,
+      "text": "Yeah.",
+      "word_count": 1,
+      "duration_seconds": 0.11,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0083",
+      "role": "agent",
+      "start_seconds": 545.818,
+      "end_seconds": 557.928,
+      "text": "And the final state is that Streambox is gonna be set to Wi-Fi only. Make sure that your data saver is on. Make sure that the background access is limited and that-",
+      "word_count": 33,
+      "duration_seconds": 12.11,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0084",
+      "role": "customer",
+      "start_seconds": 557.97,
+      "end_seconds": 558.0,
+      "text": "Mm-hmm",
+      "word_count": 2,
+      "duration_seconds": 0.03,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0085",
+      "role": "agent",
+      "start_seconds": 558.008,
+      "end_seconds": 563.028,
+      "text": "... five gigs were added to the, um, total amount, which would be $40.",
+      "word_count": 13,
+      "duration_seconds": 5.02,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0086",
+      "role": "customer",
+      "start_seconds": 563.988,
+      "end_seconds": 579.07,
+      "text": "Yeah, yeah. Um, no, yeah, thanks for that. I mean, I'm still annoyed about the $40 and just, you know, having this data spent overnight. Uh, but I'm glad at least we found the cause, right, and we turned it off. So yeah, thanks for that.",
+      "word_count": 48,
+      "duration_seconds": 15.082,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0087",
+      "role": "agent",
+      "start_seconds": 581.248,
+      "end_seconds": 593.428,
+      "text": "Yeah, totally fair. Keep an eye out on the usage screen for the next day. If the number keeps climbing while the phone is idle, call us back and we'll investigate further.",
+      "word_count": 33,
+      "duration_seconds": 12.18,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0088",
+      "role": "customer",
+      "start_seconds": 593.548,
+      "end_seconds": 604.31,
+      "text": "Yeah. Yeah, no, I definitely will. Thanks for, you know, actually making me check the app and trying to find the cause and, instead of just, like, selling me the data. I, I really appreciate that. Um, but yeah. Thanks.",
+      "word_count": 40,
+      "duration_seconds": 10.762,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0089",
+      "role": "agent",
+      "start_seconds": 606.168,
+      "end_seconds": 610.248,
+      "text": "Yeah. Yeah, you're welcome, Ben. Thanks for calling Clearwave Mobile, and hope you have a good trip.",
+      "word_count": 18,
+      "duration_seconds": 4.08,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0090",
+      "role": "customer",
+      "start_seconds": 610.968,
+      "end_seconds": 612.09,
+      "text": "Sounds good. Thanks. Bye.",
+      "word_count": 4,
+      "duration_seconds": 1.122,
+      "is_backchannel_candidate": false
+    }
+  ],
+  "pause_boundaries": [
+    {
+      "after_turn_id": "turn-0001",
+      "before_turn_id": "turn-0002",
+      "start_seconds": 7.28,
+      "end_seconds": 8.12,
+      "duration_seconds": 0.84,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0002",
+      "before_turn_id": "turn-0003",
+      "start_seconds": 18.18,
+      "end_seconds": 19.98,
+      "duration_seconds": 1.8,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0004",
+      "before_turn_id": "turn-0005",
+      "start_seconds": 40.54,
+      "end_seconds": 43.3,
+      "duration_seconds": 2.76,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0005",
+      "before_turn_id": "turn-0006",
+      "start_seconds": 47.64,
+      "end_seconds": 48.5,
+      "duration_seconds": 0.86,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0006",
+      "before_turn_id": "turn-0007",
+      "start_seconds": 53.68,
+      "end_seconds": 54.88,
+      "duration_seconds": 1.2,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0007",
+      "before_turn_id": "turn-0008",
+      "start_seconds": 59.49,
+      "end_seconds": 61.64,
+      "duration_seconds": 2.15,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0008",
+      "before_turn_id": "turn-0009",
+      "start_seconds": 63.58,
+      "end_seconds": 74.58,
+      "duration_seconds": 11.0,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0009",
+      "before_turn_id": "turn-0010",
+      "start_seconds": 83.82,
+      "end_seconds": 84.82,
+      "duration_seconds": 1.0,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0010",
+      "before_turn_id": "turn-0011",
+      "start_seconds": 94.0,
+      "end_seconds": 96.16,
+      "duration_seconds": 2.16,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0012",
+      "before_turn_id": "turn-0013",
+      "start_seconds": 102.42,
+      "end_seconds": 106.68,
+      "duration_seconds": 4.26,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0013",
+      "before_turn_id": "turn-0014",
+      "start_seconds": 113.72,
+      "end_seconds": 115.34,
+      "duration_seconds": 1.62,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0014",
+      "before_turn_id": "turn-0015",
+      "start_seconds": 120.8,
+      "end_seconds": 122.2,
+      "duration_seconds": 1.4,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0015",
+      "before_turn_id": "turn-0016",
+      "start_seconds": 124.33,
+      "end_seconds": 126.1,
+      "duration_seconds": 1.77,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0016",
+      "before_turn_id": "turn-0017",
+      "start_seconds": 127.08,
+      "end_seconds": 128.38,
+      "duration_seconds": 1.3,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0019",
+      "before_turn_id": "turn-0020",
+      "start_seconds": 141.82,
+      "end_seconds": 143.5,
+      "duration_seconds": 1.68,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0020",
+      "before_turn_id": "turn-0021",
+      "start_seconds": 150.2,
+      "end_seconds": 153.8,
+      "duration_seconds": 3.6,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0021",
+      "before_turn_id": "turn-0022",
+      "start_seconds": 164.56,
+      "end_seconds": 167.12,
+      "duration_seconds": 2.56,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0022",
+      "before_turn_id": "turn-0023",
+      "start_seconds": 173.14,
+      "end_seconds": 174.2,
+      "duration_seconds": 1.06,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0023",
+      "before_turn_id": "turn-0024",
+      "start_seconds": 181.6,
+      "end_seconds": 185.88,
+      "duration_seconds": 4.28,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0024",
+      "before_turn_id": "turn-0025",
+      "start_seconds": 189.13,
+      "end_seconds": 190.88,
+      "duration_seconds": 1.75,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0026",
+      "before_turn_id": "turn-0027",
+      "start_seconds": 194.06,
+      "end_seconds": 197.06,
+      "duration_seconds": 3.0,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0027",
+      "before_turn_id": "turn-0028",
+      "start_seconds": 201.96,
+      "end_seconds": 204.82,
+      "duration_seconds": 2.86,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0028",
+      "before_turn_id": "turn-0029",
+      "start_seconds": 216.5,
+      "end_seconds": 219.16,
+      "duration_seconds": 2.66,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0029",
+      "before_turn_id": "turn-0030",
+      "start_seconds": 220.36,
+      "end_seconds": 222.16,
+      "duration_seconds": 1.8,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0030",
+      "before_turn_id": "turn-0031",
+      "start_seconds": 228.45,
+      "end_seconds": 230.68,
+      "duration_seconds": 2.23,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0034",
+      "before_turn_id": "turn-0035",
+      "start_seconds": 248.62,
+      "end_seconds": 252.22,
+      "duration_seconds": 3.6,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0035",
+      "before_turn_id": "turn-0036",
+      "start_seconds": 255.35,
+      "end_seconds": 256.24,
+      "duration_seconds": 0.89,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0037",
+      "before_turn_id": "turn-0038",
+      "start_seconds": 259.6,
+      "end_seconds": 265.44,
+      "duration_seconds": 5.84,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0038",
+      "before_turn_id": "turn-0039",
+      "start_seconds": 276.04,
+      "end_seconds": 277.16,
+      "duration_seconds": 1.12,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0039",
+      "before_turn_id": "turn-0040",
+      "start_seconds": 285.09,
+      "end_seconds": 287.64,
+      "duration_seconds": 2.55,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0041",
+      "before_turn_id": "turn-0042",
+      "start_seconds": 317.62,
+      "end_seconds": 319.54,
+      "duration_seconds": 1.92,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0042",
+      "before_turn_id": "turn-0043",
+      "start_seconds": 331.88,
+      "end_seconds": 332.94,
+      "duration_seconds": 1.06,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0043",
+      "before_turn_id": "turn-0044",
+      "start_seconds": 334.6,
+      "end_seconds": 337.14,
+      "duration_seconds": 2.54,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0044",
+      "before_turn_id": "turn-0045",
+      "start_seconds": 339.33,
+      "end_seconds": 340.58,
+      "duration_seconds": 1.25,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0047",
+      "before_turn_id": "turn-0048",
+      "start_seconds": 349.48,
+      "end_seconds": 350.38,
+      "duration_seconds": 0.9,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0048",
+      "before_turn_id": "turn-0049",
+      "start_seconds": 352.48,
+      "end_seconds": 354.42,
+      "duration_seconds": 1.94,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0049",
+      "before_turn_id": "turn-0050",
+      "start_seconds": 359.14,
+      "end_seconds": 360.86,
+      "duration_seconds": 1.72,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0050",
+      "before_turn_id": "turn-0051",
+      "start_seconds": 363.26,
+      "end_seconds": 365.168,
+      "duration_seconds": 1.908,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0051",
+      "before_turn_id": "turn-0052",
+      "start_seconds": 373.948,
+      "end_seconds": 375.848,
+      "duration_seconds": 1.9,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0052",
+      "before_turn_id": "turn-0053",
+      "start_seconds": 377.908,
+      "end_seconds": 378.708,
+      "duration_seconds": 0.8,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0053",
+      "before_turn_id": "turn-0054",
+      "start_seconds": 389.17,
+      "end_seconds": 390.788,
+      "duration_seconds": 1.618,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0055",
+      "before_turn_id": "turn-0056",
+      "start_seconds": 392.24,
+      "end_seconds": 393.308,
+      "duration_seconds": 1.068,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0058",
+      "before_turn_id": "turn-0059",
+      "start_seconds": 401.488,
+      "end_seconds": 402.95,
+      "duration_seconds": 1.462,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0059",
+      "before_turn_id": "turn-0060",
+      "start_seconds": 407.66,
+      "end_seconds": 409.348,
+      "duration_seconds": 1.688,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0063",
+      "before_turn_id": "turn-0064",
+      "start_seconds": 423.77,
+      "end_seconds": 425.29,
+      "duration_seconds": 1.52,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0064",
+      "before_turn_id": "turn-0065",
+      "start_seconds": 432.45,
+      "end_seconds": 435.248,
+      "duration_seconds": 2.798,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0065",
+      "before_turn_id": "turn-0066",
+      "start_seconds": 445.388,
+      "end_seconds": 446.63,
+      "duration_seconds": 1.242,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0066",
+      "before_turn_id": "turn-0067",
+      "start_seconds": 448.648,
+      "end_seconds": 451.668,
+      "duration_seconds": 3.02,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0067",
+      "before_turn_id": "turn-0068",
+      "start_seconds": 452.6,
+      "end_seconds": 457.79,
+      "duration_seconds": 5.19,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0068",
+      "before_turn_id": "turn-0069",
+      "start_seconds": 467.208,
+      "end_seconds": 469.348,
+      "duration_seconds": 2.14,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0069",
+      "before_turn_id": "turn-0070",
+      "start_seconds": 475.69,
+      "end_seconds": 477.07,
+      "duration_seconds": 1.38,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0070",
+      "before_turn_id": "turn-0071",
+      "start_seconds": 478.03,
+      "end_seconds": 479.648,
+      "duration_seconds": 1.618,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0073",
+      "before_turn_id": "turn-0074",
+      "start_seconds": 490.008,
+      "end_seconds": 492.028,
+      "duration_seconds": 2.02,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0074",
+      "before_turn_id": "turn-0075",
+      "start_seconds": 493.17,
+      "end_seconds": 498.29,
+      "duration_seconds": 5.12,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0075",
+      "before_turn_id": "turn-0076",
+      "start_seconds": 506.328,
+      "end_seconds": 508.748,
+      "duration_seconds": 2.42,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0078",
+      "before_turn_id": "turn-0079",
+      "start_seconds": 520.368,
+      "end_seconds": 522.048,
+      "duration_seconds": 1.68,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0079",
+      "before_turn_id": "turn-0080",
+      "start_seconds": 523.29,
+      "end_seconds": 527.55,
+      "duration_seconds": 4.26,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0080",
+      "before_turn_id": "turn-0081",
+      "start_seconds": 536.668,
+      "end_seconds": 540.668,
+      "duration_seconds": 4.0,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0081",
+      "before_turn_id": "turn-0082",
+      "start_seconds": 544.888,
+      "end_seconds": 545.69,
+      "duration_seconds": 0.802,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0085",
+      "before_turn_id": "turn-0086",
+      "start_seconds": 563.028,
+      "end_seconds": 563.988,
+      "duration_seconds": 0.96,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0086",
+      "before_turn_id": "turn-0087",
+      "start_seconds": 579.07,
+      "end_seconds": 581.248,
+      "duration_seconds": 2.178,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0088",
+      "before_turn_id": "turn-0089",
+      "start_seconds": 604.31,
+      "end_seconds": 606.168,
+      "duration_seconds": 1.858,
+      "class": "short"
+    }
+  ],
+  "overlap_and_barge_in_candidates": [
+    {
+      "previous_turn_id": "turn-0036",
+      "incoming_turn_id": "turn-0037",
+      "start_seconds": 256.06,
+      "end_seconds": 256.46,
+      "overlap_seconds": 0.4,
+      "barge_in_candidate": true
+    },
+    {
+      "previous_turn_id": "turn-0046",
+      "incoming_turn_id": "turn-0047",
+      "start_seconds": 343.23,
+      "end_seconds": 343.5,
+      "overlap_seconds": 0.27,
+      "barge_in_candidate": true
+    },
+    {
+      "previous_turn_id": "turn-0054",
+      "incoming_turn_id": "turn-0055",
+      "start_seconds": 392.13,
+      "end_seconds": 392.24,
+      "overlap_seconds": 0.11,
+      "barge_in_candidate": true
+    },
+    {
+      "previous_turn_id": "turn-0057",
+      "incoming_turn_id": "turn-0058",
+      "start_seconds": 400.238,
+      "end_seconds": 400.42,
+      "overlap_seconds": 0.182,
+      "barge_in_candidate": true
+    }
+  ],
+  "source_segment_overlap_candidates": [
+    {
+      "first_role": "customer",
+      "incoming_role": "agent",
+      "start_seconds": 256.06,
+      "end_seconds": 256.46,
+      "overlap_seconds": 0.4,
+      "incoming_text": "And I'm gonna be opening up the current bill now. Give me a moment.",
+      "barge_in_candidate": true
+    },
+    {
+      "first_role": "agent",
+      "incoming_role": "customer",
+      "start_seconds": 342.9,
+      "end_seconds": 342.969,
+      "overlap_seconds": 0.069,
+      "incoming_text": "Mm-hmm",
+      "barge_in_candidate": true
+    },
+    {
+      "first_role": "customer",
+      "incoming_role": "agent",
+      "start_seconds": 343.23,
+      "end_seconds": 343.5,
+      "overlap_seconds": 0.27,
+      "incoming_text": "... then Internet. Then you need to go into Data Saver, and you need to turn that on.",
+      "barge_in_candidate": true
+    },
+    {
+      "first_role": "agent",
+      "incoming_role": "customer",
+      "start_seconds": 391.74,
+      "end_seconds": 392.24,
+      "overlap_seconds": 0.5,
+      "incoming_text": "Yeah.",
+      "barge_in_candidate": true
+    },
+    {
+      "first_role": "agent",
+      "incoming_role": "customer",
+      "start_seconds": 399.98,
+      "end_seconds": 400.228,
+      "overlap_seconds": 0.248,
+      "incoming_text": "Okay",
+      "barge_in_candidate": true
+    },
+    {
+      "first_role": "customer",
+      "incoming_role": "agent",
+      "start_seconds": 400.238,
+      "end_seconds": 400.42,
+      "overlap_seconds": 0.182,
+      "incoming_text": "... Cloud Photos.",
+      "barge_in_candidate": true
+    },
+    {
+      "first_role": "agent",
+      "incoming_role": "customer",
+      "start_seconds": 557.4,
+      "end_seconds": 557.928,
+      "overlap_seconds": 0.528,
+      "incoming_text": "Mm-hmm",
+      "barge_in_candidate": true
+    }
+  ],
+  "audio_events": [],
+  "speaker_metadata": {
+    "agent": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    },
+    "customer": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    }
+  }
+}

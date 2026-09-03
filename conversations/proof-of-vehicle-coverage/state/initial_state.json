@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.2.0",
+  "conversation_id": "proof-of-vehicle-coverage",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-09-03T13:45:00-04:00",
+  "entities": {
+    "e4bee02f-de82-5101-8759-6dc83da8ada8": {
+      "entity_type": "insurance_policy",
+      "policy_id": "e4bee02f-de82-5101-8759-6dc83da8ada8",
+      "policy_number": "HP-771-204",
+      "status": "active"
+    },
+    "bf1a7188-11d1-5bc1-8beb-c7c6af74407c": {
+      "entity_type": "covered_vehicle",
+      "vehicle_id": "bf1a7188-11d1-5bc1-8beb-c7c6af74407c",
+      "year": 2026,
+      "make": "Honda",
+      "model": "CR-V",
+      "coverage_status": "active",
+      "coverage_effective_date": "2026-09-03"
+    },
+    "78e9d9e6-8518-5a6f-9a2f-c80015760445": {
+      "entity_type": "verified_delivery_destination",
+      "destination_id": "78e9d9e6-8518-5a6f-9a2f-c80015760445",
+      "channel": "email",
+      "masked_destination": "***@gmail.com"
+    }
+  }
+}

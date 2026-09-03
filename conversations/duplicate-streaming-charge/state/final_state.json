@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.2.0",
+  "conversation_id": "duplicate-streaming-charge",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-09-03T11:00:00-04:00",
+  "entities": {
+    "b8a58aa9-fa3e-55f7-bc04-297bac8a84ce": {
+      "entity_type": "subscriber",
+      "subscriber_id": "b8a58aa9-fa3e-55f7-bc04-297bac8a84ce",
+      "masked_email": "leah.r***@gmail.com",
+      "subscription_id": "94673206-9664-5a5f-9a92-29f02c4a7cf2"
+    },
+    "94673206-9664-5a5f-9a92-29f02c4a7cf2": {
+      "entity_type": "subscription",
+      "subscription_id": "94673206-9664-5a5f-9a92-29f02c4a7cf2",
+      "status": "active",
+      "monthly_price": 17.99,
+      "currency": "USD"
+    },
+    "131912d0-43ad-5459-af88-695841b054eb": {
+      "entity_type": "billing_transaction",
+      "transaction_id": "131912d0-43ad-5459-af88-695841b054eb",
+      "kind": "payment",
+      "status": "settled",
+      "amount": 17.99,
+      "currency": "USD"
+    },
+    "ff152959-3cd9-522e-b645-3524b41eb57d": {
+      "entity_type": "billing_transaction",
+      "transaction_id": "ff152959-3cd9-522e-b645-3524b41eb57d",
+      "kind": "authorization",
+      "status": "pending",
+      "amount": 17.99,
+      "currency": "USD"
+    },
+    "1e5f7abe-d264-559c-8e01-b311cd429093": {
+      "entity_type": "receipt_delivery",
+      "delivery_id": "1e5f7abe-d264-559c-8e01-b311cd429093",
+      "status": "sent",
+      "authorization_reference": "AUTH-1846-0902",
+      "masked_destination": "leah.r***@gmail.com"
+    }
+  }
+}

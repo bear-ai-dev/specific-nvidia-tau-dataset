@@ -1,0 +1,114 @@
+{
+  "schema_version": "0.2.0",
+  "conversation_id": "banking-referral-missing-reward",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-08-28T09:16:18-04:00",
+  "entities": {
+    "customers": {
+      "34d61a18-ede8-4533-b130-7e5937bc1e9d": {
+        "customer_id": "34d61a18-ede8-4533-b130-7e5937bc1e9d",
+        "email": "daniel.brooks17@gmail.com",
+        "masked_email_destination": "d***@gmail.com",
+        "required_verification_methods": [
+          "billing_zip",
+          "birth_month_day"
+        ]
+      }
+    },
+    "referrals": {
+      "ce7d58b0-b5fc-42cb-a6e0-7a57929e1205": {
+        "referral_id": "ce7d58b0-b5fc-42cb-a6e0-7a57929e1205",
+        "referring_customer_id": "34d61a18-ede8-4533-b130-7e5937bc1e9d",
+        "invited_at": "August 2",
+        "invited_contact": {
+          "channel": "email",
+          "masked": "a-brooks…"
+        },
+        "application_status": "approved",
+        "qualification_status": "purchase_pending",
+        "offer": "$100 statement credit",
+        "reference_code": "RF8241"
+      }
+    },
+    "knowledge_records": {
+      "10b2dc73-a682-4061-b3e6-96e0b2ea4eab": {
+        "record_id": "10b2dc73-a682-4061-b3e6-96e0b2ea4eab",
+        "effective_at": "2026-07-01",
+        "qualifying_purchase_window_days": 90,
+        "posting_window": "up to two billing cycles after qualifying purchase posts",
+        "excluded": [
+          "cash advances",
+          "balance transfers",
+          "fees",
+          "returned purchases"
+        ],
+        "ordinary_retail_purchase": "eligible_if_posted_in_window_and_not_returned",
+        "purchase_pending_meanings": [
+          "qualifying purchase has not posted",
+          "referral match is processing",
+          "reward has not reached posting stage"
+        ]
+      },
+      "dab2da6a-4343-4ea3-9b0d-df98a0c96360": {
+        "record_id": "dab2da6a-4343-4ea3-9b0d-df98a0c96360",
+        "effective_at": "2026-08-02",
+        "offer": "$100 statement credit",
+        "deadline_status": "not_passed",
+        "exact_deadline": "available_in_tracker"
+      },
+      "888435a5-5535-4cf4-acf8-be056a7fc41e": {
+        "record_id": "888435a5-5535-4cf4-acf8-be056a7fc41e",
+        "effective_at": "2026-07-01",
+        "email_mismatch_effect": "may delay automated matching",
+        "approved_status_meaning": "application is associated to the referral",
+        "reapplication_guidance": "do not reapply; use the referred customer's secure account for card questions"
+      }
+    },
+    "identity_verifications": {
+      "05f09e63-bd3c-4a75-813f-5429ac6d685c": {
+        "verification_id": "05f09e63-bd3c-4a75-813f-5429ac6d685c",
+        "customer_id": "34d61a18-ede8-4533-b130-7e5937bc1e9d",
+        "status": "verified",
+        "matched_methods": [
+          "billing_zip",
+          "birth_month_day"
+        ],
+        "verified_at": "2026-08-28T09:09:00-04:00"
+      }
+    },
+    "secure_self_service_sessions": {
+      "b549b0e6-fced-4596-8794-db42a62476a6": {
+        "session_id": "b549b0e6-fced-4596-8794-db42a62476a6",
+        "customer_id": "34d61a18-ede8-4533-b130-7e5937bc1e9d",
+        "workflow": "referral_status",
+        "resource_id": "ce7d58b0-b5fc-42cb-a6e0-7a57929e1205",
+        "status": "issued",
+        "submitted": false,
+        "visible_stages": [
+          "invite",
+          "approval",
+          "qualification",
+          "reward_posting"
+        ],
+        "deliveries": [
+          {
+            "channel": "secure_message",
+            "status": "delivered"
+          }
+        ]
+      }
+    },
+    "notifications": {
+      "4f70ccca-a2a3-4b99-ae66-cfb9d0e975c8": {
+        "notification_id": "4f70ccca-a2a3-4b99-ae66-cfb9d0e975c8",
+        "customer_id": "34d61a18-ede8-4533-b130-7e5937bc1e9d",
+        "related_resource_id": "b549b0e6-fced-4596-8794-db42a62476a6",
+        "channel": "email",
+        "template": "secure_message_waiting",
+        "status": "sent",
+        "masked_destination": "d***@gmail.com",
+        "contains_working_secure_link": false
+      }
+    }
+  }
+}

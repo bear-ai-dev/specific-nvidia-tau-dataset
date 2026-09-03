@@ -1,0 +1,13 @@
+[00:00:00.360 - 00:00:04.200] Ryan: Thanks for calling Parker Honda Service. This is Ryan. How can I help?
+[00:00:04.200 - 00:00:09.240] Michael: Hey, I got a text saying my Civic may be ready. Uh, can I pick it up today?
+[00:00:11.020 - 00:00:14.840] Ryan: One second. I can check. Do you have the repair order number?
+[00:00:14.840 - 00:00:20.960] Michael: Yeah, I do. It's P-H-73164.
+[00:00:22.000] [tool] get_repair_order: calling tool to retrieve the repair-order status
+[00:00:22.560 - 00:00:23.000] Ryan: Thank you.
+[00:00:25.320 - 00:00:31.080] Ryan: Let me check for you. The brake work and inspection are complete, and the car has been released for pickup.
+[00:00:32.320 - 00:00:35.360] Michael: Okay, great. Uh, did they add the cabin filter they mentioned?
+[00:00:37.040 - 00:00:41.700] Ryan: Um, no. I'm seeing here that it's still listed as a recommendation,
+[00:00:42.780 - 00:00:51.040] Ryan: but it wasn't added to today's invoice. I'm seeing here that your total is $486.12.
+[00:00:51.040 - 00:00:52.700] Michael: Okay, perfect. Yeah, I'll be there around 5.
+[00:00:53.880 - 00:00:57.920] Ryan: Sounds good. The service desk should be open until 6, so yeah.
+[00:00:57.920 - 00:00:59.300] Michael: Okay, perfect. Thanks. Bye.

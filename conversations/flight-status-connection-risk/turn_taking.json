@@ -1,0 +1,398 @@
+{
+  "schema_version": "0.1.0",
+  "turns": [
+    {
+      "turn_id": "turn-0001",
+      "role": "agent",
+      "start_seconds": 0.42,
+      "end_seconds": 4.38,
+      "text": "Hi. Thanks for calling Summit Jet. This is Colin. What can I help you with?",
+      "word_count": 15,
+      "duration_seconds": 3.96,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0002",
+      "role": "customer",
+      "start_seconds": 6.04,
+      "end_seconds": 16.94,
+      "text": "Hey, um, I'm connecting through Dallas tonight. I just wanted to check: is my first flight delayed enough that I'll miss my connection? I'm just a little worried. Um, the confirmation should be S as in Sierra—",
+      "word_count": 40,
+      "duration_seconds": 10.9,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0003",
+      "role": "agent",
+      "start_seconds": 17.54,
+      "end_seconds": 18.0,
+      "text": "Mm-hmm",
+      "word_count": 2,
+      "duration_seconds": 0.46,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0004",
+      "role": "customer",
+      "start_seconds": 18.0,
+      "end_seconds": 24.32,
+      "text": "4, P as in Papa, 9, K as in Kilo, and T as in Tango.",
+      "word_count": 15,
+      "duration_seconds": 6.32,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0005",
+      "role": "agent",
+      "start_seconds": 26.28,
+      "end_seconds": 27.24,
+      "text": "Okay, one second.",
+      "word_count": 3,
+      "duration_seconds": 0.96,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0006",
+      "role": "agent",
+      "start_seconds": 30.08,
+      "end_seconds": 35.0,
+      "text": "Yeah, I have Austin to Dallas to Richmond, one passenger. Is that correct?",
+      "word_count": 13,
+      "duration_seconds": 4.92,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0007",
+      "role": "customer",
+      "start_seconds": 36.22,
+      "end_seconds": 41.84,
+      "text": "Yep, that's right. Um, what's happening with the Austin flight right now? What, what, what's the status on it? What's it doing?",
+      "word_count": 26,
+      "duration_seconds": 5.62,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0008",
+      "role": "agent",
+      "start_seconds": 42.7,
+      "end_seconds": 49.44,
+      "text": "Yeah, Flight 338 looks like it's currently delayed for 40 minutes because of a late inbound aircraft.",
+      "word_count": 18,
+      "duration_seconds": 6.74,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0009",
+      "role": "agent",
+      "start_seconds": 50.96,
+      "end_seconds": 51.32,
+      "text": "Um-",
+      "word_count": 1,
+      "duration_seconds": 0.36,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0010",
+      "role": "customer",
+      "start_seconds": 51.32,
+      "end_seconds": 51.74,
+      "text": "Mm, okay.",
+      "word_count": 2,
+      "duration_seconds": 0.42,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0011",
+      "role": "agent",
+      "start_seconds": 52.54,
+      "end_seconds": 52.66,
+      "text": "Yeah.",
+      "word_count": 1,
+      "duration_seconds": 0.12,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0012",
+      "role": "customer",
+      "start_seconds": 53.04,
+      "end_seconds": 57.3,
+      "text": "I'm-- I think my connection is only for 50 minutes. Do you still think it's gonna be possible?",
+      "word_count": 20,
+      "duration_seconds": 4.26,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0013",
+      "role": "agent",
+      "start_seconds": 58.46,
+      "end_seconds": 65.32,
+      "text": "Oh, it's definitely gonna be tight. The Richmond flight is on time right now, and the gates are in, like, different concourses.",
+      "word_count": 23,
+      "duration_seconds": 6.86,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0014",
+      "role": "customer",
+      "start_seconds": 67.26,
+      "end_seconds": 67.6,
+      "text": "Okay.",
+      "word_count": 1,
+      "duration_seconds": 0.34,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0015",
+      "role": "customer",
+      "start_seconds": 68.96,
+      "end_seconds": 70.5,
+      "text": "Can you see a backup perhaps?",
+      "word_count": 6,
+      "duration_seconds": 1.54,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0016",
+      "role": "agent",
+      "start_seconds": 70.88,
+      "end_seconds": 78.42,
+      "text": "Yeah, I'm on it. Um, there's a later nonstop from Dallas to Richmond with seats, but I won't change you unless you ask.",
+      "word_count": 26,
+      "duration_seconds": 7.54,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0017",
+      "role": "customer",
+      "start_seconds": 80.06,
+      "end_seconds": 84.08,
+      "text": "Yeah. Mm. Okay, uh, just leave me where I am for now, I guess.",
+      "word_count": 14,
+      "duration_seconds": 4.02,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0018",
+      "role": "agent",
+      "start_seconds": 85.34,
+      "end_seconds": 85.42,
+      "text": "Yeah. Um, yeah,",
+      "word_count": 3,
+      "duration_seconds": 0.08,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0019",
+      "role": "agent",
+      "start_seconds": 86.84,
+      "end_seconds": 94.24,
+      "text": "okay. Just keep alerts on for now and call us from Dallas if the 1st flight slips even more. Uh, for now, you should be okay though.",
+      "word_count": 27,
+      "duration_seconds": 7.4,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0020",
+      "role": "customer",
+      "start_seconds": 95.46,
+      "end_seconds": 99.88,
+      "text": "Okay. Cool, cool. Um, oh, will my bag follow me though if I change later?",
+      "word_count": 15,
+      "duration_seconds": 4.42,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0021",
+      "role": "agent",
+      "start_seconds": 100.48,
+      "end_seconds": 108.12,
+      "text": "Yes, yes. If the reservation changes, the bag allocation automatically gets updated. Um, yeah, the airport team will control the physical scan.",
+      "word_count": 22,
+      "duration_seconds": 7.64,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0022",
+      "role": "customer",
+      "start_seconds": 109.62,
+      "end_seconds": 111.76,
+      "text": "Okay. Um, can you tell me the current gates?",
+      "word_count": 9,
+      "duration_seconds": 2.14,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0023",
+      "role": "agent",
+      "start_seconds": 112.66,
+      "end_seconds": 121.32,
+      "text": "Yeah, of course. I can read the current gates, but they can change. The airport monitors are definitely the final source, so you should check that once you arrive. I recommend that.",
+      "word_count": 32,
+      "duration_seconds": 8.66,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0024",
+      "role": "customer",
+      "start_seconds": 122.68,
+      "end_seconds": 125.84,
+      "text": "Okay. Sounds good. Um, I'll just watch the app. Thank you.",
+      "word_count": 12,
+      "duration_seconds": 3.16,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0025",
+      "role": "agent",
+      "start_seconds": 126.48,
+      "end_seconds": 128.74,
+      "text": "Yeah, for sure. It sounds good. Safe travels t-",
+      "word_count": 9,
+      "duration_seconds": 2.26,
+      "is_backchannel_candidate": false
+    }
+  ],
+  "pause_boundaries": [
+    {
+      "after_turn_id": "turn-0001",
+      "before_turn_id": "turn-0002",
+      "start_seconds": 4.38,
+      "end_seconds": 6.04,
+      "duration_seconds": 1.66,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0004",
+      "before_turn_id": "turn-0005",
+      "start_seconds": 24.32,
+      "end_seconds": 26.28,
+      "duration_seconds": 1.96,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0005",
+      "before_turn_id": "turn-0006",
+      "start_seconds": 27.24,
+      "end_seconds": 30.08,
+      "duration_seconds": 2.84,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0006",
+      "before_turn_id": "turn-0007",
+      "start_seconds": 35.0,
+      "end_seconds": 36.22,
+      "duration_seconds": 1.22,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0007",
+      "before_turn_id": "turn-0008",
+      "start_seconds": 41.84,
+      "end_seconds": 42.7,
+      "duration_seconds": 0.86,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0008",
+      "before_turn_id": "turn-0009",
+      "start_seconds": 49.44,
+      "end_seconds": 50.96,
+      "duration_seconds": 1.52,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0012",
+      "before_turn_id": "turn-0013",
+      "start_seconds": 57.3,
+      "end_seconds": 58.46,
+      "duration_seconds": 1.16,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0013",
+      "before_turn_id": "turn-0014",
+      "start_seconds": 65.32,
+      "end_seconds": 67.26,
+      "duration_seconds": 1.94,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0014",
+      "before_turn_id": "turn-0015",
+      "start_seconds": 67.6,
+      "end_seconds": 68.96,
+      "duration_seconds": 1.36,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0016",
+      "before_turn_id": "turn-0017",
+      "start_seconds": 78.42,
+      "end_seconds": 80.06,
+      "duration_seconds": 1.64,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0017",
+      "before_turn_id": "turn-0018",
+      "start_seconds": 84.08,
+      "end_seconds": 85.34,
+      "duration_seconds": 1.26,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0018",
+      "before_turn_id": "turn-0019",
+      "start_seconds": 85.42,
+      "end_seconds": 86.84,
+      "duration_seconds": 1.42,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0019",
+      "before_turn_id": "turn-0020",
+      "start_seconds": 94.24,
+      "end_seconds": 95.46,
+      "duration_seconds": 1.22,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0021",
+      "before_turn_id": "turn-0022",
+      "start_seconds": 108.12,
+      "end_seconds": 109.62,
+      "duration_seconds": 1.5,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0022",
+      "before_turn_id": "turn-0023",
+      "start_seconds": 111.76,
+      "end_seconds": 112.66,
+      "duration_seconds": 0.9,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0023",
+      "before_turn_id": "turn-0024",
+      "start_seconds": 121.32,
+      "end_seconds": 122.68,
+      "duration_seconds": 1.36,
+      "class": "short"
+    }
+  ],
+  "overlap_and_barge_in_candidates": [],
+  "source_segment_overlap_candidates": [],
+  "audio_events": [],
+  "speaker_metadata": {
+    "agent": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    },
+    "customer": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    }
+  }
+}

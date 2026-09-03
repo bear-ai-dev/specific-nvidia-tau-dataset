@@ -1,0 +1,372 @@
+{
+  "schema_version": "0.1.0",
+  "turns": [
+    {
+      "turn_id": "turn-0001",
+      "role": "agent",
+      "start_seconds": 0.0,
+      "end_seconds": 2.94,
+      "text": "StreamHouse billing support. This is Darren. What can I look into for you?",
+      "word_count": 13,
+      "duration_seconds": 2.94,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0002",
+      "role": "customer",
+      "start_seconds": 3.966,
+      "end_seconds": 8.56,
+      "text": "Hi, I have two StreamHouse charges from yesterday, but I only have one subscription.",
+      "word_count": 14,
+      "duration_seconds": 4.594,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0003",
+      "role": "agent",
+      "start_seconds": 9.59,
+      "end_seconds": 14.74,
+      "text": "Okay, yeah, that's a problem. Let me review the billing history. What's the email on the account and the last four digits of the card?",
+      "word_count": 27,
+      "duration_seconds": 5.15,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0004",
+      "role": "customer",
+      "start_seconds": 16.256,
+      "end_seconds": 21.78,
+      "text": "The email begins with leah.r, and the card ends in 1846.",
+      "word_count": 12,
+      "duration_seconds": 5.524,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0005",
+      "role": "agent",
+      "start_seconds": 25.13,
+      "end_seconds": 27.44,
+      "text": "Thank you, Okay. Let me find it.",
+      "word_count": 7,
+      "duration_seconds": 2.31,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0006",
+      "role": "agent",
+      "start_seconds": 33.02,
+      "end_seconds": 40.64,
+      "text": "Yeah, I found the account and verified the card. I see one monthly renewal for $17.99 and one temporary authorization for the same amount.",
+      "word_count": 25,
+      "duration_seconds": 7.62,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0007",
+      "role": "customer",
+      "start_seconds": 42.176,
+      "end_seconds": 46.6,
+      "text": "Okay. But why would there be a temporary charge if the renewal already went through?",
+      "word_count": 15,
+      "duration_seconds": 4.424,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0008",
+      "role": "agent",
+      "start_seconds": 49.21,
+      "end_seconds": 56.42,
+      "text": "Let me check, yeah, the first attempt was interrupted while your bank was responding. It created an authorization, but it did not settle as a second payment.",
+      "word_count": 27,
+      "duration_seconds": 7.21,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0009",
+      "role": "customer",
+      "start_seconds": 58.136,
+      "end_seconds": 59.7,
+      "text": "So I wasn't actually billed twice?",
+      "word_count": 7,
+      "duration_seconds": 1.564,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0010",
+      "role": "agent",
+      "start_seconds": 61.15,
+      "end_seconds": 65.92,
+      "text": "Yeah, only one charge has completed. The other is pending and should disappear automatically when your bank releases it.",
+      "word_count": 19,
+      "duration_seconds": 4.77,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0011",
+      "role": "customer",
+      "start_seconds": 67.826,
+      "end_seconds": 69.3,
+      "text": "Okay, but how long does that usually take?",
+      "word_count": 8,
+      "duration_seconds": 1.474,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0012",
+      "role": "agent",
+      "start_seconds": 70.8,
+      "end_seconds": 75.98,
+      "text": "Good question. Most banks release it within three to five business days. Your bank controls the exact timing though.",
+      "word_count": 19,
+      "duration_seconds": 5.18,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0013",
+      "role": "customer",
+      "start_seconds": 78.246,
+      "end_seconds": 81.46,
+      "text": "Okay, can you send something showing that only one payment settled?",
+      "word_count": 11,
+      "duration_seconds": 3.214,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0014",
+      "role": "agent",
+      "start_seconds": 82.7,
+      "end_seconds": 83.94,
+      "text": "Sure. Let me do that really quickly for you, okay?",
+      "word_count": 10,
+      "duration_seconds": 1.24,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0015",
+      "role": "agent",
+      "start_seconds": 90.02,
+      "end_seconds": 93.84,
+      "text": "Okay. I've emailed a billing receipt and the authorization reference number.",
+      "word_count": 12,
+      "duration_seconds": 3.82,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0016",
+      "role": "customer",
+      "start_seconds": 95.786,
+      "end_seconds": 97.64,
+      "text": "Okay. Let me check.",
+      "word_count": 4,
+      "duration_seconds": 1.854,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0017",
+      "role": "customer",
+      "start_seconds": 99.566,
+      "end_seconds": 103.08,
+      "text": "All right, I got it, but what if the pending charge posts anyway?",
+      "word_count": 13,
+      "duration_seconds": 3.514,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0018",
+      "role": "agent",
+      "start_seconds": 104.57,
+      "end_seconds": 111.32,
+      "text": "If that happens, reply to that email or call us with the reference number. We can open a duplicate-payment case if both transactions do settle.",
+      "word_count": 26,
+      "duration_seconds": 6.75,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0019",
+      "role": "customer",
+      "start_seconds": 112.946,
+      "end_seconds": 114.76,
+      "text": "All right, I'll watch it for a few days.",
+      "word_count": 10,
+      "duration_seconds": 1.814,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0020",
+      "role": "agent",
+      "start_seconds": 116.04,
+      "end_seconds": 119.6,
+      "text": "Yes. That's the best next step. Thanks for calling StreamHouse. Take it easy.",
+      "word_count": 14,
+      "duration_seconds": 3.56,
+      "is_backchannel_candidate": false
+    }
+  ],
+  "pause_boundaries": [
+    {
+      "after_turn_id": "turn-0001",
+      "before_turn_id": "turn-0002",
+      "start_seconds": 2.94,
+      "end_seconds": 3.966,
+      "duration_seconds": 1.026,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0002",
+      "before_turn_id": "turn-0003",
+      "start_seconds": 8.56,
+      "end_seconds": 9.59,
+      "duration_seconds": 1.03,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0003",
+      "before_turn_id": "turn-0004",
+      "start_seconds": 14.74,
+      "end_seconds": 16.256,
+      "duration_seconds": 1.516,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0004",
+      "before_turn_id": "turn-0005",
+      "start_seconds": 21.78,
+      "end_seconds": 25.13,
+      "duration_seconds": 3.35,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0005",
+      "before_turn_id": "turn-0006",
+      "start_seconds": 27.44,
+      "end_seconds": 33.02,
+      "duration_seconds": 5.58,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0006",
+      "before_turn_id": "turn-0007",
+      "start_seconds": 40.64,
+      "end_seconds": 42.176,
+      "duration_seconds": 1.536,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0007",
+      "before_turn_id": "turn-0008",
+      "start_seconds": 46.6,
+      "end_seconds": 49.21,
+      "duration_seconds": 2.61,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0008",
+      "before_turn_id": "turn-0009",
+      "start_seconds": 56.42,
+      "end_seconds": 58.136,
+      "duration_seconds": 1.716,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0009",
+      "before_turn_id": "turn-0010",
+      "start_seconds": 59.7,
+      "end_seconds": 61.15,
+      "duration_seconds": 1.45,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0010",
+      "before_turn_id": "turn-0011",
+      "start_seconds": 65.92,
+      "end_seconds": 67.826,
+      "duration_seconds": 1.906,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0011",
+      "before_turn_id": "turn-0012",
+      "start_seconds": 69.3,
+      "end_seconds": 70.8,
+      "duration_seconds": 1.5,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0012",
+      "before_turn_id": "turn-0013",
+      "start_seconds": 75.98,
+      "end_seconds": 78.246,
+      "duration_seconds": 2.266,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0013",
+      "before_turn_id": "turn-0014",
+      "start_seconds": 81.46,
+      "end_seconds": 82.7,
+      "duration_seconds": 1.24,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0014",
+      "before_turn_id": "turn-0015",
+      "start_seconds": 83.94,
+      "end_seconds": 90.02,
+      "duration_seconds": 6.08,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0015",
+      "before_turn_id": "turn-0016",
+      "start_seconds": 93.84,
+      "end_seconds": 95.786,
+      "duration_seconds": 1.946,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0016",
+      "before_turn_id": "turn-0017",
+      "start_seconds": 97.64,
+      "end_seconds": 99.566,
+      "duration_seconds": 1.926,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0017",
+      "before_turn_id": "turn-0018",
+      "start_seconds": 103.08,
+      "end_seconds": 104.57,
+      "duration_seconds": 1.49,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0018",
+      "before_turn_id": "turn-0019",
+      "start_seconds": 111.32,
+      "end_seconds": 112.946,
+      "duration_seconds": 1.626,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0019",
+      "before_turn_id": "turn-0020",
+      "start_seconds": 114.76,
+      "end_seconds": 116.04,
+      "duration_seconds": 1.28,
+      "class": "short"
+    }
+  ],
+  "overlap_and_barge_in_candidates": [],
+  "source_segment_overlap_candidates": [],
+  "audio_events": [],
+  "speaker_metadata": {
+    "agent": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    },
+    "customer": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    }
+  }
+}

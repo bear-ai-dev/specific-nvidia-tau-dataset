@@ -1,0 +1,1019 @@
+{
+  "schema_version": "0.1.0",
+  "source": "word timestamps",
+  "warning": "Backchannel and barge-in fields are automatic candidates and require human acceptance for gold labels.",
+  "turns": [
+    {
+      "turn_id": "turn-0001",
+      "role": "agent",
+      "start_seconds": 0.98,
+      "end_seconds": 4.38,
+      "text": "Thanks for calling Westline Customer Care. This is Daniel. How can I help you?",
+      "word_count": 14,
+      "duration_seconds": 3.4,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0002",
+      "role": "customer",
+      "start_seconds": 6.06,
+      "end_seconds": 12.44,
+      "text": "Hey, Daniel. This is Ethan Patel. Um, I think I actually spoke with you yesterday about some missing headphones.",
+      "word_count": 19,
+      "duration_seconds": 6.38,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0003",
+      "role": "agent",
+      "start_seconds": 14.3,
+      "end_seconds": 19.47,
+      "text": "Oh, okay. That's awesome, yeah. Um, I remember that case. Uh, did the package turn up?",
+      "word_count": 17,
+      "duration_seconds": 5.17,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0004",
+      "role": "customer",
+      "start_seconds": 20.62,
+      "end_seconds": 30.54,
+      "text": "Uh, no, not yet. Uh, but I'm actually calling about a different order today. Um, yeah, I ordered, like, a coffee maker and it came in damaged, so just wanted to give you a heads-up.",
+      "word_count": 37,
+      "duration_seconds": 9.92,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0005",
+      "role": "agent",
+      "start_seconds": 31.66,
+      "end_seconds": 37.88,
+      "text": "Okay, got it. Yeah, we'll, we'll keep that separate. Uh, do you have the order number for the coffee maker?",
+      "word_count": 22,
+      "duration_seconds": 6.22,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0006",
+      "role": "customer",
+      "start_seconds": 39,
+      "end_seconds": 43.08,
+      "text": "Yeah. Uh, this one ends in 4086.",
+      "word_count": 7,
+      "duration_seconds": 4.08,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0007",
+      "role": "agent",
+      "start_seconds": 45.46,
+      "end_seconds": 47.02,
+      "text": "All right. Um, what's your email?",
+      "word_count": 7,
+      "duration_seconds": 1.56,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0008",
+      "role": "customer",
+      "start_seconds": 48.26,
+      "end_seconds": 61.08,
+      "text": "Yeah, it's ethan.patel@northmail.com, N-O-R-T-H-M-A-I-L.com. And Patel, that's P-A-T-E-L.",
+      "word_count": 26,
+      "duration_seconds": 12.82,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0009",
+      "role": "agent",
+      "start_seconds": 62.28,
+      "end_seconds": 64.28,
+      "text": "Okay, perfect. Give me one sec to check that out.",
+      "word_count": 10,
+      "duration_seconds": 2.0,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0010",
+      "role": "agent",
+      "start_seconds": 72.64,
+      "end_seconds": 77.56,
+      "text": "Okay. So I found a 12-cup coffee maker, matte black.",
+      "word_count": 11,
+      "duration_seconds": 4.92,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0011",
+      "role": "agent",
+      "start_seconds": 79.12,
+      "end_seconds": 81.66,
+      "text": "What was wrong with it when you opened the box?",
+      "word_count": 10,
+      "duration_seconds": 2.54,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0012",
+      "role": "customer",
+      "start_seconds": 82.82,
+      "end_seconds": 92.9,
+      "text": "Uh, the water tank is cracked at the bottom, and the base was damp inside the plastic. Um, the outside wasn't beat up or anything, so yeah.",
+      "word_count": 28,
+      "duration_seconds": 10.08,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0013",
+      "role": "agent",
+      "start_seconds": 93.78,
+      "end_seconds": 99.18,
+      "text": "Okay, got it. Have you tried turning it on or have you not?",
+      "word_count": 13,
+      "duration_seconds": 5.4,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0014",
+      "role": "customer",
+      "start_seconds": 100.32,
+      "end_seconds": 106.06,
+      "text": "Uh, no, I haven't. Um, I stopped 'cause I saw the water and I thought I probably should, uh, call first.",
+      "word_count": 22,
+      "duration_seconds": 5.74,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0015",
+      "role": "agent",
+      "start_seconds": 107.58,
+      "end_seconds": 116.06,
+      "text": "Yes, that's good. Um, let me check the return options on that item. So sorry again for your trouble. Would you rather replace it or get your money back?",
+      "word_count": 30,
+      "duration_seconds": 8.48,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0016",
+      "role": "customer",
+      "start_seconds": 117.24,
+      "end_seconds": 123.3,
+      "text": "Uh, replace it, for sure, as long as I don't have to pay the current price. I saw it went up since I ordered it.",
+      "word_count": 26,
+      "duration_seconds": 6.06,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0017",
+      "role": "agent",
+      "start_seconds": 125.32,
+      "end_seconds": 136.3,
+      "text": "Okay. A replacement would stay at the price you already paid. Um, just give me a minute to see whether it's in stock and whether the system wants it, uh, returned.",
+      "word_count": 32,
+      "duration_seconds": 10.98,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0018",
+      "role": "customer",
+      "start_seconds": 136.38,
+      "end_seconds": 136.84,
+      "text": "Okay, yeah.",
+      "word_count": 2,
+      "duration_seconds": 0.46,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0019",
+      "role": "agent",
+      "start_seconds": 139.14,
+      "end_seconds": 140.71,
+      "text": "Should just be about 20, 30 seconds now.",
+      "word_count": 8,
+      "duration_seconds": 1.57,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0020",
+      "role": "customer",
+      "start_seconds": 141.94,
+      "end_seconds": 142.16,
+      "text": "Okay.",
+      "word_count": 1,
+      "duration_seconds": 0.22,
+      "is_backchannel_candidate": true
+    },
+    {
+      "turn_id": "turn-0021",
+      "role": "agent",
+      "start_seconds": 153.74,
+      "end_seconds": 161.8,
+      "text": "Okay. So I just got back. The same model is available, and the estimated delivery is gonna be Thursday for this one.",
+      "word_count": 22,
+      "duration_seconds": 8.06,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0022",
+      "role": "agent",
+      "start_seconds": 163.58,
+      "end_seconds": 169.04,
+      "text": "The system is also waiving the return, so there's no label or any sort of drop-off.",
+      "word_count": 18,
+      "duration_seconds": 5.46,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0023",
+      "role": "customer",
+      "start_seconds": 170.9,
+      "end_seconds": 176.3,
+      "text": "Oh, okay. Nice. Uh, yeah, that sounds good. Do you need pictures before you can send the replacement?",
+      "word_count": 18,
+      "duration_seconds": 5.4,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0024",
+      "role": "agent",
+      "start_seconds": 178.16,
+      "end_seconds": 188.44,
+      "text": "No, um, not to process it. I could send you an optional photo link on the confirmation if you wanna document the condition, but it won't hold up your order in any way.",
+      "word_count": 34,
+      "duration_seconds": 10.28,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0025",
+      "role": "customer",
+      "start_seconds": 190.06,
+      "end_seconds": 196.5,
+      "text": "Okay. Okay, yeah, I took, uh, some photos already just so, uh, just in case we needed it, so I'll probably just add them.",
+      "word_count": 25,
+      "duration_seconds": 6.44,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0026",
+      "role": "agent",
+      "start_seconds": 198.02,
+      "end_seconds": 200.88,
+      "text": "That's fine. Um, let me submit that replacement for you,",
+      "word_count": 11,
+      "duration_seconds": 2.86,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0027",
+      "role": "agent",
+      "start_seconds": 203.14,
+      "end_seconds": 209.02,
+      "text": "and I will let you know in about 15 seconds as it's going through.",
+      "word_count": 15,
+      "duration_seconds": 5.88,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0028",
+      "role": "agent",
+      "start_seconds": 211.2,
+      "end_seconds": 212.94,
+      "text": "Okay. It looks like it just went through.",
+      "word_count": 8,
+      "duration_seconds": 1.74,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0029",
+      "role": "customer",
+      "start_seconds": 214.34,
+      "end_seconds": 225.18,
+      "text": "Okay. Okay. Oh, can you check where it's shipping to? Just because I don't want this to be tied to the pickup request from the headphone case, um, just 'cause there were some issues with that, too.",
+      "word_count": 39,
+      "duration_seconds": 10.84,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0030",
+      "role": "agent",
+      "start_seconds": 226.38,
+      "end_seconds": 235.04,
+      "text": "Yes, that's a great question. So this one is going to your home address. Um, the pickup preference is only noted on yesterday's missing package case.",
+      "word_count": 28,
+      "duration_seconds": 8.66,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0031",
+      "role": "customer",
+      "start_seconds": 236.78,
+      "end_seconds": 243.16,
+      "text": "Okay. Okay, yeah, th- that's perfect. I was worried the two orders would get m- mixed up together. Um, yeah.",
+      "word_count": 21,
+      "duration_seconds": 6.38,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0032",
+      "role": "agent",
+      "start_seconds": 244.78,
+      "end_seconds": 256.579,
+      "text": "Yeah, no, um, in this case, they're completely separate. So I can see yesterday's case on the account, but I'm working only on the order which is 4086 right now.",
+      "word_count": 33,
+      "duration_seconds": 11.799,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0033",
+      "role": "customer",
+      "start_seconds": 259.3,
+      "end_seconds": 264.78,
+      "text": "Okay, okay. And Thursday is the estimate. It's not, like, a guaranteed time window. Is that correct?",
+      "word_count": 18,
+      "duration_seconds": 5.48,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0034",
+      "role": "agent",
+      "start_seconds": 265.94,
+      "end_seconds": 274.22,
+      "text": "Yes, that's correct. Um, it says right now Thursday by end of day. Um, once the carrier has it, you'll get the regular tracking updates.",
+      "word_count": 27,
+      "duration_seconds": 8.28,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0035",
+      "role": "customer",
+      "start_seconds": 275.68,
+      "end_seconds": 281.72,
+      "text": "I see. Okay. Um, is it coming from the same warehouse as the damaged one?",
+      "word_count": 15,
+      "duration_seconds": 6.04,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0036",
+      "role": "agent",
+      "start_seconds": 283.34,
+      "end_seconds": 295.32,
+      "text": "Unfortunately, I can't see where the first one was packaged. The replacement is signed to the Edison Distribution Center, but that can still change before it actually ships.",
+      "word_count": 29,
+      "duration_seconds": 11.98,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0037",
+      "role": "customer",
+      "start_seconds": 297.26,
+      "end_seconds": 303.44,
+      "text": "Oh, okay. Okay. Yeah, no, I just mainly wanted to check you weren't, you know, resending the same kind of issue somehow.",
+      "word_count": 23,
+      "duration_seconds": 6.18,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0038",
+      "role": "agent",
+      "start_seconds": 305.96,
+      "end_seconds": 314.06,
+      "text": "No, um, it'll be a brand-new shipment with a new order number. Um, this one will end in 8821.",
+      "word_count": 21,
+      "duration_seconds": 8.1,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0039",
+      "role": "customer",
+      "start_seconds": 315.94,
+      "end_seconds": 322.17,
+      "text": "Okay. Okay, nice. Um, yeah, and what do I do with the damaged one since I don't need to, like, return it, I guess?",
+      "word_count": 25,
+      "duration_seconds": 6.23,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0040",
+      "role": "agent",
+      "start_seconds": 323.64,
+      "end_seconds": 335.46,
+      "text": "Yeah, so for the damaged one, uh, you can go ahead and discard that. Since there's moisture on the base, I definitely wouldn't plug it in. Other than that, um, Westline doesn't need it back.",
+      "word_count": 38,
+      "duration_seconds": 11.82,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0041",
+      "role": "customer",
+      "start_seconds": 337.18,
+      "end_seconds": 346.099,
+      "text": "Oh, okay. Okay, and, uh, I can put it in, like, the electronics section? I'll check if my building has a electronic bin.",
+      "word_count": 24,
+      "duration_seconds": 8.919,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0042",
+      "role": "agent",
+      "start_seconds": 347.18,
+      "end_seconds": 357.44,
+      "text": "Yeah, that works. Um, I think that the city you're in may also have small appliance recycling, but the confirmation will simply show that the return was just waived.",
+      "word_count": 30,
+      "duration_seconds": 10.26,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0043",
+      "role": "customer",
+      "start_seconds": 359.18,
+      "end_seconds": 365.12,
+      "text": "Oh, okay. Nice. Uh, okay, yeah, has the confirmation email gone out? I don't see it yet.",
+      "word_count": 18,
+      "duration_seconds": 5.94,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0044",
+      "role": "agent",
+      "start_seconds": 365.22,
+      "end_seconds": 369.34,
+      "text": "Um, let me refresh that, actually. One second.",
+      "word_count": 8,
+      "duration_seconds": 4.12,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0045",
+      "role": "agent",
+      "start_seconds": 372.3,
+      "end_seconds": 379.74,
+      "text": "Okay, yeah, um, it says it was just sent, and the subject line for this will start with, \"Your Westline replacement.\"",
+      "word_count": 21,
+      "duration_seconds": 7.44,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0046",
+      "role": "customer",
+      "start_seconds": 379.94,
+      "end_seconds": 384.92,
+      "text": "Oh, okay. Yeah. No, I see it. \"Your order 8821 delivery.",
+      "word_count": 11,
+      "duration_seconds": 4.98,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0047",
+      "role": "customer",
+      "start_seconds": 386.4,
+      "end_seconds": 388.52,
+      "text": "Zero balance.\" Okay. Yeah, no, I see that.",
+      "word_count": 8,
+      "duration_seconds": 2.12,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0048",
+      "role": "agent",
+      "start_seconds": 389.42,
+      "end_seconds": 395.5,
+      "text": "Perfect. Yeah, that's the one, and, uh, you'll see the optional photo link, uh, farther down in the email.",
+      "word_count": 21,
+      "duration_seconds": 6.08,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0049",
+      "role": "customer",
+      "start_seconds": 397.14,
+      "end_seconds": 410.26,
+      "text": "Okay. Okay, yeah, I'll, I'll definitely upload something. Um, no, this is great. Thank you. While I have you on the call, is there any updates on the, the headphones, uh, the other order that we had issues with?",
+      "word_count": 41,
+      "duration_seconds": 13.12,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0050",
+      "role": "agent",
+      "start_seconds": 411.82,
+      "end_seconds": 427.62,
+      "text": "The trace on the last order you did is still open. There is no carrier response as of yet, and the deadline is still 6:00 this evening. I don't wanna change anything before that window kind of closes, though.",
+      "word_count": 41,
+      "duration_seconds": 15.8,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0051",
+      "role": "customer",
+      "start_seconds": 427.68,
+      "end_seconds": 432.34,
+      "text": "Okay, okay. Uh, th- yeah, that's fine. I'll use the link tonight if nothing changes. That works.",
+      "word_count": 19,
+      "duration_seconds": 4.66,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0052",
+      "role": "agent",
+      "start_seconds": 433.74,
+      "end_seconds": 441.04,
+      "text": "Okay, sounds good. So the coffee maker replacement is done, and the headphones case stays as is for now.",
+      "word_count": 19,
+      "duration_seconds": 7.3,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0053",
+      "role": "customer",
+      "start_seconds": 442.88,
+      "end_seconds": 449.59,
+      "text": "Okay. Okay, yeah, no, that, that sounds good for, for both. Uh, yeah, no, thank you so much again. I know,",
+      "word_count": 21,
+      "duration_seconds": 6.71,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0054",
+      "role": "customer",
+      "start_seconds": 450.9,
+      "end_seconds": 455.28,
+      "text": "two different issues, uh, but I appreciate the support.",
+      "word_count": 9,
+      "duration_seconds": 4.38,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0055",
+      "role": "agent",
+      "start_seconds": 455.36,
+      "end_seconds": 465.74,
+      "text": "You're so welcome, Ethan. Um, once again, so sorry for the trouble with the coffee maker as well as the order yesterday. Um, I hope that the next delivery that we have for you goes a little bit more smoothly.",
+      "word_count": 41,
+      "duration_seconds": 10.38,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0056",
+      "role": "customer",
+      "start_seconds": 467.34,
+      "end_seconds": 472.28,
+      "text": "Yeah, me too. I hope it goes better. All right, no, thank you so much for your time.",
+      "word_count": 18,
+      "duration_seconds": 4.94,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0057",
+      "role": "agent",
+      "start_seconds": 472.4,
+      "end_seconds": 474.14,
+      "text": "Absolutely. You too. Have a good day. Bye.",
+      "word_count": 8,
+      "duration_seconds": 1.74,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0058",
+      "role": "customer",
+      "start_seconds": 474.64,
+      "end_seconds": 474.99,
+      "text": "Yep, bye.",
+      "word_count": 2,
+      "duration_seconds": 0.35,
+      "is_backchannel_candidate": false
+    }
+  ],
+  "pause_boundaries": [
+    {
+      "after_turn_id": "turn-0001",
+      "before_turn_id": "turn-0002",
+      "start_seconds": 4.38,
+      "end_seconds": 6.06,
+      "duration_seconds": 1.68,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0002",
+      "before_turn_id": "turn-0003",
+      "start_seconds": 12.44,
+      "end_seconds": 14.3,
+      "duration_seconds": 1.86,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0003",
+      "before_turn_id": "turn-0004",
+      "start_seconds": 19.47,
+      "end_seconds": 20.62,
+      "duration_seconds": 1.15,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0004",
+      "before_turn_id": "turn-0005",
+      "start_seconds": 30.54,
+      "end_seconds": 31.66,
+      "duration_seconds": 1.12,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0005",
+      "before_turn_id": "turn-0006",
+      "start_seconds": 37.88,
+      "end_seconds": 39,
+      "duration_seconds": 1.12,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0006",
+      "before_turn_id": "turn-0007",
+      "start_seconds": 43.08,
+      "end_seconds": 45.46,
+      "duration_seconds": 2.38,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0007",
+      "before_turn_id": "turn-0008",
+      "start_seconds": 47.02,
+      "end_seconds": 48.26,
+      "duration_seconds": 1.24,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0008",
+      "before_turn_id": "turn-0009",
+      "start_seconds": 61.08,
+      "end_seconds": 62.28,
+      "duration_seconds": 1.2,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0009",
+      "before_turn_id": "turn-0010",
+      "start_seconds": 64.28,
+      "end_seconds": 72.64,
+      "duration_seconds": 8.36,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0010",
+      "before_turn_id": "turn-0011",
+      "start_seconds": 77.56,
+      "end_seconds": 79.12,
+      "duration_seconds": 1.56,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0011",
+      "before_turn_id": "turn-0012",
+      "start_seconds": 81.66,
+      "end_seconds": 82.82,
+      "duration_seconds": 1.16,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0012",
+      "before_turn_id": "turn-0013",
+      "start_seconds": 92.9,
+      "end_seconds": 93.78,
+      "duration_seconds": 0.88,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0013",
+      "before_turn_id": "turn-0014",
+      "start_seconds": 99.18,
+      "end_seconds": 100.32,
+      "duration_seconds": 1.14,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0014",
+      "before_turn_id": "turn-0015",
+      "start_seconds": 106.06,
+      "end_seconds": 107.58,
+      "duration_seconds": 1.52,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0015",
+      "before_turn_id": "turn-0016",
+      "start_seconds": 116.06,
+      "end_seconds": 117.24,
+      "duration_seconds": 1.18,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0016",
+      "before_turn_id": "turn-0017",
+      "start_seconds": 123.3,
+      "end_seconds": 125.32,
+      "duration_seconds": 2.02,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0018",
+      "before_turn_id": "turn-0019",
+      "start_seconds": 136.84,
+      "end_seconds": 139.14,
+      "duration_seconds": 2.3,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0019",
+      "before_turn_id": "turn-0020",
+      "start_seconds": 140.71,
+      "end_seconds": 141.94,
+      "duration_seconds": 1.23,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0020",
+      "before_turn_id": "turn-0021",
+      "start_seconds": 142.16,
+      "end_seconds": 153.74,
+      "duration_seconds": 11.58,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0021",
+      "before_turn_id": "turn-0022",
+      "start_seconds": 161.8,
+      "end_seconds": 163.58,
+      "duration_seconds": 1.78,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0022",
+      "before_turn_id": "turn-0023",
+      "start_seconds": 169.04,
+      "end_seconds": 170.9,
+      "duration_seconds": 1.86,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0023",
+      "before_turn_id": "turn-0024",
+      "start_seconds": 176.3,
+      "end_seconds": 178.16,
+      "duration_seconds": 1.86,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0024",
+      "before_turn_id": "turn-0025",
+      "start_seconds": 188.44,
+      "end_seconds": 190.06,
+      "duration_seconds": 1.62,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0025",
+      "before_turn_id": "turn-0026",
+      "start_seconds": 196.5,
+      "end_seconds": 198.02,
+      "duration_seconds": 1.52,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0026",
+      "before_turn_id": "turn-0027",
+      "start_seconds": 200.88,
+      "end_seconds": 203.14,
+      "duration_seconds": 2.26,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0027",
+      "before_turn_id": "turn-0028",
+      "start_seconds": 209.02,
+      "end_seconds": 211.2,
+      "duration_seconds": 2.18,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0028",
+      "before_turn_id": "turn-0029",
+      "start_seconds": 212.94,
+      "end_seconds": 214.34,
+      "duration_seconds": 1.4,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0029",
+      "before_turn_id": "turn-0030",
+      "start_seconds": 225.18,
+      "end_seconds": 226.38,
+      "duration_seconds": 1.2,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0030",
+      "before_turn_id": "turn-0031",
+      "start_seconds": 235.04,
+      "end_seconds": 236.78,
+      "duration_seconds": 1.74,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0031",
+      "before_turn_id": "turn-0032",
+      "start_seconds": 243.16,
+      "end_seconds": 244.78,
+      "duration_seconds": 1.62,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0032",
+      "before_turn_id": "turn-0033",
+      "start_seconds": 256.579,
+      "end_seconds": 259.3,
+      "duration_seconds": 2.721,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0033",
+      "before_turn_id": "turn-0034",
+      "start_seconds": 264.78,
+      "end_seconds": 265.94,
+      "duration_seconds": 1.16,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0034",
+      "before_turn_id": "turn-0035",
+      "start_seconds": 274.22,
+      "end_seconds": 275.68,
+      "duration_seconds": 1.46,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0035",
+      "before_turn_id": "turn-0036",
+      "start_seconds": 281.72,
+      "end_seconds": 283.34,
+      "duration_seconds": 1.62,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0036",
+      "before_turn_id": "turn-0037",
+      "start_seconds": 295.32,
+      "end_seconds": 297.26,
+      "duration_seconds": 1.94,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0037",
+      "before_turn_id": "turn-0038",
+      "start_seconds": 303.44,
+      "end_seconds": 305.96,
+      "duration_seconds": 2.52,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0038",
+      "before_turn_id": "turn-0039",
+      "start_seconds": 314.06,
+      "end_seconds": 315.94,
+      "duration_seconds": 1.88,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0039",
+      "before_turn_id": "turn-0040",
+      "start_seconds": 322.17,
+      "end_seconds": 323.64,
+      "duration_seconds": 1.47,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0040",
+      "before_turn_id": "turn-0041",
+      "start_seconds": 335.46,
+      "end_seconds": 337.18,
+      "duration_seconds": 1.72,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0041",
+      "before_turn_id": "turn-0042",
+      "start_seconds": 346.099,
+      "end_seconds": 347.18,
+      "duration_seconds": 1.081,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0042",
+      "before_turn_id": "turn-0043",
+      "start_seconds": 357.44,
+      "end_seconds": 359.18,
+      "duration_seconds": 1.74,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0044",
+      "before_turn_id": "turn-0045",
+      "start_seconds": 369.34,
+      "end_seconds": 372.3,
+      "duration_seconds": 2.96,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0046",
+      "before_turn_id": "turn-0047",
+      "start_seconds": 384.92,
+      "end_seconds": 386.4,
+      "duration_seconds": 1.48,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0047",
+      "before_turn_id": "turn-0048",
+      "start_seconds": 388.52,
+      "end_seconds": 389.42,
+      "duration_seconds": 0.9,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0048",
+      "before_turn_id": "turn-0049",
+      "start_seconds": 395.5,
+      "end_seconds": 397.14,
+      "duration_seconds": 1.64,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0049",
+      "before_turn_id": "turn-0050",
+      "start_seconds": 410.26,
+      "end_seconds": 411.82,
+      "duration_seconds": 1.56,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0051",
+      "before_turn_id": "turn-0052",
+      "start_seconds": 432.34,
+      "end_seconds": 433.74,
+      "duration_seconds": 1.4,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0052",
+      "before_turn_id": "turn-0053",
+      "start_seconds": 441.04,
+      "end_seconds": 442.88,
+      "duration_seconds": 1.84,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0053",
+      "before_turn_id": "turn-0054",
+      "start_seconds": 449.59,
+      "end_seconds": 450.9,
+      "duration_seconds": 1.31,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0055",
+      "before_turn_id": "turn-0056",
+      "start_seconds": 465.74,
+      "end_seconds": 467.34,
+      "duration_seconds": 1.6,
+      "class": "short"
+    }
+  ],
+  "overlap_and_barge_in_candidates": [],
+  "source_segment_overlap_candidates": [],
+  "audio_events": [
+    {
+      "text": "[laughs]",
+      "start": 451.94,
+      "end": 452.05,
+      "type": "audio_event",
+      "speaker_id": "customer",
+      "logprob": -0.026575925431946718
+    },
+    {
+      "text": "[laughs]",
+      "start": 469.06,
+      "end": 469.8,
+      "type": "audio_event",
+      "speaker_id": "customer",
+      "logprob": -0.0019888657453369283
+    }
+  ],
+  "speaker_metadata": {
+    "agent": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    },
+    "customer": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+[00:00:01.640 - 00:00:07.060] Jordan: Hi. Thanks for calling BlueMesa Airlines. This is Jordan. How are you doing today?
+[00:00:08.380 - 00:00:14.665] Linda: Good. Um, I'm trying to— [laughs] I'm trying to book—
+[00:00:13.762 - 00:00:14.979] Jordan: Where are we trying to get you today, ma'am?
+[00:00:16.560 - 00:00:17.340] Linda: Pardon me?
+[00:00:17.340 - 00:00:19.660] Jordan: Where are we trying to get you today?
+[00:00:19.660 - 00:00:34.280] Linda: I'm trying to book from Phoenix to Washington, and it's for me and my grandson. But the website shows three different airports, and I have no idea which one we actually need.
+[00:00:34.280 - 00:00:46.760] Jordan: Right. Yeah, that can definitely be a little confusing. I'm sorry about that. Um, so what we'll do, we're gonna go ahead and figure out the airport 1st. And I won't book anything until we've gone over the full price. Okay?
+[00:00:46.840 - 00:00:47.500] Linda: Okay.
+[00:00:47.500 - 00:00:48.700] Jordan: And where are you staying, ma'am?
+[00:00:50.160 - 00:00:53.339] Linda: Um, it's near the National Mall.
+[00:00:53.340 - 00:00:54.480] Jordan: Okay.
+[00:00:54.480 - 00:01:00.200] Linda: Um, we wanna leave October 14th and then come back home on October 19th.
+[00:01:00.400] [tool] list_supported_airports: calling tool to list supported airports
+[00:01:01.280 - 00:01:14.110] Jordan: Okay. So you've got Reagan, Dulles, and Baltimore. But for the National Mall, Reagan is usually the closest and easiest. It's kind of right there in town.
+[00:01:15.990 - 00:01:33.500] Linda: Okay. Well, Reagan then. And I also need it to be non-stop, please. Um, I'm gonna be traveling with my 12-year-old and a, uh, my grandson [laughs], and a folding walker.
+[00:01:33.500] [tool] search_flights: calling tool to search for direct flights
+[00:01:33.500 - 00:01:49.540] Jordan: Okay. Well, I did find a 9:10 in the morning going out and a 3:40 in the afternoon coming back. Both are nonstop. Basic is cheaper, but standard lets you pick seats ahead of time. Is that a priority for you?
+[00:01:51.560 - 00:01:57.080] Linda: Yeah. Um, we definitely need standard then because we have to sit together.
+[00:01:57.080 - 00:02:05.500] Jordan: Mm-hmm. Okay. Well, standard economy is the safer choice for advance seats. Would you like me to compare a one-stop itinerary on price?
+[00:02:07.460 - 00:02:12.100] Linda: Uh, sure. As long as it's not one of those 5-hour layovers. [laughs]
+[00:02:12.100 - 00:02:17.260] Jordan: Right. Right. I understand. Let me see. Um,
+[00:02:17.800] [tool] search_flights: calling tool to search for one-stop flights
+[00:02:19.380 - 00:02:26.980] Jordan: Well, ma'am, it does look like the best connection only saves $62 total, and it adds almost three hours each way.
+[00:02:28.820 - 00:02:41.420] Linda: Oh, no. That is not worth it. Let's go ahead and do nonstop. And we'll each check one suitcase, and I have the folding walker I mentioned.
+[00:02:41.420] [tool] check_mobility_device_requirements: check folding-walker requirements before quoting baggage treatment
+[00:02:41.420 - 00:02:46.640] Jordan: Okay. Well, the walker doesn't count as paid baggage, so that's good.
+[00:02:46.640 - 00:02:48.420] Linda: Oh. Mm-hmm. Yeah.
+[00:02:48.420 - 00:03:01.700] Jordan: Yeah. And I'm pricing two standard tickets, two checked bags, and optional trip insurance. Just give me a moment. I'm going to crunch these numbers and get the best possible itinerary.
+[00:03:01.700] [tool] calculate_itinerary_price: calculate the selected itinerary before stating mobility-device fee and final price
+[00:03:13.580 - 00:03:15.500] Jordan: Okay. Just bear with me, ma'am, one moment.
+[00:03:24.320 - 00:03:48.840] Jordan: Okay. So the total without insurance is $1,186.40, and that does include the two checked bags. Insurance adds $94.60, and the coverage does have exclusions, so review the plan document before purchase. Okay? Do you want me to add that insurance?
+[00:03:49.860 - 00:03:53.240] Linda: Yeah. Go ahead. Add the insurance.
+[00:03:53.240 - 00:03:59.940] Jordan: Got it. Okay. And can you please give your name and date of birth? I'll need that for both travelers.
+[00:04:00.980 - 00:04:04.620] Linda: Okay. I'm Linda Marie Carver.
+[00:04:05.640 - 00:04:05.859] Jordan: Okay.
+[00:04:05.860 - 00:04:07.400] Linda: C-A-R-V-E-R.
+[00:04:07.400 - 00:04:08.100] Jordan: Yes, ma'am.
+[00:04:09.900 - 00:04:13.820] Linda: Birthday: March 8th, 1954.
+[00:04:15.340 - 00:04:17.190] Jordan: Okay. And your grandson, please?
+[00:04:18.310 - 00:04:27.980] Linda: And then my grandson—yes, Evan James Carver, born July 21st of 2014.
+[00:04:30.320 - 00:04:34.060] Jordan: Okay. And ma'am, can you please confirm the contact email?
+[00:04:35.760 - 00:04:44.420] Linda: Yes. It's linda.carver9@outlook.com.
+[00:04:44.420 - 00:04:50.000] Jordan: Okay. Dot com, got that. And how would you like to pay, ma'am?
+[00:04:52.020 - 00:05:05.380] Linda: I should have a card attached to our account already. It's the Visa ending in 1182. I also have a travel certificate for $200.
+[00:05:05.380 - 00:05:05.940] Jordan: Okay.
+[00:05:05.800] [tool] verify_customer_identity: validate collected identity factors before stored profile and payment access
+[00:05:06.000] [tool] get_customer_profile: calling tool to retrieve the customer profile and reservations
+[00:05:07.720 - 00:05:14.820] Jordan: Um, okay. I found your profile, and [sighs] no duplicate reservation. All good.
+[00:05:16.180 - 00:05:18.140] Jordan: And what is the travel certificate code?
+[00:05:19.980 - 00:05:31.060] Linda: The code number is C-T-449108.
+[00:05:31.560 - 00:05:41.760] Jordan: Okay. I'm just going to read that back. It's C-T-449108.
+[00:05:42.520 - 00:05:43.760] Linda: Yes. Okay.
+[00:05:44.200 - 00:05:45.320] Jordan: Thanks. Got it.
+[00:05:45.500] [tool] validate_travel_certificate: validate the supplied certificate before applying it
+[00:05:45.600] [tool] book_reservation: calling tool to book the new reservation
+[00:05:46.700 - 00:06:07.360] Jordan: Um, all right. Well, the booking is confirmed. Let me give you your confirmation code. The code is B as in Bravo, 9, R as in Romeo, T as in Tango, 6, M as in Mike.
+[00:06:10.210 - 00:06:16.110] Linda: Okay. Can I- Is it B9RT6M?
+[00:06:17.390 - 00:06:18.630] Jordan: Yes.
+[00:06:18.630 - 00:06:21.430] Linda: And did the certificate apply?
+[00:06:21.430 - 00:06:30.130] Jordan: Yes, ma'am. $200 came from the certificate. The remaining authorized amount went to the Visa we had on file ending in 1182.
+[00:06:31.430 - 00:06:33.430] Linda: And 2 checked bags, right?
+[00:06:33.430 - 00:06:45.110] Jordan: Yep, that's right. Two paid checked bags total, plus the folding walker as a mobility device. And again, no charge for that. And insurance is included for both travelers.
+[00:06:46.770 - 00:06:52.510] Linda: Okay. And can you just please report- repeat rather the airports?
+[00:06:53.610 - 00:07:04.290] Jordan: Yes. Phoenix Sky Harbor to Washington Reagan National. That is round trip, October 14th through October 19th.
+[00:07:05.710 - 00:07:19.730] Linda: Great. Oh—wait, I do have one more question. My grandson's last name matches mine, but his mother isn't traveling. Do I need a letter from her?
+[00:07:19.730 - 00:07:37.910] Jordan: Oh, no. Um, airline booking does not require me to collect a consent letter for this domestic itinerary, but identification and custody document expectations can vary. Um, I would just review current government guidance and carry any documents his parent considers appropriate.
+[00:07:39.970 - 00:07:43.170] Linda: Okay. He doesn't have a driver's license.
+[00:07:43.170 - 00:07:56.530] Jordan: For domestic security screening, minors traveling with an adult are treated under the applicable government rules. I don't wanna paraphrase a changing rule incorrectly, um, so I would use the official guidance before departure.
+[00:07:59.350 - 00:08:04.330] Linda: Okay, fine. Um, what did you enter for his birth date?
+[00:08:04.330 - 00:08:07.050] Jordan: July 21st, 2014.
+[00:08:08.490 - 00:08:14.830] Linda: Correct. Okay. And mine is March 8th, 1954.
+[00:08:14.830 - 00:08:17.090] Jordan: Yep, that's right. I have that right there, ma'am.
+[00:08:18.829 - 00:08:22.250] Linda: The certificate number had a zero or the letter 'O'?
+[00:08:23.570 - 00:08:35.750] Jordan: It was recorded as C-T-449108, with the digit zero between one and eight.
+[00:08:37.150 - 00:08:40.970] Linda: Good. I always mix those 2 up over the phone.
+[00:08:40.970 - 00:08:47.850] Jordan: Yes, I understand. The certificate applied successfully, so the identifier was accepted.
+[00:08:49.870 - 00:08:51.710] Linda: Can we choose the seats now?
+[00:08:53.470 - 00:09:06.350] Jordan: The reservation is confirmed in standard economy. Seat selection can be completed from the reservation screen, so just choose two adjacent available seats and verify both directions for that, okay?
+[00:09:08.730 - 00:09:09.350] Linda: Okay.
+[00:09:11.010 - 00:09:23.850] Linda: So I see 16A and 16B outbound, and then 14D and 14E to return.
+[00:09:23.850 - 00:09:30.070] Jordan: Yes, those are adjacent pairs. Just review the aircraft map before confirming because layouts can differ.
+[00:09:32.350 - 00:09:37.410] Linda: Okay, confirmed. Does the walker need a serial number?
+[00:09:37.410 - 00:09:46.250] Jordan: No, ma'am, not for this reservation entry. I would label it with contact information and identify it as a mobility device at the airport, just so they're aware.
+[00:09:47.870 - 00:09:52.490] Linda: Okay. Uh, please, uh, give me the total one more time.
+[00:09:52.490 - 00:10:15.770] Jordan: No problem. That was $1,186.40 for fare, taxes, and two checked bags, plus $94.60 for that insurance. And a $200 credit was applied; the remainder was charged to the Visa on file. And that's the card I have ending in 1182.
+[00:10:17.850 - 00:10:20.750] Linda: Okay, that matches my screen.
+[00:10:20.750 - 00:10:34.990] Jordan: Great. Okay, ma'am, and I do suggest you save the confirmation B9RT6M and review the insurance document for exclusions.
+[00:10:36.550 - 00:10:41.590] Linda: I will. I, okay, I've written down the confirmation and the total.
+[00:10:41.590 - 00:10:44.690] Jordan: Good. Perfect. Is there anything else I can help you with today, ma'am?
+[00:10:45.840 - 00:10:50.010] Linda: No, that covers it. Thank you for being patient with me.
+[00:10:50.010 - 00:10:58.710] Jordan: Oh, you're very welcome, ma'am. It's my pleasure. And thank you for choosing BlueMesa Airlines, and have a wonderful trip with your grandson.
+[00:10:58.710 - 00:10:59.190] Linda: Thank you.

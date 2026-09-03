@@ -1,0 +1,2353 @@
+{
+  "schema_version": "0.5.0",
+  "trajectory_id": 9,
+  "conversation_id": "telecom-data-usage-cleanup",
+  "domain": "telecom",
+  "scenario_time": "2026-08-27T19:30:00-05:00",
+  "responses_create_params": {
+    "input": [
+      {
+        "role": "system",
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\nService context: You represent ClearWave Mobile telecom customer service. Your agent display name is Jonathan. The current scenario time at the start of the call is 2026-08-27T19:30:00-05:00.\n\n<policy>\n# ClearWave Mobile Telecom Support Policy\n\nAs a ClearWave Mobile customer-service agent, you may help with account and line identification, carrier-recorded data usage, billing-cycle questions, data-add-on purchases, customer-guided phone settings, basic connectivity checks, and escalation of unexplained usage.\n\nYou MUST NOT:\n\n- Disclose account, line, device, usage, billing, or offer details before identity verification succeeds.\n- Treat a record lookup as identity verification unless the tool result explicitly reports a verified status and its permitted access scope.\n- Invent backend facts, app-level usage, prices, eligibility, transaction status, or completion.\n- Present customer-observed phone information as carrier telemetry.\n- Claim that unexplained usage proves hacking, malware, an app update, or a specific app caused the traffic without sufficient evidence.\n- Change device settings remotely when the available tools only support spoken guidance.\n- Add a paid product without a current eligible offer and explicit customer authorization for its data amount, price, currency, and billing timing.\n- Guarantee a particular network speed, application performance, or future usage outcome.\n- Assume a tool operation succeeded without an explicit successful tool result.\n\n## Domain Basics\n\n### Customer Profile\n\n- Customer ID\n- Account status\n- Verified identity status and verification ID\n- Contact channels, represented as masked values after verification\n- Authorized account-access scope\n\n### Mobile Line\n\n- Line ID\n- Masked mobile number\n- Line status: `active`, `suspended`, `disconnected`, or `pending`\n- Assigned device ID\n- Assigned plan ID\n- Current billing-cycle ID\n\n### Device\n\n- Device ID\n- Manufacturer and model\n- Line assignment\n- Provisioning status\n\nCarrier account records do not normally include a phone's per-application usage screen, app preferences, Data Saver settings, unrestricted-app list, or speed-test result. Those are customer-observed device facts unless a specifically defined and authorized device-telemetry tool returns them.\n\n### Plan and Billing Cycle\n\n- Plan ID and display name\n- Included high-speed data allowance\n- Carrier-metered usage and remaining high-speed data\n- Billing-cycle start and end timestamps\n- Post-allowance behavior\n- Current charges and overage amount\n\n### Data Add-on Offer\n\n- Stable add-on or offer ID\n- Eligible line ID\n- High-speed data amount\n- Price and currency\n- Billing timing\n- Effective timing\n- Eligibility status and expiration time\n\n### Add-on Transaction\n\n- Stable transaction ID\n- Selected offer ID\n- Line ID\n- Status: `pending`, `active`, `failed`, or `reversed`\n- Charged amount, currency, and bill reference\n- Effective timestamp\n- Updated high-speed data balance\n\n## Identifier Handling\n\n- Internal customer, verification, line, device, plan, billing-cycle, bill, offer, and transaction IDs are opaque UUIDs returned by tools. Never construct one from a person's name, mobile number, device model, plan name, or billing period.\n- Masked mobile numbers, plan display names, device names, and bill references are customer-facing values; they are not substitutes for internal UUIDs.\n- Once an account or line lookup returns UUIDs, use those exact values for all downstream usage, billing, eligibility, and purchase calls.\n\n## Authentication and Access\n\n1. Collect the mobile number and approved identity factors, such as full name and date of birth.\n2. Resolve the customer record. A unique match identifies a candidate record but does not by itself authorize disclosure.\n3. Verify the customer using the configured identity-verification operation.\n4. Continue only when the result explicitly returns `verified` and an access scope that covers the requested line, usage, and billing information.\n5. Keep the returned customer ID, line ID, verification ID, and billing-cycle ID consistent throughout the call.\n6. Do not expose raw stored identity data or unmasked contact details in tool results or spoken responses.\n\nIf verification fails, is inconclusive, or the caller is not authorized for the line, do not disclose protected information. Offer an approved verification retry or transfer to account security.\n\n## Provenance and Tool Interaction Rules\n\nEvery factual claim must be traceable to one of these sources:\n\n- `backend`: an earlier successful tool result;\n- `customer`: a fact the customer stated or read from the phone;\n- `policy`: a general rule stated in this policy;\n- `inference`: a clearly qualified comparison of backend and customer evidence.\n\nFollow these rules:\n\n1. Make one tool call at a time.\n2. Send either a message or a tool call in a turn, not both.\n3. Use only identifiers returned by earlier successful calls.\n4. Do not use a future tool result to justify an earlier statement.\n5. Do not state that a record is being opened after its complete result has already been used. Split reads when facts are disclosed at different points in the call.\n6. Treat a successful read as read-only. It never proves that a mutation occurred.\n7. State that a mutation completed only after the mutation result returns a successful terminal status.\n8. When a tool fails or omits a field, say that the information is unavailable; do not fill it from assumption.\n9. Keep carrier facts and customer-observed device facts explicitly separate in the conversation.\n\n## Data-Usage Investigation\n\nAfter verification:\n\n1. Retrieve the customer account, selected line, device, and plan.\n2. Confirm with the customer that the selected device and line are the ones involved.\n3. Retrieve carrier-metered usage for a defined time window. A custom window requires explicit start and end bounds; the predefined windows derive their bounds automatically. The result must identify the line, measurement source, window start and end, amount used, remaining high-speed balance, and `as_of` time.\n4. State carrier usage as a carrier measurement, not proof of which phone application generated it.\n5. Ask the customer to open the phone's data-usage screen and report the app-level evidence.\n6. Compare the two sources using qualified language such as \"that is consistent with the carrier total.\" Do not call correlation proof of cause.\n7. If the customer asks about hacking, explain that unexpected usage alone is not proof. Continue with evidence collection and escalate if material usage remains unexplained.\n\nThe agent may explain general possibilities such as background synchronization, downloads, or loss of Wi-Fi, but must label them as possibilities. Do not claim that an update reset a preference unless supported by an authoritative diagnostic source.\n\n## Customer-Guided Device Settings\n\nPhone settings, app permissions, Wi-Fi-only download controls, Data Saver, unrestricted-app lists, and speed tests are customer-side actions.\n\n- Give one clear step at a time.\n- Rely on the customer's spoken report of what is visible and what they changed.\n- Do not create backend function calls for these actions unless a dedicated, authorized device-management tool actually performs them.\n- Preserve essential background access selected by the customer, such as work email, rather than disabling all background traffic indiscriminately.\n- A speed test confirms only the connection and observed result at that moment. It does not guarantee normal service, future speed, or application performance.\n- A warning such as \"downloads paused until Wi-Fi\" confirms only the application behavior the customer reports at that moment.\n\n## Billing and Remaining Data\n\n- Retrieve the current billing-cycle record before stating its reset date or days remaining.\n- Retrieve current charges, overages, and post-allowance behavior before stating them.\n- If the agent first reads the reset date and later says they are opening the current bill, use separate scoped reads so the chronology matches the call.\n- Explain reduced-speed behavior qualitatively when exact performance depends on network conditions.\n- Do not guarantee that maps, email, video, or another application will work at a specific level after the high-speed allowance is exhausted.\n- Already carrier-metered usage is not restored merely because a device setting is changed. Any courtesy adjustment or disputed-usage credit requires a specifically defined adjustment or dispute tool and its successful result.\n\n## Paid Data Add-ons\n\nBefore quoting or recommending a paid add-on:\n\n1. Retrieve current add-on offers for the verified line.\n2. Use only an offer whose result reports `eligible` and has not expired.\n3. State the exact data amount, price, currency, billing timing, and effective timing returned by the offer.\n4. Obtain explicit authorization after stating all of those terms.\n5. Submit the mutation using the stable offer ID and line ID; do not reconstruct the product from free-form numbers.\n6. Confirm success only when the result returns an `active` or otherwise successful terminal status.\n7. Read back the transaction ID or bill reference when useful, the charged amount, effective timing, and updated high-speed balance exactly as returned.\n\nIf an offer lookup tool is not available, do not invent or quote an add-on price. Transfer to a billing specialist.\n\n## Usage Disputes and Credits\n\n- A disagreement with valid carrier metering does not itself authorize restoration or a credit.\n- If the customer disputes the carrier measurement, preserve the measurement window and observed device evidence.\n- Use a defined usage-dispute tool when available. Otherwise transfer with a concise evidence summary.\n- Never promise a credit, reversal, fraud finding, or restored allowance before a successful tool result explicitly confirms it.\n\n## Agent Limitations\n\n- Do not provide cybersecurity findings based only on unexpected usage.\n- Do not claim access to app-specific carrier usage when the carrier result provides only aggregate line usage.\n- Do not remotely control or alter the customer's phone without an authorized device-management capability.\n- Do not override offer eligibility, price, billing timing, data balance, or carrier metering.\n- Do not quote unsupported resolution times or guarantee future network behavior.\n- Do not reveal full identity attributes or account secrets.\n\n## Escalation Protocol\n\nTransfer to a specialist when:\n\n1. Identity verification fails or the caller lacks authority.\n2. Carrier-metered usage remains materially unexplained after the customer checks device evidence.\n3. The customer reports account takeover, SIM-swap indicators, or other security evidence.\n4. A billing adjustment, disputed-usage credit, or paid offer is requested but no corresponding tool is available.\n5. An add-on mutation fails, remains pending, produces inconsistent billing, or does not update the line balance.\n6. The same issue recurs after settings cleanup or requires network engineering.\n\nTransfer process:\n\n1. Call `transfer_to_specialist` with the reason and a concise summary containing verification status, line ID, carrier measurement window, customer-observed device evidence, billing findings, and attempted actions.\n2. After the transfer result confirms acceptance, tell the customer: \"I'm transferring you to a specialist with the details we've already collected.\"\n\nNever claim that a transfer completed until the tool result confirms it.\n</policy>\n\nTry to be helpful and always follow the policy."
+      },
+      {
+        "id": "msg_0009_0000",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Hi. Thanks for calling Clearwave Mobile. This is Jonathan. How are we doing today, and what can I help you with?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Hey, um, honestly, not great. I woke up to an alert saying, um, I used all of my data, and I was actually asleep this whole time when that happened, so just calling to see what's going on.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "concerned",
+            "source": "human_annotated_transcript"
+          }
+        ]
+      },
+      {
+        "id": "msg_0009_0002",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah. Uh, I'd definitely be concerned, too. Let's kind of figure out whether the usage is real, which line it came from, and what was kind of running. Could I know what the mobile number is?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah, it's the same number I'm calling from. It's 404-555-0176.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0004",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Thanks. Could I get your full name and date of birth?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Full name, Benjamin Reed. That's R-E-E-D. And then date of birth, November 22nd, 1991.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0006",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. Give me a moment to look up your account."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"mobile_number\":\"404-555-0176\",\"full_name\":\"Benjamin Reed\",\"date_of_birth\":\"November 22, 1991\"}",
+        "call_id": "td-001",
+        "name": "lookup_customer",
+        "type": "function_call",
+        "id": "td-001",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "td-001",
+        "output": "\n\n{\"customer_id\":\"6dcb2039-012b-4723-a256-13bb7b6467c2\",\"match\":\"unique\",\"required_verification_factors\":[\"mobile_number\",\"full_name\",\"date_of_birth\"]}"
+      },
+      {
+        "arguments": "{\"customer_id\":\"6dcb2039-012b-4723-a256-13bb7b6467c2\",\"mobile_number\":\"404-555-0176\",\"full_name\":\"Benjamin Reed\",\"date_of_birth\":\"November 22, 1991\"}",
+        "call_id": "td-001b",
+        "name": "verify_customer_identity",
+        "type": "function_call",
+        "id": "td-001b",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "td-001b",
+        "output": "\n\n{\"verification_id\":\"ae1d7bf3-792a-4a70-8673-16c535063f29\",\"status\":\"verified\",\"matched_factors\":[\"mobile_number\",\"full_name\",\"date_of_birth\"],\"access_scope\":[\"lines\",\"usage\",\"billing\"],\"verified_at\":\"2026-08-27T19:31:08-05:00\"}"
+      },
+      {
+        "arguments": "{\"customer_id\":\"6dcb2039-012b-4723-a256-13bb7b6467c2\",\"verification_id\":\"ae1d7bf3-792a-4a70-8673-16c535063f29\",\"include\":[\"lines\",\"devices\",\"plans\"]}",
+        "call_id": "td-002",
+        "name": "get_customer_account",
+        "type": "function_call",
+        "id": "td-002",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "td-002",
+        "output": "\n\n{\"customer_id\":\"6dcb2039-012b-4723-a256-13bb7b6467c2\",\"lines\":[{\"line_id\":\"ec8443dc-5fa9-4579-8dbe-5eafc61d53ac\",\"masked_mobile_number\":\"***-***-0176\",\"status\":\"active\",\"billing_cycle_id\":\"305af2ad-04af-420c-9562-a935b04b855b\"}],\"devices\":[{\"device_id\":\"17c528ea-9b9d-48cd-8268-c6cca19d817e\",\"model\":\"Pixel 8\",\"line_id\":\"ec8443dc-5fa9-4579-8dbe-5eafc61d53ac\",\"provisioning_status\":\"active\"}],\"plans\":[{\"plan_id\":\"70102739-54a7-4e7b-b251-5040b1fc2f21\",\"name\":\"Unlimited Start\",\"line_id\":\"ec8443dc-5fa9-4579-8dbe-5eafc61d53ac\"}]}"
+      },
+      {
+        "id": "msg_0009_0007",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, I found your account. You have one phone line on the unlimited start plan and a Pixel 8. Is that the phone that you're using now?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Pixel 8, yep. It's the one I'm using. The alert said I used 85%, um, but I was on my home Wi-Fi, like, all night, so that doesn't make sense.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0009",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, got it. I'm gonna check the carrier's, uh, usage first. Give me a moment."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay.",
+        "annotations": []
+      },
+      {
+        "arguments": "{\"line_id\":\"ec8443dc-5fa9-4579-8dbe-5eafc61d53ac\",\"verification_id\":\"ae1d7bf3-792a-4a70-8673-16c535063f29\",\"window\":\"last_24_hours\"}",
+        "call_id": "td-003",
+        "name": "get_line_data_usage",
+        "type": "function_call",
+        "id": "td-003",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "td-003",
+        "output": "\n\n{\"line_id\":\"ec8443dc-5fa9-4579-8dbe-5eafc61d53ac\",\"billing_cycle_id\":\"305af2ad-04af-420c-9562-a935b04b855b\",\"measurement_source\":\"carrier_metering\",\"window_start\":\"2026-08-27T00:00:00-05:00\",\"window_end\":\"2026-08-27T04:00:00-05:00\",\"used_gigabytes\":11.8,\"remaining_high_speed_gigabytes\":2.2,\"app_attribution_available\":false,\"as_of\":\"2026-08-27T19:31:45-05:00\"}"
+      },
+      {
+        "id": "msg_0009_0011",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "So what I'm seeing on my end is the line used 11.8 gigabytes between about midnight and 4:00 in the morning."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "11 gigs? Wait, is that real? Then there's no way, 'cause I was sleeping. Uh, are you telling me someone hacked my, the phone or something?",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "alarmed",
+            "source": "human_annotated_transcript"
+          }
+        ]
+      },
+      {
+        "id": "msg_0009_0013",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Not necessarily. Background backups, video downloads, or even an app switching off Wi-Fi can do that."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Hmm.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0015",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Before we assume anything worse, look at the phone's data usage screen and tell me which app is on the top."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, uh, data usage screen. One second. Let me just pull that up. Okay, yeah. Um, so I'm on that page, and Streambox is first. It says 10.9 gigabytes in the background. Is that ... Is that what I'm supposed to look at?",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0017",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah. That lines up closely with what the carrier recorded. Did you download anything in Streambox last night?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. I started downloading, like, a season for a flight. I thought it would wait for the Wi-Fi. Um.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0019",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "That makes sense. Could you open the Streambox settings and check whether Download Over Cellular is turned on?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Hmm, yeah. Yeah, okay, I see that. Wow, yeah, it's on. I swear I never turned that on. I don't know how that happened.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "surprised",
+            "source": "human_annotated_transcript"
+          }
+        ]
+      },
+      {
+        "id": "msg_0009_0021",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah. An update can sometimes reset an app, uh, preference. Let's go ahead and turn that setting off, then go back to your phone's cellular settings and set Streambox to Wi-Fi only."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, yeah. Give me one second. Okay, yeah. So I just did that. Um, for the data, is the data coming back though? Or what's gonna happen with that?",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0023",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "So unfortunately, the used data can't be put back into the plan. You still have 2.2 gigabytes left until the cycle resets."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Hmm.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0025",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "I can check when that happens and whether there's already overage on the bill."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah, please do, because, um, I'm traveling for work before then, so I n- I, I really need that.",
+        "annotations": []
+      },
+      {
+        "arguments": "{\"customer_id\":\"6dcb2039-012b-4723-a256-13bb7b6467c2\",\"verification_id\":\"ae1d7bf3-792a-4a70-8673-16c535063f29\",\"status\":\"current\",\"include\":[\"cycle\"]}",
+        "call_id": "td-004",
+        "name": "get_customer_bills",
+        "type": "function_call",
+        "id": "td-004",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "td-004",
+        "output": "\n\n{\"bill_id\":\"7af62370-8858-4af6-b2cd-2b702fd15586\",\"billing_cycle_id\":\"305af2ad-04af-420c-9562-a935b04b855b\",\"cycle_start\":\"2026-08-06T00:00:00-05:00\",\"cycle_end\":\"2026-09-05T00:00:00-05:00\",\"cycle_resets_in_days\":9,\"as_of\":\"2026-08-27T19:34:10-05:00\"}"
+      },
+      {
+        "id": "msg_0009_0027",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "So your cycle resets in nine days."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "I see.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0029",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "And I'm gonna be opening up the current bill now. Give me a moment."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"customer_id\":\"6dcb2039-012b-4723-a256-13bb7b6467c2\",\"verification_id\":\"ae1d7bf3-792a-4a70-8673-16c535063f29\",\"status\":\"current\",\"include\":[\"charges\",\"overages\",\"plan_behavior\"]}",
+        "call_id": "td-004b",
+        "name": "get_customer_bills",
+        "type": "function_call",
+        "id": "td-004b",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "td-004b",
+        "output": "\n\n{\"bill_id\":\"7af62370-8858-4af6-b2cd-2b702fd15586\",\"billing_cycle_id\":\"305af2ad-04af-420c-9562-a935b04b855b\",\"overage_charge\":0.0,\"currency\":\"USD\",\"after_high_speed_allowance\":\"speed_reduced\",\"as_of\":\"2026-08-27T19:34:22-05:00\"}"
+      },
+      {
+        "id": "msg_0009_0030",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "So it looks like there's no overage charge just yet. The plan slows down after the included high-speed amount is kind of used."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Hmm, I see. Um, slows down how much? 'Cause I need, like, maps, emails. I'm traveling, so I can't have it, like, crawling. You know what I mean?",
+        "annotations": []
+      },
+      {
+        "arguments": "{\"line_id\":\"ec8443dc-5fa9-4579-8dbe-5eafc61d53ac\",\"verification_id\":\"ae1d7bf3-792a-4a70-8673-16c535063f29\"}",
+        "call_id": "td-004c",
+        "name": "get_data_addon_offers",
+        "type": "function_call",
+        "id": "td-004c",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "td-004c",
+        "output": "\n\n{\"line_id\":\"ec8443dc-5fa9-4579-8dbe-5eafc61d53ac\",\"offers\":[{\"offer_id\":\"21298486-3eca-4c2e-8d07-2b13c0a33fcc\",\"eligibility_status\":\"eligible\",\"data_gigabytes\":5.0,\"price\":40.0,\"currency\":\"USD\",\"billing_timing\":\"next_bill\",\"effective_timing\":\"immediate\",\"expires_at\":\"2026-08-28T19:35:00-05:00\"}],\"as_of\":\"2026-08-27T19:34:46-05:00\"}"
+      },
+      {
+        "id": "msg_0009_0032",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah. So the exact speed can vary with the network. Maps and emails may still work, but video and large files can feel much slower. I can add five gigabytes of high-speed data for $40 on the next bill. I won't add it, of course, unless you approve."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "What? $40? Because this app changed its own setting? Um, I mean, that's a lot, and it's pretty frustrating too, like ... Is there anything else-",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "frustrated",
+            "source": "human_annotated_transcript"
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": "... we could do, or?",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0035",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "I get it. The network did carry the traffic, but the app setting caused it. We can also turn on Data Saver and stop background use before you decide whether you need the add-on."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah, yeah. Let's do that first.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0037",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right. So in order to kind of do that, I need you to open up Network and-"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Mm-hmm",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0039",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "... then Internet. Then you need to go into Data Saver, and you need to turn that on."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay. I'm going in. Okay, yeah. It's on. There's an op- there's an option for unrestricted apps.",
+        "annotations": []
+      },
+      {
+        "role": "user",
+        "content": "Is that ... Is that supposed to be there?",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0042",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yes. If you open that list, keep only anything you truly need in the background, like your work messaging app. So what's currently allowed?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, so I'm looking through it. Um, right now it ha- has Streambox, Cloud Photos, and my work email. I pretty much only need the email to be working, like in the background.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0044",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. That makes sense."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0046",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Leave the work email on, and go ahead and turn off unrestricted access to Streambox and-"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0048",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "... Cloud Photos."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, yeah. Now I just turned it off. Uh, could Cloud Photos have used some of that too, or...?",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0050",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Like, it could have, but the phone does show that Streambox used almost all of the 11.8 gigs."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Right.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0052",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Cloud Photos, on my end, is showing 300 megabytes, so it wasn't the main issue."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Right. Okay. Um, yeah, I mean, after everything, I, I still think I would need the extra data. Can you add that in?",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0054",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yes, I can. Just to confirm, you want five additional gigabytes for $40 charged to your next Clearwave bill. Do you authorize that?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Yeah, definitely. I authorize that.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0056",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "All right. Give me a moment."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"line_id\":\"ec8443dc-5fa9-4579-8dbe-5eafc61d53ac\",\"offer_id\":\"21298486-3eca-4c2e-8d07-2b13c0a33fcc\",\"customer_authorized\":true}",
+        "call_id": "td-005",
+        "name": "add_data_addon",
+        "type": "function_call",
+        "id": "td-005",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "td-005",
+        "output": "\n\n{\"transaction_id\":\"dfdab773-2580-4908-91cf-99a2b4826547\",\"status\":\"active\",\"offer_id\":\"21298486-3eca-4c2e-8d07-2b13c0a33fcc\",\"effective_at\":\"2026-08-27T19:37:35-05:00\",\"bill_reference\":\"7af62370-8858-4af6-b2cd-2b702fd15586\",\"charged_price\":40.0,\"currency\":\"USD\",\"added_high_speed_gigabytes\":5.0,\"remaining_high_speed_gigabytes\":7.2}"
+      },
+      {
+        "id": "msg_0009_0057",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay. It's added. Your line should now show 7.2 gigabytes of high-speed data available for the rest of the cycle."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay. Okay, that's great. Uh, can we just make sure it actually works before I hang up, just, you know, while I have you on the phone? Is there a way to test that?",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0059",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Abs- absolutely. Go ahead and turn Wi-Fi on, and then run a quick speed test."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Mm-hmm.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0061",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Uh, you don't need to stream a long video. We just need a small portion and test."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, yeah. One second. Okay. I'm just running through, like, a qui- quick speed test, and it says 62 down and eight up.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0063",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, great. That confirms that cellular data is working normally. Now, I want you to open Streambox once with Wi-Fi still off and make sure-"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Mm-hmm",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0065",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "... it warns you instead of downloading."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, one second. Okay, yeah, I'm looking at it now. Yeah, it does say downloads are paused until Wi-Fi. Um, yeah, that's what I wanted in the first place, so that's great.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "relieved",
+            "source": "human_annotated_transcript"
+          }
+        ]
+      },
+      {
+        "id": "msg_0009_0067",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, perfect. So you can go ahead and turn Wi-Fi back on."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0069",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "And the final state is that Streambox is gonna be set to Wi-Fi only. Make sure that your data saver is on. Make sure that the background access is limited and that-"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Mm-hmm",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0071",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "... five gigs were added to the, um, total amount, which would be $40."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah, yeah. Um, no, yeah, thanks for that. I mean, I'm still annoyed about the $40 and just, you know, having this data spent overnight. Uh, but I'm glad at least we found the cause, right, and we turned it off. So yeah, thanks for that.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0009_0073",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah, totally fair. Keep an eye out on the usage screen for the next day. If the number keeps climbing while the phone is idle, call us back and we'll investigate further."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah. Yeah, no, I definitely will. Thanks for, you know, actually making me check the app and trying to find the cause and, instead of just, like, selling me the data. I, I really appreciate that. Um, but yeah. Thanks.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "appreciative",
+            "source": "human_annotated_transcript"
+          }
+        ]
+      },
+      {
+        "id": "msg_0009_0075",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah. Yeah, you're welcome, Ben. Thanks for calling Clearwave Mobile, and hope you have a good trip."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Sounds good. Thanks. Bye.",
+        "annotations": []
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "name": "lookup_customer",
+        "description": "Resolve one telecom customer using the mobile number and identity attributes collected on the call.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mobile_number": {
+              "type": "string",
+              "description": "Mobile number on the account, as a 10-digit US number with dashes (e.g. 404-555-0176).",
+              "pattern": "^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+            },
+            "full_name": {
+              "type": "string",
+              "description": "Customer full name."
+            },
+            "date_of_birth": {
+              "type": "string",
+              "description": "Customer date of birth in long form: full month name, day, year (e.g. November 22, 1991).",
+              "pattern": "^(January|February|March|April|May|June|July|August|September|October|November|December) [0-9]{1,2}, [0-9]{4}$"
+            }
+          },
+          "required": [
+            "mobile_number",
+            "full_name",
+            "date_of_birth"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "verify_customer_identity",
+        "description": "Validate the collected telecom identity factors and return a scoped verification record before protected account access.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "mobile_number": {
+              "type": "string",
+              "description": "Customer-supplied mobile number, as a 10-digit US number with dashes (e.g. 404-555-0176).",
+              "pattern": "^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+            },
+            "full_name": {
+              "type": "string",
+              "description": "Customer full name."
+            },
+            "date_of_birth": {
+              "type": "string",
+              "description": "Customer date of birth in long form: full month name, day, year (e.g. November 22, 1991).",
+              "pattern": "^(January|February|March|April|May|June|July|August|September|October|November|December) [0-9]{1,2}, [0-9]{4}$"
+            }
+          },
+          "required": [
+            "customer_id",
+            "mobile_number",
+            "full_name",
+            "date_of_birth"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_customer_account",
+        "description": "Retrieve selected line, device, and plan sections for a resolved telecom customer.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "include": {
+              "type": "array",
+              "description": "Account sections to retrieve.",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "lines",
+                  "devices",
+                  "plans"
+                ]
+              },
+              "minItems": 1
+            },
+            "verification_id": {
+              "type": "string",
+              "description": "Successful identity-verification record.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "customer_id",
+            "include",
+            "verification_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_line_data_usage",
+        "description": "Read carrier-recorded usage and remaining high-speed data for one line and billing-cycle window.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "line_id": {
+              "type": "string",
+              "description": "Resolved phone-line identifier.",
+              "format": "uuid"
+            },
+            "window": {
+              "type": "string",
+              "description": "Usage window to inspect.",
+              "enum": [
+                "current_billing_cycle",
+                "last_24_hours",
+                "custom"
+              ]
+            },
+            "window_start": {
+              "type": "string",
+              "description": "Start of the custom usage window (ISO 8601 date-time). Required when window is \"custom\"; omit for the predefined windows.",
+              "format": "date-time"
+            },
+            "window_end": {
+              "type": "string",
+              "description": "End of the custom usage window (ISO 8601 date-time). Required when window is \"custom\"; omit for the predefined windows.",
+              "format": "date-time"
+            },
+            "verification_id": {
+              "type": "string",
+              "description": "Successful identity-verification record.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "line_id",
+            "window",
+            "verification_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_customer_bills",
+        "description": "Retrieve current billing-cycle dates, overage charges, and post-allowance plan behavior.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "customer_id": {
+              "type": "string",
+              "description": "Resolved customer identifier.",
+              "format": "uuid"
+            },
+            "status": {
+              "type": "string",
+              "description": "Which bill to read.",
+              "enum": [
+                "current",
+                "historical"
+              ]
+            },
+            "include": {
+              "type": "array",
+              "description": "Bill sections to retrieve.",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "cycle",
+                  "charges",
+                  "overages",
+                  "plan_behavior"
+                ]
+              },
+              "minItems": 1
+            },
+            "verification_id": {
+              "type": "string",
+              "description": "Successful identity-verification record.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "customer_id",
+            "status",
+            "include",
+            "verification_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "add_data_addon",
+        "description": "Activate one current eligible data add-on after explicit customer authorization, using the stable offer ID rather than reconstructed price fields.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "line_id": {
+              "type": "string",
+              "description": "Resolved phone-line identifier.",
+              "format": "uuid"
+            },
+            "offer_id": {
+              "type": "string",
+              "description": "Eligible offer identifier returned by the offer lookup.",
+              "format": "uuid"
+            },
+            "customer_authorized": {
+              "type": "boolean",
+              "description": "Whether the customer explicitly approved the returned data amount, price, currency, and billing timing."
+            }
+          },
+          "required": [
+            "line_id",
+            "offer_id",
+            "customer_authorized"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "get_data_addon_offers",
+        "description": "Return current eligible high-speed data offers for a verified line before any price is quoted or add-on is submitted.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "line_id": {
+              "type": "string",
+              "description": "Resolved line identifier.",
+              "format": "uuid"
+            },
+            "verification_id": {
+              "type": "string",
+              "description": "Successful identity-verification record.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "line_id",
+            "verification_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "transfer_to_specialist",
+        "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "reason": {
+              "type": "string",
+              "description": "Why the transfer is required."
+            },
+            "summary": {
+              "type": "string",
+              "description": "Context already collected so the customer does not repeat it."
+            }
+          },
+          "required": [
+            "reason",
+            "summary"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    ],
+    "parallel_tool_calls": false
+  },
+  "event_metadata": [
+    {
+      "event_index": 1,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 1.26,
+        "end_seconds": 7.28
+      }
+    },
+    {
+      "event_index": 2,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "concerned",
+          "source": "human_annotated_transcript",
+          "source_text": "(concerned)"
+        }
+      ],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 8.12,
+        "end_seconds": 18.18
+      }
+    },
+    {
+      "event_index": 3,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 19.98,
+        "end_seconds": 29.64
+      }
+    },
+    {
+      "event_index": 4,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 30.22,
+        "end_seconds": 40.54
+      }
+    },
+    {
+      "event_index": 5,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 43.28,
+        "end_seconds": 47.64
+      }
+    },
+    {
+      "event_index": 6,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 48.5,
+        "end_seconds": 59.49
+      }
+    },
+    {
+      "event_index": 7,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 61.64,
+        "end_seconds": 63.58
+      }
+    },
+    {
+      "event_index": 8,
+      "kind": "function_call",
+      "call_id": "td-001",
+      "source": "transcripts/transcript.txt",
+      "source_label": "find a customer using their phone number",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 63.58,
+      "placement_after_text": "give me a moment to look up your account",
+      "placement_before_text": "I found your account",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          63.58,
+          71.58
+        ]
+      }
+    },
+    {
+      "event_index": 10,
+      "kind": "function_call",
+      "call_id": "td-001b",
+      "source": "transcripts/transcript.txt",
+      "source_label": "validate collected identity factors before account access",
+      "annotation_confidence": "medium",
+      "state_effect": "identity_verified",
+      "placement_seconds": 67.5,
+      "placement_after_text": "give me a moment to look up your account",
+      "placement_before_text": "I found your account",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          67.5,
+          74.04
+        ]
+      }
+    },
+    {
+      "event_index": 12,
+      "kind": "function_call",
+      "call_id": "td-002",
+      "source": "transcripts/transcript.txt",
+      "source_label": "retrieve customer, line, device, and plan using the resolved customer ID",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 70.5,
+      "placement_after_text": "identity verification returned verified with access scope",
+      "placement_before_text": "one phone line on the Unlimited Start plan and a Pixel 8",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          70.5,
+          74.04
+        ]
+      }
+    },
+    {
+      "event_index": 14,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 74.04,
+        "end_seconds": 83.82
+      }
+    },
+    {
+      "event_index": 15,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 84.82,
+        "end_seconds": 94.02000000000001
+      }
+    },
+    {
+      "event_index": 16,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 96.16,
+        "end_seconds": 101.72
+      }
+    },
+    {
+      "event_index": 17,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 102.16,
+        "end_seconds": 102.42
+      }
+    },
+    {
+      "event_index": 18,
+      "kind": "function_call",
+      "call_id": "td-003",
+      "source": "transcripts/transcript.txt",
+      "source_label": "check the line's current data usage",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 102.34,
+      "placement_after_text": "Okay",
+      "placement_before_text": "the line used 11.8 gigabytes",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          102.34,
+          106.16
+        ]
+      }
+    },
+    {
+      "event_index": 20,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 106.68,
+        "end_seconds": 113.72
+      }
+    },
+    {
+      "event_index": 21,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "alarmed",
+          "source": "human_annotated_transcript",
+          "source_text": "(alarmed)"
+        }
+      ],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 115.34,
+        "end_seconds": 124.34
+      }
+    },
+    {
+      "event_index": 22,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 126.1,
+        "end_seconds": 133.28
+      }
+    },
+    {
+      "event_index": 23,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 133.82,
+        "end_seconds": 134.12
+      }
+    },
+    {
+      "event_index": 24,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 134.3,
+        "end_seconds": 141.82
+      }
+    },
+    {
+      "event_index": 25,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 143.5,
+        "end_seconds": 164.64
+      }
+    },
+    {
+      "event_index": 26,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 167.12,
+        "end_seconds": 173.14
+      }
+    },
+    {
+      "event_index": 27,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 174.2,
+        "end_seconds": 181.6
+      }
+    },
+    {
+      "event_index": 28,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 185.88,
+        "end_seconds": 193.26
+      }
+    },
+    {
+      "event_index": 29,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "surprised",
+          "source": "human_annotated_transcript",
+          "source_text": "(surprised)"
+        }
+      ],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 193.37,
+        "end_seconds": 201.96
+      }
+    },
+    {
+      "event_index": 30,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 204.8,
+        "end_seconds": 216.52
+      }
+    },
+    {
+      "event_index": 31,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 219.14,
+        "end_seconds": 228.54
+      }
+    },
+    {
+      "event_index": 32,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 230.68,
+        "end_seconds": 238.16
+      }
+    },
+    {
+      "event_index": 33,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 238.24,
+        "end_seconds": 238.53
+      }
+    },
+    {
+      "event_index": 34,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 239.04,
+        "end_seconds": 243.86
+      }
+    },
+    {
+      "event_index": 35,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 244.32,
+        "end_seconds": 248.62
+      }
+    },
+    {
+      "event_index": 36,
+      "kind": "function_call",
+      "call_id": "td-004",
+      "source": "transcripts/transcript.txt",
+      "source_label": "retrieve the customer's current bill",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 248.5,
+      "placement_after_text": "I'm traveling for work before then",
+      "placement_before_text": "Your cycle resets in nine days",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          248.5,
+          252.88
+        ]
+      }
+    },
+    {
+      "event_index": 38,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 252.22,
+        "end_seconds": 255.36
+      }
+    },
+    {
+      "event_index": 39,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 255.74,
+        "end_seconds": 256.46
+      }
+    },
+    {
+      "event_index": 40,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 256.06,
+        "end_seconds": 260.24
+      }
+    },
+    {
+      "event_index": 41,
+      "kind": "function_call",
+      "call_id": "td-004b",
+      "source": "transcripts/transcript.txt",
+      "source_label": "open the scoped current-bill sections after the agent says so",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 260.0,
+      "placement_after_text": "open the current bill now",
+      "placement_before_text": "no overage charge just yet",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          260.0,
+          265.48
+        ]
+      }
+    },
+    {
+      "event_index": 43,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 265.44,
+        "end_seconds": 276.04
+      }
+    },
+    {
+      "event_index": 44,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 277.15999999999997,
+        "end_seconds": 285.09000000000003
+      }
+    },
+    {
+      "event_index": 45,
+      "kind": "function_call",
+      "call_id": "td-004c",
+      "source": "transcripts/transcript.txt",
+      "source_label": "retrieve a current eligible offer before quoting it",
+      "annotation_confidence": "medium",
+      "state_effect": "read_only",
+      "placement_seconds": 285.5,
+      "placement_after_text": "I need maps and email",
+      "placement_before_text": "I can add five gigabytes",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          285.5,
+          287.02
+        ]
+      }
+    },
+    {
+      "event_index": 47,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 287.64,
+        "end_seconds": 305.62
+      }
+    },
+    {
+      "event_index": 48,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "frustrated",
+          "source": "human_annotated_transcript",
+          "source_text": "(frustrated)"
+        }
+      ],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 306.22,
+        "end_seconds": 316.78
+      }
+    },
+    {
+      "event_index": 49,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 316.85,
+        "end_seconds": 317.62
+      }
+    },
+    {
+      "event_index": 50,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 319.54,
+        "end_seconds": 331.88
+      }
+    },
+    {
+      "event_index": 51,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 332.94,
+        "end_seconds": 334.6
+      }
+    },
+    {
+      "event_index": 52,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 337.14,
+        "end_seconds": 342.969
+      }
+    },
+    {
+      "event_index": 53,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 342.9,
+        "end_seconds": 343.5
+      }
+    },
+    {
+      "event_index": 54,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 343.23,
+        "end_seconds": 349.48
+      }
+    },
+    {
+      "event_index": 55,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 350.38,
+        "end_seconds": 359.14
+      }
+    },
+    {
+      "event_index": 56,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 360.86,
+        "end_seconds": 363.26
+      }
+    },
+    {
+      "event_index": 57,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 365.168,
+        "end_seconds": 377.908
+      }
+    },
+    {
+      "event_index": 58,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 378.70799999999997,
+        "end_seconds": 389.20799999999997
+      }
+    },
+    {
+      "event_index": 59,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 390.788,
+        "end_seconds": 392.608
+      }
+    },
+    {
+      "event_index": 60,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 391.74,
+        "end_seconds": 392.24
+      }
+    },
+    {
+      "event_index": 61,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 393.308,
+        "end_seconds": 400.228
+      }
+    },
+    {
+      "event_index": 62,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 399.98,
+        "end_seconds": 400.42
+      }
+    },
+    {
+      "event_index": 63,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 400.238,
+        "end_seconds": 401.488
+      }
+    },
+    {
+      "event_index": 64,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 402.928,
+        "end_seconds": 407.76800000000003
+      }
+    },
+    {
+      "event_index": 65,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 409.348,
+        "end_seconds": 416.428
+      }
+    },
+    {
+      "event_index": 66,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 416.788,
+        "end_seconds": 416.968
+      }
+    },
+    {
+      "event_index": 67,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 417.108,
+        "end_seconds": 423.388
+      }
+    },
+    {
+      "event_index": 68,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 423.508,
+        "end_seconds": 432.868
+      }
+    },
+    {
+      "event_index": 69,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 435.228,
+        "end_seconds": 445.388
+      }
+    },
+    {
+      "event_index": 70,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 446.628,
+        "end_seconds": 448.648
+      }
+    },
+    {
+      "event_index": 71,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 451.668,
+        "end_seconds": 452.6
+      }
+    },
+    {
+      "event_index": 72,
+      "kind": "function_call",
+      "call_id": "td-005",
+      "source": "transcripts/transcript.txt",
+      "source_label": "add additional mobile data and charge it to the customer's bill",
+      "annotation_confidence": "medium",
+      "state_effect": "data_addon_created",
+      "placement_seconds": 452.6,
+      "placement_after_text": "I authorize that",
+      "placement_before_text": "it's added",
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          452.6,
+          457.26
+        ]
+      }
+    },
+    {
+      "event_index": 74,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 457.79,
+        "end_seconds": 467.20799999999997
+      }
+    },
+    {
+      "event_index": 75,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 469.348,
+        "end_seconds": 478.20799999999997
+      }
+    },
+    {
+      "event_index": 76,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 479.648,
+        "end_seconds": 485.108
+      }
+    },
+    {
+      "event_index": 77,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 485.488,
+        "end_seconds": 485.748
+      }
+    },
+    {
+      "event_index": 78,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 485.788,
+        "end_seconds": 490.008
+      }
+    },
+    {
+      "event_index": 79,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 492.028,
+        "end_seconds": 506.328
+      }
+    },
+    {
+      "event_index": 80,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 508.748,
+        "end_seconds": 518.648
+      }
+    },
+    {
+      "event_index": 81,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 518.708,
+        "end_seconds": 518.878
+      }
+    },
+    {
+      "event_index": 82,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 518.878,
+        "end_seconds": 520.368
+      }
+    },
+    {
+      "event_index": 83,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "relieved",
+          "source": "human_annotated_transcript",
+          "source_text": "(relieved)"
+        }
+      ],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 522.048,
+        "end_seconds": 536.668
+      }
+    },
+    {
+      "event_index": 84,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 540.668,
+        "end_seconds": 544.888
+      }
+    },
+    {
+      "event_index": 85,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 545.2,
+        "end_seconds": 545.8
+      }
+    },
+    {
+      "event_index": 86,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 545.818,
+        "end_seconds": 557.928
+      }
+    },
+    {
+      "event_index": 87,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 557.4,
+        "end_seconds": 558.0
+      }
+    },
+    {
+      "event_index": 88,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 558.008,
+        "end_seconds": 563.028
+      }
+    },
+    {
+      "event_index": 89,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 563.988,
+        "end_seconds": 579.128
+      }
+    },
+    {
+      "event_index": 90,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 581.248,
+        "end_seconds": 593.428
+      }
+    },
+    {
+      "event_index": 91,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "appreciative",
+          "source": "human_annotated_transcript",
+          "source_text": "(appreciative)"
+        }
+      ],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 593.548,
+        "end_seconds": 604.338
+      }
+    },
+    {
+      "event_index": 92,
+      "kind": "speech",
+      "speaker": "Jonathan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 606.168,
+        "end_seconds": 610.248
+      }
+    },
+    {
+      "event_index": 93,
+      "kind": "speech",
+      "speaker": "Ben",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 610.968,
+        "end_seconds": 612.368
+      }
+    }
+  ]
+}

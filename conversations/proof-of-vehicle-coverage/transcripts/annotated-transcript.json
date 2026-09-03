@@ -1,0 +1,436 @@
+{
+  "schema_version": "0.5.0",
+  "conversation_id": "proof-of-vehicle-coverage",
+  "trajectory_id": 12,
+  "domain": "insurance",
+  "scenario_time": "2026-09-03T13:45:00-04:00",
+  "responses_create_params": {
+    "input": [
+      {
+        "role": "system",
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\nService context: You represent HarborPoint Insurance. Your agent display name is Darren. The current scenario time at the start of the call is 2026-09-03T13:45:00-04:00.\n\n<policy>\n# HarborPoint Insurance Service Agent Policy\n\nYou provide operational policy and proof-of-coverage support. You do not give legal advice, alter coverage, bind a policy, or interpret dealership or government requirements.\n\n## Policy lookup and privacy\n\n- Use the customer-provided policy number to resolve one policy.\n- Disclose only the policy status, listed vehicle, effective date, and masked proof-delivery destinations needed for this request.\n- Use returned opaque policy, vehicle, destination, and delivery identifiers. Never construct them from the policy number or vehicle name.\n- Do not request or expose full payment details, passwords, or unmasked contact information.\n\n## Proof of coverage\n\n- State that a vehicle is covered only when the policy result reports both an active policy and active vehicle coverage.\n- Resending a proof card does not add a vehicle, change limits, backdate coverage, or guarantee that a third party will accept the document.\n- Send proof only to a verified destination returned by the policy lookup.\n- Confirm that proof was sent only after the delivery result reports success.\n\n## Tool use and escalation\n\nIn each turn, either speak or call one tool. Treat customer speech as customer-provided context and tool results as backend facts. Transfer when the policy cannot be uniquely resolved, coverage is inactive or inconsistent, the customer needs a coverage change, or delivery fails.\n</policy>\n\nTry to be helpful and always follow the policy."
+      },
+      {
+        "id": "msg_0012_0000",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Hey, thank you for calling HarborPoint Insurance. This is Darren. How can I help?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "I'm at the dealership, and they need proof that my new car is covered.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "concerned",
+            "source": "human_annotated_transcript"
+          }
+        ]
+      },
+      {
+        "id": "msg_0012_0002",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah, I can check that. What's your policy number?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "HP-771-204.",
+        "annotations": []
+      },
+      {
+        "id": "msg_0012_0004",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Awesome. Let me find it really quick."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "arguments": "{\"policy_number\":\"HP-771-204\"}",
+        "call_id": "pc-001",
+        "name": "get_policy_by_number",
+        "type": "function_call",
+        "id": "pc-001",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "pc-001",
+        "output": "\n\n{\"policy_id\":\"e4bee02f-de82-5101-8759-6dc83da8ada8\",\"policy_number\":\"HP-771-204\",\"status\":\"active\",\"vehicles\":[{\"vehicle_id\":\"bf1a7188-11d1-5bc1-8beb-c7c6af74407c\",\"year\":2026,\"make\":\"Honda\",\"model\":\"CR-V\",\"coverage_status\":\"active\",\"coverage_effective_date\":\"2026-09-03\"}],\"proof_delivery_destinations\":[{\"destination_id\":\"78e9d9e6-8518-5a6f-9a2f-c80015760445\",\"channel\":\"email\",\"masked_destination\":\"***@gmail.com\"}]}"
+      },
+      {
+        "id": "msg_0012_0005",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, I found the policy. The 2026 Honda CR-V is active as of today actually."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay. Can you actually send the proof-of-coverage card again?",
+        "annotations": []
+      },
+      {
+        "arguments": "{\"policy_id\":\"e4bee02f-de82-5101-8759-6dc83da8ada8\",\"vehicle_id\":\"bf1a7188-11d1-5bc1-8beb-c7c6af74407c\",\"destination_id\":\"78e9d9e6-8518-5a6f-9a2f-c80015760445\"}",
+        "call_id": "pc-002",
+        "name": "resend_proof_of_coverage",
+        "type": "function_call",
+        "id": "pc-002",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "pc-002",
+        "output": "\n\n{\"delivery_id\":\"4a7b85f0-4de6-5052-bf5d-391a52968817\",\"status\":\"sent\",\"channel\":\"email\",\"masked_destination\":\"***@gmail.com\",\"sent_at\":\"2026-09-03T13:45:34-04:00\"}"
+      },
+      {
+        "id": "msg_0012_0007",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Yeah, I've sent it to the email ending in gmail.com."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, let me check real quick.",
+        "annotations": []
+      },
+      {
+        "role": "user",
+        "content": "Okay, I just got it. That's all I needed. Thank you.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "relieved",
+            "source": "human_annotated_transcript"
+          }
+        ]
+      },
+      {
+        "id": "msg_0012_0010",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Okay, perfect. You're all set. Have a good afternoon, and call us if you ever need anything-"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "name": "get_policy_by_number",
+        "description": "Retrieve policy status, covered vehicles, and approved proof-delivery destinations from a policy number.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "policy_number": {
+              "type": "string",
+              "description": "Customer-facing policy number.",
+              "pattern": "^[A-Z]{2}-[0-9]{3}-[0-9]{3}$"
+            }
+          },
+          "required": [
+            "policy_number"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "resend_proof_of_coverage",
+        "description": "Send a current proof-of-coverage card for a covered vehicle to a verified destination.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "policy_id": {
+              "type": "string",
+              "description": "Resolved policy identifier.",
+              "format": "uuid"
+            },
+            "vehicle_id": {
+              "type": "string",
+              "description": "Covered vehicle identifier.",
+              "format": "uuid"
+            },
+            "destination_id": {
+              "type": "string",
+              "description": "Verified destination identifier.",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "policy_id",
+            "vehicle_id",
+            "destination_id"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "transfer_to_specialist",
+        "description": "Transfer the conversation when policy or tooling requires a specialist.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "reason": {
+              "type": "string",
+              "description": "Why transfer is required."
+            },
+            "summary": {
+              "type": "string",
+              "description": "Verified context already collected."
+            }
+          },
+          "required": [
+            "reason",
+            "summary"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    ],
+    "parallel_tool_calls": false
+  },
+  "event_metadata": [
+    {
+      "event_index": 1,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 0.0,
+        "end_seconds": 3.68
+      }
+    },
+    {
+      "event_index": 2,
+      "kind": "speech",
+      "speaker": "Customer",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "concerned",
+          "source": "human_annotated_transcript",
+          "source_text": "(concerned)"
+        }
+      ],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 4.646,
+        "end_seconds": 8.066
+      }
+    },
+    {
+      "event_index": 3,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 9.33,
+        "end_seconds": 11.25
+      }
+    },
+    {
+      "event_index": 4,
+      "kind": "speech",
+      "speaker": "Customer",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 13.746,
+        "end_seconds": 15.666
+      }
+    },
+    {
+      "event_index": 5,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 17.77,
+        "end_seconds": 19.77
+      }
+    },
+    {
+      "event_index": 6,
+      "kind": "function_call",
+      "call_id": "pc-001",
+      "source": "transcripts/transcript.txt",
+      "source_label": "calling tool to retrieve the insurance policy by policy number",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "placement_seconds": 23.91,
+      "placement_after_text": null,
+      "placement_before_text": null,
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          23.56,
+          23.91
+        ]
+      }
+    },
+    {
+      "event_index": 8,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 23.96,
+        "end_seconds": 28.56
+      }
+    },
+    {
+      "event_index": 9,
+      "kind": "speech",
+      "speaker": "Customer",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 29.966,
+        "end_seconds": 33.586
+      }
+    },
+    {
+      "event_index": 10,
+      "kind": "function_call",
+      "call_id": "pc-002",
+      "source": "transcripts/transcript.txt",
+      "source_label": "calling tool to resend proof of coverage by email",
+      "annotation_confidence": "high",
+      "state_effect": "proof_of_coverage_sent",
+      "placement_seconds": 34.09,
+      "placement_after_text": null,
+      "placement_before_text": null,
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          33.74,
+          34.09
+        ]
+      }
+    },
+    {
+      "event_index": 12,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 34.14,
+        "end_seconds": 38.3
+      }
+    },
+    {
+      "event_index": 13,
+      "kind": "speech",
+      "speaker": "Customer",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 39.206,
+        "end_seconds": 40.586
+      }
+    },
+    {
+      "event_index": 14,
+      "kind": "speech",
+      "speaker": "Customer",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "relieved",
+          "source": "human_annotated_transcript",
+          "source_text": "(relieved)"
+        }
+      ],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 42.206,
+        "end_seconds": 44.626
+      }
+    },
+    {
+      "event_index": 15,
+      "kind": "speech",
+      "speaker": "Darren",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 44.94,
+        "end_seconds": 48.52
+      }
+    }
+  ]
+}

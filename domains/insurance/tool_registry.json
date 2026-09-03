@@ -1,0 +1,255 @@
+{
+  "schema_version": "0.2.0",
+  "registry_name": "insurance",
+  "registry_version": "0.4.0",
+  "tools": [
+    {
+      "name": "get_policy_by_number",
+      "description": "Retrieve policy status, covered vehicles, and approved proof-delivery destinations from a policy number.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "policy_number": {
+            "type": "string",
+            "description": "Customer-facing policy number.",
+            "pattern": "^[A-Z]{2}-[0-9]{3}-[0-9]{3}$"
+          }
+        },
+        "required": [
+          "policy_number"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "type": "object",
+        "properties": {
+          "policy_id": {
+            "type": "string",
+            "description": "Opaque policy identifier.",
+            "format": "uuid"
+          },
+          "policy_number": {
+            "type": "string",
+            "description": "Customer-facing policy number."
+          },
+          "status": {
+            "type": "string",
+            "description": "Policy status.",
+            "enum": [
+              "active",
+              "inactive",
+              "cancelled"
+            ]
+          },
+          "vehicles": {
+            "type": "array",
+            "description": "Vehicles on the policy.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "vehicle_id": {
+                  "type": "string",
+                  "description": "Opaque vehicle identifier.",
+                  "format": "uuid"
+                },
+                "year": {
+                  "type": "integer",
+                  "description": "Model year.",
+                  "minimum": 1900
+                },
+                "make": {
+                  "type": "string",
+                  "description": "Vehicle make."
+                },
+                "model": {
+                  "type": "string",
+                  "description": "Vehicle model."
+                },
+                "coverage_status": {
+                  "type": "string",
+                  "description": "Coverage status.",
+                  "enum": [
+                    "active",
+                    "inactive"
+                  ]
+                },
+                "coverage_effective_date": {
+                  "type": "string",
+                  "description": "Coverage effective date.",
+                  "format": "date"
+                }
+              },
+              "required": [
+                "vehicle_id",
+                "year",
+                "make",
+                "model",
+                "coverage_status",
+                "coverage_effective_date"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "proof_delivery_destinations": {
+            "type": "array",
+            "description": "Verified destinations allowed for proof delivery.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "destination_id": {
+                  "type": "string",
+                  "description": "Destination identifier.",
+                  "format": "uuid"
+                },
+                "channel": {
+                  "type": "string",
+                  "description": "Delivery channel.",
+                  "enum": [
+                    "email"
+                  ]
+                },
+                "masked_destination": {
+                  "type": "string",
+                  "description": "Masked destination."
+                }
+              },
+              "required": [
+                "destination_id",
+                "channel",
+                "masked_destination"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "policy_id",
+          "policy_number",
+          "status",
+          "vehicles",
+          "proof_delivery_destinations"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "resend_proof_of_coverage",
+      "description": "Send a current proof-of-coverage card for a covered vehicle to a verified destination.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "policy_id": {
+            "type": "string",
+            "description": "Resolved policy identifier.",
+            "format": "uuid"
+          },
+          "vehicle_id": {
+            "type": "string",
+            "description": "Covered vehicle identifier.",
+            "format": "uuid"
+          },
+          "destination_id": {
+            "type": "string",
+            "description": "Verified destination identifier.",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "policy_id",
+          "vehicle_id",
+          "destination_id"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "type": "object",
+        "properties": {
+          "delivery_id": {
+            "type": "string",
+            "description": "Delivery identifier.",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string",
+            "description": "Delivery state.",
+            "enum": [
+              "sent",
+              "failed"
+            ]
+          },
+          "channel": {
+            "type": "string",
+            "description": "Delivery channel.",
+            "enum": [
+              "email"
+            ]
+          },
+          "masked_destination": {
+            "type": "string",
+            "description": "Masked destination."
+          },
+          "sent_at": {
+            "type": "string",
+            "description": "Send timestamp.",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "delivery_id",
+          "status",
+          "channel",
+          "masked_destination",
+          "sent_at"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "transfer_to_specialist",
+      "description": "Transfer the conversation when policy or tooling requires a specialist.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "description": "Why transfer is required."
+          },
+          "summary": {
+            "type": "string",
+            "description": "Verified context already collected."
+          }
+        },
+        "required": [
+          "reason",
+          "summary"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "type": "object",
+        "properties": {
+          "transfer_id": {
+            "type": "string",
+            "description": "Transfer identifier.",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string",
+            "description": "Transfer state.",
+            "enum": [
+              "queued",
+              "connected"
+            ]
+          }
+        },
+        "required": [
+          "transfer_id",
+          "status"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

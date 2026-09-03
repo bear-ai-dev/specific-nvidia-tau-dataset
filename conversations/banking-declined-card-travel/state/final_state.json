@@ -1,0 +1,103 @@
+{
+  "schema_version": "0.2.0",
+  "conversation_id": "banking-declined-card-travel",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-08-28T14:35:36-04:00",
+  "entities": {
+    "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9": {
+      "entity_type": "customer",
+      "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
+      "full_name": "Colin Reeves",
+      "billing_zip": "20005",
+      "caller_phone_match": true,
+      "required_verification_methods": [
+        "caller_phone",
+        "billing_zip",
+        "card_last4"
+      ]
+    },
+    "308f6850-19d3-4667-9f16-97bc37d46902": {
+      "entity_type": "identity_verification",
+      "verification_id": "308f6850-19d3-4667-9f16-97bc37d46902",
+      "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
+      "status": "verified",
+      "matched_methods": [
+        "caller_phone",
+        "billing_zip",
+        "card_last4"
+      ]
+    },
+    "card-6148": {
+      "entity_type": "card_account",
+      "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
+      "card_last4": "6148",
+      "status": "active",
+      "reported_lost": false,
+      "payment_status": "current",
+      "declines": [
+        {
+          "transaction_id": "5af2030f-3fad-402f-a1de-23501596194a",
+          "merchant": "Harbor View Hotel",
+          "merchant_location": "Portland, Maine",
+          "amount": 840,
+          "status": "declined",
+          "reason": "travel_review"
+        },
+        {
+          "transaction_id": "3065d723-2455-4a43-9d59-91c8dbb11da0",
+          "merchant": "Harbor View Hotel",
+          "merchant_location": "Portland, Maine",
+          "amount": 840,
+          "status": "declined",
+          "reason": "prior_review_open"
+        }
+      ],
+      "authorizations": [
+        {
+          "transaction_id": "131fc14b-fc2e-4ec9-ad07-248d01f7d54b",
+          "merchant": "Logan Airport",
+          "amount": 32,
+          "status": "approved",
+          "occurred_at": "2026-08-28T08:05:00-04:00"
+        },
+        {
+          "transaction_id": "f96da295-2259-4311-b31d-661ab6053092",
+          "merchant": "Harbor View Hotel",
+          "amount": 840,
+          "status": "approved"
+        }
+      ],
+      "restrictions": [
+        {
+          "restriction_id": "a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f",
+          "status": "removed",
+          "linked_transaction_ids": [
+            "5af2030f-3fad-402f-a1de-23501596194a",
+            "3065d723-2455-4a43-9d59-91c8dbb11da0",
+            "131fc14b-fc2e-4ec9-ad07-248d01f7d54b"
+          ]
+        }
+      ],
+      "travel_notices": [
+        {
+          "notice_id": "31d46fb6-e721-4a9c-b54d-6c631dbe9686",
+          "status": "created",
+          "destinations": [
+            "Portland, Maine"
+          ],
+          "return_date": "2026-08-30",
+          "authorization_guaranteed": false
+        }
+      ]
+    },
+    "471a2d47-a132-4551-a522-5f6ac88b48e7": {
+      "entity_type": "knowledge_record",
+      "record_id": "471a2d47-a132-4551-a522-5f6ac88b48e7",
+      "effective_at": "2026-07-01",
+      "incidental_holds_may_exceed_room_total": true,
+      "available_credit_must_cover_full_authorization": true,
+      "authorization_guaranteed": false,
+      "pending_duration": "may remain pending for a few days after checkout depending on merchant finalization"
+    }
+  }
+}
