@@ -1,0 +1,3978 @@
+{
+  "language_code": "eng",
+  "language_probability": 0.9382,
+  "text": "StreamHouse billing support. This is Darren. What can I look into for you? Hi, I have two StreamHouse charges from yesterday, but I only have one subscription. Okay, yeah, that's a problem. Let me review the billing history. What's the email on the account and the last four digits of the card? The email begins with leah.r, and the card ends in 1846. Thank you, Okay. Let me find it. Yeah, I found the account and verified the card. I see one monthly renewal for $17.99 and one temporary authorization for the same amount. Okay. But why would there be a temporary charge if the renewal already went through? Let me check, yeah, the first attempt was interrupted while your bank was responding. It created an authorization, but it did not settle as a second payment. So I wasn't actually billed twice? Yeah, only one charge has completed. The other is pending and should disappear automatically when your bank releases it. Okay, but how long does that usually take? Good question. Most banks release it within three to five business days. Your bank controls the exact timing though. Okay, can you send something showing that only one payment settled? Sure. Let me do that really quickly for you, okay? Okay. I've emailed a billing receipt and the authorization reference number. Okay. Let me check. All right, I got it, but what if the pending charge posts anyway? If that happens, reply to that email or call us with the reference number. We can open a duplicate-payment case if both transactions do settle. All right, I'll watch it for a few days. Yes. That's the best next step. Thanks for calling StreamHouse. Take it easy.",
+  "words": [
+    {
+      "text": "StreamHouse",
+      "start": 0.0,
+      "end": 0.22,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 0.22,
+      "end": 0.22,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "billing",
+      "start": 0.22,
+      "end": 0.46,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 0.46,
+      "end": 0.46,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "support.",
+      "start": 0.46,
+      "end": 0.78,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 0.78,
+      "end": 0.78,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "This",
+      "start": 0.78,
+      "end": 1.3,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 1.3,
+      "end": 1.3,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "is",
+      "start": 1.3,
+      "end": 1.36,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 1.36,
+      "end": 1.36,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Darren.",
+      "start": 1.36,
+      "end": 1.6,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 1.6,
+      "end": 1.6,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "What",
+      "start": 1.6,
+      "end": 2.06,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 2.06,
+      "end": 2.06,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "can",
+      "start": 2.06,
+      "end": 2.16,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 2.16,
+      "end": 2.16,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "I",
+      "start": 2.16,
+      "end": 2.22,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 2.22,
+      "end": 2.22,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "look",
+      "start": 2.22,
+      "end": 2.38,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 2.38,
+      "end": 2.38,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "into",
+      "start": 2.38,
+      "end": 2.58,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 2.58,
+      "end": 2.58,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "for",
+      "start": 2.58,
+      "end": 2.8,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 2.8,
+      "end": 2.8,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "you?",
+      "start": 2.8,
+      "end": 2.94,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 2.94,
+      "end": 3.966,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "Hi,",
+      "start": 3.966,
+      "end": 4.38,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 4.38,
+      "end": 4.6,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "I",
+      "start": 4.6,
+      "end": 4.76,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 4.76,
+      "end": 4.76,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "have",
+      "start": 4.76,
+      "end": 4.98,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 4.98,
+      "end": 4.98,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "two",
+      "start": 4.98,
+      "end": 5.28,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 5.28,
+      "end": 5.28,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "StreamHouse",
+      "start": 5.28,
+      "end": 5.92,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 5.92,
+      "end": 5.92,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "charges",
+      "start": 5.92,
+      "end": 6.26,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 6.26,
+      "end": 6.26,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "from",
+      "start": 6.26,
+      "end": 6.5,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 6.5,
+      "end": 6.5,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "yesterday,",
+      "start": 6.5,
+      "end": 6.9,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 6.9,
+      "end": 7.12,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "but",
+      "start": 7.12,
+      "end": 7.28,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 7.28,
+      "end": 7.28,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "I",
+      "start": 7.28,
+      "end": 7.36,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 7.36,
+      "end": 7.36,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "only",
+      "start": 7.36,
+      "end": 7.58,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 7.58,
+      "end": 7.58,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "have",
+      "start": 7.58,
+      "end": 7.82,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 7.82,
+      "end": 7.82,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "one",
+      "start": 7.82,
+      "end": 8.0,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 8.0,
+      "end": 8.0,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "subscription.",
+      "start": 8.0,
+      "end": 8.56,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 8.56,
+      "end": 9.59,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Okay,",
+      "start": 9.59,
+      "end": 9.76,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 9.76,
+      "end": 9.76,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "yeah,",
+      "start": 9.76,
+      "end": 10.04,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 10.04,
+      "end": 10.04,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "that's",
+      "start": 10.04,
+      "end": 10.28,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 10.28,
+      "end": 10.28,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "a",
+      "start": 10.28,
+      "end": 10.32,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 10.32,
+      "end": 10.32,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "problem.",
+      "start": 10.32,
+      "end": 10.52,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 10.52,
+      "end": 10.52,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Let",
+      "start": 10.52,
+      "end": 10.96,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 10.96,
+      "end": 10.96,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "me",
+      "start": 10.96,
+      "end": 11.1,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 11.1,
+      "end": 11.1,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "review",
+      "start": 11.1,
+      "end": 11.46,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 11.46,
+      "end": 11.46,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "the",
+      "start": 11.46,
+      "end": 11.62,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 11.62,
+      "end": 11.62,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "billing",
+      "start": 11.62,
+      "end": 11.82,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 11.82,
+      "end": 11.82,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "history.",
+      "start": 11.82,
+      "end": 12.08,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 12.08,
+      "end": 12.08,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "What's",
+      "start": 12.08,
+      "end": 12.36,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 12.36,
+      "end": 12.36,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "the",
+      "start": 12.36,
+      "end": 12.5,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 12.5,
+      "end": 12.5,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "email",
+      "start": 12.5,
+      "end": 12.8,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 12.8,
+      "end": 12.8,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "on",
+      "start": 12.8,
+      "end": 12.98,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 12.98,
+      "end": 12.98,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "the",
+      "start": 12.98,
+      "end": 13.04,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 13.04,
+      "end": 13.04,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "account",
+      "start": 13.04,
+      "end": 13.28,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 13.28,
+      "end": 13.28,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "and",
+      "start": 13.28,
+      "end": 13.46,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 13.46,
+      "end": 13.46,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "the",
+      "start": 13.46,
+      "end": 13.54,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 13.54,
+      "end": 13.54,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "last",
+      "start": 13.54,
+      "end": 13.74,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 13.74,
+      "end": 13.74,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "four",
+      "start": 13.74,
+      "end": 13.96,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 13.96,
+      "end": 13.96,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "digits",
+      "start": 13.96,
+      "end": 14.26,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 14.26,
+      "end": 14.26,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "of",
+      "start": 14.26,
+      "end": 14.46,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 14.46,
+      "end": 14.46,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "the",
+      "start": 14.46,
+      "end": 14.54,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 14.54,
+      "end": 14.54,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "card?",
+      "start": 14.54,
+      "end": 14.74,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 14.74,
+      "end": 16.256,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "The",
+      "start": 16.256,
+      "end": 16.257,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 16.257,
+      "end": 16.257,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "email",
+      "start": 16.257,
+      "end": 16.44,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 16.44,
+      "end": 16.44,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "begins",
+      "start": 16.44,
+      "end": 16.9,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 16.9,
+      "end": 16.9,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "with",
+      "start": 16.9,
+      "end": 17.14,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 17.14,
+      "end": 17.14,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "leah.r,",
+      "start": 17.14,
+      "end": 18.6,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 18.6,
+      "end": 18.6,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "and",
+      "start": 18.6,
+      "end": 19.2,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 19.2,
+      "end": 19.2,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "the",
+      "start": 19.2,
+      "end": 19.32,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 19.32,
+      "end": 19.32,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "card",
+      "start": 19.32,
+      "end": 19.58,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 19.58,
+      "end": 19.58,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "ends",
+      "start": 19.58,
+      "end": 20.64,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 20.64,
+      "end": 20.64,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "in",
+      "start": 20.64,
+      "end": 20.88,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 20.88,
+      "end": 20.88,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "1846.",
+      "start": 20.88,
+      "end": 21.78,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 21.78,
+      "end": 25.13,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Thank",
+      "start": 25.13,
+      "end": 25.18,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 25.18,
+      "end": 25.18,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "you,",
+      "start": 25.18,
+      "end": 25.3,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 25.3,
+      "end": 25.3,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Okay.",
+      "start": 25.3,
+      "end": 25.52,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 25.52,
+      "end": 25.52,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Let",
+      "start": 25.52,
+      "end": 26.48,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 26.48,
+      "end": 26.48,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "me",
+      "start": 26.48,
+      "end": 26.64,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 26.64,
+      "end": 26.64,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "find",
+      "start": 26.64,
+      "end": 27.16,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 27.16,
+      "end": 27.16,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "it.",
+      "start": 27.16,
+      "end": 27.44,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 27.44,
+      "end": 33.02,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Yeah,",
+      "start": 33.02,
+      "end": 33.021,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 33.021,
+      "end": 33.16,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "I",
+      "start": 33.16,
+      "end": 33.3,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 33.3,
+      "end": 33.3,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "found",
+      "start": 33.3,
+      "end": 33.52,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 33.52,
+      "end": 33.52,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "the",
+      "start": 33.52,
+      "end": 33.66,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 33.66,
+      "end": 33.66,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "account",
+      "start": 33.66,
+      "end": 33.9,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 33.9,
+      "end": 33.9,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "and",
+      "start": 33.9,
+      "end": 34.08,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 34.08,
+      "end": 34.08,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "verified",
+      "start": 34.08,
+      "end": 34.36,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 34.36,
+      "end": 34.36,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "the",
+      "start": 34.36,
+      "end": 34.54,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 34.54,
+      "end": 34.54,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "card.",
+      "start": 34.54,
+      "end": 34.76,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 34.76,
+      "end": 34.94,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "I",
+      "start": 34.94,
+      "end": 35.22,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 35.22,
+      "end": 35.22,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "see",
+      "start": 35.22,
+      "end": 35.4,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 35.4,
+      "end": 35.4,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "one",
+      "start": 35.4,
+      "end": 35.72,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 35.72,
+      "end": 35.72,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "monthly",
+      "start": 35.72,
+      "end": 36.04,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 36.04,
+      "end": 36.04,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "renewal",
+      "start": 36.04,
+      "end": 36.36,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 36.36,
+      "end": 36.36,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "for",
+      "start": 36.36,
+      "end": 36.8,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 36.8,
+      "end": 36.8,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "$17.99",
+      "start": 36.8,
+      "end": 37.68,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 37.68,
+      "end": 37.68,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "and",
+      "start": 37.68,
+      "end": 38.54,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 38.54,
+      "end": 38.54,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "one",
+      "start": 38.54,
+      "end": 38.82,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 38.82,
+      "end": 38.82,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "temporary",
+      "start": 38.82,
+      "end": 39.26,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 39.26,
+      "end": 39.26,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "authorization",
+      "start": 39.26,
+      "end": 39.74,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 39.74,
+      "end": 39.74,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "for",
+      "start": 39.74,
+      "end": 40.1,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 40.1,
+      "end": 40.1,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "the",
+      "start": 40.1,
+      "end": 40.22,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 40.22,
+      "end": 40.22,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "same",
+      "start": 40.22,
+      "end": 40.4,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 40.4,
+      "end": 40.4,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "amount.",
+      "start": 40.4,
+      "end": 40.64,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 40.64,
+      "end": 42.176,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "Okay.",
+      "start": 42.176,
+      "end": 42.54,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 42.54,
+      "end": 43.556,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "But",
+      "start": 43.556,
+      "end": 43.557,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 43.557,
+      "end": 43.557,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "why",
+      "start": 43.557,
+      "end": 43.68,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 43.68,
+      "end": 43.68,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "would",
+      "start": 43.68,
+      "end": 43.84,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 43.84,
+      "end": 43.84,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "there",
+      "start": 43.84,
+      "end": 43.98,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 43.98,
+      "end": 43.98,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "be",
+      "start": 43.98,
+      "end": 44.12,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 44.12,
+      "end": 44.12,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "a",
+      "start": 44.12,
+      "end": 44.24,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 44.24,
+      "end": 44.24,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "temporary",
+      "start": 44.24,
+      "end": 44.58,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 44.58,
+      "end": 44.58,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "charge",
+      "start": 44.58,
+      "end": 45.04,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 45.04,
+      "end": 45.04,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "if",
+      "start": 45.04,
+      "end": 45.24,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 45.24,
+      "end": 45.24,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "the",
+      "start": 45.24,
+      "end": 45.36,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 45.36,
+      "end": 45.36,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "renewal",
+      "start": 45.36,
+      "end": 45.68,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 45.68,
+      "end": 45.68,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "already",
+      "start": 45.68,
+      "end": 46.12,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 46.12,
+      "end": 46.12,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "went",
+      "start": 46.12,
+      "end": 46.36,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 46.36,
+      "end": 46.36,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "through?",
+      "start": 46.36,
+      "end": 46.6,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 46.6,
+      "end": 49.21,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Let",
+      "start": 49.21,
+      "end": 49.211,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 49.211,
+      "end": 49.211,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "me",
+      "start": 49.211,
+      "end": 49.24,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 49.24,
+      "end": 49.24,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "check,",
+      "start": 49.24,
+      "end": 49.56,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 49.56,
+      "end": 49.56,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "yeah,",
+      "start": 49.56,
+      "end": 49.8,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 49.8,
+      "end": 49.8,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "the",
+      "start": 49.8,
+      "end": 50.16,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 50.16,
+      "end": 50.16,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "first",
+      "start": 50.16,
+      "end": 50.5,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 50.5,
+      "end": 50.5,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "attempt",
+      "start": 50.5,
+      "end": 50.76,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 50.76,
+      "end": 50.76,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "was",
+      "start": 50.76,
+      "end": 50.94,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 50.94,
+      "end": 50.94,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "interrupted",
+      "start": 50.94,
+      "end": 51.34,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 51.34,
+      "end": 51.34,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "while",
+      "start": 51.34,
+      "end": 51.66,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 51.66,
+      "end": 51.66,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "your",
+      "start": 51.66,
+      "end": 51.88,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 51.88,
+      "end": 51.88,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "bank",
+      "start": 51.88,
+      "end": 52.14,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 52.14,
+      "end": 52.14,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "was",
+      "start": 52.14,
+      "end": 52.28,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 52.28,
+      "end": 52.28,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "responding.",
+      "start": 52.28,
+      "end": 52.76,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 52.76,
+      "end": 52.98,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "It",
+      "start": 52.98,
+      "end": 53.2,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 53.2,
+      "end": 53.2,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "created",
+      "start": 53.2,
+      "end": 53.5,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 53.5,
+      "end": 53.5,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "an",
+      "start": 53.5,
+      "end": 53.66,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 53.66,
+      "end": 53.66,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "authorization,",
+      "start": 53.66,
+      "end": 54.02,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 54.02,
+      "end": 54.02,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "but",
+      "start": 54.02,
+      "end": 54.48,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 54.48,
+      "end": 54.48,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "it",
+      "start": 54.48,
+      "end": 54.64,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 54.64,
+      "end": 54.64,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "did",
+      "start": 54.64,
+      "end": 54.78,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 54.78,
+      "end": 54.78,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "not",
+      "start": 54.78,
+      "end": 54.94,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 54.94,
+      "end": 54.94,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "settle",
+      "start": 54.94,
+      "end": 55.34,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 55.34,
+      "end": 55.34,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "as",
+      "start": 55.34,
+      "end": 55.8,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 55.8,
+      "end": 55.8,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "a",
+      "start": 55.8,
+      "end": 55.92,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 55.92,
+      "end": 55.92,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "second",
+      "start": 55.92,
+      "end": 56.16,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 56.16,
+      "end": 56.16,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "payment.",
+      "start": 56.16,
+      "end": 56.42,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 56.42,
+      "end": 58.136,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "So",
+      "start": 58.136,
+      "end": 58.2,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 58.2,
+      "end": 58.2,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "I",
+      "start": 58.2,
+      "end": 58.36,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 58.36,
+      "end": 58.36,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "wasn't",
+      "start": 58.36,
+      "end": 58.74,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 58.74,
+      "end": 58.74,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "actually",
+      "start": 58.74,
+      "end": 59.12,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 59.12,
+      "end": 59.12,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "billed",
+      "start": 59.12,
+      "end": 59.48,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 59.48,
+      "end": 59.48,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "twice?",
+      "start": 59.48,
+      "end": 59.7,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 59.7,
+      "end": 61.15,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Yeah,",
+      "start": 61.15,
+      "end": 61.151,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 61.151,
+      "end": 61.16,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "only",
+      "start": 61.16,
+      "end": 61.3,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 61.3,
+      "end": 61.3,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "one",
+      "start": 61.3,
+      "end": 61.56,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 61.56,
+      "end": 61.56,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "charge",
+      "start": 61.56,
+      "end": 61.88,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 61.88,
+      "end": 61.88,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "has",
+      "start": 61.88,
+      "end": 62.16,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 62.16,
+      "end": 62.16,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "completed.",
+      "start": 62.16,
+      "end": 62.66,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 62.66,
+      "end": 62.66,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "The",
+      "start": 62.66,
+      "end": 63.0,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 63.0,
+      "end": 63.0,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "other",
+      "start": 63.0,
+      "end": 63.22,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 63.22,
+      "end": 63.22,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "is",
+      "start": 63.22,
+      "end": 63.42,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 63.42,
+      "end": 63.42,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "pending",
+      "start": 63.42,
+      "end": 63.66,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 63.66,
+      "end": 63.66,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "and",
+      "start": 63.66,
+      "end": 63.86,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 63.86,
+      "end": 63.86,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "should",
+      "start": 63.86,
+      "end": 64.0,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 64.0,
+      "end": 64.0,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "disappear",
+      "start": 64.0,
+      "end": 64.32,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 64.32,
+      "end": 64.32,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "automatically",
+      "start": 64.32,
+      "end": 64.74,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 64.74,
+      "end": 64.74,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "when",
+      "start": 64.74,
+      "end": 65.02,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 65.02,
+      "end": 65.02,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "your",
+      "start": 65.02,
+      "end": 65.14,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 65.14,
+      "end": 65.14,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "bank",
+      "start": 65.14,
+      "end": 65.32,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 65.32,
+      "end": 65.32,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "releases",
+      "start": 65.32,
+      "end": 65.64,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 65.64,
+      "end": 65.64,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "it.",
+      "start": 65.64,
+      "end": 65.92,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 65.92,
+      "end": 67.826,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "Okay,",
+      "start": 67.826,
+      "end": 67.846,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 67.846,
+      "end": 67.846,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "but",
+      "start": 67.846,
+      "end": 67.9,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 67.9,
+      "end": 67.9,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "how",
+      "start": 67.9,
+      "end": 68.08,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 68.08,
+      "end": 68.08,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "long",
+      "start": 68.08,
+      "end": 68.42,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 68.42,
+      "end": 68.42,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "does",
+      "start": 68.42,
+      "end": 68.58,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 68.58,
+      "end": 68.58,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "that",
+      "start": 68.58,
+      "end": 68.72,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 68.72,
+      "end": 68.72,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "usually",
+      "start": 68.72,
+      "end": 68.96,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 68.96,
+      "end": 68.96,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "take?",
+      "start": 68.96,
+      "end": 69.3,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 69.3,
+      "end": 70.8,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Good",
+      "start": 70.8,
+      "end": 70.94,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 70.94,
+      "end": 70.94,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "question.",
+      "start": 70.94,
+      "end": 71.3,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 71.3,
+      "end": 71.3,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Most",
+      "start": 71.3,
+      "end": 71.66,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 71.66,
+      "end": 71.66,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "banks",
+      "start": 71.66,
+      "end": 71.88,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 71.88,
+      "end": 71.88,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "release",
+      "start": 71.88,
+      "end": 72.22,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 72.22,
+      "end": 72.22,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "it",
+      "start": 72.22,
+      "end": 72.58,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 72.58,
+      "end": 72.58,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "within",
+      "start": 72.58,
+      "end": 72.96,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 72.96,
+      "end": 72.96,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "three",
+      "start": 72.96,
+      "end": 73.26,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 73.26,
+      "end": 73.26,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "to",
+      "start": 73.26,
+      "end": 73.38,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 73.38,
+      "end": 73.38,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "five",
+      "start": 73.38,
+      "end": 73.58,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 73.58,
+      "end": 73.58,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "business",
+      "start": 73.58,
+      "end": 73.8,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 73.8,
+      "end": 73.8,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "days.",
+      "start": 73.8,
+      "end": 74.1,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 74.1,
+      "end": 74.1,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Your",
+      "start": 74.1,
+      "end": 74.42,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 74.42,
+      "end": 74.42,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "bank",
+      "start": 74.42,
+      "end": 74.68,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 74.68,
+      "end": 74.68,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "controls",
+      "start": 74.68,
+      "end": 75.08,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 75.08,
+      "end": 75.08,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "the",
+      "start": 75.08,
+      "end": 75.28,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 75.28,
+      "end": 75.28,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "exact",
+      "start": 75.28,
+      "end": 75.54,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 75.54,
+      "end": 75.54,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "timing",
+      "start": 75.54,
+      "end": 75.78,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 75.78,
+      "end": 75.78,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "though.",
+      "start": 75.78,
+      "end": 75.98,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 75.98,
+      "end": 78.246,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "Okay,",
+      "start": 78.246,
+      "end": 78.34,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 78.34,
+      "end": 78.34,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "can",
+      "start": 78.34,
+      "end": 78.5,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 78.5,
+      "end": 78.5,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "you",
+      "start": 78.5,
+      "end": 78.66,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 78.66,
+      "end": 78.98,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "send",
+      "start": 78.98,
+      "end": 79.28,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 79.28,
+      "end": 79.28,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "something",
+      "start": 79.28,
+      "end": 79.7,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 79.7,
+      "end": 79.7,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "showing",
+      "start": 79.7,
+      "end": 80.1,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 80.1,
+      "end": 80.1,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "that",
+      "start": 80.1,
+      "end": 80.3,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 80.3,
+      "end": 80.3,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "only",
+      "start": 80.3,
+      "end": 80.5,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 80.5,
+      "end": 80.5,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "one",
+      "start": 80.5,
+      "end": 80.74,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 80.74,
+      "end": 80.74,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "payment",
+      "start": 80.74,
+      "end": 81.08,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 81.08,
+      "end": 81.08,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "settled?",
+      "start": 81.08,
+      "end": 81.46,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 81.46,
+      "end": 82.7,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Sure.",
+      "start": 82.7,
+      "end": 82.701,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 82.701,
+      "end": 82.72,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Let",
+      "start": 82.72,
+      "end": 82.82,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 82.82,
+      "end": 82.82,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "me",
+      "start": 82.82,
+      "end": 82.92,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 82.92,
+      "end": 82.92,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "do",
+      "start": 82.92,
+      "end": 83.08,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 83.08,
+      "end": 83.08,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "that",
+      "start": 83.08,
+      "end": 83.22,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 83.22,
+      "end": 83.22,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "really",
+      "start": 83.22,
+      "end": 83.38,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 83.38,
+      "end": 83.38,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "quickly",
+      "start": 83.38,
+      "end": 83.56,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 83.56,
+      "end": 83.56,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "for",
+      "start": 83.56,
+      "end": 83.7,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 83.7,
+      "end": 83.7,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "you,",
+      "start": 83.7,
+      "end": 83.82,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 83.82,
+      "end": 83.88,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "okay?",
+      "start": 83.88,
+      "end": 83.94,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 83.94,
+      "end": 90.02,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Okay.",
+      "start": 90.02,
+      "end": 90.18,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 90.18,
+      "end": 90.38,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "I've",
+      "start": 90.38,
+      "end": 90.88,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 90.88,
+      "end": 90.88,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "emailed",
+      "start": 90.88,
+      "end": 91.22,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 91.22,
+      "end": 91.22,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "a",
+      "start": 91.22,
+      "end": 91.44,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 91.44,
+      "end": 91.44,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "billing",
+      "start": 91.44,
+      "end": 91.64,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 91.64,
+      "end": 91.64,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "receipt",
+      "start": 91.64,
+      "end": 91.96,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 91.96,
+      "end": 91.96,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "and",
+      "start": 91.96,
+      "end": 92.34,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 92.34,
+      "end": 92.34,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "the",
+      "start": 92.34,
+      "end": 92.54,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 92.54,
+      "end": 92.54,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "authorization",
+      "start": 92.54,
+      "end": 93.02,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 93.02,
+      "end": 93.02,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "reference",
+      "start": 93.02,
+      "end": 93.5,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 93.5,
+      "end": 93.5,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "number.",
+      "start": 93.5,
+      "end": 93.84,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 93.84,
+      "end": 95.786,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "Okay.",
+      "start": 95.786,
+      "end": 96.12,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 96.12,
+      "end": 97.146,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "Let",
+      "start": 97.146,
+      "end": 97.18,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 97.18,
+      "end": 97.18,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "me",
+      "start": 97.18,
+      "end": 97.32,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 97.32,
+      "end": 97.32,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "check.",
+      "start": 97.32,
+      "end": 97.64,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 97.64,
+      "end": 99.566,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "All",
+      "start": 99.566,
+      "end": 99.66,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 99.66,
+      "end": 99.66,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "right,",
+      "start": 99.66,
+      "end": 99.76,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 99.76,
+      "end": 99.88,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "I",
+      "start": 99.88,
+      "end": 99.94,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 99.94,
+      "end": 99.94,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "got",
+      "start": 99.94,
+      "end": 100.14,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 100.14,
+      "end": 100.14,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "it,",
+      "start": 100.14,
+      "end": 100.4,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 100.4,
+      "end": 100.52,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "but",
+      "start": 100.52,
+      "end": 100.82,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 100.82,
+      "end": 100.82,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "what",
+      "start": 100.82,
+      "end": 101.38,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 101.38,
+      "end": 101.38,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "if",
+      "start": 101.38,
+      "end": 101.54,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 101.54,
+      "end": 101.54,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "the",
+      "start": 101.54,
+      "end": 101.68,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 101.68,
+      "end": 101.68,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "pending",
+      "start": 101.68,
+      "end": 101.98,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 101.98,
+      "end": 101.98,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "charge",
+      "start": 101.98,
+      "end": 102.28,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 102.28,
+      "end": 102.28,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "posts",
+      "start": 102.28,
+      "end": 102.7,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 102.7,
+      "end": 102.7,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "anyway?",
+      "start": 102.7,
+      "end": 103.08,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 103.08,
+      "end": 104.57,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "If",
+      "start": 104.57,
+      "end": 104.571,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 104.571,
+      "end": 104.571,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "that",
+      "start": 104.571,
+      "end": 104.66,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 104.66,
+      "end": 104.66,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "happens,",
+      "start": 104.66,
+      "end": 104.94,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 104.94,
+      "end": 105.02,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "reply",
+      "start": 105.02,
+      "end": 105.2,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 105.2,
+      "end": 105.2,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "to",
+      "start": 105.2,
+      "end": 105.3,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 105.3,
+      "end": 105.3,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "that",
+      "start": 105.3,
+      "end": 105.44,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 105.44,
+      "end": 105.44,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "email",
+      "start": 105.44,
+      "end": 105.7,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 105.7,
+      "end": 105.7,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "or",
+      "start": 105.7,
+      "end": 106.04,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 106.04,
+      "end": 106.04,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "call",
+      "start": 106.04,
+      "end": 106.38,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 106.38,
+      "end": 106.38,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "us",
+      "start": 106.38,
+      "end": 106.54,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 106.54,
+      "end": 106.54,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "with",
+      "start": 106.54,
+      "end": 106.68,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 106.68,
+      "end": 106.68,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "the",
+      "start": 106.68,
+      "end": 106.8,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 106.8,
+      "end": 106.8,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "reference",
+      "start": 106.8,
+      "end": 107.08,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 107.08,
+      "end": 107.08,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "number.",
+      "start": 107.08,
+      "end": 107.38,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 107.38,
+      "end": 107.42,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "We",
+      "start": 107.42,
+      "end": 107.58,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 107.58,
+      "end": 107.58,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "can",
+      "start": 107.58,
+      "end": 107.7,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 107.7,
+      "end": 107.7,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "open",
+      "start": 107.7,
+      "end": 108.0,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 108.0,
+      "end": 108.0,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "a",
+      "start": 108.0,
+      "end": 108.34,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 108.34,
+      "end": 108.34,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "duplicate-payment",
+      "start": 108.34,
+      "end": 109.3,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 109.3,
+      "end": 109.3,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "case",
+      "start": 109.3,
+      "end": 109.68,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 109.68,
+      "end": 109.68,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "if",
+      "start": 109.68,
+      "end": 110.0,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 110.0,
+      "end": 110.0,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "both",
+      "start": 110.0,
+      "end": 110.28,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 110.28,
+      "end": 110.28,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "transactions",
+      "start": 110.28,
+      "end": 110.78,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 110.78,
+      "end": 110.78,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "do",
+      "start": 110.78,
+      "end": 111.06,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 111.06,
+      "end": 111.06,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "settle.",
+      "start": 111.06,
+      "end": 111.32,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 111.32,
+      "end": 112.946,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "All",
+      "start": 112.946,
+      "end": 113.193,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 113.193,
+      "end": 113.193,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "right,",
+      "start": 113.193,
+      "end": 113.44,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 113.44,
+      "end": 113.44,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "I'll",
+      "start": 113.44,
+      "end": 113.6,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 113.6,
+      "end": 113.6,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "watch",
+      "start": 113.6,
+      "end": 113.78,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 113.78,
+      "end": 113.78,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "it",
+      "start": 113.78,
+      "end": 113.92,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 113.92,
+      "end": 113.92,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "for",
+      "start": 113.92,
+      "end": 114.12,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 114.12,
+      "end": 114.12,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "a",
+      "start": 114.12,
+      "end": 114.3,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 114.3,
+      "end": 114.3,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "few",
+      "start": 114.3,
+      "end": 114.44,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 114.44,
+      "end": 114.44,
+      "type": "spacing",
+      "speaker_id": "customer"
+    },
+    {
+      "text": "days.",
+      "start": 114.44,
+      "end": 114.76,
+      "type": "word",
+      "speaker_id": "customer"
+    },
+    {
+      "text": " ",
+      "start": 114.76,
+      "end": 116.04,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Yes.",
+      "start": 116.04,
+      "end": 116.16,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 116.16,
+      "end": 116.6,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "That's",
+      "start": 116.6,
+      "end": 116.82,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 116.82,
+      "end": 116.82,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "the",
+      "start": 116.82,
+      "end": 116.98,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 116.98,
+      "end": 116.98,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "best",
+      "start": 116.98,
+      "end": 117.24,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 117.24,
+      "end": 117.24,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "next",
+      "start": 117.24,
+      "end": 117.42,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 117.42,
+      "end": 117.42,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "step.",
+      "start": 117.42,
+      "end": 117.64,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 117.64,
+      "end": 117.86,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Thanks",
+      "start": 117.86,
+      "end": 118.2,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 118.2,
+      "end": 118.2,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "for",
+      "start": 118.2,
+      "end": 118.32,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 118.32,
+      "end": 118.32,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "calling",
+      "start": 118.32,
+      "end": 118.48,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 118.48,
+      "end": 118.48,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "StreamHouse.",
+      "start": 118.48,
+      "end": 119.02,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 119.02,
+      "end": 119.02,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "Take",
+      "start": 119.02,
+      "end": 119.36,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 119.36,
+      "end": 119.36,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "it",
+      "start": 119.36,
+      "end": 119.48,
+      "type": "word",
+      "speaker_id": "agent"
+    },
+    {
+      "text": " ",
+      "start": 119.48,
+      "end": 119.48,
+      "type": "spacing",
+      "speaker_id": "agent"
+    },
+    {
+      "text": "easy.",
+      "start": 119.48,
+      "end": 119.6,
+      "type": "word",
+      "speaker_id": "agent"
+    }
+  ],
+  "transcription_id": "word-timestamps-duplicate-streaming-charge",
+  "audio_duration_secs": 120.02
+}

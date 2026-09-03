@@ -1,0 +1,202 @@
+{
+  "schema_version": "0.1.0",
+  "turns": [
+    {
+      "turn_id": "turn-0001",
+      "role": "agent",
+      "start_seconds": 0.0,
+      "end_seconds": 3.32,
+      "text": "Hey, thank you for calling HarborPoint Insurance. This is Darren. How can I help?",
+      "word_count": 14,
+      "duration_seconds": 3.32,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0002",
+      "role": "customer",
+      "start_seconds": 4.94,
+      "end_seconds": 7.92,
+      "text": "I'm at the dealership, and they need proof that my new car is covered.",
+      "word_count": 15,
+      "duration_seconds": 2.98,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0003",
+      "role": "agent",
+      "start_seconds": 9.33,
+      "end_seconds": 10.96,
+      "text": "Yeah, I can check that. What's your policy number?",
+      "word_count": 10,
+      "duration_seconds": 1.63,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0004",
+      "role": "customer",
+      "start_seconds": 13.746,
+      "end_seconds": 15.666,
+      "text": "HP-771-204.",
+      "word_count": 3,
+      "duration_seconds": 1.92,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0005",
+      "role": "agent",
+      "start_seconds": 17.77,
+      "end_seconds": 19.5,
+      "text": "Awesome. Let me find it really quick.",
+      "word_count": 7,
+      "duration_seconds": 1.73,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0006",
+      "role": "agent",
+      "start_seconds": 23.96,
+      "end_seconds": 28.56,
+      "text": "Okay, I found the policy. The 2026 Honda CR-V is active as of today actually.",
+      "word_count": 16,
+      "duration_seconds": 4.6,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0007",
+      "role": "customer",
+      "start_seconds": 29.966,
+      "end_seconds": 33.26,
+      "text": "Okay. Can you actually send the proof-of-coverage card again?",
+      "word_count": 11,
+      "duration_seconds": 3.294,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0008",
+      "role": "agent",
+      "start_seconds": 34.2,
+      "end_seconds": 38.3,
+      "text": "Yeah, I've sent it to the email ending in gmail.com.",
+      "word_count": 12,
+      "duration_seconds": 4.1,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0009",
+      "role": "customer",
+      "start_seconds": 39.206,
+      "end_seconds": 40.42,
+      "text": "Okay, let me check real quick.",
+      "word_count": 6,
+      "duration_seconds": 1.214,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0010",
+      "role": "customer",
+      "start_seconds": 42.206,
+      "end_seconds": 44.28,
+      "text": "Okay, I just got it. That's all I needed. Thank you.",
+      "word_count": 12,
+      "duration_seconds": 2.074,
+      "is_backchannel_candidate": false
+    },
+    {
+      "turn_id": "turn-0011",
+      "role": "agent",
+      "start_seconds": 44.94,
+      "end_seconds": 48.26,
+      "text": "Okay, perfect. You're all set. Have a good afternoon, and call us if you ever need anything-",
+      "word_count": 18,
+      "duration_seconds": 3.32,
+      "is_backchannel_candidate": false
+    }
+  ],
+  "pause_boundaries": [
+    {
+      "after_turn_id": "turn-0001",
+      "before_turn_id": "turn-0002",
+      "start_seconds": 3.32,
+      "end_seconds": 4.94,
+      "duration_seconds": 1.62,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0002",
+      "before_turn_id": "turn-0003",
+      "start_seconds": 7.92,
+      "end_seconds": 9.33,
+      "duration_seconds": 1.41,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0003",
+      "before_turn_id": "turn-0004",
+      "start_seconds": 10.96,
+      "end_seconds": 13.746,
+      "duration_seconds": 2.786,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0004",
+      "before_turn_id": "turn-0005",
+      "start_seconds": 15.666,
+      "end_seconds": 17.77,
+      "duration_seconds": 2.104,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0005",
+      "before_turn_id": "turn-0006",
+      "start_seconds": 19.5,
+      "end_seconds": 23.96,
+      "duration_seconds": 4.46,
+      "class": "long"
+    },
+    {
+      "after_turn_id": "turn-0006",
+      "before_turn_id": "turn-0007",
+      "start_seconds": 28.56,
+      "end_seconds": 29.966,
+      "duration_seconds": 1.406,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0007",
+      "before_turn_id": "turn-0008",
+      "start_seconds": 33.26,
+      "end_seconds": 34.2,
+      "duration_seconds": 0.94,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0008",
+      "before_turn_id": "turn-0009",
+      "start_seconds": 38.3,
+      "end_seconds": 39.206,
+      "duration_seconds": 0.906,
+      "class": "short"
+    },
+    {
+      "after_turn_id": "turn-0009",
+      "before_turn_id": "turn-0010",
+      "start_seconds": 40.42,
+      "end_seconds": 42.206,
+      "duration_seconds": 1.786,
+      "class": "short"
+    }
+  ],
+  "overlap_and_barge_in_candidates": [],
+  "source_segment_overlap_candidates": [],
+  "audio_events": [],
+  "speaker_metadata": {
+    "agent": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    },
+    "customer": {
+      "accent": "not_human_annotated",
+      "environment": "not_human_annotated"
+    }
+  }
+}

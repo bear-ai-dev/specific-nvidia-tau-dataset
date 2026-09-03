@@ -1,0 +1,28 @@
+[00:00:00.420 - 00:00:04.440] Colin: Hi. Thanks for calling Summit Jet. This is Colin. What can I help you with?
+[00:00:06.040 - 00:00:17.540] Matthew: Hey, um, I'm connecting through Dallas tonight. I just wanted to check: is my first flight delayed enough that I'll miss my connection? I'm just a little worried. Um, the confirmation should be S as in Sierra—
+[00:00:17.540 - 00:00:18.000] Colin: Mm-hmm
+[00:00:18.000 - 00:00:24.460] Matthew: 4, P as in Papa, 9, K as in Kilo, and T as in Tango.
+[00:00:25.800] [tool] get_reservation: calling tool to retrieve the existing reservation
+[00:00:26.280 - 00:00:27.740] Colin: Okay, one second.
+[00:00:30.080 - 00:00:35.060] Colin: Yeah, I have Austin to Dallas to Richmond, one passenger. Is that correct?
+[00:00:36.220 - 00:00:42.700] Matthew: Yep, that's right. Um, what's happening with the Austin flight right now? What, what, what's the status on it? What's it doing?
+[00:00:43.300] [tool] get_flight_status: calling tool to check the Austin flight's current status
+[00:00:42.700 - 00:00:49.660] Colin: Yeah, Flight 338 looks like it's currently delayed for 40 minutes because of a late inbound aircraft.
+[00:00:50.960 - 00:00:51.320] Colin: Um-
+[00:00:51.320 - 00:00:52.540] Matthew: Mm, okay.
+[00:00:52.540 - 00:00:53.040] Colin: Yeah.
+[00:00:53.040 - 00:00:57.440] Matthew: I'm-- I think my connection is only for 50 minutes. Do you still think it's gonna be possible?
+[00:00:58.300] [tool] get_flight_status: calling tool to check the Richmond flight's current status
+[00:00:58.460 - 00:01:05.340] Colin: Oh, it's definitely gonna be tight. The Richmond flight is on time right now, and the gates are in, like, different concourses.
+[00:01:07.260 - 00:01:07.600] Matthew: Okay.
+[00:01:08.960 - 00:01:10.880] Matthew: Can you see a backup perhaps?
+[00:01:11.480] [tool] search_alternative_flights: calling tool to search for direct backup flights
+[00:01:10.880 - 00:01:18.580] Colin: Yeah, I'm on it. Um, there's a later nonstop from Dallas to Richmond with seats, but I won't change you unless you ask.
+[00:01:20.060 - 00:01:25.340] Matthew: Yeah. Mm. Okay, uh, just leave me where I am for now, I guess.
+[00:01:25.340 - 00:01:34.340] Colin: Yeah. Um, yeah, okay. Just keep alerts on for now and call us from Dallas if the 1st flight slips even more. Uh, for now, you should be okay though.
+[00:01:35.460 - 00:01:40.480] Matthew: Okay. Cool, cool. Um, oh, will my bag follow me though if I change later?
+[00:01:40.480 - 00:01:48.200] Colin: Yes, yes. If the reservation changes, the bag allocation automatically gets updated. Um, yeah, the airport team will control the physical scan.
+[00:01:49.620 - 00:01:52.660] Matthew: Okay. Um, can you tell me the current gates?
+[00:01:52.660 - 00:02:01.380] Colin: Yeah, of course. I can read the current gates, but they can change. The airport monitors are definitely the final source, so you should check that once you arrive. I recommend that.
+[00:02:02.680 - 00:02:06.480] Matthew: Okay. Sounds good. Um, I'll just watch the app. Thank you.
+[00:02:06.480 - 00:02:08.740] Colin: Yeah, for sure. It sounds good. Safe travels t-

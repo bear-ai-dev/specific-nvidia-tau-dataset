@@ -1,7 +1,7 @@
 {
   "schema_version": "0.2.0",
   "registry_name": "banking",
-  "registry_version": "0.4.0",
+  "registry_version": "0.5.0",
   "tools": [
     {
       "name": "lookup_customer",
@@ -1624,6 +1624,403 @@
         "required": [
           "notification_id",
           "status"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "lookup_subscriber",
+      "description": "Resolve one streaming subscriber from a customer-provided email prefix without exposing a full address.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "email_prefix": {
+            "type": "string",
+            "description": "Beginning of the email address provided by the subscriber."
+          }
+        },
+        "required": [
+          "email_prefix"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "type": "object",
+        "properties": {
+          "subscriber_id": {
+            "type": "string",
+            "description": "Opaque subscriber identifier.",
+            "format": "uuid"
+          },
+          "match": {
+            "type": "string",
+            "description": "Lookup cardinality.",
+            "enum": [
+              "unique",
+              "none",
+              "multiple"
+            ]
+          },
+          "masked_email": {
+            "type": "string",
+            "description": "Masked email on the account."
+          },
+          "subscription_id": {
+            "type": "string",
+            "description": "Opaque subscription identifier.",
+            "format": "uuid"
+          },
+          "subscription_status": {
+            "type": "string",
+            "description": "Subscription status.",
+            "enum": [
+              "active",
+              "paused",
+              "cancelled"
+            ]
+          }
+        },
+        "required": [
+          "subscriber_id",
+          "match",
+          "masked_email",
+          "subscription_id",
+          "subscription_status"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "verify_payment_method",
+      "description": "Verify the stored payment method using its last four digits before exposing billing activity.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "subscriber_id": {
+            "type": "string",
+            "description": "Resolved subscriber identifier.",
+            "format": "uuid"
+          },
+          "card_last4": {
+            "type": "string",
+            "description": "Last four digits.",
+            "pattern": "^[0-9]{4}$"
+          }
+        },
+        "required": [
+          "subscriber_id",
+          "card_last4"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "type": "object",
+        "properties": {
+          "verification_id": {
+            "type": "string",
+            "description": "Opaque verification identifier.",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string",
+            "description": "Verification status.",
+            "enum": [
+              "verified",
+              "failed"
+            ]
+          },
+          "payment_method_id": {
+            "type": "string",
+            "description": "Opaque stored payment-method identifier.",
+            "format": "uuid"
+          },
+          "brand": {
+            "type": "string",
+            "description": "Card brand."
+          },
+          "last4": {
+            "type": "string",
+            "description": "Last four digits.",
+            "pattern": "^[0-9]{4}$"
+          }
+        },
+        "required": [
+          "verification_id",
+          "status",
+          "payment_method_id",
+          "brand",
+          "last4"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_subscription_billing_activity",
+      "description": "Retrieve settled subscription payments and pending authorizations for a verified subscriber.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "subscriber_id": {
+            "type": "string",
+            "description": "Resolved subscriber identifier.",
+            "format": "uuid"
+          },
+          "verification_id": {
+            "type": "string",
+            "description": "Successful billing verification.",
+            "format": "uuid"
+          },
+          "lookback_days": {
+            "type": "integer",
+            "description": "Number of days to inspect.",
+            "minimum": 1,
+            "maximum": 90
+          }
+        },
+        "required": [
+          "subscriber_id",
+          "verification_id",
+          "lookback_days"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "type": "object",
+        "properties": {
+          "subscription_id": {
+            "type": "string",
+            "description": "Subscription identifier.",
+            "format": "uuid"
+          },
+          "transactions": {
+            "type": "array",
+            "description": "Recent billing records.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "transaction_id": {
+                  "type": "string",
+                  "description": "Transaction identifier.",
+                  "format": "uuid"
+                },
+                "kind": {
+                  "type": "string",
+                  "description": "Billing record kind.",
+                  "enum": [
+                    "payment",
+                    "authorization"
+                  ]
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Billing record status.",
+                  "enum": [
+                    "settled",
+                    "pending",
+                    "released",
+                    "failed"
+                  ]
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "Transaction amount.",
+                  "minimum": 0
+                },
+                "currency": {
+                  "type": "string",
+                  "description": "ISO 4217 currency code.",
+                  "pattern": "^[A-Z]{3}$"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Customer-facing description."
+                }
+              },
+              "required": [
+                "transaction_id",
+                "kind",
+                "status",
+                "amount",
+                "currency",
+                "description"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "retrieved_at": {
+            "type": "string",
+            "description": "Retrieval timestamp.",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "subscription_id",
+          "transactions",
+          "retrieved_at"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "reconcile_payment_attempts",
+      "description": "Determine whether recent records represent duplicate settled payments or one payment plus a temporary authorization.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "subscriber_id": {
+            "type": "string",
+            "description": "Resolved subscriber identifier.",
+            "format": "uuid"
+          },
+          "verification_id": {
+            "type": "string",
+            "description": "Successful billing verification.",
+            "format": "uuid"
+          },
+          "transaction_ids": {
+            "type": "array",
+            "description": "Transactions to reconcile.",
+            "items": {
+              "type": "string",
+              "description": "Transaction identifier.",
+              "format": "uuid"
+            },
+            "minItems": 2
+          }
+        },
+        "required": [
+          "subscriber_id",
+          "verification_id",
+          "transaction_ids"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "type": "object",
+        "properties": {
+          "settled_payment_count": {
+            "type": "integer",
+            "description": "Number of settled payments.",
+            "minimum": 0
+          },
+          "duplicate_settlement": {
+            "type": "boolean",
+            "description": "Whether more than one payment settled."
+          },
+          "pending_authorization_id": {
+            "type": "string",
+            "description": "Pending authorization identifier.",
+            "format": "uuid"
+          },
+          "expected_release_business_days_min": {
+            "type": "integer",
+            "description": "Minimum typical release time.",
+            "minimum": 0
+          },
+          "expected_release_business_days_max": {
+            "type": "integer",
+            "description": "Maximum typical release time.",
+            "minimum": 0
+          },
+          "release_timing_controlled_by": {
+            "type": "string",
+            "description": "Party controlling release timing.",
+            "enum": [
+              "card_issuing_bank"
+            ]
+          }
+        },
+        "required": [
+          "settled_payment_count",
+          "duplicate_settlement",
+          "pending_authorization_id",
+          "expected_release_business_days_min",
+          "expected_release_business_days_max",
+          "release_timing_controlled_by"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "send_billing_receipt",
+      "description": "Send a receipt for the settled payment together with the pending-authorization reference.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "subscriber_id": {
+            "type": "string",
+            "description": "Resolved subscriber identifier.",
+            "format": "uuid"
+          },
+          "verification_id": {
+            "type": "string",
+            "description": "Successful billing verification.",
+            "format": "uuid"
+          },
+          "settled_transaction_id": {
+            "type": "string",
+            "description": "Settled payment identifier.",
+            "format": "uuid"
+          },
+          "pending_authorization_id": {
+            "type": "string",
+            "description": "Pending authorization identifier.",
+            "format": "uuid"
+          },
+          "channel": {
+            "type": "string",
+            "description": "Approved destination.",
+            "enum": [
+              "email_on_file"
+            ]
+          }
+        },
+        "required": [
+          "subscriber_id",
+          "verification_id",
+          "settled_transaction_id",
+          "pending_authorization_id",
+          "channel"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "type": "object",
+        "properties": {
+          "delivery_id": {
+            "type": "string",
+            "description": "Delivery identifier.",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string",
+            "description": "Delivery status.",
+            "enum": [
+              "sent",
+              "failed"
+            ]
+          },
+          "masked_destination": {
+            "type": "string",
+            "description": "Masked recipient."
+          },
+          "authorization_reference": {
+            "type": "string",
+            "description": "Human-facing pending-authorization reference."
+          },
+          "sent_at": {
+            "type": "string",
+            "description": "Send timestamp.",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "delivery_id",
+          "status",
+          "masked_destination",
+          "authorization_reference",
+          "sent_at"
         ],
         "additionalProperties": false
       }

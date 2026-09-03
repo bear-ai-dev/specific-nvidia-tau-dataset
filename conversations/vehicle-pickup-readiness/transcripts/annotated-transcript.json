@@ -1,0 +1,383 @@
+{
+  "schema_version": "0.5.0",
+  "conversation_id": "vehicle-pickup-readiness",
+  "trajectory_id": 13,
+  "domain": "automotive_service",
+  "scenario_time": "2026-09-03T16:00:00-04:00",
+  "responses_create_params": {
+    "input": [
+      {
+        "role": "system",
+        "content": "You are a customer service agent that helps the user.  The policy that determines how you should respond to requests from users is described below between the <policy> and </policy> tags.\n\nIn each turn you can either:\n- Send a message to the user.\n- Make a tool call.\nYou cannot do both at the same time.\n\nService context: You represent Parker Honda Service. Your agent display name is Ryan. The current scenario time at the start of the call is 2026-09-03T16:00:00-04:00.\n\n<policy>\n# Parker Honda Service Support Agent Policy\n\nYou provide repair-order status, pickup readiness, authorized-work status, recommendations, invoice totals, and current service-desk hours. Stay within the available tools.\n\n## Repair-order handling\n\n- Retrieve the repair order using the customer-provided repair-order number before disclosing status or cost.\n- Use the returned opaque repair-order identifier for any downstream action.\n- Distinguish completed authorized work from a recommendation that was not added to the invoice.\n- State that a vehicle is ready only when the result reports released for pickup.\n- Quote the current invoice total and service-desk hours exactly as returned. Hours may change; do not promise access after closing.\n\n## Limits and escalation\n\n- Do not approve additional repairs, modify an invoice, collect payment credentials, diagnose vehicle safety, or promise that an unapproved recommendation was performed.\n- In each turn, either speak or call one tool. Never claim a backend result before the call returns.\n- Transfer when the repair order cannot be resolved, records conflict, the customer disputes work or charges, or a requested change is not supported by the tools.\n</policy>\n\nTry to be helpful and always follow the policy."
+      },
+      {
+        "id": "msg_0013_0000",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Thanks for calling Parker Honda Service. This is Ryan. How can I help?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Hey, I got a text saying my Civic may be ready. Uh, can I pick it up today?",
+        "annotations": []
+      },
+      {
+        "id": "msg_0013_0002",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "One second. I can check. Do you have the repair order number?"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Yeah, I do. It's P-H-73164.",
+        "annotations": []
+      },
+      {
+        "arguments": "{\"repair_order_number\":\"PH-73164\"}",
+        "call_id": "vp-001",
+        "name": "get_repair_order",
+        "type": "function_call",
+        "id": "vp-001",
+        "status": "completed"
+      },
+      {
+        "type": "function_call_output",
+        "call_id": "vp-001",
+        "output": "\n\n{\"repair_order_id\":\"e65c2995-7d78-5704-8822-ffbe8be16e19\",\"repair_order_number\":\"PH-73164\",\"vehicle\":{\"make\":\"Honda\",\"model\":\"Civic\"},\"work_items\":[{\"description\":\"Brake work\",\"status\":\"complete\"},{\"description\":\"Inspection\",\"status\":\"complete\"}],\"recommendations\":[{\"description\":\"Cabin air filter\",\"status\":\"recommended_not_added\"}],\"pickup_status\":\"released_for_pickup\",\"invoice_total\":486.12,\"currency\":\"USD\",\"service_desk_closes_at\":\"18:00\",\"retrieved_at\":\"2026-09-03T16:00:21-04:00\"}"
+      },
+      {
+        "id": "msg_0013_0004",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Thank you."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0013_0005",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Let me check for you. The brake work and inspection are complete, and the car has been released for pickup."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, great. Uh, did they add the cabin filter they mentioned?",
+        "annotations": []
+      },
+      {
+        "id": "msg_0013_0007",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Um, no. I'm seeing here that it's still listed as a recommendation,"
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "id": "msg_0013_0008",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "but it wasn't added to today's invoice. I'm seeing here that your total is $486.12."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, perfect. Yeah, I'll be there around 5.",
+        "annotations": [
+          {
+            "type": "emotion",
+            "label": "relieved",
+            "source": "human_annotated_transcript"
+          }
+        ]
+      },
+      {
+        "id": "msg_0013_0010",
+        "content": [
+          {
+            "annotations": [],
+            "type": "output_text",
+            "text": "Sounds good. The service desk should be open until 6, so yeah."
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      },
+      {
+        "role": "user",
+        "content": "Okay, perfect. Thanks. Bye.",
+        "annotations": []
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "name": "get_repair_order",
+        "description": "Retrieve repair completion, recommendations, invoice total, release status, and pickup hours for one repair order.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "repair_order_number": {
+              "type": "string",
+              "description": "Customer-facing repair-order number.",
+              "pattern": "^[A-Z]{2}-[0-9]{5}$"
+            }
+          },
+          "required": [
+            "repair_order_number"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "transfer_to_specialist",
+        "description": "Transfer the conversation when policy or tooling requires a specialist.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "reason": {
+              "type": "string",
+              "description": "Why transfer is required."
+            },
+            "summary": {
+              "type": "string",
+              "description": "Verified context already collected."
+            }
+          },
+          "required": [
+            "reason",
+            "summary"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    ],
+    "parallel_tool_calls": false
+  },
+  "event_metadata": [
+    {
+      "event_index": 1,
+      "kind": "speech",
+      "speaker": "Ryan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 0.36,
+        "end_seconds": 4.2
+      }
+    },
+    {
+      "event_index": 2,
+      "kind": "speech",
+      "speaker": "Michael",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 4.2,
+        "end_seconds": 9.24
+      }
+    },
+    {
+      "event_index": 3,
+      "kind": "speech",
+      "speaker": "Ryan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 11.02,
+        "end_seconds": 14.84
+      }
+    },
+    {
+      "event_index": 4,
+      "kind": "speech",
+      "speaker": "Michael",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 14.84,
+        "end_seconds": 20.96
+      }
+    },
+    {
+      "event_index": 5,
+      "kind": "function_call",
+      "call_id": "vp-001",
+      "source": "transcripts/transcript.txt",
+      "source_label": "calling tool to retrieve the repair-order status",
+      "annotation_confidence": "high",
+      "state_effect": "read_only",
+      "placement_seconds": 22.0,
+      "placement_after_text": null,
+      "placement_before_text": null,
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": null,
+        "end_seconds": null,
+        "inferred_window_seconds": [
+          21.4,
+          22.0
+        ]
+      }
+    },
+    {
+      "event_index": 7,
+      "kind": "speech",
+      "speaker": "Ryan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 22.56,
+        "end_seconds": 23.0
+      }
+    },
+    {
+      "event_index": 8,
+      "kind": "speech",
+      "speaker": "Ryan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 25.32,
+        "end_seconds": 31.08
+      }
+    },
+    {
+      "event_index": 9,
+      "kind": "speech",
+      "speaker": "Michael",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 32.32,
+        "end_seconds": 35.36
+      }
+    },
+    {
+      "event_index": 10,
+      "kind": "speech",
+      "speaker": "Ryan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 37.04,
+        "end_seconds": 41.7
+      }
+    },
+    {
+      "event_index": 11,
+      "kind": "speech",
+      "speaker": "Ryan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 42.78,
+        "end_seconds": 51.04
+      }
+    },
+    {
+      "event_index": 12,
+      "kind": "speech",
+      "speaker": "Michael",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [
+        {
+          "type": "emotion",
+          "label": "relieved",
+          "source": "human_annotated_transcript",
+          "source_text": "(relieved)"
+        }
+      ],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 51.04,
+        "end_seconds": 52.7
+      }
+    },
+    {
+      "event_index": 13,
+      "kind": "speech",
+      "speaker": "Ryan",
+      "role": "assistant",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 53.88,
+        "end_seconds": 57.92
+      }
+    },
+    {
+      "event_index": 14,
+      "kind": "speech",
+      "speaker": "Michael",
+      "role": "user",
+      "source": "transcripts/transcript.txt",
+      "annotations": [],
+      "audio_reference": {
+        "path": "audio/full.wav",
+        "start_seconds": 57.92,
+        "end_seconds": 59.3
+      }
+    }
+  ]
+}

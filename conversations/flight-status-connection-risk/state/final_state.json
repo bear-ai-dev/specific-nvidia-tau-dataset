@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.2.0",
+  "conversation_id": "flight-status-connection-risk",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-09-03T17:30:00-05:00",
+  "entities": {
+    "a8cab06d-f24b-54fe-ab20-0a01c7006703": {
+      "entity_type": "reservation",
+      "reservation_id": "a8cab06d-f24b-54fe-ab20-0a01c7006703",
+      "confirmation_code": "S4P9KT",
+      "status": "ticketed",
+      "passenger_count": 1,
+      "checked_bag_count": 1,
+      "flight_ids": [
+        "ca73275b-686a-51da-ac49-729384b19a9f",
+        "03022707-49d5-5478-8b1e-69ef58458fe0"
+      ]
+    },
+    "ca73275b-686a-51da-ac49-729384b19a9f": {
+      "entity_type": "flight",
+      "flight_id": "ca73275b-686a-51da-ac49-729384b19a9f",
+      "flight_number": "338",
+      "route": "AUS-DFW",
+      "status": "delayed",
+      "delay_minutes": 40
+    },
+    "03022707-49d5-5478-8b1e-69ef58458fe0": {
+      "entity_type": "flight",
+      "flight_id": "03022707-49d5-5478-8b1e-69ef58458fe0",
+      "flight_number": "SJ 2147",
+      "route": "DFW-RIC",
+      "status": "on_time"
+    },
+    "f948f080-eba7-5d46-b531-d36f5b4107da": {
+      "entity_type": "alternative_search",
+      "search_id": "f948f080-eba7-5d46-b531-d36f5b4107da",
+      "reservation_changed": false,
+      "available_flight_id": "21cecea8-7dde-57c8-9350-afc963ca6b91"
+    }
+  }
+}

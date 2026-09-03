@@ -1249,6 +1249,319 @@
       }
     },
     {
+      "name": "get_reservation",
+      "description": "Retrieve an existing reservation and its booked flight legs using the customer-facing confirmation code.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "confirmation_code": {
+            "type": "string",
+            "description": "Six-character booking confirmation code.",
+            "pattern": "^[A-Z0-9]{6}$"
+          }
+        },
+        "required": [
+          "confirmation_code"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "type": "object",
+        "properties": {
+          "reservation_id": {
+            "type": "string",
+            "description": "Opaque reservation identifier.",
+            "format": "uuid"
+          },
+          "confirmation_code": {
+            "type": "string",
+            "description": "Booking confirmation code."
+          },
+          "status": {
+            "type": "string",
+            "description": "Reservation status.",
+            "enum": [
+              "confirmed",
+              "ticketed",
+              "cancelled"
+            ]
+          },
+          "passenger_count": {
+            "type": "integer",
+            "description": "Number of passengers.",
+            "minimum": 1
+          },
+          "checked_bag_count": {
+            "type": "integer",
+            "description": "Checked bags associated with the reservation.",
+            "minimum": 0
+          },
+          "flight_legs": {
+            "type": "array",
+            "description": "Booked flight legs in travel order.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "flight_id": {
+                  "type": "string",
+                  "description": "Opaque flight identifier.",
+                  "format": "uuid"
+                },
+                "flight_number": {
+                  "type": "string",
+                  "description": "Customer-facing flight number."
+                },
+                "origin_airport": {
+                  "type": "string",
+                  "description": "Origin IATA code.",
+                  "pattern": "^[A-Z]{3}$"
+                },
+                "destination_airport": {
+                  "type": "string",
+                  "description": "Destination IATA code.",
+                  "pattern": "^[A-Z]{3}$"
+                },
+                "departure_date": {
+                  "type": "string",
+                  "description": "Local departure date.",
+                  "format": "date"
+                }
+              },
+              "required": [
+                "flight_id",
+                "flight_number",
+                "origin_airport",
+                "destination_airport",
+                "departure_date"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "reservation_id",
+          "confirmation_code",
+          "status",
+          "passenger_count",
+          "checked_bag_count",
+          "flight_legs"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_flight_status",
+      "description": "Retrieve current operating status and connection-relevant gate or concourse information for a booked flight.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "reservation_id": {
+            "type": "string",
+            "description": "Resolved reservation identifier.",
+            "format": "uuid"
+          },
+          "flight_id": {
+            "type": "string",
+            "description": "Booked flight identifier.",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "reservation_id",
+          "flight_id"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "type": "object",
+        "properties": {
+          "flight_id": {
+            "type": "string",
+            "description": "Flight identifier.",
+            "format": "uuid"
+          },
+          "flight_number": {
+            "type": "string",
+            "description": "Customer-facing flight number."
+          },
+          "status": {
+            "type": "string",
+            "description": "Current operating state.",
+            "enum": [
+              "on_time",
+              "delayed",
+              "cancelled"
+            ]
+          },
+          "delay_minutes": {
+            "type": "integer",
+            "description": "Current delay in minutes.",
+            "minimum": 0
+          },
+          "delay_reason": {
+            "type": "string",
+            "description": "Operational reason, or none when on time."
+          },
+          "origin_airport": {
+            "type": "string",
+            "description": "Origin IATA code.",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "destination_airport": {
+            "type": "string",
+            "description": "Destination IATA code.",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "arrival_concourse": {
+            "type": "string",
+            "description": "Current arrival concourse, if assigned."
+          },
+          "departure_concourse": {
+            "type": "string",
+            "description": "Current departure concourse, if assigned."
+          },
+          "retrieved_at": {
+            "type": "string",
+            "description": "Retrieval timestamp.",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "flight_id",
+          "flight_number",
+          "status",
+          "delay_minutes",
+          "delay_reason",
+          "origin_airport",
+          "destination_airport",
+          "arrival_concourse",
+          "departure_concourse",
+          "retrieved_at"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "search_alternative_flights",
+      "description": "Search alternate flights for one leg without changing the reservation.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "reservation_id": {
+            "type": "string",
+            "description": "Resolved reservation identifier.",
+            "format": "uuid"
+          },
+          "origin_airport": {
+            "type": "string",
+            "description": "Origin IATA code.",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "destination_airport": {
+            "type": "string",
+            "description": "Destination IATA code.",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "departure_date": {
+            "type": "string",
+            "description": "Local departure date.",
+            "format": "date"
+          },
+          "max_stops": {
+            "type": "integer",
+            "description": "Maximum stops.",
+            "minimum": 0,
+            "maximum": 2
+          }
+        },
+        "required": [
+          "reservation_id",
+          "origin_airport",
+          "destination_airport",
+          "departure_date",
+          "max_stops"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "type": "object",
+        "properties": {
+          "search_id": {
+            "type": "string",
+            "description": "Search identifier.",
+            "format": "uuid"
+          },
+          "alternatives": {
+            "type": "array",
+            "description": "Available alternatives.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "flight_id": {
+                  "type": "string",
+                  "description": "Flight identifier.",
+                  "format": "uuid"
+                },
+                "flight_number": {
+                  "type": "string",
+                  "description": "Flight number."
+                },
+                "stops": {
+                  "type": "integer",
+                  "description": "Number of stops.",
+                  "minimum": 0,
+                  "maximum": 2
+                },
+                "seat_availability": {
+                  "type": "string",
+                  "description": "Seat availability.",
+                  "enum": [
+                    "available",
+                    "waitlist",
+                    "unavailable"
+                  ]
+                },
+                "relative_departure": {
+                  "type": "string",
+                  "description": "Relationship to the original departure.",
+                  "enum": [
+                    "earlier",
+                    "later"
+                  ]
+                }
+              },
+              "required": [
+                "flight_id",
+                "flight_number",
+                "stops",
+                "seat_availability",
+                "relative_departure"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0
+          },
+          "reservation_changed": {
+            "type": "boolean",
+            "description": "Whether the search changed the booking."
+          },
+          "retrieved_at": {
+            "type": "string",
+            "description": "Retrieval timestamp.",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "search_id",
+          "alternatives",
+          "reservation_changed",
+          "retrieved_at"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
       "name": "transfer_to_specialist",
       "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
       "parameters": {

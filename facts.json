@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1.0",
   "description": "Per-conversation facts the agent needed to collect from the customer and communicate aloud, with canonical string values and exact speech-event timestamps.",
-  "conversation_count": 10,
+  "conversation_count": 14,
   "conversations": [
     {
       "conversation_id": "banking-account-email-card-application",
@@ -3217,6 +3217,411 @@
             "start_seconds": 558.008,
             "end_seconds": 563.028,
             "source": "conversations/telecom-data-usage-cleanup/transcripts/annotated-transcript.json"
+          }
+        ]
+      }
+    },
+    {
+      "conversation_id": "duplicate-streaming-charge",
+      "domain": "banking",
+      "goal": "Determine whether two same-day StreamHouse billing records are duplicate settled charges, explain the pending authorization, and send supporting billing documentation.",
+      "outcome_label": "resolved_pending_bank_release",
+      "outcome_summary": "Only one $17.99 renewal settled; the other record is a temporary authorization expected to be released by the bank in three to five business days, and a receipt with the authorization reference was sent.",
+      "audio_reference": "conversations/duplicate-streaming-charge/audio/full.wav",
+      "timestamp_unit": "seconds_from_audio_start",
+      "timestamp_granularity": "speech_event",
+      "required_information": {
+        "collect": [
+          {
+            "fact": "email_prefix",
+            "value": "leah.r",
+            "spoken_text": "The email begins with leah.r, and the card ends in 1846.",
+            "speaker": "Customer",
+            "role": "user",
+            "event_index": 4,
+            "start_seconds": 16.256,
+            "end_seconds": 21.916,
+            "source": "conversations/duplicate-streaming-charge/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "card_last_four",
+            "value": "1846",
+            "spoken_text": "The email begins with leah.r, and the card ends in 1846.",
+            "speaker": "Customer",
+            "role": "user",
+            "event_index": 4,
+            "start_seconds": 16.256,
+            "end_seconds": 21.916,
+            "source": "conversations/duplicate-streaming-charge/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "billing_receipt_request",
+            "value": "Send proof that only one payment settled",
+            "spoken_text": "Okay, can you send something showing that only one payment settled?",
+            "speaker": "Customer",
+            "role": "user",
+            "event_index": 22,
+            "start_seconds": 78.246,
+            "end_seconds": 81.606,
+            "source": "conversations/duplicate-streaming-charge/transcripts/annotated-transcript.json"
+          }
+        ],
+        "communicate": [
+          {
+            "fact": "billing_records",
+            "value": "One $17.99 monthly renewal and one $17.99 temporary authorization",
+            "spoken_text": "Yeah, I found the account and verified the card. I see one monthly renewal for $17.99 and one temporary authorization for the same amount.",
+            "speaker": "Darren",
+            "role": "assistant",
+            "event_index": 12,
+            "start_seconds": 33.02,
+            "end_seconds": 41.22,
+            "source": "conversations/duplicate-streaming-charge/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "settled_payment_count",
+            "value": "One completed charge",
+            "spoken_text": "Yeah, only one charge has completed. The other is pending and should disappear automatically when your bank releases it.",
+            "speaker": "Darren",
+            "role": "assistant",
+            "event_index": 19,
+            "start_seconds": 61.15,
+            "end_seconds": 66.31,
+            "source": "conversations/duplicate-streaming-charge/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "authorization_release_window",
+            "value": "Three to five business days, controlled by the bank",
+            "spoken_text": "Good question. Most banks release it within three to five business days. Your bank controls the exact timing though.",
+            "speaker": "Darren",
+            "role": "assistant",
+            "event_index": 21,
+            "start_seconds": 70.47,
+            "end_seconds": 76.41,
+            "source": "conversations/duplicate-streaming-charge/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "receipt_delivery",
+            "value": "Billing receipt and authorization reference emailed",
+            "spoken_text": "Okay. I've emailed a billing receipt and the authorization reference number.",
+            "speaker": "Darren",
+            "role": "assistant",
+            "event_index": 26,
+            "start_seconds": 90.02,
+            "end_seconds": 94.12,
+            "source": "conversations/duplicate-streaming-charge/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "duplicate_payment_follow_up",
+            "value": "Open a duplicate-payment case only if both transactions settle",
+            "spoken_text": "If that happens, reply to that email or call us with the reference number. We can open a duplicate-payment case if both transactions do settle.",
+            "speaker": "Darren",
+            "role": "assistant",
+            "event_index": 30,
+            "start_seconds": 104.57,
+            "end_seconds": 111.59,
+            "source": "conversations/duplicate-streaming-charge/transcripts/annotated-transcript.json"
+          }
+        ]
+      }
+    },
+    {
+      "conversation_id": "flight-status-connection-risk",
+      "domain": "airline",
+      "goal": "Check a same-day Austin–Dallas–Richmond itinerary after a delay, assess the connection risk, and identify a backup without changing the reservation.",
+      "outcome_label": "monitored_without_change",
+      "outcome_summary": "Flight 338 was delayed 40 minutes by a late inbound aircraft while the Richmond leg remained on time; a later nonstop backup with seats was found, but the customer kept the original itinerary and was told to monitor alerts.",
+      "audio_reference": "conversations/flight-status-connection-risk/audio/full.wav",
+      "timestamp_unit": "seconds_from_audio_start",
+      "timestamp_granularity": "speech_event",
+      "required_information": {
+        "collect": [
+          {
+            "fact": "confirmation_code_prefix",
+            "value": "S",
+            "spoken_text": "Hey, um, I'm connecting through Dallas tonight. I just wanted to check: is my first flight delayed enough that I'll miss my connection? I'm just a little worried. Um, the confirmation should be S as in Sierra—",
+            "speaker": "Matthew",
+            "role": "user",
+            "event_index": 2,
+            "start_seconds": 6.04,
+            "end_seconds": 17.54,
+            "source": "conversations/flight-status-connection-risk/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "confirmation_code_remainder",
+            "value": "4P9KT",
+            "spoken_text": "4, P as in Papa, 9, K as in Kilo, and T as in Tango.",
+            "speaker": "Matthew",
+            "role": "user",
+            "event_index": 4,
+            "start_seconds": 18.0,
+            "end_seconds": 24.46,
+            "source": "conversations/flight-status-connection-risk/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "connection_duration",
+            "value": "50 minutes",
+            "spoken_text": "I'm-- I think my connection is only for 50 minutes. Do you still think it's gonna be possible?",
+            "speaker": "Matthew",
+            "role": "user",
+            "event_index": 16,
+            "start_seconds": 53.04,
+            "end_seconds": 57.44,
+            "source": "conversations/flight-status-connection-risk/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "keep_original_itinerary",
+            "value": "Do not change the reservation",
+            "spoken_text": "Yeah. Mm. Okay, uh, just leave me where I am for now, I guess.",
+            "speaker": "Matthew",
+            "role": "user",
+            "event_index": 25,
+            "start_seconds": 80.06,
+            "end_seconds": 85.34,
+            "source": "conversations/flight-status-connection-risk/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "checked_bag_continuity_question",
+            "value": "Whether a checked bag follows a later change",
+            "spoken_text": "Okay. Cool, cool. Um, oh, will my bag follow me though if I change later?",
+            "speaker": "Matthew",
+            "role": "user",
+            "event_index": 27,
+            "start_seconds": 95.46,
+            "end_seconds": 100.48,
+            "source": "conversations/flight-status-connection-risk/transcripts/annotated-transcript.json"
+          }
+        ],
+        "communicate": [
+          {
+            "fact": "itinerary",
+            "value": "Austin to Dallas to Richmond for one passenger",
+            "spoken_text": "Yeah, I have Austin to Dallas to Richmond, one passenger. Is that correct?",
+            "speaker": "Colin",
+            "role": "assistant",
+            "event_index": 8,
+            "start_seconds": 30.08,
+            "end_seconds": 35.06,
+            "source": "conversations/flight-status-connection-risk/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "first_flight_status",
+            "value": "Flight 338 delayed 40 minutes because of a late inbound aircraft",
+            "spoken_text": "Yeah, Flight 338 looks like it's currently delayed for 40 minutes because of a late inbound aircraft.",
+            "speaker": "Colin",
+            "role": "assistant",
+            "event_index": 12,
+            "start_seconds": 42.7,
+            "end_seconds": 49.66,
+            "source": "conversations/flight-status-connection-risk/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "connection_risk",
+            "value": "Tight connection; Richmond flight on time and gates in different concourses",
+            "spoken_text": "Oh, it's definitely gonna be tight. The Richmond flight is on time right now, and the gates are in, like, different concourses.",
+            "speaker": "Colin",
+            "role": "assistant",
+            "event_index": 19,
+            "start_seconds": 58.46,
+            "end_seconds": 65.34,
+            "source": "conversations/flight-status-connection-risk/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "backup_flight",
+            "value": "Later Dallas-to-Richmond nonstop with seats; reservation unchanged",
+            "spoken_text": "Yeah, I'm on it. Um, there's a later nonstop from Dallas to Richmond with seats, but I won't change you unless you ask.",
+            "speaker": "Colin",
+            "role": "assistant",
+            "event_index": 24,
+            "start_seconds": 70.88,
+            "end_seconds": 78.58,
+            "source": "conversations/flight-status-connection-risk/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "bag_update",
+            "value": "Reservation changes update bag allocation; airport controls the physical scan",
+            "spoken_text": "Yes, yes. If the reservation changes, the bag allocation automatically gets updated. Um, yeah, the airport team will control the physical scan.",
+            "speaker": "Colin",
+            "role": "assistant",
+            "event_index": 28,
+            "start_seconds": 100.48,
+            "end_seconds": 108.2,
+            "source": "conversations/flight-status-connection-risk/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "gate_caveat",
+            "value": "Current gates may change; airport monitors are final",
+            "spoken_text": "Yeah, of course. I can read the current gates, but they can change. The airport monitors are definitely the final source, so you should check that once you arrive. I recommend that.",
+            "speaker": "Colin",
+            "role": "assistant",
+            "event_index": 30,
+            "start_seconds": 112.66,
+            "end_seconds": 121.38,
+            "source": "conversations/flight-status-connection-risk/transcripts/annotated-transcript.json"
+          }
+        ]
+      }
+    },
+    {
+      "conversation_id": "proof-of-vehicle-coverage",
+      "domain": "insurance",
+      "goal": "Confirm that a new vehicle is active on the policy and resend its proof-of-coverage card to the verified email address.",
+      "outcome_label": "resolved",
+      "outcome_summary": "The 2026 Honda CR-V was confirmed active as of the scenario date, and its proof-of-coverage card was sent to the verified email ending in gmail.com.",
+      "audio_reference": "conversations/proof-of-vehicle-coverage/audio/full.wav",
+      "timestamp_unit": "seconds_from_audio_start",
+      "timestamp_granularity": "speech_event",
+      "required_information": {
+        "collect": [
+          {
+            "fact": "policy_number",
+            "value": "HP-771-204",
+            "spoken_text": "HP-771-204.",
+            "speaker": "Customer",
+            "role": "user",
+            "event_index": 4,
+            "start_seconds": 13.746,
+            "end_seconds": 15.666,
+            "source": "conversations/proof-of-vehicle-coverage/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "proof_resend_request",
+            "value": "Resend proof-of-coverage card",
+            "spoken_text": "Okay. Can you actually send the proof-of-coverage card again?",
+            "speaker": "Customer",
+            "role": "user",
+            "event_index": 9,
+            "start_seconds": 29.966,
+            "end_seconds": 33.586,
+            "source": "conversations/proof-of-vehicle-coverage/transcripts/annotated-transcript.json"
+          }
+        ],
+        "communicate": [
+          {
+            "fact": "vehicle_coverage_status",
+            "value": "2026 Honda CR-V active as of today",
+            "spoken_text": "Okay, I found the policy. The 2026 Honda CR-V is active as of today actually.",
+            "speaker": "Darren",
+            "role": "assistant",
+            "event_index": 8,
+            "start_seconds": 23.96,
+            "end_seconds": 28.56,
+            "source": "conversations/proof-of-vehicle-coverage/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "proof_delivery",
+            "value": "Proof sent to the email ending in gmail.com",
+            "spoken_text": "Yeah, I've sent it to the email ending in gmail.com.",
+            "speaker": "Darren",
+            "role": "assistant",
+            "event_index": 12,
+            "start_seconds": 34.14,
+            "end_seconds": 38.3,
+            "source": "conversations/proof-of-vehicle-coverage/transcripts/annotated-transcript.json"
+          }
+        ]
+      }
+    },
+    {
+      "conversation_id": "vehicle-pickup-readiness",
+      "domain": "automotive_service",
+      "goal": "Verify whether a Honda Civic is released for same-day pickup, clarify whether the recommended cabin filter was added, and provide the current invoice total and pickup hours.",
+      "outcome_label": "resolved",
+      "outcome_summary": "Brake work and inspection were complete and the Civic was released for pickup; the cabin filter remained an unadded recommendation, the invoice total was $486.12, and the customer planned to arrive around 5 PM before the 6 PM desk closing.",
+      "audio_reference": "conversations/vehicle-pickup-readiness/audio/full.wav",
+      "timestamp_unit": "seconds_from_audio_start",
+      "timestamp_granularity": "speech_event",
+      "required_information": {
+        "collect": [
+          {
+            "fact": "repair_order_number",
+            "value": "PH-73164",
+            "spoken_text": "Yeah, I do. It's P-H-73164.",
+            "speaker": "Michael",
+            "role": "user",
+            "event_index": 4,
+            "start_seconds": 14.84,
+            "end_seconds": 20.96,
+            "source": "conversations/vehicle-pickup-readiness/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "pickup_request",
+            "value": "Pick up the vehicle today",
+            "spoken_text": "Hey, I got a text saying my Civic may be ready. Uh, can I pick it up today?",
+            "speaker": "Michael",
+            "role": "user",
+            "event_index": 2,
+            "start_seconds": 4.2,
+            "end_seconds": 9.24,
+            "source": "conversations/vehicle-pickup-readiness/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "cabin_filter_question",
+            "value": "Whether the cabin filter was added",
+            "spoken_text": "Okay, great. Uh, did they add the cabin filter they mentioned?",
+            "speaker": "Michael",
+            "role": "user",
+            "event_index": 9,
+            "start_seconds": 32.32,
+            "end_seconds": 35.36,
+            "source": "conversations/vehicle-pickup-readiness/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "arrival_plan",
+            "value": "Around 5 PM",
+            "spoken_text": "Okay, perfect. Yeah, I'll be there around 5.",
+            "speaker": "Michael",
+            "role": "user",
+            "event_index": 12,
+            "start_seconds": 51.04,
+            "end_seconds": 52.7,
+            "source": "conversations/vehicle-pickup-readiness/transcripts/annotated-transcript.json"
+          }
+        ],
+        "communicate": [
+          {
+            "fact": "pickup_status",
+            "value": "Brake work and inspection complete; vehicle released for pickup",
+            "spoken_text": "Let me check for you. The brake work and inspection are complete, and the car has been released for pickup.",
+            "speaker": "Ryan",
+            "role": "assistant",
+            "event_index": 8,
+            "start_seconds": 25.32,
+            "end_seconds": 31.08,
+            "source": "conversations/vehicle-pickup-readiness/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "cabin_filter_status",
+            "value": "Recommendation not added to today's invoice",
+            "spoken_text": "Um, no. I'm seeing here that it's still listed as a recommendation,",
+            "speaker": "Ryan",
+            "role": "assistant",
+            "event_index": 10,
+            "start_seconds": 37.04,
+            "end_seconds": 41.7,
+            "source": "conversations/vehicle-pickup-readiness/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "invoice_total",
+            "value": "$486.12",
+            "spoken_text": "but it wasn't added to today's invoice. I'm seeing here that your total is $486.12.",
+            "speaker": "Ryan",
+            "role": "assistant",
+            "event_index": 11,
+            "start_seconds": 42.78,
+            "end_seconds": 51.04,
+            "source": "conversations/vehicle-pickup-readiness/transcripts/annotated-transcript.json"
+          },
+          {
+            "fact": "service_desk_hours",
+            "value": "Open until 6 PM",
+            "spoken_text": "Sounds good. The service desk should be open until 6, so yeah.",
+            "speaker": "Ryan",
+            "role": "assistant",
+            "event_index": 13,
+            "start_seconds": 53.88,
+            "end_seconds": 57.92,
+            "source": "conversations/vehicle-pickup-readiness/transcripts/annotated-transcript.json"
           }
         ]
       }

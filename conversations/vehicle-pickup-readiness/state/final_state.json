@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.2.0",
+  "conversation_id": "vehicle-pickup-readiness",
+  "derivation": "reconstructed_from_tool_results",
+  "as_of": "2026-09-03T16:00:00-04:00",
+  "entities": {
+    "e65c2995-7d78-5704-8822-ffbe8be16e19": {
+      "entity_type": "repair_order",
+      "repair_order_id": "e65c2995-7d78-5704-8822-ffbe8be16e19",
+      "repair_order_number": "PH-73164",
+      "vehicle": {
+        "make": "Honda",
+        "model": "Civic"
+      },
+      "pickup_status": "released_for_pickup",
+      "invoice_total": 486.12,
+      "currency": "USD",
+      "cabin_filter_status": "recommended_not_added"
+    }
+  }
+}

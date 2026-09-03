@@ -74,8 +74,10 @@ timing.
 
 All annotated transcripts are under [conversations/](conversations/):
 
-- Airline: [family reservation](conversations/airline-family-reservation/transcripts/annotated-transcript.json)
-- Banking: [account email and card application](conversations/banking-account-email-card-application/transcripts/annotated-transcript.json), [declined card while traveling](conversations/banking-declined-card-travel/transcripts/annotated-transcript.json), [missing referral reward](conversations/banking-referral-missing-reward/transcripts/annotated-transcript.json), and [transaction dispute session](conversations/banking-transaction-dispute-session/transcripts/annotated-transcript.json)
+- Airline: [family reservation](conversations/airline-family-reservation/transcripts/annotated-transcript.json) and [flight status and connection risk](conversations/flight-status-connection-risk/transcripts/annotated-transcript.json)
+- Automotive service: [vehicle pickup readiness](conversations/vehicle-pickup-readiness/transcripts/annotated-transcript.json)
+- Banking: [account email and card application](conversations/banking-account-email-card-application/transcripts/annotated-transcript.json), [declined card while traveling](conversations/banking-declined-card-travel/transcripts/annotated-transcript.json), [duplicate streaming charge](conversations/duplicate-streaming-charge/transcripts/annotated-transcript.json), [missing referral reward](conversations/banking-referral-missing-reward/transcripts/annotated-transcript.json), and [transaction dispute session](conversations/banking-transaction-dispute-session/transcripts/annotated-transcript.json)
+- Insurance: [proof of vehicle coverage](conversations/proof-of-vehicle-coverage/transcripts/annotated-transcript.json)
 - Pharmacy: [travel refill](conversations/pharmacy-travel-refill/transcripts/annotated-transcript.json)
 - Retail: [damaged-item replacement](conversations/retail-damaged-item-replacement/transcripts/annotated-transcript.json), [missing package](conversations/retail-missing-package/transcripts/annotated-transcript.json), and [refund bank fee](conversations/retail-refund-bank-fee/transcripts/annotated-transcript.json)
 - Telecom: [data-usage cleanup](conversations/telecom-data-usage-cleanup/transcripts/annotated-transcript.json)
@@ -87,7 +89,9 @@ The tool registry for each domain is located at
 descriptions, JSON-Schema argument contracts, and typed result contracts.
 
 - [Airline tool registry](domains/airline/tool_registry.json)
+- [Automotive-service tool registry](domains/automotive_service/tool_registry.json)
 - [Banking tool registry](domains/banking/tool_registry.json)
+- [Insurance tool registry](domains/insurance/tool_registry.json)
 - [Pharmacy tool registry](domains/pharmacy/tool_registry.json)
 - [Retail tool registry](domains/retail/tool_registry.json)
 - [Telecom tool registry](domains/telecom/tool_registry.json)
@@ -98,7 +102,9 @@ The policy used by each CSR is located at `domains/<domain>/policy.md` and is
 also embedded in the system message of each annotated transcript.
 
 - [Airline policy](domains/airline/policy.md)
+- [Automotive-service policy](domains/automotive_service/policy.md)
 - [Banking policy](domains/banking/policy.md)
+- [Insurance policy](domains/insurance/policy.md)
 - [Pharmacy policy](domains/pharmacy/policy.md)
 - [Retail policy](domains/retail/policy.md)
 - [Telecom policy](domains/telecom/policy.md)
@@ -119,33 +125,25 @@ speech transcript is stored at
 
 The [conversation manifest](conversation_manifest.json) provides a one-line
 goal, outcome label, outcome summary, scenario time, and file pointers for all
-10 conversations. The [facts.json](facts.json) file provides the required information for all
-10 conversations. It separates facts the agent had to collect from facts the
+14 conversations. The [facts.json](facts.json) file provides the required information for all
+14 conversations. It separates facts the agent had to collect from facts the
 agent had to communicate, with each canonical value, exact spoken text,
 speaker, event index, and audio start and end timestamp.
 
 ## 5. Turn-taking
 
-All 10 conversations include:
+All 14 conversations include:
 
-- `transcripts/words.json` with word-level timestamps, speaker labels, and
-  confidence.
+- `transcripts/words.json` with word-level timestamps and speaker labels.
 - `turn_taking.json` with turn segments, pause boundaries, backchannel and
   overlap candidates, and speaker metadata.
 
-Each `turn_taking.json` names its timestamp source in its `source` field:
-eight conversations use ElevenLabs Scribe v2 word timestamps, and the airline
-and telecom conversations use Scribe v2 word timestamps aligned onto the
-verbatim transcript words from the channel-isolated speaker stems, so their
-word sequence matches the annotated transcript exactly and every word falls
-inside its utterance's timestamp window.
-Backchannel and overlap fields are automatic candidates, not human-accepted
-gold. Accent and environment fields are marked `not_human_annotated` rather
-than inferred.
+In each `transcripts/words.json`, the word sequence matches the annotated
+speech and every word falls inside its utterance timestamp window.
 
 ## 6. Audio
 
-All 30 delivered audio files are 48 kHz, 24-bit, mono PCM WAV files. Each
+All 42 delivered audio files are 48 kHz, 24-bit, mono PCM WAV files. Each
 conversation includes synchronized `audio/full.wav`, `audio/speaker-1.wav`,
 and `audio/speaker-2.wav` tracks.
 
@@ -171,7 +169,7 @@ chronological message above:
   `output_text` item
 
 This keeps both the message-level view and the timestamped `event_metadata`
-view complete for all 10 conversations. The `source_text` provenance token is
+view complete for all 14 conversations. The `source_text` provenance token is
 kept only in `event_metadata`; it is omitted from message-level annotations
 because it is not part of the displayed message text.
 
@@ -208,11 +206,10 @@ For example:
 
 The [`emotional_distribution.json`](emotional_distribution.json) file reports the
 total speech-turn denominator, category counts, role breakdowns, and
-per-conversation counts. The ten supplied human-annotated combined transcripts
-cover every conversation and contribute 50 emotion-labeled turns across 16
-categories: 41 user turns and 9 agent turns. The remaining 556 of 606 speech
-turns have no supplied emotion label. All counts use only explicit labels; no
-emotion is inferred from ordinary dialogue wording.
+per-conversation counts. The fourteen supplied human-annotated combined
+transcripts cover every conversation and contribute 59 emotion-labeled turns
+across 18 categories: 50 user turns and 9 agent turns. The remaining 616 of
+675 speech turns have no supplied emotion label.
 
 The distribution counts each speech event once from the timestamped
 `event_metadata` copy, rather than double-counting the mirrored message-level

@@ -1,0 +1,199 @@
+{
+  "schema_version": "0.2.0",
+  "registry_name": "automotive_service",
+  "registry_version": "0.4.0",
+  "tools": [
+    {
+      "name": "get_repair_order",
+      "description": "Retrieve repair completion, recommendations, invoice total, release status, and pickup hours for one repair order.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "repair_order_number": {
+            "type": "string",
+            "description": "Customer-facing repair-order number.",
+            "pattern": "^[A-Z]{2}-[0-9]{5}$"
+          }
+        },
+        "required": [
+          "repair_order_number"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "type": "object",
+        "properties": {
+          "repair_order_id": {
+            "type": "string",
+            "description": "Opaque repair-order identifier.",
+            "format": "uuid"
+          },
+          "repair_order_number": {
+            "type": "string",
+            "description": "Customer-facing repair-order number."
+          },
+          "vehicle": {
+            "type": "object",
+            "properties": {
+              "make": {
+                "type": "string",
+                "description": "Vehicle make."
+              },
+              "model": {
+                "type": "string",
+                "description": "Vehicle model."
+              }
+            },
+            "required": [
+              "make",
+              "model"
+            ],
+            "additionalProperties": false
+          },
+          "work_items": {
+            "type": "array",
+            "description": "Authorized work items.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "type": "string",
+                  "description": "Work description."
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Work status.",
+                  "enum": [
+                    "complete",
+                    "in_progress",
+                    "cancelled"
+                  ]
+                }
+              },
+              "required": [
+                "description",
+                "status"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "recommendations": {
+            "type": "array",
+            "description": "Unapproved recommendations.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "type": "string",
+                  "description": "Recommendation."
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Recommendation status.",
+                  "enum": [
+                    "recommended_not_added",
+                    "approved",
+                    "declined"
+                  ]
+                }
+              },
+              "required": [
+                "description",
+                "status"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0
+          },
+          "pickup_status": {
+            "type": "string",
+            "description": "Vehicle pickup state.",
+            "enum": [
+              "released_for_pickup",
+              "not_ready"
+            ]
+          },
+          "invoice_total": {
+            "type": "number",
+            "description": "Current invoice total.",
+            "minimum": 0
+          },
+          "currency": {
+            "type": "string",
+            "description": "ISO 4217 currency code.",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "service_desk_closes_at": {
+            "type": "string",
+            "description": "Local service desk closing time.",
+            "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+          },
+          "retrieved_at": {
+            "type": "string",
+            "description": "Retrieval timestamp.",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "repair_order_id",
+          "repair_order_number",
+          "vehicle",
+          "work_items",
+          "recommendations",
+          "pickup_status",
+          "invoice_total",
+          "currency",
+          "service_desk_closes_at",
+          "retrieved_at"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "transfer_to_specialist",
+      "description": "Transfer the conversation when policy or tooling requires a specialist.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "description": "Why transfer is required."
+          },
+          "summary": {
+            "type": "string",
+            "description": "Verified context already collected."
+          }
+        },
+        "required": [
+          "reason",
+          "summary"
+        ],
+        "additionalProperties": false
+      },
+      "result_schema": {
+        "type": "object",
+        "properties": {
+          "transfer_id": {
+            "type": "string",
+            "description": "Transfer identifier.",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string",
+            "description": "Transfer state.",
+            "enum": [
+              "queued",
+              "connected"
+            ]
+          }
+        },
+        "required": [
+          "transfer_id",
+          "status"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

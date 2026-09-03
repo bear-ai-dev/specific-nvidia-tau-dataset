@@ -1,0 +1,13 @@
+[00:00:00.000 - 00:00:03.680] Darren: Hey, thank you for calling HarborPoint Insurance. This is Darren. How can I help?
+[00:00:04.646 - 00:00:08.066] Customer: I'm at the dealership, and they need proof that my new car is covered.
+[00:00:09.330 - 00:00:11.250] Darren: Yeah, I can check that. What's your policy number?
+[00:00:13.746 - 00:00:15.666] Customer: HP-771-204.
+[00:00:17.770 - 00:00:19.770] Darren: Awesome. Let me find it really quick.
+[00:00:23.910] [tool] get_policy_by_number: calling tool to retrieve the insurance policy by policy number
+[00:00:23.960 - 00:00:28.560] Darren: Okay, I found the policy. The 2026 Honda CR-V is active as of today actually.
+[00:00:29.966 - 00:00:33.586] Customer: Okay. Can you actually send the proof-of-coverage card again?
+[00:00:34.090] [tool] resend_proof_of_coverage: calling tool to resend proof of coverage by email
+[00:00:34.140 - 00:00:38.300] Darren: Yeah, I've sent it to the email ending in gmail.com.
+[00:00:39.206 - 00:00:40.586] Customer: Okay, let me check real quick.
+[00:00:42.206 - 00:00:44.626] Customer: Okay, I just got it. That's all I needed. Thank you.
+[00:00:44.940 - 00:00:48.520] Darren: Okay, perfect. You're all set. Have a good afternoon, and call us if you ever need anything-
