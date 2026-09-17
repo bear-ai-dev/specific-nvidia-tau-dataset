@@ -11,11 +11,11 @@
         "date_of_birth": "1988-06-14"
       },
       "expected_output": {
-        "patient_id": "patient-miles-carter",
+        "patient_id": "0e28b5d4-a93b-437e-9ba0-cbe4e7d9dbbb",
         "match": "unique",
         "verified_notification_destinations": [
           {
-            "destination_id": "patient-miles-mobile",
+            "destination_id": "94c55afb-c756-4c14-9f4a-0c0cf2e3d69e",
             "channel": "sms",
             "masked_destination": "***-***-on-file",
             "verified": true
@@ -30,18 +30,18 @@
       "call_id": "ph-002",
       "name": "get_prescription",
       "arguments": {
-        "patient_id": "patient-miles-carter",
+        "patient_id": "0e28b5d4-a93b-437e-9ba0-cbe4e7d9dbbb",
         "medication_name": "albuterol inhaler"
       },
       "expected_output": {
-        "prescription_id": "prescription-albuterol",
-        "medication_id": "albuterol-inhaler",
+        "prescription_id": "9670dbb4-6227-48ed-99fc-7ce746085502",
+        "medication_id": "9dcd4906-4db3-4290-bccd-afde111823cb",
         "medication_name": "albuterol inhaler",
         "received_at": "2026-08-27T10:42:00-05:00",
         "prescription_valid": true,
         "workflow_status": "claim_rejected",
         "fill_store": {
-          "store_id": "oak-street-current",
+          "store_id": "8e22d41d-843c-4e73-95c0-3c9877366ba9",
           "display_name": "Oak Street Pharmacy",
           "counter_closes_at": "19:00",
           "front_store_closes_later": true
@@ -55,7 +55,7 @@
           "status": "blocked_by_claim"
         },
         "notification": {
-          "ready_alert_destination_id": "patient-miles-mobile"
+          "ready_alert_destination_id": "94c55afb-c756-4c14-9f4a-0c0cf2e3d69e"
         },
         "payment_options": [
           "pay_at_pickup"
@@ -69,12 +69,12 @@
       "call_id": "ph-003",
       "name": "request_claim_override",
       "arguments": {
-        "prescription_id": "prescription-albuterol",
+        "prescription_id": "9670dbb4-6227-48ed-99fc-7ce746085502",
         "reason": "lost_medication",
         "urgency_context": "Patient leaves town on the morning of 2026-08-28 and needs the inhaler on the evening of 2026-08-27"
       },
       "expected_output": {
-        "override_id": "override-lost-medication",
+        "override_id": "9e90544a-3497-4aee-a1f0-4437d4f4684c",
         "status": "approved_one_time"
       },
       "state_effect": "payer_override_approved",
@@ -85,8 +85,8 @@
       "call_id": "ph-004",
       "name": "submit_prescription_claim",
       "arguments": {
-        "prescription_id": "prescription-albuterol",
-        "override_id": "override-lost-medication"
+        "prescription_id": "9670dbb4-6227-48ed-99fc-7ce746085502",
+        "override_id": "9e90544a-3497-4aee-a1f0-4437d4f4684c"
       },
       "expected_output": {
         "claim_status": "paid",
@@ -111,7 +111,7 @@
       "call_id": "ph-005",
       "name": "update_prescription",
       "arguments": {
-        "prescription_id": "prescription-albuterol",
+        "prescription_id": "9670dbb4-6227-48ed-99fc-7ce746085502",
         "priority_reason": "traveling on 2026-08-28; waiting for pickup on the evening of 2026-08-27"
       },
       "expected_output": {
@@ -133,13 +133,13 @@
       "call_id": "ph-006",
       "name": "search_pharmacy_locations",
       "arguments": {
-        "origin_store_id": "oak-street-current",
+        "origin_store_id": "8e22d41d-843c-4e73-95c0-3c9877366ba9",
         "open_after_local_time": "19:00"
       },
       "expected_output": {
         "locations": [
           {
-            "store_id": "park-avenue",
+            "store_id": "155059ca-b6aa-4372-b0af-86c2d681c393",
             "display_name": "Park Avenue",
             "counter_closes_at": "21:00",
             "timezone": "America/Chicago"
@@ -154,12 +154,12 @@
       "call_id": "ph-007",
       "name": "get_store_inventory",
       "arguments": {
-        "store_id": "park-avenue",
-        "medication_id": "albuterol-inhaler"
+        "store_id": "155059ca-b6aa-4372-b0af-86c2d681c393",
+        "medication_id": "9dcd4906-4db3-4290-bccd-afde111823cb"
       },
       "expected_output": {
-        "store_id": "park-avenue",
-        "medication_id": "albuterol-inhaler",
+        "store_id": "155059ca-b6aa-4372-b0af-86c2d681c393",
+        "medication_id": "9dcd4906-4db3-4290-bccd-afde111823cb",
         "in_stock": true,
         "reserved": false
       },
@@ -171,9 +171,9 @@
       "call_id": "ph-008",
       "name": "update_prescription",
       "arguments": {
-        "prescription_id": "prescription-albuterol",
+        "prescription_id": "9670dbb4-6227-48ed-99fc-7ce746085502",
         "notification_channel": "sms",
-        "notification_destination_id": "patient-miles-mobile"
+        "notification_destination_id": "94c55afb-c756-4c14-9f4a-0c0cf2e3d69e"
       },
       "expected_output": {
         "status": "updated",
@@ -183,7 +183,7 @@
         ],
         "notification": {
           "ready_alert": "enabled",
-          "destination_id": "patient-miles-mobile",
+          "destination_id": "94c55afb-c756-4c14-9f4a-0c0cf2e3d69e",
           "masked_destination": "***-***-on-file",
           "verified": true
         },

@@ -25,7 +25,7 @@ INSERT INTO customers
     (customer_id, display_name, email, masked_email, masked_phone,
      fulfillment_region, address_label)
 VALUES
-    ('customer-ethan-patel', 'Ethan Patel', 'ethan.patel@northmail.com',
+    ('c51d2171-c10b-489b-9186-a93ebd98613d', 'Ethan Patel', 'ethan.patel@northmail.com',
      'e***@northmail.com', '***-***-4471', 'nj-metro', 'home_address_on_order');
 
 -- A second Patel on the register. The caller is resolved by the verified email
@@ -50,15 +50,15 @@ VALUES
     -- Placed date and destination label are filler: the recorded results never
     -- disclosed either for this order. The delivered status is implied by the
     -- customer having opened the box.
-    ('5820454086', 'customer-ethan-patel', '2026-08-22', 'delivered',
+    ('5820454086', 'c51d2171-c10b-489b-9186-a93ebd98613d', '2026-08-22', 'delivered',
      'home_address_on_order', NULL, '12-cup coffee maker'),
     -- Carried over from the missing-package call. The representative item is
     -- the exact phrase the account summary reads back.
-    ('5820447319', 'customer-ethan-patel', '2026-08-21', 'delivered',
+    ('5820447319', 'c51d2171-c10b-489b-9186-a93ebd98613d', '2026-08-21', 'delivered',
      'home_address_on_order', NULL, 'blue noise-canceling headphones'),
-    ('5820451086', 'customer-ethan-patel', '2026-08-10', 'delivered',
+    ('5820451086', 'c51d2171-c10b-489b-9186-a93ebd98613d', '2026-08-10', 'delivered',
      'home_address_on_order', NULL, 'desk lamp'),
-    ('5820459086', 'customer-ethan-patel', '2026-07-28', 'delivered',
+    ('5820459086', 'c51d2171-c10b-489b-9186-a93ebd98613d', '2026-07-28', 'delivered',
      'home_address_on_order', NULL, 'wool socks'),
     ('5820454886', 'customer-nisha-patel', '2026-08-18', 'delivered',
      'home_address_on_order', NULL, 'yoga mat');
@@ -128,14 +128,14 @@ VALUES
 -- invented, so the case is internally consistent with a trace opened under the
 -- same policy the day before.
 INSERT INTO cases
-    (case_id, order_reference, customer_id, case_type, status, reason,
+    (case_number, order_reference, customer_id, case_type, status, reason,
      item_description, carrier_response, deadline_at, deadline_display,
      carrier_may_contact_customer, replacement_created, requested_resolution,
      needed_by, approval_required, approval_channel, next_action,
      eligibility_triggers, fee_reimbursement_approved, pickup_guaranteed,
      opened_at)
 VALUES
-    ('WST481662', '5820447319', 'customer-ethan-patel', 'delivery_trace',
+    ('8cf648a4-ca60-4387-bc11-ec38f426123a', '5820447319', 'c51d2171-c10b-489b-9186-a93ebd98613d', 'delivery_trace',
      'open', 'delivered_not_received', 'blue noise-canceling headphones',
      'none', '2026-08-26T18:00:00-04:00', '18:00 today',
      TRUE, FALSE, 'replacement', '2026-08-27', TRUE, 'trace_notification',
@@ -143,16 +143,16 @@ VALUES
      ARRAY['carrier_confirms_missing', 'carrier_response_deadline_expires'],
      FALSE, FALSE, '2026-08-25T15:52:00-04:00');
 
-INSERT INTO case_items (case_id, item_reference)
-VALUES ('WST481662', 'blue-noise-canceling-headphones');
+INSERT INTO case_items (case_number, item_reference)
+VALUES ('8cf648a4-ca60-4387-bc11-ec38f426123a', 'blue-noise-canceling-headphones');
 
 -- The note the agent left on yesterday's call. Not read back here; it is the
 -- reason the pickup preference below exists and is kept so the case reads as a
 -- case rather than as a header.
-INSERT INTO case_notes (case_id, note_no, note, topic, visible_to_next_reviewer,
+INSERT INTO case_notes (case_number, note_no, note, topic, visible_to_next_reviewer,
                         created_at)
 VALUES
-    ('WST481662', 1,
+    ('8cf648a4-ca60-4387-bc11-ec38f426123a', 1,
      'Preserve exact blue variant and original price if replacement becomes eligible.',
      NULL, TRUE, '2026-08-25T15:52:00-04:00');
 
@@ -160,10 +160,10 @@ VALUES
 -- read back verbatim by this conversation's first recorded result, where it
 -- appears under the headphones case and pointedly not under the coffee maker.
 INSERT INTO case_preferences
-    (case_id, pickup_location, pickup_site, review_instruction,
+    (case_number, pickup_location, pickup_site, review_instruction,
      visible_to_next_reviewer, recorded_at)
 VALUES
-    ('WST481662', 'West 23rd Street pickup counter', 'West 23rd Street',
+    ('8cf648a4-ca60-4387-bc11-ec38f426123a', 'West 23rd Street pickup counter', 'West 23rd Street',
      'Check West 23rd Street pickup availability first after replacement eligibility.',
      TRUE, '2026-08-25T15:52:00-04:00');
 
@@ -173,16 +173,16 @@ VALUES
 -- the account, which is what makes the notifications read on the replacement
 -- order a scoped query rather than a table scan.
 INSERT INTO notifications
-    (notification_id, case_id, order_reference, channel, template, message_type,
+    (notification_id, case_number, order_reference, channel, template, message_type,
      masked_destination, status, status_index, status_progression,
      subject_prefix, optional_photo_link, photo_link_section, included_fields,
      sent_at, sent_at_display, created_at)
 VALUES
-    ('notification-WST481662', 'WST481662', '5820447319', 'email',
+    ('notification-8cf648a4-ca60-4387-bc11-ec38f426123a', '8cf648a4-ca60-4387-bc11-ec38f426123a', '5820447319', 'email',
      'delivery_trace_confirmation', 'delivery_trace_confirmation',
      'e***@northmail.com', 'delivered', 1, ARRAY['sent', 'delivered'],
      'Your Westline delivery trace', NULL, NULL,
-     ARRAY['case_id', 'status', 'carrier_response_deadline', 'approval_link'],
+     ARRAY['case_number', 'status', 'carrier_response_deadline', 'approval_link'],
      '2026-08-25T15:53:00-04:00', NULL, '2026-08-25T15:53:00-04:00');
 
 -- The resolutions the damage claim has already unlocked on the coffee maker.
@@ -242,5 +242,10 @@ SELECT '5820454086', 'eligible_resolutions', 1,
           FROM eligible_resolutions
          WHERE order_reference = '5820454086'
        ) AS priced;
+
+INSERT INTO scenario (key, value) VALUES
+    ('target_case_id', '8cf648a4-ca60-4387-bc11-ec38f426123a'),
+    ('target_case_number', 'WST481662')
+ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
 
 COMMIT;

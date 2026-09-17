@@ -39,7 +39,7 @@ the last reports that case's type, status, absent carrier response, and 18:00
 deadline.
 
 `sql/004_scenario.sql` therefore seeds the headphones order, its item, its
-disagreeing carrier scan, the `WST481662` delivery trace, the note and pickup
+disagreeing carrier scan, the `8cf648a4-ca60-4387-bc11-ec38f426123a` delivery trace, the note and pickup
 preference recorded on it, and the confirmation email that was sent, all as
 pre-existing rows with yesterday's timestamps. The deadline that was
 `18:00 tomorrow` in yesterday's recording is `18:00 today` in this one, because

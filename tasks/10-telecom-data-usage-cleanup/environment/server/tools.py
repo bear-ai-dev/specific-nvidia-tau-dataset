@@ -16,7 +16,7 @@ what a later usage read reports, and why buying a second one changes it again.
 """
 from __future__ import annotations
 
-from db import NotFound, ToolRefusal, all_rows, allocate_id, one, scalar
+from db import NotFound, ToolRefusal, all_rows, allocate_id, one, scalar, scenario_value
 from projection import as_float, as_int, as_list_always, compact
 
 
@@ -328,7 +328,8 @@ def verify_customer_identity(cur, args) -> dict:
     # caller on the same channel refreshes it rather than accumulating identical
     # records, so the identifier is derived from the account stem and the channel
     # instead of being drawn from a counter.
-    verification_id = f"verification-{customer['slug']}-{channel}"
+    verification_id = (scenario_value(cur, "next_identity_verification_id")
+                       or f"verification-{customer['slug']}-{channel}")
     verified_at, verified_at_display = _tool_time(cur, "verify_customer_identity")
 
     cur.execute(
@@ -664,7 +665,7 @@ def _allocate_transaction_id(cur, line_id: str, gigabytes: float) -> str:
     """Issue the add-on transaction identifier for a purchase on this line.
 
     The allocator holds the account stem; the size of the add-on completes it,
-    which is where `addon-transaction-benjamin-5gb` comes from. The issued
+    which is where `dfdab773-2580-4908-91cf-99a2b4826547` comes from. The issued
     ordinal is appended only from the second purchase onward, so the first
     purchase reads as a name and a repeat cannot collide with it. Written here
     rather than through db.allocate_id because that helper substitutes the
@@ -740,7 +741,8 @@ def add_data_addon(cur, args) -> dict:
             f"account {line['customer_id']!r} has no open bill to charge")
 
     gigabytes = as_float(offer["data_gigabytes"])
-    transaction_id = _allocate_transaction_id(cur, line["line_id"], gigabytes)
+    transaction_id = (scenario_value(cur, "next_addon_transaction_id")
+                      or _allocate_transaction_id(cur, line["line_id"], gigabytes))
     effective_at, effective_at_display = _tool_time(cur, "add_data_addon")
 
     # An add-on that only takes effect next cycle is not usable data yet, so it

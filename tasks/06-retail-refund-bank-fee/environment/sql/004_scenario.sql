@@ -239,4 +239,12 @@ SELECT '5820465624', 'refunds', 2,
   FROM refunds
  WHERE order_reference = '5820465624' AND ledger_status IS NOT NULL;
 
+INSERT INTO scenario (key, value) VALUES
+    ('next_support_case_id', 'b0fee5fa-0534-4c47-a42a-b3a252106888'),
+    ('next_support_case_number', 'WST735204'),
+    ('target_case_id', 'b0fee5fa-0534-4c47-a42a-b3a252106888'),
+    ('target_case_number', 'WST735204'),
+    ('next_notification_id', '43e020c5-a9da-4175-aec7-5989435d95a6')
+ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
+
 COMMIT;

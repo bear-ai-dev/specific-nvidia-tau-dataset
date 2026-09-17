@@ -17,9 +17,9 @@ INSERT INTO id_allocator (entity_type, scope, next_value, template) VALUES
     ('specialist_transfer', '', 1, 'specialist-transfer-{n:04d}');
 
 INSERT INTO card_products (product_id, product, family, category, annual_fee, foreign_transaction_fee, lounge_membership, airline_incidental_credit, automatic_free_checked_bag, airline_specific_rules_apply, active, display_rank) VALUES
-    ('summit-journey', 'Summit Journey', 'summit', 'travel', '95.00', FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, 10),
-    ('summit-reserve', 'Summit Reserve', 'summit', 'travel', '395.00', FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, 20),
-    ('summit-reserve-elite', 'Summit Reserve Elite', 'summit', 'travel', '795.00', FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, 30),
+    ('c6c675e6-0faf-4004-a5de-881eaaa805b7', 'Summit Journey', 'summit', 'travel', '95.00', FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, 10),
+    ('acda644c-1054-410a-98a1-39fad9fe411e', 'Summit Reserve', 'summit', 'travel', '395.00', FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, 20),
+    ('acda644c-1054-410a-98a1-39fad9fe411e-elite', 'Summit Reserve Elite', 'summit', 'travel', '795.00', FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, 30),
     ('everyday-cash', 'Everyday Cash', 'everyday', 'cash_back', '0.00', TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, 40),
     ('everyday-cash-plus', 'Everyday Cash Plus', 'everyday', 'cash_back', '95.00', TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, 50),
     ('everyday-cash-legacy', 'Everyday Cash Legacy', 'everyday', 'cash_back', '39.00', TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, 60),
@@ -31,11 +31,11 @@ INSERT INTO card_products (product_id, product, family, category, annual_fee, fo
     ('ledger-business-premier', 'Ledger Business Premier', 'ledger', 'business', '250.00', FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, 120);
 
 INSERT INTO welcome_offers (offer_id, product_id, points, spend, days, active, ends_on, display_rank) VALUES
-    ('offer-summit-journey-2026h2', 'summit-journey', 40000, '3000.00', 90, TRUE, '2026-12-31', 10),
-    ('offer-summit-reserve-2026h2', 'summit-reserve', 70000, '5000.00', 90, TRUE, '2026-12-31', 20),
-    ('offer-summit-reserve-elite', 'summit-reserve-elite', 100000, '8000.00', 90, TRUE, '2026-12-31', 30),
-    ('offer-summit-journey-2026h1', 'summit-journey', 25000, '2000.00', 60, FALSE, '2026-06-30', 40),
-    ('offer-summit-reserve-2025h2', 'summit-reserve', 60000, '5000.00', 90, FALSE, '2025-12-31', 50),
+    ('offer-c6c675e6-0faf-4004-a5de-881eaaa805b7-2026h2', 'c6c675e6-0faf-4004-a5de-881eaaa805b7', 40000, '3000.00', 90, TRUE, '2026-12-31', 10),
+    ('offer-acda644c-1054-410a-98a1-39fad9fe411e-2026h2', 'acda644c-1054-410a-98a1-39fad9fe411e', 70000, '5000.00', 90, TRUE, '2026-12-31', 20),
+    ('offer-acda644c-1054-410a-98a1-39fad9fe411e-elite', 'acda644c-1054-410a-98a1-39fad9fe411e-elite', 100000, '8000.00', 90, TRUE, '2026-12-31', 30),
+    ('offer-c6c675e6-0faf-4004-a5de-881eaaa805b7-2026h1', 'c6c675e6-0faf-4004-a5de-881eaaa805b7', 25000, '2000.00', 60, FALSE, '2026-06-30', 40),
+    ('offer-acda644c-1054-410a-98a1-39fad9fe411e-2025h2', 'acda644c-1054-410a-98a1-39fad9fe411e', 60000, '5000.00', 90, FALSE, '2025-12-31', 50),
     ('offer-everyday-cash-2026', 'everyday-cash', 20000, '1000.00', 90, TRUE, '2026-12-31', 60),
     ('offer-everyday-cash-plus-2026', 'everyday-cash-plus', 30000, '2000.00', 90, TRUE, '2026-12-31', 70),
     ('offer-everyday-cash-legacy', 'everyday-cash-legacy', 15000, '1000.00', 60, FALSE, '2024-12-31', 80),
@@ -48,21 +48,21 @@ INSERT INTO welcome_offers (offer_id, product_id, points, spend, days, active, e
     ('offer-ledger-premier-2025', 'ledger-business-premier', 75000, '10000.00', 90, FALSE, '2025-12-31', 150);
 
 INSERT INTO kb_records (record_id, effective_at, query_pattern, priority, projection, subject_product_id, payload) VALUES
-    ('card-products-travel-current', '2026-07-01', 'travel card.*(annual fee|lounge|foreign transaction)', 200, 'travel_card_matches', NULL, '{}'::jsonb),
-    ('summit-reserve-airline-benefits', '2026-07-01', 'summit reserve.*(checked bag|airline|incidental)', 200, 'product_airline_benefits', 'summit-reserve', '{}'::jsonb),
-    ('summit-welcome-offers-current', '2026-07-01', 'welcome (offer|bonus)', 200, 'welcome_offers', NULL, '{"offers_can_change":true,"approval_guaranteed":false}'::jsonb),
-    ('card-application-decision-notice', '2026-07-01', '(decision notice|adverse.action|override underwriting)', 200, NULL, NULL, '{"decision_notice":{"explains_factors":true,"may_include_reconsideration_contact":true},"phone_agent_can_override_underwriting":false}'::jsonb),
-    ('card-application-housing-payment-field', '2026-07-01', 'housing payment', 200, NULL, NULL, '{"guidance":"Enter the amount the applicant is personally responsible for each month and follow the field instructions."}'::jsonb),
-    ('card-application-income-field', '2026-07-01', '(annual income|salary|freelance income|income.*(field|report))', 200, NULL, NULL, '{"guidance":"Report income the applicant can reasonably access and verify, consistent with the application disclosure."}'::jsonb),
-    ('profile-email-login-and-notice-routing', '2026-07-01', '(login identifier|username).*(email|notice)|email change.*(login|notice routing)', 200, NULL, NULL, '{"login_identifier_may_remain_same":true,"future_notices_use_primary_email":true,"unexpected_prompt_guidance":"Use the secure banking site rather than an unexpected message link."}'::jsonb),
+    ('63b6eab2-5559-4d42-a781-47c7c0413493', '2026-07-01', 'travel card.*(annual fee|lounge|foreign transaction)', 200, 'travel_card_matches', NULL, '{}'::jsonb),
+    ('0d57772d-88ff-474b-8c24-5476b7dc1921', '2026-07-01', 'summit reserve.*(checked bag|airline|incidental)', 200, 'product_airline_benefits', 'acda644c-1054-410a-98a1-39fad9fe411e', '{}'::jsonb),
+    ('88b888dd-e6b1-4d27-927c-22d21bdaa700', '2026-07-01', 'welcome (offer|bonus)', 200, 'welcome_offers', NULL, '{"offers_can_change":true,"approval_guaranteed":false}'::jsonb),
+    ('204dbd70-136e-4b56-9036-cf148e95a870', '2026-07-01', '(decision notice|adverse.action|override underwriting)', 200, NULL, NULL, '{"decision_notice":{"explains_factors":true,"may_include_reconsideration_contact":true},"phone_agent_can_override_underwriting":false}'::jsonb),
+    ('4a2df74d-36c6-4669-8ad0-c71d09611681', '2026-07-01', 'housing payment', 200, NULL, NULL, '{"guidance":"Enter the amount the applicant is personally responsible for each month and follow the field instructions."}'::jsonb),
+    ('2adb7239-a280-4c4f-8e5f-1755aa55c925', '2026-07-01', '(annual income|salary|freelance income|income.*(field|report))', 200, NULL, NULL, '{"guidance":"Report income the applicant can reasonably access and verify, consistent with the application disclosure."}'::jsonb),
+    ('f603e573-6b4f-4f50-a390-b18c917712a9', '2026-07-01', '(login identifier|username).*(email|notice)|email change.*(login|notice routing)', 200, NULL, NULL, '{"login_identifier_may_remain_same":true,"future_notices_use_primary_email":true,"unexpected_prompt_guidance":"Use the secure banking site rather than an unexpected message link."}'::jsonb),
     ('referral-qualification-and-posting', '2026-07-01', 'referral.*(qualif|posting|reward)', 200, NULL, NULL, '{"qualifying_purchase_window_days":90,"posting_window":"up to two billing cycles after qualifying purchase posts","excluded":["cash advances","balance transfers","fees","returned purchases"],"ordinary_retail_purchase":"eligible_if_posted_in_window_and_not_returned","purchase_pending_meanings":["qualifying purchase has not posted","referral match is processing","reward has not reached posting stage"]}'::jsonb),
     ('referral-RF8241-offer-version', '2026-08-02', 'RF8241.*(offer|deadline)|(offer|deadline).*RF8241', 210, NULL, NULL, '{"offer":"$100 statement credit","deadline_status":"not_passed","exact_deadline":"available_in_tracker"}'::jsonb),
     ('referral-email-mismatch-and-duplicate-applications', '2026-07-01', '(email|invitation).*(mismatch|differ)|duplicate application', 200, NULL, NULL, '{"email_mismatch_effect":"may delay automated matching","approved_status_meaning":"application is associated to the referral","reapplication_guidance":"do not reapply; use the referred customer''s secure account for card questions"}'::jsonb),
     ('unauthorized-transaction-procedure', '2026-01-15', 'unauthorized transaction', 200, NULL, NULL, '{"steps":["review household use","review saved wallets","submit only if unauthorized"],"posted_charge_can_be_erased":false,"provisional_credit_guaranteed":false,"investigation_timing_basis":"transaction_type","post_submit_outputs":["claim reference","written timing disclosures in secure messages"]}'::jsonb),
     ('unused-dispute-session-rights', '2026-01-15', '(unused|unsubmitted).*(session|dispute)', 200, NULL, NULL, '{"unused_unsubmitted_session_waives_future_rights":false,"guidance":"Contact the bank promptly if a genuinely unauthorized transaction is later discovered."}'::jsonb),
     ('hotel-authorization-holds', '2026-07-01', 'hotel.*(authorization|hold|incidental)', 200, NULL, NULL, '{"incidental_holds_may_exceed_room_total":true,"available_credit_must_cover_full_authorization":true,"authorization_guaranteed":false,"pending_duration":"may remain pending for a few days after checkout depending on merchant finalization"}'::jsonb),
-    ('summit-journey-airline-benefits', '2026-07-01', 'summit journey.*(checked bag|airline|incidental)', 150, 'product_airline_benefits', 'summit-journey', '{}'::jsonb),
-    ('summit-reserve-elite-status', '2026-05-18', 'summit reserve elite', 220, NULL, NULL, '{"guidance":"Summit Reserve Elite is closed to new applications; current cardholders keep their existing terms."}'::jsonb),
+    ('c6c675e6-0faf-4004-a5de-881eaaa805b7-airline-benefits', '2026-07-01', 'summit journey.*(checked bag|airline|incidental)', 150, 'product_airline_benefits', 'c6c675e6-0faf-4004-a5de-881eaaa805b7', '{}'::jsonb),
+    ('acda644c-1054-410a-98a1-39fad9fe411e-elite-status', '2026-05-18', 'summit reserve elite', 220, NULL, NULL, '{"guidance":"Summit Reserve Elite is closed to new applications; current cardholders keep their existing terms."}'::jsonb),
     ('foreign-transaction-fee-basics', '2026-03-02', 'foreign transaction fee', 100, NULL, NULL, '{"guidance":"A foreign-transaction fee applies to purchases processed outside the United States on products that carry one."}'::jsonb),
     ('lounge-access-program-terms', '2026-04-14', 'lounge.*(program|terms|guest)', 100, NULL, NULL, '{"guidance":"Lounge membership follows the lounge programme''s own terms, including guest limits and enrolment steps."}'::jsonb),
     ('cash-back-products-current', '2026-06-22', 'cash back card', 100, NULL, NULL, '{"guidance":"Everyday Cash and Everyday Cash Plus are the current cash-back products."}'::jsonb),

@@ -235,7 +235,7 @@ CREATE TABLE case_type_policy (
 );
 
 CREATE TABLE cases (
-    case_id                      TEXT PRIMARY KEY,
+    case_number                      TEXT PRIMARY KEY,
     order_reference              TEXT NOT NULL REFERENCES orders(order_reference),
     customer_id                  TEXT NOT NULL REFERENCES customers(customer_id),
     case_type                    TEXT NOT NULL REFERENCES case_type_policy(case_type),
@@ -280,25 +280,25 @@ CREATE TABLE cases (
     CHECK ((deadline_at IS NULL) = (deadline_display IS NULL))
 );
 
-CREATE INDEX cases_order ON cases (order_reference, case_id);
+CREATE INDEX cases_order ON cases (order_reference, case_number);
 CREATE INDEX cases_customer ON cases (customer_id, status);
 
 CREATE TABLE case_items (
-    case_id        TEXT NOT NULL REFERENCES cases(case_id),
+    case_number        TEXT NOT NULL REFERENCES cases(case_number),
     item_reference TEXT NOT NULL REFERENCES order_items(item_reference),
-    PRIMARY KEY (case_id, item_reference)
+    PRIMARY KEY (case_number, item_reference)
 );
 
 -- Notes are numbered within their case rather than globally, so a note keeps
 -- the same address whatever else the population happens to hold.
 CREATE TABLE case_notes (
-    case_id                 TEXT NOT NULL REFERENCES cases(case_id),
+    case_number                 TEXT NOT NULL REFERENCES cases(case_number),
     note_no                 INTEGER NOT NULL,
     note                    TEXT NOT NULL,
     topic                   TEXT,
     visible_to_next_reviewer BOOLEAN NOT NULL DEFAULT TRUE,
     created_at              TIMESTAMPTZ NOT NULL,
-    PRIMARY KEY (case_id, note_no)
+    PRIMARY KEY (case_number, note_no)
 );
 
 -- Note topics the desk recognises. A note that matches a topic marked
@@ -320,7 +320,7 @@ CREATE TABLE pickup_site_suffixes (
 );
 
 CREATE TABLE case_preferences (
-    case_id            TEXT PRIMARY KEY REFERENCES cases(case_id),
+    case_number            TEXT PRIMARY KEY REFERENCES cases(case_number),
     -- What the customer said, kept verbatim.
     pickup_location    TEXT,
     -- The same location normalized to its site name, which is what a reviewer
@@ -399,7 +399,7 @@ CREATE TABLE notification_templates (
 -- which is why a message created as queued reads as sent a minute later.
 CREATE TABLE notifications (
     notification_id     TEXT PRIMARY KEY,
-    case_id             TEXT REFERENCES cases(case_id),
+    case_number             TEXT REFERENCES cases(case_number),
     order_reference     TEXT NOT NULL REFERENCES orders(order_reference),
     channel             TEXT NOT NULL CHECK (channel IN ('email', 'sms')),
     template            TEXT NOT NULL REFERENCES notification_templates(template),
@@ -421,7 +421,7 @@ CREATE TABLE notifications (
 );
 
 CREATE INDEX notifications_order ON notifications (order_reference, notification_id);
-CREATE INDEX notifications_case ON notifications (case_id);
+CREATE INDEX notifications_case ON notifications (case_number);
 
 CREATE TABLE specialist_transfers (
     transfer_id TEXT PRIMARY KEY,
@@ -488,8 +488,8 @@ CREATE TABLE tool_call_log (
 -- Case notes and section read counts are keyed by a pair of columns; the
 -- verifier addresses a row by one column, so it reads them through these views.
 CREATE VIEW case_note_log AS
-SELECT case_id || '#' || note_no AS note_key,
-       case_id, note_no, note, topic, visible_to_next_reviewer
+SELECT case_number || '#' || note_no AS note_key,
+       case_number, note_no, note, topic, visible_to_next_reviewer
   FROM case_notes;
 
 CREATE VIEW section_read_log AS

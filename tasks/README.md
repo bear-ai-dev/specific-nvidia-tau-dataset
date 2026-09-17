@@ -155,18 +155,18 @@ building each image from scratch and discarding it afterwards.
 
 | Task | Domain | Calls | Tools used | Tools served | Tables | Seeded rows | State fields | Reward |
 |---|---|---|---|---|---|---|---|---|
-| [`01-banking-account-email-card-application`](01-banking-account-email-card-application) | banking | 15/15 | 9 | 16 | 27 | 1,863 | 31/31 | 1.0 |
-| [`02-banking-referral-missing-reward`](02-banking-referral-missing-reward) | banking | 9/9 | 7 | 16 | 27 | 1,826 | 35/35 | 1.0 |
-| [`03-banking-transaction-dispute-session`](03-banking-transaction-dispute-session) | banking | 7/7 | 6 | 16 | 27 | 1,772 | 29/29 | 1.0 |
-| [`04-banking-declined-card-travel`](04-banking-declined-card-travel) | banking | 8/8 | 6 | 16 | 27 | 1,769 | 48/48 | 1.0 |
+| [`01-banking-account-email-card-application`](01-banking-account-email-card-application) | banking | 15/15 | 9 | 16 | 27 | 1,866 | 31/31 | 1.0 |
+| [`02-banking-referral-missing-reward`](02-banking-referral-missing-reward) | banking | 9/9 | 7 | 16 | 27 | 1,831 | 35/35 | 1.0 |
+| [`03-banking-transaction-dispute-session`](03-banking-transaction-dispute-session) | banking | 7/7 | 6 | 16 | 27 | 1,774 | 29/29 | 1.0 |
+| [`04-banking-declined-card-travel`](04-banking-declined-card-travel) | banking | 8/8 | 6 | 16 | 27 | 1,772 | 48/48 | 1.0 |
 | [`05-pharmacy-travel-refill`](05-pharmacy-travel-refill) | pharmacy | 8/8 | 7 | 9 | 16 + 1 view | 2,316 | 30/30 | 1.0 |
-| [`06-retail-refund-bank-fee`](06-retail-refund-bank-fee) | retail | 7/7 | 4 | 9 | 27 + 2 views | 3,159 | 35/35 | 1.0 |
-| [`07-retail-damaged-item-replacement`](07-retail-damaged-item-replacement) | retail | 7/7 | 4 | 9 | 27 + 2 views | 3,177 | 48/48 | 1.0 |
-| [`08-retail-missing-package`](08-retail-missing-package) | retail | 7/7 | 5 | 9 | 27 + 2 views | 3,258 | 39/39 | 1.0 |
-| [`09-airline-family-reservation`](09-airline-family-reservation) | airline | 9/9 | 8 | 9 | 27 + 1 view | 5,269 | 71/71 | 1.0 |
-| [`10-telecom-data-usage-cleanup`](10-telecom-data-usage-cleanup) | telecom | 8/8 | 7 | 8 | 21 + 1 view | 3,852 | 38/38 | 1.0 |
+| [`06-retail-refund-bank-fee`](06-retail-refund-bank-fee) | retail | 7/7 | 4 | 9 | 27 + 2 views | 3,164 | 34/34 | 1.0 |
+| [`07-retail-damaged-item-replacement`](07-retail-damaged-item-replacement) | retail | 7/7 | 4 | 9 | 27 + 2 views | 3,179 | 48/48 | 1.0 |
+| [`08-retail-missing-package`](08-retail-missing-package) | retail | 7/7 | 5 | 9 | 27 + 2 views | 3,263 | 38/38 | 1.0 |
+| [`09-airline-family-reservation`](09-airline-family-reservation) | airline | 9/9 | 8 | 9 | 27 + 1 view | 5,273 | 71/71 | 1.0 |
+| [`10-telecom-data-usage-cleanup`](10-telecom-data-usage-cleanup) | telecom | 8/8 | 7 | 8 | 21 + 1 view | 3,854 | 38/38 | 1.0 |
 
-**85 of 85 recorded tool calls reproduce byte-exactly. 404 of 404 final-state
+**85 of 85 recorded tool calls reproduce byte-exactly. 402 of 402 final-state
 assertions hold.**
 
 "Tools used" is how many distinct tools the recording exercises; "tools served" is

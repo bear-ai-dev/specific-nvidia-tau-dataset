@@ -42,14 +42,14 @@ call lookup_customer \
 # A unique match is a candidate record, not an authorization. Verification is the
 # step that returns a scope, and every read below cites it.
 call verify_customer_identity \
-    '{"customer_id": "customer-benjamin-reed", "mobile_number": "404-555-0176",
+    '{"customer_id": "6dcb2039-012b-4723-a256-13bb7b6467c2", "mobile_number": "404-555-0176",
       "full_name": "Benjamin Reed", "date_of_birth": "November 22, 1991"}'
 
 # Establish which line, handset, and plan the call is about before discussing
 # usage, so the caller can confirm the Pixel 8 is the phone in his hand.
 call get_customer_account \
-    '{"customer_id": "customer-benjamin-reed",
-      "verification_id": "verification-benjamin-reed-support",
+    '{"customer_id": "6dcb2039-012b-4723-a256-13bb7b6467c2",
+      "verification_id": "ae1d7bf3-792a-4a70-8673-16c535063f29",
       "include": ["lines", "devices", "plans"]}'
 
 say "You are verified and I have the account open. There is one line on the Unlimited Start plan with a Pixel 8 on it. Is that the handset you are holding?"
@@ -58,8 +58,8 @@ say "You are verified and I have the account open. There is one line on the Unli
 # are where the traffic actually is, which is what makes "between midnight and
 # four in the morning" a measurement rather than a guess.
 call get_line_data_usage \
-    '{"line_id": "line-4045550176",
-      "verification_id": "verification-benjamin-reed-support",
+    '{"line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac",
+      "verification_id": "ae1d7bf3-792a-4a70-8673-16c535063f29",
       "window": "last_24_hours"}'
 
 # The measurement, and what it is and is not evidence of. The metering is
@@ -72,8 +72,8 @@ say "Turning that setting off stops it happening again, but the data that has go
 # The reset date is asked for first and on its own, because that is the only
 # thing said at this point in the call.
 call get_customer_bills \
-    '{"customer_id": "customer-benjamin-reed",
-      "verification_id": "verification-benjamin-reed-support",
+    '{"customer_id": "6dcb2039-012b-4723-a256-13bb7b6467c2",
+      "verification_id": "ae1d7bf3-792a-4a70-8673-16c535063f29",
       "status": "current", "include": ["cycle"]}'
 
 say "Your cycle resets in nine days. Let me open the current bill itself and see whether anything has landed on it."
@@ -82,8 +82,8 @@ say "Your cycle resets in nine days. Let me open the current bill itself and see
 # after saying the bill is being opened, so the chronology of the call and the
 # chronology of the reads agree.
 call get_customer_bills \
-    '{"customer_id": "customer-benjamin-reed",
-      "verification_id": "verification-benjamin-reed-support",
+    '{"customer_id": "6dcb2039-012b-4723-a256-13bb7b6467c2",
+      "verification_id": "ae1d7bf3-792a-4a70-8673-16c535063f29",
       "status": "current", "include": ["charges", "overages", "plan_behavior"]}'
 
 # The thing he was bracing for, answered: he is not being billed for it, the
@@ -93,8 +93,8 @@ say "Good news on the money: there is no overage charge on that bill. Your plan 
 # No price is quoted before an offer read returns one that is current and
 # eligible for this line.
 call get_data_addon_offers \
-    '{"line_id": "line-4045550176",
-      "verification_id": "verification-benjamin-reed-support"}'
+    '{"line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac",
+      "verification_id": "ae1d7bf3-792a-4a70-8673-16c535063f29"}'
 
 # The terms as the offer returned them, and the authorization asked for
 # explicitly rather than assumed from his interest.
@@ -103,7 +103,7 @@ say "There is one add-on your line can take: five gigabytes of high-speed data f
 # Submitted by offer id after the caller authorized the amount, price, currency,
 # and billing timing that read returned.
 call add_data_addon \
-    '{"line_id": "line-4045550176", "offer_id": "offer-5gb-40-next-bill",
+    '{"line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac", "offer_id": "21298486-3eca-4c2e-8d07-2b13c0a33fcc",
       "customer_authorized": true}'
 
 say "That is added. Your line now shows 7.2 gigabytes of high-speed data for the rest of the cycle. Keep an eye on the usage screen for a day, and if the number climbs while the phone is idle, call us back and we will look again."

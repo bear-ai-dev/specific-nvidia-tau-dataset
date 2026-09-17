@@ -15,34 +15,34 @@
     "stores": "store_id"
   },
   "prescriptions": {
-    "prescription-albuterol": {
-      "patient_id": "patient-miles-carter",
-      "medication_id": "albuterol-inhaler",
-      "fill_store_id": "oak-street-current",
+    "9670dbb4-6227-48ed-99fc-7ce746085502": {
+      "patient_id": "0e28b5d4-a93b-437e-9ba0-cbe4e7d9dbbb",
+      "medication_id": "9dcd4906-4db3-4290-bccd-afde111823cb",
+      "fill_store_id": "8e22d41d-843c-4e73-95c0-3c9877366ba9",
       "prescription_valid": true,
       "received_at": "2026-08-27T10:42:00-05:00",
       "workflow_status": "awaiting_pharmacist_verification",
       "customer_facing_status": "processing",
       "priority_reason": "traveling on 2026-08-28; waiting for pickup on the evening of 2026-08-27",
       "payment_options": ["app_prepay_if_offered_when_ready", "pay_15_at_pickup"],
-      "ready_alert_destination_id": "patient-miles-mobile",
+      "ready_alert_destination_id": "94c55afb-c756-4c14-9f4a-0c0cf2e3d69e",
       "notification_channel": "sms",
       "ready_alert": "enabled"
     }
   },
   "latest_claims": {
-    "prescription-albuterol": {
+    "9670dbb4-6227-48ed-99fc-7ce746085502": {
       "status": "paid",
       "reason": null,
       "copay": 15.0,
       "currency": "USD",
-      "override_id": "override-lost-medication",
+      "override_id": "9e90544a-3497-4aee-a1f0-4437d4f4684c",
       "submitted_at": "2026-08-27T18:12:00-05:00"
     }
   },
   "claim_overrides": {
-    "override-lost-medication": {
-      "prescription_id": "prescription-albuterol",
+    "9e90544a-3497-4aee-a1f0-4437d4f4684c": {
+      "prescription_id": "9670dbb4-6227-48ed-99fc-7ce746085502",
       "reason": "lost_medication",
       "status": "approved_one_time",
       "urgency_context": "Patient leaves town on the morning of 2026-08-28 and needs the inhaler on the evening of 2026-08-27",
@@ -50,7 +50,7 @@
     }
   },
   "fill_queue": {
-    "prescription-albuterol": {
+    "9670dbb4-6227-48ed-99fc-7ce746085502": {
       "status": "active",
       "position": 1,
       "estimated_minutes": 30,
@@ -59,7 +59,7 @@
     }
   },
   "stores": {
-    "oak-street-current": {
+    "8e22d41d-843c-4e73-95c0-3c9877366ba9": {
       "queue_next_position": 2
     }
   }

@@ -131,8 +131,8 @@
    "card-justin-monroe-043-3298": "fe2ce9913619",
    "card-justin-porter-072-1989": "a7a9b966125f",
    "card-justin-porter-072-5708": "9d55eadf5dea",
-   "card-justin-porter-9102": "97010a0ecea9",
-   "card-justin-porter-ks-3391": "d6f0addb2dd2",
+   "card-justin-porter-9102": "a61afa3b12e8",
+   "card-justin-porter-ks-3391": "c64fd79baff3",
    "card-kelsey-abbasi-040-3255": "211425d1a37e",
    "card-kelsey-abbasi-040-4819": "daebe181f9e1",
    "card-kelsey-abbasi-040-9607": "85b16e73e224",
@@ -388,6 +388,8 @@
    "confirmation-email-change-customer-victor-porter-093-channel-0": "9aa2a9b6f11e"
   },
   "customers": {
+   "4e8c3a97-e6ad-4737-aede-c8acd4993277": "9e2b5c5e397b",
+   "4e8c3a97-e6ad-4737-aede-c8acd4993277-ks": "39665080bdd2",
    "customer-andre-delgado-050": "097e06fd5b8c",
    "customer-andre-duarte-026": "69426488779c",
    "customer-anya-achebe-003": "6f111863703f",
@@ -433,9 +435,7 @@
    "customer-justin-achebe-000": "5f3871f6890a",
    "customer-justin-duarte-066": "2163e0d52786",
    "customer-justin-monroe-043": "3c78863ffc74",
-   "customer-justin-porter": "6b91e1e4c4c2",
    "customer-justin-porter-072": "5507325654ca",
-   "customer-justin-porter-ks": "0acf1b527b1c",
    "customer-kelsey-abbasi-040": "9aef664223a5",
    "customer-kelsey-brooks-005": "287704389396",
    "customer-kelsey-fontaine-057": "09978037cfbd",
@@ -500,6 +500,7 @@
    "specialist_transfer|": "c670e7af1484"
   },
   "identity_verifications": {
+   "dbf560d6-9aa5-4471-a5b1-7a3af5c51fb8": "46f223794b1d",
    "verification-SF205166-prior": "fbc1e9e01f9e",
    "verification-SF212368-prior": "18d441ad9b8e",
    "verification-SF213088-prior": "2dd92977d5e4",
@@ -529,10 +530,11 @@
    "verification-SF292280-prior": "c3fa239868d7",
    "verification-SF294758-prior": "886baa9581ef",
    "verification-SF295699-prior": "4566e03569e0",
-   "verification-SF295979-prior": "453a1dbfd641",
-   "verification-justin-porter-dispute": "db57d5f6041a"
+   "verification-SF295979-prior": "453a1dbfd641"
   },
   "kb_records": {
+   "022398d3-51e3-4dcd-b56b-064d53b159f0": "c2344ebecb34",
+   "8d5fe793-b41b-48c9-aef8-e3ffd9d1d4ab": "85c3f7aa7de7",
    "account-closing-effects": "7f6f2ed51625",
    "application-status-check": "005d989364f6",
    "authorization-hold-basics": "3a828a32244a",
@@ -582,8 +584,6 @@
    "summit-welcome-offers-current": "e871dfe27863",
    "travel-notice-authorization-review": "9ad4f7c6aab6",
    "travel-notice-purpose": "ebfe11dcf839",
-   "unauthorized-transaction-procedure": "940cf66e20e3",
-   "unused-dispute-session-rights": "99b59c0766a8",
    "welcome-offer-eligibility-exclusions": "b2542bb01562",
    "welcome-offer-previous-version-expired": "d0ec8cbe67a2"
   },
@@ -855,11 +855,14 @@
    "conversation_id": "83dc9311c044",
    "conversation_started_at": "e4e4d8f94429",
    "domain": "c6816fbd979c",
+   "next_identity_verification_id": "870e86a6c5cc",
+   "next_self_service_session_id": "54901ad0abbb",
    "scenario_time": "c491c390457d",
    "time_status": "b0de8484f8ee",
    "timezone": "e056db7e2b97"
   },
   "self_service_sessions": {
+   "0ae36057-bbbb-42e3-994f-55f064bc374c": "3b8a93509092",
    "session-card-application-001": "0e0e8733a088",
    "session-card-application-003": "420dbf219444",
    "session-card-application-004": "3df20d7a2b0b",
@@ -903,7 +906,6 @@
    "session-dispute-0517-049": "1a2dff16e2d0",
    "session-dispute-0534-051": "901bf3a94ce8",
    "session-dispute-0556-054": "24ddb0002323",
-   "session-dispute-8472": "230e1e9d1f59",
    "session-referral-RF7015": "0e37427dfe39",
    "session-referral-RF7112": "4bd1ef0f5a38",
    "session-referral-RF7133": "d091d18cf6a3",
@@ -919,7 +921,7 @@
    "session-referral-RF7630": "c0ea1775602d"
   },
   "service_cases": {
-   "case-justin-porter-dispute": "58895414bf2a",
+   "case-justin-porter-dispute": "bf70cd317ef3",
    "customer-andre-duarte-026-case": "97262386e129",
    "customer-anya-achebe-003-case": "cf9121d2a7d1",
    "customer-anya-brennan-007-case": "e1467a9cf706",
@@ -990,6 +992,7 @@
    "customer-victor-vasquez-082-case": "7a8f1d8e8d3a"
   },
   "session_deliveries": {
+   "0ae36057-bbbb-42e3-994f-55f064bc374c|secure_message": "6253dad21d8a",
    "session-card-application-001|secure_message": "d89723ca7ad3",
    "session-card-application-003|email_notification": "0a39c4b530fd",
    "session-card-application-003|secure_message": "b50b20dfb370",
@@ -1051,7 +1054,6 @@
    "session-dispute-0534-051|secure_message": "747bb997a674",
    "session-dispute-0556-054|email_notification": "6feeca17293f",
    "session-dispute-0556-054|secure_message": "57bf30dda540",
-   "session-dispute-8472|secure_message": "48cef024b647",
    "session-referral-RF7015|secure_message": "c88f0e301964",
    "session-referral-RF7112|email_notification": "b5a0cba93bd8",
    "session-referral-RF7112|secure_message": "56cfc994b577",
@@ -1074,6 +1076,7 @@
   },
   "specialist_transfers": {},
   "transactions": {
+   "b2047621-d2c7-437c-bb56-c81a700e2099": "64a23f499149",
    "transaction-00001": "54a8f2d33a97",
    "transaction-00002": "ab44fb47ee1a",
    "transaction-00003": "38c007cc9e58",
@@ -1644,7 +1647,6 @@
    "transaction-00568": "30a9fc5d5d91",
    "transaction-ending-6620": "e8dbfaafa6cb",
    "transaction-ending-7735": "44d8a667abb5",
-   "transaction-ending-8472": "055bf7d5c7f5",
    "transaction-ending-8473": "950594ddd43b"
   },
   "travel_notices": {
@@ -1807,8 +1809,8 @@
    "customer-victor-porter-093-channel-0": "aba1c3b62af5",
    "customer-victor-porter-093-channel-1": "001ae68046c2",
    "customer-victor-vasquez-082-channel-0": "32ae13b28df6",
-   "trusted-mobile-2270": "6794c52f2146",
-   "trusted-mobile-4106": "3e0d81b154df"
+   "trusted-mobile-2270": "429cd57351ed",
+   "trusted-mobile-4106": "39381615d099"
   },
   "welcome_offers": {
    "offer-campus-start-2026": "fe85b2ae49be",
@@ -1959,8 +1961,8 @@
    "card-justin-monroe-043-3298": "fe2ce9913619",
    "card-justin-porter-072-1989": "a7a9b966125f",
    "card-justin-porter-072-5708": "9d55eadf5dea",
-   "card-justin-porter-9102": "97010a0ecea9",
-   "card-justin-porter-ks-3391": "d6f0addb2dd2",
+   "card-justin-porter-9102": "a61afa3b12e8",
+   "card-justin-porter-ks-3391": "c64fd79baff3",
    "card-kelsey-abbasi-040-3255": "211425d1a37e",
    "card-kelsey-abbasi-040-4819": "daebe181f9e1",
    "card-kelsey-abbasi-040-9607": "85b16e73e224",
@@ -2216,6 +2218,8 @@
    "confirmation-email-change-customer-victor-porter-093-channel-0": "9aa2a9b6f11e"
   },
   "customers": {
+   "4e8c3a97-e6ad-4737-aede-c8acd4993277": "9e2b5c5e397b",
+   "4e8c3a97-e6ad-4737-aede-c8acd4993277-ks": "39665080bdd2",
    "customer-andre-delgado-050": "097e06fd5b8c",
    "customer-andre-duarte-026": "69426488779c",
    "customer-anya-achebe-003": "6f111863703f",
@@ -2261,9 +2265,7 @@
    "customer-justin-achebe-000": "5f3871f6890a",
    "customer-justin-duarte-066": "2163e0d52786",
    "customer-justin-monroe-043": "3c78863ffc74",
-   "customer-justin-porter": "6b91e1e4c4c2",
    "customer-justin-porter-072": "5507325654ca",
-   "customer-justin-porter-ks": "0acf1b527b1c",
    "customer-kelsey-abbasi-040": "9aef664223a5",
    "customer-kelsey-brooks-005": "287704389396",
    "customer-kelsey-fontaine-057": "09978037cfbd",
@@ -2360,6 +2362,8 @@
    "verification-SF295979-prior": "453a1dbfd641"
   },
   "kb_records": {
+   "022398d3-51e3-4dcd-b56b-064d53b159f0": "c2344ebecb34",
+   "8d5fe793-b41b-48c9-aef8-e3ffd9d1d4ab": "85c3f7aa7de7",
    "account-closing-effects": "7f6f2ed51625",
    "application-status-check": "005d989364f6",
    "authorization-hold-basics": "3a828a32244a",
@@ -2409,8 +2413,6 @@
    "summit-welcome-offers-current": "e871dfe27863",
    "travel-notice-authorization-review": "9ad4f7c6aab6",
    "travel-notice-purpose": "ebfe11dcf839",
-   "unauthorized-transaction-procedure": "940cf66e20e3",
-   "unused-dispute-session-rights": "99b59c0766a8",
    "welcome-offer-eligibility-exclusions": "b2542bb01562",
    "welcome-offer-previous-version-expired": "d0ec8cbe67a2"
   },
@@ -2682,6 +2684,8 @@
    "conversation_id": "83dc9311c044",
    "conversation_started_at": "e4e4d8f94429",
    "domain": "c6816fbd979c",
+   "next_identity_verification_id": "870e86a6c5cc",
+   "next_self_service_session_id": "54901ad0abbb",
    "scenario_time": "c491c390457d",
    "time_status": "b0de8484f8ee",
    "timezone": "e056db7e2b97"
@@ -2745,7 +2749,7 @@
    "session-referral-RF7630": "c0ea1775602d"
   },
   "service_cases": {
-   "case-justin-porter-dispute": "58895414bf2a",
+   "case-justin-porter-dispute": "bf70cd317ef3",
    "customer-andre-duarte-026-case": "97262386e129",
    "customer-anya-achebe-003-case": "cf9121d2a7d1",
    "customer-anya-brennan-007-case": "e1467a9cf706",
@@ -2899,6 +2903,7 @@
   },
   "specialist_transfers": {},
   "transactions": {
+   "b2047621-d2c7-437c-bb56-c81a700e2099": "64a23f499149",
    "transaction-00001": "54a8f2d33a97",
    "transaction-00002": "ab44fb47ee1a",
    "transaction-00003": "38c007cc9e58",
@@ -3469,7 +3474,6 @@
    "transaction-00568": "30a9fc5d5d91",
    "transaction-ending-6620": "e8dbfaafa6cb",
    "transaction-ending-7735": "44d8a667abb5",
-   "transaction-ending-8472": "055bf7d5c7f5",
    "transaction-ending-8473": "950594ddd43b"
   },
   "travel_notices": {
@@ -3632,8 +3636,8 @@
    "customer-victor-porter-093-channel-0": "aba1c3b62af5",
    "customer-victor-porter-093-channel-1": "001ae68046c2",
    "customer-victor-vasquez-082-channel-0": "32ae13b28df6",
-   "trusted-mobile-2270": "6794c52f2146",
-   "trusted-mobile-4106": "3e0d81b154df"
+   "trusted-mobile-2270": "429cd57351ed",
+   "trusted-mobile-4106": "39381615d099"
   },
   "welcome_offers": {
    "offer-campus-start-2026": "fe85b2ae49be",

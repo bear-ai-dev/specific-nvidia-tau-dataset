@@ -8,7 +8,7 @@
 BEGIN;
 
 -- REVEALED: the name 'Justin Porter' together with jporter92@email.com resolves
--- uniquely to customer-justin-porter, and the profile requires the billing ZIP
+-- uniquely to 4e8c3a97-e6ad-4737-aede-c8acd4993277, and the profile requires the billing ZIP
 -- and the birth month and day. The supplied ZIP 64114 and birthday
 -- 'February 19' both match, so those are the profile's real values.
 --
@@ -22,7 +22,7 @@ INSERT INTO customers (
     mobile_last4, caller_channel_match, required_verification_methods,
     login_identifier_kind
 ) VALUES (
-    'customer-justin-porter', 'SF267510', 'Justin Porter', 'Porter',
+    '4e8c3a97-e6ad-4737-aede-c8acd4993277', 'SF267510', 'Justin Porter', 'Porter',
     'justin-porter', 'justin',
     'jporter92@email.com', 'jporter92@email.com',
     '64114', 2, 19, '4106', NULL,
@@ -38,7 +38,7 @@ INSERT INTO customers (
     mobile_last4, caller_channel_match, required_verification_methods,
     login_identifier_kind
 ) VALUES (
-    'customer-justin-porter-ks', 'SF273844', 'Justin Porter', 'Porter',
+    '4e8c3a97-e6ad-4737-aede-c8acd4993277-ks', 'SF273844', 'Justin Porter', 'Porter',
     'SF273844', 'justinp',
     'justin.porter.ks@fastmail.example', 'justin.porter.ks@fastmail.example',
     '66206', 7, 8, '2270', NULL,
@@ -53,7 +53,7 @@ INSERT INTO trusted_channels (
     channel_id, customer_id, type, masked_destination, enrolled,
     confirmation_completes, confirmation_verified_at
 ) VALUES (
-    'trusted-mobile-4106', 'customer-justin-porter', 'sms', '***-***-4106', FALSE,
+    'trusted-mobile-4106', '4e8c3a97-e6ad-4737-aede-c8acd4993277', 'sms', '***-***-4106', FALSE,
     FALSE, NULL
 );
 
@@ -61,16 +61,16 @@ INSERT INTO trusted_channels (
     channel_id, customer_id, type, masked_destination, enrolled,
     confirmation_completes, confirmation_verified_at
 ) VALUES (
-    'trusted-mobile-2270', 'customer-justin-porter-ks', 'sms', '***-***-2270', TRUE,
+    'trusted-mobile-2270', '4e8c3a97-e6ad-4737-aede-c8acd4993277-ks', 'sms', '***-***-2270', TRUE,
     TRUE, '2026-02-25T16:24:00-05:00'
 );
 
 -- REVEALED, indirectly: the verification record is named
--- 'verification-justin-porter-dispute', so the open reason this profile is in
+-- 'dbf560d6-9aa5-4471-a5b1-7a3af5c51fb8', so the open reason this profile is in
 -- contact is a dispute, and that reason is a row rather than a string the
 -- handler pastes together.
 INSERT INTO service_cases (case_id, customer_id, case_kind, case_slug, status, opened_at)
-VALUES ('case-justin-porter-dispute', 'customer-justin-porter', 'dispute',
+VALUES ('case-justin-porter-dispute', '4e8c3a97-e6ad-4737-aede-c8acd4993277', 'dispute',
         'dispute', 'open', '2026-02-25T16:18:00-05:00');
 
 -- REVEALED: the charge in question sits on the card ending 9102.
@@ -81,7 +81,7 @@ INSERT INTO card_accounts (
     card_id, customer_id, card_last4, product_id, status, reported_lost,
     payment_status, credit_limit, available_credit
 ) VALUES (
-    'card-justin-porter-9102', 'customer-justin-porter', '9102',
+    'card-justin-porter-9102', '4e8c3a97-e6ad-4737-aede-c8acd4993277', '9102',
     'everyday-cash-plus', 'active', FALSE, 'current', 7500.00, 5108.42
 );
 
@@ -89,11 +89,11 @@ INSERT INTO card_accounts (
     card_id, customer_id, card_last4, product_id, status, reported_lost,
     payment_status, credit_limit, available_credit
 ) VALUES (
-    'card-justin-porter-ks-3391', 'customer-justin-porter-ks', '3391',
+    'card-justin-porter-ks-3391', '4e8c3a97-e6ad-4737-aede-c8acd4993277-ks', '3391',
     'campus-start', 'active', FALSE, 'current', 1500.00, 942.10
 );
 
--- REVEALED: the disputed charge is transaction-ending-8472 for 243.18 USD in the
+-- REVEALED: the disputed charge is b2047621-d2c7-437c-bb56-c81a700e2099 for 243.18 USD in the
 -- 'online marketplace' category, preceded by a 1.00 authorization, posted on
 -- 2026-02-23, and carrying a descriptor that contains 'MRKTPLC*8472'.
 --
@@ -105,7 +105,7 @@ INSERT INTO card_accounts (
 --
 -- resource_label and short_ref exist because a dispute session is named after
 -- this activity and reads its label aloud: the session identifier
--- 'session-dispute-8472' and the label 'Review transaction ending 8472' are read
+-- '0ae36057-bbbb-42e3-994f-55f064bc374c' and the label 'Review transaction ending 8472' are read
 -- from these columns rather than assembled from the transaction id by string
 -- surgery.
 INSERT INTO transactions (
@@ -113,7 +113,7 @@ INSERT INTO transactions (
     descriptor, category, amount, status, settlement_state, occurred_at,
     posted_date, preceded_by_authorization_amount, resource_label, short_ref
 ) VALUES (
-    'transaction-ending-8472', 'card-justin-porter-9102', 'posted', 'marketplace',
+    'b2047621-d2c7-437c-bb56-c81a700e2099', 'card-justin-porter-9102', 'posted', 'marketplace',
     'Meridian Marketplace', NULL, 'MRKTPLC*8472', 'online marketplace',
     243.18, 'posted', 'settled', '2026-02-22T21:14:00-05:00', '2026-02-23',
     1.00, 'transaction ending 8472', '8472'
@@ -144,5 +144,10 @@ INSERT INTO transactions (
      'Meridian Marketplace', NULL, 'MRKTPLC*7735', 'online marketplace',
      243.18, 'posted', 'settled', '2026-02-18T10:41:00-05:00', '2026-02-19',
      1.00, 'transaction ending 7735', '7735');
+
+INSERT INTO scenario (key, value) VALUES
+    ('next_identity_verification_id', 'dbf560d6-9aa5-4471-a5b1-7a3af5c51fb8'),
+    ('next_self_service_session_id', '0ae36057-bbbb-42e3-994f-55f064bc374c')
+ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
 
 COMMIT;

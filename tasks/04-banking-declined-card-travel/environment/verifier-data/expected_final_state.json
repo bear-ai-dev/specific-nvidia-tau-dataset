@@ -27,8 +27,8 @@
     "travel_notices": "notice_id"
   },
   "identity_verifications": {
-    "verification-colin-reeves-card": {
-      "customer_id": "customer-colin-reeves",
+    "308f6850-19d3-4667-9f16-97bc37d46902": {
+      "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
       "status": "verified",
       "required_methods": ["caller_phone", "billing_zip", "card_last4"],
       "matched_methods": ["caller_phone", "billing_zip", "card_last4"],
@@ -37,7 +37,7 @@
   },
   "card_accounts": {
     "card-colin-6148": {
-      "customer_id": "customer-colin-reeves",
+      "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
       "card_last4": "6148",
       "status": "active",
       "reported_lost": false,
@@ -47,28 +47,28 @@
     }
   },
   "transactions": {
-    "hotel-attempt-1": {
+    "5af2030f-3fad-402f-a1de-23501596194a": {
       "card_id": "card-colin-6148",
       "kind": "decline",
       "amount": 840.0,
       "reason": "travel_review",
-      "represented_as": "hotel-authorization-840"
+      "represented_as": "f96da295-2259-4311-b31d-661ab6053092"
     },
-    "hotel-attempt-2": {
+    "3065d723-2455-4a43-9d59-91c8dbb11da0": {
       "card_id": "card-colin-6148",
       "kind": "decline",
       "amount": 840.0,
       "reason": "prior_review_open",
       "represented_as": null
     },
-    "logan-breakfast-32": {
+    "131fc14b-fc2e-4ec9-ad07-248d01f7d54b": {
       "card_id": "card-colin-6148",
       "kind": "authorization",
       "amount": 32.0,
       "status": "approved",
       "settlement_state": "settled"
     },
-    "hotel-authorization-840": {
+    "f96da295-2259-4311-b31d-661ab6053092": {
       "card_id": "card-colin-6148",
       "kind": "authorization",
       "merchant": "Harbor View Hotel",
@@ -79,7 +79,7 @@
     }
   },
   "card_restrictions": {
-    "temporary-travel-review": {
+    "a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f": {
       "card_id": "card-colin-6148",
       "kind": "travel_review",
       "status": "removed",
@@ -88,7 +88,7 @@
     }
   },
   "travel_notices": {
-    "travel-notice-colin-portland": {
+    "31d46fb6-e721-4a9c-b54d-6c631dbe9686": {
       "card_id": "card-colin-6148",
       "destinations": ["Portland, Maine"],
       "return_date": "2026-08-30",

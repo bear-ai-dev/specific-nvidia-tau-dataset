@@ -8,7 +8,7 @@
 BEGIN;
 
 -- REVEALED: the address daniel.brooks17@gmail.com resolves uniquely to
--- customer-daniel-brooks, and the profile requires the billing ZIP and the
+-- 34d61a18-ede8-4533-b130-7e5937bc1e9d, and the profile requires the billing ZIP and the
 -- birth month and day. The supplied ZIP 27609 and birthday 'October 12' both
 -- match, so those are the profile's real values.
 --
@@ -26,7 +26,7 @@ INSERT INTO customers (
     mobile_last4, caller_channel_match, required_verification_methods,
     login_identifier_kind
 ) VALUES (
-    'customer-daniel-brooks', 'SF241903', 'Daniel Brooks', 'Brooks',
+    '34d61a18-ede8-4533-b130-7e5937bc1e9d', 'SF241903', 'Daniel Brooks', 'Brooks',
     'daniel-brooks', 'daniel',
     'daniel.brooks17@gmail.com', 'daniel.brooks17@gmail.com',
     '27609', 10, 12, '3318', NULL,
@@ -42,7 +42,7 @@ INSERT INTO customers (
     mobile_last4, caller_channel_match, required_verification_methods,
     login_identifier_kind
 ) VALUES (
-    'customer-daniel-brooks-nc', 'SF288140', 'Daniel Brooks', 'Brooks',
+    '34d61a18-ede8-4533-b130-7e5937bc1e9d-nc', 'SF288140', 'Daniel Brooks', 'Brooks',
     'SF288140', 'danielb',
     'daniel.brooks@gmail.com', 'daniel.brooks@gmail.com',
     '28202', 3, 29, '9052', NULL,
@@ -57,7 +57,7 @@ INSERT INTO trusted_channels (
     channel_id, customer_id, type, masked_destination, enrolled,
     confirmation_completes, confirmation_verified_at
 ) VALUES (
-    'trusted-mobile-3318', 'customer-daniel-brooks', 'sms', '***-***-3318', FALSE,
+    'trusted-mobile-3318', '34d61a18-ede8-4533-b130-7e5937bc1e9d', 'sms', '***-***-3318', FALSE,
     FALSE, NULL
 );
 
@@ -65,19 +65,19 @@ INSERT INTO trusted_channels (
     channel_id, customer_id, type, masked_destination, enrolled,
     confirmation_completes, confirmation_verified_at
 ) VALUES (
-    'trusted-mobile-9052', 'customer-daniel-brooks-nc', 'sms', '***-***-9052', TRUE,
+    'trusted-mobile-9052', '34d61a18-ede8-4533-b130-7e5937bc1e9d-nc', 'sms', '***-***-9052', TRUE,
     TRUE, '2026-08-28T09:12:00-04:00'
 );
 
 -- REVEALED, indirectly: the verification record is named
--- 'verification-daniel-brooks-referral', so the open reason this profile is in
+-- '05f09e63-bd3c-4a75-813f-5429ac6d685c', so the open reason this profile is in
 -- contact is a referral question, and that reason is a row rather than a string
 -- the handler pastes together.
 INSERT INTO service_cases (case_id, customer_id, case_kind, case_slug, status, opened_at)
-VALUES ('case-daniel-brooks-referral', 'customer-daniel-brooks', 'referral',
+VALUES ('case-daniel-brooks-referral', '34d61a18-ede8-4533-b130-7e5937bc1e9d', 'referral',
         'referral', 'open', '2026-08-28T09:08:03-04:00');
 
--- REVEALED: referral RF8241 was invited on 'August 2' by email to a destination
+-- REVEALED: referral ce7d58b0-b5fc-42cb-a6e0-7a57929e1205 was invited on 'August 2' by email to a destination
 -- masked 'a-brooks…', the application is approved, qualification is still
 -- purchase_pending, and the offer is a $100 statement credit.
 --
@@ -94,9 +94,9 @@ INSERT INTO referrals (
     invited_channel, invited_masked, application_status, qualification_status,
     offer, offer_version_record_id, deadline_on, display_rank
 ) VALUES (
-    'RF8241', 'customer-daniel-brooks', 'August 2', '2026-08-02',
+    'ce7d58b0-b5fc-42cb-a6e0-7a57929e1205', '34d61a18-ede8-4533-b130-7e5937bc1e9d', 'August 2', '2026-08-02',
     'email', 'a-brooks…', 'approved', 'purchase_pending',
-    '$100 statement credit', 'referral-RF8241-offer-version', '2026-10-31', 100
+    '$100 statement credit', 'dab2da6a-4343-4ea3-9b0d-df98a0c96360', '2026-10-31', 100
 );
 
 -- A referral belonging to the other Daniel Brooks. The recorded read returns one
@@ -106,7 +106,7 @@ INSERT INTO referrals (
     invited_channel, invited_masked, application_status, qualification_status,
     offer, offer_version_record_id, deadline_on, display_rank
 ) VALUES (
-    'RF8244', 'customer-daniel-brooks-nc', 'August 5', '2026-08-05',
+    'RF8244', '34d61a18-ede8-4533-b130-7e5937bc1e9d-nc', 'August 5', '2026-08-05',
     'sms', '***-***-6610', 'declined', 'not_qualified',
     '$150 statement credit', NULL, '2026-11-03', 100
 );
@@ -117,7 +117,7 @@ INSERT INTO card_accounts (
     card_id, customer_id, card_last4, product_id, status, reported_lost,
     payment_status, credit_limit, available_credit
 ) VALUES (
-    'card-daniel-brooks-5107', 'customer-daniel-brooks', '5107', 'everyday-cash',
+    'card-daniel-brooks-5107', '34d61a18-ede8-4533-b130-7e5937bc1e9d', '5107', 'everyday-cash',
     'active', FALSE, 'current', 11000.00, 9633.40
 );
 
@@ -125,7 +125,7 @@ INSERT INTO card_accounts (
     card_id, customer_id, card_last4, product_id, status, reported_lost,
     payment_status, credit_limit, available_credit
 ) VALUES (
-    'card-daniel-brooks-nc-8890', 'customer-daniel-brooks-nc', '8890',
+    'card-daniel-brooks-nc-8890', '34d61a18-ede8-4533-b130-7e5937bc1e9d-nc', '8890',
     'horizon-balance', 'active', FALSE, 'current', 4000.00, 1220.75
 );
 
@@ -142,5 +142,13 @@ INSERT INTO transactions (
      'Bellweather Kitchen', 'Raleigh, North Carolina', 'BELLWEATHER KIT',
      'restaurant', 63.80, 'posted', 'settled',
      '2026-08-26T19:22:00-04:00', '2026-08-27', 'transaction ending 4517', '4517');
+
+INSERT INTO scenario (key, value) VALUES
+    ('next_identity_verification_id', '05f09e63-bd3c-4a75-813f-5429ac6d685c'),
+    ('next_self_service_session_id', 'b549b0e6-fced-4596-8794-db42a62476a6'),
+    ('next_notification_id', '4f70ccca-a2a3-4b99-ae66-cfb9d0e975c8'),
+    ('target_referral_id', 'ce7d58b0-b5fc-42cb-a6e0-7a57929e1205'),
+    ('target_referral_reference', 'RF8241')
+ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
 
 COMMIT;

@@ -31,7 +31,7 @@
     "channel_confirmations.verified_at": "Stamped by the same forced read, from the channel's own recorded completion time or the frozen scenario clock, so it is deterministic for every route that gets far enough to change the address."
   },
   "customers": {
-    "SF204771": {
+    "4d6679ca-bcef-4893-81bf-488f66c8c666": {
       "full_name": "Johnny Monroe",
       "primary_email": "johnny.monroe.travel@outlook.com",
       "notification_email": "johnny.monroe.travel@outlook.com",
@@ -43,8 +43,8 @@
     }
   },
   "identity_verifications": {
-    "verification-SF204771-email-change": {
-      "customer_id": "SF204771",
+    "613f42b7-69cd-4767-bf41-9a9db63ff731": {
+      "customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666",
       "status": "verified",
       "required_methods": [
         "billing_zip",
@@ -59,21 +59,21 @@
     }
   },
   "channel_confirmations": {
-    "confirmation-email-change-SF204771": {
-      "customer_id": "SF204771",
-      "channel_id": "trusted-mobile-1251",
+    "a241c1d7-d6c0-4489-9406-65a28d3bca66": {
+      "customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666",
+      "channel_id": "279561c9-f2ce-4402-a23a-2e19316678b3",
       "purpose": "email_change",
       "masked_destination": "***-***-1251",
       "status": "verified",
       "verified_at": "2026-08-27T10:48:39-04:00",
-      "verification_id": "verification-SF204771-email-change"
+      "verification_id": "613f42b7-69cd-4767-bf41-9a9db63ff731"
     }
   },
   "self_service_sessions": {
-    "session-card-application": {
-      "customer_id": "SF204771",
+    "f4136da6-25dc-464b-b50c-8f02a5cc1ca3": {
+      "customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666",
       "workflow": "card_application",
-      "resource_id": "summit-journey",
+      "resource_id": "c6c675e6-0faf-4004-a5de-881eaaa805b7",
       "status": {
         "_any_of": [
           "issued",

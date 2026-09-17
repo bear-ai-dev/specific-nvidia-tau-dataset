@@ -40,14 +40,14 @@
     "row hash for exactly that reason."
   ],
   "_key_columns": {
-    "cases": "case_id",
+    "cases": "case_number",
     "case_note_log": "note_key",
     "notifications": "notification_id",
     "id_allocator": "entity_type",
     "orders": "order_reference"
   },
   "cases": {
-    "WST735204": {
+    "b0fee5fa-0534-4c47-a42a-b3a252106888": {
       "order_reference": "5820465624",
       "customer_id": "customer-teddy-torrez",
       "case_type": "refund_trace",
@@ -65,21 +65,21 @@
     }
   },
   "case_note_log": {
-    "WST735204#1": {
-      "case_id": "WST735204",
+    "b0fee5fa-0534-4c47-a42a-b3a252106888#1": {
+      "case_number": "b0fee5fa-0534-4c47-a42a-b3a252106888",
       "note": "Customer reports card ending 2047 was replaced by card ending 8163 and believes both map to the same checking account; external bank-account status is not verified by Westline.",
       "visible_to_next_reviewer": true
     },
-    "WST735204#2": {
-      "case_id": "WST735204",
+    "b0fee5fa-0534-4c47-a42a-b3a252106888#2": {
+      "case_number": "b0fee5fa-0534-4c47-a42a-b3a252106888",
       "note": "Customer reports an overdraft fee while expecting the refund; supporting statement may be reviewed after trace outcome.",
       "topic": "bank_fee",
       "visible_to_next_reviewer": true
     }
   },
   "notifications": {
-    "notification-WST735204": {
-      "case_id": "WST735204",
+    "43e020c5-a9da-4175-aec7-5989435d95a6": {
+      "case_number": "b0fee5fa-0534-4c47-a42a-b3a252106888",
       "order_reference": "5820465624",
       "channel": "email",
       "template": "refund_trace_confirmation",
@@ -95,13 +95,8 @@
         "amount",
         "masked_original_payment_reference",
         "review_window",
-        "case_id"
+        "case_number"
       ]
-    }
-  },
-  "id_allocator": {
-    "support_case": {
-      "next_value": 735205
     }
   },
   "orders": {

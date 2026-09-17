@@ -135,7 +135,7 @@ The population is there so the lookups have work to do:
 - **Four lapsed welcome offers**, so an offer question has to look at state.
 - **Three knowledge records answer this conversation's queries and 50 do not.**
   Fourteen of those 50 are deliberate near-misses standing next to a retrieved
-  record, which matters most here because the pinned `RF8241` record has to win
+  record, which matters most here because the pinned `ce7d58b0-b5fc-42cb-a6e0-7a57929e1205` record has to win
   against a general referral record, an offer-eligibility record, and a record for
   an expired previous version of the offer. Retrieval orders by `priority`, then
   pattern length, then identifier, so the outcome is deterministic wherever more
@@ -191,7 +191,7 @@ reward: 1.0  (db 1.0 x communicate 1.0)
 ```
 
 The gold path touches **4 rows out of 1,826** — the verification record scoped to
-the open referral case, the tracker session against RF8241, its secure-message
+the open referral case, the tracker session against ce7d58b0-b5fc-42cb-a6e0-7a57929e1205, its secure-message
 delivery, and the email notification telling the customer a secure message is
 waiting. Those four are the agent's legitimate work area and are governed by the
 required facts; the other 1,822 are held to the initial state, which is what makes
@@ -290,7 +290,7 @@ tracker back after issuing it — which the recording never does. It scores 1.0,
 the session it leaves behind reads
 
 ```
-session-referral-RF8241|open_not_submitted|2026-08-28T09:09:00-04:00
+b549b0e6-fced-4596-8794-db42a62476a6|open_not_submitted|2026-08-28T09:09:00-04:00
 ```
 
 Under the previous single-layer verifier this route was not measurable at all, and

@@ -40,7 +40,7 @@ call lookup_customer \
 # All three factors this profile requires. The calling channel is one of them and
 # is matched by the channel the call arrived on, not by anything the caller says.
 call verify_customer_identity \
-    '{"customer_id": "customer-colin-reeves", "billing_zip": "20005",
+    '{"customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9", "billing_zip": "20005",
       "card_last4": "6148"}'
 
 say "That all matches and the line you are on is the one on the account, so you are verified."
@@ -49,7 +49,7 @@ say "That all matches and the line you are on is the one on the account, so you 
 # needs to ask "are those both yours": the merchant, the amount, and that both
 # were declined.
 call get_card_account \
-    '{"customer_id": "customer-colin-reeves", "card_last4": "6148",
+    '{"customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9", "card_last4": "6148",
       "include": ["declines"]}'
 
 say "I can see two attempts from Harbor View Hotel, both for 840 dollars, both declined. Are those both you?"
@@ -58,7 +58,7 @@ say "I can see two attempts from Harbor View Hotel, both for 840 dollars, both d
 # came from and why it failed, alongside the card's status, its available credit,
 # what is still outstanding, and the restriction itself.
 call get_card_account \
-    '{"customer_id": "customer-colin-reeves", "card_last4": "6148",
+    '{"customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9", "card_last4": "6148",
       "include": ["status", "available_credit", "authorizations", "declines",
                   "restrictions"]}'
 
@@ -69,10 +69,10 @@ say "There is also a 32 dollar authorisation from Logan Airport this morning sit
 # so the review can be lifted. Confirming all of it is what lifts it; confirming
 # some of it does not.
 call resolve_card_restriction \
-    '{"customer_id": "customer-colin-reeves", "card_last4": "6148",
-      "restriction_id": "temporary-travel-review",
-      "confirmed_transaction_ids": ["hotel-attempt-1", "hotel-attempt-2",
-                                    "logan-breakfast-32"]}'
+    '{"customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9", "card_last4": "6148",
+      "restriction_id": "a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f",
+      "confirmed_transaction_ids": ["5af2030f-3fad-402f-a1de-23501596194a", "3065d723-2455-4a43-9d59-91c8dbb11da0",
+                                    "131fc14b-fc2e-4ec9-ad07-248d01f7d54b"]}'
 
 say "You have confirmed all three, so I have lifted the review and the card is active again."
 
@@ -87,7 +87,7 @@ say "One thing to get straight before they try again. Your available credit is 9
 # Confirm the hold actually landed rather than taking the caller's word for the
 # receipt.
 call get_card_account \
-    '{"customer_id": "customer-colin-reeves", "card_last4": "6148",
+    '{"customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9", "card_last4": "6148",
       "include": ["authorizations"]}'
 
 say "I can see the 840 approved on our side now, so you are checked in as far as the card goes. Be aware the hotel hold can stay pending for a few days after checkout, depending on when they finalise it, so that 840 will sit against your line for a while yet."
@@ -95,7 +95,7 @@ say "I can see the 840 approved on our side now, so you are checked in as far as
 # Record the trip. A notice is a note on the account and guarantees nothing, which
 # is what the tool reports back.
 call create_travel_notice \
-    '{"customer_id": "customer-colin-reeves", "card_last4": "6148",
+    '{"customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9", "card_last4": "6148",
       "destinations": ["Portland, Maine"], "return_date": "2026-08-30"}'
 
 say "I have put a travel note on the account for Portland through Sunday. To be clear about what that buys you: it is a note for our reviewers and it does not guarantee every purchase will be approved. If something is declined while you are away, ring us."

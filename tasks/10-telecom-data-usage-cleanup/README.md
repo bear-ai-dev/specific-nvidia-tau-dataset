@@ -103,7 +103,7 @@ implementation would hard-code.
 been billed. That separation is what lets the current cycle's usage be attributed
 while its bill is still open, and it is also what makes `bill_reference` correct:
 the call says the $40 goes on "your next ClearWave bill" and the result says
-`bill-current-benjamin`, because the bill for the cycle in progress is the next one
+`7af62370-8858-4af6-b2cd-2b702fd15586`, because the bill for the cycle in progress is the next one
 the customer will receive. A next-bill charge resolves to the open bill of the
 current cycle, and if there is no open bill the mutation is refused rather than
 inventing somewhere to put the charge.
@@ -119,7 +119,7 @@ and plan are attributes of the line. The retail channel grants
 values mean something.
 
 **The verification identifier is derived, not counted.** A verification is one
-record per caller per channel, so `verification-benjamin-reed-support` is
+record per caller per channel, so `ae1d7bf3-792a-4a70-8673-16c535063f29` is
 `customers.slug` and the channel, and re-verifying the same caller refreshes the
 record instead of accumulating identical ones. A failed or inconclusive record
 carries an empty `access_scope`, and the gate reads the scope rather than the
@@ -127,9 +127,9 @@ status, so a record that did not succeed grants nothing by construction.
 
 **The add-on transaction identifier is allocated.** `id_allocator` holds one row
 per line whose template is the account stem; the handler completes it with the
-offer's size, which is where `addon-transaction-benjamin-5gb` comes from, and
+offer's size, which is where `dfdab773-2580-4908-91cf-99a2b4826547` comes from, and
 appends the issued ordinal from the second purchase onward. A second purchase on
-the same line is therefore `addon-transaction-benjamin-5gb-2`, not a collision.
+the same line is therefore `dfdab773-2580-4908-91cf-99a2b4826547-2`, not a collision.
 
 **Offer eligibility is computed per line.** `eligibility_status` is not a column
 on the offer. The same catalog row is eligible for one line and not for another,
@@ -359,7 +359,7 @@ Off-path probing, all against the state the recorded call leaves behind:
 | Probe | Result |
 |---|---|
 | `lookup_customer` on the duplicate pair | `{"match": "multiple"}` |
-| `lookup_customer` on the other Benjamin Reed | `customer-benjamin-reed-1978`, `unique` |
+| `lookup_customer` on the other Benjamin Reed | `6dcb2039-012b-4723-a256-13bb7b6467c2-1978`, `unique` |
 | `get_line_data_usage` for `current_billing_cycle` | 12.8 GB used, window 2026-08-06T09:00 to 2026-08-27T04:00 |
 | `get_line_data_usage` for a custom 01:00–03:00 window | 6.5 GB used, from two samples |
 | `get_customer_bills` with `status: historical` | `bill-jul-benjamin`, its own cycle dates |
@@ -370,7 +370,7 @@ Off-path probing, all against the state the recorded call leaves behind:
 | `add_data_addon` with `customer_authorized: false` | 409 refused |
 | `get_line_data_usage` on an unknown line | 404 |
 | Unpatterned mobile number, ISO date of birth, window outside the enum, undeclared property, empty `include` | 400 with the violated constraint named |
-| **`add_data_addon` a second time** | `addon-transaction-benjamin-5gb-2`, remaining 12.2 |
+| **`add_data_addon` a second time** | `dfdab773-2580-4908-91cf-99a2b4826547-2`, remaining 12.2 |
 | **`get_line_data_usage` after both add-ons** | remaining 12.2, used still 11.8 |
 
 The last two are the point. After the second purchase the view reports allowance

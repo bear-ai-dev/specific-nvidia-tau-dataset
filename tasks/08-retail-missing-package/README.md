@@ -84,7 +84,7 @@ step per read, so a later look reports a later state without a clock that
 advances.
 
 **Case identifiers are allocated.** `id_allocator` is seeded so the first support
-case opened in this conversation issues `WST481662` and a second issues
+case opened in this conversation issues `8cf648a4-ca60-4387-bc11-ec38f426123a` and a second issues
 `WST481663`. The same mechanism hands out replacement-order references, so the
 recorded reference is allocated rather than asserted.
 

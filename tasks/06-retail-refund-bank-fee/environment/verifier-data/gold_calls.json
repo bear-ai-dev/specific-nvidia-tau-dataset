@@ -141,14 +141,15 @@
         "amount": 146.42
       },
       "expected_output": {
-        "case_id": "WST735204",
+        "case_id": "b0fee5fa-0534-4c47-a42a-b3a252106888",
         "status": "open",
         "review_window_business_days": [
           3,
           5
         ],
         "duplicate_refund_blocked": true,
-        "return_evidence_attached": true
+        "return_evidence_attached": true,
+        "case_number": "WST735204"
       },
       "state_effect": "refund_trace_opened",
       "source_label": "open a refund payment trace",
@@ -158,7 +159,7 @@
       "call_id": "rr-005",
       "name": "update_case",
       "arguments": {
-        "case_id": "WST735204",
+        "case_id": "b0fee5fa-0534-4c47-a42a-b3a252106888",
         "note": "Customer reports card ending 2047 was replaced by card ending 8163 and believes both map to the same checking account; external bank-account status is not verified by Westline."
       },
       "expected_output": {
@@ -173,22 +174,23 @@
       "call_id": "rr-006",
       "name": "send_case_notification",
       "arguments": {
-        "case_id": "WST735204",
+        "case_id": "b0fee5fa-0534-4c47-a42a-b3a252106888",
         "channel": "email",
         "destination_source": "order_contact",
         "template": "refund_trace_confirmation"
       },
       "expected_output": {
-        "notification_id": "notification-WST735204",
+        "notification_id": "43e020c5-a9da-4175-aec7-5989435d95a6",
         "status": "sent",
         "masked_destination": "t***@harbormail.com",
-        "case_id": "WST735204",
+        "case_id": "b0fee5fa-0534-4c47-a42a-b3a252106888",
         "included_fields": [
           "amount",
           "masked_original_payment_reference",
           "review_window",
-          "case_id"
-        ]
+          "case_number"
+        ],
+        "case_number": "WST735204"
       },
       "state_effect": "notification_sent",
       "source_label": "send the requested refund-trace confirmation email",
@@ -198,7 +200,7 @@
       "call_id": "rr-007",
       "name": "update_case",
       "arguments": {
-        "case_id": "WST735204",
+        "case_id": "b0fee5fa-0534-4c47-a42a-b3a252106888",
         "note": "Customer reports an overdraft fee while expecting the refund; supporting statement may be reviewed after trace outcome."
       },
       "expected_output": {

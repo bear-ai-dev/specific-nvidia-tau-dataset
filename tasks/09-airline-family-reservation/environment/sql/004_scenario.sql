@@ -26,7 +26,7 @@ INSERT INTO customers
     (customer_id, slug, full_name, date_of_birth, email, phone_last4,
      elevated_verification, created_at)
 VALUES
-    ('customer-linda-carver', 'linda-carver', 'Linda Marie Carver', '1954-03-08',
+    ('7fe38f6f-b7c5-4f50-a56a-e2d68d6b11d0', 'linda-carver', 'Linda Marie Carver', '1954-03-08',
      'linda.carver9@outlook.com', '7715', FALSE, '2019-04-22T10:15:00-07:00');
 
 -- The card the caller says is already on the account. The token and the last
@@ -35,7 +35,7 @@ VALUES
 INSERT INTO payment_methods
     (token, customer_id, brand, last4, active, added_at)
 VALUES
-    ('visa-on-file-1182', 'customer-linda-carver', 'Visa', '1182', TRUE,
+    ('c1200f87-9c48-41f4-a6f9-04d89f28b2b2', '7fe38f6f-b7c5-4f50-a56a-e2d68d6b11d0', 'Visa', '1182', TRUE,
      '2023-11-08T16:40:00-07:00');
 
 -- The certificate the caller reads out, plus two more on the same account that
@@ -48,11 +48,11 @@ INSERT INTO travel_certificates
     (certificate_id, code, customer_id, masked_code, status, original_amount,
      available_balance, currency, expires_at)
 VALUES
-    ('certificate-CT-449108', 'CT-449108', 'customer-linda-carver', 'CT-***108',
+    ('18e422e6-a2c3-4cb8-93fa-daf7a28c328b', 'CT-449108', '7fe38f6f-b7c5-4f50-a56a-e2d68d6b11d0', 'CT-***108',
      'valid', '200.00', '200.00', 'USD', '2026-12-31'),
-    ('certificate-CT-118240', 'CT-118240', 'customer-linda-carver', 'CT-***240',
+    ('certificate-CT-118240', 'CT-118240', '7fe38f6f-b7c5-4f50-a56a-e2d68d6b11d0', 'CT-***240',
      'valid', '75.00', '45.00', 'USD', '2027-05-31'),
-    ('certificate-CT-990031', 'CT-990031', 'customer-linda-carver', 'CT-***031',
+    ('certificate-CT-990031', 'CT-990031', '7fe38f6f-b7c5-4f50-a56a-e2d68d6b11d0', 'CT-***031',
      'expired', '120.00', '120.00', 'USD', '2026-04-30');
 
 -- The two availability checks the call runs, one per stop profile. The search
@@ -65,9 +65,9 @@ INSERT INTO flight_searches
     (search_id, origin_code, destination_code, departure_date, return_date,
      stop_profile, availability_checked_at, expires_at)
 VALUES
-    ('search-phx-dca-nonstop-oct14-oct19', 'PHX', 'DCA', '2026-10-14', '2026-10-19',
+    ('96a87cf6-ba8d-4705-995b-8805e877ab0b', 'PHX', 'DCA', '2026-10-14', '2026-10-19',
      'nonstop', '2026-08-26T12:31:33-07:00', 'quote_required_before_booking'),
-    ('search-phx-dca-one-stop-oct14-oct19', 'PHX', 'DCA', '2026-10-14', '2026-10-19',
+    ('b1e28687-a8fe-44c9-a18c-66b5dcc0dedb', 'PHX', 'DCA', '2026-10-14', '2026-10-19',
      'one_stop', '2026-08-26T12:32:17-07:00', 'quote_required_before_booking');
 
 -- The quote the pricing call returns. The row carries identity and expiry only:
@@ -84,7 +84,7 @@ INSERT INTO fare_quotes
      mobility_device_charge, trip_insurance, total_with_insurance, currency,
      expires_at, last_priced_at)
 VALUES
-    ('quote-phx-dca-standard-2-travelers', 'BM-PHX-DCA-0910', 'BM-DCA-PHX-1540',
+    ('b28a0bbf-614c-4616-862c-fbeef88f6495', '2133fbc8-ed10-42aa-baa2-12e3d15a6a05', '3ac31d55-0dbc-4f79-892e-743257ec9f13',
      '2026-10-14', '2026-10-19', 'standard_economy', 2, 2, 1, TRUE,
      NULL, NULL, NULL, NULL, NULL, 'USD', '2026-08-27T12:33:00-07:00', NULL);
 
@@ -94,5 +94,12 @@ VALUES
 -- allocates B9RT6M and a second booking cannot allocate it again.
 INSERT INTO confirmation_code_pool (pool_seq, code, issued_at)
 VALUES (381, 'B9RT6M', NULL);
+
+INSERT INTO scenario (key, value) VALUES
+    ('next_identity_verification_id', '661f8b5c-f3d8-4612-8645-00f9a5ecded8'),
+    ('next_reservation_id', 'e27bce0a-c8ac-4102-9a62-e6d3f9bfdaa7'),
+    ('next_traveler_1_id', '1a7ef9d5-196f-456c-a780-1acafefd1fd1'),
+    ('next_traveler_2_id', 'b0b29fec-eb5c-469e-bee0-046f8c861822')
+ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
 
 COMMIT;

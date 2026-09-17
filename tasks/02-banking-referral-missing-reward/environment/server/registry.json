@@ -1,7 +1,7 @@
 {
   "schema_version": "0.2.0",
   "registry_name": "banking",
-  "registry_version": "0.3.0",
+  "registry_version": "0.5.0",
   "compatibility": "custom_tau_style_not_literal_tau_registry",
   "design_note": "Banking registry typed for deterministic mock implementation from this file alone. Every result schema is closed (additionalProperties: false) and typed from the union of observed tool outputs across the four banking conversations plus policy vocabulary. Session, challenge-delivery, and notification statuses are enumerated from policy states plus observed values; the backend reports the opened-but-not-yet-submitted session state as 'open_not_submitted'. Identity-verification factors form one closed enum shared by lookup and verification results. Every monetary amount carries an explicit USD currency sibling, and temporal fields carry date or date-time formats. search_knowledge_base returns exactly one versioned record whose optional content fields are the typed union of every observed knowledge payload. Failure or unavailable states not enumerated here surface as tool errors rather than result payloads.",
   "tools": [
@@ -9,7 +9,6 @@
       "name": "lookup_customer",
       "description": "Find one banking customer using a stable customer identifier or verified profile attribute. At least one identifier parameter must be supplied; no parameter is individually required because different lookups legitimately use different identifiers. Precedence when multiple are supplied: account_id, then email, then full_name, with billing_zip, card_last4, and account_match used as corroborating attributes to narrow to exactly one profile.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "description": "At least one identifier property must be supplied. Precedence: account_id, then email, then full_name; billing_zip, card_last4, and account_match narrow the match.",
         "properties": {
@@ -47,12 +46,12 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Stable customer identifier."
+            "description": "Stable customer identifier.",
+            "format": "uuid"
           },
           "match": {
             "type": "string",
@@ -89,7 +88,8 @@
               "properties": {
                 "channel_id": {
                   "type": "string",
-                  "description": "Stable trusted-channel identifier."
+                  "description": "Stable trusted-channel identifier.",
+                  "format": "uuid"
                 },
                 "type": {
                   "type": "string",
@@ -111,6 +111,10 @@
               ],
               "additionalProperties": false
             }
+          },
+          "account_id": {
+            "type": "string",
+            "description": "Customer-facing account reference supplied for lookup; distinct from the internal customer UUID."
           }
         },
         "required": [
@@ -124,14 +128,12 @@
       "name": "get_current_time",
       "description": "Return the authoritative current timestamp for an audit or verification record.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {},
         "required": [],
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "status": {
@@ -162,12 +164,12 @@
       "name": "verify_customer_identity",
       "description": "Validate supplied non-secret identity factors against the resolved profile and return a scoped verification record. Collecting or naming factors alone never establishes success.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "billing_zip": {
             "type": "string",
@@ -200,12 +202,12 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "verification_id": {
             "type": "string",
-            "description": "Scoped verification record."
+            "description": "Scoped verification record.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -244,12 +246,12 @@
       "name": "start_trusted_channel_confirmation",
       "description": "Send a purpose-bound confirmation challenge to an already trusted masked channel. The agent must not request or place the secret response in ordinary tool arguments.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "purpose": {
             "type": "string",
@@ -268,7 +270,8 @@
           },
           "verification_id": {
             "type": "string",
-            "description": "Active identity-verification record."
+            "description": "Active identity-verification record.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -280,12 +283,12 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "confirmation_id": {
             "type": "string",
-            "description": "Purpose-bound confirmation record."
+            "description": "Purpose-bound confirmation record.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -318,16 +321,17 @@
       "name": "get_trusted_channel_confirmation",
       "description": "Read the current state of a purpose-bound trusted-channel challenge without receiving or exposing the secret response.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "confirmation_id": {
             "type": "string",
-            "description": "Confirmation record returned when the challenge was started."
+            "description": "Confirmation record returned when the challenge was started.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -337,12 +341,12 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "confirmation_id": {
             "type": "string",
-            "description": "Purpose-bound confirmation record."
+            "description": "Purpose-bound confirmation record.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -376,12 +380,12 @@
       "name": "update_customer_email",
       "description": "Change the email on a verified customer profile after the required confirmation flow succeeds.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "new_email": {
             "type": "string",
@@ -390,11 +394,13 @@
           },
           "verification_id": {
             "type": "string",
-            "description": "Active identity-verification record."
+            "description": "Active identity-verification record.",
+            "format": "uuid"
           },
           "confirmation_id": {
             "type": "string",
-            "description": "Successful trusted-channel confirmation record."
+            "description": "Successful trusted-channel confirmation record.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -406,7 +412,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "status": {
@@ -451,7 +456,6 @@
       "name": "search_knowledge_base",
       "description": "Search external, versioned product and process documentation that is not already included in the system policy. The backend selects the retrieval method and returns exactly one versioned record; which optional content fields are present depends on the record.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "query": {
@@ -469,12 +473,12 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "record_id": {
             "type": "string",
-            "description": "Versioned external knowledge record."
+            "description": "Versioned external knowledge record.",
+            "format": "uuid"
           },
           "effective_at": {
             "type": "string",
@@ -494,7 +498,8 @@
               "properties": {
                 "product_id": {
                   "type": "string",
-                  "description": "Stable product identifier."
+                  "description": "Stable product identifier.",
+                  "format": "uuid"
                 },
                 "product": {
                   "type": "string",
@@ -536,7 +541,8 @@
               "properties": {
                 "product_id": {
                   "type": "string",
-                  "description": "Stable product identifier."
+                  "description": "Stable product identifier.",
+                  "format": "uuid"
                 },
                 "product": {
                   "type": "string",
@@ -741,12 +747,12 @@
       "name": "get_card_account",
       "description": "Retrieve card status, available credit, recent authorizations, declines, restrictions, and travel notices in one account read.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "card_last4": {
             "type": "string",
@@ -777,12 +783,12 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Customer identifier."
+            "description": "Customer identifier.",
+            "format": "uuid"
           },
           "card_last4": {
             "type": "string",
@@ -825,7 +831,8 @@
               "properties": {
                 "transaction_id": {
                   "type": "string",
-                  "description": "Stable transaction identifier."
+                  "description": "Stable transaction identifier.",
+                  "format": "uuid"
                 },
                 "merchant": {
                   "type": "string",
@@ -875,7 +882,8 @@
               "properties": {
                 "transaction_id": {
                   "type": "string",
-                  "description": "Stable transaction identifier."
+                  "description": "Stable transaction identifier.",
+                  "format": "uuid"
                 },
                 "merchant": {
                   "type": "string",
@@ -923,7 +931,8 @@
               "properties": {
                 "restriction_id": {
                   "type": "string",
-                  "description": "Stable restriction identifier."
+                  "description": "Stable restriction identifier.",
+                  "format": "uuid"
                 },
                 "status": {
                   "type": "string",
@@ -934,7 +943,8 @@
                   "description": "Transactions linked to the restriction.",
                   "items": {
                     "type": "string",
-                    "description": "Transaction identifier."
+                    "description": "Transaction identifier.",
+                    "format": "uuid"
                   }
                 }
               },
@@ -953,7 +963,8 @@
               "properties": {
                 "notice_id": {
                   "type": "string",
-                  "description": "Travel-notice identifier."
+                  "description": "Travel-notice identifier.",
+                  "format": "uuid"
                 },
                 "destinations": {
                   "type": "array",
@@ -991,12 +1002,12 @@
       "name": "resolve_card_restriction",
       "description": "Remove a temporary card restriction after the customer confirms the triggering activity.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "card_last4": {
             "type": "string",
@@ -1005,14 +1016,16 @@
           },
           "restriction_id": {
             "type": "string",
-            "description": "Restriction to resolve."
+            "description": "Restriction to resolve.",
+            "format": "uuid"
           },
           "confirmed_transaction_ids": {
             "type": "array",
             "description": "Transactions the customer confirmed.",
             "items": {
               "type": "string",
-              "description": "Transaction identifier."
+              "description": "Transaction identifier.",
+              "format": "uuid"
             },
             "minItems": 1
           }
@@ -1025,7 +1038,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "status": {
@@ -1057,12 +1069,12 @@
       "name": "create_travel_notice",
       "description": "Add a travel notice without promising that every future authorization will be approved.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "card_last4": {
             "type": "string",
@@ -1092,7 +1104,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "status": {
@@ -1101,7 +1112,8 @@
           },
           "notice_id": {
             "type": "string",
-            "description": "Travel-notice identifier."
+            "description": "Travel-notice identifier.",
+            "format": "uuid"
           },
           "authorization_guaranteed": {
             "type": "boolean",
@@ -1119,16 +1131,17 @@
       "name": "get_referrals",
       "description": "Retrieve referral invitations, offer terms, qualification state, and posting state without exposing the referred person's private transactions.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Referring customer identifier."
+            "description": "Referring customer identifier.",
+            "format": "uuid"
           },
           "referral_id": {
             "type": "string",
-            "description": "Optional referral identifier."
+            "description": "Optional referral identifier.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -1137,7 +1150,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "referrals": {
@@ -1148,7 +1160,8 @@
               "properties": {
                 "referral_id": {
                   "type": "string",
-                  "description": "Stable referral identifier."
+                  "description": "Stable referral identifier.",
+                  "format": "uuid"
                 },
                 "invited_at": {
                   "type": "string",
@@ -1188,13 +1201,18 @@
                 "offer": {
                   "type": "string",
                   "description": "Offer terms as displayed, e.g. '$100 statement credit'."
+                },
+                "reference_code": {
+                  "type": "string",
+                  "description": "Customer-facing referral reference code; distinct from the internal referral UUID."
                 }
               },
               "required": [
                 "referral_id",
                 "application_status",
                 "qualification_status",
-                "offer"
+                "offer",
+                "reference_code"
               ],
               "additionalProperties": false
             }
@@ -1210,12 +1228,12 @@
       "name": "get_credit_card_transactions",
       "description": "Retrieve candidate credit-card transactions for a verified customer using amount, descriptor, date, or card filters.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "card_last4": {
             "type": "string",
@@ -1242,7 +1260,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "transactions": {
@@ -1253,7 +1270,8 @@
               "properties": {
                 "transaction_id": {
                   "type": "string",
-                  "description": "Stable transaction identifier."
+                  "description": "Stable transaction identifier.",
+                  "format": "uuid"
                 },
                 "card_last4": {
                   "type": "string",
@@ -1301,12 +1319,12 @@
       "name": "create_secure_self_service_session",
       "description": "Issue a secure customer-controlled workflow session. Issuing a session does not submit an application or claim.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "workflow": {
             "type": "string",
@@ -1319,7 +1337,8 @@
           },
           "resource_id": {
             "type": "string",
-            "description": "Related product, referral, or transaction identifier."
+            "description": "Related product, referral, or transaction identifier.",
+            "format": "uuid"
           },
           "delivery_channels": {
             "type": "array",
@@ -1344,12 +1363,12 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "session_id": {
             "type": "string",
-            "description": "Session identifier."
+            "description": "Session identifier.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -1390,7 +1409,8 @@
               "string",
               "null"
             ],
-            "description": "Claim reference; null until the customer submits (transaction_dispute workflow)."
+            "description": "Claim reference; null until the customer submits (transaction_dispute workflow).",
+            "format": "uuid"
           },
           "access_location": {
             "type": "string",
@@ -1464,16 +1484,17 @@
       "name": "get_secure_self_service_session",
       "description": "Read whether an issued self-service session is open, saved, submitted, expired, or closed.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "session_id": {
             "type": "string",
-            "description": "Self-service session identifier."
+            "description": "Self-service session identifier.",
+            "format": "uuid"
           }
         },
         "required": [
@@ -1483,12 +1504,12 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "session_id": {
             "type": "string",
-            "description": "Session identifier."
+            "description": "Session identifier.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -1523,7 +1544,8 @@
               "string",
               "null"
             ],
-            "description": "Claim reference; null until the customer submits (transaction_dispute workflow)."
+            "description": "Claim reference; null until the customer submits (transaction_dispute workflow).",
+            "format": "uuid"
           },
           "expires_at": {
             "type": "string",
@@ -1542,16 +1564,17 @@
       "name": "send_secure_notification",
       "description": "Send a notification that points the customer to a secure in-account resource without placing a working secure link in ordinary email.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "customer_id": {
             "type": "string",
-            "description": "Resolved customer identifier."
+            "description": "Resolved customer identifier.",
+            "format": "uuid"
           },
           "related_resource_id": {
             "type": "string",
-            "description": "Secure resource identifier."
+            "description": "Secure resource identifier.",
+            "format": "uuid"
           },
           "channel": {
             "type": "string",
@@ -1575,12 +1598,12 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "notification_id": {
             "type": "string",
-            "description": "Notification identifier."
+            "description": "Notification identifier.",
+            "format": "uuid"
           },
           "status": {
             "type": "string",
@@ -1611,7 +1634,6 @@
       "name": "transfer_to_specialist",
       "description": "Transfer the conversation with a concise reason and context summary when policy or tooling requires a specialist.",
       "parameters": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "reason": {
@@ -1630,7 +1652,6 @@
         "additionalProperties": false
       },
       "result_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
           "status": {
@@ -1639,7 +1660,8 @@
           },
           "transfer_id": {
             "type": "string",
-            "description": "Transfer identifier."
+            "description": "Transfer identifier.",
+            "format": "uuid"
           }
         },
         "required": [

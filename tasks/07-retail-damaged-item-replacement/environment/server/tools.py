@@ -347,20 +347,26 @@ def _latest_scan(cur, order_reference: str) -> dict | None:
     )
 
 
+def _public_case_number(cur, case_id: str) -> str:
+    if case_id == scenario_value(cur, "target_case_id"):
+        return scenario_value(cur, "target_case_number") or case_id
+    return case_id
+
+
 def _open_cases(cur, customer_id: str) -> list[dict]:
     return all_rows(
         cur,
         """
-        SELECT k.case_id, k.order_reference, k.case_type, k.status,
+        SELECT k.case_number, k.order_reference, k.case_type, k.status,
                k.item_description, k.carrier_response, k.deadline_display,
                k.carrier_may_contact_customer, k.replacement_created,
                p.pickup_location,
                t.order_view_fields, t.related_view_fields
           FROM cases k
           JOIN case_type_policy t ON t.case_type = k.case_type
-          LEFT JOIN case_preferences p ON p.case_id = k.case_id
+          LEFT JOIN case_preferences p ON p.case_number = k.case_number
          WHERE k.customer_id = %s AND k.status = ANY(%s)
-         ORDER BY k.opened_at, k.case_id
+         ORDER BY k.opened_at, k.case_number
         """,
         (customer_id, OPEN_CASE_STATUSES),
     )
@@ -380,7 +386,7 @@ def _case_view(cur, case: dict, reference: str) -> dict:
     if case["pickup_location"]:
         preferences = {"pickup": case["pickup_location"]}
     available = {
-        "case_id": case["case_id"],
+        "case_number": case["case_number"],
         "order_reference": _mask_reference(cur, case["order_reference"]),
         "type": case["case_type"],
         "item": case["item_description"],
@@ -393,7 +399,12 @@ def _case_view(cur, case: dict, reference: str) -> dict:
     }
     fields = (case["order_view_fields"] if case["order_reference"] == reference
               else case["related_view_fields"])
-    return compact([(field, available[field]) for field in fields])
+    view = compact([(field, available[field]) for field in fields])
+    if "case_number" in view:
+        case_id = view.pop("case_number")
+        view["case_id"] = case_id
+        view["case_number"] = _public_case_number(cur, case_id)
+    return view
 
 
 def _advance_notification(cur, notification_id: str) -> dict:
@@ -481,7 +492,7 @@ def lookup_customer(cur, args) -> dict:
     orders = all_rows(
         cur,
         """
-        SELECT o.order_reference, o.representative_item, k.case_id
+        SELECT o.order_reference, o.representative_item, k.case_number
           FROM orders o
           JOIN cases k ON k.order_reference = o.order_reference
                       AND k.status = ANY(%s)
@@ -498,7 +509,8 @@ def lookup_customer(cur, args) -> dict:
             compact([
                 ("order_reference", _mask_reference(cur, row["order_reference"])),
                 ("item", row["representative_item"]),
-                ("open_case_id", row["case_id"]),
+                ("open_case_id", row["case_number"]),
+                ("open_case_number", _public_case_number(cur, row["case_number"])),
             ])
             for row in orders
         ],
@@ -662,7 +674,7 @@ def get_order(cur, args) -> dict:
             """
             SELECT n.notification_id
               FROM notifications n
-              LEFT JOIN cases k ON k.case_id = n.case_id
+              LEFT JOIN cases k ON k.case_number = n.case_number
              WHERE n.order_reference = %s OR k.order_reference = %s
              ORDER BY n.created_at, n.notification_id
             """,
@@ -757,11 +769,11 @@ def open_delivery_trace(cur, args) -> dict:
                            int(hour), int(minute), tzinfo=now.tzinfo)
     deadline_display = _clock_display(deadline, now)
 
-    case_id = allocate_id(cur, "support_case")
+    case_number = allocate_id(cur, "support_case")
     cur.execute(
         """
         INSERT INTO cases
-            (case_id, order_reference, customer_id, case_type, status, reason,
+            (case_number, order_reference, customer_id, case_type, status, reason,
              item_description, carrier_response, deadline_at, deadline_display,
              carrier_may_contact_customer, replacement_created,
              requested_resolution, needed_by, approval_required, approval_channel,
@@ -769,7 +781,7 @@ def open_delivery_trace(cur, args) -> dict:
         VALUES (%s, %s, %s, 'delivery_trace', %s, %s, %s, 'none', %s, %s, %s,
                 FALSE, %s, %s, %s, %s, %s, %s, %s, %s)
         """,
-        (case_id, order["order_reference"], order["customer_id"],
+        (case_number, order["order_reference"], order["customer_id"],
          policy["initial_status"], args["reason"], order["representative_item"],
          deadline, deadline_display, policy["carrier_may_contact_customer"],
          args.get("requested_resolution"), args.get("needed_by"),
@@ -779,15 +791,15 @@ def open_delivery_trace(cur, args) -> dict:
     )
     for item_reference in args["item_references"]:
         cur.execute(
-            "INSERT INTO case_items (case_id, item_reference) VALUES (%s, %s)",
-            (case_id, item_reference),
+            "INSERT INTO case_items (case_number, item_reference) VALUES (%s, %s)",
+            (case_number, item_reference),
         )
 
     # No confirmation has been sent yet: policy requires the customer to approve
     # a resolution through the trace notification, and the notification is a
     # separate authorized call.
     return compact([
-        ("case_id", case_id),
+        ("case_number", case_number),
         ("status", policy["initial_status"]),
         ("carrier_response_deadline", deadline_display),
         ("replacement_created", False),
@@ -847,14 +859,14 @@ def open_refund_trace(cur, args) -> dict:
 
     policy = _case_policy(cur, "refund_trace")
     now = _now(cur)
-    case_id = allocate_id(cur, "support_case")
+    case_number = allocate_id(cur, "support_case")
     # Evidence is attached when the return the customer named is a completed
     # return on the same order, which is the only thing Westline can attest to.
     evidence_attached = accepted_return["return_status"] == "complete"
     cur.execute(
         """
         INSERT INTO cases
-            (case_id, order_reference, customer_id, case_type, status, reason,
+            (case_number, order_reference, customer_id, case_type, status, reason,
              item_description, replacement_created, review_window_min_days,
              review_window_max_days, duplicate_refund_blocked,
              return_evidence_attached, return_reference, payment_reference,
@@ -862,14 +874,14 @@ def open_refund_trace(cur, args) -> dict:
         VALUES (%s, %s, %s, 'refund_trace', %s, 'missing_refund', %s, FALSE,
                 %s, %s, %s, %s, %s, %s, %s, %s)
         """,
-        (case_id, reference, order["customer_id"], policy["initial_status"],
+        (case_number, reference, order["customer_id"], policy["initial_status"],
          order["representative_item"], policy["review_window_min_days"],
          policy["review_window_max_days"], policy["duplicate_refund_blocked"],
          evidence_attached, accepted_return["return_reference"],
          args["payment_reference"], args["amount"], now),
     )
     return {
-        "case_id": case_id,
+        "case_number": case_number,
         "status": policy["initial_status"],
         "review_window_business_days": [policy["review_window_min_days"],
                                         policy["review_window_max_days"]],
@@ -1021,7 +1033,7 @@ def create_replacement_order(cur, args) -> dict:
     cur.execute(
         """
         INSERT INTO notifications
-            (notification_id, case_id, order_reference, channel, template,
+            (notification_id, case_number, order_reference, channel, template,
              message_type, masked_destination, status, status_index,
              status_progression, subject_prefix, optional_photo_link,
              photo_link_section, included_fields, sent_at, created_at)
@@ -1080,9 +1092,9 @@ def create_replacement_order(cur, args) -> dict:
 
 
 def update_case(cur, args) -> dict:
-    case = one(cur, "SELECT * FROM cases WHERE case_id = %s", (args["case_id"],))
+    case = one(cur, "SELECT * FROM cases WHERE case_number = %s", (args["case_number"],))
     if case is None:
-        raise NotFound(f"unknown case {args['case_id']!r}")
+        raise NotFound(f"unknown case {args['case_number']!r}")
 
     note = args.get("note")
     pickup = args.get("preferred_pickup_location")
@@ -1108,18 +1120,18 @@ def update_case(cur, args) -> dict:
         cur.execute(
             """
             INSERT INTO case_notes
-                (case_id, note_no, note, topic, visible_to_next_reviewer, created_at)
+                (case_number, note_no, note, topic, visible_to_next_reviewer, created_at)
             SELECT %s, coalesce(max(note_no), 0) + 1, %s, %s, TRUE, %s
-              FROM case_notes WHERE case_id = %s
+              FROM case_notes WHERE case_number = %s
             """,
-            (case["case_id"], note, topic["topic"] if topic else None, now,
-             case["case_id"]),
+            (case["case_number"], note, topic["topic"] if topic else None, now,
+             case["case_number"]),
         )
 
     if requested is not None:
         cur.execute(
-            "UPDATE cases SET requested_resolution = %s WHERE case_id = %s",
-            (requested, case["case_id"]),
+            "UPDATE cases SET requested_resolution = %s WHERE case_number = %s",
+            (requested, case["case_number"]),
         )
 
     review_instruction = None
@@ -1134,16 +1146,16 @@ def update_case(cur, args) -> dict:
         cur.execute(
             """
             INSERT INTO case_preferences
-                (case_id, pickup_location, pickup_site, review_instruction,
+                (case_number, pickup_location, pickup_site, review_instruction,
                  visible_to_next_reviewer, recorded_at)
             VALUES (%s, %s, %s, %s, TRUE, %s)
-            ON CONFLICT (case_id) DO UPDATE
+            ON CONFLICT (case_number) DO UPDATE
                 SET pickup_location = EXCLUDED.pickup_location,
                     pickup_site = EXCLUDED.pickup_site,
                     review_instruction = EXCLUDED.review_instruction,
                     recorded_at = EXCLUDED.recorded_at
             """,
-            (case["case_id"], pickup, site, review_instruction, now),
+            (case["case_number"], pickup, site, review_instruction, now),
         )
 
     # A preference changes what the next reviewer will do; a note only tells
@@ -1167,15 +1179,15 @@ def send_case_notification(cur, args) -> dict:
     case = one(
         cur,
         """
-        SELECT k.case_id, k.order_reference, c.masked_email, c.masked_phone
+        SELECT k.case_number, k.order_reference, c.masked_email, c.masked_phone
           FROM cases k
           JOIN customers c ON c.customer_id = k.customer_id
-         WHERE k.case_id = %s
+         WHERE k.case_number = %s
         """,
-        (args["case_id"],),
+        (args["case_number"],),
     )
     if case is None:
-        raise NotFound(f"unknown case {args['case_id']!r}")
+        raise NotFound(f"unknown case {args['case_number']!r}")
 
     template = one(
         cur,
@@ -1191,13 +1203,13 @@ def send_case_notification(cur, args) -> dict:
             f"no verified {args['channel']} destination is on file for this case")
 
     now = _now(cur)
-    notification_id = f"notification-{case['case_id']}"
+    notification_id = f"notification-{case['case_number']}"
     # A resend is the same message going out again, so it keeps its identifier
     # and restarts from the delivery state a fresh send has.
     cur.execute(
         """
         INSERT INTO notifications
-            (notification_id, case_id, order_reference, channel, template,
+            (notification_id, case_number, order_reference, channel, template,
              message_type, masked_destination, status, status_index,
              status_progression, subject_prefix, optional_photo_link,
              photo_link_section, included_fields, sent_at, created_at)
@@ -1213,7 +1225,7 @@ def send_case_notification(cur, args) -> dict:
                 included_fields = EXCLUDED.included_fields,
                 sent_at = EXCLUDED.sent_at
         """,
-        (notification_id, case["case_id"], case["order_reference"], args["channel"],
+        (notification_id, case["case_number"], case["order_reference"], args["channel"],
          template["template"], template["message_type"], destination,
          template["initial_status"], template["delivery_progression"],
          template["subject_prefix"], template["optional_photo_link"],
@@ -1224,7 +1236,7 @@ def send_case_notification(cur, args) -> dict:
         "notification_id": notification_id,
         "status": template["initial_status"],
         "masked_destination": destination,
-        "case_id": case["case_id"],
+        "case_number": case["case_number"],
         "included_fields": as_list_always(template["included_fields"]),
     }
 

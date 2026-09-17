@@ -72,7 +72,7 @@ poll at `sent` indefinitely, and 12 of the 99 generated channels are enrolled bu
 never complete.
 
 **The verification identifier comes from the reason the customer called.** The
-recorded record is `verification-SF204771-email-change`, which is the profile's
+recorded record is `613f42b7-69cd-4767-bf41-9a9db63ff731`, which is the profile's
 key and the slug of its open service case. That case is a row in
 `service_cases`, with a unique partial index enforcing at most one open case per
 customer, so re-verifying inside one piece of work returns the same record instead
@@ -260,12 +260,12 @@ successfully changes the address has necessarily polled:
 
 ```
 ### confirmation status before any poll ###
-confirmation-email-change-SF204771|sent|
+a241c1d7-d6c0-4489-9406-65a28d3bca66|sent|
 ### update_customer_email with the confirmation unpolled ###
 {"error": {"type": "refused", "message": "trusted-channel confirmation is not verified", "detail": {"confirmation_status": "sent"}}}
 HTTP 409
 ### now poll it, then retry ###
-{"confirmation_id": "confirmation-email-change-SF204771", "status": "verified", "verified_at": "2026-08-27T10:48:39-04:00"}
+{"confirmation_id": "a241c1d7-d6c0-4489-9406-65a28d3bca66", "status": "verified", "verified_at": "2026-08-27T10:48:39-04:00"}
 {"status": "updated", "primary_email": "johnny.monroe.travel@outlook.com", "notification_email": "johnny.monroe.travel@outlook.com", "login_identifier_changed": false, "transition_security_notices": ["old_email", "new_email"]}
 HTTP 200
 ```

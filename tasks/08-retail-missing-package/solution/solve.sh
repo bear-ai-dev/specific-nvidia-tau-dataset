@@ -74,7 +74,7 @@ say "When it does become eligible, you will need to approve it. There is an appr
 # Record the pickup preference and the variant the customer wants preserved, on
 # this case and no other. Recording a preference is not promising it.
 call update_case \
-    '{"case_id": "WST481662", "requested_resolution": "replacement",
+    '{"case_id": "8cf648a4-ca60-4387-bc11-ec38f426123a", "requested_resolution": "replacement",
       "preferred_pickup_location": "West 23rd Street pickup counter",
       "note": "Preserve exact blue variant and original price if replacement becomes eligible."}'
 
@@ -84,7 +84,7 @@ say "I have also added the West 23rd Street counter as a preference, and I want 
 # Send the trace confirmation to the verified contact on the order, because the
 # approval link the customer will need lives in it.
 call send_case_notification \
-    '{"case_id": "WST481662", "channel": "email",
+    '{"case_id": "8cf648a4-ca60-4387-bc11-ec38f426123a", "channel": "email",
       "destination_source": "order_contact", "template": "delivery_trace_confirmation"}'
 
 # Confirm what the customer is looking at: the open trace and the message that

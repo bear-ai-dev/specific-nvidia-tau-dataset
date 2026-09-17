@@ -23,7 +23,7 @@ INSERT INTO customers (
     mobile_last4, caller_channel_match, required_verification_methods,
     login_identifier_kind
 ) VALUES (
-    'customer-colin-reeves', 'SF255310', 'Colin Reeves', 'Reeves',
+    'c68e3baf-9314-4fd5-8b8f-85e747f0f9d9', 'SF255310', 'Colin Reeves', 'Reeves',
     'colin-reeves', 'colin',
     'colin.reeves@mailhaven.example', 'colin.reeves@mailhaven.example',
     '20005', 6, 24, '7749', TRUE,
@@ -40,7 +40,7 @@ INSERT INTO customers (
     mobile_last4, caller_channel_match, required_verification_methods,
     login_identifier_kind
 ) VALUES (
-    'customer-colin-reeves-dc', 'SF291662', 'Colin Reeves', 'Reeves',
+    'c68e3baf-9314-4fd5-8b8f-85e747f0f9d9-dc', 'SF291662', 'Colin Reeves', 'Reeves',
     'SF291662', 'colinr',
     'c.reeves.dc@fastmail.example', 'c.reeves.dc@fastmail.example',
     '20005', 1, 30, '5583', FALSE,
@@ -54,16 +54,16 @@ INSERT INTO trusted_channels (
     channel_id, customer_id, type, masked_destination, enrolled,
     confirmation_completes, confirmation_verified_at
 ) VALUES
-    ('trusted-mobile-7749', 'customer-colin-reeves', 'sms', '***-***-7749', FALSE,
+    ('trusted-mobile-7749', 'c68e3baf-9314-4fd5-8b8f-85e747f0f9d9', 'sms', '***-***-7749', FALSE,
      FALSE, NULL),
-    ('trusted-mobile-5583', 'customer-colin-reeves-dc', 'sms', '***-***-5583', TRUE,
+    ('trusted-mobile-5583', 'c68e3baf-9314-4fd5-8b8f-85e747f0f9d9-dc', 'sms', '***-***-5583', TRUE,
      FALSE, NULL);
 
 -- REVEALED, indirectly: the verification record is named
--- 'verification-colin-reeves-card', so the open reason this profile is in contact
+-- '308f6850-19d3-4667-9f16-97bc37d46902', so the open reason this profile is in contact
 -- is a card question, and that reason is a row.
 INSERT INTO service_cases (case_id, customer_id, case_kind, case_slug, status, opened_at)
-VALUES ('case-colin-reeves-card', 'customer-colin-reeves', 'card', 'card', 'open',
+VALUES ('case-colin-reeves-card', 'c68e3baf-9314-4fd5-8b8f-85e747f0f9d9', 'card', 'card', 'open',
         '2026-08-28T14:28:00-04:00');
 
 -- REVEALED: the card ends 6148, is temporarily_restricted, is not reported lost,
@@ -77,7 +77,7 @@ INSERT INTO card_accounts (
     card_id, customer_id, card_last4, product_id, status, reported_lost,
     payment_status, credit_limit, available_credit
 ) VALUES (
-    'card-colin-6148', 'customer-colin-reeves', '6148', 'summit-journey',
+    'card-colin-6148', 'c68e3baf-9314-4fd5-8b8f-85e747f0f9d9', '6148', 'summit-journey',
     'temporarily_restricted', FALSE, 'current', 5000.00, 912.00
 );
 
@@ -85,7 +85,7 @@ INSERT INTO card_accounts (
     card_id, customer_id, card_last4, product_id, status, reported_lost,
     payment_status, credit_limit, available_credit
 ) VALUES (
-    'card-colin-reeves-dc-2914', 'customer-colin-reeves-dc', '2914',
+    'card-colin-reeves-dc-2914', 'c68e3baf-9314-4fd5-8b8f-85e747f0f9d9-dc', '2914',
     'everyday-cash', 'temporarily_restricted', TRUE, 'current', 3000.00, 2455.00
 );
 
@@ -100,7 +100,7 @@ INSERT INTO card_accounts (
 --
 -- merchant_key is the stem the bank uses when it names a follow-on record after
 -- this activity: it is what makes the re-presented authorization
--- 'hotel-authorization-840' rather than a generated string.
+-- 'f96da295-2259-4311-b31d-661ab6053092' rather than a generated string.
 --
 -- The airport parking charge is the third pending item the caller recognises near
 -- the end of the call. It is posted and settled, so it is correctly absent from
@@ -111,15 +111,15 @@ INSERT INTO transactions (
     descriptor, category, amount, status, reason, settlement_state, occurred_at,
     posted_date, resource_label, short_ref
 ) VALUES
-    ('hotel-attempt-1', 'card-colin-6148', 'decline', 'hotel',
+    ('5af2030f-3fad-402f-a1de-23501596194a', 'card-colin-6148', 'decline', 'hotel',
      'Harbor View Hotel', 'Portland, Maine', 'HARBOR VIEW HTL', 'lodging',
      840.00, 'declined', 'travel_review', 'not_applicable',
      '2026-08-28T13:52:00-04:00', NULL, 'attempt at Harbor View Hotel', '0001'),
-    ('hotel-attempt-2', 'card-colin-6148', 'decline', 'hotel',
+    ('3065d723-2455-4a43-9d59-91c8dbb11da0', 'card-colin-6148', 'decline', 'hotel',
      'Harbor View Hotel', 'Portland, Maine', 'HARBOR VIEW HTL', 'lodging',
      840.00, 'declined', 'prior_review_open', 'not_applicable',
      '2026-08-28T14:06:00-04:00', NULL, 'attempt at Harbor View Hotel', '0002'),
-    ('logan-breakfast-32', 'card-colin-6148', 'authorization', 'logan',
+    ('131fc14b-fc2e-4ec9-ad07-248d01f7d54b', 'card-colin-6148', 'authorization', 'logan',
      'Logan Airport', NULL, 'LOGAN AIRPORT F&B', 'travel',
      32.00, 'approved', NULL, 'pending',
      '2026-08-28T08:05:00-04:00', NULL, 'transaction ending 0003', '0003'),
@@ -128,7 +128,7 @@ INSERT INTO transactions (
      46.00, 'posted', NULL, 'settled',
      '2026-08-28T06:40:00-04:00', '2026-08-28', 'transaction ending 0004', '0004');
 
--- REVEALED: one open restriction, 'temporary-travel-review', linked to the two
+-- REVEALED: one open restriction, 'a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f', linked to the two
 -- hotel attempts and the Logan authorization in that order.
 --
 -- customer_resolvable is TRUE because this is a travel review, which is lifted by
@@ -138,15 +138,15 @@ INSERT INTO transactions (
 INSERT INTO card_restrictions (
     restriction_id, card_id, kind, status, customer_resolvable, opened_at, resolved_at
 ) VALUES (
-    'temporary-travel-review', 'card-colin-6148', 'travel_review', 'open', TRUE,
+    'a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f', 'card-colin-6148', 'travel_review', 'open', TRUE,
     '2026-08-28T13:52:00-04:00', NULL
 );
 
 INSERT INTO restriction_transactions (restriction_id, transaction_id, link_rank)
 VALUES
-    ('temporary-travel-review', 'hotel-attempt-1', 0),
-    ('temporary-travel-review', 'hotel-attempt-2', 1),
-    ('temporary-travel-review', 'logan-breakfast-32', 2);
+    ('a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f', '5af2030f-3fad-402f-a1de-23501596194a', 0),
+    ('a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f', '3065d723-2455-4a43-9d59-91c8dbb11da0', 1),
+    ('a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f', '131fc14b-fc2e-4ec9-ad07-248d01f7d54b', 2);
 
 -- The other Colin Reeves reported his card lost, which is a block that confirming
 -- activity does not lift. It is here so an attempt to resolve a restriction of
@@ -157,5 +157,11 @@ INSERT INTO card_restrictions (
     'restriction-colin-reeves-dc-lost-card', 'card-colin-reeves-dc-2914',
     'lost_card_block', 'open', FALSE, '2026-08-22T09:15:00-04:00', NULL
 );
+
+INSERT INTO scenario (key, value) VALUES
+    ('next_identity_verification_id', '308f6850-19d3-4667-9f16-97bc37d46902'),
+    ('next_represented_transaction_id', 'f96da295-2259-4311-b31d-661ab6053092'),
+    ('next_travel_notice_id', '31d46fb6-e721-4a9c-b54d-6c631dbe9686')
+ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
 
 COMMIT;

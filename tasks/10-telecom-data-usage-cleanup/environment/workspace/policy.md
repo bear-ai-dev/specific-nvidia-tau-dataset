@@ -71,6 +71,12 @@ Carrier account records do not normally include a phone's per-application usage 
 - Effective timestamp
 - Updated high-speed data balance
 
+## Identifier Handling
+
+- Internal customer, verification, line, device, plan, billing-cycle, bill, offer, and transaction IDs are opaque UUIDs returned by tools. Never construct one from a person's name, mobile number, device model, plan name, or billing period.
+- Masked mobile numbers, plan display names, device names, and bill references are customer-facing values; they are not substitutes for internal UUIDs.
+- Once an account or line lookup returns UUIDs, use those exact values for all downstream usage, billing, eligibility, and purchase calls.
+
 ## Authentication and Access
 
 1. Collect the mobile number and approved identity factors, such as full name and date of birth.

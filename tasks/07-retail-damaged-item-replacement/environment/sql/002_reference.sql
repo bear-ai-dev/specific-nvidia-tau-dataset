@@ -19,8 +19,8 @@ INSERT INTO id_allocator (entity_type, scope, next_value, template) VALUES
     ('specialist_transfer', '', 1, 'transfer-{n:04d}');
 
 INSERT INTO case_type_policy (case_type, initial_status, deadline_offset_days, deadline_local_time, review_window_min_days, review_window_max_days, duplicate_refund_blocked, approval_required, approval_channel, next_action, eligibility_triggers, carrier_may_contact_customer, pickup_guaranteed, preference_instruction_template, order_view_fields, related_view_fields) VALUES
-    ('delivery_trace', 'open', 1, '18:00', NULL, NULL, NULL, TRUE, 'trace_notification', 'review requested resolution and fulfillment after an eligibility trigger', '{"carrier_confirms_missing","carrier_response_deadline_expires"}', TRUE, FALSE, 'Check {site} pickup availability first after replacement eligibility.', '{"case_id","type","status","carrier_response","deadline"}', '{"case_id","order_reference","item","status","preferences"}'),
-    ('refund_trace', 'open', NULL, NULL, 3, 5, TRUE, NULL, NULL, 'await the payment team''s settlement review', NULL, NULL, FALSE, NULL, '{"case_id","type","status","deadline"}', '{"case_id","order_reference","item","status"}');
+    ('delivery_trace', 'open', 1, '18:00', NULL, NULL, NULL, TRUE, 'trace_notification', 'review requested resolution and fulfillment after an eligibility trigger', '{"carrier_confirms_missing","carrier_response_deadline_expires"}', TRUE, FALSE, 'Check {site} pickup availability first after replacement eligibility.', '{"case_number","type","status","carrier_response","deadline"}', '{"case_number","order_reference","item","status","preferences"}'),
+    ('refund_trace', 'open', NULL, NULL, 3, 5, TRUE, NULL, NULL, 'await the payment team''s settlement review', NULL, NULL, FALSE, NULL, '{"case_number","type","status","deadline"}', '{"case_number","order_reference","item","status"}');
 
 INSERT INTO note_topics (topic, match_pattern, discloses_fee_decision) VALUES
     ('bank_fee', '%overdraft fee%', TRUE),
@@ -39,9 +39,9 @@ INSERT INTO pickup_site_suffixes (suffix) VALUES
     (' branch');
 
 INSERT INTO notification_templates (template, message_type, subject_prefix, included_fields, initial_status, delivery_progression, optional_photo_link, photo_link_section, order_view_fields) VALUES
-    ('delivery_trace_confirmation', 'delivery_trace_confirmation', 'Your Westline delivery trace', '{"case_id","status","carrier_response_deadline","approval_link"}', 'sent', '{"sent","delivered"}', NULL, NULL, '{"notification_id","type","status"}'),
-    ('refund_trace_confirmation', 'refund_trace_confirmation', 'Your Westline refund trace', '{"amount","masked_original_payment_reference","review_window","case_id"}', 'sent', '{"sent","delivered"}', NULL, NULL, '{"notification_id","type","status"}'),
-    ('case_reference', 'case_reference', 'Your Westline case', '{"case_id","status"}', 'sent', '{"sent","delivered"}', NULL, NULL, '{"notification_id","type","status"}'),
+    ('delivery_trace_confirmation', 'delivery_trace_confirmation', 'Your Westline delivery trace', '{"case_number","status","carrier_response_deadline","approval_link"}', 'sent', '{"sent","delivered"}', NULL, NULL, '{"notification_id","type","status"}'),
+    ('refund_trace_confirmation', 'refund_trace_confirmation', 'Your Westline refund trace', '{"amount","masked_original_payment_reference","review_window","case_number"}', 'sent', '{"sent","delivered"}', NULL, NULL, '{"notification_id","type","status"}'),
+    ('case_reference', 'case_reference', 'Your Westline case', '{"case_number","status"}', 'sent', '{"sent","delivered"}', NULL, NULL, '{"notification_id","type","status"}'),
     ('replacement_confirmation', 'replacement_confirmation', 'Your Westline replacement', '{"replacement_order_reference","balance_due","estimated_delivery","return_disposition"}', 'queued', '{"queued","sent","delivered"}', TRUE, 'later_in_email', '{"type","status","subject_prefix","optional_photo_link","photo_link_section"}');
 
 INSERT INTO distribution_centers (dc_id, display_name, region) VALUES

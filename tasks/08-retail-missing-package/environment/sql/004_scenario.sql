@@ -19,7 +19,7 @@ INSERT INTO customers
     (customer_id, display_name, email, masked_email, masked_phone,
      fulfillment_region, address_label)
 VALUES
-    ('customer-ethan-patel', 'Ethan Patel', 'ethan.patel@northmail.com',
+    ('c51d2171-c10b-489b-9186-a93ebd98613d', 'Ethan Patel', 'ethan.patel@northmail.com',
      'e***@northmail.com', '***-***-4471', 'nj-metro', 'home_address_on_order');
 
 -- A second Patel on the register. The caller is resolved by the verified email
@@ -43,13 +43,13 @@ INSERT INTO orders
 VALUES
     -- Placed date and destination label are filler: the recorded results never
     -- disclosed either. The delivered status and the scan below are not.
-    ('5820447319', 'customer-ethan-patel', '2026-08-21', 'delivered',
+    ('5820447319', 'c51d2171-c10b-489b-9186-a93ebd98613d', '2026-08-21', 'delivered',
      'home_address_on_order', NULL, NULL),
-    ('5820441319', 'customer-ethan-patel', '2026-08-14', 'delivered',
+    ('5820441319', 'c51d2171-c10b-489b-9186-a93ebd98613d', '2026-08-14', 'delivered',
      'home_address_on_order', NULL, 'desk lamp'),
-    ('5820449319', 'customer-ethan-patel', '2026-07-30', 'delivered',
+    ('5820449319', 'c51d2171-c10b-489b-9186-a93ebd98613d', '2026-07-30', 'delivered',
      'home_address_on_order', NULL, 'wool socks'),
-    ('5820447019', 'customer-ethan-patel', '2026-07-11', 'delivered',
+    ('5820447019', 'c51d2171-c10b-489b-9186-a93ebd98613d', '2026-07-11', 'delivered',
      'home_address_on_order', NULL, 'cutting board'),
     ('5820443319', 'customer-nisha-patel', '2026-08-19', 'delivered',
      'home_address_on_order', NULL, 'yoga mat');
@@ -159,5 +159,13 @@ SELECT s.order_reference, 'carrier_scans', 1,
        'Second and later looks disclose the evidence panel: the geofence the scan landed in, whether a unit or locker was captured, and whether that is consistent with a mis-scan.'
   FROM carrier_scans s
  WHERE s.order_reference = '5820447319';
+
+INSERT INTO scenario (key, value) VALUES
+    ('next_support_case_id', '8cf648a4-ca60-4387-bc11-ec38f426123a'),
+    ('next_support_case_number', 'WST481662'),
+    ('target_case_id', '8cf648a4-ca60-4387-bc11-ec38f426123a'),
+    ('target_case_number', 'WST481662'),
+    ('next_notification_id', '521527dc-8856-4b33-8e08-69658b1ca80b')
+ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
 
 COMMIT;

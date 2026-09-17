@@ -40,7 +40,7 @@ call lookup_patient \
 # Read the record rather than trusting the app's "processing" label. This is
 # where the refill-too-soon rejection is visible.
 call get_prescription \
-    '{"patient_id": "patient-miles-carter", "medication_name": "albuterol inhaler"}'
+    '{"patient_id": "0e28b5d4-a93b-437e-9ba0-cbe4e7d9dbbb", "medication_name": "albuterol inhaler"}'
 
 # Explain the actual blocker. The app said "processing"; the record says the plan
 # rejected the claim as a refill too soon, and the caller is entitled to that.
@@ -49,12 +49,12 @@ say "I have the prescription here. It arrived this morning but stopped at the in
 # The inhaler was lost, which is an eligible override reason on this plan. The
 # payer decides; the urgency the caller gave is passed along, not acted on.
 call request_claim_override \
-    '{"prescription_id": "prescription-albuterol", "reason": "lost_medication",
+    '{"prescription_id": "9670dbb4-6227-48ed-99fc-7ce746085502", "reason": "lost_medication",
       "urgency_context": "Patient leaves town on the morning of 2026-08-28 and needs the inhaler on the evening of 2026-08-27"}'
 
 # With the override approved, rerun the claim. This spends the one-time approval.
 call submit_prescription_claim \
-    '{"prescription_id": "prescription-albuterol", "override_id": "override-lost-medication"}'
+    '{"prescription_id": "9670dbb4-6227-48ed-99fc-7ce746085502", "override_id": "9e90544a-3497-4aee-a1f0-4437d4f4684c"}'
 
 # The payer's decision, stated as the payer's: approved, and not repeatable.
 say "The plan approved a one-time lost-medication override, so I reran the claim and it paid. Your co-pay is \$15."
@@ -62,7 +62,7 @@ say "The plan approved a one-time lost-medication override, so I reran the claim
 # Flag the travel context for the pharmacist. This does not skip verification and
 # is not represented to the caller as if it did.
 call update_prescription \
-    '{"prescription_id": "prescription-albuterol",
+    '{"prescription_id": "9670dbb4-6227-48ed-99fc-7ce746085502",
       "priority_reason": "traveling on 2026-08-28; waiting for pickup on the evening of 2026-08-27"}'
 
 # What the note does and does not buy him. He is deciding whether to drive over,
@@ -72,16 +72,16 @@ say "I have flagged that you are travelling and waiting on it tonight. I cannot 
 # Before naming a backup location, check which nearby counters are open past the
 # 19:00 close, rather than recalling one.
 call search_pharmacy_locations \
-    '{"origin_store_id": "oak-street-current", "open_after_local_time": "19:00"}'
+    '{"origin_store_id": "8e22d41d-843c-4e73-95c0-3c9877366ba9", "open_after_local_time": "19:00"}'
 
 # And confirm the backup actually has the medication before offering it.
 call get_store_inventory \
-    '{"store_id": "park-avenue", "medication_id": "albuterol-inhaler"}'
+    '{"store_id": "155059ca-b6aa-4372-b0af-86c2d681c393", "medication_id": "9dcd4906-4db3-4290-bccd-afde111823cb"}'
 
 # Point the ready alert at the caller's verified mobile destination.
 call update_prescription \
-    '{"prescription_id": "prescription-albuterol", "notification_channel": "sms",
-      "notification_destination_id": "patient-miles-mobile"}'
+    '{"prescription_id": "9670dbb4-6227-48ed-99fc-7ce746085502", "notification_channel": "sms",
+      "notification_destination_id": "94c55afb-c756-4c14-9f4a-0c0cf2e3d69e"}'
 
 # Hours and stock for the backup come from the two calls above, not from memory.
 say "Park Avenue closes at 21:00 and shows the same inhaler in stock, so that is the backup, but I would not transfer it yet because ours should be ready first."

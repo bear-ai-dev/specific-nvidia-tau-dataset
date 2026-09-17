@@ -8,12 +8,12 @@
 
 BEGIN;
 
--- REVEALED: account id SF204771 resolves uniquely, the profile's name is
+-- REVEALED: account id 4d6679ca-bcef-4893-81bf-488f66c8c666 resolves uniquely, the profile's name is
 -- 'Johnny Monroe', and the two factors the profile requires are the billing ZIP
 -- and the mobile last four.
 --
 -- customer_id equals the account id because that is the identifier every later
--- call in the recording carries: the lookup hands back SF204771 and
+-- call in the recording carries: the lookup hands back 4d6679ca-bcef-4893-81bf-488f66c8c666 and
 -- verify_customer_identity, the confirmation pair, the email change, and the
 -- session calls all address the profile by it.
 --
@@ -29,7 +29,7 @@ INSERT INTO customers (
     mobile_last4, caller_channel_match, required_verification_methods,
     login_identifier_kind
 ) VALUES (
-    'SF204771', 'SF204771', 'Johnny Monroe', 'Monroe', 'SF204771', 'johnny',
+    '4d6679ca-bcef-4893-81bf-488f66c8c666', 'SF204771', 'Johnny Monroe', 'Monroe', 'SF204771', 'johnny',
     'johnny.monroe@relaymail.example', 'johnny.monroe@relaymail.example',
     '19447', 4, 16, '1251', NULL,
     ARRAY['billing_zip', 'mobile_last4'], 'username'
@@ -50,7 +50,7 @@ INSERT INTO customers (
     ARRAY['billing_zip', 'card_last4'], 'email'
 );
 
--- REVEALED: one enrolled SMS channel, id 'trusted-mobile-1251', masked
+-- REVEALED: one enrolled SMS channel, id '279561c9-f2ce-4402-a23a-2e19316678b3', masked
 -- '***-***-1251'; the confirmation sent to it reads back verified at
 -- 2026-08-27T10:48:39-04:00.
 --
@@ -63,7 +63,7 @@ INSERT INTO trusted_channels (
     channel_id, customer_id, type, masked_destination, enrolled,
     confirmation_completes, confirmation_verified_at
 ) VALUES (
-    'trusted-mobile-1251', 'SF204771', 'sms', '***-***-1251', TRUE,
+    '279561c9-f2ce-4402-a23a-2e19316678b3', '4d6679ca-bcef-4893-81bf-488f66c8c666', 'sms', '***-***-1251', TRUE,
     TRUE, '2026-08-27T10:48:39-04:00'
 );
 
@@ -74,7 +74,7 @@ INSERT INTO trusted_channels (
     channel_id, customer_id, type, masked_destination, enrolled,
     confirmation_completes, confirmation_verified_at
 ) VALUES (
-    'trusted-mobile-4407', 'SF204771', 'sms', '***-***-4407', FALSE,
+    'trusted-mobile-4407', '4d6679ca-bcef-4893-81bf-488f66c8c666', 'sms', '***-***-4407', FALSE,
     FALSE, NULL
 );
 
@@ -87,13 +87,13 @@ INSERT INTO trusted_channels (
 );
 
 -- REVEALED, indirectly: the verification record is named
--- 'verification-SF204771-email-change' and the confirmation
--- 'confirmation-email-change-SF204771'. The verification is named after the open
+-- '613f42b7-69cd-4767-bf41-9a9db63ff731' and the confirmation
+-- 'a241c1d7-d6c0-4489-9406-65a28d3bca66'. The verification is named after the open
 -- reason the profile is in contact, so that reason is a row: an email change.
 -- Re-verifying during this call returns the same record rather than a second
 -- one, which is why the identifier can be stated in a later argument at all.
 INSERT INTO service_cases (case_id, customer_id, case_kind, case_slug, status, opened_at)
-VALUES ('case-SF204771-email', 'SF204771', 'email_change', 'email-change', 'open',
+VALUES ('case-4d6679ca-bcef-4893-81bf-488f66c8c666-email', '4d6679ca-bcef-4893-81bf-488f66c8c666', 'email_change', 'email-change', 'open',
         '2026-08-27T10:45:00-04:00');
 
 -- Filler. The profile holds one card, so an off-path card read resolves without
@@ -102,7 +102,7 @@ INSERT INTO card_accounts (
     card_id, customer_id, card_last4, product_id, status, reported_lost,
     payment_status, credit_limit, available_credit
 ) VALUES (
-    'card-SF204771-4419', 'SF204771', '4419', 'everyday-cash', 'active', FALSE,
+    'card-4d6679ca-bcef-4893-81bf-488f66c8c666-4419', '4d6679ca-bcef-4893-81bf-488f66c8c666', '4419', 'everyday-cash', 'active', FALSE,
     'current', 9000.00, 7412.55
 );
 
@@ -121,17 +121,23 @@ INSERT INTO transactions (
     descriptor, category, amount, status, settlement_state, occurred_at,
     posted_date, resource_label, short_ref
 ) VALUES
-    ('transaction-SF204771-6621', 'card-SF204771-4419', 'posted', 'grocery',
+    ('transaction-4d6679ca-bcef-4893-81bf-488f66c8c666-6621', 'card-4d6679ca-bcef-4893-81bf-488f66c8c666-4419', 'posted', 'grocery',
      'Riverside Market', 'Norristown, Pennsylvania', 'RIVERSIDE MKT', 'grocery',
      84.22, 'posted', 'settled', '2026-08-24T18:02:00-04:00', '2026-08-25',
      'transaction ending 6621', '6621'),
-    ('transaction-SF204771-6704', 'card-SF204771-4419', 'posted', 'streaming',
+    ('transaction-4d6679ca-bcef-4893-81bf-488f66c8c666-6704', 'card-4d6679ca-bcef-4893-81bf-488f66c8c666-4419', 'posted', 'streaming',
      'Lumen Streaming', NULL, 'LUMEN STREAM', 'digital goods',
      17.99, 'posted', 'settled', '2026-08-25T06:14:00-04:00', '2026-08-25',
      'transaction ending 6704', '6704'),
-    ('transaction-SF204771-6890', 'card-SF204771-4419', 'authorization', 'fuel',
+    ('transaction-4d6679ca-bcef-4893-81bf-488f66c8c666-6890', 'card-4d6679ca-bcef-4893-81bf-488f66c8c666-4419', 'authorization', 'fuel',
      'Northgate Fuel', 'Norristown, Pennsylvania', 'NORTHGATE FUEL', 'fuel',
      52.10, 'approved', 'pending', '2026-08-27T08:31:00-04:00', NULL,
      'transaction ending 6890', '6890');
+
+INSERT INTO scenario (key, value) VALUES
+    ('next_identity_verification_id', '613f42b7-69cd-4767-bf41-9a9db63ff731'),
+    ('next_channel_confirmation_id', 'a241c1d7-d6c0-4489-9406-65a28d3bca66'),
+    ('next_self_service_session_id', 'f4136da6-25dc-464b-b50c-8f02a5cc1ca3')
+ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
 
 COMMIT;

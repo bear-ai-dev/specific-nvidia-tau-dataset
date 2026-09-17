@@ -24,7 +24,7 @@ VALUES
     -- on all three and the result echoed the id. autopay_enabled is filler, and
     -- FALSE rather than TRUE because it keeps the autopay-gated offers in the
     -- catalog ineligible for this line and so out of the recorded offer read.
-    ('customer-benjamin-reed', 'benjamin-reed', 'Benjamin Reed', '1991-11-22',
+    ('6dcb2039-012b-4723-a256-13bb7b6467c2', 'benjamin-reed', 'Benjamin Reed', '1991-11-22',
      'active', FALSE, NULL);
 
 -- Three cycles on the account. Only the current one was disclosed, by the first
@@ -36,25 +36,25 @@ VALUES
 INSERT INTO billing_cycles
     (billing_cycle_id, customer_id, cycle_start, cycle_end, is_current)
 VALUES
-    ('cycle-jun-benjamin', 'customer-benjamin-reed',
+    ('cycle-jun-benjamin', '6dcb2039-012b-4723-a256-13bb7b6467c2',
      '2026-06-06T00:00:00-05:00', '2026-07-06T00:00:00-05:00', FALSE),
-    ('cycle-jul-benjamin', 'customer-benjamin-reed',
+    ('cycle-jul-benjamin', '6dcb2039-012b-4723-a256-13bb7b6467c2',
      '2026-07-06T00:00:00-05:00', '2026-08-06T00:00:00-05:00', FALSE),
-    ('cycle-current-benjamin', 'customer-benjamin-reed',
+    ('305af2ad-04af-420c-9562-a935b04b855b', '6dcb2039-012b-4723-a256-13bb7b6467c2',
      '2026-08-06T00:00:00-05:00', '2026-09-05T00:00:00-05:00', TRUE);
 
 -- bill_id and its cycle are exact. The current bill is open, which is what makes
 -- it the bill a next-bill add-on charge lands on: "charged to your next
--- ClearWave bill" and "bill-current-benjamin" are the same bill, because the
+-- ClearWave bill" and "7af62370-8858-4af6-b2cd-2b702fd15586" are the same bill, because the
 -- cycle in progress has not been invoiced yet. due_at is filler.
 INSERT INTO bills
     (bill_id, billing_cycle_id, customer_id, status, currency, issued_at, due_at)
 VALUES
-    ('bill-jun-benjamin', 'cycle-jun-benjamin', 'customer-benjamin-reed',
+    ('bill-jun-benjamin', 'cycle-jun-benjamin', '6dcb2039-012b-4723-a256-13bb7b6467c2',
      'paid', 'USD', '2026-07-06T00:00:00-05:00', '2026-07-21T00:00:00-05:00'),
-    ('bill-jul-benjamin', 'cycle-jul-benjamin', 'customer-benjamin-reed',
+    ('bill-jul-benjamin', 'cycle-jul-benjamin', '6dcb2039-012b-4723-a256-13bb7b6467c2',
      'paid', 'USD', '2026-08-06T00:00:00-05:00', '2026-08-21T00:00:00-05:00'),
-    ('bill-current-benjamin', 'cycle-current-benjamin', 'customer-benjamin-reed',
+    ('7af62370-8858-4af6-b2cd-2b702fd15586', '305af2ad-04af-420c-9562-a935b04b855b', '6dcb2039-012b-4723-a256-13bb7b6467c2',
      'open', 'USD', NULL, '2026-09-20T00:00:00-05:00');
 
 -- The recorded bill read reported an overage charge of 0.0. It is zero because
@@ -64,9 +64,9 @@ VALUES
 INSERT INTO bill_charges
     (charge_id, bill_id, kind, description, amount, currency, billing_timing)
 VALUES
-    ('charge-bill-current-benjamin-plan', 'bill-current-benjamin',
+    ('charge-7af62370-8858-4af6-b2cd-2b702fd15586-plan', '7af62370-8858-4af6-b2cd-2b702fd15586',
      'recurring_plan', 'Unlimited Start monthly charge', '65.00', 'USD', 'next_bill'),
-    ('charge-bill-current-benjamin-tax', 'bill-current-benjamin',
+    ('charge-7af62370-8858-4af6-b2cd-2b702fd15586-tax', '7af62370-8858-4af6-b2cd-2b702fd15586',
      'tax', 'Federal and state surcharges', '5.20', 'USD', 'next_bill'),
     ('charge-bill-jul-benjamin-plan', 'bill-jul-benjamin',
      'recurring_plan', 'Unlimited Start monthly charge', '65.00', 'USD', 'next_bill'),
@@ -86,8 +86,8 @@ INSERT INTO lines
     (line_id, customer_id, mobile_number, status, plan_id, billing_cycle_id,
      is_primary, autopay_enabled, metering_source, activated_on, ported_out_at)
 VALUES
-    ('line-4045550176', 'customer-benjamin-reed', '404-555-0176', 'active',
-     'unlimited-start', 'cycle-current-benjamin', TRUE, FALSE,
+    ('ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '6dcb2039-012b-4723-a256-13bb7b6467c2', '404-555-0176', 'active',
+     '70102739-54a7-4e7b-b251-5040b1fc2f21', '305af2ad-04af-420c-9562-a935b04b855b', TRUE, FALSE,
      'carrier_metering', '2024-03-15', NULL);
 
 -- device_id, model, line, and provisioning status are exact. The manufacturer
@@ -96,7 +96,7 @@ INSERT INTO devices
     (device_id, line_id, manufacturer, model, provisioning_status, imei_suffix,
      activated_at)
 VALUES
-    ('device-pixel-8', 'line-4045550176', 'Google', 'Pixel 8', 'active', '4471',
+    ('17c528ea-9b9d-48cd-8268-c6cca19d817e', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', 'Google', 'Pixel 8', 'active', '4471',
      '2024-03-15T14:20:00-05:00');
 
 -- The overnight burst, one row per metered hour. The recorded read of the last
@@ -109,13 +109,13 @@ INSERT INTO usage_samples
     (sample_id, line_id, billing_cycle_id, window_start, window_end, gigabytes,
      measurement_source)
 VALUES
-    ('sample-benjamin-2026-08-27-00', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-27-00', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-27T00:00:00-05:00', '2026-08-27T01:00:00-05:00', '2.90', 'carrier_metering'),
-    ('sample-benjamin-2026-08-27-01', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-27-01', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-27T01:00:00-05:00', '2026-08-27T02:00:00-05:00', '3.40', 'carrier_metering'),
-    ('sample-benjamin-2026-08-27-02', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-27-02', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-27T02:00:00-05:00', '2026-08-27T03:00:00-05:00', '3.10', 'carrier_metering'),
-    ('sample-benjamin-2026-08-27-03', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-27-03', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-27T03:00:00-05:00', '2026-08-27T04:00:00-05:00', '2.40', 'carrier_metering');
 
 -- The rest of the cycle: twenty-one days of ordinary daytime use, 1.00 GB in
@@ -133,47 +133,47 @@ INSERT INTO usage_samples
     (sample_id, line_id, billing_cycle_id, window_start, window_end, gigabytes,
      measurement_source)
 VALUES
-    ('sample-benjamin-2026-08-06', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-06', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-06T09:00:00-05:00', '2026-08-06T17:00:00-05:00', '0.04', 'carrier_metering'),
-    ('sample-benjamin-2026-08-07', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-07', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-07T09:00:00-05:00', '2026-08-07T17:00:00-05:00', '0.06', 'carrier_metering'),
-    ('sample-benjamin-2026-08-08', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-08', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-08T09:00:00-05:00', '2026-08-08T17:00:00-05:00', '0.03', 'carrier_metering'),
-    ('sample-benjamin-2026-08-09', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-09', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-09T09:00:00-05:00', '2026-08-09T17:00:00-05:00', '0.05', 'carrier_metering'),
-    ('sample-benjamin-2026-08-10', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-10', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-10T09:00:00-05:00', '2026-08-10T17:00:00-05:00', '0.07', 'carrier_metering'),
-    ('sample-benjamin-2026-08-11', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-11', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-11T09:00:00-05:00', '2026-08-11T17:00:00-05:00', '0.02', 'carrier_metering'),
-    ('sample-benjamin-2026-08-12', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-12', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-12T09:00:00-05:00', '2026-08-12T17:00:00-05:00', '0.04', 'carrier_metering'),
-    ('sample-benjamin-2026-08-13', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-13', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-13T09:00:00-05:00', '2026-08-13T17:00:00-05:00', '0.06', 'carrier_metering'),
-    ('sample-benjamin-2026-08-14', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-14', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-14T09:00:00-05:00', '2026-08-14T17:00:00-05:00', '0.05', 'carrier_metering'),
-    ('sample-benjamin-2026-08-15', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-15', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-15T09:00:00-05:00', '2026-08-15T17:00:00-05:00', '0.03', 'carrier_metering'),
-    ('sample-benjamin-2026-08-16', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-16', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-16T09:00:00-05:00', '2026-08-16T17:00:00-05:00', '0.08', 'carrier_metering'),
-    ('sample-benjamin-2026-08-17', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-17', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-17T09:00:00-05:00', '2026-08-17T17:00:00-05:00', '0.04', 'carrier_metering'),
-    ('sample-benjamin-2026-08-18', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-18', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-18T09:00:00-05:00', '2026-08-18T17:00:00-05:00', '0.05', 'carrier_metering'),
-    ('sample-benjamin-2026-08-19', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-19', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-19T09:00:00-05:00', '2026-08-19T17:00:00-05:00', '0.02', 'carrier_metering'),
-    ('sample-benjamin-2026-08-20', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-20', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-20T09:00:00-05:00', '2026-08-20T17:00:00-05:00', '0.06', 'carrier_metering'),
-    ('sample-benjamin-2026-08-21', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-21', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-21T09:00:00-05:00', '2026-08-21T17:00:00-05:00', '0.07', 'carrier_metering'),
-    ('sample-benjamin-2026-08-22', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-22', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-22T09:00:00-05:00', '2026-08-22T17:00:00-05:00', '0.03', 'carrier_metering'),
-    ('sample-benjamin-2026-08-23', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-23', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-23T09:00:00-05:00', '2026-08-23T17:00:00-05:00', '0.05', 'carrier_metering'),
-    ('sample-benjamin-2026-08-24', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-24', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-24T09:00:00-05:00', '2026-08-24T17:00:00-05:00', '0.04', 'carrier_metering'),
-    ('sample-benjamin-2026-08-25', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-25', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-25T09:00:00-05:00', '2026-08-25T17:00:00-05:00', '0.06', 'carrier_metering'),
-    ('sample-benjamin-2026-08-26', 'line-4045550176', 'cycle-current-benjamin',
+    ('sample-benjamin-2026-08-26', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', '305af2ad-04af-420c-9562-a935b04b855b',
      '2026-08-26T09:00:00-05:00', '2026-08-26T17:00:00-05:00', '0.05', 'carrier_metering');
 
 -- Earlier cycles. Filler, and deliberately larger than the current cycle's
@@ -184,11 +184,11 @@ INSERT INTO usage_samples
     (sample_id, line_id, billing_cycle_id, window_start, window_end, gigabytes,
      measurement_source)
 VALUES
-    ('sample-benjamin-2026-07-11', 'line-4045550176', 'cycle-jul-benjamin',
+    ('sample-benjamin-2026-07-11', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', 'cycle-jul-benjamin',
      '2026-07-11T08:00:00-05:00', '2026-07-11T18:00:00-05:00', '1.70', 'carrier_metering'),
-    ('sample-benjamin-2026-07-23', 'line-4045550176', 'cycle-jul-benjamin',
+    ('sample-benjamin-2026-07-23', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', 'cycle-jul-benjamin',
      '2026-07-23T08:00:00-05:00', '2026-07-23T18:00:00-05:00', '2.50', 'carrier_metering'),
-    ('sample-benjamin-2026-06-18', 'line-4045550176', 'cycle-jun-benjamin',
+    ('sample-benjamin-2026-06-18', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', 'cycle-jun-benjamin',
      '2026-06-18T08:00:00-05:00', '2026-06-18T18:00:00-05:00', '3.10', 'carrier_metering');
 
 -- The offer the call quoted. Every field is exact: 5 GB for $40 on the next
@@ -201,17 +201,17 @@ INSERT INTO addon_offers
      effective_timing, expires_at, requires_line_status, requires_autopay,
      withdrawn)
 VALUES
-    ('offer-5gb-40-next-bill', 'unlimited-start', '5.00', '40.00', 'USD',
+    ('21298486-3eca-4c2e-8d07-2b13c0a33fcc', '70102739-54a7-4e7b-b251-5040b1fc2f21', '5.00', '40.00', 'USD',
      'next_bill', 'immediate', '2026-08-28T19:35:00-05:00', 'active', FALSE, FALSE);
 
 -- The allocator the add-on transaction identifier is issued from. The template
 -- is the customer stem; the handler appends the offer's size, which is where
--- "addon-transaction-benjamin-5gb" comes from, and appends the issued ordinal as
+-- "dfdab773-2580-4908-91cf-99a2b4826547" comes from, and appends the issued ordinal as
 -- well once this line has bought before, so a second purchase cannot reuse the
 -- first one's identifier.
 INSERT INTO id_allocator (entity_type, scope, next_value, template)
 VALUES
-    ('addon_transaction', 'line-4045550176', 1, 'addon-transaction-benjamin');
+    ('addon_transaction', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac', 1, 'addon-transaction-benjamin');
 
 -- What this caller said about his handset on an earlier contact. Filler, and
 -- present to make the boundary concrete: nothing he reads off his phone during
@@ -224,8 +224,13 @@ INSERT INTO customer_reported_device_state
     (report_id, line_id, reported_at, reported_at_display, report_kind, channel,
      app_name, reported_gigabytes, setting_name, setting_value)
 VALUES
-    ('report-benjamin-cloudphotos', 'line-4045550176',
+    ('report-benjamin-cloudphotos', 'ec8443dc-5fa9-4579-8dbe-5eafc61d53ac',
      '2026-07-14T10:05:00-05:00', 'the July 14 call', 'app_usage_screen',
      'support', 'CloudPhotos', '0.40', NULL, NULL);
+
+INSERT INTO scenario (key, value) VALUES
+    ('next_identity_verification_id', 'ae1d7bf3-792a-4a70-8673-16c535063f29'),
+    ('next_addon_transaction_id', 'dfdab773-2580-4908-91cf-99a2b4826547')
+ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
 
 COMMIT;

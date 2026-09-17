@@ -10,7 +10,7 @@
         "account_id": "SF204771"
       },
       "expected_output": {
-        "customer_id": "SF204771",
+        "customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666",
         "full_name": "Johnny Monroe",
         "match": "unique",
         "required_verification_methods": [
@@ -19,11 +19,12 @@
         ],
         "trusted_channels": [
           {
-            "channel_id": "trusted-mobile-1251",
+            "channel_id": "279561c9-f2ce-4402-a23a-2e19316678b3",
             "type": "sms",
             "masked_destination": "***-***-1251"
           }
-        ]
+        ],
+        "account_id": "SF204771"
       },
       "state_effect": "read_only",
       "source_label": "find the customer by account ID",
@@ -46,12 +47,12 @@
       "call_id": "bc-003",
       "name": "verify_customer_identity",
       "arguments": {
-        "customer_id": "SF204771",
+        "customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666",
         "billing_zip": "19447",
         "mobile_last4": "1251"
       },
       "expected_output": {
-        "verification_id": "verification-SF204771-email-change",
+        "verification_id": "613f42b7-69cd-4767-bf41-9a9db63ff731",
         "status": "verified",
         "matched_methods": [
           "billing_zip",
@@ -66,13 +67,13 @@
       "call_id": "bc-004",
       "name": "start_trusted_channel_confirmation",
       "arguments": {
-        "customer_id": "SF204771",
+        "customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666",
         "purpose": "email_change",
         "channel": "sms",
-        "verification_id": "verification-SF204771-email-change"
+        "verification_id": "613f42b7-69cd-4767-bf41-9a9db63ff731"
       },
       "expected_output": {
-        "confirmation_id": "confirmation-email-change-SF204771",
+        "confirmation_id": "a241c1d7-d6c0-4489-9406-65a28d3bca66",
         "status": "sent",
         "masked_destination": "***-***-1251"
       },
@@ -84,11 +85,11 @@
       "call_id": "bc-004b",
       "name": "get_trusted_channel_confirmation",
       "arguments": {
-        "customer_id": "SF204771",
-        "confirmation_id": "confirmation-email-change-SF204771"
+        "customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666",
+        "confirmation_id": "a241c1d7-d6c0-4489-9406-65a28d3bca66"
       },
       "expected_output": {
-        "confirmation_id": "confirmation-email-change-SF204771",
+        "confirmation_id": "a241c1d7-d6c0-4489-9406-65a28d3bca66",
         "status": "verified",
         "verified_at": "2026-08-27T10:48:39-04:00"
       },
@@ -100,10 +101,10 @@
       "call_id": "bc-005",
       "name": "update_customer_email",
       "arguments": {
-        "customer_id": "SF204771",
+        "customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666",
         "new_email": "johnny.monroe.travel@outlook.com",
-        "verification_id": "verification-SF204771-email-change",
-        "confirmation_id": "confirmation-email-change-SF204771"
+        "verification_id": "613f42b7-69cd-4767-bf41-9a9db63ff731",
+        "confirmation_id": "a241c1d7-d6c0-4489-9406-65a28d3bca66"
       },
       "expected_output": {
         "status": "updated",
@@ -126,11 +127,11 @@
         "query": "travel cards with no foreign transaction fee, lounge access, and annual fee below $700"
       },
       "expected_output": {
-        "record_id": "card-products-travel-current",
+        "record_id": "63b6eab2-5559-4d42-a781-47c7c0413493",
         "effective_at": "2026-07-01",
         "matches": [
           {
-            "product_id": "summit-journey",
+            "product_id": "c6c675e6-0faf-4004-a5de-881eaaa805b7",
             "product": "Summit Journey",
             "annual_fee": 95,
             "annual_fee_currency": "USD",
@@ -138,7 +139,7 @@
             "lounge_membership": false
           },
           {
-            "product_id": "summit-reserve",
+            "product_id": "acda644c-1054-410a-98a1-39fad9fe411e",
             "product": "Summit Reserve",
             "annual_fee": 395,
             "annual_fee_currency": "USD",
@@ -158,7 +159,7 @@
         "query": "Does Summit Reserve include a free checked bag?"
       },
       "expected_output": {
-        "record_id": "summit-reserve-airline-benefits",
+        "record_id": "0d57772d-88ff-474b-8c24-5476b7dc1921",
         "effective_at": "2026-07-01",
         "airline_incidental_credit": true,
         "automatic_free_checked_bag": false,
@@ -175,11 +176,11 @@
         "query": "Current welcome offers for Summit Journey and Summit Reserve"
       },
       "expected_output": {
-        "record_id": "summit-welcome-offers-current",
+        "record_id": "88b888dd-e6b1-4d27-927c-22d21bdaa700",
         "effective_at": "2026-07-01",
         "offers": [
           {
-            "product_id": "summit-journey",
+            "product_id": "c6c675e6-0faf-4004-a5de-881eaaa805b7",
             "product": "Summit Journey",
             "points": 40000,
             "spend": 3000,
@@ -187,7 +188,7 @@
             "days": 90
           },
           {
-            "product_id": "summit-reserve",
+            "product_id": "acda644c-1054-410a-98a1-39fad9fe411e",
             "product": "Summit Reserve",
             "points": 70000,
             "spend": 5000,
@@ -206,16 +207,16 @@
       "call_id": "bc-009",
       "name": "create_secure_self_service_session",
       "arguments": {
-        "customer_id": "SF204771",
+        "customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666",
         "workflow": "card_application",
-        "resource_id": "summit-journey",
+        "resource_id": "c6c675e6-0faf-4004-a5de-881eaaa805b7",
         "delivery_channels": [
           "secure_message",
           "email_notification"
         ]
       },
       "expected_output": {
-        "session_id": "session-card-application",
+        "session_id": "f4136da6-25dc-464b-b50c-8f02a5cc1ca3",
         "status": "issued",
         "submitted": false,
         "credit_pull_authorized": false,
@@ -243,7 +244,7 @@
         "query": "What information appears in an adverse-action decision notice and can phone agents override underwriting?"
       },
       "expected_output": {
-        "record_id": "card-application-decision-notice",
+        "record_id": "204dbd70-136e-4b56-9036-cf148e95a870",
         "effective_at": "2026-07-01",
         "decision_notice": {
           "explains_factors": true,
@@ -262,7 +263,7 @@
         "query": "How should an applicant interpret the monthly housing payment field?"
       },
       "expected_output": {
-        "record_id": "card-application-housing-payment-field",
+        "record_id": "4a2df74d-36c6-4669-8ad0-c71d09611681",
         "effective_at": "2026-07-01",
         "guidance": "Enter the amount the applicant is personally responsible for each month and follow the field instructions."
       },
@@ -277,7 +278,7 @@
         "query": "How should salary and freelance income be reported in the card application?"
       },
       "expected_output": {
-        "record_id": "card-application-income-field",
+        "record_id": "2adb7239-a280-4c4f-8e5f-1755aa55c925",
         "effective_at": "2026-07-01",
         "guidance": "Report income the applicant can reasonably access and verify, consistent with the application disclosure."
       },
@@ -289,11 +290,11 @@
       "call_id": "bc-013",
       "name": "get_secure_self_service_session",
       "arguments": {
-        "customer_id": "SF204771",
-        "session_id": "session-card-application"
+        "customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666",
+        "session_id": "f4136da6-25dc-464b-b50c-8f02a5cc1ca3"
       },
       "expected_output": {
-        "session_id": "session-card-application",
+        "session_id": "f4136da6-25dc-464b-b50c-8f02a5cc1ca3",
         "status": "open_not_submitted",
         "submitted": false,
         "resume_supported": true,
@@ -311,7 +312,7 @@
         "query": "After a profile email change, what happens to the login identifier and future notice routing?"
       },
       "expected_output": {
-        "record_id": "profile-email-login-and-notice-routing",
+        "record_id": "f603e573-6b4f-4f50-a390-b18c917712a9",
         "effective_at": "2026-07-01",
         "login_identifier_may_remain_same": true,
         "future_notices_use_primary_email": true,

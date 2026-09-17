@@ -289,8 +289,8 @@ DESTINATION_AREAS = [
 # the departure time, the block time, and the two airports' offsets, and the
 # assertions in build_reference check them against what the recording read out.
 SCENARIO_FLIGHTS = [
-    ("BM-PHX-DCA-0910", "BM 418", "PHX", "DCA", "09:10", 260, 0, "219.00", "241.90", "37.20"),
-    ("BM-DCA-PHX-1540", "BM 419", "DCA", "PHX", "15:40", 290, 0, "219.00", "241.90", "37.20"),
+    ("2133fbc8-ed10-42aa-baa2-12e3d15a6a05", "BM 418", "PHX", "DCA", "09:10", 260, 0, "219.00", "241.90", "37.20"),
+    ("3ac31d55-0dbc-4f79-892e-743257ec9f13", "BM 419", "DCA", "PHX", "15:40", 290, 0, "219.00", "241.90", "37.20"),
     # Same route and same day, sold out in both fare families on 14 October, so a
     # nonstop search on that date has exactly one sellable outbound. On any other
     # seeded date this flight is the one that comes back.
@@ -315,7 +315,7 @@ SCENARIO_FLIGHTS = [
 # Derived from the segment times above: ORD arrival 10:45 to 13:10 departure is
 # 145 minutes outbound, 13:30 to 14:45 is 75 minutes on the way home.
 SCENARIO_CONNECTION = {
-    "itinerary_id": "itinerary-phx-dca-one-stop-best-current",
+    "itinerary_id": "87ba9919-0d38-418a-868c-42185e5a9ab9",
     "origin": "PHX",
     "destination": "DCA",
     "via": "ORD",
@@ -537,8 +537,8 @@ def build_availability(rng: random.Random, flights: list[tuple]) -> list[tuple]:
     # the dates the caller asked for; the second Phoenix-Washington pair is sold
     # out on those dates so the recorded search has one sellable option.
     fixed = {
-        ("BM-PHX-DCA-0910", OUTBOUND_DATE): (11, 14),
-        ("BM-DCA-PHX-1540", RETURN_DATE): (9, 12),
+        ("2133fbc8-ed10-42aa-baa2-12e3d15a6a05", OUTBOUND_DATE): (11, 14),
+        ("3ac31d55-0dbc-4f79-892e-743257ec9f13", RETURN_DATE): (9, 12),
         ("BM-PHX-DCA-1725", OUTBOUND_DATE): (0, 0),
         ("BM-DCA-PHX-0730", RETURN_DATE): (0, 0),
         ("BM-PHX-ORD-0600", OUTBOUND_DATE): (16, 21),
@@ -772,11 +772,11 @@ def build_reference() -> tuple[str, dict]:
 
     # The recording's arithmetic, checked against the components above.
     by_id = {f[0]: f for f in flights}
-    assert by_id["BM-PHX-DCA-0910"][6] == "16:30", by_id["BM-PHX-DCA-0910"][6]
-    assert by_id["BM-DCA-PHX-1540"][6] == "17:30", by_id["BM-DCA-PHX-1540"][6]
-    assert pricer.per_traveler("BM-PHX-DCA-0910", "BM-DCA-PHX-1540",
+    assert by_id["2133fbc8-ed10-42aa-baa2-12e3d15a6a05"][6] == "16:30", by_id["2133fbc8-ed10-42aa-baa2-12e3d15a6a05"][6]
+    assert by_id["3ac31d55-0dbc-4f79-892e-743257ec9f13"][6] == "17:30", by_id["3ac31d55-0dbc-4f79-892e-743257ec9f13"][6]
+    assert pricer.per_traveler("2133fbc8-ed10-42aa-baa2-12e3d15a6a05", "3ac31d55-0dbc-4f79-892e-743257ec9f13",
                                "basic_economy") == money("512.40")
-    assert pricer.per_traveler("BM-PHX-DCA-0910", "BM-DCA-PHX-1540",
+    assert pricer.per_traveler("2133fbc8-ed10-42aa-baa2-12e3d15a6a05", "3ac31d55-0dbc-4f79-892e-743257ec9f13",
                                "standard_economy") == money("558.20")
 
     connection_price = {}
@@ -790,14 +790,14 @@ def build_reference() -> tuple[str, dict]:
     assert connection_price["standard_economy"] == money("527.20"), connection_price
     assert connection_price["basic_economy"] == money("481.40"), connection_price
     for fare_class in FARE_CLASSES:
-        direct = pricer.per_traveler("BM-PHX-DCA-0910", "BM-DCA-PHX-1540", fare_class)
+        direct = pricer.per_traveler("2133fbc8-ed10-42aa-baa2-12e3d15a6a05", "3ac31d55-0dbc-4f79-892e-743257ec9f13", fare_class)
         assert (direct - connection_price[fare_class]) * 2 == money("62.00"), fare_class
 
     outbound_elapsed = 165 + 145 + 120
     return_elapsed = 135 + 75 + 240
     assert max(outbound_elapsed - 260, return_elapsed - 290) == 170
 
-    quote = pricer.quote("BM-PHX-DCA-0910", "BM-DCA-PHX-1540", "standard_economy",
+    quote = pricer.quote("2133fbc8-ed10-42aa-baa2-12e3d15a6a05", "3ac31d55-0dbc-4f79-892e-743257ec9f13", "standard_economy",
                          2, 2, 1, True)
     assert quote["fare_taxes_and_checked_bags"] == money("1186.40"), quote
     assert quote["mobility_device_charge"] == money("0.00"), quote
@@ -1040,7 +1040,7 @@ def build_population(reference: dict) -> str:
 
     quotes: list[tuple] = []
     seen_quote: set[tuple] = {
-        ("BM-PHX-DCA-0910", "BM-DCA-PHX-1540", "standard_economy", 2, 2, 1, True),
+        ("2133fbc8-ed10-42aa-baa2-12e3d15a6a05", "3ac31d55-0dbc-4f79-892e-743257ec9f13", "standard_economy", 2, 2, 1, True),
     }
     attempts = 0
     while len(quotes) < 50 and attempts < 600:
@@ -1131,7 +1131,7 @@ def build_population(reference: dict) -> str:
     reservations, travelers_rows, device_rows = [], [], []
     allocation_rows, redemption_rows = [], []
     # The declared duplicate: Marcus Carver already holds the caller's itinerary.
-    forced = [("customer-marcus-carver", "BM-PHX-DCA-0910", "BM-DCA-PHX-1540",
+    forced = [("customer-marcus-carver", "2133fbc8-ed10-42aa-baa2-12e3d15a6a05", "3ac31d55-0dbc-4f79-892e-743257ec9f13",
                OUTBOUND_DATE, RETURN_DATE, "standard_economy")]
 
     for i in range(POPULATION_RESERVATIONS):

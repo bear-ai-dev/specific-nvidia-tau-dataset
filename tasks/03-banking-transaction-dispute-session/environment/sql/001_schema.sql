@@ -302,7 +302,7 @@ CREATE TABLE transactions (
     -- 'transaction ending 8472'. Stored because the label is read aloud.
     resource_label                   TEXT,
     -- Short reference the bank uses when naming a record after this activity,
-    -- e.g. '8472' in session-dispute-8472.
+    -- e.g. '8472' in 0ae36057-bbbb-42e3-994f-55f064bc374c.
     short_ref                        TEXT,
     -- Set when a declined attempt has been re-presented after a review was
     -- resolved, so the same attempt cannot be re-presented twice.

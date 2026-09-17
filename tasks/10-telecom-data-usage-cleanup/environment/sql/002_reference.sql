@@ -15,7 +15,7 @@ INSERT INTO measurement_sources (source_id, app_attribution_available, descripti
     ('device_agent', TRUE, 'Handset-side reporting agent. Attributes usage per application, and is not provisioned on consumer lines.');
 
 INSERT INTO plans (plan_id, name, high_speed_allowance_gigabytes, after_high_speed_allowance, monthly_price, currency, addons_allowed) VALUES
-    ('unlimited-start', 'Unlimited Start', '15.00', 'speed_reduced', '65.00', 'USD', TRUE),
+    ('70102739-54a7-4e7b-b251-5040b1fc2f21', 'Unlimited Start', '15.00', 'speed_reduced', '65.00', 'USD', TRUE),
     ('unlimited-plus', 'Unlimited Plus', '50.00', 'speed_reduced', '85.00', 'USD', TRUE),
     ('unlimited-ultimate', 'Unlimited Ultimate', '100.00', 'speed_reduced', '105.00', 'USD', TRUE),
     ('flex-5', 'Flex 5', '5.00', 'overage_billed', '35.00', 'USD', TRUE),
@@ -29,8 +29,8 @@ INSERT INTO verification_policies (channel, required_factors, granted_scope) VAL
     ('ivr', '{"mobile_number"}', '{"billing"}');
 
 INSERT INTO addon_offers (offer_id, plan_id, data_gigabytes, price, currency, billing_timing, effective_timing, expires_at, requires_line_status, requires_autopay, withdrawn) VALUES
-    ('offer-2gb-20-expired', 'unlimited-start', '2.00', '20.00', 'USD', 'next_bill', 'immediate', '2026-08-14T23:59:00-05:00', 'active', FALSE, FALSE),
-    ('offer-10gb-60-expired', 'unlimited-start', '10.00', '60.00', 'USD', 'next_bill', 'immediate', '2026-08-20T23:59:00-05:00', 'active', FALSE, FALSE),
+    ('offer-2gb-20-expired', '70102739-54a7-4e7b-b251-5040b1fc2f21', '2.00', '20.00', 'USD', 'next_bill', 'immediate', '2026-08-14T23:59:00-05:00', 'active', FALSE, FALSE),
+    ('offer-10gb-60-expired', '70102739-54a7-4e7b-b251-5040b1fc2f21', '10.00', '60.00', 'USD', 'next_bill', 'immediate', '2026-08-20T23:59:00-05:00', 'active', FALSE, FALSE),
     ('offer-5gb-30-plus', 'unlimited-plus', '5.00', '30.00', 'USD', 'next_bill', 'immediate', '2026-09-04T23:59:00-05:00', 'active', FALSE, FALSE),
     ('offer-15gb-70-plus', 'unlimited-plus', '15.00', '70.00', 'USD', 'next_bill', 'immediate', '2026-09-10T23:59:00-05:00', 'active', FALSE, FALSE),
     ('offer-5gb-25-plus-autopay', 'unlimited-plus', '5.00', '25.00', 'USD', 'next_bill', 'immediate', '2026-09-12T23:59:00-05:00', 'active', TRUE, FALSE),

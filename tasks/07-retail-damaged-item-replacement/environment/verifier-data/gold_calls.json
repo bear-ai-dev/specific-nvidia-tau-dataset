@@ -18,7 +18,7 @@
       "expected_output": {
         "order_reference": "ending-4086",
         "customer": {
-          "customer_id": "customer-ethan-patel",
+          "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
           "display_name": "Ethan Patel",
           "verified_email": "e***@northmail.com"
         },
@@ -31,13 +31,14 @@
         ],
         "cases": [
           {
-            "case_id": "WST481662",
+            "case_id": "8cf648a4-ca60-4387-bc11-ec38f426123a",
             "order_reference": "ending-7319",
             "item": "blue noise-canceling headphones",
             "status": "open",
             "preferences": {
               "pickup": "West 23rd Street pickup counter"
-            }
+            },
+            "case_number": "WST481662"
           }
         ]
       },
@@ -173,14 +174,15 @@
         "email": "ethan.patel@northmail.com"
       },
       "expected_output": {
-        "customer_id": "customer-ethan-patel",
+        "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
         "match": "unique",
         "display_name": "Ethan Patel",
         "recent_orders": [
           {
             "order_reference": "ending-7319",
             "item": "blue noise-canceling headphones",
-            "open_case_id": "WST481662"
+            "open_case_id": "8cf648a4-ca60-4387-bc11-ec38f426123a",
+            "open_case_number": "WST481662"
           }
         ]
       },
@@ -202,11 +204,12 @@
         "order_reference": "ending-7319",
         "cases": [
           {
-            "case_id": "WST481662",
+            "case_id": "8cf648a4-ca60-4387-bc11-ec38f426123a",
             "type": "delivery_trace",
             "status": "open",
             "carrier_response": "none",
-            "deadline": "18:00 today"
+            "deadline": "18:00 today",
+            "case_number": "WST481662"
           }
         ]
       },

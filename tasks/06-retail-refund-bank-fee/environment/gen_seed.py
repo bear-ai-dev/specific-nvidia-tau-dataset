@@ -252,16 +252,16 @@ COLORS = ["black", "matte black", "white", "graphite", "navy", "blue", "sand",
 NOTIFICATION_TEMPLATES = [
     ("delivery_trace_confirmation", "delivery_trace_confirmation",
      "Your Westline delivery trace",
-     ["case_id", "status", "carrier_response_deadline", "approval_link"],
+     ["case_number", "status", "carrier_response_deadline", "approval_link"],
      "sent", ["sent", "delivered"], None, None,
      ["notification_id", "type", "status"]),
     ("refund_trace_confirmation", "refund_trace_confirmation",
      "Your Westline refund trace",
-     ["amount", "masked_original_payment_reference", "review_window", "case_id"],
+     ["amount", "masked_original_payment_reference", "review_window", "case_number"],
      "sent", ["sent", "delivered"], None, None,
      ["notification_id", "type", "status"]),
     ("case_reference", "case_reference", "Your Westline case",
-     ["case_id", "status"], "sent", ["sent", "delivered"], None, None,
+     ["case_number", "status"], "sent", ["sent", "delivered"], None, None,
      ["notification_id", "type", "status"]),
     ("replacement_confirmation", "replacement_confirmation",
      "Your Westline replacement",
@@ -285,14 +285,14 @@ CASE_TYPE_POLICY = [
      # looking at: whether it is still open, when the carrier must answer,
      # whether the carrier may approach him directly, and whether anything has
      # shipped against it yet.
-     ["case_id", "type", "status", "deadline"],
-     ["case_id", "order_reference", "item", "status"]),
+     ["case_number", "type", "status", "deadline"],
+     ["case_number", "order_reference", "item", "status"]),
     # Refund traces run to a business-day review window and block a second
     # refund on the same tender for as long as they are open.
     ("refund_trace", "open", None, None, 3, 5, True, None, None,
      "await the payment team's settlement review", None, None, False, None,
-     ["case_id", "type", "status", "deadline"],
-     ["case_id", "order_reference", "item", "status"]),
+     ["case_number", "type", "status", "deadline"],
+     ["case_number", "order_reference", "item", "status"]),
 ]
 
 # Notes whose subject is a bank fee. Policy forbids approving one while a trace
@@ -720,7 +720,7 @@ def build_population(variants: list[tuple]) -> str:
 
     for index, (cid, refs) in enumerate(candidates[:60]):
         reference = rng.choice(refs)
-        case_id = f"WST{rng.randrange(200000, 460000)}"
+        case_number = f"WST{rng.randrange(200000, 460000)}"
         closed = index % 3 == 0
         status = (rng.choice(CLOSED_CASE_STATUSES) if closed
                   else rng.choice(OPEN_CASE_STATUSES))
@@ -730,7 +730,7 @@ def build_population(variants: list[tuple]) -> str:
         if index % 5 in (1, 3) and traced:
             money = traced[0]
             cases.append((
-                case_id, reference, cid, "refund_trace",
+                case_number, reference, cid, "refund_trace",
                 "closed" if closed else rng.choice(
                     ["open", "awaiting_external_settlement",
                      "reviewing_merchant_and_tender_records"]),
@@ -744,14 +744,14 @@ def build_population(variants: list[tuple]) -> str:
             ))
             if rng.random() < 0.3:
                 case_notes.append((
-                    case_id, 1,
+                    case_number, 1,
                     "Customer asked whether the store could reissue; explained the payment team owns the trace.",
                     None, True, f"{opened.isoformat()}T10:05:00-04:00",
                 ))
             continue
 
         cases.append((
-            case_id, reference, cid, "delivery_trace", status,
+            case_number, reference, cid, "delivery_trace", status,
             "delivered_not_received", None, "none",
             f"{deadline_day.isoformat()}T18:00:00-04:00",
             f"18:00 on {deadline_day.strftime('%B')} {deadline_day.day}",
@@ -763,16 +763,16 @@ def build_population(variants: list[tuple]) -> str:
             f"{opened.isoformat()}T10:00:00-04:00",
         ))
         for item_reference in items_by_order.get(reference, [])[:1]:
-            case_items.append((case_id, item_reference))
+            case_items.append((case_number, item_reference))
         if rng.random() < 0.45:
             case_notes.append((
-                case_id, 1,
+                case_number, 1,
                 "Customer confirmed the building was checked before the trace was opened.",
                 None, True, f"{opened.isoformat()}T10:05:00-04:00",
             ))
 
     out.append(insert("cases",
-                      ["case_id", "order_reference", "customer_id", "case_type",
+                      ["case_number", "order_reference", "customer_id", "case_type",
                        "status", "reason", "item_description", "carrier_response",
                        "deadline_at", "deadline_display",
                        "carrier_may_contact_customer", "replacement_created",
@@ -783,7 +783,7 @@ def build_population(variants: list[tuple]) -> str:
                        "return_reference", "payment_reference",
                        "amount_under_review", "fee_reimbursement_approved",
                        "pickup_guaranteed", "opened_at"], cases))
-    out.append(insert("case_items", ["case_id", "item_reference"], case_items))
+    out.append(insert("case_items", ["case_number", "item_reference"], case_items))
 
     # Resolutions the desk has already unlocked on other people's traces.
     # Roughly a third of them unlock a refund and nothing else, so an agent that
@@ -792,7 +792,7 @@ def build_population(variants: list[tuple]) -> str:
     # this data is created from a real eligibility row rather than from the
     # caller's request.
     resolutions = []
-    for index, (case_id, reference, *_rest) in enumerate(cases):
+    for index, (case_number, reference, *_rest) in enumerate(cases):
         if index % 5 not in (0, 3):
             continue
         eta = SCENARIO_DATE + dt.timedelta(days=rng.randint(2, 6))
@@ -813,7 +813,7 @@ def build_population(variants: list[tuple]) -> str:
                        "estimated_delivery_display", "default_fulfillment"],
                       resolutions))
     out.append(insert("case_notes",
-                      ["case_id", "note_no", "note", "topic",
+                      ["case_number", "note_no", "note", "topic",
                        "visible_to_next_reviewer", "created_at"], case_notes))
 
     out.append("COMMIT;\n")

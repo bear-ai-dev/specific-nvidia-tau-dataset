@@ -22,7 +22,7 @@
     "phrase; nothing here would match an arbitrary transcript.",
     "",
     "Requirements already asserted against the database are deliberately not",
-    "repeated. The tracker session against RF8241, the secure-message notification",
+    "repeated. The tracker session against ce7d58b0-b5fc-42cb-a6e0-7a57929e1205, the secure-message notification",
     "and the referral staying at approved / purchase_pending on the $100 offer are",
     "all checked as state, so restating any of them here - including the offer",
     "amount - would only double-count them."

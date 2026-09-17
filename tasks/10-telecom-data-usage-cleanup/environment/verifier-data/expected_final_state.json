@@ -31,8 +31,8 @@
     "bills": "bill_id"
   },
   "identity_verifications": {
-    "verification-benjamin-reed-support": {
-      "customer_id": "customer-benjamin-reed",
+    "ae1d7bf3-792a-4a70-8673-16c535063f29": {
+      "customer_id": "6dcb2039-012b-4723-a256-13bb7b6467c2",
       "channel": "support",
       "status": "verified",
       "matched_factors": ["mobile_number", "full_name", "date_of_birth"],
@@ -41,11 +41,11 @@
     }
   },
   "addon_transactions": {
-    "addon-transaction-benjamin-5gb": {
-      "line_id": "line-4045550176",
-      "offer_id": "offer-5gb-40-next-bill",
-      "billing_cycle_id": "cycle-current-benjamin",
-      "bill_id": "bill-current-benjamin",
+    "dfdab773-2580-4908-91cf-99a2b4826547": {
+      "line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac",
+      "offer_id": "21298486-3eca-4c2e-8d07-2b13c0a33fcc",
+      "billing_cycle_id": "305af2ad-04af-420c-9562-a935b04b855b",
+      "bill_id": "7af62370-8858-4af6-b2cd-2b702fd15586",
       "status": "active",
       "data_gigabytes": 5.0,
       "charged_price": 40.0,
@@ -55,8 +55,8 @@
     }
   },
   "bill_charges": {
-    "charge-addon-transaction-benjamin-5gb": {
-      "bill_id": "bill-current-benjamin",
+    "charge-dfdab773-2580-4908-91cf-99a2b4826547": {
+      "bill_id": "7af62370-8858-4af6-b2cd-2b702fd15586",
       "kind": "addon",
       "amount": 40.0,
       "currency": "USD",
@@ -64,8 +64,8 @@
     }
   },
   "line_high_speed_balance": {
-    "line-4045550176": {
-      "billing_cycle_id": "cycle-current-benjamin",
+    "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac": {
+      "billing_cycle_id": "305af2ad-04af-420c-9562-a935b04b855b",
       "allowance_gigabytes": 15.0,
       "consumed_gigabytes": 12.8,
       "added_gigabytes": 5.0,
@@ -73,17 +73,17 @@
     }
   },
   "lines": {
-    "line-4045550176": {
-      "customer_id": "customer-benjamin-reed",
+    "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac": {
+      "customer_id": "6dcb2039-012b-4723-a256-13bb7b6467c2",
       "masked_mobile_number": "***-***-0176",
       "status": "active",
-      "plan_id": "unlimited-start",
-      "billing_cycle_id": "cycle-current-benjamin"
+      "plan_id": "70102739-54a7-4e7b-b251-5040b1fc2f21",
+      "billing_cycle_id": "305af2ad-04af-420c-9562-a935b04b855b"
     }
   },
   "bills": {
-    "bill-current-benjamin": {
-      "billing_cycle_id": "cycle-current-benjamin",
+    "7af62370-8858-4af6-b2cd-2b702fd15586": {
+      "billing_cycle_id": "305af2ad-04af-420c-9562-a935b04b855b",
       "status": "open",
       "currency": "USD"
     }

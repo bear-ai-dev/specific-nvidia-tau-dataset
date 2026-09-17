@@ -147,7 +147,7 @@ CREATE TABLE customers (
     full_name                     TEXT NOT NULL,
     family_name                   TEXT NOT NULL,
     -- The stem the bank uses when it names a record after this profile, e.g.
-    -- 'SF204771' in verification-SF204771-email-change. Held as a column so
+    -- '4d6679ca-bcef-4893-81bf-488f66c8c666' in 613f42b7-69cd-4767-bf41-9a9db63ff731. Held as a column so
     -- identifiers that appear in tool results are read, never invented.
     verification_key              TEXT NOT NULL,
     -- Stem used when naming a travel notice after this customer.

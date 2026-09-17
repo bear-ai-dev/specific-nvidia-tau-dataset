@@ -39,17 +39,17 @@
     "wire."
   ],
   "_key_columns": {
-    "cases": "case_id",
+    "cases": "case_number",
     "case_note_log": "note_key",
-    "case_preferences": "case_id",
+    "case_preferences": "case_number",
     "notifications": "notification_id",
     "id_allocator": "entity_type",
     "orders": "order_reference"
   },
   "cases": {
-    "WST481662": {
+    "8cf648a4-ca60-4387-bc11-ec38f426123a": {
       "order_reference": "5820447319",
-      "customer_id": "customer-ethan-patel",
+      "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
       "case_type": "delivery_trace",
       "status": "open",
       "reason": "delivered_not_received",
@@ -71,14 +71,14 @@
     }
   },
   "case_note_log": {
-    "WST481662#1": {
-      "case_id": "WST481662",
+    "8cf648a4-ca60-4387-bc11-ec38f426123a#1": {
+      "case_number": "8cf648a4-ca60-4387-bc11-ec38f426123a",
       "note": "Preserve exact blue variant and original price if replacement becomes eligible.",
       "visible_to_next_reviewer": true
     }
   },
   "case_preferences": {
-    "WST481662": {
+    "8cf648a4-ca60-4387-bc11-ec38f426123a": {
       "pickup_location": "West 23rd Street pickup counter",
       "pickup_site": "West 23rd Street",
       "review_instruction": "Check West 23rd Street pickup availability first after replacement eligibility.",
@@ -86,8 +86,8 @@
     }
   },
   "notifications": {
-    "notification-WST481662": {
-      "case_id": "WST481662",
+    "521527dc-8856-4b33-8e08-69658b1ca80b": {
+      "case_number": "8cf648a4-ca60-4387-bc11-ec38f426123a",
       "order_reference": "5820447319",
       "channel": "email",
       "template": "delivery_trace_confirmation",
@@ -100,21 +100,16 @@
       },
       "masked_destination": "e***@northmail.com",
       "included_fields": [
-        "case_id",
+        "case_number",
         "status",
         "carrier_response_deadline",
         "approval_link"
       ]
     }
   },
-  "id_allocator": {
-    "support_case": {
-      "next_value": 481663
-    }
-  },
   "orders": {
     "5820447319": {
-      "customer_id": "customer-ethan-patel",
+      "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
       "fulfillment_status": "delivered"
     }
   }

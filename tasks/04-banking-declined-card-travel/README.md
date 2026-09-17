@@ -191,7 +191,7 @@ conformant: true
 
 Two of the 48 asserted facts are derived rather than quoted, and are marked as
 such in the file. `available_credit: 72.0` is 912 minus the 840-dollar hold;
-`logan-breakfast-32.settlement_state: settled` follows from the third read
+`131fc14b-fc2e-4ec9-ad07-248d01f7d54b.settlement_state: settled` follows from the third read
 returning only the hotel hold as pending. Both are consequences of recorded
 results, not additions to them.
 

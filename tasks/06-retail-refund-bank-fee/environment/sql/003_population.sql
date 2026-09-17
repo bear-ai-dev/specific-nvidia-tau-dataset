@@ -2781,7 +2781,7 @@ INSERT INTO carrier_scans (order_reference, scanned_at, scanned_at_display, loca
     ('1656218528', '2026-07-12T06:17:00-04:00', '06:17 on July 12', 'origin facility', 'origin facility', NULL, NULL, NULL, FALSE),
     ('1656218528', '2026-07-16T13:18:00-04:00', '13:18 on July 16', 'front desk', NULL, NULL, NULL, NULL, FALSE);
 
-INSERT INTO cases (case_id, order_reference, customer_id, case_type, status, reason, item_description, carrier_response, deadline_at, deadline_display, carrier_may_contact_customer, replacement_created, requested_resolution, needed_by, approval_required, approval_channel, next_action, eligibility_triggers, review_window_min_days, review_window_max_days, duplicate_refund_blocked, return_evidence_attached, return_reference, payment_reference, amount_under_review, fee_reimbursement_approved, pickup_guaranteed, opened_at) VALUES
+INSERT INTO cases (case_number, order_reference, customer_id, case_type, status, reason, item_description, carrier_response, deadline_at, deadline_display, carrier_may_contact_customer, replacement_created, requested_resolution, needed_by, approval_required, approval_channel, next_action, eligibility_triggers, review_window_min_days, review_window_max_days, duplicate_refund_blocked, return_evidence_attached, return_reference, payment_reference, amount_under_review, fee_reimbursement_approved, pickup_guaranteed, opened_at) VALUES
     ('WST282949', '5578882828', 'customer-callum-ilyin-084', 'delivery_trace', 'closed', 'delivered_not_received', NULL, 'none', '2026-08-08T18:00:00-04:00', '18:00 on August 8', TRUE, FALSE, 'replacement', NULL, TRUE, 'trace_notification', 'review requested resolution and fulfillment after an eligibility trigger', '{"carrier_confirms_missing","carrier_response_deadline_expires"}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, FALSE, FALSE, '2026-08-07T10:00:00-04:00'),
     ('WST208158', '2159434277', 'customer-odalys-duarte-055', 'refund_trace', 'awaiting_external_settlement', 'missing_refund', NULL, NULL, NULL, NULL, NULL, FALSE, NULL, NULL, NULL, NULL, 'await the payment team''s settlement review', NULL, 3, 5, TRUE, TRUE, '6287126705', 'card-ending-1189', '214.41', FALSE, FALSE, '2026-08-06T10:00:00-04:00'),
     ('WST348251', '9692073816', 'customer-zoya-vasquez-059', 'delivery_trace', 'open', 'delivered_not_received', NULL, 'none', '2026-08-15T18:00:00-04:00', '18:00 on August 15', TRUE, FALSE, 'replacement', NULL, TRUE, 'trace_notification', 'review requested resolution and fulfillment after an eligibility trigger', '{"carrier_confirms_missing","carrier_response_deadline_expires"}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, FALSE, FALSE, '2026-08-14T10:00:00-04:00'),
@@ -2843,7 +2843,7 @@ INSERT INTO cases (case_id, order_reference, customer_id, case_type, status, rea
     ('WST416625', '7800541802', 'customer-sirisha-achebe-069', 'refund_trace', 'open', 'missing_refund', NULL, NULL, NULL, NULL, NULL, FALSE, NULL, NULL, NULL, NULL, 'await the payment team''s settlement review', NULL, 3, 5, TRUE, TRUE, '6463070343', 'card-ending-8322', '229.88', FALSE, FALSE, '2026-08-06T10:00:00-04:00'),
     ('WST393829', '1379399349', 'customer-callum-lindqvist-095', 'delivery_trace', 'pending_customer_or_external_response', 'delivered_not_received', NULL, 'none', '2026-08-10T18:00:00-04:00', '18:00 on August 10', TRUE, FALSE, 'replacement', NULL, TRUE, 'trace_notification', 'review requested resolution and fulfillment after an eligibility trigger', '{"carrier_confirms_missing","carrier_response_deadline_expires"}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, FALSE, FALSE, '2026-08-09T10:00:00-04:00');
 
-INSERT INTO case_items (case_id, item_reference) VALUES
+INSERT INTO case_items (case_number, item_reference) VALUES
     ('WST282949', 'item-00596'),
     ('WST348251', 'item-00410'),
     ('WST205547', 'item-00109'),
@@ -2911,7 +2911,7 @@ INSERT INTO eligible_resolutions (order_reference, resolution_type, position, pr
     ('2133426120', 'refund', 1, NULL, TRUE, FALSE, NULL, NULL, NULL, NULL, NULL),
     ('7800541802', 'refund', 1, NULL, TRUE, FALSE, NULL, NULL, NULL, NULL, NULL);
 
-INSERT INTO case_notes (case_id, note_no, note, topic, visible_to_next_reviewer, created_at) VALUES
+INSERT INTO case_notes (case_number, note_no, note, topic, visible_to_next_reviewer, created_at) VALUES
     ('WST205547', 1, 'Customer confirmed the building was checked before the trace was opened.', NULL, TRUE, '2026-08-17T10:05:00-04:00'),
     ('WST405019', 1, 'Customer confirmed the building was checked before the trace was opened.', NULL, TRUE, '2026-08-08T10:05:00-04:00'),
     ('WST408140', 1, 'Customer confirmed the building was checked before the trace was opened.', NULL, TRUE, '2026-08-18T10:05:00-04:00'),

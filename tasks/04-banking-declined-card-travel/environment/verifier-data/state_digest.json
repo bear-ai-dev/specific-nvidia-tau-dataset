@@ -34,7 +34,7 @@
    "card-celia-novak-027-3869": "e7533baba0a7",
    "card-celia-novak-027-5294": "1572f693b536",
    "card-celia-novak-027-5577": "958eb8027f98",
-   "card-colin-6148": "32eaf75ee9bf",
+   "card-colin-6148": "f24d06d498dd",
    "card-colin-bergstrom-000-2121": "a254d69376fe",
    "card-colin-bergstrom-000-3651": "92c315ff3b9b",
    "card-colin-bergstrom-000-8350": "57b932c806f2",
@@ -46,7 +46,7 @@
    "card-colin-reeves-063-1414": "068d39e67029",
    "card-colin-reeves-063-4789": "d2cc1c7b3c01",
    "card-colin-reeves-063-5889": "3ad218bd1389",
-   "card-colin-reeves-dc-2914": "b54caed0970f",
+   "card-colin-reeves-dc-2914": "c7efd95166d0",
    "card-colin-vasquez-009-8565": "16f79374996d",
    "card-colin-vasquez-009-9962": "9e74e00eb9cf",
    "card-daniel-ferraro-040-2118": "841ba94f636d",
@@ -292,6 +292,7 @@
    "summit-reserve-elite": "b14e90fc17f0"
   },
   "card_restrictions": {
+   "a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f": "161a2103b1e9",
    "restriction-card-bianca-brennan-034-8045-delinquency-hold": "6dfe0fe80cd1",
    "restriction-card-bianca-reeves-082-4164-travel-review": "829d50d9c05b",
    "restriction-card-celia-novak-027-5577-lost-card-block": "12b140b9b13e",
@@ -340,8 +341,7 @@
    "restriction-card-yuki-abbasi-098-1782-lost-card-block": "645a377fd0be",
    "restriction-card-yuki-abbasi-098-5424-delinquency-hold": "d2ecab53ca3c",
    "restriction-card-yuki-vasquez-005-4891-delinquency-hold": "b7b97acff570",
-   "restriction-colin-reeves-dc-lost-card": "d32cc210ed8a",
-   "temporary-travel-review": "13aebb4316c4"
+   "restriction-colin-reeves-dc-lost-card": "d32cc210ed8a"
   },
   "card_section_policy": {
    "authorizations": "bedad8bf8f94",
@@ -395,6 +395,8 @@
    "confirmation-email-change-customer-yuki-vasquez-005-channel-1": "c2f733c99dd3"
   },
   "customers": {
+   "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9": "a214d4730c38",
+   "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9-dc": "b3f83355bd25",
    "customer-andre-haddad-093": "17f3d17ed042",
    "customer-bianca-brennan-034": "277bb572dbf0",
    "customer-bianca-novak-007": "d19c6f3bf8c6",
@@ -406,9 +408,7 @@
    "customer-celia-novak-027": "85140bcc4579",
    "customer-colin-bergstrom-000": "c0fa78172719",
    "customer-colin-brooks-049": "208d0c293c4d",
-   "customer-colin-reeves": "57e5d947c549",
    "customer-colin-reeves-063": "25e85212bf61",
-   "customer-colin-reeves-dc": "6bafdf85ccca",
    "customer-colin-vasquez-009": "0fde15154a79",
    "customer-daniel-ferraro-040": "3eeba11326e2",
    "customer-daniel-thorne-065": "05fb98e5f04f",
@@ -507,6 +507,7 @@
    "specialist_transfer|": "c670e7af1484"
   },
   "identity_verifications": {
+   "308f6850-19d3-4667-9f16-97bc37d46902": "068e66e5f55c",
    "verification-SF202102-prior": "89dca815b49f",
    "verification-SF204072-prior": "731fdbd02454",
    "verification-SF204234-prior": "14728c37b7c7",
@@ -543,10 +544,10 @@
    "verification-SF281449-prior": "6f34edd6d302",
    "verification-SF283527-prior": "5a3da1620096",
    "verification-SF290138-prior": "cb9cc1f377b5",
-   "verification-SF299475-prior": "b1bbd62ea591",
-   "verification-colin-reeves-card": "3eb6722af420"
+   "verification-SF299475-prior": "b1bbd62ea591"
   },
   "kb_records": {
+   "471a2d47-a132-4551-a522-5f6ac88b48e7": "2d3cc87ba896",
    "account-closing-effects": "1a25f42c1003",
    "application-status-check": "aa12c8d3a6f9",
    "authorization-hold-basics": "045772e10b62",
@@ -572,7 +573,6 @@
    "foreign-transaction-fee-basics": "00feacf2b2f2",
    "foreign-transaction-fee-exemptions": "694574583cd0",
    "fraud-alert-response": "03efe4eef2c6",
-   "hotel-authorization-holds": "bc4057425286",
    "late-fee-policy": "a69ee7a772f3",
    "lost-or-stolen-card-replacement": "f014b8eaa84b",
    "lounge-access-program-terms": "ff905bbed129",
@@ -767,6 +767,9 @@
    "RF7681": "5d0aedbed01a"
   },
   "restriction_transactions": {
+   "a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f|131fc14b-fc2e-4ec9-ad07-248d01f7d54b": "bdc48792003a",
+   "a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f|3065d723-2455-4a43-9d59-91c8dbb11da0": "0c86c80198d0",
+   "a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f|5af2030f-3fad-402f-a1de-23501596194a": "017a581ad7de",
    "restriction-card-bianca-brennan-034-8045-delinquency-hold|transaction-00187": "161f5b09fc40",
    "restriction-card-bianca-brennan-034-8045-delinquency-hold|transaction-00188": "71a15d5ce38d",
    "restriction-card-bianca-reeves-082-4164-travel-review|transaction-00464": "942e019ce761",
@@ -853,15 +856,15 @@
    "restriction-card-yuki-abbasi-098-5424-delinquency-hold|transaction-00558": "5991c644304d",
    "restriction-card-yuki-abbasi-098-5424-delinquency-hold|transaction-00559": "a1d35af1c40f",
    "restriction-card-yuki-vasquez-005-4891-delinquency-hold|transaction-00028": "6a97cb79cfbc",
-   "restriction-card-yuki-vasquez-005-4891-delinquency-hold|transaction-00029": "35aad42969f4",
-   "temporary-travel-review|hotel-attempt-1": "e3c4318b1502",
-   "temporary-travel-review|hotel-attempt-2": "a106bab2d90b",
-   "temporary-travel-review|logan-breakfast-32": "a080339cbc69"
+   "restriction-card-yuki-vasquez-005-4891-delinquency-hold|transaction-00029": "35aad42969f4"
   },
   "scenario": {
    "conversation_id": "0c80f2db078a",
    "conversation_started_at": "f13cf1480b50",
    "domain": "c6816fbd979c",
+   "next_identity_verification_id": "32a7e50a181a",
+   "next_represented_transaction_id": "2a02a7b229a1",
+   "next_travel_notice_id": "4edc894e3321",
    "scenario_time": "2bd711b7120c",
    "time_status": "b0de8484f8ee",
    "timezone": "e056db7e2b97"
@@ -931,7 +934,7 @@
    "session-referral-RF7581": "32469df16329"
   },
   "service_cases": {
-   "case-colin-reeves-card": "9a82375087c3",
+   "case-colin-reeves-card": "7e0a87a0a6c1",
    "customer-andre-haddad-093-case": "66a3c6a03825",
    "customer-bianca-brennan-034-case": "a8e63d7c6324",
    "customer-bianca-reeves-082-case": "af2e1d9b7b8c",
@@ -1096,11 +1099,11 @@
   },
   "specialist_transfers": {},
   "transactions": {
+   "131fc14b-fc2e-4ec9-ad07-248d01f7d54b": "ffb7f964d806",
+   "3065d723-2455-4a43-9d59-91c8dbb11da0": "ce9100baccab",
+   "5af2030f-3fad-402f-a1de-23501596194a": "020986151b7f",
    "airside-parking-46": "781ade8af463",
-   "hotel-attempt-1": "975ff9298f51",
-   "hotel-attempt-2": "96835ece803c",
-   "hotel-authorization-840": "ac6c28916ff0",
-   "logan-breakfast-32": "a825efbee017",
+   "f96da295-2259-4311-b31d-661ab6053092": "47984591233f",
    "transaction-00001": "cc097c6fcdfa",
    "transaction-00002": "ea678f77fe3e",
    "transaction-00003": "840f36c16d36",
@@ -1675,6 +1678,7 @@
    "transaction-00572": "918a26d89bfd"
   },
   "travel_notices": {
+   "31d46fb6-e721-4a9c-b54d-6c631dbe9686": "7455a6a54046",
    "travel-notice-card-bianca-vasquez-012-7760-phoenix": "852b6b6a6711",
    "travel-notice-card-celia-novak-027-5577-chicago": "3e2802023297",
    "travel-notice-card-colin-bergstrom-000-8350-boston": "8e57251a9fcc",
@@ -1716,8 +1720,7 @@
    "travel-notice-card-tomas-thorne-054-2480-phoenix": "d9dc4f46fe24",
    "travel-notice-card-trevor-monroy-043-9107-miami": "2daac3e0c67c",
    "travel-notice-card-victor-okonkwo-099-2789-portland": "b212ed91af7f",
-   "travel-notice-card-yuki-abbasi-098-7426-washington": "558c28ac47af",
-   "travel-notice-colin-portland": "54602281ffe2"
+   "travel-notice-card-yuki-abbasi-098-7426-washington": "558c28ac47af"
   },
   "trusted_channels": {
    "customer-andre-haddad-093-channel-0": "6e1dea6cb02f",
@@ -1810,8 +1813,8 @@
    "customer-yuki-abbasi-072-channel-0": "bd8b133d7dd1",
    "customer-yuki-vasquez-005-channel-0": "403736669e6f",
    "customer-yuki-vasquez-005-channel-1": "6570e5a3cfe1",
-   "trusted-mobile-5583": "cfe10b609d0b",
-   "trusted-mobile-7749": "2db95b853810"
+   "trusted-mobile-5583": "6f70437bd11e",
+   "trusted-mobile-7749": "40a707048536"
   },
   "welcome_offers": {
    "offer-campus-start-2026": "fe85b2ae49be",
@@ -1865,7 +1868,7 @@
    "card-celia-novak-027-3869": "e7533baba0a7",
    "card-celia-novak-027-5294": "1572f693b536",
    "card-celia-novak-027-5577": "958eb8027f98",
-   "card-colin-6148": "cc492fe2c78b",
+   "card-colin-6148": "c7de47d0ef45",
    "card-colin-bergstrom-000-2121": "a254d69376fe",
    "card-colin-bergstrom-000-3651": "92c315ff3b9b",
    "card-colin-bergstrom-000-8350": "57b932c806f2",
@@ -1877,7 +1880,7 @@
    "card-colin-reeves-063-1414": "068d39e67029",
    "card-colin-reeves-063-4789": "d2cc1c7b3c01",
    "card-colin-reeves-063-5889": "3ad218bd1389",
-   "card-colin-reeves-dc-2914": "b54caed0970f",
+   "card-colin-reeves-dc-2914": "c7efd95166d0",
    "card-colin-vasquez-009-8565": "16f79374996d",
    "card-colin-vasquez-009-9962": "9e74e00eb9cf",
    "card-daniel-ferraro-040-2118": "841ba94f636d",
@@ -2123,6 +2126,7 @@
    "summit-reserve-elite": "b14e90fc17f0"
   },
   "card_restrictions": {
+   "a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f": "a84369997bf6",
    "restriction-card-bianca-brennan-034-8045-delinquency-hold": "6dfe0fe80cd1",
    "restriction-card-bianca-reeves-082-4164-travel-review": "829d50d9c05b",
    "restriction-card-celia-novak-027-5577-lost-card-block": "12b140b9b13e",
@@ -2171,8 +2175,7 @@
    "restriction-card-yuki-abbasi-098-1782-lost-card-block": "645a377fd0be",
    "restriction-card-yuki-abbasi-098-5424-delinquency-hold": "d2ecab53ca3c",
    "restriction-card-yuki-vasquez-005-4891-delinquency-hold": "b7b97acff570",
-   "restriction-colin-reeves-dc-lost-card": "d32cc210ed8a",
-   "temporary-travel-review": "9b18e0ae6b45"
+   "restriction-colin-reeves-dc-lost-card": "d32cc210ed8a"
   },
   "card_section_policy": {
    "authorizations": "bedad8bf8f94",
@@ -2220,6 +2223,8 @@
    "confirmation-email-change-customer-yuki-vasquez-005-channel-1": "c2f733c99dd3"
   },
   "customers": {
+   "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9": "a214d4730c38",
+   "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9-dc": "b3f83355bd25",
    "customer-andre-haddad-093": "17f3d17ed042",
    "customer-bianca-brennan-034": "277bb572dbf0",
    "customer-bianca-novak-007": "d19c6f3bf8c6",
@@ -2231,9 +2236,7 @@
    "customer-celia-novak-027": "85140bcc4579",
    "customer-colin-bergstrom-000": "c0fa78172719",
    "customer-colin-brooks-049": "208d0c293c4d",
-   "customer-colin-reeves": "57e5d947c549",
    "customer-colin-reeves-063": "25e85212bf61",
-   "customer-colin-reeves-dc": "6bafdf85ccca",
    "customer-colin-vasquez-009": "0fde15154a79",
    "customer-daniel-ferraro-040": "3eeba11326e2",
    "customer-daniel-thorne-065": "05fb98e5f04f",
@@ -2371,6 +2374,7 @@
    "verification-SF299475-prior": "b1bbd62ea591"
   },
   "kb_records": {
+   "471a2d47-a132-4551-a522-5f6ac88b48e7": "2d3cc87ba896",
    "account-closing-effects": "1a25f42c1003",
    "application-status-check": "aa12c8d3a6f9",
    "authorization-hold-basics": "045772e10b62",
@@ -2396,7 +2400,6 @@
    "foreign-transaction-fee-basics": "00feacf2b2f2",
    "foreign-transaction-fee-exemptions": "694574583cd0",
    "fraud-alert-response": "03efe4eef2c6",
-   "hotel-authorization-holds": "bc4057425286",
    "late-fee-policy": "a69ee7a772f3",
    "lost-or-stolen-card-replacement": "f014b8eaa84b",
    "lounge-access-program-terms": "ff905bbed129",
@@ -2591,6 +2594,9 @@
    "RF7681": "5d0aedbed01a"
   },
   "restriction_transactions": {
+   "a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f|131fc14b-fc2e-4ec9-ad07-248d01f7d54b": "592d930ba43d",
+   "a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f|3065d723-2455-4a43-9d59-91c8dbb11da0": "e32d0bb544fa",
+   "a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f|5af2030f-3fad-402f-a1de-23501596194a": "a1c97e799e0f",
    "restriction-card-bianca-brennan-034-8045-delinquency-hold|transaction-00187": "161f5b09fc40",
    "restriction-card-bianca-brennan-034-8045-delinquency-hold|transaction-00188": "71a15d5ce38d",
    "restriction-card-bianca-reeves-082-4164-travel-review|transaction-00464": "942e019ce761",
@@ -2677,15 +2683,15 @@
    "restriction-card-yuki-abbasi-098-5424-delinquency-hold|transaction-00558": "5991c644304d",
    "restriction-card-yuki-abbasi-098-5424-delinquency-hold|transaction-00559": "a1d35af1c40f",
    "restriction-card-yuki-vasquez-005-4891-delinquency-hold|transaction-00028": "6a97cb79cfbc",
-   "restriction-card-yuki-vasquez-005-4891-delinquency-hold|transaction-00029": "35aad42969f4",
-   "temporary-travel-review|hotel-attempt-1": "ab639b7ac520",
-   "temporary-travel-review|hotel-attempt-2": "19ac7aa7cb7e",
-   "temporary-travel-review|logan-breakfast-32": "de309f3e9668"
+   "restriction-card-yuki-vasquez-005-4891-delinquency-hold|transaction-00029": "35aad42969f4"
   },
   "scenario": {
    "conversation_id": "0c80f2db078a",
    "conversation_started_at": "f13cf1480b50",
    "domain": "c6816fbd979c",
+   "next_identity_verification_id": "32a7e50a181a",
+   "next_represented_transaction_id": "2a02a7b229a1",
+   "next_travel_notice_id": "4edc894e3321",
    "scenario_time": "2bd711b7120c",
    "time_status": "b0de8484f8ee",
    "timezone": "e056db7e2b97"
@@ -2755,7 +2761,7 @@
    "session-referral-RF7581": "32469df16329"
   },
   "service_cases": {
-   "case-colin-reeves-card": "9a82375087c3",
+   "case-colin-reeves-card": "7e0a87a0a6c1",
    "customer-andre-haddad-093-case": "66a3c6a03825",
    "customer-bianca-brennan-034-case": "a8e63d7c6324",
    "customer-bianca-reeves-082-case": "af2e1d9b7b8c",
@@ -2920,10 +2926,10 @@
   },
   "specialist_transfers": {},
   "transactions": {
+   "131fc14b-fc2e-4ec9-ad07-248d01f7d54b": "d91c487dda3c",
+   "3065d723-2455-4a43-9d59-91c8dbb11da0": "ce9100baccab",
+   "5af2030f-3fad-402f-a1de-23501596194a": "4f62a14abadf",
    "airside-parking-46": "781ade8af463",
-   "hotel-attempt-1": "e7219d3774f6",
-   "hotel-attempt-2": "96835ece803c",
-   "logan-breakfast-32": "cd14551808c9",
    "transaction-00001": "cc097c6fcdfa",
    "transaction-00002": "ea678f77fe3e",
    "transaction-00003": "840f36c16d36",
@@ -3632,8 +3638,8 @@
    "customer-yuki-abbasi-072-channel-0": "bd8b133d7dd1",
    "customer-yuki-vasquez-005-channel-0": "403736669e6f",
    "customer-yuki-vasquez-005-channel-1": "6570e5a3cfe1",
-   "trusted-mobile-5583": "cfe10b609d0b",
-   "trusted-mobile-7749": "2db95b853810"
+   "trusted-mobile-5583": "6f70437bd11e",
+   "trusted-mobile-7749": "40a707048536"
   },
   "welcome_offers": {
    "offer-campus-start-2026": "fe85b2ae49be",

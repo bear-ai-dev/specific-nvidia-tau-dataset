@@ -268,7 +268,7 @@ KB_RECORDS = [
       "approved_status_meaning": "application is associated to the referral",
       "reapplication_guidance": "do not reapply; use the referred customer's "
                                 "secure account for card questions"}),
-    ("unauthorized-transaction-procedure", "2026-01-15",
+    ("8d5fe793-b41b-48c9-aef8-e3ffd9d1d4ab", "2026-01-15",
      "unauthorized transaction", 200, None, None,
      {"steps": ["review household use", "review saved wallets",
                 "submit only if unauthorized"],
@@ -277,7 +277,7 @@ KB_RECORDS = [
       "investigation_timing_basis": "transaction_type",
       "post_submit_outputs": ["claim reference",
                               "written timing disclosures in secure messages"]}),
-    ("unused-dispute-session-rights", "2026-01-15",
+    ("022398d3-51e3-4dcd-b56b-064d53b159f0", "2026-01-15",
      "(unused|unsubmitted).*(session|dispute)", 200, None, None,
      {"unused_unsubmitted_session_waives_future_rights": False,
       "guidance": "Contact the bank promptly if a genuinely unauthorized "

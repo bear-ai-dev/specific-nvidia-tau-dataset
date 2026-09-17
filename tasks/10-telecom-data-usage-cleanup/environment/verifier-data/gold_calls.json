@@ -12,7 +12,7 @@
         "date_of_birth": "November 22, 1991"
       },
       "expected_output": {
-        "customer_id": "customer-benjamin-reed",
+        "customer_id": "6dcb2039-012b-4723-a256-13bb7b6467c2",
         "match": "unique",
         "required_verification_factors": [
           "mobile_number",
@@ -28,13 +28,13 @@
       "call_id": "td-001b",
       "name": "verify_customer_identity",
       "arguments": {
-        "customer_id": "customer-benjamin-reed",
+        "customer_id": "6dcb2039-012b-4723-a256-13bb7b6467c2",
         "mobile_number": "404-555-0176",
         "full_name": "Benjamin Reed",
         "date_of_birth": "November 22, 1991"
       },
       "expected_output": {
-        "verification_id": "verification-benjamin-reed-support",
+        "verification_id": "ae1d7bf3-792a-4a70-8673-16c535063f29",
         "status": "verified",
         "matched_factors": [
           "mobile_number",
@@ -56,8 +56,8 @@
       "call_id": "td-002",
       "name": "get_customer_account",
       "arguments": {
-        "customer_id": "customer-benjamin-reed",
-        "verification_id": "verification-benjamin-reed-support",
+        "customer_id": "6dcb2039-012b-4723-a256-13bb7b6467c2",
+        "verification_id": "ae1d7bf3-792a-4a70-8673-16c535063f29",
         "include": [
           "lines",
           "devices",
@@ -65,28 +65,28 @@
         ]
       },
       "expected_output": {
-        "customer_id": "customer-benjamin-reed",
+        "customer_id": "6dcb2039-012b-4723-a256-13bb7b6467c2",
         "lines": [
           {
-            "line_id": "line-4045550176",
+            "line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac",
             "masked_mobile_number": "***-***-0176",
             "status": "active",
-            "billing_cycle_id": "cycle-current-benjamin"
+            "billing_cycle_id": "305af2ad-04af-420c-9562-a935b04b855b"
           }
         ],
         "devices": [
           {
-            "device_id": "device-pixel-8",
+            "device_id": "17c528ea-9b9d-48cd-8268-c6cca19d817e",
             "model": "Pixel 8",
-            "line_id": "line-4045550176",
+            "line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac",
             "provisioning_status": "active"
           }
         ],
         "plans": [
           {
-            "plan_id": "unlimited-start",
+            "plan_id": "70102739-54a7-4e7b-b251-5040b1fc2f21",
             "name": "Unlimited Start",
-            "line_id": "line-4045550176"
+            "line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac"
           }
         ]
       },
@@ -98,13 +98,13 @@
       "call_id": "td-003",
       "name": "get_line_data_usage",
       "arguments": {
-        "line_id": "line-4045550176",
-        "verification_id": "verification-benjamin-reed-support",
+        "line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac",
+        "verification_id": "ae1d7bf3-792a-4a70-8673-16c535063f29",
         "window": "last_24_hours"
       },
       "expected_output": {
-        "line_id": "line-4045550176",
-        "billing_cycle_id": "cycle-current-benjamin",
+        "line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac",
+        "billing_cycle_id": "305af2ad-04af-420c-9562-a935b04b855b",
         "measurement_source": "carrier_metering",
         "window_start": "2026-08-27T00:00:00-05:00",
         "window_end": "2026-08-27T04:00:00-05:00",
@@ -121,16 +121,16 @@
       "call_id": "td-004",
       "name": "get_customer_bills",
       "arguments": {
-        "customer_id": "customer-benjamin-reed",
-        "verification_id": "verification-benjamin-reed-support",
+        "customer_id": "6dcb2039-012b-4723-a256-13bb7b6467c2",
+        "verification_id": "ae1d7bf3-792a-4a70-8673-16c535063f29",
         "status": "current",
         "include": [
           "cycle"
         ]
       },
       "expected_output": {
-        "bill_id": "bill-current-benjamin",
-        "billing_cycle_id": "cycle-current-benjamin",
+        "bill_id": "7af62370-8858-4af6-b2cd-2b702fd15586",
+        "billing_cycle_id": "305af2ad-04af-420c-9562-a935b04b855b",
         "cycle_start": "2026-08-06T00:00:00-05:00",
         "cycle_end": "2026-09-05T00:00:00-05:00",
         "cycle_resets_in_days": 9,
@@ -144,8 +144,8 @@
       "call_id": "td-004b",
       "name": "get_customer_bills",
       "arguments": {
-        "customer_id": "customer-benjamin-reed",
-        "verification_id": "verification-benjamin-reed-support",
+        "customer_id": "6dcb2039-012b-4723-a256-13bb7b6467c2",
+        "verification_id": "ae1d7bf3-792a-4a70-8673-16c535063f29",
         "status": "current",
         "include": [
           "charges",
@@ -154,8 +154,8 @@
         ]
       },
       "expected_output": {
-        "bill_id": "bill-current-benjamin",
-        "billing_cycle_id": "cycle-current-benjamin",
+        "bill_id": "7af62370-8858-4af6-b2cd-2b702fd15586",
+        "billing_cycle_id": "305af2ad-04af-420c-9562-a935b04b855b",
         "overage_charge": 0.0,
         "currency": "USD",
         "after_high_speed_allowance": "speed_reduced",
@@ -169,14 +169,14 @@
       "call_id": "td-004c",
       "name": "get_data_addon_offers",
       "arguments": {
-        "line_id": "line-4045550176",
-        "verification_id": "verification-benjamin-reed-support"
+        "line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac",
+        "verification_id": "ae1d7bf3-792a-4a70-8673-16c535063f29"
       },
       "expected_output": {
-        "line_id": "line-4045550176",
+        "line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac",
         "offers": [
           {
-            "offer_id": "offer-5gb-40-next-bill",
+            "offer_id": "21298486-3eca-4c2e-8d07-2b13c0a33fcc",
             "eligibility_status": "eligible",
             "data_gigabytes": 5.0,
             "price": 40.0,
@@ -196,16 +196,16 @@
       "call_id": "td-005",
       "name": "add_data_addon",
       "arguments": {
-        "line_id": "line-4045550176",
-        "offer_id": "offer-5gb-40-next-bill",
+        "line_id": "ec8443dc-5fa9-4579-8dbe-5eafc61d53ac",
+        "offer_id": "21298486-3eca-4c2e-8d07-2b13c0a33fcc",
         "customer_authorized": true
       },
       "expected_output": {
-        "transaction_id": "addon-transaction-benjamin-5gb",
+        "transaction_id": "dfdab773-2580-4908-91cf-99a2b4826547",
         "status": "active",
-        "offer_id": "offer-5gb-40-next-bill",
+        "offer_id": "21298486-3eca-4c2e-8d07-2b13c0a33fcc",
         "effective_at": "2026-08-27T19:37:35-05:00",
-        "bill_reference": "bill-current-benjamin",
+        "bill_reference": "7af62370-8858-4af6-b2cd-2b702fd15586",
         "charged_price": 40.0,
         "currency": "USD",
         "added_high_speed_gigabytes": 5.0,

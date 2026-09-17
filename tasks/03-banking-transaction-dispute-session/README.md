@@ -68,7 +68,7 @@ detail that actually turns the conversation an artifact of the query rather than
 property of the charge.
 
 **The dispute session's identifier and label come from the transaction.** The
-recorded session is `session-dispute-8472` and its label is
+recorded session is `0ae36057-bbbb-42e3-994f-55f064bc374c` and its label is
 `Review transaction ending 8472`. `transactions.short_ref` and `resource_label`
 hold `8472` and `transaction ending 8472`, and the workflow profile holds the
 naming rule (`resource_suffix_source = 'resource_short_ref'`) and the label

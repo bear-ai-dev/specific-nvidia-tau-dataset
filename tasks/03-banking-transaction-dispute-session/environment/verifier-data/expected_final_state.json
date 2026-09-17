@@ -28,8 +28,8 @@
     "transactions": "transaction_id"
   },
   "identity_verifications": {
-    "verification-justin-porter-dispute": {
-      "customer_id": "customer-justin-porter",
+    "dbf560d6-9aa5-4471-a5b1-7a3af5c51fb8": {
+      "customer_id": "4e8c3a97-e6ad-4737-aede-c8acd4993277",
       "status": "verified",
       "required_methods": [
         "billing_zip",
@@ -43,10 +43,10 @@
     }
   },
   "self_service_sessions": {
-    "session-dispute-8472": {
-      "customer_id": "customer-justin-porter",
+    "0ae36057-bbbb-42e3-994f-55f064bc374c": {
+      "customer_id": "4e8c3a97-e6ad-4737-aede-c8acd4993277",
       "workflow": "transaction_dispute",
-      "resource_id": "transaction-ending-8472",
+      "resource_id": "b2047621-d2c7-437c-bb56-c81a700e2099",
       "status": {
         "_any_of": [
           "issued",
@@ -67,7 +67,7 @@
     }
   },
   "transactions": {
-    "transaction-ending-8472": {
+    "b2047621-d2c7-437c-bb56-c81a700e2099": {
       "card_id": "card-justin-porter-9102",
       "kind": "posted",
       "amount": 243.18,

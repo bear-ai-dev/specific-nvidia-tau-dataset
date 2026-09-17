@@ -117,11 +117,11 @@ class Raw(str):
 # withdrawn: it is a travel card with no foreign-transaction fee and lounge
 # membership, so only the active flag keeps it out of the answer.
 CARD_PRODUCTS = [
-    ("summit-journey", "Summit Journey", "summit", "travel", "95.00",
+    ("c6c675e6-0faf-4004-a5de-881eaaa805b7", "Summit Journey", "summit", "travel", "95.00",
      False, False, False, False, True, True, 10),
-    ("summit-reserve", "Summit Reserve", "summit", "travel", "395.00",
+    ("acda644c-1054-410a-98a1-39fad9fe411e", "Summit Reserve", "summit", "travel", "395.00",
      False, True, True, False, True, True, 20),
-    ("summit-reserve-elite", "Summit Reserve Elite", "summit", "travel", "795.00",
+    ("acda644c-1054-410a-98a1-39fad9fe411e-elite", "Summit Reserve Elite", "summit", "travel", "795.00",
      False, True, True, True, True, False, 30),
     ("everyday-cash", "Everyday Cash", "everyday", "cash_back", "0.00",
      True, False, False, False, False, True, 40),
@@ -149,15 +149,15 @@ CARD_PRODUCTS = [
 # offer on a current one, so the "current welcome offers" answer depends on both
 # the offer's own state and its product's.
 WELCOME_OFFERS = [
-    ("offer-summit-journey-2026h2", "summit-journey", 40000, "3000.00", 90,
+    ("offer-c6c675e6-0faf-4004-a5de-881eaaa805b7-2026h2", "c6c675e6-0faf-4004-a5de-881eaaa805b7", 40000, "3000.00", 90,
      True, "2026-12-31", 10),
-    ("offer-summit-reserve-2026h2", "summit-reserve", 70000, "5000.00", 90,
+    ("offer-acda644c-1054-410a-98a1-39fad9fe411e-2026h2", "acda644c-1054-410a-98a1-39fad9fe411e", 70000, "5000.00", 90,
      True, "2026-12-31", 20),
-    ("offer-summit-reserve-elite", "summit-reserve-elite", 100000, "8000.00", 90,
+    ("offer-acda644c-1054-410a-98a1-39fad9fe411e-elite", "acda644c-1054-410a-98a1-39fad9fe411e-elite", 100000, "8000.00", 90,
      True, "2026-12-31", 30),
-    ("offer-summit-journey-2026h1", "summit-journey", 25000, "2000.00", 60,
+    ("offer-c6c675e6-0faf-4004-a5de-881eaaa805b7-2026h1", "c6c675e6-0faf-4004-a5de-881eaaa805b7", 25000, "2000.00", 60,
      False, "2026-06-30", 40),
-    ("offer-summit-reserve-2025h2", "summit-reserve", 60000, "5000.00", 90,
+    ("offer-acda644c-1054-410a-98a1-39fad9fe411e-2025h2", "acda644c-1054-410a-98a1-39fad9fe411e", 60000, "5000.00", 90,
      False, "2025-12-31", 50),
     ("offer-everyday-cash-2026", "everyday-cash", 20000, "1000.00", 90,
      True, "2026-12-31", 60),
@@ -199,29 +199,29 @@ WELCOME_OFFERS = [
 # projection instead of a frozen copy of it, so a product question the recording
 # never asked answers from the same rows the recorded answer came from.
 KB_RECORDS = [
-    ("card-products-travel-current", "2026-07-01",
+    ("63b6eab2-5559-4d42-a781-47c7c0413493", "2026-07-01",
      "travel card.*(annual fee|lounge|foreign transaction)", 200,
      "travel_card_matches", None, {}),
-    ("summit-reserve-airline-benefits", "2026-07-01",
+    ("0d57772d-88ff-474b-8c24-5476b7dc1921", "2026-07-01",
      "summit reserve.*(checked bag|airline|incidental)", 200,
-     "product_airline_benefits", "summit-reserve", {}),
-    ("summit-welcome-offers-current", "2026-07-01",
+     "product_airline_benefits", "acda644c-1054-410a-98a1-39fad9fe411e", {}),
+    ("88b888dd-e6b1-4d27-927c-22d21bdaa700", "2026-07-01",
      "welcome (offer|bonus)", 200, "welcome_offers", None,
      {"offers_can_change": True, "approval_guaranteed": False}),
-    ("card-application-decision-notice", "2026-07-01",
+    ("204dbd70-136e-4b56-9036-cf148e95a870", "2026-07-01",
      "(decision notice|adverse.action|override underwriting)", 200, None, None,
      {"decision_notice": {"explains_factors": True,
                           "may_include_reconsideration_contact": True},
       "phone_agent_can_override_underwriting": False}),
-    ("card-application-housing-payment-field", "2026-07-01",
+    ("4a2df74d-36c6-4669-8ad0-c71d09611681", "2026-07-01",
      "housing payment", 200, None, None,
      {"guidance": "Enter the amount the applicant is personally responsible for "
                   "each month and follow the field instructions."}),
-    ("card-application-income-field", "2026-07-01",
+    ("2adb7239-a280-4c4f-8e5f-1755aa55c925", "2026-07-01",
      "(annual income|salary|freelance income|income.*(field|report))", 200, None, None,
      {"guidance": "Report income the applicant can reasonably access and verify, "
                   "consistent with the application disclosure."}),
-    ("profile-email-login-and-notice-routing", "2026-07-01",
+    ("f603e573-6b4f-4f50-a390-b18c917712a9", "2026-07-01",
      "(login identifier|username).*(email|notice)|email change.*(login|notice routing)",
      200, None, None,
      {"login_identifier_may_remain_same": True,
@@ -273,10 +273,10 @@ KB_RECORDS = [
     # The rest of the published base. None of it is retrieved by any recording;
     # it is here so the base has content beyond the recorded questions and so a
     # question the recording never asked gets a real answer.
-    ("summit-journey-airline-benefits", "2026-07-01",
+    ("c6c675e6-0faf-4004-a5de-881eaaa805b7-airline-benefits", "2026-07-01",
      "summit journey.*(checked bag|airline|incidental)", 150,
-     "product_airline_benefits", "summit-journey", {}),
-    ("summit-reserve-elite-status", "2026-05-18",
+     "product_airline_benefits", "c6c675e6-0faf-4004-a5de-881eaaa805b7", {}),
+    ("acda644c-1054-410a-98a1-39fad9fe411e-elite-status", "2026-05-18",
      "summit reserve elite", 220, None, None,
      {"guidance": "Summit Reserve Elite is closed to new applications; current "
                   "cardholders keep their existing terms."}),
@@ -698,7 +698,7 @@ def build_population() -> str:
         last = rng.choice(LAST_NAMES)
         customer_id = f"customer-{first.lower()}-{last.lower()}-{index:03d}"
         account_id = f"SF{rng.randint(200000, 299999)}"
-        while account_id in used_account_ids or account_id == "SF204771":
+        while account_id in used_account_ids or account_id == "4d6679ca-bcef-4893-81bf-488f66c8c666":
             account_id = f"SF{rng.randint(200000, 299999)}"
         used_account_ids.add(account_id)
 
@@ -943,7 +943,7 @@ def build_population() -> str:
 
         if workflow == "card_application":
             resource = rng.choice(product_ids)
-            session_id = f"session-card-application-{session_index:03d}"
+            session_id = f"f4136da6-25dc-464b-b50c-8f02a5cc1ca3-{session_index:03d}"
             save, credit, stages, claim = True, False, None, False
             access, label, actions = None, None, None
         elif workflow == "referral_status":

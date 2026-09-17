@@ -12,7 +12,7 @@
         "card_last4": "6148"
       },
       "expected_output": {
-        "customer_id": "customer-colin-reeves",
+        "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
         "match": "unique",
         "caller_phone_match": true,
         "required_verification_methods": [
@@ -29,12 +29,12 @@
       "call_id": "bt-002",
       "name": "verify_customer_identity",
       "arguments": {
-        "customer_id": "customer-colin-reeves",
+        "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
         "billing_zip": "20005",
         "card_last4": "6148"
       },
       "expected_output": {
-        "verification_id": "verification-colin-reeves-card",
+        "verification_id": "308f6850-19d3-4667-9f16-97bc37d46902",
         "status": "verified",
         "matched_methods": [
           "caller_phone",
@@ -50,25 +50,25 @@
       "call_id": "bt-003",
       "name": "get_card_account",
       "arguments": {
-        "customer_id": "customer-colin-reeves",
+        "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
         "card_last4": "6148",
         "include": [
           "declines"
         ]
       },
       "expected_output": {
-        "customer_id": "customer-colin-reeves",
+        "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
         "card_last4": "6148",
         "declines": [
           {
-            "transaction_id": "hotel-attempt-1",
+            "transaction_id": "5af2030f-3fad-402f-a1de-23501596194a",
             "merchant": "Harbor View Hotel",
             "amount": 840,
             "currency": "USD",
             "status": "declined"
           },
           {
-            "transaction_id": "hotel-attempt-2",
+            "transaction_id": "3065d723-2455-4a43-9d59-91c8dbb11da0",
             "merchant": "Harbor View Hotel",
             "amount": 840,
             "currency": "USD",
@@ -84,7 +84,7 @@
       "call_id": "bt-004",
       "name": "get_card_account",
       "arguments": {
-        "customer_id": "customer-colin-reeves",
+        "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
         "card_last4": "6148",
         "include": [
           "status",
@@ -95,7 +95,7 @@
         ]
       },
       "expected_output": {
-        "customer_id": "customer-colin-reeves",
+        "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
         "card_last4": "6148",
         "status": "temporarily_restricted",
         "available_credit": 912,
@@ -104,7 +104,7 @@
         "payment_status": "current",
         "declines": [
           {
-            "transaction_id": "hotel-attempt-1",
+            "transaction_id": "5af2030f-3fad-402f-a1de-23501596194a",
             "merchant": "Harbor View Hotel",
             "merchant_location": "Portland, Maine",
             "amount": 840,
@@ -112,7 +112,7 @@
             "reason": "travel_review"
           },
           {
-            "transaction_id": "hotel-attempt-2",
+            "transaction_id": "3065d723-2455-4a43-9d59-91c8dbb11da0",
             "merchant": "Harbor View Hotel",
             "merchant_location": "Portland, Maine",
             "amount": 840,
@@ -122,7 +122,7 @@
         ],
         "authorizations": [
           {
-            "transaction_id": "logan-breakfast-32",
+            "transaction_id": "131fc14b-fc2e-4ec9-ad07-248d01f7d54b",
             "merchant": "Logan Airport",
             "amount": 32,
             "currency": "USD",
@@ -132,12 +132,12 @@
         ],
         "restrictions": [
           {
-            "restriction_id": "temporary-travel-review",
+            "restriction_id": "a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f",
             "status": "open",
             "linked_transaction_ids": [
-              "hotel-attempt-1",
-              "hotel-attempt-2",
-              "logan-breakfast-32"
+              "5af2030f-3fad-402f-a1de-23501596194a",
+              "3065d723-2455-4a43-9d59-91c8dbb11da0",
+              "131fc14b-fc2e-4ec9-ad07-248d01f7d54b"
             ]
           }
         ]
@@ -150,13 +150,13 @@
       "call_id": "bt-005",
       "name": "resolve_card_restriction",
       "arguments": {
-        "customer_id": "customer-colin-reeves",
+        "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
         "card_last4": "6148",
-        "restriction_id": "temporary-travel-review",
+        "restriction_id": "a4e9ecb1-a664-45d0-b3f4-cfe80b54ea8f",
         "confirmed_transaction_ids": [
-          "hotel-attempt-1",
-          "hotel-attempt-2",
-          "logan-breakfast-32"
+          "5af2030f-3fad-402f-a1de-23501596194a",
+          "3065d723-2455-4a43-9d59-91c8dbb11da0",
+          "131fc14b-fc2e-4ec9-ad07-248d01f7d54b"
         ]
       },
       "expected_output": {
@@ -174,7 +174,7 @@
         "query": "Hotel incidental authorization holds, available-credit constraints, authorization guarantees, and pending duration"
       },
       "expected_output": {
-        "record_id": "hotel-authorization-holds",
+        "record_id": "471a2d47-a132-4551-a522-5f6ac88b48e7",
         "effective_at": "2026-07-01",
         "incidental_holds_may_exceed_room_total": true,
         "available_credit_must_cover_full_authorization": true,
@@ -189,18 +189,18 @@
       "call_id": "bt-007",
       "name": "get_card_account",
       "arguments": {
-        "customer_id": "customer-colin-reeves",
+        "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
         "card_last4": "6148",
         "include": [
           "authorizations"
         ]
       },
       "expected_output": {
-        "customer_id": "customer-colin-reeves",
+        "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
         "card_last4": "6148",
         "authorizations": [
           {
-            "transaction_id": "hotel-authorization-840",
+            "transaction_id": "f96da295-2259-4311-b31d-661ab6053092",
             "merchant": "Harbor View Hotel",
             "amount": 840,
             "currency": "USD",
@@ -216,7 +216,7 @@
       "call_id": "bt-008",
       "name": "create_travel_notice",
       "arguments": {
-        "customer_id": "customer-colin-reeves",
+        "customer_id": "c68e3baf-9314-4fd5-8b8f-85e747f0f9d9",
         "card_last4": "6148",
         "destinations": [
           "Portland, Maine"
@@ -225,7 +225,7 @@
       },
       "expected_output": {
         "status": "created",
-        "notice_id": "travel-notice-colin-portland",
+        "notice_id": "31d46fb6-e721-4a9c-b54d-6c631dbe9686",
         "authorization_guaranteed": false
       },
       "state_effect": "travel_notice_created",

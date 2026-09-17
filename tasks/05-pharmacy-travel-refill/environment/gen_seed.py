@@ -68,7 +68,7 @@ def insert(table: str, columns: list[str], rows: list[tuple]) -> str:
 # Scenario-critical medications first, then a catalog wide enough that a
 # medication_name search has to discriminate.
 SCENARIO_MEDICATIONS = [
-    ("albuterol-inhaler", "albuterol inhaler", "metered-dose inhaler", "90 mcg/actuation", False),
+    ("9dcd4906-4db3-4290-bccd-afde111823cb", "albuterol inhaler", "metered-dose inhaler", "90 mcg/actuation", False),
 ]
 
 CATALOG_MEDICATIONS = [
@@ -124,9 +124,9 @@ MEDICATIONS = SCENARIO_MEDICATIONS + CATALOG_MEDICATIONS
 # after 19:00, which is what the recorded search relies on; Maple Grove closes
 # at 18:00 and is the distractor that must be filtered out.
 SCENARIO_STORES = [
-    ("oak-street-current", "Oak Street Pharmacy", "1420 Oak Street", "19:00", True,
+    ("8e22d41d-843c-4e73-95c0-3c9877366ba9", "Oak Street Pharmacy", "1420 Oak Street", "19:00", True,
      "22:00", "America/Chicago", ["immunization", "consultation"], 1, 30, 0, "north-loop"),
-    ("park-avenue", "Park Avenue", None, "21:00", False,
+    ("155059ca-b6aa-4372-b0af-86c2d681c393", "Park Avenue", None, "21:00", False,
      None, "America/Chicago", None, 1, 25, 10, "north-loop"),
     ("maple-grove", "Maple Grove", "88 Maple Grove Road", "18:00", False,
      None, "America/Chicago", ["immunization"], 1, 25, 20, "north-loop"),
@@ -176,7 +176,7 @@ PLANS = [
 # call would not have survived, which is the point of keeping them.
 OVERRIDE_RULES = {
     "plan-midwest-choice-ppo": {
-        "lost_medication": ("override-lost-medication", "approved_one_time"),
+        "lost_medication": ("9e90544a-3497-4aee-a1f0-4437d4f4684c", "approved_one_time"),
         "vacation_supply": ("override-vacation-supply", "pending_patient_participation"),
         "dose_change": ("override-dose-change", "pending_patient_participation"),
         "other": ("override-other", "denied"),
@@ -264,9 +264,9 @@ def build_reference() -> str:
     # Inventory. The three scenario rows are fixed; the rest is random but
     # weighted so most things are in stock and some are not.
     inv_rows = [
-        ("oak-street-current", "albuterol-inhaler", True, False, 6),
-        ("park-avenue", "albuterol-inhaler", True, False, 4),
-        ("maple-grove", "albuterol-inhaler", False, False, 0),
+        ("8e22d41d-843c-4e73-95c0-3c9877366ba9", "9dcd4906-4db3-4290-bccd-afde111823cb", True, False, 6),
+        ("155059ca-b6aa-4372-b0af-86c2d681c393", "9dcd4906-4db3-4290-bccd-afde111823cb", True, False, 4),
+        ("maple-grove", "9dcd4906-4db3-4290-bccd-afde111823cb", False, False, 0),
     ]
     seen = {(r[0], r[1]) for r in inv_rows}
     all_store_ids = [r[0] for r in store_rows]
@@ -383,7 +383,7 @@ def build_population() -> str:
     # The scenario store's queue is empty: it is 18:12 and the counter closes at
     # 19:00, so the recorded fill is the next one it will take. Population fills
     # that would occupy its queue are placed elsewhere.
-    SCENARIO_STORE = "oak-street-current"
+    SCENARIO_STORE = "8e22d41d-843c-4e73-95c0-3c9877366ba9"
     ACTIVE_WORKFLOWS = ("claim_paid", "awaiting_pharmacist_verification",
                         "ready_for_pickup")
 

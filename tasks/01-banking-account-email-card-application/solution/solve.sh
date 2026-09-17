@@ -35,7 +35,7 @@ say "Harbor Stone Bank, this is the service desk. Before I look anything up, can
 # The caller gives a name and an account id. The account id is the narrower
 # identifier and it resolves on its own; the register holds a second Johnny
 # Monroe, so the name would not.
-call lookup_customer '{"account_id": "SF204771"}'
+call lookup_customer '{"account_id": "4d6679ca-bcef-4893-81bf-488f66c8c666"}'
 
 # Stamp the verification record from the backend clock rather than from anything
 # said on the call.
@@ -44,15 +44,15 @@ call get_current_time '{}'
 # The two factors this profile requires, checked against the profile. Naming a
 # factor is not matching it.
 call verify_customer_identity \
-    '{"customer_id": "SF204771", "billing_zip": "19447", "mobile_last4": "1251"}'
+    '{"customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666", "billing_zip": "19447", "mobile_last4": "1251"}'
 
 say "Thank you, the billing ZIP and the last four of your mobile both check out, so you are verified."
 
 # The caller cannot reach the address on file, so the change is confirmed on the
 # enrolled SMS channel instead. Sent before the agent says it was sent.
 call start_trusted_channel_confirmation \
-    '{"customer_id": "SF204771", "purpose": "email_change", "channel": "sms",
-      "verification_id": "verification-SF204771-email-change"}'
+    '{"customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666", "purpose": "email_change", "channel": "sms",
+      "verification_id": "613f42b7-69cd-4767-bf41-9a9db63ff731"}'
 
 say "Because the address on file is the one you cannot get into, I am confirming this on your mobile instead. I have just sent a code to the number ending 1251."
 
@@ -60,14 +60,14 @@ say "Because the address on file is the one you cannot get into, I am confirming
 # argument. The backend already knows whether the challenge completed, so the
 # confirmation state is read rather than submitted.
 call get_trusted_channel_confirmation \
-    '{"customer_id": "SF204771", "confirmation_id": "confirmation-email-change-SF204771"}'
+    '{"customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666", "confirmation_id": "a241c1d7-d6c0-4489-9406-65a28d3bca66"}'
 
 # Only now is the profile changed: verified identity plus a confirmed trusted
 # channel.
 call update_customer_email \
-    '{"customer_id": "SF204771", "new_email": "johnny.monroe.travel@outlook.com",
-      "verification_id": "verification-SF204771-email-change",
-      "confirmation_id": "confirmation-email-change-SF204771"}'
+    '{"customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666", "new_email": "johnny.monroe.travel@outlook.com",
+      "verification_id": "613f42b7-69cd-4767-bf41-9a9db63ff731",
+      "confirmation_id": "a241c1d7-d6c0-4489-9406-65a28d3bca66"}'
 
 say "That went through. Your profile now carries johnny.monroe.travel@outlook.com, and you may see a security notice at the old address as well as the new one while the change settles."
 
@@ -94,8 +94,8 @@ say "The current welcome offers are 40,000 points on Journey once you spend \$3,
 # The application is the customer's to complete. The agent delivers the secure
 # tool to the message centre and to the address the profile now holds.
 call create_secure_self_service_session \
-    '{"customer_id": "SF204771", "workflow": "card_application",
-      "resource_id": "summit-journey",
+    '{"customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666", "workflow": "card_application",
+      "resource_id": "c6c675e6-0faf-4004-a5de-881eaaa805b7",
       "delivery_channels": ["secure_message", "email_notification"]}'
 
 say "I have put the secure Summit Journey application in your message centre and sent a copy to your new address. The application is completed by you, not by me."
@@ -120,7 +120,7 @@ say "For the housing field, enter what you are personally responsible for each m
 # Whether the session can be saved is a property of the session, so it is read
 # from the session rather than asserted.
 call get_secure_self_service_session \
-    '{"customer_id": "SF204771", "session_id": "session-card-application"}'
+    '{"customer_id": "4d6679ca-bcef-4893-81bf-488f66c8c666", "session_id": "f4136da6-25dc-464b-b50c-8f02a5cc1ca3"}'
 
 say "The tool shows save and continue later, so you can stop before the final certification and come back to it. Opening or saving it does not submit anything."
 

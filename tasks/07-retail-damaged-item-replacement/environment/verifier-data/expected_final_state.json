@@ -45,20 +45,20 @@
     "order_items": "item_reference",
     "replacement_orders": "replacement_order_reference",
     "notifications": "notification_id",
-    "cases": "case_id",
-    "case_preferences": "case_id",
+    "cases": "case_number",
+    "case_preferences": "case_number",
     "id_allocator": "entity_type"
   },
   "orders": {
     "5820458821": {
-      "customer_id": "customer-ethan-patel",
+      "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
       "fulfillment_status": "processing",
       "destination_label": "home_address_on_order",
       "replaces_order_reference": "5820454086",
       "representative_item": "12-cup coffee maker"
     },
     "5820454086": {
-      "customer_id": "customer-ethan-patel",
+      "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
       "fulfillment_status": "delivered"
     }
   },
@@ -110,9 +110,9 @@
     }
   },
   "cases": {
-    "WST481662": {
+    "8cf648a4-ca60-4387-bc11-ec38f426123a": {
       "order_reference": "5820447319",
-      "customer_id": "customer-ethan-patel",
+      "customer_id": "c51d2171-c10b-489b-9186-a93ebd98613d",
       "case_type": "delivery_trace",
       "status": "open",
       "carrier_response": "none",
@@ -123,7 +123,7 @@
     }
   },
   "case_preferences": {
-    "WST481662": {
+    "8cf648a4-ca60-4387-bc11-ec38f426123a": {
       "pickup_location": "West 23rd Street pickup counter",
       "visible_to_next_reviewer": true
     }

@@ -118,7 +118,7 @@ MEASUREMENT_SOURCES = [
 # checked by the call itself: the caller quotes an alert saying he had used 85%,
 # and 12.8 GB metered against a 15 GB allowance is 85.3%.
 PLANS = [
-    ("unlimited-start", "Unlimited Start", 15.00, "speed_reduced", 65.00, True),
+    ("70102739-54a7-4e7b-b251-5040b1fc2f21", "Unlimited Start", 15.00, "speed_reduced", 65.00, True),
     ("unlimited-plus", "Unlimited Plus", 50.00, "speed_reduced", 85.00, True),
     ("unlimited-ultimate", "Unlimited Ultimate", 100.00, "speed_reduced", 105.00, True),
     ("flex-5", "Flex 5", 5.00, "overage_billed", 35.00, True),
@@ -149,9 +149,9 @@ VERIFICATION_POLICIES = [
 # scenario's line has to filter them out to reproduce the recorded single-offer
 # result.
 ADDON_OFFERS = [
-    ("offer-2gb-20-expired", "unlimited-start", 2.00, 20.00, "next_bill",
+    ("offer-2gb-20-expired", "70102739-54a7-4e7b-b251-5040b1fc2f21", 2.00, 20.00, "next_bill",
      "immediate", "2026-08-14T23:59:00", "active", False, False),
-    ("offer-10gb-60-expired", "unlimited-start", 10.00, 60.00, "next_bill",
+    ("offer-10gb-60-expired", "70102739-54a7-4e7b-b251-5040b1fc2f21", 10.00, 60.00, "next_bill",
      "immediate", "2026-08-20T23:59:00", "active", False, False),
     ("offer-5gb-30-plus", "unlimited-plus", 5.00, 30.00, "next_bill",
      "immediate", "2026-09-04T23:59:00", "active", False, False),
@@ -310,7 +310,7 @@ GUARANTEED_CUSTOMERS = [
      "active", True, None),
     # Same full name as the target, different date of birth: the factor that
     # actually discriminates.
-    ("customer-benjamin-reed-1978", "benjamin-reed-1978", "Benjamin Reed",
+    ("6dcb2039-012b-4723-a256-13bb7b6467c2-1978", "benjamin-reed-1978", "Benjamin Reed",
      "1978-05-30", "active", False, None),
     ("customer-dana-reed", "dana-reed", "Dana Reed", "1996-09-01",
      "active", False, None),

@@ -115,8 +115,8 @@ INSERT INTO airport_area_links (area_id, airport_code, distance_miles, ground_ac
     ('silicon-valley', 'OAK', '34.60', 56, 3);
 
 INSERT INTO flights (flight_id, carrier, flight_number, origin_code, destination_code, departure_time, arrival_time, duration_minutes, stops, arrives_next_day) VALUES
-    ('BM-PHX-DCA-0910', 'BM', 'BM 418', 'PHX', 'DCA', '09:10', '16:30', 260, 0, FALSE),
-    ('BM-DCA-PHX-1540', 'BM', 'BM 419', 'DCA', 'PHX', '15:40', '17:30', 290, 0, FALSE),
+    ('2133fbc8-ed10-42aa-baa2-12e3d15a6a05', 'BM', 'BM 418', 'PHX', 'DCA', '09:10', '16:30', 260, 0, FALSE),
+    ('3ac31d55-0dbc-4f79-892e-743257ec9f13', 'BM', 'BM 419', 'DCA', 'PHX', '15:40', '17:30', 290, 0, FALSE),
     ('BM-PHX-DCA-1725', 'BM', 'BM 422', 'PHX', 'DCA', '17:25', '00:45', 260, 0, TRUE),
     ('BM-DCA-PHX-0730', 'BM', 'BM 423', 'DCA', 'PHX', '07:30', '09:20', 290, 0, FALSE),
     ('BM-PHX-ORD-0600', 'BM', 'BM 610', 'PHX', 'ORD', '06:00', '10:45', 165, 0, FALSE),
@@ -317,10 +317,10 @@ INSERT INTO flights (flight_id, carrier, flight_number, origin_code, destination
     ('BM-ATL-STL-1430', 'BM', 'BM 888', 'ATL', 'STL', '14:30', '16:31', 181, 0, FALSE);
 
 INSERT INTO fare_options (flight_id, fare_class, base_fare, tax_amount, advance_seat_selection_allowed) VALUES
-    ('BM-PHX-DCA-0910', 'basic_economy', '219.00', '37.20', FALSE),
-    ('BM-PHX-DCA-0910', 'standard_economy', '241.90', '37.20', TRUE),
-    ('BM-DCA-PHX-1540', 'basic_economy', '219.00', '37.20', FALSE),
-    ('BM-DCA-PHX-1540', 'standard_economy', '241.90', '37.20', TRUE),
+    ('2133fbc8-ed10-42aa-baa2-12e3d15a6a05', 'basic_economy', '219.00', '37.20', FALSE),
+    ('2133fbc8-ed10-42aa-baa2-12e3d15a6a05', 'standard_economy', '241.90', '37.20', TRUE),
+    ('3ac31d55-0dbc-4f79-892e-743257ec9f13', 'basic_economy', '219.00', '37.20', FALSE),
+    ('3ac31d55-0dbc-4f79-892e-743257ec9f13', 'standard_economy', '241.90', '37.20', TRUE),
     ('BM-PHX-DCA-1725', 'basic_economy', '229.00', '37.20', FALSE),
     ('BM-PHX-DCA-1725', 'standard_economy', '251.90', '37.20', TRUE),
     ('BM-DCA-PHX-0730', 'basic_economy', '229.00', '37.20', FALSE),
@@ -719,26 +719,26 @@ INSERT INTO fare_options (flight_id, fare_class, base_fare, tax_amount, advance_
     ('BM-ATL-STL-1430', 'standard_economy', '197.40', '29.20', TRUE);
 
 INSERT INTO flight_availability (flight_id, departure_date, fare_class, seats_remaining) VALUES
-    ('BM-PHX-DCA-0910', '2026-10-05', 'basic_economy', 34),
-    ('BM-PHX-DCA-0910', '2026-10-05', 'standard_economy', 8),
-    ('BM-PHX-DCA-0910', '2026-10-12', 'basic_economy', 5),
-    ('BM-PHX-DCA-0910', '2026-10-12', 'standard_economy', 23),
-    ('BM-PHX-DCA-0910', '2026-10-14', 'basic_economy', 11),
-    ('BM-PHX-DCA-0910', '2026-10-14', 'standard_economy', 14),
-    ('BM-PHX-DCA-0910', '2026-10-16', 'basic_economy', 18),
-    ('BM-PHX-DCA-0910', '2026-10-16', 'standard_economy', 8),
-    ('BM-PHX-DCA-0910', '2026-10-19', 'basic_economy', 0),
-    ('BM-PHX-DCA-0910', '2026-10-19', 'standard_economy', 0),
-    ('BM-DCA-PHX-1540', '2026-10-05', 'basic_economy', 4),
-    ('BM-DCA-PHX-1540', '2026-10-05', 'standard_economy', 20),
-    ('BM-DCA-PHX-1540', '2026-10-12', 'basic_economy', 5),
-    ('BM-DCA-PHX-1540', '2026-10-12', 'standard_economy', 17),
-    ('BM-DCA-PHX-1540', '2026-10-14', 'basic_economy', 33),
-    ('BM-DCA-PHX-1540', '2026-10-14', 'standard_economy', 2),
-    ('BM-DCA-PHX-1540', '2026-10-16', 'basic_economy', 33),
-    ('BM-DCA-PHX-1540', '2026-10-16', 'standard_economy', 11),
-    ('BM-DCA-PHX-1540', '2026-10-19', 'basic_economy', 9),
-    ('BM-DCA-PHX-1540', '2026-10-19', 'standard_economy', 12),
+    ('2133fbc8-ed10-42aa-baa2-12e3d15a6a05', '2026-10-05', 'basic_economy', 34),
+    ('2133fbc8-ed10-42aa-baa2-12e3d15a6a05', '2026-10-05', 'standard_economy', 8),
+    ('2133fbc8-ed10-42aa-baa2-12e3d15a6a05', '2026-10-12', 'basic_economy', 5),
+    ('2133fbc8-ed10-42aa-baa2-12e3d15a6a05', '2026-10-12', 'standard_economy', 23),
+    ('2133fbc8-ed10-42aa-baa2-12e3d15a6a05', '2026-10-14', 'basic_economy', 11),
+    ('2133fbc8-ed10-42aa-baa2-12e3d15a6a05', '2026-10-14', 'standard_economy', 14),
+    ('2133fbc8-ed10-42aa-baa2-12e3d15a6a05', '2026-10-16', 'basic_economy', 18),
+    ('2133fbc8-ed10-42aa-baa2-12e3d15a6a05', '2026-10-16', 'standard_economy', 8),
+    ('2133fbc8-ed10-42aa-baa2-12e3d15a6a05', '2026-10-19', 'basic_economy', 0),
+    ('2133fbc8-ed10-42aa-baa2-12e3d15a6a05', '2026-10-19', 'standard_economy', 0),
+    ('3ac31d55-0dbc-4f79-892e-743257ec9f13', '2026-10-05', 'basic_economy', 4),
+    ('3ac31d55-0dbc-4f79-892e-743257ec9f13', '2026-10-05', 'standard_economy', 20),
+    ('3ac31d55-0dbc-4f79-892e-743257ec9f13', '2026-10-12', 'basic_economy', 5),
+    ('3ac31d55-0dbc-4f79-892e-743257ec9f13', '2026-10-12', 'standard_economy', 17),
+    ('3ac31d55-0dbc-4f79-892e-743257ec9f13', '2026-10-14', 'basic_economy', 33),
+    ('3ac31d55-0dbc-4f79-892e-743257ec9f13', '2026-10-14', 'standard_economy', 2),
+    ('3ac31d55-0dbc-4f79-892e-743257ec9f13', '2026-10-16', 'basic_economy', 33),
+    ('3ac31d55-0dbc-4f79-892e-743257ec9f13', '2026-10-16', 'standard_economy', 11),
+    ('3ac31d55-0dbc-4f79-892e-743257ec9f13', '2026-10-19', 'basic_economy', 9),
+    ('3ac31d55-0dbc-4f79-892e-743257ec9f13', '2026-10-19', 'standard_economy', 12),
     ('BM-PHX-DCA-1725', '2026-10-05', 'basic_economy', 30),
     ('BM-PHX-DCA-1725', '2026-10-05', 'standard_economy', 24),
     ('BM-PHX-DCA-1725', '2026-10-12', 'basic_economy', 24),
@@ -2721,7 +2721,7 @@ INSERT INTO flight_availability (flight_id, departure_date, fare_class, seats_re
     ('BM-ATL-STL-1430', '2026-10-19', 'standard_economy', 33);
 
 INSERT INTO connecting_itineraries (itinerary_id, origin_code, destination_code, departure_date, return_date, via_airport_code, additional_duration_display, offered) VALUES
-    ('itinerary-phx-dca-one-stop-best-current', 'PHX', 'DCA', '2026-10-14', '2026-10-19', 'ORD', 'almost three hours', TRUE),
+    ('87ba9919-0d38-418a-868c-42185e5a9ab9', 'PHX', 'DCA', '2026-10-14', '2026-10-19', 'ORD', 'almost three hours', TRUE),
     ('itinerary-clt-dfw-via-phl', 'CLT', 'DFW', '2026-10-05', '2026-10-19', 'PHL', 'just over 5 hours', FALSE),
     ('itinerary-clt-ord-via-phl', 'CLT', 'ORD', '2026-10-12', '2026-10-19', 'PHL', 'about 6 and a half hours', TRUE),
     ('itinerary-dca-phx-via-ord', 'DCA', 'PHX', '2026-10-05', '2026-10-19', 'ORD', 'almost 3 hours', TRUE),
@@ -2730,10 +2730,10 @@ INSERT INTO connecting_itineraries (itinerary_id, origin_code, destination_code,
     ('itinerary-phx-dca-via-ord', 'PHX', 'DCA', '2026-10-12', '2026-10-19', 'ORD', 'almost 3 hours', TRUE);
 
 INSERT INTO connecting_itinerary_segments (itinerary_id, direction, segment_index, flight_id, layover_after_minutes) VALUES
-    ('itinerary-phx-dca-one-stop-best-current', 'outbound', 1, 'BM-PHX-ORD-0600', 145),
-    ('itinerary-phx-dca-one-stop-best-current', 'outbound', 2, 'BM-ORD-DCA-1310', 0),
-    ('itinerary-phx-dca-one-stop-best-current', 'return', 1, 'BM-DCA-ORD-1215', 75),
-    ('itinerary-phx-dca-one-stop-best-current', 'return', 2, 'BM-ORD-PHX-1445', 0),
+    ('87ba9919-0d38-418a-868c-42185e5a9ab9', 'outbound', 1, 'BM-PHX-ORD-0600', 145),
+    ('87ba9919-0d38-418a-868c-42185e5a9ab9', 'outbound', 2, 'BM-ORD-DCA-1310', 0),
+    ('87ba9919-0d38-418a-868c-42185e5a9ab9', 'return', 1, 'BM-DCA-ORD-1215', 75),
+    ('87ba9919-0d38-418a-868c-42185e5a9ab9', 'return', 2, 'BM-ORD-PHX-1445', 0),
     ('itinerary-clt-dfw-via-phl', 'outbound', 1, 'BM-CLT-PHL-1410', 191),
     ('itinerary-clt-dfw-via-phl', 'outbound', 2, 'BM-PHL-DFW-1845', 0),
     ('itinerary-clt-dfw-via-phl', 'return', 1, 'BM-DFW-PHL-1350', 209),

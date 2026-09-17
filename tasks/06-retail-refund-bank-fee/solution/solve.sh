@@ -80,12 +80,12 @@ say "The review window is three to five business days from today. Plenty come ba
 # Record what the customer reported about his cards. Westline cannot see his
 # bank, so the note says who reported it rather than asserting it.
 call update_case \
-    '{"case_id": "WST735204",
+    '{"case_id": "b0fee5fa-0534-4c47-a42a-b3a252106888",
       "note": "Customer reports card ending 2047 was replaced by card ending 8163 and believes both map to the same checking account; external bank-account status is not verified by Westline."}'
 
 # Send the confirmation to the verified contact on the order.
 call send_case_notification \
-    '{"case_id": "WST735204", "channel": "email",
+    '{"case_id": "b0fee5fa-0534-4c47-a42a-b3a252106888", "channel": "email",
       "destination_source": "order_contact", "template": "refund_trace_confirmation"}'
 
 say "The confirmation is on its way to the address on the order. It carries the amount under review, the last four of the original card, the response window, and the case number."
@@ -94,7 +94,7 @@ say "The store has finished its part of this. From here it sits with our payment
 # Document the overdraft fee. Documenting it is the whole action: approving a
 # bank fee while the trace is open is not available, and the result says so.
 call update_case \
-    '{"case_id": "WST735204",
+    '{"case_id": "b0fee5fa-0534-4c47-a42a-b3a252106888",
       "note": "Customer reports an overdraft fee while expecting the refund; supporting statement may be reviewed after trace outcome."}'
 
 # The fee is the caller's bank's charge, and the desk's standing decision on it

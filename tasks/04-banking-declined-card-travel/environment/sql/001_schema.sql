@@ -276,7 +276,7 @@ CREATE TABLE transactions (
     kind                             TEXT NOT NULL
         CHECK (kind IN ('authorization', 'decline', 'posted')),
     -- Local key the bank uses when naming a follow-on record after this
-    -- activity, e.g. 'hotel' in hotel-authorization-840.
+    -- activity, e.g. 'hotel' in f96da295-2259-4311-b31d-661ab6053092.
     merchant_key                     TEXT NOT NULL,
     merchant                         TEXT NOT NULL,
     merchant_location                TEXT,

@@ -43,7 +43,7 @@ call get_current_time '{}'
 # The two factors this profile requires. The time the agent quoted aloud is
 # asserted with the check, and the record answers with the time it carries.
 call verify_customer_identity \
-    '{"customer_id": "customer-daniel-brooks", "billing_zip": "27609",
+    '{"customer_id": "34d61a18-ede8-4533-b130-7e5937bc1e9d", "billing_zip": "27609",
       "birth_month_day": "October 12", "verified_at": "2026-08-28T09:09:00-04:00"}'
 
 say "I am logging the verification at 9:09 this morning. Two questions off your profile, and please do not read me a full card number: your billing ZIP, and the month and day of your birth."
@@ -51,7 +51,7 @@ say "Both of those match, so you are verified."
 
 # Read the referral the caller created. This is the whole of what he is entitled
 # to see: his sister's account and purchases are not on it.
-call get_referrals '{"customer_id": "customer-daniel-brooks"}'
+call get_referrals '{"customer_id": "34d61a18-ede8-4533-b130-7e5937bc1e9d"}'
 
 say "Here is what your side of the referral shows: the invitation went out on August 2 to an address beginning a-brooks, the application is recorded as approved, and the qualifying purchase stage is still pending."
 
@@ -76,16 +76,16 @@ say "What I genuinely cannot do is look at your sister's side of this. I cannot 
 # Give him a way to watch the stages himself instead of calling weekly. The
 # tracker exposes stages, not his sister's activity.
 call create_secure_self_service_session \
-    '{"customer_id": "customer-daniel-brooks", "workflow": "referral_status",
-      "resource_id": "RF8241", "delivery_channels": ["secure_message"]}'
+    '{"customer_id": "34d61a18-ede8-4533-b130-7e5937bc1e9d", "workflow": "referral_status",
+      "resource_id": "ce7d58b0-b5fc-42cb-a6e0-7a57929e1205", "delivery_channels": ["secure_message"]}'
 
 say "So that you are not ringing us every week, I have put a referral status tracker in your secure message centre. It shows the invite, approval, qualification and reward posting stages, and the exact deadline attached to the invitation. It does not show anything your sister bought."
 
 # He asks for the link by email. The working tool stays inside online banking, so
 # what goes out is a notification that a secure message is waiting.
 call send_secure_notification \
-    '{"customer_id": "customer-daniel-brooks",
-      "related_resource_id": "session-referral-RF8241",
+    '{"customer_id": "34d61a18-ede8-4533-b130-7e5937bc1e9d",
+      "related_resource_id": "b549b0e6-fced-4596-8794-db42a62476a6",
       "channel": "email", "template": "secure_message_waiting"}'
 
 say "I have also emailed you a note saying a secure message is waiting. The working tool itself stays inside online banking, so the email is a heads-up rather than the tracker."

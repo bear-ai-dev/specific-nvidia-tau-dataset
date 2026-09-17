@@ -885,7 +885,8 @@ def verify_customer_identity(cur, args) -> dict:
         # A cleared verification is filed under the customer it cleared, so
         # verifying the same person twice in one call resolves to the one record
         # rather than to a second one.
-        verification_id = f"verification-{customer['slug']}-booking"
+        verification_id = (scenario_value(cur, "next_identity_verification_id")
+                           or f"verification-{customer['slug']}-booking")
     else:
         # An attempt that cleared nobody is its own record. Filing it under the
         # profile it was tried against would let a wrong date of birth overwrite
@@ -1160,7 +1161,7 @@ def book_reservation(cur, args) -> dict:
 
     remainder = _cents(charged_total - certificate_applied)
     code = _allocate_confirmation_code(cur)
-    reservation_id = f"reservation-{code}"
+    reservation_id = scenario_value(cur, "next_reservation_id") or f"reservation-{code}"
     created_at = scenario_value(cur, "scenario_time")
     currency = scenario_value(cur, "currency")
     seat_selection_available = bool(scalar(
@@ -1192,7 +1193,8 @@ def book_reservation(cur, args) -> dict:
 
     traveler_views = []
     for index, traveler in enumerate(travelers, start=1):
-        traveler_id = f"traveler-{_slug(traveler['full_name'])}"
+        traveler_id = (scenario_value(cur, f"next_traveler_{index}_id")
+                       or f"traveler-{_slug(traveler['full_name'])}")
         cur.execute(
             """
             INSERT INTO travelers

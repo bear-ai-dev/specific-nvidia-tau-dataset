@@ -275,7 +275,7 @@ KB_RECORDS = [
      {"unused_unsubmitted_session_waives_future_rights": False,
       "guidance": "Contact the bank promptly if a genuinely unauthorized "
                   "transaction is later discovered."}),
-    ("hotel-authorization-holds", "2026-07-01",
+    ("471a2d47-a132-4551-a522-5f6ac88b48e7", "2026-07-01",
      "hotel.*(authorization|hold|incidental)", 200, None, None,
      {"incidental_holds_may_exceed_room_total": True,
       "available_credit_must_cover_full_authorization": True,

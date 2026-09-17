@@ -39,7 +39,7 @@ call lookup_customer \
 
 # The two factors this profile requires, checked against the profile.
 call verify_customer_identity \
-    '{"customer_id": "customer-justin-porter", "billing_zip": "64114",
+    '{"customer_id": "4e8c3a97-e6ad-4737-aede-c8acd4993277", "billing_zip": "64114",
       "birth_month_day": "February 19"}'
 
 say "Your ZIP and your birth month and day both match, so you are verified."
@@ -49,7 +49,7 @@ say "Your ZIP and your birth month and day both match, so you are verified."
 # descriptor, one with the same amount on the same day, and an earlier one with
 # the same amount from the same merchant.
 call get_credit_card_transactions \
-    '{"customer_id": "customer-justin-porter", "amount": 243.18,
+    '{"customer_id": "4e8c3a97-e6ad-4737-aede-c8acd4993277", "amount": 243.18,
       "descriptor_contains": "MRKTPLC*8472", "posted_date": "2026-02-23"}'
 
 # What the ledger actually shows, including the detail that points away from a
@@ -68,8 +68,8 @@ say "Two things I should be straight about before you decide anything. I cannot 
 # Open the form so it is ready while he checks with his daughter. Opening it is
 # not filing it.
 call create_secure_self_service_session \
-    '{"customer_id": "customer-justin-porter", "workflow": "transaction_dispute",
-      "resource_id": "transaction-ending-8472",
+    '{"customer_id": "4e8c3a97-e6ad-4737-aede-c8acd4993277", "workflow": "transaction_dispute",
+      "resource_id": "b2047621-d2c7-437c-bb56-c81a700e2099",
       "delivery_channels": ["secure_message"]}'
 
 say "I have put the form in online banking for you - look for Review transaction ending 8472. Have it open while you check with your daughter."
@@ -77,7 +77,7 @@ say "I have put the form in online banking for you - look for Review transaction
 # He asks what happens after submit. The answer is read from the session: it is
 # issued and open, and no claim is attached to it.
 call get_secure_self_service_session \
-    '{"customer_id": "customer-justin-porter", "session_id": "session-dispute-8472"}'
+    '{"customer_id": "4e8c3a97-e6ad-4737-aede-c8acd4993277", "session_id": "0ae36057-bbbb-42e3-994f-55f064bc374c"}'
 
 say "I can see it is open on your side and there is no claim number on it, because nothing is filed until you press submit yourself. If you do submit, you get a claim reference and the written timing disclosures in secure messages."
 
