@@ -10,10 +10,10 @@ fault. Bare figures exist to fix that - listing '15' finds "15 USD", "15.00
 dollars" and "a total of 15" without anyone having to predict each phrasing.
 
 Too loose is rarer and worse, because it credits a wrong answer. A bare '15'
-matched as a plain substring would be found inside '$150', and a bare 'two'
-inside 'network'. So bare forms are fenced, and this script asserts the fences
-hold across every numeric requirement in every task by trying deliberately wrong
-figures against each one.
+matched as a plain substring would be found inside '$150', '$15,000', or '15k',
+and a bare 'two' inside 'network'. So bare forms are value-matched or fenced, and
+this script tries deliberately wrong figures, thousands-grouped figures, and
+magnitude suffixes against every numeric requirement in every task.
 
 Runs in under a second, needs no Docker, and imports the real matcher from the
 graders rather than reimplementing it, so it cannot drift from what is scored.
@@ -75,6 +75,39 @@ def wrong_values(vals: set[Decimal]) -> list[Decimal]:
     return [c for c in sorted(candidates) if c > 0 and c not in vals]
 
 
+def compact(value: Decimal) -> str:
+    return format(value.normalize(), "f").rstrip(".")
+
+
+def scaled_wrong_utterances(vals: set[Decimal]):
+    """Render each expected value as one thousand times the stated amount.
+
+    A required 95 must not accept either 95k or 95,000. Skip a rendering when the
+    scaled value is itself valid for the requirement, as with 40k == 40,000 points.
+    """
+    for value in sorted(vals):
+        scaled = value * 1000
+        if value <= 0 or scaled in vals:
+            continue
+        yield f"the amount is {compact(value)}k in total.", f"{compact(value)}k"
+        if scaled == scaled.to_integral_value():
+            grouped = f"{int(scaled):,}"
+            yield f"the amount is ${grouped} in total.", grouped
+
+
+def zero_decimal_rendering(form: str) -> str | None:
+    """Equivalent grouped rendering for an integral bare-number form."""
+    currency = form[0] if form and form[0] in "$€£" else ""
+    number = form[1:] if currency else form
+    try:
+        value = Decimal(number.replace(",", ""))
+    except InvalidOperation:
+        return None
+    if value != value.to_integral_value():
+        return None
+    return f"{currency}{int(value):,}.00"
+
+
 def main() -> int:
     tasks = sorted(glob.glob(os.path.join(HERE, "[0-9][0-9]-*")))
     if not tasks:
@@ -103,7 +136,7 @@ def main() -> int:
 
             # Loose: a different figure must never satisfy the requirement.
             for wrong in wrong_values(vals):
-                text = format(wrong.normalize(), "f").rstrip(".")
+                text = compact(wrong)
                 for said in (f"the amount is ${text} in total",
                              f"that comes to {text} dollars"):
                     tried += 1
@@ -116,6 +149,17 @@ def main() -> int:
                             f"{entry['id']}: {text!r} wrongly matched form {hit!r}"
                         )
 
+            for said, label in scaled_wrong_utterances(vals):
+                tried += 1
+                spoken = grade.normalize(said)
+                hit = next(
+                    (f for f in forms if grade.form_matcher(f)(spoken)), None
+                )
+                if hit:
+                    problems.append(
+                        f"{entry['id']}: {label!r} wrongly matched form {hit!r}"
+                    )
+
             # Tight: where a bare figure IS offered, it has to do its job - be
             # found regardless of the unit word around it. Not every requirement
             # gets one, and that is deliberate rather than an oversight: a bare
@@ -124,8 +168,12 @@ def main() -> int:
             # dollars, and '2' is too common in prose to carry a fact alone.
             bare = [f for f in forms if BARE_NUMBER.match(f)]
             for figure in bare:
-                for said in (f"that comes to {figure} in total",
-                             f"the figure is {figure}"):
+                equivalents = [f"that comes to {figure} in total",
+                               f"the figure is {figure}."]
+                zero_decimal = zero_decimal_rendering(figure)
+                if zero_decimal:
+                    equivalents.append(f"the figure is {zero_decimal}.")
+                for said in equivalents:
                     if not grade.form_matcher(figure)(grade.normalize(said)):
                         problems.append(
                             f"{entry['id']}: bare figure {figure!r} does not match "
@@ -151,7 +199,7 @@ def main() -> int:
         print(f"{failures} problem(s)")
         return 1
     print("no requirement accepts a wrong figure; every bare figure matches its "
-          "own plain use")
+          "plain and zero-decimal equivalents")
     return 0
 
 

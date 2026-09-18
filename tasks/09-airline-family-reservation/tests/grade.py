@@ -38,6 +38,7 @@ import os
 import re
 import sys
 import urllib.error
+from decimal import Decimal, InvalidOperation
 
 import statecheck
 
@@ -99,40 +100,74 @@ def read_transcript(path: str) -> tuple[str, str]:
     return normalize(" ".join(spoken)), f"{len(spoken)} assistant message{plural}"
 
 
-# A form is "bare" when it is a single number or a single word, and those are the
-# only ones matched on token boundaries. The distinction matters in both
-# directions. Bare forms need boundaries: '15' is inside '150', '62' is inside
-# '62.00', and 'two' is inside 'network', so a bare form matched as a substring
-# would credit an agent for quoting a different figure entirely. Multi-word forms
-# must NOT have them, because several are deliberate stems - '90-day' is there to
-# match "90-day window" and "90-days" alike, and a trailing boundary would break
-# exactly the flexibility the form was written for.
-BARE_FORM = re.compile(r"^[$€£]?\d[\d,.]*$|^[a-z]+$")
+# A form is "bare" when it is a single number or a single word. Bare numbers are
+# compared by numeric value rather than as substrings: the required 95 may match
+# 95.00, but must not match 950, 95,000, 95k, 1.95, or 95.09. Bare words use word
+# boundaries so 'two' is not found inside 'network'. Multi-word forms remain
+# substrings because several are deliberate stems - '90-day' is there to match
+# both "90-day window" and "90-days".
+BARE_NUMBER = re.compile(
+    r"^(?P<currency>[$€£]?)(?P<number>\d[\d,]*(?:\.\d+)?)$"
+)
+BARE_WORD = re.compile(r"^[a-z]+$")
+NUMBER_TOKEN = re.compile(
+    r"(?<![\w.,+\-])"
+    r"(?P<currency>[$€£])?"
+    r"(?P<number>(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:e[+\-]?\d+)?)"
+    r"(?!\d|,\d|\.\d)",
+    re.IGNORECASE,
+)
+MAGNITUDE_SUFFIX = re.compile(
+    r"\s*(?:[kmb]|hundred|thousand|million|billion)\b", re.IGNORECASE
+)
 
 
 def form_matcher(form: str):
     """Return a predicate deciding whether `form` occurs in a transcript.
 
-    Numbers and words need different fences. A number must not be adjacent to
-    another digit, which stops '15' matching '$150' while still allowing '15.00'
-    and '11.8GB'; a word boundary would be wrong here, since it would reject
-    '11.8GB' for the sake of a collision that cannot happen. A word needs a real
-    word boundary, because 'two' is a substring of 'network'.
+    Numeric forms compare complete numeric tokens by Decimal value. This keeps
+    equivalent renderings flexible while preventing a required amount from being
+    found inside a different amount. Compact magnitude suffixes are rejected, so
+    95k cannot satisfy 95; ordinary unit suffixes remain valid, so 11.8GB can
+    satisfy 11.8. Currency-prefixed forms still require that currency symbol.
     """
-    if not BARE_FORM.match(form):
-        return lambda text: form in text
-    if any(ch.isdigit() for ch in form):
-        # The fences accept a different way of writing the same value and reject a
-        # different value. Trailing: not another digit, so '15' misses '$150', and
-        # not a decimal carrying a non-zero, so '$62' misses '$62.09' while still
-        # finding '$62.00'. Leading: not a digit and not a digit-then-point, so
-        # '62' misses '$1.62'.
-        pattern = re.compile(
-            r"(?<!\d)(?<!\d\.)" + re.escape(form) + r"(?!\d)(?!\.\d*[1-9])"
-        )
-    else:
+    numeric = BARE_NUMBER.fullmatch(form)
+    if numeric:
+        required_currency = numeric.group("currency") or None
+        try:
+            required_value = Decimal(numeric.group("number").replace(",", ""))
+        except InvalidOperation:
+            return lambda _text: False
+
+        def matches_number(text: str) -> bool:
+            for candidate in NUMBER_TOKEN.finditer(text):
+                # If the regex restarted after a currency sign (for example the
+                # 95 in -$95), preserve the sign fence that applied before it.
+                start = candidate.start()
+                if (candidate.group("currency") is None and start >= 2
+                        and text[start - 1] in "$€£"
+                        and text[start - 2] in "+-"):
+                    continue
+                if (required_currency is not None
+                        and candidate.group("currency") != required_currency):
+                    continue
+                try:
+                    value = Decimal(candidate.group("number").replace(",", ""))
+                except InvalidOperation:
+                    continue
+                if value != required_value:
+                    continue
+                if MAGNITUDE_SUFFIX.match(text, candidate.end()):
+                    continue
+                return True
+            return False
+
+        return matches_number
+
+    if BARE_WORD.fullmatch(form):
         pattern = re.compile(r"\b" + re.escape(form) + r"\b")
-    return lambda text: pattern.search(text) is not None
+        return lambda text: pattern.search(text) is not None
+    return lambda text: form in text
 
 
 def check_communication(transcript: str, required: list[dict]) -> list[dict]:
